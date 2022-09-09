@@ -11,7 +11,7 @@ datasource db {
 }
 
 model User {
-  id      Int      @id @default(autoincrement())
+  id      String   @id @default(cuid())
   email   String   @unique
   name    String?
   basket  Basket?
@@ -21,44 +21,42 @@ model User {
 }
 
 model Basket {
-  id         Int      @id @default(autoincrement())
+  id         String   @id @default(cuid())
+  userId     String   @unique
   recipeList Recipe[]
   foodToBuy  Food[]
   // itemToBuy Item[]
   user       User     @relation(fields: [userId], references: [id])
-  userId     Int      @unique
 }
 
 model Recipe {
-  id         Int      @id @default(autoincrement())
-  authorId   Int
-  content    Json
-  createAt   DateTime @default(now())
-  foodList   Food[]
+  id        String   @id @default(cuid())
+  authorId  String
+  content   Json
+  createAt  DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  foodList  Food[]
   // itemList Item[]
-  totalLikes Int
-  likesNum   Int      @default(0)
-  author     User     @relation(fields: [authorId], references: [id])
-  viewrs     Int      @default(0)
-  Basket     Basket?  @relation(fields: [basketId], references: [id])
-  basketId   Int?
+  likesNum  Int      @default(0)
+  author    User     @relation(fields: [authorId], references: [id])
+  viewrs    Int      @default(0)
+  basket    Basket[]
 }
 
 model Food {
-  id           Int     @id @default(autoincrement())
-  fromRecipeId Int
+  id           String   @id @default(cuid())
+  fromRecipeId String
   name         String
   unit         String
   value        Int
-  fromRecipe   Recipe  @relation(fields: [fromRecipeId], references: [id])
-  Basket       Basket? @relation(fields: [basketId], references: [id])
-  basketId     Int?
+  fromRecipe   Recipe   @relation(fields: [fromRecipeId], references: [id])
+  Basket       Basket[]
 }
 
 model Like {
-  id     Int  @id @default(autoincrement())
-  userId Int
-  user   User @relation(fields: [userId], references: [id])
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 // model Item {
