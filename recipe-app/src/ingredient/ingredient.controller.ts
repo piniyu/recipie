@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { IngredientNumDto } from './dto/create-ingredient.dto';
 import { UpdateIngredientDto } from './dto/update-ingredient.dto';
-import { ListAllEntities } from './dto/list-all-entities';
+import { ListAllEntities } from './dto/list-all-ingredients';
 
 @Controller('ingredient')
 export class CatsController {

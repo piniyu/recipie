@@ -1,8 +1,8 @@
-import { IngredientNumDto } from 'src/ingredient/dto/create-ingredient.dto';
+import { RecipeInput, IngredientInput } from '../../graphql.schema';
 
-export class CreateRecipeDto {
-  title: string;
-  author: string;
-  content: string;
+export class RecipeInputDto extends RecipeInput {
   ingredients: [IngredientNumDto];
+}
+
+export class IngredientNumDto extends IngredientInput {
 }

@@ -53,3 +53,11 @@ If you'd like to prototype the schema, then use the command below locally
 ```
 npx prisma db push
 ```
+
+# Graphql
+
+Generate Graphql Typescript on demand
+
+```
+npx ts-node ./src/generate-typings
+```

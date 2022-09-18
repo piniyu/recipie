@@ -21,36 +21,45 @@ model User {
 }
 
 model Basket {
-  id         String   @id @default(cuid())
-  userId     String   @unique
+  id         String       @id @default(cuid())
+  userId     String       @unique
   recipeList Recipe[]
-  foodToBuy  Food[]
+  foodToBuy  Ingredient[]
   // itemToBuy Item[]
-  user       User     @relation(fields: [userId], references: [id])
+  user       User         @relation(fields: [userId], references: [id])
 }
 
 model Recipe {
-  id        String   @id @default(cuid())
-  authorId  String
-  content   Json
-  createAt  DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  foodList  Food[]
+  id           String                  @id @default(cuid())
+  authorId     String
+  title        String
+  instructions String[]
+  createdAt    DateTime                @default(now())
+  updatedAt    DateTime                @updatedAt
+  ingredients  NumIngredientOnRecipe[]
   // itemList Item[]
-  likesNum  Int      @default(0)
-  author    User     @relation(fields: [authorId], references: [id])
-  viewrs    Int      @default(0)
-  basket    Basket[]
+  likesNum     Int                     @default(0)
+  author       User                    @relation(fields: [authorId], references: [id])
+  viewrs       Int                     @default(0)
+  basket       Basket[]
 }
 
-model Food {
-  id           String   @id @default(cuid())
-  fromRecipeId String
-  name         String
+model Ingredient {
+  id      String                  @id @default(cuid())
+  name    String
+  recipes NumIngredientOnRecipe[]
+  basket  Basket[]
+}
+
+model NumIngredientOnRecipe {
+  ingredientId String
+  recipeId     String
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+  recipe       Recipe     @relation(fields: [recipeId], references: [id])
   unit         String
-  value        Int
-  fromRecipe   Recipe   @relation(fields: [fromRecipeId], references: [id])
-  Basket       Basket[]
+  value        String
+
+  @@id([recipeId, ingredientId])
 }
 
 model Like {

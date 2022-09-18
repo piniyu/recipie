@@ -1,3 +1,45 @@
+scalar JSON
+scalar Date
+
 type Query {
-  hello: String!
+  latestRecipe: [Recipe]!
+  recipeById(recipeId: ID!): Recipe!
+}
+
+type Mutation {
+  createRecipe(content: RecipeInput!): Recipe!
+  updateRecipe(content: RecipeInput!): Recipe!
+  deleteRecipe(id: ID!): Boolean
+}
+
+type Recipe {
+  id: ID!
+  authorId: String!
+  title: String!
+  ingredients: [IngredientNum!]!
+  instructions: [String!]!
+  updatedAt: Date
+  # likeNum: Int
+  # viewers
+}
+
+type IngredientNum {
+  id: ID!
+  recipeId: String!
+  name: String!
+  unit: String!
+  value: String!
+}
+
+input RecipeInput {
+  title: String!
+  ingredients: [IngredientNumInput!]!
+  instructions: [String!]!
+  updatedAt: String!
+}
+
+input IngredientNumInput {
+  name: String!
+  unit: String!
+  value: String!
 }
