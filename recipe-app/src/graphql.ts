@@ -12,7 +12,6 @@ export class RecipeInput {
     title: string;
     ingredients: IngredientNumInput[];
     instructions: string[];
-    updatedAt: string;
 }
 
 export class IngredientNumInput {

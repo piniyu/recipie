@@ -35,7 +35,6 @@ input RecipeInput {
   title: String!
   ingredients: [IngredientNumInput!]!
   instructions: [String!]!
-  updatedAt: String!
 }
 
 input IngredientNumInput {

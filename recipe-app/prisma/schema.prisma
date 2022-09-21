@@ -30,25 +30,25 @@ model Basket {
 }
 
 model Recipe {
-  id           String                  @id @default(cuid())
-  authorId     String
-  title        String
-  instructions String[]
-  createdAt    DateTime                @default(now())
-  updatedAt    DateTime                @updatedAt
-  ingredients  NumIngredientOnRecipe[]
+  id             String                  @id @default(cuid())
+  authorId       String
+  title          String
+  instructions   String[]
+  createdAt      DateTime                @default(now())
+  updatedAt      DateTime                @updatedAt
+  ingredientsNum NumIngredientOnRecipe[]
   // itemList Item[]
-  likesNum     Int                     @default(0)
-  author       User                    @relation(fields: [authorId], references: [id])
-  viewrs       Int                     @default(0)
-  basket       Basket[]
+  likesNum       Int                     @default(0)
+  author         User                    @relation(fields: [authorId], references: [id])
+  viewrs         Int                     @default(0)
+  basket         Basket[]
 }
 
 model Ingredient {
-  id      String                  @id @default(cuid())
-  name    String
-  recipes NumIngredientOnRecipe[]
-  basket  Basket[]
+  id        String                  @id @default(cuid())
+  name      String                  @unique
+  onRecipes NumIngredientOnRecipe[]
+  basket    Basket[]
 }
 
 model NumIngredientOnRecipe {

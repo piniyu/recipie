@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { NumIngredientOnRecipe, Recipe } from '@prisma/client';
+import { Ingredient, NumIngredientOnRecipe, Recipe } from '@prisma/client';
 import { truncate } from 'fs';
 // import { Recipe } from '../graphql.schema';
 import { PrismaService } from '../prisma/prisma.service';
@@ -9,12 +9,12 @@ export type GQLRecipe = {
   id: string,
   title: string,
   authorId: string,
-  ingredients: Ingredient[],
+  ingredients: GQLIngredient[],
   instructions: string[],
   updatedAt: Date,
 }
 
-export type Ingredient = {
+export type GQLIngredient = {
   id: string,
   recipeId: string,
   name: string,
@@ -23,7 +23,7 @@ export type Ingredient = {
 }
 
 export type RecipeDetailsPrisma = (Recipe & {
-  ingredients: (NumIngredientOnRecipe & {
+  ingredientsNum: (NumIngredientOnRecipe & {
       ingredient: Ingredient;
   })[];
 })
@@ -34,13 +34,13 @@ export class RecipeService {
   constructor(private prisma: PrismaService) {}
 
   async findRecipe(id: string): Promise<GQLRecipe> {
-    const recipe= ( await this.prisma.recipe.findUnique({
+    const recipe = ( await this.prisma.recipe.findUnique({
       where: { id },
       include: { 
-      ingredients: {
+      ingredientsNum: {
           include: {
             ingredient: true} } },
-    }) as RecipeDetailsPrisma);
+    }));
     if (recipe === null) {
       throw new Error('Recipe not found');
     }
@@ -64,7 +64,7 @@ export class RecipeService {
     const recipesfromDB = await this.prisma.recipe.findMany({
       orderBy: { createdAt: 'desc' },
       include: { 
-        ingredients: {
+        ingredientsNum: {
         include: {
           ingredient: true} } },
       take: 20,
@@ -74,7 +74,7 @@ export class RecipeService {
       id: e.id, 
       title: e.title,
       authorId: e.authorId,
-      ingredients: e.ingredients.map(e => ({
+      ingredients: e.ingredientsNum.map(e => ({
         id: e.ingredientId, 
         recipeId: e.recipeId, 
         name: e.ingredient.name, 
@@ -87,11 +87,56 @@ export class RecipeService {
     return recipes
   }
 
-  async create(recipe: RecipeInputDto): Promise<GQLRecipe> {
-    
+  async create(recipe: RecipeInputDto): Promise<GQLRecipe> { 
+    // const ingredients = await this.prisma.ingredient.create()
+    const createdRecipe = await this.prisma.recipe.create({
+      data: {
+        ...recipe,
+        author: {
+          connect: { email: '' }}
+        },
+      include: { 
+        ingredientsNum: {
+            include: {
+              ingredient: true} } },
+      }
+    )
+
+    for ( let i of recipe.ingredients) {
+      const ingredient = await this.prisma.ingredient.findUnique({
+        where: { name: i.name }
+      })
+      if (ingredient !== null) {
+        await this.prisma.ingredient.upsert({
+          where: { name: i.name},
+          create: {
+            name: i.name,
+            onRecipes: {
+              create: { 
+                recipe: {
+                  connect: { id: createdRecipe.id }
+                },
+                unit: i.unit,
+                value: i.value }
+            },
+          },
+          update: {
+            onRecipes: {
+              create: { 
+                recipe: {
+                  connect: { id: createdRecipe.id }
+                },
+                unit: i.unit,
+                value: i.value }
+            },
+          }
+        })
+      }
+    }
+    return this._parse(createdRecipe)
   }
 
-  async update(params: UpdatePost): Promise<Post> {
+  async update(recipe: RecipeInputDto): Promise<GQLRecipe> {
     
   }
 
@@ -111,7 +156,7 @@ export class RecipeService {
       id: recipeFromPrisma.id, 
       title: recipeFromPrisma.title,
       authorId: recipeFromPrisma.authorId,
-      ingredients: recipeFromPrisma.ingredients.map(e => ({
+      ingredients: recipeFromPrisma.ingredientsNum.map(e => ({
         id: e.ingredientId, 
         recipeId: e.recipeId, 
         name: e.ingredient.name, 
