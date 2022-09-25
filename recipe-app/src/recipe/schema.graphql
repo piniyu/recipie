@@ -2,14 +2,14 @@ scalar JSON
 scalar Date
 
 type Query {
-  latestRecipe: [Recipe]!
+  latestRecipes: [Recipe!]!
   recipeById(recipeId: ID!): Recipe!
 }
 
 type Mutation {
   createRecipe(content: RecipeInput!): Recipe!
-  updateRecipe(content: RecipeInput!): Recipe!
-  deleteRecipe(id: ID!): Boolean
+  updateRecipe(id: ID!, content: RecipeInput!): Recipe!
+  deleteRecipe(id: ID!): Boolean!
 }
 
 type Recipe {
@@ -24,7 +24,7 @@ type Recipe {
 }
 
 type IngredientNum {
-  id: ID!
+  ingredientId: String!
   recipeId: String!
   name: String!
   unit: String!
@@ -38,6 +38,8 @@ input RecipeInput {
 }
 
 input IngredientNumInput {
+  ingredientId: String
+  recipeId: String
   name: String!
   unit: String!
   value: String!

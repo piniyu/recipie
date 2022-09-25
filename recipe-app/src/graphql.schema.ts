@@ -10,12 +10,13 @@
 
 export class RecipeInput {
     title: string;
-    ingredients: IngredientInput[];
-    instructions: JSON;
-    updatedAt: string;
+    ingredients: IngredientNumInput[];
+    instructions: string[];
 }
 
-export class IngredientInput {
+export class IngredientNumInput {
+    ingredientId?: Nullable<string>;
+    recipeId?: Nullable<string>;
     name: string;
     unit: string;
     value: string;
@@ -41,13 +42,16 @@ export abstract class IMutation {
 
 export class Recipe {
     id: string;
+    authorId: string;
     title: string;
-    userId: string;
-    ingredients: Ingredient[];
-    instructions: JSON;
+    ingredients: IngredientNum[];
+    instructions: string[];
+    updatedAt?: Nullable<Date>;
 }
 
-export class Ingredient {
+export class IngredientNum {
+    ingredientId: string;
+    recipeId: string;
     name: string;
     unit: string;
     value: string;

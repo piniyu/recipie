@@ -15,7 +15,7 @@ export type GQLRecipe = {
 }
 
 export type GQLIngredient = {
-  id: string,
+  ingredientId: string,
   recipeId: string,
   name: string,
   unit: string,
@@ -33,7 +33,7 @@ export type RecipeDetailsPrisma = (Recipe & {
 export class RecipeService {
   constructor(private prisma: PrismaService) {}
 
-  async findRecipe(id: string): Promise<GQLRecipe> {
+  async findById(id: string): Promise<GQLRecipe> {
     const recipe = ( await this.prisma.recipe.findUnique({
       where: { id },
       include: { 
@@ -45,22 +45,9 @@ export class RecipeService {
       throw new Error('Recipe not found');
     }
     return this._parse(recipe)
-    // return { 
-    //   id: recipe.id, 
-    //   title: recipe.title,
-    //   authorId: recipe.authorId,
-    //   ingredients: recipe.ingredients.map(e => ({
-    //     id: e.ingredientId, 
-    //     recipeId: e.recipeId, 
-    //     name: e.ingredient.name, 
-    //     unit: e.unit, 
-    //     value: e.value})),
-    //   instructions: recipe.instructions,
-    //   updatedAt: recipe.updatedAt? recipe.updatedAt: recipe.createdAt,
-    // }
   }
   
-  async getLatestRecipes(): Promise<GQLRecipe[] | null> {
+  async getLatest(): Promise<GQLRecipe[] | null> {
     const recipesfromDB = await this.prisma.recipe.findMany({
       orderBy: { createdAt: 'desc' },
       include: { 
@@ -69,75 +56,118 @@ export class RecipeService {
           ingredient: true} } },
       take: 20,
     });
-    
-    const recipes = recipesfromDB.map(e => ({
-      id: e.id, 
-      title: e.title,
-      authorId: e.authorId,
-      ingredients: e.ingredientsNum.map(e => ({
-        id: e.ingredientId, 
-        recipeId: e.recipeId, 
-        name: e.ingredient.name, 
-        unit: e.unit, 
-        value: e.value})),
-      instructions: e.instructions,
-      updatedAt: e.updatedAt? e.updatedAt: e.createdAt,
-    })
-    )
+
+    const recipes = recipesfromDB.map(e => {return this._parse(e)})
     return recipes
   }
 
   async create(recipe: RecipeInputDto): Promise<GQLRecipe> { 
-    // const ingredients = await this.prisma.ingredient.create()
     const createdRecipe = await this.prisma.recipe.create({
       data: {
         ...recipe,
         author: {
           connect: { email: '' }}
         },
-      include: { 
-        ingredientsNum: {
-            include: {
-              ingredient: true} } },
       }
     )
 
     for ( let i of recipe.ingredients) {
-      const ingredient = await this.prisma.ingredient.findUnique({
-        where: { name: i.name }
+      
+      await this.prisma.ingredient.upsert({
+        where: { name: i.name},
+        create: {
+          name: i.name,
+          onRecipes: {
+            create: { 
+              recipe: {
+                connect: { id: createdRecipe.id }
+              },
+              unit: i.unit,
+              value: i.value }
+          },
+        },
+        update: {
+          onRecipes: {
+            create: { 
+              recipe: {
+                connect: { id: createdRecipe.id }
+              },
+              unit: i.unit,
+              value: i.value }
+          },
+        }
       })
-      if (ingredient !== null) {
+    }
+    const ingredientOnRecipe = await this.prisma.recipe.findUniqueOrThrow({
+      where: { id: createdRecipe.id },
+      include: { 
+        ingredientsNum: {
+            include: {
+              ingredient: true} } },
+    })
+    return this._parse(ingredientOnRecipe)
+  }
+
+  async update(id: string, recipe: RecipeInputDto): Promise<GQLRecipe> {
+    /* 
+    case1: update the content of recipe, like title, instructions
+    case2: update existing ingredients info
+    case3: add new ingredients that are created in the ingredient list
+    case4: add new ingredients that are in the ingredient list
+    */
+    for ( let n of recipe.ingredients) {
+      if ( n.recipeId && n.ingredientId ) {
+        await this.prisma.numIngredientOnRecipe.update({
+          where: { 
+            recipeId_ingredientId: { 
+              recipeId: n.recipeId, ingredientId: n.ingredientId},
+          },
+          data: {
+                unit: n.unit,
+                value: n.value },
+        })
+      }
+      
+      else {
         await this.prisma.ingredient.upsert({
-          where: { name: i.name},
+          where: { name: n.name},
           create: {
-            name: i.name,
+            name: n.name,
             onRecipes: {
               create: { 
                 recipe: {
-                  connect: { id: createdRecipe.id }
+                  connect: { id }
                 },
-                unit: i.unit,
-                value: i.value }
+                unit: n.unit,
+                value: n.value }
             },
           },
           update: {
             onRecipes: {
               create: { 
                 recipe: {
-                  connect: { id: createdRecipe.id }
+                  connect: { id }
                 },
-                unit: i.unit,
-                value: i.value }
+                unit: n.unit,
+                value: n.value }
             },
           }
         })
-      }
+      }  
+      
     }
-    return this._parse(createdRecipe)
-  }
-
-  async update(recipe: RecipeInputDto): Promise<GQLRecipe> {
-    
+    const updatedRecipe = await this.prisma.recipe.update({
+      where: { id },
+      data: {
+        ...recipe,
+      },
+      include: {
+        ingredientsNum: {
+          include: {
+            ingredient: true} }
+     },
+    })
+    return this._parse(updatedRecipe)
   }
 
   async delete(id: string): Promise<Pick <GQLRecipe ,'id'&'title'>> {
@@ -157,7 +187,7 @@ export class RecipeService {
       title: recipeFromPrisma.title,
       authorId: recipeFromPrisma.authorId,
       ingredients: recipeFromPrisma.ingredientsNum.map(e => ({
-        id: e.ingredientId, 
+        ingredientId: e.ingredientId, 
         recipeId: e.recipeId, 
         name: e.ingredient.name, 
         unit: e.unit, 

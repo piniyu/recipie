@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   recipe-app:
@@ -41,7 +41,6 @@ services:
     environment:
       PGADMIN_DEFAULT_EMAIL: pgadmin@example.com
       PGADMIN_DEFAULT_PASSWORD: admin
-
 # volumes:
 #   data01:
 #   data02:
