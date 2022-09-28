@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-ui: 'Comfortaa';
+  --font-default: 'Inter';
+  --focus-outline-color: theme(colors.orange.500 / 50%);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-default), system-ui, sans-serif;
+  }
+  h1 {
+    @apply text-4xl font-bold;
+  }
+  h2 {
+    @apply text-3xl font-bold;
+  }
+  h3 {
+    @apply text-xl font-bold;
+  }
+  h4 {
+    /* @apply font-medium; */
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+@layer components {
+  .font-ui {
+    font-family: var(--font-ui);
+  }
+  .mask-image {
+    mask-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 1) 0%,
+      /* rgba(0, 0, 0, 1) 30%, */ transparent 100%
+    );
+  }
+  .layout-pt {
+    @apply pt-14;
+  }
+  .layout-py {
+    @apply py-14;
+  }
+  .layout-px {
+    @apply px-9;
+  }
+  .sider-item {
+    @apply px-9 py-4;
+  }
+  .sider-item-svg svg {
+    @apply w-5 h-5;
+  }
+  .label {
+    @apply mb-2 font-medium text-black;
+  }
+  .label-required {
+    @apply mb-2 font-medium text-black after:content-['*'] after:text-red-500;
+  }
+  .input {
+    @apply p-2 border rounded-lg outline-focus-outline;
+  }
+  .btn-sm {
+    font-family: var(--font-ui);
+    @apply flex justify-center items-center px-4 py-2 rounded-lg text-sm font-bold;
+  }
+  .btn-md {
+    font-family: var(--font-ui);
+    @apply flex justify-center items-center px-4 py-3 rounded-lg text-sm font-bold;
+  }
+  .btn-primary {
+    @apply bg-orange-600 text-white hover:bg-orange-600/90;
+  }
+  .btn-border {
+    @apply border border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:text-gray-600;
+  }
+  .btn-ghost {
+    @apply bg-white text-black disabled:text-gray-400 disabled:cursor-not-allowed;
+  }
+}
+@layer utilities {
+}

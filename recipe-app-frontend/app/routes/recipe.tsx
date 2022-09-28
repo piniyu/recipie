@@ -1,0 +1,103 @@
+import { LinksFunction } from '@remix-run/node'
+import moment from 'moment'
+import { useEffect, useRef, useState } from 'react'
+import ContentCard from '~/components/card/content-card'
+import Difficulty from '~/components/difficulty'
+import IconBtn from '~/components/Icon-btn'
+import HeaderImg from '~/components/recipe/header-img'
+import NutritionChart, {
+  NutritionBarChartProps,
+} from '~/components/recipe/recipe-nutrition/nutrition-chart'
+
+import RecipeHeader from '~/components/recipe/recipe-header'
+import ServingForm from '~/components/recipe/recipe-ingredients/serving-form'
+
+import Tag from '~/components/tag'
+import img1 from '../../public/assets/img1.jpeg'
+import IngredientsCard from '~/components/recipe/recipe-ingredients'
+import { RecipeTableProps } from '~/components/recipe/recipe-ingredients/recipe-ingredients-table'
+import RecipeNutrition from '~/components/recipe/recipe-nutrition'
+import { Outlet, useLocation, useSearchParams } from '@remix-run/react'
+import CookingDirection from '~/components/cooking-direction'
+
+const nutritionData: NutritionBarChartProps[][] = [
+  [
+    {
+      name: 'Protein',
+      pct: 40,
+      qat: { value: 13, mes: 'g' },
+    },
+  ],
+  [
+    {
+      name: 'Fat',
+      pct: 30,
+      qat: { value: 10, mes: 'g' },
+    },
+  ],
+  [
+    {
+      name: 'Soldium',
+      pct: 10,
+      qat: { value: 20, mes: 'mg' },
+    },
+  ],
+  [
+    {
+      name: 'Cholestral',
+      pct: 40,
+      qat: { value: 13, mes: 'g' },
+    },
+  ],
+]
+const ingredientsTableData: RecipeTableProps[] = [
+  {
+    ingredient: 'Salmon',
+    mes: 'g',
+    qat: 300,
+  },
+
+  {
+    ingredient: 'Salt',
+    mes: 'mg',
+    qat: 100,
+  },
+
+  {
+    ingredient: 'Milk',
+    mes: 'ml',
+    qat: 50,
+  },
+
+  {
+    ingredient: 'Egg',
+    mes: 'pcs',
+    qat: 1,
+  },
+]
+
+export default function Recipe(): JSX.Element {
+  useEffect(() => {
+    const scrollValue = localStorage.getItem('scrollPosition')
+    if (scrollValue) {
+      window.scrollTo({ top: parseInt(scrollValue) })
+    }
+  }, [])
+  return (
+    <>
+      <div className="flex flex-col min-h-screen relative">
+        <HeaderImg src={img1} />
+        <div className="flex-1 relative ">
+          {/* <div className="absolute bg-white mask-image w-full h-20 -translate-y-full"></div> */}
+          <div className="layout-px pt-4 pb-8 bg-white">
+            <RecipeHeader />
+            <div className="flex gap-9 text-black ">
+              <IngredientsCard data={ingredientsTableData} />
+              <RecipeNutrition data={nutritionData} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
