@@ -69,7 +69,7 @@ export default function RecipeHeader(): JSX.Element {
             <span>{moment(date).format('LL')}</span>
           </div>
         </div>
-        <a
+        <button
           className="btn-primary btn-md h-fit text-lg cursor-pointer"
           onClick={() => {
             localStorage.setItem('scrollPosition', window.scrollY.toString())
@@ -78,7 +78,7 @@ export default function RecipeHeader(): JSX.Element {
           }}
         >
           Start Cooking
-        </a>
+        </button>
       </div>
       <div className="flex items-center mb-9 text-sm text-gray-400">
         <span>Difficulty:</span>

@@ -1,7 +1,23 @@
 import { Link, NavLink } from '@remix-run/react'
 import React, { useContext } from 'react'
+import Basket from '~/icons/basket'
+import Favorite from '~/icons/favorite'
+import Recipe from '~/icons/recipe'
 import Logo from '../../icons/logo'
-import { SiderContext, SiderItemType } from './sider-context'
+import type { SiderItemType } from './sider-context'
+import { SiderContext } from './sider-context'
+
+const defaultSider = {
+  items: [
+    //     {
+    //     icon: <Overview />, value: 'Overview'
+    // },
+    { value: 'Upload recipe', route: 'upload', isBtn: true },
+    { icon: <Recipe />, value: 'Recipe', route: 'recipe' },
+    { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
+    { icon: <Basket />, value: 'Basket', route: 'basket' },
+  ],
+}
 
 function SiderItem({
   icon,
@@ -10,15 +26,16 @@ function SiderItem({
   hasChild = false,
   route,
 }: SiderItemType & { isChild?: boolean; hasChild?: boolean }) {
-  return (
-    <NavLink
-      to={`/${route ? route : value.toLowerCase()}`}
-      className={({ isActive }) =>
-        `
+  if (route) {
+    return (
+      <NavLink
+        to={route ? route : ``}
+        className={({ isActive }) =>
+          `
           flex items-center gap-4 
           relative
           sider-item sider-item-svg 
-         text-sm
+          text-sm
           [font-family:var(--font-ui)]
           font-bold
           hover:text-orange-600 
@@ -55,16 +72,48 @@ function SiderItem({
           ${
             isActive
               ? isChild
-                ? 'hover:bg-orange-700/10 bg-orange-600/10'
+                ? 'hover:bg-orange-700/10 bg-orange-600/10 text-orange-600 before:bg-orange-600'
                 : 'text-orange-600 before:bg-orange-600 bg-orange-600/10'
               : ' text-gray-500 '
           }
           `
-      }
+        }
+      >
+        {icon}
+        {value}
+      </NavLink>
+    )
+  }
+  return (
+    <span
+      className={`
+          flex items-center gap-4 
+          relative
+          sider-item sider-item-svg 
+          text-sm
+          [font-family:var(--font-ui)]
+          font-bold
+          text-gray-500
+          select-none
+
+          ${
+            hasChild
+              ? `
+            after:content-['']
+            after:block
+            after:absolute
+            after:w-full
+            after:h-[1px]
+            after:-ml-9
+            after:bottom-0
+            after:bg-white
+            `
+              : ''
+          }
+  `}
     >
-      {icon}
       {value}
-    </NavLink>
+    </span>
   )
 }
 
@@ -77,30 +126,46 @@ export default function Sider(): JSX.Element {
           <Logo />
         </div>
       </NavLink>
-      <div className="sider-item">
-        <Link to="/upload" className="btn-md btn-primary w-full">
-          Upload Recipe
-        </Link>
-      </div>
-      {value.items.map(({ icon, value, children, route }, idx) => (
-        <React.Fragment key={`${value}_${idx}`}>
-          <SiderItem
-            {...{ value, icon, hasChild: typeof children !== 'undefined' }}
-          />
-          {children && (
-            <div className="shadow-inner">
-              {children.map((child, idx) => (
-                <SiderItem
-                  key={`${child.value}_${idx}`}
-                  icon={child.icon}
-                  value={child.value}
-                  isChild
-                />
-              ))}
+      {/* {} */}
+      {value.items.map(({ icon, value, children, route, isBtn }, idx) => {
+        if (isBtn) {
+          return (
+            <div className="sider-item" key={idx}>
+              <Link
+                to={route ? route : `/${value.toLowerCase()}`}
+                className="btn-md btn-primary w-full"
+              >
+                {value}
+              </Link>
             </div>
-          )}
-        </React.Fragment>
-      ))}
+          )
+        }
+        return (
+          <React.Fragment key={`${value}_${idx}`}>
+            <SiderItem
+              {...{
+                value,
+                icon,
+                hasChild: typeof children !== 'undefined',
+                route,
+              }}
+            />
+            {children && (
+              <div className="shadow-inner">
+                {children.map((child, idx) => (
+                  <SiderItem
+                    key={`${child.value}_${idx}`}
+                    icon={child.icon}
+                    value={child.value}
+                    route={child.route}
+                    isChild
+                  />
+                ))}
+              </div>
+            )}
+          </React.Fragment>
+        )
+      })}
     </nav>
   )
 }

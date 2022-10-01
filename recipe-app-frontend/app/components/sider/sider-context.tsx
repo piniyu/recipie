@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState } from 'react'
+import type { ReactNode } from 'react'
+import { createContext, useState } from 'react'
 import Basket from '~/icons/basket'
 import Favorite from '~/icons/favorite'
 import Overview from '~/icons/overview'
@@ -9,6 +10,7 @@ export type SiderItemType = {
   value: string
   route?: string
   children?: Omit<SiderItemType, 'children'>[]
+  isBtn?: boolean
 }
 type SiderItems = { items: SiderItemType[] }
 
@@ -22,14 +24,15 @@ const initialValue: SiderItems = {
     { icon: undefined, value: '', children: [{ icon: undefined, value: '' }] },
   ],
 }
-const defaultSiderValue: SiderItems = {
+export const defaultSiderValue: SiderItems = {
   items: [
     //     {
     //     icon: <Overview />, value: 'Overview'
     // },
-    { icon: <Recipe />, value: 'Recipe' },
-    { icon: <Favorite />, value: 'Favorite' },
-    { icon: <Basket />, value: 'Basket' },
+    { value: 'Upload recipe', route: 'upload/details', isBtn: true },
+    { icon: <Recipe />, value: 'Recipe', route: 'recipe' },
+    { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
+    { icon: <Basket />, value: 'Basket', route: 'basket' },
   ],
 }
 

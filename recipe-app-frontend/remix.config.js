@@ -1,6 +1,9 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
-  ignoredRouteFiles: ['**/.*'],
+  // ignoredRouteFiles: ['.*'],
+  devServerPort: 8002,
+  cacheDirectory: './node_modules/.cache/remix',
+  ignoredRouteFiles: ['.*', '**/*.css', '**/*.test.{js,jsx,ts,tsx}'],
   serverDependenciesToBundle: ['recharts,d3-shape'],
 
   // appDirectory: "app",
