@@ -3,11 +3,16 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { CatsController } from './cats/cats.controller';
 import { join } from 'path';
+import { RecipeModule } from './recipe/recipe.module';
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+
 
 @Module({
   imports: [
+    RecipeModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       typePaths: ['./**/*.graphql'],
@@ -17,9 +22,12 @@ import { join } from 'path';
       },
       debug: false,
       playground: false,
+      plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
+    UserModule,
+    AuthModule,
   ],
-  controllers: [AppController, CatsController],
-  providers: [AppService],
+  controllers: [AppController],
+  providers: [AppService, ],
 })
 export class AppModule {}

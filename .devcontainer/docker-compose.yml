@@ -18,7 +18,8 @@ services:
       - ..:/workspace:delegated
 
     ports:
-      - 3010:3000
+      - 3333:3333
+      - 4000:4000
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity

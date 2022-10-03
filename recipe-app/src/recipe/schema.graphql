@@ -4,12 +4,27 @@ scalar Date
 type Query {
   latestRecipes: [Recipe!]!
   recipeById(recipeId: ID!): Recipe!
+  login(email: String!, password: String!): User!
+  logout: User!
+  me: User!
+  findUserById(id: String!): User
+  findUserByEmail(email: String!): User
 }
 
 type Mutation {
+  createUser(input: UserInput!): User!
+  resetPassword(input: UserInput!): User!
   createRecipe(content: RecipeInput!): Recipe!
   updateRecipe(id: ID!, content: RecipeInput!): Recipe!
-  deleteRecipe(id: ID!): Boolean!
+  deleteRecipe(id: ID!): Recipe!
+}
+
+type IngredientNum {
+  ingredientId: String!
+  recipeId: String!
+  name: String!
+  unit: String!
+  value: String!
 }
 
 type Recipe {
@@ -23,9 +38,18 @@ type Recipe {
   # viewers
 }
 
-type IngredientNum {
-  ingredientId: String!
-  recipeId: String!
+type User {
+  id: ID!
+  email: String!
+  name: String
+  # basket  Basket?
+  # history: [Recipe!]!
+  # likes   Like[]
+}
+
+input IngredientNumInput {
+  ingredientId: String
+  recipeId: String
   name: String!
   unit: String!
   value: String!
@@ -37,10 +61,9 @@ input RecipeInput {
   instructions: [String!]!
 }
 
-input IngredientNumInput {
-  ingredientId: String
-  recipeId: String
-  name: String!
-  unit: String!
-  value: String!
+type UserInput {
+  email: String!
+  name: String
+  password: String!
+  # history: [Recipe!]!
 }

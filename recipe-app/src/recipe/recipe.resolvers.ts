@@ -1,44 +1,38 @@
 // resolvers of graphql
 import { Resolver, Query, Mutation, Args, Subscription } from '@nestjs/graphql';
-import { PostsService } from './posts.service';
-import { Post, NewPost, UpdatePost } from 'src/graphql.schema';
-import { PubSub } from 'graphql-subscriptions';
+import { Recipe, RecipeInput } from 'src/graphql.schema';
+// import { PubSub } from 'graphql-subscriptions';
+import { RecipeService } from './recipe.service';
+import { RecipeInputDto } from './dto/create-recipe.dto';
 
-const pubSub = new PubSub();
+// const pubSub = new PubSub();
 
-@Resolver('Post')
-export class PostsResolvers {
-  constructor(private readonly postService: PostsService) {}
+@Resolver('Recipe')
+export class RecipeResolvers {
+  constructor(private readonly recipeService: RecipeService) {}
 
-  @Query('posts')
-  async posts(): Promise<Post[]> {
-    return this.postService.findAll();
+  @Query('recipeById')
+  async getRecipeById(@Args('id') id: string): Promise<Recipe> {
+    return this.recipeService.findById(id);
   }
 
-  @Query('post')
-  async post(@Args('id') args: string): Promise<Post> {
-    return this.postService.findOne(args);
+  @Query('latestRecipes')
+  async post(): Promise<Recipe[]> {
+    return this.recipeService.getLatest();
   }
 
-  @Mutation('createPost')
-  async create(@Args('input') args: NewPost): Promise<Post> {
-    const createdPost = await this.postService.create(args);
-    pubSub.publish('postCreated', { postCreated: createdPost });
-    return createdPost;
+  @Mutation('createRecipe')
+  async createRecipe(@Args('content') content: RecipeInputDto): Promise<Recipe> {
+    return this.recipeService.create(content);
   }
 
-  @Mutation('updatePost')
-  async update(@Args('input') args: UpdatePost): Promise<Post> {
-    return this.postService.update(args);
+  @Mutation('updateRecipe')
+  async updateRecipe(@Args('id') id: string, @Args('id') content: RecipeInputDto,): Promise<Recipe> {
+    return this.recipeService.update(id, content);
   }
 
-  @Mutation('deletePost')
-  async delete(@Args('id') args: string): Promise<Post> {
-    return this.postService.delete(args);
-  }
-
-  @Subscription('postCreated')
-  postCreated() {
-    return pubSub.asyncIterator('postCreated');
+  @Mutation('deleteRecipe')
+  async delete(@Args('id') id: string): Promise<Recipe> {
+    return this.recipeService.delete(id);
   }
 }

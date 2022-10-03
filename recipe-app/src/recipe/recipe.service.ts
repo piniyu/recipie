@@ -47,7 +47,7 @@ export class RecipeService {
     return this._parse(recipe)
   }
   
-  async getLatest(): Promise<GQLRecipe[] | null> {
+  async getLatest(): Promise<GQLRecipe[]> {
     const recipesfromDB = await this.prisma.recipe.findMany({
       orderBy: { createdAt: 'desc' },
       include: { 
@@ -61,17 +61,17 @@ export class RecipeService {
     return recipes
   }
 
-  async create(recipe: RecipeInputDto): Promise<GQLRecipe> { 
+  async create(content: RecipeInputDto): Promise<GQLRecipe> { 
     const createdRecipe = await this.prisma.recipe.create({
       data: {
-        ...recipe,
+        ...content,
         author: {
           connect: { email: '' }}
         },
       }
     )
 
-    for ( let i of recipe.ingredients) {
+    for ( let i of content.ingredients) {
       
       await this.prisma.ingredient.upsert({
         where: { name: i.name},
@@ -108,14 +108,14 @@ export class RecipeService {
     return this._parse(ingredientOnRecipe)
   }
 
-  async update(id: string, recipe: RecipeInputDto): Promise<GQLRecipe> {
+  async update(id: string, content: RecipeInputDto): Promise<GQLRecipe> {
     /* 
     case1: update the content of recipe, like title, instructions
     case2: update existing ingredients info
     case3: add new ingredients that are created in the ingredient list
     case4: add new ingredients that are in the ingredient list
     */
-    for ( let n of recipe.ingredients) {
+    for ( let n of content.ingredients) {
       if ( n.recipeId && n.ingredientId ) {
         await this.prisma.numIngredientOnRecipe.update({
           where: { 
@@ -159,7 +159,7 @@ export class RecipeService {
     const updatedRecipe = await this.prisma.recipe.update({
       where: { id },
       data: {
-        ...recipe,
+        ...content,
       },
       include: {
         ingredientsNum: {
@@ -170,15 +170,16 @@ export class RecipeService {
     return this._parse(updatedRecipe)
   }
 
-  async delete(id: string): Promise<Pick <GQLRecipe ,'id'&'title'>> {
+  async delete(id: string): Promise<GQLRecipe> {
     const deletedRecipe = await this.prisma.recipe.delete({
       where: { id },
-      select: {
-        id: true,
-        title: true,
-      }
+      include: {
+        ingredientsNum: {
+          include: {
+            ingredient: true} }
+     },
     })
-    return deletedRecipe
+    return this._parse(deletedRecipe)
   }
 
   _parse(recipeFromPrisma: RecipeDetailsPrisma): GQLRecipe {

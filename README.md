@@ -32,6 +32,16 @@ install ts-morph package locally for Graphql schema first approach
 npm install --save-dev ts-morph
 ```
 
+install jsonwebtoken for jwt authentication
+
+```
+npm install jsonwebtoken
+```
+
+```
+npm i --save-dev @types/jsonwebtoken
+```
+
 # Dev with Docker
 
 Test without authentication
