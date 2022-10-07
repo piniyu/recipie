@@ -1,24 +1,13 @@
-import { LinksFunction } from '@remix-run/node'
-import moment from 'moment'
 import { useEffect, useRef, useState } from 'react'
-import ContentCard from '~/components/card/content-card'
-import Difficulty from '~/components/difficulty'
-import IconBtn from '~/components/Icon-btn'
 import HeaderImg from '~/components/recipe/header-img'
-import NutritionChart, {
-  NutritionBarChartProps,
-} from '~/components/recipe/recipe-nutrition/nutrition-chart'
+import type { NutritionBarChartProps } from '~/components/recipe/recipe-nutrition/nutrition-chart'
 
 import RecipeHeader from '~/components/recipe/recipe-header'
-import ServingForm from '~/components/recipe/recipe-ingredients/serving-form'
 
-import Tag from '~/components/tag'
 import img1 from '../../public/assets/img1.jpeg'
 import IngredientsCard from '~/components/recipe/recipe-ingredients'
-import { RecipeTableProps } from '~/components/recipe/recipe-ingredients/recipe-ingredients-table'
+import type { RecipeTableProps } from '~/components/recipe/recipe-ingredients/recipe-ingredients-table'
 import RecipeNutrition from '~/components/recipe/recipe-nutrition'
-import { Outlet, useLocation, useSearchParams } from '@remix-run/react'
-import CookingDirection from '~/components/cooking-direction'
 
 const nutritionData: NutritionBarChartProps[][] = [
   [

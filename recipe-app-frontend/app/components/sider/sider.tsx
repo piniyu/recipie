@@ -4,7 +4,8 @@ import Basket from '~/icons/basket'
 import Favorite from '~/icons/favorite'
 import Recipe from '~/icons/recipe'
 import Logo from '../../icons/logo'
-import type { SiderItemType } from './sider-context'
+import { setLocalValue } from '../localstorage-form/methods'
+import { SiderActionKind, SiderItemType } from './sider-context'
 import { SiderContext } from './sider-context'
 
 const defaultSider = {
@@ -25,11 +26,30 @@ function SiderItem({
   isChild = false,
   hasChild = false,
   route,
-}: SiderItemType & { isChild?: boolean; hasChild?: boolean }) {
+  idx,
+}: SiderItemType & { isChild?: boolean; hasChild?: boolean; idx: number }) {
+  const { dispatch } = useContext(SiderContext)
   if (route) {
+    // console.log(route)
     return (
       <NavLink
-        to={route ? route : ``}
+        to={route}
+        onClick={() => {
+          if (value === 'Add a step') {
+            dispatch({
+              type: SiderActionKind.ADD_CHILD,
+              index: 2,
+              payload: { value: `${idx + 1}. `, route: `upload/${idx + 1}` },
+            })
+            setLocalValue(
+              {
+                title: '',
+                methods: [{ timeStemp: '', content: '' }],
+              },
+              idx,
+            )
+          }
+        }}
         className={({ isActive }) =>
           `
           flex items-center gap-4 
@@ -73,7 +93,7 @@ function SiderItem({
             isActive
               ? isChild
                 ? 'hover:bg-orange-700/10 bg-orange-600/10 text-orange-600 before:bg-orange-600'
-                : 'text-orange-600 before:bg-orange-600 bg-orange-600/10'
+                : 'text-orange-600 before:bg-orange-600 bg-orange-600/10 hover:bg-orange-700/10'
               : ' text-gray-500 '
           }
           `
@@ -118,7 +138,8 @@ function SiderItem({
 }
 
 export default function Sider(): JSX.Element {
-  const { value, setValue } = useContext(SiderContext)
+  const { state, dispatch } = useContext(SiderContext)
+  // console.log(state)
   return (
     <nav className="w-[255px] h-screen bg-gray-50 layout-pt sticky top-0">
       <NavLink to="/">
@@ -127,7 +148,7 @@ export default function Sider(): JSX.Element {
         </div>
       </NavLink>
       {/* {} */}
-      {value.items.map(({ icon, value, children, route, isBtn }, idx) => {
+      {state.map(({ icon, value, children, route, isBtn }, idx) => {
         if (isBtn) {
           return (
             <div className="sider-item" key={idx}>
@@ -148,6 +169,7 @@ export default function Sider(): JSX.Element {
                 icon,
                 hasChild: typeof children !== 'undefined',
                 route,
+                idx,
               }}
             />
             {children && (
@@ -158,6 +180,7 @@ export default function Sider(): JSX.Element {
                     icon={child.icon}
                     value={child.value}
                     route={child.route}
+                    idx={idx}
                     isChild
                   />
                 ))}

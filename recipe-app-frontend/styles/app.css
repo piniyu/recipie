@@ -66,7 +66,7 @@
     @apply mb-2 font-medium text-black;
   }
   .label-required {
-    @apply mb-2 font-medium text-black after:content-['*'] after:text-red-500;
+    @apply block mb-2 font-medium text-black after:content-['*'] after:text-red-500;
   }
   .input {
     @apply p-2 border rounded-lg outline-focus-outline;
@@ -83,7 +83,7 @@
     @apply bg-orange-600 text-white hover:bg-orange-600/90;
   }
   .btn-border {
-    @apply border border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:text-gray-600;
+    @apply border border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:text-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:border-gray-200;
   }
   .btn-ghost {
     @apply bg-white text-black disabled:text-gray-400 disabled:cursor-not-allowed;

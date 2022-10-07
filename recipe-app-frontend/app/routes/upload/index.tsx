@@ -1,11 +1,7 @@
 import { Link } from '@remix-run/react'
 import { Controller, FormProvider, useForm } from 'react-hook-form'
-import {
-  components,
-  ControlProps,
-  CSSObjectWithLabel,
-  GroupBase,
-} from 'react-select'
+import type { ControlProps, GroupBase } from 'react-select'
+import { components } from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 import Difficulty from '~/components/difficulty'
 import Textarea from '~/components/textarea'

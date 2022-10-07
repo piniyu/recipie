@@ -1,11 +1,17 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
+import type {
+  ErrorBoundaryComponent,
+  LinksFunction,
+  MetaFunction,
+} from '@remix-run/node'
 import {
+  Link,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigate,
 } from '@remix-run/react'
 import styles from './styles/app.css'
 import Layout from './components/layout'
@@ -52,7 +58,25 @@ export const links: LinksFunction = () => {
   ]
 }
 
-export default function App() {
+const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
+  const navigate = useNavigate()
+
+  if (error) {
+    console.log('error')
+    return (
+      <div>
+        Oops! Something went wrong!
+        <button
+          onClick={() => {
+            navigate(-1)
+          }}
+        >
+          Go back
+        </button>
+        <Link to="/">Home page</Link>
+      </div>
+    )
+  }
   return (
     <html lang="en">
       <head>
@@ -70,3 +94,4 @@ export default function App() {
     </html>
   )
 }
+export default ErrorBoundary

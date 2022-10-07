@@ -85,10 +85,8 @@ export default function Textarea({
   const { register, watch, control } = useFormContext()
   const watchValue = watch(name)
   let textareaMyRef: HTMLTextAreaElement | null = null
-  const textareaRef = useCallback(
-    (v: HTMLTextAreaElement | null) => register(name).ref,
-    [name, register],
-  )
+  const { ref, ...rest } = register(name)
+
   // const [length, setLength] = useState(0)
   useEffect(() => {
     if (textareaMyRef && window) {
@@ -104,7 +102,7 @@ export default function Textarea({
         textareaMyRef.scrollHeight + borderBottom + borderTop + 'px'
     }
   }, [watchValue, textareaMyRef])
-  console.log(watchValue, name)
+  // console.log(watchValue, name)
   // useEffect(() => {
   //   const subscribe = watch(value => {
   //     setLength(value.title.length)
@@ -118,17 +116,17 @@ export default function Textarea({
     <div className="relative w-full">
       {/* <textarea {...register(name)} /> */}
       <textarea
-        {...register(name)}
+        {...rest}
         rows={rows}
         className={` input w-full resize-none align-bottom text-black ${
           maxLength ? 'pb-8' : ''
         }`}
         maxLength={maxLength}
         placeholder={placeholder}
-        ref={v => {
-          register(name).ref(v)
-          // textareaRef(v)
-          textareaMyRef = v
+        ref={e => {
+          // register(name).ref(v)
+          ref(e)
+          textareaMyRef = e
         }}
       />
       {/* <Controller

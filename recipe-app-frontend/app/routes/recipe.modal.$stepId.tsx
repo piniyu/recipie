@@ -1,5 +1,4 @@
 import { Link, useParams } from '@remix-run/react'
-import { useEffect } from 'react'
 import img1 from '../../public/assets/img1.jpeg'
 
 export default function RecipeModal(): JSX.Element {
