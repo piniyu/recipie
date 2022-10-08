@@ -39,6 +39,9 @@ export default function FileUploadInput({
       const size = getFileSize(files)
       const file = files[0]
       const url = URL.createObjectURL(file)
+      const reader = new FileReader()
+      reader.addEventListener('load', () => {}, false)
+      console.log(reader.readAsDataURL(file))
       // console.log(URL.createObjectURL(files[0]))
       // const img=document.createElement('img')
       setValue(name, { name: file.name, type: file.type, src: url, size: size })
@@ -95,7 +98,12 @@ export default function FileUploadInput({
             </p>
           </div>
         )}
-        <input className="hidden" type="file" onChange={onSubmitFile} />
+        <input
+          className="hidden"
+          type="file"
+          accept="image/*"
+          onChange={onSubmitFile}
+        />
         <input {...register(name, { required: true })} type="hidden" />
       </label>
       <label>Size:</label>

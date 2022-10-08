@@ -4,7 +4,7 @@ import Basket from '~/icons/basket'
 import Favorite from '~/icons/favorite'
 import Recipe from '~/icons/recipe'
 import Logo from '../../icons/logo'
-import { setLocalValue } from '../localstorage-form/methods'
+import { localStorageKey, setLocalValue } from '../localstorage-form/methods'
 import { SiderActionKind, SiderItemType } from './sider-context'
 import { SiderContext } from './sider-context'
 
@@ -42,6 +42,7 @@ function SiderItem({
               payload: { value: `${idx + 1}. `, route: `upload/${idx + 1}` },
             })
             setLocalValue(
+              localStorageKey.MOCK_STEP_FORM,
               {
                 title: '',
                 methods: [{ timeStemp: '', content: '' }],

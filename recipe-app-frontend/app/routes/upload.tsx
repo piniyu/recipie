@@ -63,6 +63,7 @@ export default function Upload(): JSX.Element {
   useEffect(() => {
     const local = getLocalValue(localStorageKey.MOCK_STEP_FORM)
     if (stepIdx && +stepIdx > local.length) {
+      console.log(stepIdx, local.length)
       throw new Error()
     }
   }, [stepIdx])
