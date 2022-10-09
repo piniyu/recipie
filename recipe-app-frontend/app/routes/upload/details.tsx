@@ -8,7 +8,7 @@ import {
   GroupBase,
 } from 'react-select'
 import CreatableSelect from 'react-select/creatable'
-import FileUploadInput from '~/components/file-upload-input'
+import FileUploadInput from '~/components/img-upload-input'
 import {
   getLocalValue,
   localStorageKey,
@@ -73,9 +73,23 @@ export default function Details(): JSX.Element {
   })
 
   useEffect(() => {
+    const onBeforeunload = (e: BeforeUnloadEvent) => {
+      e.preventDefault()
+      setLocalValue(localStorageKey.MOCK_DETAILS_FORM, methods.getValues())
+    }
+    if (window) {
+      window.addEventListener('beforeunload', onBeforeunload)
+    }
+    return () => {
+      window.removeEventListener('beforeunload', onBeforeunload)
+    }
+  }, [methods])
+
+  useEffect(() => {
     methods.reset(getLocalValue(localStorageKey.MOCK_DETAILS_FORM))
     return () => {
       setLocalValue(localStorageKey.MOCK_DETAILS_FORM, methods.getValues())
+      // console.log('ditail unmount')
     }
   }, [methods])
 

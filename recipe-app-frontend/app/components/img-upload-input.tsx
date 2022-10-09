@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { ImgFormProp } from '~/routes/upload/details'
+import type { DetailsFormProps, ImgFormProp } from '~/routes/upload/details'
 
-const getFileSize = (files: FileList): string => {
+const getFileSize = (
+  files: FileList,
+): { text: string; isOverSize: boolean } => {
   let numberOfBytes = 0
   for (const file of files) {
     numberOfBytes += file.size
@@ -17,17 +19,24 @@ const getFileSize = (files: FileList): string => {
     exponent === 0
       ? numberOfBytes + ' bytes'
       : `${approx.toFixed(3)} ${units[exponent]} (${numberOfBytes} bytes)`
-  return output
+  return { text: output, isOverSize: false }
 }
 
-export default function FileUploadInput({
+export default function ImgUploadInput({
   name,
   text,
 }: {
   name: string
   text: string
 }): JSX.Element {
-  const { register, setValue, watch, getValues } = useFormContext()
+  const {
+    register,
+    setValue,
+    watch,
+    getValues,
+    setError,
+    formState: { errors },
+  } = useFormContext<any>()
   // const [img, setImg] = useState({ src: '', name: '' })
   const watchValue = watch(name) as ImgFormProp
   // console.log(watchValue)
@@ -37,25 +46,33 @@ export default function FileUploadInput({
     const files = element.files
     if (files) {
       const size = getFileSize(files)
+      if (size.isOverSize) {
+        setError(name, {
+          type: 'overSize',
+          message:
+            'The size of file is over the limit. Your file size should be under 2MB!',
+        })
+        return
+      }
       const file = files[0]
-      const url = URL.createObjectURL(file)
+      // const url = URL.createObjectURL(file)
       const reader = new FileReader()
-      reader.addEventListener('load', () => {}, false)
-      console.log(reader.readAsDataURL(file))
-      // console.log(URL.createObjectURL(files[0]))
-      // const img=document.createElement('img')
-      setValue(name, { name: file.name, type: file.type, src: url, size: size })
-      // const outputElement = document.getElementById(
-      //   'fileSize',
-      // ) as HTMLOutputElement
-      // outputElement.textContent = size
-      // setImg({ src: url, name: file.name })
+      reader.addEventListener(
+        'load',
+        () => {
+          console.log('onChange')
+          setValue(name, {
+            name: file.name,
+            type: file.type,
+            src: reader.result,
+            size: size.text,
+          })
+        },
+        false,
+      )
+      reader.readAsDataURL(file)
     }
   }
-  // useEffect(() => {
-  //   setImg(getValues(name))
-  //   console.log(getValues(name))
-  // }, [getValues, name])
   return (
     <div className="h-full">
       <label
@@ -84,11 +101,6 @@ export default function FileUploadInput({
               src={watchValue.src}
               alt={watchValue.name}
               className="w-full h-full object-cover object-center pointer-events-none"
-              // onDragStart={e => {
-              //   e.dataTransfer.setDragImage(new Image(), 0, 0)
-
-              //   console.log('drag')
-              // }}
             />
           </div>
         ) : (
@@ -108,6 +120,12 @@ export default function FileUploadInput({
       </label>
       <label>Size:</label>
       <output id="fileSize">{watchValue.size}</output>
+      {/* <p>{errors}</p> */}
+      {errors && (
+        <p className="text-red-500 font-medium">
+          {errors[name]?.message as string}
+        </p>
+      )}
     </div>
   )
 }
