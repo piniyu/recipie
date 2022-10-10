@@ -4,16 +4,20 @@ import {
     Inject,
     Injectable,
   } from '@nestjs/common';
-import { AuthService } from '../auth/auth.service';
-import { UserInputDto } from './dto/user-input.dto';
-import { GQLRecipe } from 'src/recipe/recipe.service';
+// import { AuthService } from '../auth/auth.service';
+import { User as PrismaUser } from '@prisma/client';
+import { UserInput } from './dto/user-input.dto';
+// import { GQLRecipe } from 'src/recipe/recipe.service';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { User } from './models/user.model';
 
-export type GQLUser = {
-  id: string,
-  email: string,
-  name: string | null,
-}
+// export type GQLUser = {
+//   id: string,
+//   email: string,
+//   name: string | null,
+// }
+
+// export type User = any;
   
 @Injectable()
 export class UsersService {
@@ -21,7 +25,23 @@ constructor(
     private prisma: PrismaService,
 //   private authService: AuthService,
 ) {
+}
 
+private readonly users = [
+  {
+    userId: 1,
+    username: 'john',
+    password: 'changeme',
+  },
+  {
+    userId: 2,
+    username: 'maria',
+    password: 'guess',
+  },
+];
+
+async findOne(username: string): Promise<User | undefined> {
+  return this.users.find(user => user.username === username);
 }
 
 /**
@@ -32,7 +52,7 @@ constructor(
  * @returns {Promise<UserDocument>} or throws an error
  * @memberof UsersService
  */
-async create(createUserInput: UserInputDto): Promise<GQLUser> {
+async create(createUserInput: UserInput): Promise<User> {
   const {email, name, password } = createUserInput
   const existingUser = await this.prisma.user.findUnique({ where: { email } })
   if (existingUser) {
@@ -45,13 +65,17 @@ async create(createUserInput: UserInputDto): Promise<GQLUser> {
         password,
     }
   })
-  return createdUser;
+  return this._parse(createdUser);
 }
 
-async findOneById(id: string): Promise<GQLUser | undefined> {
-    return this.prisma.user.findUniqueOrThrow({
+async findOneById(id: string): Promise<User | undefined> {
+    const user = await this.prisma.user.findUniqueOrThrow({
         where: { id },
     })
+    if (user === undefined){
+      return undefined
+    }
+    return this._parse(user)
 }
 // ---------------------------------------------------------
 /**
@@ -61,7 +85,7 @@ async findOneById(id: string): Promise<GQLUser | undefined> {
  * @returns {(Promise<UserDocument | undefined>)}
  * @memberof UsersService
  */
-async findOneByEmail(email: string): Promise<GQLUser | undefined> {
+async findOneByEmail(email: string): Promise<User | undefined> {
     return this.prisma.user.findUniqueOrThrow({
         where: { email },
     })
@@ -76,4 +100,13 @@ async findOneByEmail(email: string): Promise<GQLUser | undefined> {
 // async deleteAllUsers(): Promise<void> {
 //     await this.userModel.deleteMany({});
 // }
+
+_parse(prismaUser: PrismaUser): User {
+  return {
+    id: prismaUser.id,
+    email: prismaUser.email,
+    name: prismaUser.name != null? prismaUser.name: undefined,
+  }
+}
+
 }

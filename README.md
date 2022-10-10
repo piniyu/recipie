@@ -42,6 +42,21 @@ npm install jsonwebtoken
 npm i --save-dev @types/jsonwebtoken
 ```
 
+install nestjs config
+
+```
+npm i --save @nestjs/config
+```
+
+install Passport and jwt strategy
+
+install bcrypt package for password hashing
+
+```
+npm i bcrypt
+npm i -D @types/bcrypt
+```
+
 # Dev with Docker
 
 Test without authentication

@@ -1,38 +1,40 @@
 // resolvers of graphql
-import { Resolver, Query, Mutation, Args, Subscription } from '@nestjs/graphql';
-import { Recipe, RecipeInput } from 'src/graphql.schema';
+import { Resolver, Query, Mutation, Args, Subscription, ID } from '@nestjs/graphql';
+// import { Recipe, RecipeInput } from 'src/graphql.schema';
 // import { PubSub } from 'graphql-subscriptions';
 import { RecipeService } from './recipe.service';
-import { RecipeInputDto } from './dto/create-recipe.dto';
+import { Recipe, IngredientNum } from './models/recipe.model';
+import { RecipeInput } from './dto/create-recipe.dto';
+
 
 // const pubSub = new PubSub();
 
-@Resolver('Recipe')
+@Resolver()
 export class RecipeResolvers {
   constructor(private readonly recipeService: RecipeService) {}
 
-  @Query('recipeById')
-  async getRecipeById(@Args('id') id: string): Promise<Recipe> {
+  @Query(returns => Recipe)
+  async getRecipeById(@Args('id', { type: () => ID }) id: string): Promise<Recipe> {
     return this.recipeService.findById(id);
   }
 
-  @Query('latestRecipes')
-  async post(): Promise<Recipe[]> {
+  @Query(returns => [Recipe])
+  async getLatestPosts(): Promise<Recipe[]> {
     return this.recipeService.getLatest();
   }
 
-  @Mutation('createRecipe')
-  async createRecipe(@Args('content') content: RecipeInputDto): Promise<Recipe> {
+  @Mutation(returns => Recipe)
+  async createRecipe(@Args('content') content: RecipeInput): Promise<Recipe> {
     return this.recipeService.create(content);
   }
 
-  @Mutation('updateRecipe')
-  async updateRecipe(@Args('id') id: string, @Args('id') content: RecipeInputDto,): Promise<Recipe> {
+  @Mutation(returns => Recipe)
+  async updateRecipe(@Args('id') id: string, @Args('content') content: RecipeInput,): Promise<Recipe> {
     return this.recipeService.update(id, content);
   }
 
-  @Mutation('deleteRecipe')
-  async delete(@Args('id') id: string): Promise<Recipe> {
+  @Mutation(returns => Recipe)
+  async deleteRecipe(@Args('id') id: string): Promise<Recipe> {
     return this.recipeService.delete(id);
   }
 }

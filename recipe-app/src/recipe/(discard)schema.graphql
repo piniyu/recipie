@@ -13,7 +13,7 @@ type Query {
 
 type Mutation {
   createUser(input: UserInput!): User!
-  resetPassword(input: UserInput!): User!
+  # resetPassword(input: UserInput!): User!
   createRecipe(content: RecipeInput!): Recipe!
   updateRecipe(id: ID!, content: RecipeInput!): Recipe!
   deleteRecipe(id: ID!): Recipe!
@@ -61,7 +61,7 @@ input RecipeInput {
   instructions: [String!]!
 }
 
-type UserInput {
+input UserInput {
   email: String!
   name: String
   password: String!

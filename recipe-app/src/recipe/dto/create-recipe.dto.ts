@@ -1,8 +1,33 @@
-import { RecipeInput, IngredientNumInput } from '../../graphql.schema';
+import { Field, InputType } from '@nestjs/graphql';
+// import { IsOptional, Length, MaxLength } from 'class-validator';
+// import { RecipeInput, IngredientNumInput } from '../../graphql.schema';
 
-export class RecipeInputDto extends RecipeInput {
-  ingredients: [IngredientNumDto];
+@InputType()
+export class RecipeInput {
+  @Field()
+  title: string;
+
+  @Field(type => [IngredientNumInput])
+  ingredients: IngredientNumInput[];
+
+  @Field(type => [String])
+  instructions: string[];
 }
 
-export class IngredientNumDto extends IngredientNumInput {
+@InputType()
+export class IngredientNumInput {
+  @Field({ nullable: true })
+  ingredientId?: string;
+
+  @Field({ nullable: true })
+  recipeId?: string;
+
+  @Field()
+  name: string;
+
+  @Field()
+  unit: string;
+
+  @Field()
+  value: string;
 }

@@ -22,6 +22,12 @@ export class RecipeInput {
     instructions: string[];
 }
 
+export class UserInput {
+    email: string;
+    name?: Nullable<string>;
+    password: string;
+}
+
 export abstract class IQuery {
     abstract hello(): string | Promise<string>;
 
@@ -44,8 +50,6 @@ export abstract class IQuery {
 
 export abstract class IMutation {
     abstract createUser(input: UserInput): User | Promise<User>;
-
-    abstract resetPassword(input: UserInput): User | Promise<User>;
 
     abstract createRecipe(content: RecipeInput): Recipe | Promise<Recipe>;
 
@@ -75,12 +79,6 @@ export class User {
     id: string;
     email: string;
     name?: Nullable<string>;
-}
-
-export class UserInput {
-    email: string;
-    name?: Nullable<string>;
-    password: string;
 }
 
 export type JSON = any;
