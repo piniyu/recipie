@@ -40,9 +40,9 @@ private readonly users = [
   },
 ];
 
-async findOne(username: string): Promise<User | undefined> {
-  return this.users.find(user => user.username === username);
-}
+// async findOne(username: string): Promise<User | undefined> {
+//   return this.users.find(user => user.username === username);
+// }
 
 /**
  * Creates a user
@@ -86,9 +86,13 @@ async findOneById(id: string): Promise<User | undefined> {
  * @memberof UsersService
  */
 async findOneByEmail(email: string): Promise<User | undefined> {
-    return this.prisma.user.findUniqueOrThrow({
+    const user = await this.prisma.user.findUniqueOrThrow({
         where: { email },
     })
+    if (user === undefined){
+      return undefined
+    }
+    return this._parse(user)
 }
 // ----------------------------------------------------------
 /**
