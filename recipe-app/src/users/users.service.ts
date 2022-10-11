@@ -94,6 +94,16 @@ async findOneByEmail(email: string): Promise<User | undefined> {
     }
     return this._parse(user)
 }
+
+async getPassword(id: string): Promise<string> {
+  const userPass = await this.prisma.user.findFirstOrThrow({
+    where: { id },
+    select: {
+      password: true,
+    }
+  })
+  return userPass.password
+}
 // ----------------------------------------------------------
 /**
  * Deletes all the users in the database, used for testing

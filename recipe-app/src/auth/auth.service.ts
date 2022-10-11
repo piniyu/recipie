@@ -1,30 +1,26 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotAcceptableException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
-// import { LoginResult, UserInputDto } from 'src/users/dto/user-input.dto';
+import { UserInput } from 'src/users/dto/user-input.dto';
+import { LoginResult } from 'src/users/models/login.model';
 
-// @Injectable()
-// export class AuthService {
-//   constructor(
-//     private usersService: UsersService,
-//     private jwtService: JwtService) {}
+@Injectable()
+export class AuthService {
+  constructor(
+    private usersService: UsersService,
+    private jwtService: JwtService) {}
 
-//   async validateUserByPassword(loginAttempt: UserInputDto): Promise<LoginResult | undefined > {
-//     const user = await this.usersService.findOneByEmail(loginAttempt.email);
-//     if (user) {
-
-//     }
-//     if (user && user.password === pass) {
-//       const { password, ...result } = user;
-//       return result;
-//     }
-//     return null;
-//   }
-
-//   async login(user: any) {
-//     const payload = { username: user.username, sub: user.userId };
-//     return {
-//       access_token: this.jwtService.sign(payload),
-//     };
-//   }
-// }
+  async login(loginAttempt: UserInput): Promise<LoginResult | undefined > {
+    const user = await this.usersService.findOneByEmail(loginAttempt.email)
+    if (!user) {
+      throw new NotAcceptableException('Could not find the user.')
+    }
+    const password = user && await this.usersService.getPassword(user.id)
+    if (user && password === loginAttempt.password) {
+      const payload = { username: user.email, sub: user.id }
+      const accessToken = this.jwtService.sign(payload)
+      return { user, token: accessToken }
+    }
+    return undefined;
+  }
+}
