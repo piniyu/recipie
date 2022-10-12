@@ -54,10 +54,10 @@ private readonly users = [
  */
 async create(createUserInput: UserInput): Promise<User> {
   const {email, name, password } = createUserInput
-  const existingUser = await this.prisma.user.findUnique({ where: { email } })
-  if (existingUser) {
-    throw new Error('This email address has been registered.')
-  }
+  // const existingUser = await this.prisma.user.findUnique({ where: { email } })
+  // if (existingUser) {
+  //   throw new Error('This email address has been registered.')
+  // }
   const createdUser = await this.prisma.user.create({
     data: {
         email,
