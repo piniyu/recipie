@@ -8,7 +8,7 @@ import {
   GroupBase,
 } from 'react-select'
 import CreatableSelect from 'react-select/creatable'
-import FileUploadInput from '~/components/img-upload-input'
+import FileUploadInput from '~/components/image-input-form/img-upload-input'
 import {
   getLocalValue,
   localStorageKey,

@@ -2,12 +2,6 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "_comment1": "// task to convert icons to components",
-    "icons": "npx @svgr/cli --out-dir app/icons -- ./icons",
-    "_comment2": "// watch task",
-    "icons:watch": "npm-watch icons",
-    "_comment3": "// compile once and start watching for changes",
-    "dev:svg": "run-s icons icons:watch",
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
     "dev": "concurrently \"npm run dev:*\" \"remix dev\"",
@@ -15,28 +9,23 @@
     "generate:css": "npx tailwindcss -i ./styles/tailwind.css -o ./app/tailwind.css",
     "start": "remix-serve build"
   },
-  "_comment4": "// npm-watch configuration",
-  "watch": {
-    "icons": {
-      "patterns": [
-        "icons"
-      ],
-      "extensions": "svg",
-      "quiet": false
-    }
-  },
   "dependencies": {
     "@remix-run/node": "^1.7.0",
     "@remix-run/react": "^1.7.0",
     "@remix-run/serve": "^1.7.0",
     "@types/recharts": "^1.8.23",
+    "canvas": "^2.10.1",
+    "konva": "^8.3.13",
     "moment": "^2.29.4",
+    "prettier": "^2.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.36.1",
+    "react-konva": "^18.2.2",
     "react-select": "^5.4.0",
     "recharts": "2.1.12",
-    "tiny-invariant": "^1.3.1"
+    "tiny-invariant": "^1.3.1",
+    "use-image": "^1.1.0"
   },
   "devDependencies": {
     "@iconify-icon/react": "^1.0.0-beta.3",
