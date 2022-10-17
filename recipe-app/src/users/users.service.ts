@@ -115,11 +115,39 @@ async getPassword(id: string): Promise<string> {
 //     await this.userModel.deleteMany({});
 // }
 
+async saveHashedRt(id: string, hashedRt: string): Promise<User> {
+  const updated = await this.prisma.user.update({
+    where: {
+      id,
+    },
+    data: {
+      hashedRt,
+    }
+  })
+  return this._parse(updated)
+}
+
+async resetUserRt(id: string): Promise<number> {
+  const updatedCount = await this.prisma.user.updateMany({
+    where: {
+      id: id,
+      hashedRt: {
+        not: null,
+      },
+    },
+    data: {
+      hashedRt: null,
+    },
+  });
+  return updatedCount.count
+}
+
 _parse(prismaUser: PrismaUser): User {
   return {
     id: prismaUser.id,
     email: prismaUser.email,
-    name: prismaUser.name != null? prismaUser.name: undefined,
+    name: prismaUser.name? prismaUser.name: undefined,
+    hashedRt: prismaUser.hashedRt? prismaUser.hashedRt: undefined
   }
 }
 

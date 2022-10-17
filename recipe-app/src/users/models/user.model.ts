@@ -10,4 +10,8 @@ export class User {
 
     @Field({ nullable: true })
     name?: string;
+
+    @Field({ nullable: true })
+    hashedRt?: string;
+
 }

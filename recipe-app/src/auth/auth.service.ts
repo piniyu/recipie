@@ -1,29 +1,27 @@
-import { Injectable, NotAcceptableException } from '@nestjs/common';
+import * as argon2 from "argon2"
+import { ForbiddenException, Injectable, NotAcceptableException } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { UserInput } from 'src/users/dto/user-input.dto';
-import { LoginResult } from 'src/users/models/login.model';
-import { Tokens } from './interfaces/tokens.interface';
+import { Tokens } from './interfaces/tokens.model';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime';
 import { JwtPayload } from './interfaces/jwtPayload.interface';
+import { ConfigService } from '@nestjs/config';
+import { LoginResult } from "./interfaces/login.model";
 
 @Injectable()
 export class AuthService {
   constructor(
     private usersService: UsersService,
-    private jwtService: JwtService) {}
+    private jwtService: JwtService,
+    private config: ConfigService,) {}
 
   async signUp(signUpInput: UserInput): Promise<Tokens> {
-    // const { email, name, password } = signUpInput
-    // const exisingUser = await this.usersService.findOneByEmail(email)
-    // if (exisingUser) {
-    //   throw new NotAcceptableException('Email already existed ')
-    // }
-
-    // const hash = await argon.hash(password);
+    
+    const hash = await argon2.hash(signUpInput.password);
 
     const user = await this.usersService
-      .create(signUpInput)
+      .create({...signUpInput, password: hash})
       .catch((error) => {
         if (error instanceof PrismaClientKnownRequestError) {
           if (error.code === 'P2002') {
@@ -43,18 +41,46 @@ export class AuthService {
   async login(loginAttempt: UserInput): Promise<LoginResult | undefined > {
     const user = await this.usersService.findOneByEmail(loginAttempt.email)
     if (!user) {
-      throw new NotAcceptableException('Could not find the user.')
+      throw new ForbiddenException('Could not find the user')
+      // throw new NotAcceptableException('Could not find the user.')
     }
     const password = user && await this.usersService.getPassword(user.id)
-    if (user && password === loginAttempt.password) {
-      const payload = { username: user.email, sub: user.id }
-      const accessToken = this.jwtService.sign(payload)
-      return { user, token: accessToken }
+    if (user && await argon2.verify(password, loginAttempt.password)) {
+      const tokens = await this.getTokens(user.id, user.email);
+      await this.updateRtHash(user.id, tokens.refresh_token);
+
+      return { user, tokens }
+      // const payload = { username: user.email, sub: user.id }
+      // const accessToken = this.jwtService.sign(payload)
+      // return { user, token: accessToken }
     }
     return undefined;
   }
 
-  async getTokens(userId: string, email: string): Promise<Tokens> {
+  async logout(userId: string): Promise<Boolean> {
+    const logoutResult = await this.usersService.resetUserRt(userId)
+    return logoutResult === 1
+  }
+
+  async refreshTokens(userId: string, rt: string): Promise<Tokens> {
+    const user = await this.usersService.findOneById(userId)
+    if (!user || !user.hashedRt) throw new ForbiddenException('Access Denied');
+
+    const rtMatches = await argon2.verify(user.hashedRt, rt);
+    if (!rtMatches) throw new ForbiddenException('Access Denied');
+
+    const tokens = await this.getTokens(user.id, user.email);
+    await this.updateRtHash(user.id, tokens.refresh_token);
+
+    return tokens;
+  }
+
+  private async updateRtHash(userId: string, rt: string): Promise<void> {
+    const hash = await argon2.hash(rt);
+    await this.usersService.saveHashedRt(userId, rt)
+  }
+
+  private async getTokens(userId: string, email: string): Promise<Tokens> {
     const jwtPayload: JwtPayload = {
       sub: userId,
       email: email,
@@ -62,11 +88,11 @@ export class AuthService {
 
     const [at, rt] = await Promise.all([
       this.jwtService.signAsync(jwtPayload, {
-        secret: this.config.get<string>('AT_SECRET'),
+        secret: this.config.get<string>('ACCESS_SECRET'),
         expiresIn: '15m',
       }),
       this.jwtService.signAsync(jwtPayload, {
-        secret: this.config.get<string>('RT_SECRET'),
+        secret: this.config.get<string>('REFRESH_SECRET'),
         expiresIn: '7d',
       }),
     ]);

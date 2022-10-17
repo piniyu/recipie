@@ -6,8 +6,8 @@ import { UsersService } from './users.service';
 
 // const pubSub = new PubSub();
 
-@Resolver()
-export class RecipeResolvers {
+@Resolver('Users')
+export class UsersResolvers {
   constructor(private readonly usersService: UsersService) {}
 
   @Query(returns => User)
