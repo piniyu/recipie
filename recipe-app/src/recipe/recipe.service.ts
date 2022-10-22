@@ -4,6 +4,7 @@ import { truncate } from 'fs';
 // import { Recipe } from '../graphql.schema';
 import { PrismaService } from '../prisma/prisma.service';
 import { RecipeInput } from './dto/create-recipe.dto';
+import { Difficulty } from './enum/difficulty.enum';
 // import { RecipeInput, IngredientNumInput } from './dto/create-recipe.dto';
 import { Recipe, IngredientNum } from './models/recipe.model';
 
@@ -189,6 +190,8 @@ export class RecipeService {
       id: recipeFromPrisma.id, 
       title: recipeFromPrisma.title,
       authorId: recipeFromPrisma.authorId,
+      difficulty: recipeFromPrisma.difficulty ?? undefined,
+      // difficulty: recipeFromPrisma.difficulty != null ? recipeFromPrisma.difficulty : undefined,
       ingredients: recipeFromPrisma.ingredientsNum.map(e => ({
         ingredientId: e.ingredientId, 
         recipeId: e.recipeId, 

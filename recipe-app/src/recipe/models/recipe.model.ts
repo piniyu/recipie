@@ -1,5 +1,9 @@
 import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Difficulty } from '../enum/difficulty.enum';
 // import { IngredientNum } from 'src/graphql.schema';
+
+// export type Difficulty = 'ACTIVE' | 'ARCHIVE' | 'DELETE' | 'DRAFT' | 'LOCK' | 'REPORTED';
+
 
 @ObjectType({ description: 'recipe ' })
 export class Recipe {
@@ -11,6 +15,10 @@ export class Recipe {
 
     @Field()
     title: string
+
+    @Field(type => Difficulty, { nullable: true })
+    difficulty?: Difficulty[keyof Difficulty]
+    // difficulty?: 'DIFFICULT5' | 'DIFFICULT4' | 'MODERATE3' | 'EASY2' | 'EASY1' 
 
     @Field(type => [IngredientNum])
     ingredients: IngredientNum[]

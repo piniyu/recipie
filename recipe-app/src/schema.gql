@@ -7,9 +7,19 @@ type Recipe {
   id: ID!
   authorId: ID!
   title: String!
+  difficulty: Difficulty
   ingredients: [IngredientNum!]!
   instructions: [String!]!
   updatedAt: DateTime
+}
+
+"""The recipe difficulty scale of 1 to 5."""
+enum Difficulty {
+  DIFFICULT5
+  DIFFICULT4
+  MODERATE3
+  EASY2
+  EASY1
 }
 
 """
@@ -39,6 +49,7 @@ type Mutation {
 
 input RecipeInput {
   title: String!
+  difficulty: Difficulty!
   ingredients: [IngredientNumInput!]!
   instructions: [String!]!
 }

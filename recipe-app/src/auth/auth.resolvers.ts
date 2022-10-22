@@ -10,22 +10,22 @@ import { Tokens } from './interfaces/tokens.model';
 export class AuthResolvers {
   constructor(private readonly authService: AuthService) {}
 
-  @Query(returns => LoginResult)
+  @Query()
   async login(@Args('loginAttempt') loginAttempt: UserInput): Promise<LoginResult | undefined> {
     return this.authService.login(loginAttempt);
   }
 
-  @Query(returns => Boolean)
+  @Query()
   async logout(@Args('userId') userId: string): Promise<Boolean> {
     return this.authService.logout(userId);
   }
 
-  @Mutation(returns => Tokens)
+  @Mutation()
   async signUp(@Args('signUpInput') signUpInput: UserInput): Promise<Tokens> {
     return this.authService.signUp(signUpInput);
   }
 
-  @Mutation(returns => Tokens)
+  @Mutation()
   async renewTokens(@Args('userId') userId: string, @Args('rt') rt: string): Promise<Tokens> {
     return this.authService.refreshTokens(userId, rt);
   }

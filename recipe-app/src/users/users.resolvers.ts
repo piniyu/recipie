@@ -1,5 +1,5 @@
 // resolvers of graphql
-import { Resolver, Query, Mutation, Args, Subscription } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Subscription, Context } from '@nestjs/graphql';
 import { User } from 'src/graphql.schema';
 import { UserInput } from './dto/user-input.dto';
 import { UsersService } from './users.service';
@@ -10,17 +10,22 @@ import { UsersService } from './users.service';
 export class UsersResolvers {
   constructor(private readonly usersService: UsersService) {}
 
-  @Query(returns => User)
+  @Query()
   async getUserById(@Args('id') id: string): Promise<User | undefined> {
     return this.usersService.findOneById(id);
   }
 
-  @Query(returns => User)
+  @Query()
   async getUserByEmail(@Args('email') email: string): Promise<User | undefined> {
     return this.usersService.findOneByEmail(email);
   }
 
-  @Mutation(returns => User)
+  @Query()
+	async me(@Context('currentUser') currentUser: User): Promise<User> {
+		return currentUser
+	}
+
+  @Mutation()
   async createRecipe(@Args('input') input: UserInput): Promise<User> {
     return this.usersService.create(input);
   }

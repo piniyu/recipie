@@ -17,7 +17,6 @@ export class AuthService {
     private config: ConfigService,) {}
 
   async signUp(signUpInput: UserInput): Promise<Tokens> {
-    
     const hash = await argon2.hash(signUpInput.password);
 
     const user = await this.usersService
