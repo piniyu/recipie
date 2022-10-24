@@ -36,34 +36,6 @@ export type RecipeDetailsPrisma = (PrismaRecipe & {
 export class RecipeService {
   constructor(private prisma: PrismaService) {}
 
-  async findById(id: string): Promise<Recipe> {
-    const recipe = ( await this.prisma.recipe.findUnique({
-      where: { id },
-      include: { 
-      ingredientsNum: {
-          include: {
-            ingredient: true} } },
-    }));
-    if (recipe === null) {
-      throw new Error('Recipe not found');
-    }
-    return this._parse(recipe)
-  }
-  
-  async getLatest(): Promise<Recipe[]> {
-    const recipesfromDB = await this.prisma.recipe.findMany({
-      orderBy: { createdAt: 'desc' },
-      include: { 
-        ingredientsNum: {
-        include: {
-          ingredient: true} } },
-      take: 20,
-    });
-
-    const recipes = recipesfromDB.map(e => {return this._parse(e)})
-    return recipes
-  }
-
   async create(content: RecipeInput): Promise<Recipe> { 
     const createdRecipe = await this.prisma.recipe.create({
       data: {
@@ -110,6 +82,36 @@ export class RecipeService {
     })
     return this._parse(ingredientOnRecipe)
   }
+
+  async findById(id: string): Promise<Recipe> {
+    const recipe = ( await this.prisma.recipe.findUnique({
+      where: { id },
+      include: { 
+      ingredientsNum: {
+          include: {
+            ingredient: true} } },
+    }));
+    if (recipe === null) {
+      throw new Error('Recipe not found');
+    }
+    return this._parse(recipe)
+  }
+  
+  async getLatest(): Promise<Recipe[]> {
+    const recipesfromDB = await this.prisma.recipe.findMany({
+      orderBy: { createdAt: 'desc' },
+      include: { 
+        ingredientsNum: {
+        include: {
+          ingredient: true} } },
+      take: 20,
+    });
+
+    const recipes = recipesfromDB.map(e => {return this._parse(e)})
+    return recipes
+  }
+
+  
 
   async update(id: string, content: RecipeInput): Promise<Recipe> {
     /* 
@@ -199,6 +201,7 @@ export class RecipeService {
         unit: e.unit, 
         value: e.value})),
       instructions: recipeFromPrisma.instructions,
+      serving: recipeFromPrisma.serving ?? undefined,
       updatedAt: recipeFromPrisma.updatedAt? 
                 recipeFromPrisma.updatedAt: recipeFromPrisma.createdAt,
     }

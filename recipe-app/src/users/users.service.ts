@@ -68,12 +68,12 @@ async create(createUserInput: UserInput): Promise<User> {
   return this._parse(createdUser);
 }
 
-async findOneById(id: string): Promise<User | undefined> {
+async findOneById(id: string): Promise<User | null> {
     const user = await this.prisma.user.findUniqueOrThrow({
         where: { id },
     })
-    if (user === undefined){
-      return undefined
+    if (!user){
+      return null
     }
     return this._parse(user)
 }
@@ -85,12 +85,12 @@ async findOneById(id: string): Promise<User | undefined> {
  * @returns {(Promise<UserDocument | undefined>)}
  * @memberof UsersService
  */
-async findOneByEmail(email: string): Promise<User | undefined> {
+async findOneByEmail(email: string): Promise<User | null> {
     const user = await this.prisma.user.findUniqueOrThrow({
         where: { email },
     })
-    if (user === undefined){
-      return undefined
+    if (!user){
+      return null
     }
     return this._parse(user)
 }

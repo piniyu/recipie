@@ -1,4 +1,4 @@
-import { Field, InputType } from '@nestjs/graphql';
+import { Field, InputType, Int } from '@nestjs/graphql';
 import { Difficulty } from '../enum/difficulty.enum';
 // import { IsOptional, Length, MaxLength } from 'class-validator';
 // import { RecipeInput, IngredientNumInput } from '../../graphql.schema';
@@ -16,6 +16,9 @@ export class RecipeInput {
 
   @Field(type => [String])
   instructions: string[];
+
+  @Field(type => Int, { nullable: false })
+  serving?: number
 }
 
 @InputType()

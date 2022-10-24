@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { Difficulty } from '../enum/difficulty.enum';
 // import { IngredientNum } from 'src/graphql.schema';
 
@@ -25,6 +25,9 @@ export class Recipe {
 
     @Field(type => [String])
     instructions: string[]
+
+    @Field(type => Int, { nullable: false })
+    serving?: number
 
     @Field({ nullable: true })
     updatedAt: Date

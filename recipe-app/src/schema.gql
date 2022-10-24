@@ -10,6 +10,7 @@ type Recipe {
   difficulty: Difficulty
   ingredients: [IngredientNum!]!
   instructions: [String!]!
+  serving: Int!
   updatedAt: DateTime
 }
 
@@ -52,6 +53,7 @@ input RecipeInput {
   difficulty: Difficulty!
   ingredients: [IngredientNumInput!]!
   instructions: [String!]!
+  serving: Int!
 }
 
 input IngredientNumInput {

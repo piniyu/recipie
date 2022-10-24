@@ -12,9 +12,9 @@ import { LoginResult } from "./interfaces/login.model";
 @Injectable()
 export class AuthService {
   constructor(
-    private usersService: UsersService,
-    private jwtService: JwtService,
-    private config: ConfigService,) {}
+    private readonly usersService: UsersService,
+    private readonly jwtService: JwtService,
+    private readonly config: ConfigService,) {}
 
   async signUp(signUpInput: UserInput): Promise<Tokens> {
     const hash = await argon2.hash(signUpInput.password);
