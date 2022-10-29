@@ -11,15 +11,15 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(cuid())
-  email    String   @unique
-  name     String?
-  password String
-  hashedRt String?
-  basket   Basket?
-  // history Recipe[]
-  likes    Like[]
-  recipes  Recipe[]
+  id         String   @id @default(cuid())
+  email      String   @unique
+  favoriteId String   @unique
+  name       String?
+  password   String
+  hashedRt   String?
+  basket     Basket?
+  recipes    Recipe[]
+  favorite   Favorite @relation(fields: [favoriteId], references: [id])
 }
 
 model Basket {
@@ -46,6 +46,8 @@ model Recipe {
   serving        Int?
   viewrs         Int                     @default(0)
   author         User                    @relation(fields: [authorId], references: [id])
+  Favorite       Favorite?               @relation(fields: [favoriteId], references: [id])
+  favoriteId     String?
 }
 
 model Ingredient {
@@ -66,10 +68,10 @@ model NumIngredientOnRecipe {
   @@id([recipeId, ingredientId])
 }
 
-model Like {
-  id     String @id @default(cuid())
-  userId String
-  user   User   @relation(fields: [userId], references: [id])
+model Favorite {
+  id      String   @id @default(cuid())
+  recipes Recipe[]
+  users   User[]
 }
 
 // model Item {
