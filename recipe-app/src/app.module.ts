@@ -1,15 +1,15 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
-import { join } from 'path';
-import { RecipeModule } from './recipe/recipe.module';
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
-import { ConfigModule } from '@nestjs/config';
-
+import { Module } from '@nestjs/common'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
+import { GraphQLModule } from '@nestjs/graphql'
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { join } from 'path'
+import { RecipeModule } from './recipe/recipe.module'
+import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
+import { UsersModule } from './users/users.module'
+import { AuthModule } from './auth/auth.module'
+import { ConfigModule } from '@nestjs/config'
+import { BasketsService } from './baskets/baskets.service'
 
 @Module({
   imports: [
@@ -34,6 +34,6 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot(),
   ],
   controllers: [AppController],
-  providers: [AppService, ],
+  providers: [AppService, BasketsService],
 })
 export class AppModule {}
