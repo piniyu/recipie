@@ -50,6 +50,16 @@ npm i --save @nestjs/config
 
 install Passport and jwt strategy
 
+```
+npm install passport-jwt
+```
+
+install argon2 package for password and refreshed token hashing
+
+```
+npm i argon2
+```
+
 install bcrypt package for password hashing
 
 ```
@@ -81,7 +91,7 @@ npx prisma db push
 
 # Graphql
 
-Generate Graphql Typescript on demand
+Generate Graphql Typescript on demand (schema first approach)
 
 ```
 npx ts-node ./src/generate-typings

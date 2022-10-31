@@ -23,12 +23,12 @@ model User {
 }
 
 model Basket {
-  id         String       @id @default(cuid())
-  userId     String       @unique
-  recipeList Recipe[]
-  foodToBuy  Ingredient[]
-  // itemToBuy Item[]
-  user       User         @relation(fields: [userId], references: [id])
+  id                    String                  @id @default(cuid())
+  userId                String                  @unique
+  ingredients           Ingredient[]
+  numIngredientOnRecipe NumIngredientOnRecipe[]
+  recipes               Recipe[]
+  user                  User                    @relation(fields: [userId], references: [id])
 }
 
 model Recipe {
@@ -46,7 +46,7 @@ model Recipe {
   serving        Int?
   viewrs         Int                     @default(0)
   author         User                    @relation(fields: [authorId], references: [id])
-  Favorite       Favorite?               @relation(fields: [favoriteId], references: [id])
+  favorite       Favorite?               @relation(fields: [favoriteId], references: [id])
   favoriteId     String?
 }
 
@@ -64,6 +64,8 @@ model NumIngredientOnRecipe {
   recipe       Recipe     @relation(fields: [recipeId], references: [id])
   unit         String
   value        String
+  Basket       Basket?    @relation(fields: [basketId], references: [id])
+  basketId     String?
 
   @@id([recipeId, ingredientId])
 }
