@@ -15,7 +15,7 @@ export class Basket {
   @Field(type => ID)
   userId: string
 
-  @Field(type => [IngredientNum])
+  @Field(type => [IngredientNum], { nullable: 'items' })
   ingredientsNum: IngredientNum[]
 }
 
