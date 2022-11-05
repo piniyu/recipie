@@ -1,11 +1,18 @@
 // resolvers of graphql
-import { UseGuards } from '@nestjs/common';
-import { Resolver, Query, Mutation, Args, Subscription, Context } from '@nestjs/graphql';
-import { CurrentUser } from 'src/auth/auth.decorator';
-import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard';
-import { User } from 'src/graphql.schema';
-import { UserInput } from './dto/user-input.dto';
-import { UsersService } from './users.service';
+import { UseGuards } from '@nestjs/common'
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Subscription,
+  Context,
+} from '@nestjs/graphql'
+import { CurrentUser } from 'src/auth/auth.decorator'
+import { GqlAuthGuard } from 'src/auth/guards/gql-auth.guard'
+import { User } from './models/user.model'
+import { UserInput } from './dto/user-input.dto'
+import { UsersService } from './users.service'
 
 // const pubSub = new PubSub();
 
@@ -13,25 +20,25 @@ import { UsersService } from './users.service';
 export class UsersResolvers {
   constructor(private readonly usersService: UsersService) {}
 
-  @Query()
+  @Query(returns => User)
   async getUserById(@Args('id') id: string): Promise<User | null> {
-    return this.usersService.findOneById(id);
+    return this.usersService.findOneById(id)
   }
 
-  @Query()
+  @Query(returns => User)
   async getUserByEmail(@Args('email') email: string): Promise<User | null> {
-    return this.usersService.findOneByEmail(email);
+    return this.usersService.findOneByEmail(email)
   }
 
-  @Query()
+  @Query(returns => User)
   @UseGuards(GqlAuthGuard)
-	async me(@CurrentUser() currentUser: User): Promise<User | null> {
-		return this.usersService.findOneById(currentUser.id)
-	}
+  async me(@CurrentUser() currentUser: User): Promise<User | null> {
+    return this.usersService.findOneById(currentUser.id)
+  }
 
-  @Mutation()
+  @Mutation(returns => User)
   async createUser(@Args('input') input: UserInput): Promise<User> {
-    return this.usersService.create(input);
+    return this.usersService.create(input)
   }
 
   // @Mutation('updateRecipe')

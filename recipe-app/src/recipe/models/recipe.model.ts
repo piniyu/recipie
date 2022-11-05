@@ -25,11 +25,14 @@ export class Recipe {
   @Field(type => [String])
   instructions: string[]
 
-  @Field(type => Int, { nullable: false })
-  serving?: number
+  @Field(type => Int)
+  serving: number
+
+  @Field()
+  createdAt: Date
 
   @Field({ nullable: true })
-  updatedAt: Date
+  updatedAt?: Date
 }
 
 @ObjectType({

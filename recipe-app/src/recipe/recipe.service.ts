@@ -270,10 +270,11 @@ export class RecipeService {
         value: e.value,
       })),
       instructions: recipeFromPrisma.instructions,
-      serving: recipeFromPrisma.serving ?? undefined,
-      updatedAt: recipeFromPrisma.updatedAt
-        ? recipeFromPrisma.updatedAt
+      serving: recipeFromPrisma.serving ?? 0,
+      createdAt: recipeFromPrisma.createdAt
+        ? recipeFromPrisma.createdAt
         : recipeFromPrisma.createdAt,
+      updatedAt: recipeFromPrisma.updatedAt ?? undefined,
     }
   }
 }

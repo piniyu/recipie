@@ -9,7 +9,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core'
 import { UsersModule } from './users/users.module'
 import { AuthModule } from './auth/auth.module'
 import { ConfigModule } from '@nestjs/config'
-import { BasketsService } from './baskets/baskets.service'
+import { BasketModule } from './baskets/basket.module'
 
 @Module({
   imports: [
@@ -31,9 +31,10 @@ import { BasketsService } from './baskets/baskets.service'
     }),
     UsersModule,
     AuthModule,
+    BasketModule,
     ConfigModule.forRoot(),
   ],
   controllers: [AppController],
-  providers: [AppService, BasketsService],
+  providers: [AppService],
 })
 export class AppModule {}

@@ -8,9 +8,10 @@ type Recipe {
   authorId: ID!
   title: String!
   difficulty: Difficulty
-  ingredients: [IngredientNum!]!
+  ingredientsNum: [IngredientNum!]!
   instructions: [String!]!
   serving: Int!
+  createdAt: DateTime!
   updatedAt: DateTime
 }
 
@@ -21,6 +22,7 @@ enum Difficulty {
   MODERATE3
   EASY2
   EASY1
+  NOSCALE
 }
 
 """
@@ -37,29 +39,47 @@ type IngredientNum {
   value: String!
 }
 
+type User {
+  id: ID!
+  email: String!
+  name: String
+  hashedRt: String
+}
+
 type Query {
   getRecipeById(id: ID!): Recipe!
-  getLatestPosts: [Recipe!]!
+  getLatestRecipes: [Recipe!]!
+  getUserById(id: String!): User!
+  getUserByEmail(email: String!): User!
+  me: User!
 }
 
 type Mutation {
   createRecipe(content: RecipeInput!): Recipe!
   updateRecipe(id: String!, content: RecipeInput!): Recipe!
   deleteRecipe(id: String!): Recipe!
+  createUser(input: UserInput!): User!
 }
 
 input RecipeInput {
   title: String!
+  authorId: String!
   difficulty: Difficulty!
-  ingredients: [IngredientNumInput!]!
+  ingredientsNum: [IngredientNumInput!]!
   instructions: [String!]!
   serving: Int!
 }
 
 input IngredientNumInput {
-  ingredientId: String
-  recipeId: String
+  ingredientId: ID!
+  recipeId: ID!
   name: String!
   unit: String!
   value: String!
+}
+
+input UserInput {
+  email: String!
+  name: String
+  password: String!
 }
