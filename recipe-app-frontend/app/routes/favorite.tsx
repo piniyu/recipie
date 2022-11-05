@@ -6,7 +6,9 @@ import { mockCardGridData } from '.'
 export default function Favorite(): JSX.Element {
   return (
     <div className="layout-pt layout-px flex flex-col gap-9">
-      <SearchBar placeholder="Favorite Search" />
+      <div className="flex justify-center">
+        <SearchBar placeholder="Favorite Search" />
+      </div>
       <div className="flex justify-between">
         <DropdownMenu
           summary="New"

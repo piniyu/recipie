@@ -1,6 +1,7 @@
 import type { ErrorBoundaryComponent } from '@remix-run/node'
 import { Link, Outlet, useNavigate, useParams } from '@remix-run/react'
 import { useContext, useEffect } from 'react'
+import ContentCard from '~/components/card/content-card'
 import {
   defaultSiderValue,
   SiderActionKind,
@@ -70,15 +71,19 @@ export default function Upload(): JSX.Element {
 
   return (
     <div>
-      <header className="flex items-center justify-between layout-px pt-14 pb-4 border-b border-gray-200 text-black ">
-        <h3 className="font-semibold">Upload Recipe</h3>
-        <div className="flex gap-2">
-          <button className="btn-border btn-sm">Save</button>
-          <button className="btn-primary btn-sm">Public</button>
-        </div>
-      </header>
-      <div className="layout-px pt-6">
-        <Outlet />
+      <div className="max-w-6xl mx-auto py-14 space-y-6">
+        <header className="flex items-center justify-between  text-black ">
+          {/* <ContentCard className="flex items-center justify-between"> */}
+          <h2 className="">Upload Recipe</h2>
+          <div className="flex gap-2">
+            <button className="btn-border btn-sm">Save</button>
+            <button className="btn-primary btn-sm">Public</button>
+          </div>
+          {/* </ContentCard> */}
+        </header>
+        <ContentCard>
+          <Outlet />
+        </ContentCard>
       </div>
     </div>
   )

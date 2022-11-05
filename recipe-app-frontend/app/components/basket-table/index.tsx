@@ -7,10 +7,10 @@ export type BasketTableRow = {
 
 export default function BasketTable(): JSX.Element {
   return (
-    <div className="table table-fixed w-full text-black text-sm">
+    <div className="table table-auto w-full text-black ">
       <div className="table-header-group font-medium ">
         <div className="table-row ">
-          <div className="table-cell text-left border-b-2 border-black">
+          <div className="table-cell min-w-fit text-left border-b-2 border-black">
             INGREDIENTS
           </div>
           <div className="table-cell w-[12%] text-left border-b-2 border-black">

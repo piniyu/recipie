@@ -4,7 +4,11 @@ import RecipeIngredientsTable, {
 } from './recipe-ingredients-table'
 import ServingForm from './serving-form'
 
-export default function ({ data }: { data: RecipeTableProps[] }): JSX.Element {
+export default function Index({
+  data,
+}: {
+  data: RecipeTableProps[]
+}): JSX.Element {
   return (
     <ContentCard>
       <h3 className="mb-6">Ingredients</h3>

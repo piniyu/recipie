@@ -33,13 +33,9 @@ export default function DropdownMenu({
   }, [])
 
   return (
-    <div
-      key={`${summary}`}
-      className="relative select-none text-sm"
-      ref={detailsRef}
-    >
+    <div key={`${summary}`} className="relative select-none " ref={detailsRef}>
       <button
-        className="marker:content-[''] btn-sm btn-border flex items-center gap-2  cursor-pointer"
+        className="marker:content-[''] btn-sm bg-white text-black border-none shadow-sm flex items-center gap-2  cursor-pointer"
         onClick={e => {
           setOpen(o => !o)
         }}
@@ -61,7 +57,7 @@ export default function DropdownMenu({
           className={`
           absolute z-10 
           flex flex-col 
-          border border-gray-200 rounded-lg 
+           border-gray-200 rounded-lg 
           mt-1 px-4 py-3 
           bg-white shadow-xl
           ${direction === 'left' ? '' : 'right-0'}

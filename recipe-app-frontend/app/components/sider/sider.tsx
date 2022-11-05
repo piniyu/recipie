@@ -56,15 +56,15 @@ function SiderItem({
           flex items-center gap-4 
           relative
           sider-item sider-item-svg 
-          text-sm
+         
           [font-family:var(--font-ui)]
-          font-bold
+          
           hover:text-orange-600 
           ${
             isChild
               ? `
-            bg-gray-200
-            hover:bg-orange-700/10 
+            
+            hover:bg-orange-600/10 
             `
               : 'hover:bg-orange-600/10 '
           }
@@ -83,23 +83,26 @@ function SiderItem({
               : ''
           }
           
-          before:content-[""] 
+          
+
+          ${isActive ? 'text-orange-600  bg-orange-600/10 ' : ' text-gray-600 '}
+          `
+        }
+      >
+        {/* before:content-[""] 
           before:absolute 
           before:block 
           before:h-full before:w-1 
           before:-ml-9 
-          hover:before:bg-orange-600
+          hover:before:bg-orange-600 */}
 
-          ${
-            isActive
-              ? isChild
-                ? 'hover:bg-orange-700/10 bg-orange-600/10 text-orange-600 before:bg-orange-600'
-                : 'text-orange-600 before:bg-orange-600 bg-orange-600/10 hover:bg-orange-700/10'
-              : ' text-gray-500 '
-          }
-          `
-        }
-      >
+        {/* ${
+          isActive
+            ? isChild
+              ? 'hover:bg-orange-700/10 bg-orange-600/10 text-orange-600 before:bg-orange-600'
+              : 'text-orange-600 before:bg-orange-600 bg-orange-600/10 hover:bg-orange-700/10'
+            : ' text-gray-500 '
+        } */}
         {icon}
         {value}
       </NavLink>
@@ -110,27 +113,12 @@ function SiderItem({
       className={`
           flex items-center gap-4 
           relative
-          sider-item sider-item-svg 
-          text-sm
+          ml-5 !mt-8 sider-item-svg 
+          text-sm uppercase
           [font-family:var(--font-ui)]
-          font-bold
-          text-gray-500
+          
+          text-gray-400
           select-none
-
-          ${
-            hasChild
-              ? `
-            after:content-['']
-            after:block
-            after:absolute
-            after:w-full
-            after:h-[1px]
-            after:-ml-9
-            after:bottom-0
-            after:bg-white
-            `
-              : ''
-          }
   `}
     >
       {value}
@@ -142,54 +130,61 @@ export default function Sider(): JSX.Element {
   const { state, dispatch } = useContext(SiderContext)
   // console.log(state)
   return (
-    <nav className="w-[255px] h-screen bg-gray-50 layout-pt sticky top-0">
+    <nav className="w-[255px] h-screen bg-white layout-py sticky top-0 space-y-4 shadow-xl z-10 overflow-auto">
       <NavLink to="/">
-        <div className="sider-item pt-0">
+        <div className="sider-item pt-0 pl-0">
           <Logo />
         </div>
       </NavLink>
-      {/* {} */}
-      {state.map(({ icon, value, children, route, isBtn }, idx) => {
-        if (isBtn) {
-          return (
-            <div className="sider-item" key={idx}>
-              <Link
-                to={route ? route : `/${value.toLowerCase()}`}
-                className="btn-md btn-primary w-full"
-              >
-                {value}
-              </Link>
-            </div>
-          )
-        }
-        return (
-          <React.Fragment key={`${value}_${idx}`}>
-            <SiderItem
-              {...{
-                value,
-                icon,
-                hasChild: typeof children !== 'undefined',
-                route,
-                idx,
-              }}
-            />
-            {children && (
-              <div className="shadow-inner">
-                {children.map((child, idx) => (
-                  <SiderItem
-                    key={`${child.value}_${idx}`}
-                    icon={child.icon}
-                    value={child.value}
-                    route={child.route}
-                    idx={idx}
-                    isChild
-                  />
-                ))}
+
+      <div className="space-y-4">
+        {state.map(({ icon, value, children, route, isBtn }, idx) => {
+          if (isBtn) {
+            return (
+              <div className="sider-item px-0 pb-8" key={idx}>
+                <Link
+                  to={route ? route : `/${value.toLowerCase()}`}
+                  className="btn-md btn-primary"
+                >
+                  {value}
+                </Link>
               </div>
-            )}
-          </React.Fragment>
-        )
-      })}
+            )
+          }
+          return (
+            <React.Fragment key={`${value}_${idx}`}>
+              {value === 'Recipe' && (
+                <div className="ml-5 text-sm text-gray-400 [font-family:var(--font-ui)]">
+                  PAGES
+                </div>
+              )}
+              <SiderItem
+                {...{
+                  value,
+                  icon,
+                  hasChild: typeof children !== 'undefined',
+                  route,
+                  idx,
+                }}
+              />
+              {children && (
+                <div className="space-y-4">
+                  {children.map((child, idx) => (
+                    <SiderItem
+                      key={`${child.value}_${idx}`}
+                      icon={child.icon}
+                      value={child.value}
+                      route={child.route}
+                      idx={idx}
+                      isChild
+                    />
+                  ))}
+                </div>
+              )}
+            </React.Fragment>
+          )
+        })}
+      </div>
     </nav>
   )
 }

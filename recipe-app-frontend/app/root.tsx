@@ -15,6 +15,7 @@ import {
 } from '@remix-run/react'
 import styles from './styles/app.css'
 import Layout from './components/layout'
+// import { StyledEngineProvider } from '@mui/material'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -42,12 +43,17 @@ export const links: LinksFunction = () => {
     {
       as: 'style',
       rel: 'stylesheet preload',
+      href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
+    },
+    {
+      as: 'style',
+      rel: 'stylesheet preload',
       href: 'https://fonts.googleapis.com/icon?family=Material+Icons+Round',
     },
     {
       as: 'style',
       rel: 'stylesheet preload',
-      href: 'https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap',
+      href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap',
     },
     {
       as: 'style',
@@ -58,7 +64,7 @@ export const links: LinksFunction = () => {
   ]
 }
 
-const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
+export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   const navigate = useNavigate()
 
   if (error) {
@@ -77,12 +83,17 @@ const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
       </div>
     )
   }
+  return null
+}
+export default function App() {
   return (
     <html lang="en">
       <head>
         <Meta />
         <Links />
       </head>
+
+      {/* <StyledEngineProvider injectFirst> */}
       <body id="app">
         <Layout>
           <Outlet />
@@ -91,7 +102,7 @@ const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
         <Scripts />
         <LiveReload />
       </body>
+      {/* </StyledEngineProvider> */}
     </html>
   )
 }
-export default ErrorBoundary

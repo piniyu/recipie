@@ -4,10 +4,12 @@ import type { NutritionBarChartProps } from '~/components/recipe/recipe-nutritio
 
 import RecipeHeader from '~/components/recipe/recipe-header'
 
-import img1 from '../../public/assets/img1.jpeg'
 import IngredientsCard from '~/components/recipe/recipe-ingredients'
 import type { RecipeTableProps } from '~/components/recipe/recipe-ingredients/recipe-ingredients-table'
 import RecipeNutrition from '~/components/recipe/recipe-nutrition'
+import Tag from '~/components/tag'
+import IconBtn from '~/components/Icon-btn'
+import img1 from '../../public/assets/img1.jpeg'
 
 const nutritionData: NutritionBarChartProps[][] = [
   [
@@ -73,20 +75,19 @@ export default function Recipe(): JSX.Element {
     }
   }, [])
   return (
-    <>
-      <div className="flex flex-col min-h-screen relative">
-        <HeaderImg src={img1} />
-        <div className="flex-1 relative ">
-          {/* <div className="absolute bg-white mask-image w-full h-20 -translate-y-full"></div> */}
-          <div className="layout-px pt-4 pb-8 bg-white">
-            <RecipeHeader />
-            <div className="flex gap-9 text-black ">
-              <IngredientsCard data={ingredientsTableData} />
-              <RecipeNutrition data={nutritionData} />
-            </div>
+    <div className="flex flex-col mx-auto min-h-screen relative max-w-7xl">
+      <div className="flex-1 relative ">
+        {/* <div className="absolute bg-white mask-image w-full h-20 -translate-y-full"></div> */}
+        <div className="layout-px layout-pt pb-8 space-y-10">
+          {/* <div className="flex"> */}
+          <RecipeHeader />
+          {/* </div> */}
+          <div className="flex space-x-10 text-black ">
+            <IngredientsCard data={ingredientsTableData} />
+            <RecipeNutrition data={nutritionData} />
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

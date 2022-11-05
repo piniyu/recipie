@@ -9,9 +9,9 @@ export default function Layout({
 }): JSX.Element {
   return (
     <SiderProvider>
-      <div className="grid grid-cols-[auto_1fr]">
+      <div className="flex">
         <Sider />
-        {children}
+        <div className="flex-1 bg-gray-50">{children}</div>
       </div>
     </SiderProvider>
   )

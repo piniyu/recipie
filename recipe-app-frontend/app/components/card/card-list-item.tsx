@@ -4,11 +4,13 @@ export default function CardListItem(): JSX.Element {
   return (
     <div className="flex gap-4 ">
       <div className="w-24">
-        <div className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg">
+        <div className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-md">
+          {/* <div className="p-1 bg-white rounded-lg"> */}
           <img
             className="w-full h-full object-cover object-center "
             src={img1}
           />
+          {/* </div> */}
         </div>
       </div>
       <h4 className="flex-1 py-2 text-black font-semibold text-sm">title</h4>

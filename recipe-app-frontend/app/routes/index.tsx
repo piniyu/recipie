@@ -18,7 +18,7 @@ export default function Index() {
       <div className="flex justify-center">
         <SearchBar />
       </div>
-      <div className="flex justify-between">
+      <div className="flex space-x-6">
         <DropdownMenu
           summary="New"
           details={<span>Popular</span>}
