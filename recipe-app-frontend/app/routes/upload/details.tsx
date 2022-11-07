@@ -6,6 +6,9 @@ import {
   ControlProps,
   CSSObjectWithLabel,
   GroupBase,
+  MenuListProps,
+  MenuProps,
+  OptionProps,
 } from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 import FileUploadInput from '~/components/image-input-form/img-upload-input'
@@ -32,7 +35,10 @@ export interface DetailsFormProps {
   thumbnail: ImgFormProp
 }
 
-const mockTags = [{ value: 'breakfast', label: 'Breakfast' }]
+const mockTags = [
+  { value: 'breakfast', label: 'Breakfast' },
+  { value: 'dinner', label: 'Dinner' },
+]
 
 const defaultFormValues: DetailsFormProps = {
   title: '',
@@ -53,7 +59,7 @@ const ControlComponent = ({
   return (
     <components.Control
       {...props}
-      className={`${
+      className={` py-0.5 ${
         isFocused
           ? '!shadow-[0_0_0_1px_black] !shadow-focus-outline !border-focus-outline '
           : 'border-gray-200'
@@ -63,6 +69,44 @@ const ControlComponent = ({
     >
       {children}
     </components.Control>
+  )
+}
+
+const OptionComponent = ({
+  children,
+  ...props
+}: OptionProps<{ value: string; label: string }, true>) => {
+  return (
+    <components.Option
+      {...props}
+      className={` rounded-lg cursor-pointer ${
+        props.isFocused ? 'text-orange-600 bg-orange-600/10' : ''
+      } `}
+    >
+      {children}
+    </components.Option>
+  )
+}
+
+const MenuComponent = ({
+  children,
+  ...props
+}: MenuProps<{ value: string; label: string }, true>) => {
+  return (
+    <components.Menu {...props} className="shadow-lg rounded-lg">
+      {children}
+    </components.Menu>
+  )
+}
+
+const MenuListComponent = ({
+  children,
+  ...props
+}: MenuListProps<{ value: string; label: string }, true>) => {
+  return (
+    <components.MenuList {...props} className="p-2">
+      {children}
+    </components.MenuList>
   )
 }
 
@@ -118,6 +162,9 @@ export default function Details(): JSX.Element {
                     components={{
                       ClearIndicator: undefined,
                       Control: ControlComponent,
+                      Option: OptionComponent,
+                      Menu: MenuComponent,
+                      MenuList: MenuListComponent,
                     }}
                   />
                 )}

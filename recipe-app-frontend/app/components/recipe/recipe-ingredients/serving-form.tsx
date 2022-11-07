@@ -48,6 +48,17 @@ export default function ServingForm(): JSX.Element {
             onWheel={e => {
               ;(e.target as HTMLElement).blur()
             }}
+            // value={inputValue}
+            onKeyDown={e => {
+              console.log(e.key, inputValue)
+              if (
+                ((e.target as HTMLInputElement).value.length === 0 &&
+                  ['0'].includes(e.key)) ||
+                ['.', 'e'].includes(e.key)
+              ) {
+                e.preventDefault()
+              }
+            }}
             ref={servingInputRef}
           />
           <button

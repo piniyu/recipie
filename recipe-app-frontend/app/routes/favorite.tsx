@@ -9,7 +9,7 @@ export default function Favorite(): JSX.Element {
       <div className="flex justify-center">
         <SearchBar placeholder="Favorite Search" />
       </div>
-      <div className="flex justify-between">
+      <div className="flex space-x-6">
         <DropdownMenu
           summary="New"
           details={<span>Popular</span>}
@@ -18,7 +18,6 @@ export default function Favorite(): JSX.Element {
         <DropdownMenu
           summary="Filter"
           details={<div>filter checkbox</div>}
-          direction="right"
           icon={<span className="material-symbols-rounded">tune</span>}
         />
       </div>

@@ -64,28 +64,28 @@ export default function Upload(): JSX.Element {
   useEffect(() => {
     const local = getLocalValue(localStorageKey.MOCK_STEP_FORM)
     if (stepIdx && +stepIdx > local.length) {
-      console.log(stepIdx, local.length)
+      // console.log(stepIdx, local.length)
       throw new Error()
     }
   }, [stepIdx])
 
   return (
-    <div>
-      <div className="max-w-6xl mx-auto py-14 space-y-6">
-        <header className="flex items-center justify-between  text-black ">
-          {/* <ContentCard className="flex items-center justify-between"> */}
-          <h2 className="">Upload Recipe</h2>
-          <div className="flex gap-2">
-            <button className="btn-border btn-sm">Save</button>
-            <button className="btn-primary btn-sm">Public</button>
-          </div>
-          {/* </ContentCard> */}
-        </header>
-        <ContentCard>
-          <Outlet />
-        </ContentCard>
-      </div>
+    // <div>
+    <div className="max-w-6xl mx-auto layout-px py-14 space-y-6">
+      <header className="flex items-center justify-between  text-black ">
+        {/* <ContentCard className="flex items-center justify-between"> */}
+        <h2 className="">Upload Recipe</h2>
+        <div className="flex gap-2">
+          <button className="btn-border btn-sm">Save</button>
+          <button className="btn-primary btn-sm">Public</button>
+        </div>
+        {/* </ContentCard> */}
+      </header>
+      <ContentCard>
+        <Outlet />
+      </ContentCard>
     </div>
+    // {/* </div> */}
   )
 }
 

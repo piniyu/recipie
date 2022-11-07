@@ -58,7 +58,7 @@ function SiderItem({
           sider-item sider-item-svg 
          
           [font-family:var(--font-ui)]
-          
+          transition-colors
           hover:text-orange-600 
           ${
             isChild
@@ -126,9 +126,12 @@ function SiderItem({
   )
 }
 
-export default function Sider(): JSX.Element {
-  const { state, dispatch } = useContext(SiderContext)
+export default function Sider(): JSX.Element | null {
+  const { state, hidden } = useContext(SiderContext)
   // console.log(state)
+  if (hidden) {
+    return null
+  }
   return (
     <nav className="w-[255px] h-screen bg-white layout-py sticky top-0 space-y-4 shadow-xl z-10 overflow-auto">
       <NavLink to="/">

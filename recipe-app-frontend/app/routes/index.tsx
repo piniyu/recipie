@@ -27,7 +27,6 @@ export default function Index() {
         <DropdownMenu
           summary="Filter"
           details={<div>filter checkbox</div>}
-          direction="right"
           icon={<span className="material-symbols-rounded">tune</span>}
         />
       </div>

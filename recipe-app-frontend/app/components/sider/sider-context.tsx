@@ -1,5 +1,5 @@
 import { useLocation } from '@remix-run/react'
-import type { ReactNode } from 'react'
+import { ReactNode, useState } from 'react'
 import { createContext, useReducer } from 'react'
 import Basket from '~/icons/basket'
 import Favorite from '~/icons/favorite'
@@ -28,6 +28,8 @@ interface SiderAction {
 type Context = {
   state: SiderItemType[]
   dispatch: React.Dispatch<SiderAction>
+  setHidden: React.Dispatch<boolean>
+  hidden: boolean
 }
 
 const initialValue: SiderItemType[] = [
@@ -38,7 +40,7 @@ export const defaultSiderValue: SiderItemType[] = [
   //     {
   //     icon: <Overview />, value: 'Overview'
   // },
-  { value: 'Upload recipe', route: 'upload/details', isBtn: true },
+  { value: 'Upload recipe', route: 'upload', isBtn: true },
   { icon: <Recipe />, value: 'Recipe', route: 'recipe' },
   { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
   { icon: <Basket />, value: 'Basket', route: 'basket' },
@@ -47,6 +49,8 @@ export const defaultSiderValue: SiderItemType[] = [
 export const SiderContext = createContext<Context>({
   state: initialValue,
   dispatch: () => {},
+  hidden: false,
+  setHidden: () => {},
 })
 const { Provider } = SiderContext
 
@@ -109,5 +113,10 @@ export default function SiderProvider({
     reducer,
     location.pathname.includes('upload') ? initialValue : defaultSiderValue,
   )
-  return <Provider value={{ state, dispatch }}>{children}</Provider>
+  const [hidden, setHidden] = useState(false)
+  return (
+    <Provider value={{ state, dispatch, hidden, setHidden }}>
+      {children}
+    </Provider>
+  )
 }

@@ -155,7 +155,7 @@ const ImgCanvas = forwardRef<
       return { x: minX, y: minY, width: maxX - minX, height: maxY - minY }
     }
 
-    const onTransformEnd = () => {
+    const onTransformEnd = (e: Konva.KonvaEventObject<Event>) => {
       const rect = rectRef.current
       if (image && rect && container && pageImgRef?.stage) {
         setTrAttr(image, rect, container, pageImgRef.stage)
@@ -269,8 +269,8 @@ const ImgCanvas = forwardRef<
       if (!isNewImg && local && rect) {
         const parsed: LocalRectAttrsType = JSON.parse(local)
         setLocalValue(parsed)
-        console.log('get local value')
-        console.log('found localvalue set rect', parsed)
+        // console.log('get local value')
+        // console.log('found localvalue set rect', parsed)
 
         setRectSizePos(rect, {
           x: parsed.x,
@@ -328,21 +328,19 @@ const ImgCanvas = forwardRef<
         tr.getLayer()?.batchDraw()
       }
     }, [container, image, pageImgRef?.stage, isNewImg, setIsNewImg])
-
-    useEffect(() => {
-      const rect = rectRef.current
-      if (localValue && pageImgRef?.stage && image && rect && container) {
-        const info = checkImgSize(image, container, pageImgRef.stage)
-        setRectSizePos(rect, {
-          x: rect.x(),
-          y: rect.y(),
-          scale: { x: info.rectDefaultScale, y: info.rectDefaultScale },
-          width: pageImgRef.stage.width() * info.diffPct,
-          height: pageImgRef.stage.height() * info.diffPct,
-        })
-      }
-    }, [width, height, localValue, pageImgRef?.stage, image, container])
-
+    // useEffect(() => {
+    //   const rect = rectRef.current
+    //   if (localValue && pageImgRef?.stage && image && rect && container) {
+    //     const info = checkImgSize(image, container, pageImgRef.stage)
+    //     setRectSizePos(rect, {
+    //       x: rect.x(),
+    //       y: rect.y(),
+    //       scale: { x: info.rectDefaultScale, y: info.rectDefaultScale },
+    //       width: pageImgRef.stage.width() * info.diffPct,
+    //       height: pageImgRef.stage.height() * info.diffPct,
+    //     })
+    //   }
+    // }, [width, height, localValue, pageImgRef?.stage, image, container])
     if (!container) {
       return <div>NO 'container' found!</div>
     }

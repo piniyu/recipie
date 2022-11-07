@@ -2,11 +2,12 @@
 import type { LoaderFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { Link, useFetcher, useLoaderData, useParams } from '@remix-run/react'
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect } from 'react'
 import { useRef, useState } from 'react'
 
 import { useIntersect } from '../lib/useIntersect'
 import img1 from '../../public/assets/img1.jpeg'
+import { SiderContext } from '~/components/sider/sider-context'
 
 type MockData = {
   id: string
@@ -93,7 +94,7 @@ export const loader: LoaderFunction = async ({ request, params, context }) => {
   }
   const step = checkStep(Number(new URL(request.url).searchParams.get('step')))
 
-  return json([mockData[step]])
+  return json([mockData[step], mockData[step + 1]])
 }
 
 const ModalContainer = ({
@@ -111,12 +112,10 @@ const ModalContainer = ({
 }) => {
   return (
     <div
-      className="fixed z-10 top-0 left-0 right-0 bottom-0 bg-gray-50"
+      className="h-screen bg-gray-50 overflow-auto [scroll-snap-type:y_mandatory]"
       // ref={rootRef}
     >
-      <div className="h-screen overflow-auto ">
-        <div className="">{children}</div>
-      </div>
+      {children}
       <button
         onClick={onPrevious}
         className={`fixed w-24 btn-ghost btn-sm top-2 left-1/2 -translate-x-1/2 flex-col bg-gray-50/70 backdrop-blur-md text-gray-500 select-none ${
@@ -147,27 +146,25 @@ const ModalContainer = ({
 }
 
 export default function RecipeModal(): JSX.Element {
+  const { setHidden } = useContext(SiderContext)
   const data: MockData[] = useLoaderData()
   const [stepData, setStepData] = useState(data)
   const [stepInView, setStepInView] = useState(1)
   const [maxStep, setMaxStep] = useState(Infinity)
 
   const fetcher = useFetcher()
-  const param = useParams()
-  const stepId = useRef(1)
-  // const rootRef = useRef<HTMLDivElement>(null)
 
   const [shouldFetch, setShouldFetch] = useState(true)
   const [hasData, setHasData] = useState(true)
   const [targets, setTergets] = useState<HTMLDivElement[]>([])
-  const [nextStep, setNextStep] = useState(2)
-  const step = useRef(1)
-  const nextStepRef = useRef(2)
-  const startStepRef = useRef(1)
+  const [nextStep, setNextStep] = useState(3)
 
-  // const { observer, measureRef, isIntersecting, callback } = useIntersect({
-  //   threshold: 0.85,
-  // })
+  useEffect(() => {
+    setHidden(true)
+    return () => {
+      setHidden(false)
+    }
+  }, [setHidden])
 
   const targetRef = useCallback((node: HTMLDivElement | null) => {
     if (node !== null) {
@@ -189,26 +186,29 @@ export default function RecipeModal(): JSX.Element {
   // }, [maxStep, stepInView])
   useEffect(() => {
     const options = {
-      threshold: 0.85,
+      threshold: 1,
     }
     const onIntersect: IntersectionObserverCallback = (entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const key = entry.target.getAttribute('data-key')
-          console.log(key)
+          // console.log(key)
           if (
             key &&
-            +key === targets.length - 1 &&
+            +key === targets.length - 2 &&
+            +key % 2 === 0 &&
             +key !== maxStep - 1 &&
             maxStep === Infinity
           ) {
-            console.log('fetch', maxStep)
+            console.log('fetch', nextStep)
             setShouldFetch(true)
-            setNextStep(parseInt(key) + 2)
+            setNextStep(parseInt(key) + 3)
             // console.log(idx + 2)
           }
-          if (entry.intersectionRatio > 0.85 && key) {
+          if (key) {
             // step.current = idx + 1
+            // entry.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+            // console.log(entry.target)
             setStepInView(parseInt(key) + 1)
           }
         }
@@ -246,6 +246,12 @@ export default function RecipeModal(): JSX.Element {
       // setMaxStep(nextStep - 1)
       return
     }
+    if (fetcher.data && fetcher.data[1] === null) {
+      setStepData(prev => [...prev, fetcher.data[0]])
+      setHasData(false)
+      setShouldFetch(false)
+      return
+    }
     if (fetcher.data) {
       setStepData(prev => [...prev, ...fetcher.data])
       // setNextStep(prev => prev + 1)
@@ -254,9 +260,9 @@ export default function RecipeModal(): JSX.Element {
 
   useEffect(() => {
     if (!hasData) {
-      setMaxStep(nextStep - 1)
+      setMaxStep(targets.length)
     }
-  }, [hasData, nextStep])
+  }, [hasData, targets.length])
 
   return (
     <ModalContainer
@@ -282,7 +288,7 @@ export default function RecipeModal(): JSX.Element {
           <div
             key={id}
             data-key={idx}
-            className="max-w-7xl h-screen flex justify-center mx-auto space-x-6 scroll-m-0 py-20 px-8"
+            className="max-w-7xl h-screen flex justify-center mx-auto space-x-6 scroll-m-0 py-20 px-8 [scroll-snap-align:center] "
             ref={targetRef}
           >
             <div className="w-full  flex items-center">
@@ -306,7 +312,7 @@ export default function RecipeModal(): JSX.Element {
                 <ul className=" pl-14 pr-14 list-disc text-black marker:text-gray-300 marker:text-xl marker:leading-none">
                   {steps.map(({ text, id }) => (
                     <li key={id} className="mb-8">
-                      <span className="relative left-1 -z-10">{text}</span>
+                      <span className="relative left-1 ">{text}</span>
                     </li>
                   ))}
                 </ul>
