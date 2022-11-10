@@ -1,6 +1,6 @@
 import type { ErrorBoundaryComponent } from '@remix-run/node'
-import { Link, Outlet, useNavigate, useParams } from '@remix-run/react'
-import { useContext, useEffect } from 'react'
+import { Link, NavLink, Outlet, useNavigate, useParams } from '@remix-run/react'
+import { useContext, useEffect, useState } from 'react'
 import ContentCard from '~/components/card/content-card'
 import {
   defaultSiderValue,
@@ -13,53 +13,44 @@ import {
   localStorageKey,
 } from '../components/localstorage-form/methods'
 
+const initialSideList = [
+  { value: 'Details', route: './details' },
+  { value: 'Ingredients', route: './ingredients' },
+  {
+    value: 'Steps',
+  },
+  { stepId: '1', value: `title`, route: `./1` },
+]
+
 export default function Upload(): JSX.Element {
   const { state, dispatch } = useContext(SiderContext)
   const { stepIdx } = useParams()
-  useEffect(() => {
-    const localValue = getLocalValue(localStorageKey.MOCK_STEP_FORM)
-    // if (localValue[0].title !== '') {
-    const setSider = () =>
-      dispatch({
-        type: SiderActionKind.SET_NEW_SIDER,
-        payload: [
-          { value: 'Details', route: 'upload/details' },
-          { value: 'Ingredients', route: 'upload/ingredients' },
-          {
-            value: 'Steps',
-            children: [
-              ...localValue.map((item, idx) => {
-                return {
-                  value: `${idx + 1}. ${item.title}`,
-                  route: `upload/${idx + 1}`,
-                }
-              }),
-              {
-                value: 'Add a step',
-                route: `upload/${localValue.length + 1}`,
-              },
-            ],
-          },
-        ],
-      })
-    if (localValue.every(v => v !== null)) {
-      setSider()
-    } else {
-      localValue.map(v => {
-        if (v === null) {
-          return { title: '', methods: [{ timeStemp: '', content: '' }] }
-        }
-        return v
-      })
-      setSider()
-    }
-    return () => {
-      dispatch({
-        type: SiderActionKind.SET_NEW_SIDER,
-        payload: defaultSiderValue,
-      })
-    }
-  }, [dispatch])
+  const [sideList, setSideList] = useState(initialSideList)
+  // useEffect(() => {
+  //   const localValue = getLocalValue(localStorageKey.MOCK_STEP_FORM)
+  //   // if (localValue[0].title !== '') {
+  //   const setSider = () =>
+  //     dispatch({
+  //       type: SiderActionKind.SET_NEW_SIDER,
+  //       payload:   //     })
+  //   if (localValue.every(v => v !== null)) {
+  //     setSider()
+  //   } else {
+  //     localValue.map(v => {
+  //       if (v === null) {
+  //         return { title: '', methods: [{ timeStemp: '', content: '' }] }
+  //       }
+  //       return v
+  //     })
+  //     setSider()
+  //   }
+  //   return () => {
+  //     dispatch({
+  //       type: SiderActionKind.SET_NEW_SIDER,
+  //       payload: defaultSiderValue,
+  //     })
+  //   }
+  // }, [dispatch])
 
   useEffect(() => {
     const local = getLocalValue(localStorageKey.MOCK_STEP_FORM)
@@ -81,8 +72,58 @@ export default function Upload(): JSX.Element {
         </div>
         {/* </ContentCard> */}
       </header>
-      <ContentCard>
-        <Outlet />
+      <ContentCard className="!py-0 !pl-0">
+        <div className=" flex w-full space-x-8 ">
+          <div className="w-60 py-6 border-r border-gray-200 ">
+            <nav className="flex flex-col h-full">
+              <ul className="flex-1 [font-family:var(--font-ui)] overflow-auto">
+                {sideList.map(({ stepId, value, route }, idx) => {
+                  if (!route) {
+                    return (
+                      <li
+                        key={`${value}_${route}`}
+                        className="sider-item px-0 text-sm text-gray-400"
+                      >
+                        {value}
+                      </li>
+                    )
+                  }
+                  return (
+                    <li key={`${value}_${idx}`} className="flex">
+                      <NavLink
+                        to={route}
+                        className={({ isActive }) => `
+                        flex-1 
+                        sider-item 
+                        transition-colors
+                        hover:bg-gray-100/70 
+                      
+                      ${
+                        isActive
+                          ? 'text-primary-600 bg-primary-600/10 hover:text-primary-600 hover:bg-primary-600/10'
+                          : 'text-black'
+                      }
+                      `}
+                      >
+                        {stepId}
+                        {stepId && ' . '}
+                        {value}
+                      </NavLink>
+                    </li>
+                  )
+                })}
+              </ul>
+              <div className="flex">
+                <button className="flex-1 btn-sm btn-secondary sider-item  text-white">
+                  Add a step
+                </button>
+              </div>
+            </nav>
+          </div>
+          <div className="flex-1 py-6">
+            <Outlet />
+          </div>
+        </div>
       </ContentCard>
     </div>
     // {/* </div> */}

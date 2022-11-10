@@ -80,7 +80,7 @@ const OptionComponent = ({
     <components.Option
       {...props}
       className={` rounded-lg cursor-pointer ${
-        props.isFocused ? 'text-orange-600 bg-orange-600/10' : ''
+        props.isFocused ? 'text-primary-600 bg-primary-600/10' : ''
       } `}
     >
       {children}
@@ -139,7 +139,7 @@ export default function Details(): JSX.Element {
 
   return (
     <div className="space-y-12 ">
-      <h3 className="font-medium text-black">Recipe details</h3>
+      <h3 className="font-medium text-black">Details</h3>
       <FormProvider {...methods}>
         <form className="flex gap-6">
           <div className="flex-1 flex flex-col space-y-12">

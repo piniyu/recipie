@@ -14,7 +14,7 @@ export default function RecipeHeader(): JSX.Element {
   return (
     <div className="flex flex-col space-y-10">
       <div className="flex items-center justify-between ">
-        <div className="flex items-center gap-6 text-gray-500">
+        <div className="flex items-center gap-6 text-gray-600">
           <div className="flex items-center gap-2">
             <IconBtn
               type="border"
@@ -24,13 +24,13 @@ export default function RecipeHeader(): JSX.Element {
                 </span>
               }
             />
-            <span className="text-gray-500 ">320</span>
+            <span className="">320</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="material-symbols-rounded text-2xl leading-none">
               shopping_basket
             </span>
-            <span className="text-gray-500">1,452</span>
+            <span className="">1,452</span>
           </div>
         </div>
         <button
@@ -53,9 +53,9 @@ export default function RecipeHeader(): JSX.Element {
           </div>
           <h1 className=" text-black">Salmon & Bun</h1>
           <div>
-            <div className="flex items-center gap-2 mb-4 text-sm text-gray-400">
+            <div className="flex items-center gap-2 mb-4 text-gray-500">
               <span className="inline-flex items-center gap-2">
-                <span className="material-icons-round text-lg leading-none text-gray-400">
+                <span className="material-icons-round leading-none text-gray-500">
                   person
                 </span>
                 User Name
@@ -63,7 +63,7 @@ export default function RecipeHeader(): JSX.Element {
               <div className="self-stretch w-[1px] bg-gray-200"></div>
               <span>{moment(date).format('LL')}</span>
             </div>
-            <div className="flex items-center text-sm text-gray-400">
+            <div className="flex items-center text-gray-500">
               <span>Difficulty:</span>
               <Difficulty stars={3} />
             </div>

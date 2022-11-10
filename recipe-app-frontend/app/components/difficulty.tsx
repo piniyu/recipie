@@ -16,7 +16,7 @@ export default function Difficulty({
         .map((_, idx) => (
           <span
             key={idx}
-            className={`material-symbols-rounded text-xl leading-none text-orange-600 ${
+            className={`material-symbols-rounded leading-none text-primary-400 ${
               isInput ? 'cursor-pointer' : ''
             }`}
             style={
@@ -44,7 +44,7 @@ export default function Difficulty({
           </span>
         ))}
 
-      <span className={`text-sm ${isInput ? 'text-black' : 'text-gray-400'}`}>
+      <span className={` ${isInput ? 'text-black' : 'text-gray-500'}`}>
         {starValue.toFixed(1)}
       </span>
     </>

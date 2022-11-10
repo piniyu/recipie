@@ -59,15 +59,11 @@ function SiderItem({
          
           [font-family:var(--font-ui)]
           transition-colors
-          hover:text-orange-600 
-          ${
-            isChild
-              ? `
+          
+        
             
-            hover:bg-orange-600/10 
-            `
-              : 'hover:bg-orange-600/10 '
-          }
+            hover:bg-primary-400
+          
           ${
             hasChild
               ? `
@@ -85,7 +81,7 @@ function SiderItem({
           
           
 
-          ${isActive ? 'text-orange-600  bg-orange-600/10 ' : ' text-gray-600 '}
+          ${isActive ? '  bg-primary-400 ' : ' text-black '}
           `
         }
       >
@@ -94,13 +90,13 @@ function SiderItem({
           before:block 
           before:h-full before:w-1 
           before:-ml-9 
-          hover:before:bg-orange-600 */}
+          hover:before:bg-primary-600 */}
 
         {/* ${
           isActive
             ? isChild
-              ? 'hover:bg-orange-700/10 bg-orange-600/10 text-orange-600 before:bg-orange-600'
-              : 'text-orange-600 before:bg-orange-600 bg-orange-600/10 hover:bg-orange-700/10'
+              ? 'hover:bg-primary-700/10 bg-primary-600/10 text-primary-600 before:bg-primary-600'
+              : 'text-primary-600 before:bg-primary-600 bg-primary-600/10 hover:bg-primary-700/10'
             : ' text-gray-500 '
         } */}
         {icon}

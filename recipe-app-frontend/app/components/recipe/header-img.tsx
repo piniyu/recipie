@@ -21,7 +21,7 @@ export default function HeaderImg({ src }: { src: string }): JSX.Element {
 
   return (
     <div className=" flex-1 relative ">
-      <div className=" overflow-hidden aspect-w-4 aspect-h-3 rounded-2xl bg-white shadow-md">
+      <div className=" overflow-hidden aspect-w-4 aspect-h-3 rounded-2xl bg-white shadow-2xl shadow-gray-300/50">
         <div className="w-full h-full p-2" ref={ref}>
           <img
             src={src}

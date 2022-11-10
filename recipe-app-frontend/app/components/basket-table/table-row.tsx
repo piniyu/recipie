@@ -16,7 +16,7 @@ export default function TableRow({
   const [isDeleted, setIsDeleted] = useState(false)
 
   return (
-    <div className={`relative table-row-group text-gray-500 `}>
+    <div className={`relative table-row-group text-secondary `}>
       <div className="table-row">
         <div className="table-cell py-3 ">
           <div className="flex items-center">
@@ -24,11 +24,18 @@ export default function TableRow({
             <span className="flex-1 h-0 mx-3 border-b-2 border-gray-300 border-dotted"></span>
           </div>
         </div>
-        <div className={`table-cell py-3 text-orange-600 `}>
-          {/* <span className=""> */}
-
-          {value - (isNaN(inputValue) ? 0 : inputValue) + mes}
-          {/* </span> */}
+        <div
+          className={`
+          relative 
+          table-cell 
+          py-3 
+          text-secondary font-bold 
+          text-lg
+          `}
+        >
+          <span className="[background:linear-gradient(to_bottom,transparent_50%,#fbbf2490_50%)]">
+            {value - (isNaN(inputValue) ? 0 : inputValue) + mes}
+          </span>
         </div>
         <div className="table-cell py-3 text-gray-500">=</div>
         <div className="table-cell py-3">
@@ -46,7 +53,7 @@ export default function TableRow({
             }}
           >
             <span
-              className={`${isDeleted ? 'text-green-500' : 'text-red-500'}`}
+              className={`${isDeleted ? 'text-green-500' : 'text-red-600'}`}
             >
               {isDeleted ? 'Enable' : 'Delet'}
             </span>

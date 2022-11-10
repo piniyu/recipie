@@ -91,7 +91,7 @@ export default function ServingForm(): JSX.Element {
         <span className=""> Servings</span>
       </div>
       <button
-        className="btn-md btn-primary w-full gap-2"
+        className="btn-md btn-secondary w-full gap-2"
         disabled={inputValue === '1'}
       >
         <span className="material-symbols-rounded text-xl leading-none">

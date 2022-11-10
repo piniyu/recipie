@@ -9,7 +9,7 @@ export default function Layout({
 }): JSX.Element {
   return (
     <SiderProvider>
-      <div className="flex bg-gray-50">
+      <div className="flex bg-gray-100">
         <Sider />
         <div className="flex-1 ">{children}</div>
       </div>

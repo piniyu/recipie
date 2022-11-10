@@ -60,7 +60,7 @@ export default function (): JSX.Element {
 
   return (
     <div className="space-y-12">
-      <h3 className="font-medium text-orange-600">Step {id}</h3>
+      <h3 className="font-medium text-primary-600">Step {id}</h3>
       <FormProvider {...methods}>
         <StepForm />
       </FormProvider>

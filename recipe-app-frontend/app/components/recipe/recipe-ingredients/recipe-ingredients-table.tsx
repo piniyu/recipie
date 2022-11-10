@@ -19,7 +19,7 @@ export default function RecipeIngredientsTable({
                 <span className="flex-1 h-0 mx-3 border-b-2 border-gray-300 border-dotted"></span>
               </div>
             </div>
-            <div className="table-cell py-3 font-semibold text-orange-600">
+            <div className="table-cell py-3 font-semibold text-secondary">
               {qat}
               {mes}
             </div>

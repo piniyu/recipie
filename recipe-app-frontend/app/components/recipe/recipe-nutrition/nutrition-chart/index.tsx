@@ -6,7 +6,7 @@ export type NutritionBarChartProps = {
   qat: { value: number; mes: string }
 }
 
-export default function ({
+export default function NutritionChartIndex({
   data,
 }: {
   data: NutritionBarChartProps[][]
@@ -20,7 +20,7 @@ export default function ({
           return (
             <RadialChart
               key={keyName}
-              fillColorClass="fill-orange-400"
+              fillColorClass="fill-rose-400"
               data={d}
             />
           )
@@ -29,7 +29,7 @@ export default function ({
           return (
             <RadialChart
               key={keyName}
-              fillColorClass="fill-blue-400"
+              fillColorClass="fill-green-400"
               data={d}
             />
           )
@@ -38,17 +38,13 @@ export default function ({
           return (
             <RadialChart
               key={keyName}
-              fillColorClass="fill-green-400"
+              fillColorClass="fill-primary-400"
               data={d}
             />
           )
         }
         return (
-          <RadialChart
-            key={keyName}
-            fillColorClass="fill-purple-400"
-            data={d}
-          />
+          <RadialChart key={keyName} fillColorClass="fill-cyan-400" data={d} />
         )
       })}
     </>

@@ -109,10 +109,7 @@ export default function SiderProvider({
   children: ReactNode
 }): JSX.Element {
   const location = useLocation()
-  const [state, dispatch] = useReducer(
-    reducer,
-    location.pathname.includes('upload') ? initialValue : defaultSiderValue,
-  )
+  const [state, dispatch] = useReducer(reducer, defaultSiderValue)
   const [hidden, setHidden] = useState(false)
   return (
     <Provider value={{ state, dispatch, hidden, setHidden }}>

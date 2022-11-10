@@ -1,7 +1,7 @@
 import ContentCard from '~/components/card/content-card'
 import NutritionChart, { NutritionBarChartProps } from './nutrition-chart'
 
-export default function ({
+export default function IngredientsIndex({
   data,
 }: {
   data: NutritionBarChartProps[][]
@@ -9,8 +9,10 @@ export default function ({
   return (
     <ContentCard>
       <p className="text-gray-500">per serving</p>
-      <h2 className="text-orange-600 mb-9">542 kcal</h2>
-      <h4 className="mb-4 font-bold">Nutrition of per serving</h4>
+      <h2 className="text-black mb-9">542 kcal</h2>
+      <h4 className="mb-4 text-primary-400 font-bold">
+        Nutrition of per serving
+      </h4>
       <p className="mb-9 text-gray-500">
         The percentage means <b>%Daliy value</b> that tells you how much
         nutrition in a serving of food contributes to a daliy diet. 2,000

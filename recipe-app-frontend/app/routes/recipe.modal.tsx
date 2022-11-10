@@ -112,15 +112,23 @@ const ModalContainer = ({
 }) => {
   return (
     <div
-      className="h-screen bg-gray-50 overflow-auto [scroll-snap-type:y_mandatory]"
+      className="h-screen bg-gray-100 overflow-auto [scroll-snap-type:y_mandatory]"
       // ref={rootRef}
     >
       {children}
       <button
         onClick={onPrevious}
-        className={`fixed w-24 btn-ghost btn-sm top-2 left-1/2 -translate-x-1/2 flex-col bg-gray-50/70 backdrop-blur-md text-gray-500 select-none ${
-          showPrevious ? '' : 'pointer-events-none invisible'
-        }`}
+        className={`
+        fixed 
+        w-24 
+        btn-ghost btn-sm 
+        top-2 left-[calc(50vw_-_48px)] 
+        flex-col 
+        bg-gray-200/70 backdrop-blur-md 
+        text-gray-500 
+        select-none
+        hover:animate-bounce-y-down
+        ${showPrevious ? '' : 'pointer-events-none invisible'}`}
       >
         <span className="material-symbols-rounded block">arrow_upward</span>
         Previous
@@ -128,9 +136,17 @@ const ModalContainer = ({
       <button
         onClick={onNext}
         id="next_btn"
-        className={`fixed w-24 btn-ghost btn-md flex-col bottom-2 left-1/2 -translate-x-1/2 bg-gray-50/70 backdrop-blur-md text-orange-600 select-none ${
-          showNext ? '' : 'pointer-events-none invisible'
-        }`}
+        className={`
+        fixed 
+        w-24 
+        btn-ghost btn-md 
+        flex-col 
+        bottom-2 left-[calc(50vw_-_48px)]
+        bg-gray-200/70 backdrop-blur-md 
+        text-black
+        select-none 
+        hover:animate-bounce-y-up
+        ${showNext ? '' : 'pointer-events-none invisible'}`}
       >
         Next
         <span className="material-symbols-rounded block">arrow_downward</span>
@@ -306,7 +322,7 @@ export default function RecipeModal(): JSX.Element {
             <div className=" w-2/5 flex-shrink-0 flex flex-col">
               <div className="overflow-y-auto flex-1">
                 <div className="mt-2 mb-14 text-center">
-                  <h4 className="text-orange-600 font-medium">STEP {id}</h4>
+                  <h4 className="text-primary-400 font-medium">STEP {id}</h4>
                   <h2 className="text-black">{title}</h2>
                 </div>
                 <ul className=" pl-14 pr-14 list-disc text-black marker:text-gray-300 marker:text-xl marker:leading-none">
