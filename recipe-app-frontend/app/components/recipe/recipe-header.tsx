@@ -1,15 +1,26 @@
 import { Link, useNavigate } from '@remix-run/react'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
-import Difficulty from '../difficulty'
+import DifficultyBtn from '../difficulty'
 import IconBtn from '../Icon-btn'
 import Tag from '../tag'
 import HeaderImg from './header-img'
 import img1 from '../../../public/assets/img1.jpeg'
+import { Difficulty } from '@prisma/client'
 
 const date = new Date(2022, 8, 6)
 
-export default function RecipeHeader(): JSX.Element {
+export default function RecipeHeader({
+  title,
+  authorName,
+  createdAt,
+  difficulty,
+}: {
+  title: string
+  authorName: string
+  createdAt: string
+  difficulty: Difficulty
+}): JSX.Element {
   const navigate = useNavigate()
   return (
     <div className="flex flex-col space-y-10">
@@ -35,11 +46,11 @@ export default function RecipeHeader(): JSX.Element {
         </div>
         <button
           className="btn-primary btn-md w-fit h-fit text-lg cursor-pointer"
-          onClick={() => {
-            localStorage.setItem('scrollPosition', window.scrollY.toString())
-            console.log(window.scrollY)
-            navigate('/recipe/modal')
-          }}
+          // onClick={() => {
+          //   localStorage.setItem('scrollPosition', window.scrollY.toString())
+          //   // console.log(window.scrollY)
+          //   navigate('/recipe/modal')
+          // }}
         >
           Start Cooking
         </button>
@@ -51,21 +62,21 @@ export default function RecipeHeader(): JSX.Element {
             <Tag text="tag" />
             <Tag text="tag" />
           </div>
-          <h1 className=" text-black">Salmon & Bun</h1>
+          <h1 className=" text-black">{title}</h1>
           <div>
             <div className="flex items-center gap-2 mb-4 text-gray-500">
               <span className="inline-flex items-center gap-2">
                 <span className="material-icons-round leading-none text-gray-500">
                   person
                 </span>
-                User Name
+                {authorName}
               </span>
               <div className="self-stretch w-[1px] bg-gray-200"></div>
-              <span>{moment(date).format('LL')}</span>
+              <span>{moment(createdAt).format('LL')}</span>
             </div>
             <div className="flex items-center text-gray-500">
               <span>Difficulty:</span>
-              <Difficulty stars={3} />
+              <DifficultyBtn {...{ difficulty }} />
             </div>
           </div>
         </div>

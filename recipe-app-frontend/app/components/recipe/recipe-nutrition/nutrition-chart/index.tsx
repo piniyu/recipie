@@ -36,11 +36,7 @@ export default function NutritionChartIndex({
         }
         if (keyName === 'Soldium') {
           return (
-            <RadialChart
-              key={keyName}
-              fillColorClass="fill-primary-400"
-              data={d}
-            />
+            <RadialChart key={keyName} fillColorClass="fill-primary" data={d} />
           )
         }
         return (

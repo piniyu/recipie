@@ -5,7 +5,7 @@
 :root {
   --font-ui: 'DM Sans', sans-serif;
   --font-default: 'Inter';
-  --focus-outline-color: theme(colors.primary.500 / 50%);
+  --focus-outline-color: theme(colors.primary.DEFAULT / 50%);
 }
 
 @layer base {
@@ -84,13 +84,13 @@
     @apply flex justify-center items-center px-5 py-4 rounded-lg;
   }
   .btn-secondary {
-    @apply bg-primary-400 text-black font-medium hover:bg-primary-400/90 transition-colors;
+    @apply bg-primary text-black font-medium hover:bg-primary/90 transition-colors;
   }
   .btn-primary {
     @apply bg-secondary text-white hover:bg-secondary/90 transition-colors;
   }
   .btn-border {
-    @apply border-2 border-primary-400 bg-white text-black font-medium hover:border-primary-400 hover:bg-primary-50 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:border-gray-200;
+    @apply border-2 border-primary bg-white text-black font-medium hover:border-primary hover:bg-primary/10 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:border-gray-200;
   }
   .btn-ghost {
     @apply text-black disabled:text-gray-400 disabled:cursor-not-allowed;

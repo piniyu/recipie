@@ -8,7 +8,7 @@ module.exports = {
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-        primary: colors.amber,
+        primary: { DEFAULT: colors.amber['400'] },
         secondary: '#171717',
         black: '#171717',
         white: colors.white,

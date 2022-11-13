@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export default function IconBtn({
   type,
@@ -13,7 +13,7 @@ export default function IconBtn({
     ${
       type === 'ghost'
         ? 'btn-ghost'
-        : 'bg-white shadow-md text-black hover:bg-primary-400 hover:shadow-lg hover:-translate-y-0.5 transition-all'
+        : 'bg-white shadow-md text-black  hover:text-primary hover:shadow-lg hover:-translate-y-0.5 transition-all'
     } h-12 w-12 rounded-full flex items-center justify-center`}
     >
       {icon}

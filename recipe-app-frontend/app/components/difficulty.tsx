@@ -1,13 +1,31 @@
+import { Difficulty } from '@prisma/client'
 import { useState } from 'react'
 
-export default function Difficulty({
-  stars = 1,
+const getDifficulty = (difficulty: Difficulty) => {
+  switch (difficulty) {
+    case Difficulty.DIFFICULT5:
+      return 5
+    case Difficulty.DIFFICULT4:
+      return 4
+    case Difficulty.MODERATE3:
+      return 3
+    case Difficulty.EASY2:
+      return 2
+    case Difficulty.EASY1:
+      return 1
+    default:
+      return 1
+  }
+}
+
+export default function DifficultyBtn({
+  difficulty,
   isInput,
 }: {
-  stars: number
+  difficulty: Difficulty
   isInput?: boolean
 }): JSX.Element {
-  const [starValue, setStarValue] = useState(stars)
+  const [starValue, setStarValue] = useState(getDifficulty(difficulty))
   const [clicked, setClicked] = useState(0)
   return (
     <>
@@ -16,7 +34,7 @@ export default function Difficulty({
         .map((_, idx) => (
           <span
             key={idx}
-            className={`material-symbols-rounded leading-none text-primary-400 ${
+            className={`material-symbols-rounded leading-none text-primary ${
               isInput ? 'cursor-pointer' : ''
             }`}
             style={

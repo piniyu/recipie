@@ -11,7 +11,7 @@ import {
   ResponsiveContainer,
   Text,
 } from 'recharts'
-import { NutritionBarChartProps } from '.'
+import type { NutritionBarChartProps } from '.'
 
 export default function RadialChart({
   fillColorClass,
