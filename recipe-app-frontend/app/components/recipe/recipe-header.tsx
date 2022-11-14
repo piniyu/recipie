@@ -6,7 +6,7 @@ import IconBtn from '../Icon-btn'
 import Tag from '../tag'
 import HeaderImg from './header-img'
 import img1 from '../../../public/assets/img1.jpeg'
-import { Difficulty } from '@prisma/client'
+import type { Difficulty } from '@prisma/client'
 
 const date = new Date(2022, 8, 6)
 
@@ -44,8 +44,9 @@ export default function RecipeHeader({
             <span className="">1,452</span>
           </div>
         </div>
-        <button
+        <Link
           className="btn-primary btn-md w-fit h-fit text-lg cursor-pointer"
+          to={'/recipe/modal'}
           // onClick={() => {
           //   localStorage.setItem('scrollPosition', window.scrollY.toString())
           //   // console.log(window.scrollY)
@@ -53,7 +54,7 @@ export default function RecipeHeader({
           // }}
         >
           Start Cooking
-        </button>
+        </Link>
       </div>
       <div className="flex space-x-10">
         <HeaderImg src={img1} />

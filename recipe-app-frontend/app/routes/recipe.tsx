@@ -72,13 +72,13 @@ const ingredientsTableData: RecipeTableProps[] = [
 ]
 
 type RecipeWithIngredients = Prisma.RecipeGetPayload<{
-  include: { ingredientsNum: true }
+  include: { ingredientsNum: { include: { ingredient: true } } }
 }>
 
 export const loader: LoaderFunction = async () => {
   const recipe = await db.recipe.findUnique({
     where: { id: 'testrecipe0' },
-    include: { ingredientsNum: true },
+    include: { ingredientsNum: { include: { ingredient: true } } },
   })
 
   return recipe
@@ -114,7 +114,7 @@ export default function RecipeIndex(): JSX.Element {
           <RecipeHeader {...{ title, createdAt, difficulty, authorName }} />
           {/* </div> */}
           <div className="flex space-x-10 text-black ">
-            <IngredientsCard data={ingredientsTableData} />
+            <IngredientsCard data={ingredientsNum} />
             <RecipeNutrition data={nutritionData} />
           </div>
         </div>
