@@ -7,6 +7,7 @@ import Tag from '../tag'
 import HeaderImg from './header-img'
 import img1 from '../../../public/assets/img1.jpeg'
 import type { Difficulty } from '@prisma/client'
+import ContentCard from '../card/content-card'
 
 const date = new Date(2022, 8, 6)
 
@@ -18,7 +19,7 @@ export default function RecipeHeader({
 }: {
   title: string
   authorName: string
-  createdAt: string
+  createdAt: Date
   difficulty: Difficulty
 }): JSX.Element {
   const navigate = useNavigate()
@@ -56,32 +57,34 @@ export default function RecipeHeader({
           Start Cooking
         </Link>
       </div>
-      <div className="flex space-x-10">
-        <HeaderImg src={img1} />
-        <div className="flex-1 flex flex-col space-y-6">
-          <div className="flex gap-3">
-            <Tag text="tag" />
-            <Tag text="tag" />
-          </div>
-          <h1 className=" text-black">{title}</h1>
-          <div>
-            <div className="flex items-center gap-2 mb-4 text-gray-500">
-              <span className="inline-flex items-center gap-2">
-                <span className="material-icons-round leading-none text-gray-500">
-                  person
-                </span>
-                {authorName}
-              </span>
-              <div className="self-stretch w-[1px] bg-gray-200"></div>
-              <span>{moment(createdAt).format('LL')}</span>
+      <ContentCard>
+        <div className="flex space-x-10">
+          <HeaderImg src={img1} />
+          <div className="flex-1 flex flex-col space-y-6">
+            <div className="flex gap-3">
+              <Tag text="tag" />
+              <Tag text="tag" />
             </div>
-            <div className="flex items-center text-gray-500">
-              <span>Difficulty:</span>
-              <DifficultyBtn {...{ difficulty }} />
+            <h1 className=" text-black">{title}</h1>
+            <div>
+              <div className="flex items-center gap-2 mb-4 text-gray-500">
+                <span className="inline-flex items-center gap-2">
+                  <span className="material-icons-round leading-none text-gray-500">
+                    person
+                  </span>
+                  {authorName}
+                </span>
+                <div className="self-stretch w-[1px] bg-gray-200"></div>
+                <span>{moment(createdAt).format('LL')}</span>
+              </div>
+              <div className="flex items-center text-gray-500">
+                <span>Difficulty:</span>
+                <DifficultyBtn {...{ difficulty }} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </ContentCard>
     </div>
   )
 }

@@ -68,7 +68,7 @@ export default function Upload(): JSX.Element {
         <h2 className="">Upload Recipe</h2>
         <div className="flex gap-2">
           <button className="btn-border btn-sm">Save</button>
-          <button className="btn-primary btn-sm">Public</button>
+          <button className="btn-secondary btn-sm">Public</button>
         </div>
         {/* </ContentCard> */}
       </header>
@@ -114,7 +114,7 @@ export default function Upload(): JSX.Element {
                 })}
               </ul>
               <div className="flex">
-                <button className="flex-1 btn-sm btn-secondary sider-item  text-white">
+                <button className="flex-1 btn-sm btn-border sider-item  ">
                   Add a step
                 </button>
               </div>

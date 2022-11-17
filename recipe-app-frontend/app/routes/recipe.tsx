@@ -10,8 +10,14 @@ import RecipeNutrition from '~/components/recipe/recipe-nutrition'
 import Tag from '~/components/tag'
 import IconBtn from '~/components/Icon-btn'
 import img1 from '../../public/assets/img1.jpeg'
-import { LoaderFunction } from '@remix-run/node'
-import { Prisma, prisma, Recipe } from '@prisma/client'
+import { json, LoaderFunction } from '@remix-run/node'
+import {
+  Ingredient,
+  NumIngredientOnRecipe,
+  Prisma,
+  prisma,
+  Recipe,
+} from '@prisma/client'
 import { db } from '~/utils/db.server'
 import { useLoaderData } from '@remix-run/react'
 
@@ -71,21 +77,29 @@ const ingredientsTableData: RecipeTableProps[] = [
   },
 ]
 
-type RecipeWithIngredients = Prisma.RecipeGetPayload<{
-  include: { ingredientsNum: { include: { ingredient: true } } }
-}>
+type LoaderData =
+  | (Recipe & {
+      ingredientsNum: (NumIngredientOnRecipe & {
+        ingredient: Ingredient
+      })[]
+    })
+  | null
 
-export const loader: LoaderFunction = async () => {
+const RecipeWithIngredients = Prisma.validator<Prisma.RecipeInclude>()({
+  ingredientsNum: { include: { ingredient: true } },
+})
+
+export const loader = async () => {
   const recipe = await db.recipe.findUnique({
     where: { id: 'testrecipe0' },
-    include: { ingredientsNum: { include: { ingredient: true } } },
+    include: RecipeWithIngredients,
   })
 
-  return recipe
+  return json(recipe)
 }
 
 export default function RecipeIndex(): JSX.Element {
-  const data = useLoaderData<(Recipe & RecipeWithIngredients) | null>()
+  const data = useLoaderData() as LoaderData
 
   useEffect(() => {
     const scrollValue = localStorage.getItem('scrollPosition')

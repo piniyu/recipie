@@ -26,82 +26,64 @@ interface SiderAction {
 }
 
 type Context = {
-  state: SiderItemType[]
-  dispatch: React.Dispatch<SiderAction>
   setHidden: React.Dispatch<boolean>
   hidden: boolean
 }
 
-const initialValue: SiderItemType[] = [
-  { icon: undefined, value: '', children: [{ icon: undefined, value: '' }] },
-]
-
-export const defaultSiderValue: SiderItemType[] = [
-  //     {
-  //     icon: <Overview />, value: 'Overview'
-  // },
-  { value: 'Upload recipe', route: 'upload', isBtn: true },
-  { icon: <Recipe />, value: 'Recipe', route: 'recipe' },
-  { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
-  { icon: <Basket />, value: 'Basket', route: 'basket' },
-]
-
 export const SiderContext = createContext<Context>({
-  state: initialValue,
-  dispatch: () => {},
   hidden: false,
   setHidden: () => {},
 })
 const { Provider } = SiderContext
 
-const isChild = (
-  value: SiderAction['payload'],
-): value is Omit<SiderItemType, 'children'> => {
-  return !Array.isArray(value)
-}
+// const isChild = (
+//   value: SiderAction['payload'],
+// ): value is Omit<SiderItemType, 'children'> => {
+//   return !Array.isArray(value)
+// }
 
-const reducer = (
-  state: SiderItemType[],
-  action: SiderAction,
-): SiderItemType[] => {
-  const newState = [...state]
-  switch (action.type) {
-    case SiderActionKind.ADD_CHILD:
-      if (isChild(action.payload) && typeof action.index !== 'undefined') {
-        let children = newState[action.index].children
-          ? newState[action.index].children
-          : undefined
-        if (isChild(action.payload) && children !== undefined) {
-          children[children.length - 1] = action.payload
-          children.push({
-            value: 'Add a step',
-            route: `upload/${children?.length + 1}`,
-          })
-          return [...newState]
-        }
-      }
-    case SiderActionKind.UPDATE_CHILD:
-      // console.log(isChild(action.payload))
-      if (
-        typeof action.childIndex === 'number' &&
-        typeof action.index === 'number' &&
-        isChild(action.payload)
-      ) {
-        let children = newState[action.index].children
-          ? newState[action.index].children
-          : undefined
-        typeof children !== 'undefined' &&
-          (children[action.childIndex].value = action.payload.value)
-        return [...newState]
-      }
-    case SiderActionKind.SET_NEW_SIDER:
-      if (!isChild(action.payload)) {
-        return action.payload
-      }
-    default:
-      return state
-  }
-}
+// const reducer = (
+//   state: SiderItemType[],
+//   action: SiderAction,
+// ): SiderItemType[] => {
+//   const newState = [...state]
+//   switch (action.type) {
+//     case SiderActionKind.ADD_CHILD:
+//       if (isChild(action.payload) && typeof action.index !== 'undefined') {
+//         let children = newState[action.index].children
+//           ? newState[action.index].children
+//           : undefined
+//         if (isChild(action.payload) && children !== undefined) {
+//           children[children.length - 1] = action.payload
+//           children.push({
+//             value: 'Add a step',
+//             route: `upload/${children?.length + 1}`,
+//           })
+//           return [...newState]
+//         }
+//       }
+//     case SiderActionKind.UPDATE_CHILD:
+//       // console.log(isChild(action.payload))
+//       if (
+//         typeof action.childIndex === 'number' &&
+//         typeof action.index === 'number' &&
+//         isChild(action.payload)
+//       ) {
+//         let children = newState[action.index].children
+//           ? newState[action.index].children
+//           : undefined
+//         typeof children !== 'undefined' &&
+//           (children[action.childIndex].value = action.payload.value)
+//         return [...newState]
+//       }
+//     case SiderActionKind.SET_NEW_SIDER:
+//       if (!isChild(action.payload)) {
+//         return action.payload
+//       }
+//     default:
+//       return state
+//   }
+// }
 
 export default function SiderProvider({
   children,
@@ -109,11 +91,7 @@ export default function SiderProvider({
   children: ReactNode
 }): JSX.Element {
   const location = useLocation()
-  const [state, dispatch] = useReducer(reducer, defaultSiderValue)
+  // const [state, dispatch] = useReducer(reducer, defaultSiderValue)
   const [hidden, setHidden] = useState(false)
-  return (
-    <Provider value={{ state, dispatch, hidden, setHidden }}>
-      {children}
-    </Provider>
-  )
+  return <Provider value={{ hidden, setHidden }}>{children}</Provider>
 }

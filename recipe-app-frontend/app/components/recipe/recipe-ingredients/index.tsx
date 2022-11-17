@@ -1,13 +1,16 @@
+import { Ingredient, NumIngredientOnRecipe } from '@prisma/client'
 import ContentCard from '~/components/card/content-card'
 import RecipeIngredientsTable, {
   RecipeTableProps,
 } from './recipe-ingredients-table'
 import ServingForm from './serving-form'
 
+export type IngredientData = NumIngredientOnRecipe & { ingredient: Ingredient }
+
 export default function Index({
   data,
 }: {
-  data: RecipeTableProps[]
+  data: IngredientData[]
 }): JSX.Element {
   return (
     <ContentCard>
