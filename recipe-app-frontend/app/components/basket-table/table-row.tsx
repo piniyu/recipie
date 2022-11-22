@@ -1,26 +1,29 @@
 import { useState } from 'react'
-import { useFieldArray, useForm, useWatch } from 'react-hook-form'
-import { BasketTableRow } from '.'
+import type { BasketState } from 'store/basketSlice'
+import { updateHadQuan, updateServings } from 'store/basketSlice'
+import { useAppDispatch } from 'store/configureStore'
 import TableRowForm from './table-row-form'
 
 export default function TableRow({
-  data,
+  name,
+  value,
+  unit,
+  localBasket,
 }: {
-  data: BasketTableRow
+  name: string
+  value: number
+  unit: string
+  localBasket: BasketState
 }): JSX.Element {
-  const {
-    item,
-    qat: { value, mes },
-  } = data
-  const [inputValue, setInputValue] = useState(0)
   const [isDeleted, setIsDeleted] = useState(false)
+  const dispatch = useAppDispatch()
 
   return (
     <div className={`relative table-row-group text-secondary `}>
       <div className="table-row">
         <div className="table-cell py-3 ">
           <div className="flex items-center">
-            <span>{item}</span>
+            <span>{name}</span>
             <span className="flex-1 h-0 mx-3 border-b-2 border-gray-300 border-dotted"></span>
           </div>
         </div>
@@ -34,18 +37,43 @@ export default function TableRow({
           `}
         >
           <span className="[background:linear-gradient(to_bottom,transparent_50%,#fbbf2490_50%)]">
-            {value - (isNaN(inputValue) ? 0 : inputValue) + mes}
+            {value * localBasket.servings -
+              (isNaN(localBasket.hadQant) ? 0 : localBasket.hadQant) +
+              unit}
           </span>
         </div>
         <div className="table-cell py-3 text-gray-500">=</div>
         <div className="table-cell py-3">
-          <div className="flex">{value + mes}</div>
+          <div className="text-center">
+            {value * localBasket.servings + unit}
+          </div>
         </div>
         <div className="table-cell py-3 text-gray-500">-</div>
         <div className="table-cell py-3 ">
-          <TableRowForm data={data} {...{ setInputValue, isDeleted }} />
+          <TableRowForm
+            {...{
+              setInputValue: (value: number) =>
+                void dispatch(updateHadQuan({ name, hadQant: value })),
+              defaultValue: localBasket?.hadQant ?? 0,
+              isDeleted,
+              value,
+              unit,
+            }}
+          />
         </div>
-        <div className="table-cell py-3 text-gray-500">
+        <div className="table-cell py-3 align-bottom">
+          <TableRowForm
+            {...{
+              setInputValue: (value: number) =>
+                void dispatch(updateServings({ name, servings: value })),
+              defaultValue: localBasket?.servings ?? 1,
+              isDeleted,
+              value,
+              hasSetBtn: true,
+            }}
+          />
+        </div>
+        <div className="table-cell align-middle py-3 text-gray-500">
           <button
             className="flex p-1"
             onClick={() => {
@@ -53,9 +81,11 @@ export default function TableRow({
             }}
           >
             <span
-              className={`${isDeleted ? 'text-green-500' : 'text-red-600'}`}
+              className={`material-symbols-outlined leading-none ${
+                isDeleted ? 'text-green-500' : 'text-red-600'
+              }`}
             >
-              {isDeleted ? 'Enable' : 'Delet'}
+              {isDeleted ? 'undo' : 'delete'}
             </span>
           </button>
         </div>

@@ -1,9 +1,15 @@
+import { useSearchFetch } from './use-search-fetch'
+
 export default function SearchBar({
   placeholder = 'Search',
   border = false,
+  list,
+  fetch,
 }: {
   placeholder?: string
   border?: boolean
+  list: any[] | undefined
+  fetch: (inputValue: string) => void
 }): JSX.Element {
   return (
     <div className=" relative max-w-md w-full text-black">
@@ -40,6 +46,7 @@ export default function SearchBar({
 							focus:outline-none
               bg-transparent
           `}
+          onChange={e => fetch(e.target.value)}
         />
       </div>
 
@@ -58,7 +65,16 @@ export default function SearchBar({
             shadow-lg
             `}
       >
-        res array
+        {list?.length === 0 ? (
+          <div>No results</div>
+        ) : (
+          list?.map((v, idx) => {
+            if (v === null || (list.length === 1 && v.length === 0))
+              return <div key={idx}>No results</div>
+            return <div key={v + idx}>{v}</div>
+          })
+        )}
+        {}
       </div>
     </div>
   )

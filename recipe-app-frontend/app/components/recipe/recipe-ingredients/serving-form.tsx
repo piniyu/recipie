@@ -1,11 +1,38 @@
-import { useRef, useState } from 'react'
+import { useSubmit } from '@remix-run/react'
+import React, { useCallback, useRef, useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { updateServings } from 'store/basketSlice'
+import { useAppDispatch } from 'store/configureStore'
 
-export default function ServingForm(): JSX.Element {
-  const inputTemplate = useRef<HTMLSpanElement>(null)
-  const servingInputRef = useRef<HTMLInputElement>(null)
-  const [inputValue, setInputValue] = useState('2')
+type FormPropsType = {
+  input: number
+}
+
+export default function ServingForm({
+  onSubmit,
+}: {
+  onSubmit: (v: FormPropsType) => void
+}): JSX.Element {
+  const { register, handleSubmit, setValue, watch } = useForm<FormPropsType>({
+    defaultValues: { input: 1 },
+  })
+  const watchValue = watch('input')
+  const submit = useSubmit()
+  const dispatch = useAppDispatch()
+  const servingInputRef = useRef<HTMLInputElement | null>(null)
+  const inputRef = useCallback(
+    (node: HTMLInputElement) => {
+      if (node !== null) {
+        servingInputRef.current = node
+        register('input').ref(node)
+      }
+    },
+    [register],
+  )
+
+  // const [inputValue, setInputValue] = useState('2')
   return (
-    <form>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex items-center justify-center gap-2 text-center mb-6 py-9 text-xl font-bold">
         <span className="">I need </span>
         <div className="relative inline-block min-w-[60px] max-w-[80px] h-9  text-3xl  ">
@@ -20,7 +47,7 @@ export default function ServingForm(): JSX.Element {
             onClick={() => {
               if (servingInputRef.current) {
                 servingInputRef.current.stepUp()
-                setInputValue(prev => (parseInt(prev) + 1).toString())
+                setValue('input', watchValue + 1)
               }
             }}
           >
@@ -32,11 +59,11 @@ export default function ServingForm(): JSX.Element {
             className="whitespace-pre inline-block max-w-[80px] overflow-hidden"
             // ref={inputTemplate}
           >
-            {inputValue}
+            {watchValue}
           </span>
           <input
+            {...register('input')}
             type="number"
-            defaultValue={2}
             className="absolute w-full top-0 left-0 text-center align-top outline-focus-outline"
             // onChange={e => {
             //   console.log(e, inputValue)
@@ -50,7 +77,6 @@ export default function ServingForm(): JSX.Element {
             }}
             // value={inputValue}
             onKeyDown={e => {
-              console.log(e.key, inputValue)
               if (
                 ((e.target as HTMLInputElement).value.length === 0 &&
                   ['0'].includes(e.key)) ||
@@ -59,7 +85,7 @@ export default function ServingForm(): JSX.Element {
                 e.preventDefault()
               }
             }}
-            ref={servingInputRef}
+            ref={inputRef}
           />
           <button
             className={`
@@ -68,7 +94,7 @@ export default function ServingForm(): JSX.Element {
                     flex 
                     mt-1 p-1 
                     border border-gray-200 rounded-full
-                    ${inputValue === '1' ? 'text-gray-300 ' : 'text-gray-500'}
+                    ${watchValue === 1 ? 'text-gray-300 ' : 'text-gray-500'}
                     `}
             type="button"
             onClick={e => {
@@ -78,10 +104,10 @@ export default function ServingForm(): JSX.Element {
               // }
               if (servingInputRef.current) {
                 servingInputRef.current.stepDown()
-                setInputValue(prev => (parseInt(prev) - 1).toString())
+                setValue('input', watchValue - 1)
               }
             }}
-            disabled={inputValue === '1'}
+            disabled={watchValue === 1}
           >
             <span className={`material-symbols-rounded text-lg leading-none  `}>
               keyboard_arrow_down
@@ -92,7 +118,8 @@ export default function ServingForm(): JSX.Element {
       </div>
       <button
         className="btn-md btn-secondary w-full gap-2"
-        disabled={inputValue === '1'}
+        disabled={watchValue === 1}
+        type="submit"
       >
         <span className="material-symbols-rounded text-xl leading-none">
           shopping_basket

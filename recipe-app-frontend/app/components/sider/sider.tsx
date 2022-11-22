@@ -1,8 +1,9 @@
-import { Link, NavLink } from '@remix-run/react'
+import { Link, NavLink, useFetcher, useLoaderData } from '@remix-run/react'
 import React, { useContext } from 'react'
 import Basket from '~/icons/basket'
 import Favorite from '~/icons/favorite'
 import Recipe from '~/icons/recipe'
+import { db } from '~/utils/db.server'
 import Logo from '../../icons/logo'
 import { localStorageKey, setLocalValue } from '../localstorage-form/methods'
 import { SiderActionKind, SiderItemType } from './sider-context'
@@ -104,8 +105,32 @@ function SiderItem({
   )
 }
 
+export const loader = async () => {
+  const basket = await db.basket.findUnique({
+    where: { userId: 'testuser0' },
+    include: {
+      recipes: { include: { _count: { select: { ingredientsNum: true } } } },
+    },
+  })
+  console.log(basket)
+  return basket?.recipes
+}
+
 export default function Sider(): JSX.Element | null {
   const { hidden } = useContext(SiderContext)
+  // const data = useLoaderData()
+  // const basket = async () =>
+  //   await db.basket.findUnique({
+  //     where: { userId: 'testuser0' },
+  //     include: {
+  //       recipes: { include: { _count: { select: { ingredientsNum: true } } } },
+  //     },
+  //   })
+  // console.log(db)
+  // basket().then(data => {
+  //   console.log(data)
+  // })
+
   // console.log(state)
   if (hidden) {
     return null

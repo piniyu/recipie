@@ -10,6 +10,7 @@ module.exports = {
     // 'canvas',
     'react-konva',
     /^konva.*/,
+    /^redux-persist.*/,
   ],
 
   // appDirectory: "app",

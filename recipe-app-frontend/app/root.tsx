@@ -1,6 +1,8 @@
-import type {
+import {
   ErrorBoundaryComponent,
+  json,
   LinksFunction,
+  LoaderFunction,
   MetaFunction,
 } from '@remix-run/node'
 import {
@@ -15,7 +17,10 @@ import {
 } from '@remix-run/react'
 import styles from './styles/app.css'
 import Layout from './components/layout'
-// import { StyledEngineProvider } from '@mui/material'
+import { db } from './utils/db.server'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistor, store } from 'store/configureStore'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -85,6 +90,17 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   }
   return null
 }
+
+// export const loader: LoaderFunction = async () => {
+//   const basket = await db.basket.findUnique({
+//     where: { userId: 'testuser0' },
+//     include: {
+//       recipes: { include: { _count: { select: { ingredientsNum: true } } } },
+//     },
+//   })
+//   console.log(json(basket))
+// }
+
 export default function App() {
   return (
     <html lang="en">
@@ -93,16 +109,18 @@ export default function App() {
         <Links />
       </head>
 
-      {/* <StyledEngineProvider injectFirst> */}
       <body id="app">
-        <Layout>
-          <Outlet />
-        </Layout>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <Layout>
+              <Outlet />
+            </Layout>
+          </PersistGate>
+        </Provider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
       </body>
-      {/* </StyledEngineProvider> */}
     </html>
   )
 }

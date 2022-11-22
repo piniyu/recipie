@@ -1,4 +1,6 @@
 import { Ingredient, NumIngredientOnRecipe } from '@prisma/client'
+import { addServings, updateIngredient } from 'store/basketSlice'
+import { useAppDispatch } from 'store/configureStore'
 import ContentCard from '~/components/card/content-card'
 import RecipeIngredientsTable, {
   RecipeTableProps,
@@ -12,6 +14,7 @@ export default function Index({
 }: {
   data: IngredientData[]
 }): JSX.Element {
+  const dispatch = useAppDispatch()
   return (
     <ContentCard>
       <h3 className="mb-6">Ingredients</h3>
@@ -21,7 +24,19 @@ export default function Index({
       <p className="mb-9 text-right text-sm text-gray-400">
         Original recipe yields <b>1</b> servings
       </p>
-      <ServingForm />
+      <ServingForm
+        onSubmit={v => {
+          data.forEach(item => {
+            console.log(v)
+            dispatch(
+              addServings({
+                name: item.ingredient.name,
+                servings: v.input,
+              }),
+            )
+          })
+        }}
+      />
     </ContentCard>
   )
 }
