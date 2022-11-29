@@ -1,11 +1,11 @@
 import { Ingredient, NumIngredientOnRecipe } from '@prisma/client'
-import { addServings, updateIngredient } from 'store/basketSlice'
-import { useAppDispatch } from 'store/configureStore'
+import { useAppDispatch } from 'store/configure-store'
 import ContentCard from '~/components/card/content-card'
 import RecipeIngredientsTable, {
   RecipeTableProps,
 } from './recipe-ingredients-table'
 import ServingForm from './serving-form'
+import { updateRecipeServings } from 'store/recipe-servings-slice'
 
 export type IngredientData = NumIngredientOnRecipe & { ingredient: Ingredient }
 
@@ -29,8 +29,8 @@ export default function Index({
           data.forEach(item => {
             console.log(v)
             dispatch(
-              addServings({
-                name: item.ingredient.name,
+              updateRecipeServings({
+                recipeId: item.recipeId,
                 servings: v.input,
               }),
             )

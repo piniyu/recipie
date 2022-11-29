@@ -8,7 +8,7 @@ export default function SearchBar({
 }: {
   placeholder?: string
   border?: boolean
-  list: any[] | undefined
+  list: string[] | undefined
   fetch: (inputValue: string) => void
 }): JSX.Element {
   return (
@@ -65,7 +65,7 @@ export default function SearchBar({
             shadow-lg
             `}
       >
-        {list?.length === 0 ? (
+        {list === undefined || list?.length === 0 ? (
           <div>No results</div>
         ) : (
           list?.map((v, idx) => {
@@ -74,7 +74,6 @@ export default function SearchBar({
             return <div key={v + idx}>{v}</div>
           })
         )}
-        {}
       </div>
     </div>
   )

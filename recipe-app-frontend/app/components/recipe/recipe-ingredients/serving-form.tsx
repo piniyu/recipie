@@ -1,8 +1,8 @@
 import { useSubmit } from '@remix-run/react'
 import React, { useCallback, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { updateServings } from 'store/basketSlice'
-import { useAppDispatch } from 'store/configureStore'
+import { updateServings } from 'store/ingredients-slice'
+import { useAppDispatch } from 'store/configure-store'
 
 type FormPropsType = {
   input: number

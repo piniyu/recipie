@@ -1,8 +1,10 @@
-import { combineReducers, createSlice } from '@reduxjs/toolkit'
-import basketSlice from './basketSlice'
+import { combineReducers } from '@reduxjs/toolkit'
+import basketSlice from './ingredients-slice'
+import recipeServingsSlice from './recipe-servings-slice'
 
 const rootReducer = combineReducers({
-  basket: basketSlice,
+  ingredients: basketSlice,
+  recipeServings: recipeServingsSlice,
 })
 
 export default rootReducer

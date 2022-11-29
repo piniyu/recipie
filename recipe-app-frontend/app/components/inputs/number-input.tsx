@@ -1,55 +1,46 @@
-import { useEffect, useRef, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { BasketTableRow } from '.'
-
-export default function TableRowForm({
-  value,
-  unit,
-  setInputValue,
-  isDeleted,
+import { useEffect, useRef } from 'react'
+import { useController, useFormContext } from 'react-hook-form'
+import { ErrorMessage } from '@hookform/error-message'
+const NumberInput = ({
   hasSetBtn,
-  defaultValue,
+  unit,
+  registerName,
+  maxValue,
+  showErrors,
+  onChange,
+  onSubmit,
 }: {
-  value: number
-  unit?: string
-  setInputValue: (value: number) => void
-  isDeleted: boolean
+  showErrors?: boolean
+  maxValue?: number
+  registerName: string
   hasSetBtn?: boolean
-  defaultValue: number | undefined
-}) {
+  unit?: string
+  onChange?: (e: React.ChangeEvent) => void
+  onSubmit?: (value: any) => void
+}) => {
   const {
-    register,
     watch,
+    register,
     setValue,
-    reset,
+    handleSubmit,
     formState: { errors },
-  } = useForm<{ input: number }>({
-    mode: 'onChange',
-  })
-  const input = watch('input')
+  } = useFormContext()
+  const input = watch(registerName)
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   useEffect(() => {
-    if (defaultValue) {
-      reset({ input: defaultValue })
-      console.log(defaultValue)
-    }
-  }, [defaultValue, reset])
-
-  useEffect(() => {
-    const subscription = watch(v => {
-      if (v.input) {
-        setInputValue(v.input)
+    const subscription = watch(() => {
+      if (onSubmit) {
+        handleSubmit(onSubmit)()
       }
     })
-
     return () => {
       subscription.unsubscribe()
     }
-  }, [setInputValue, watch])
+  }, [handleSubmit, onSubmit, watch])
 
   return (
-    <form className="relative flex items-stretch justify-center">
+    <div className="flex">
       {hasSetBtn ? (
         <button
           className=" flex items-center rounded-l-lg border border-r-0 border-gray-200 disabled:text-gray-400"
@@ -67,9 +58,11 @@ export default function TableRowForm({
         </button>
       ) : null}
       <input
-        {...register('input', {
+        {...register(registerName, {
           valueAsNumber: true,
-          max: { value: value, message: 'Out of original quantity' },
+          max: maxValue
+            ? { value: maxValue, message: 'Out of original quantity' }
+            : undefined,
           min: 0,
         })}
         type="number"
@@ -89,9 +82,10 @@ export default function TableRowForm({
             e.preventDefault()
           }
           if (
+            maxValue !== undefined &&
             !isNaN(input) &&
             (input + '').replace('.', '').length ===
-              (value + '').replace('.', '').length &&
+              (maxValue + '').replace('.', '').length &&
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(parseInt(e.key))
           ) {
             e.preventDefault()
@@ -120,11 +114,19 @@ export default function TableRowForm({
         </button>
       ) : null}
       {unit ? <span className="ml-2 flex items-center">{unit}</span> : null}
-      {!isDeleted && (
-        <span className="absolute left-0 top-full text-red-500 text-xs">
-          {errors.input?.message}
-        </span>
+      {showErrors && (
+        <ErrorMessage
+          name={registerName}
+          errors={errors}
+          render={({ message }) => (
+            <span className="absolute left-0 top-full text-red-500 text-xs">
+              {message}
+            </span>
+          )}
+        />
       )}
-    </form>
+    </div>
   )
 }
+
+export default NumberInput

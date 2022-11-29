@@ -1,8 +1,16 @@
 import { useState } from 'react'
-import type { BasketState } from 'store/basketSlice'
-import { updateHadQuan, updateServings } from 'store/basketSlice'
-import { useAppDispatch } from 'store/configureStore'
+import { updateHadQuan } from 'store/ingredients-slice'
+import { useAppDispatch } from 'store/configure-store'
 import TableRowForm from './table-row-form'
+import { BasketState } from 'store/selectBasket.client'
+
+// const sumServing = (servings: IngredientsState['servings']) => {
+//   return servings
+//     .map(({ serving }) => {
+//       return serving
+//     })
+//     .reduce((a, b) => a + b)
+// }
 
 export default function TableRow({
   name,
@@ -21,16 +29,15 @@ export default function TableRow({
   return (
     <div className={`relative table-row-group text-secondary `}>
       <div className="table-row">
-        <div className="table-cell py-3 ">
+        <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 ">
           <div className="flex items-center">
             <span>{name}</span>
-            <span className="flex-1 h-0 mx-3 border-b-2 border-gray-300 border-dotted"></span>
           </div>
         </div>
         <div
           className={`
           relative 
-          table-cell 
+          table-cell px-4 first:pl-8 last:pr-8 
           py-3 
           text-secondary font-bold 
           text-lg
@@ -42,14 +49,16 @@ export default function TableRow({
               unit}
           </span>
         </div>
-        <div className="table-cell py-3 text-gray-500">=</div>
-        <div className="table-cell py-3">
-          <div className="text-center">
-            {value * localBasket.servings + unit}
-          </div>
+        {/* <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 text-gray-500">
+          =
+        </div> */}
+        <div className="table-cell px-4 first:pl-8 last:pr-8 py-3">
+          <div className="">{value * localBasket.servings + unit}</div>
         </div>
-        <div className="table-cell py-3 text-gray-500">-</div>
-        <div className="table-cell py-3 ">
+        {/* <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 text-gray-500">
+          -
+        </div> */}
+        <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 ">
           <TableRowForm
             {...{
               setInputValue: (value: number) =>
@@ -61,7 +70,7 @@ export default function TableRow({
             }}
           />
         </div>
-        <div className="table-cell py-3 align-bottom">
+        {/* <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 align-bottom">
           <TableRowForm
             {...{
               setInputValue: (value: number) =>
@@ -72,8 +81,8 @@ export default function TableRow({
               hasSetBtn: true,
             }}
           />
-        </div>
-        <div className="table-cell align-middle py-3 text-gray-500">
+        </div> */}
+        <div className="table-cell px-4 first:pl-8 last:pr-8 align-middle py-3 text-gray-500">
           <button
             className="flex p-1"
             onClick={() => {

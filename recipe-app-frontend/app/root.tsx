@@ -20,7 +20,7 @@ import Layout from './components/layout'
 import { db } from './utils/db.server'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-import { persistor, store } from 'store/configureStore'
+import { persistor, store } from 'store/configure-store'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',

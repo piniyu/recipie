@@ -1,14 +1,18 @@
-import React from 'react'
+import { Form } from '@remix-run/react'
+import React, { ReactNode } from 'react'
 import img1 from '../../../public/assets/img1.jpeg'
+import NumberInput from '../inputs/number-input'
 
 export default function CardListItem({
   title,
   onDelete,
   recipeId,
+  subTitle,
 }: {
   title: string
   onDelete?: (e: React.FormEvent) => void
   recipeId: string
+  subTitle?: ReactNode
 }): JSX.Element {
   return (
     <div className="flex gap-4 ">
@@ -22,12 +26,16 @@ export default function CardListItem({
           {/* </div> */}
         </div>
       </div>
-      <h4 className="flex-1 py-2 text-black font-medium">{title}</h4>
+
+      <div className="flex-1 flex flex-col justify-between">
+        <h4 className="flex-1 text-black font-medium">{title}</h4>
+        {subTitle}
+      </div>
       {onDelete ? (
-        <form className="flex items-center" onSubmit={onDelete} method="post">
+        <Form className="flex " onSubmit={onDelete} method="post">
           <input type="hidden" name="delete" value={recipeId} />
           <button
-            className="flex p-1 border border-gray-200 rounded-full"
+            className="flex p-1 rounded-full"
             name={recipeId}
             type="submit"
           >
@@ -35,7 +43,7 @@ export default function CardListItem({
               close
             </span>
           </button>
-        </form>
+        </Form>
       ) : null}
     </div>
   )
