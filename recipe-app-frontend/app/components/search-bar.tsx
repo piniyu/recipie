@@ -8,7 +8,7 @@ export default function SearchBar({
 }: {
   placeholder?: string
   border?: boolean
-  list: string[] | undefined
+  list: string[] | null
   fetch: (inputValue: string) => void
 }): JSX.Element {
   return (

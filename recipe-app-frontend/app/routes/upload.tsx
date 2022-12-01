@@ -2,12 +2,11 @@ import type { ErrorBoundaryComponent } from '@remix-run/node'
 import { Link, NavLink, Outlet, useNavigate, useParams } from '@remix-run/react'
 import { useContext, useEffect, useState } from 'react'
 import ContentCard from '~/components/card/content-card'
-import {
-  defaultSiderValue,
-  SiderActionKind,
-  SiderContext,
-} from '~/components/sider/sider-context'
-import { StepFormProps } from '~/components/step-form'
+// import {
+//   SiderActionKind,
+//   SiderContext,
+// } from '~/components/sider/sider-context'
+// import { StepFormProps } from '~/components/step-form'
 import {
   getLocalValue,
   localStorageKey,
@@ -23,7 +22,7 @@ const initialSideList = [
 ]
 
 export default function Upload(): JSX.Element {
-  const { state, dispatch } = useContext(SiderContext)
+  // const { state, dispatch } = useContext(SiderContext)
   const { stepIdx } = useParams()
   const [sideList, setSideList] = useState(initialSideList)
   // useEffect(() => {

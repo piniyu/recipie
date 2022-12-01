@@ -10,7 +10,7 @@
 
 @layer base {
   body {
-    font-family: var(--font-default), system-ui, sans-serif;
+    font-family: var(--font-ui), system-ui, sans-serif;
   }
   h1 {
     @apply text-4xl font-bold;
@@ -54,7 +54,7 @@
     @apply py-8;
   }
   .layout-px {
-    @apply px-14;
+    @apply px-9;
   }
   .sider-item {
     @apply mx-5 px-5 py-3 rounded-lg;
@@ -71,6 +71,8 @@
   .input {
     @apply p-2 border rounded-lg outline-focus-outline;
   }
+
+  /** button size **/
   .btn-sm {
     font-family: var(--font-ui);
     @apply flex justify-center items-center px-4 py-2 rounded-lg;
@@ -83,6 +85,7 @@
     font-family: var(--font-ui);
     @apply flex justify-center items-center px-5 py-4 rounded-lg;
   }
+  /** button style **/
   .btn-secondary {
     @apply bg-primary text-black font-medium hover:bg-primary/90 transition-colors;
   }
@@ -97,6 +100,21 @@
   }
   .btn-successful {
     @apply bg-green-600 text-white font-medium;
+  }
+
+  /** icon button size **/
+  .icon-btn-sm {
+    @apply p-2 flex items-center justify-center rounded-full;
+  }
+  .icon-btn-md {
+    @apply h-12 w-12 rounded-full flex items-center justify-center;
+  }
+  /** icon button style **/
+  .icon-btn-float {
+    @apply bg-white shadow-md text-black transition-all hover:text-primary;
+  }
+  .icon-btn-ui {
+    @apply text-gray-400 hover:bg-gray-200/70 transition-colors;
   }
 }
 @layer utilities {

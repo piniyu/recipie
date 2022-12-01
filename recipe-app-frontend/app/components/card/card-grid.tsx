@@ -1,4 +1,5 @@
-import Card, { CardProps } from './card'
+import type { CardProps } from './card'
+import Card from './card'
 
 export default function CardGrid({ data }: { data: CardProps[] }): JSX.Element {
   return (

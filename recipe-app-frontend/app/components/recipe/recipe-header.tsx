@@ -25,49 +25,13 @@ export default function RecipeHeader({
   const navigate = useNavigate()
   return (
     <div className="flex flex-col space-y-10">
-      <div className="flex items-center justify-between ">
-        <div className="flex items-center gap-6 text-gray-600">
-          <div className="flex items-center gap-2">
-            <IconBtn
-              type="border"
-              icon={
-                <span className="material-symbols-rounded text-2xl leading-none">
-                  favorite
-                </span>
-              }
-            />
-            <span className="">320</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="material-symbols-rounded text-2xl leading-none">
-              shopping_basket
-            </span>
-            <span className="">1,452</span>
-          </div>
-        </div>
-        <Link
-          className="btn-primary btn-md w-fit h-fit text-lg cursor-pointer"
-          to={'/recipe/modal'}
-          // onClick={() => {
-          //   localStorage.setItem('scrollPosition', window.scrollY.toString())
-          //   // console.log(window.scrollY)
-          //   navigate('/recipe/modal')
-          // }}
-        >
-          Start Cooking
-        </Link>
-      </div>
       <ContentCard>
         <div className="flex space-x-10">
           <HeaderImg src={img1} />
-          <div className="flex-1 flex flex-col space-y-6">
-            <div className="flex gap-3">
-              <Tag text="tag" />
-              <Tag text="tag" />
-            </div>
+          <div className="flex-1 flex flex-col space-y-8">
             <h1 className=" text-black">{title}</h1>
             <div>
-              <div className="flex items-center gap-2 mb-4 text-gray-500">
+              <div className="flex items-center gap-2 text-gray-500">
                 <span className="inline-flex items-center gap-2">
                   <span className="material-icons-round leading-none text-gray-500">
                     person
@@ -77,11 +41,43 @@ export default function RecipeHeader({
                 <div className="self-stretch w-[1px] bg-gray-200"></div>
                 <span>{moment(createdAt).format('LL')}</span>
               </div>
-              <div className="flex items-center text-gray-500">
-                <span>Difficulty:</span>
-                <DifficultyBtn {...{ difficulty }} />
+            </div>
+            <div className="flex-1">
+              <div className="flex gap-3">
+                <Tag text="tag" />
+                <Tag text="tag" />
               </div>
             </div>
+            <div className="flex justify-center">
+              <Link
+                className="btn-primary btn-md w-full h-fit text-lg cursor-pointer"
+                to={'/recipe/modal'}
+              >
+                Start Cooking
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center justify-around mt-10 text-gray-600">
+          <div className="flex items-center text-gray-500">
+            <span>Difficulty:</span>
+            <DifficultyBtn {...{ difficulty }} />
+          </div>
+          <div className="w-[1px] bg-gray-200 h-[35px]"></div>
+          <div className="flex items-center gap-2">
+            <button className="icon-btn-sm bg-red-400 text-white">
+              <span className="material-symbols-rounded leading-none">
+                favorite
+              </span>
+            </button>
+            <span className="">320</span>
+          </div>
+          <div className="w-[1px] bg-gray-200 h-[35px]"></div>
+          <div className="flex items-center gap-2">
+            <span className="material-symbols-rounded leading-none">
+              shopping_basket
+            </span>
+            <span className="">1,452</span>
           </div>
         </div>
       </ContentCard>

@@ -117,7 +117,7 @@ export const loader = async () => {
 }
 
 export default function Sider(): JSX.Element | null {
-  const { hidden } = useContext(SiderContext)
+  const { hidden, close } = useContext(SiderContext)
   // const data = useLoaderData()
   // const basket = async () =>
   //   await db.basket.findUnique({
@@ -136,7 +136,22 @@ export default function Sider(): JSX.Element | null {
     return null
   }
   return (
-    <nav className="w-[255px] h-screen flex flex-col bg-white pt-4 sticky top-0 space-y-4 shadow-xl z-10 overflow-auto">
+    <nav
+      className={`
+      fixed z-20 
+      flex-shrink-0 
+      w-[255px] h-screen 
+      top-0 
+      flex flex-col 
+      space-y-4 
+      pt-4 
+      bg-white 
+      shadow-xl 
+      overflow-auto
+      transition-transform
+     ${close ? '-translate-x-full' : ''}
+     `}
+    >
       <NavLink to="/">
         <div className="sider-item flex p-0 h-7">
           <Logo />

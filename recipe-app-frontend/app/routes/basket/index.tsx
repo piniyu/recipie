@@ -95,7 +95,7 @@ export default function BasketSidePanel() {
   const fetcher = useFetcher<LoaderData>()
   const servings = useAppSelector(state => state.recipeServings)
   const dispatch = useAppDispatch()
-  const [resList, setResList] = useState<string[] | undefined>()
+  const [resList, setResList] = useState<string[] | null>(null)
 
   useEffect(() => {
     data?.basket.recipes.forEach(({ id, ingredientsNum }) => {

@@ -26,13 +26,17 @@ interface SiderAction {
 }
 
 type Context = {
-  setHidden: React.Dispatch<boolean>
+  setHidden: React.Dispatch<React.SetStateAction<boolean>>
   hidden: boolean
+  close: boolean
+  setClose: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const SiderContext = createContext<Context>({
   hidden: false,
   setHidden: () => {},
+  close: false,
+  setClose: () => {},
 })
 const { Provider } = SiderContext
 
@@ -93,5 +97,10 @@ export default function SiderProvider({
   const location = useLocation()
   // const [state, dispatch] = useReducer(reducer, defaultSiderValue)
   const [hidden, setHidden] = useState(false)
-  return <Provider value={{ hidden, setHidden }}>{children}</Provider>
+  const [close, setClose] = useState(false)
+  return (
+    <Provider value={{ hidden, setHidden, close, setClose }}>
+      {children}
+    </Provider>
+  )
 }
