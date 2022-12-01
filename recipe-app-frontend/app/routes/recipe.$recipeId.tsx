@@ -51,31 +51,31 @@ const nutritionData: NutritionBarChartProps[][] = [
     },
   ],
 ]
-const ingredientsTableData: RecipeTableProps[] = [
-  {
-    ingredient: 'Salmon',
-    mes: 'g',
-    qat: 300,
-  },
+// const ingredientsTableData: RecipeTableProps[] = [
+//   {
+//     ingredient: 'Salmon',
+//     mes: 'g',
+//     qat: 300,
+//   },
 
-  {
-    ingredient: 'Salt',
-    mes: 'mg',
-    qat: 100,
-  },
+//   {
+//     ingredient: 'Salt',
+//     mes: 'mg',
+//     qat: 100,
+//   },
 
-  {
-    ingredient: 'Milk',
-    mes: 'ml',
-    qat: 50,
-  },
+//   {
+//     ingredient: 'Milk',
+//     mes: 'ml',
+//     qat: 50,
+//   },
 
-  {
-    ingredient: 'Egg',
-    mes: 'pcs',
-    qat: 1,
-  },
-]
+//   {
+//     ingredient: 'Egg',
+//     mes: 'pcs',
+//     qat: 1,
+//   },
+// ]
 
 type LoaderData =
   | (Recipe & {
@@ -89,9 +89,10 @@ const RecipeWithIngredients = Prisma.validator<Prisma.RecipeInclude>()({
   ingredientsNum: { include: { ingredient: true } },
 })
 
-export const loader = async () => {
+export const loader: LoaderFunction = async ({ params }) => {
+  const id = params.recipeId
   const recipe = await db.recipe.findUnique({
-    where: { id: 'testrecipe0' },
+    where: { id },
     include: RecipeWithIngredients,
   })
 
@@ -101,15 +102,15 @@ export const loader = async () => {
 export default function RecipeIndex(): JSX.Element {
   const data = useLoaderData() as LoaderData
 
-  useEffect(() => {
-    const scrollValue = localStorage.getItem('scrollPosition')
-    if (scrollValue) {
-      window.scrollTo({ top: parseInt(scrollValue) })
-    }
-  }, [])
+  // useEffect(() => {
+  //   const scrollValue = localStorage.getItem('scrollPosition')
+  //   if (scrollValue) {
+  //     window.scrollTo({ top: parseInt(scrollValue) })
+  //   }
+  // }, [])
 
   if (!data) {
-    throw new Error()
+    return <div>Not found the recipe!</div>
   }
   const {
     title,
@@ -118,7 +119,7 @@ export default function RecipeIndex(): JSX.Element {
     difficulty,
     ingredientsNum,
   } = data
-  console.log(data)
+  // console.log(data)
   return (
     <div className="flex flex-col mx-auto min-h-screen relative max-w-7xl">
       <div className="flex-1 relative ">

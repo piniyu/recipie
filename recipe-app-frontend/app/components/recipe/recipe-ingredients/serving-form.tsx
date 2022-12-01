@@ -1,8 +1,7 @@
-import { useSubmit } from '@remix-run/react'
+import { useParams, useSubmit } from '@remix-run/react'
 import React, { useCallback, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { updateServings } from 'store/ingredients-slice'
-import { useAppDispatch } from 'store/configure-store'
+import { useAppDispatch, useAppSelector } from 'store/configure-store'
 
 type FormPropsType = {
   input: number
@@ -13,12 +12,21 @@ export default function ServingForm({
 }: {
   onSubmit: (v: FormPropsType) => void
 }): JSX.Element {
-  const { register, handleSubmit, setValue, watch } = useForm<FormPropsType>({
-    defaultValues: { input: 1 },
+  const { recipeId } = useParams()
+  console.log(recipeId)
+  const recipeServing = useAppSelector(state => state.recipeServings)
+  const recipe = recipeServing.find(recipe => recipe.recipeId === recipeId)
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    reset,
+    formState: { isSubmitSuccessful, isDirty },
+  } = useForm<FormPropsType>({
+    defaultValues: recipe ? { input: recipe.servings } : { input: 1 },
   })
   const watchValue = watch('input')
-  const submit = useSubmit()
-  const dispatch = useAppDispatch()
   const servingInputRef = useRef<HTMLInputElement | null>(null)
   const inputRef = useCallback(
     (node: HTMLInputElement) => {
@@ -32,7 +40,17 @@ export default function ServingForm({
 
   // const [inputValue, setInputValue] = useState('2')
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form
+      onSubmit={handleSubmit(e => {
+        onSubmit(e)
+        reset(
+          {
+            input: e.input,
+          },
+          { keepDirty: false },
+        )
+      })}
+    >
       <div className="flex items-center justify-center gap-2 text-center mb-6 py-9 text-xl font-bold">
         <span className="">I need </span>
         <div className="relative inline-block min-w-[60px] max-w-[80px] h-9  text-3xl  ">
@@ -47,7 +65,7 @@ export default function ServingForm({
             onClick={() => {
               if (servingInputRef.current) {
                 servingInputRef.current.stepUp()
-                setValue('input', watchValue + 1)
+                setValue('input', watchValue + 1, { shouldDirty: true })
               }
             }}
           >
@@ -104,7 +122,7 @@ export default function ServingForm({
               // }
               if (servingInputRef.current) {
                 servingInputRef.current.stepDown()
-                setValue('input', watchValue - 1)
+                setValue('input', watchValue - 1, { shouldDirty: true })
               }
             }}
             disabled={watchValue === 1}
@@ -117,14 +135,22 @@ export default function ServingForm({
         <span className=""> Servings</span>
       </div>
       <button
-        className="btn-md btn-secondary w-full gap-2"
-        disabled={watchValue === 1}
+        className={`btn-md w-full gap-2 ${
+          isSubmitSuccessful && !isDirty ? 'btn-successful' : 'btn-secondary'
+        }`}
+        disabled={watchValue === 0}
         type="submit"
       >
         <span className="material-symbols-rounded text-xl leading-none">
-          shopping_basket
+          {isSubmitSuccessful ? 'done' : ' shopping_basket '}
         </span>
-        Add to basket
+        {isSubmitSuccessful && !isDirty
+          ? recipe
+            ? 'Updated basket'
+            : 'Added to basket'
+          : recipe
+          ? 'Update basket servings'
+          : 'Add to basket'}
       </button>
     </form>
   )

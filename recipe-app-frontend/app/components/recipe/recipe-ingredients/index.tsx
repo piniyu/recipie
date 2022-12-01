@@ -27,7 +27,6 @@ export default function Index({
       <ServingForm
         onSubmit={v => {
           data.forEach(item => {
-            console.log(v)
             dispatch(
               updateRecipeServings({
                 recipeId: item.recipeId,

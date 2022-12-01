@@ -847,6 +847,14 @@ input[type='number'] {
   color: rgb(168 162 158 / var(--tw-text-opacity));
 }
 
+.btn-successful {
+  --tw-bg-opacity: 1;
+  background-color: rgb(13 148 136 / var(--tw-bg-opacity));
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 #app .pointer-events-none {
   pointer-events: none;
 }
@@ -1056,12 +1064,12 @@ input[type='number'] {
   height: 100%;
 }
 
-#app .h-screen {
-  height: 100vh;
-}
-
 #app .h-20 {
   height: 5rem;
+}
+
+#app .h-screen {
+  height: 100vh;
 }
 
 #app .h-fit {

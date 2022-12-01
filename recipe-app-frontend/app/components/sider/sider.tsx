@@ -14,7 +14,7 @@ const defaultSiderValue: SiderItemType[] = [
   //     icon: <Overview />, value: 'Overview'
   // },
   // { value: 'Upload recipe', route: 'upload', isBtn: true },
-  { icon: <Recipe />, value: 'Recipe', route: 'recipe' },
+  { icon: <Recipe />, value: 'Recipe', route: 'recipe/testrecipe0' },
   { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
   { icon: <Basket />, value: 'Basket', route: 'basket' },
 ]
