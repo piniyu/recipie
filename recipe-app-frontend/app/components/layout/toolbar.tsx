@@ -1,10 +1,10 @@
-import type { ReactNode } from 'react'
+import { useNavigate } from '@remix-run/react'
 import { useContext } from 'react'
-import Sider from './sider/sider'
-import SiderProvider, { SiderContext } from './sider/sider-context'
-
+import { SiderContext } from '../sider/sider-context'
 const Toolbar = () => {
   const { setClose, close } = useContext(SiderContext)
+  const navigate = useNavigate()
+
   return (
     <header
       className={`fixed z-10 w-screen min-h-[64px] flex items-center bg-inherit ${
@@ -15,11 +15,7 @@ const Toolbar = () => {
         <button
           className="icon-btn-sm icon-btn-ui -ml-2"
           onClick={() => {
-            // setClose(false)
-            setClose(prev => {
-              console.log(prev)
-              return !prev
-            })
+            setClose(prev => !prev)
           }}
         >
           <span
@@ -31,7 +27,12 @@ const Toolbar = () => {
         </button>
         <div className="flex-1"></div>
         <button className="btn-sm btn-secondary mr-4">Uplode Recipe</button>
-        <button className="icon-btn-sm icon-btn-ui">
+        <button
+          className="icon-btn-sm icon-btn-ui"
+          onClick={() => {
+            navigate('?basket-panel=true')
+          }}
+        >
           <span
             className="material-symbols-rounded leading-none "
             style={{ fontVariationSettings: "'wght' 300" }}
@@ -52,28 +53,4 @@ const Toolbar = () => {
     </header>
   )
 }
-
-const LayoutChildren = ({ children }: { children: ReactNode }) => {
-  const { close } = useContext(SiderContext)
-  return (
-    <div className={`min-h-screen flex-1 pt-16 ${close ? '' : 'pl-[255px]'}`}>
-      {children}
-    </div>
-  )
-}
-
-export default function Layout({
-  children,
-}: {
-  children: ReactNode
-}): JSX.Element {
-  return (
-    <SiderProvider>
-      <div className="flex bg-gray-100">
-        <Sider />
-        <Toolbar />
-        <LayoutChildren>{children}</LayoutChildren>
-      </div>
-    </SiderProvider>
-  )
-}
+export default Toolbar

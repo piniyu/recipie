@@ -17,7 +17,7 @@ import {
   addRecipeServings,
   deleteRecipeServings,
 } from 'store/recipe-servings-slice'
-import ServingsForm from '~/components/basket/servings-form'
+import RecipeServingsForm from '~/components/basket/recipe-servings-form'
 import CardListItem from '~/components/card/card-list-item'
 import SearchBar from '~/components/search-bar'
 import { db } from '~/utils/db.server'
@@ -80,7 +80,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 }
 export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData()
-  const id = form.get('delete')
+  const id = form.get('deleteId')
   if (id) {
     await db.basket.update({
       where: { id: 'testbasket0' },
@@ -152,9 +152,9 @@ export default function BasketSidePanel() {
                   })
                 }}
                 subTitle={
-                  <ServingsForm
+                  <RecipeServingsForm
                     recipeId={id}
-                    ingredients={ingredientsNum}
+                    // ingredients={ingredientsNum}
                     defaultValue={
                       servings.find(item => item.recipeId === id)?.servings
                     }

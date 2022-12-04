@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useController, useFormContext } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
+
 const NumberInput = ({
   hasSetBtn,
   unit,
@@ -49,7 +50,7 @@ const NumberInput = ({
             if (inputRef.current && parseInt(inputRef.current.value) > 1) {
               inputRef.current.value = parseInt(inputRef.current.value) - 1 + ''
               setValue('input', parseInt(inputRef.current.value))
-              console.log(input)
+              // console.log(input)
             }
           }}
           disabled={input <= 1}

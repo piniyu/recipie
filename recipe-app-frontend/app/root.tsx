@@ -1,9 +1,11 @@
 import {
+  ActionFunction,
   ErrorBoundaryComponent,
   json,
   LinksFunction,
   LoaderFunction,
   MetaFunction,
+  redirect,
 } from '@remix-run/node'
 import {
   Link,
@@ -13,7 +15,11 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useFetcher,
+  useLoaderData,
+  useLocation,
   useNavigate,
+  useSearchParams,
 } from '@remix-run/react'
 import styles from './styles/app.css'
 import Layout from './components/layout'
@@ -21,6 +27,8 @@ import { db } from './utils/db.server'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistor, store } from 'store/configure-store'
+import BasketModal from './components/layout/basket-modal'
+import { deleteRecipe } from './actions/basket/delete-recipe'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -100,8 +108,32 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
 //   })
 //   console.log(json(basket))
 // }
-
+export const loader: LoaderFunction = async () => {
+  const recipes = await db.basket.findFirst({
+    where: { userId: 'testuser0' },
+    select: { recipes: { select: { id: true, title: true } } },
+  })
+  return json(recipes)
+}
+export const action: ActionFunction = async props => {
+  return await deleteRecipe(props)
+}
 export default function App() {
+  const basketData = useLoaderData()
+  const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
+  const location = useLocation()
+  const fetcher = useFetcher()
+  // const [basketData, setBasketData] = useState<{ id: string; title: string }[]>(
+  //   [],
+  // )
+
+  // useEffect(() => {
+  //   if (fetcher.data?.recipes) {
+  //     setBasketData(fetcher.data.recipes)
+  //   }
+  // }, [fetcher.data?.recipes])
+
   return (
     <html lang="en">
       <head>
@@ -116,6 +148,15 @@ export default function App() {
               <Outlet />
             </Layout>
           </PersistGate>
+          {searchParams.get('basket-panel') ? (
+            <BasketModal
+              open={searchParams.get('basket-panel') ? true : false}
+              onClose={() => {
+                navigate(`${location.pathname}`)
+              }}
+              basketData={basketData.recipes}
+            />
+          ) : null}
         </Provider>
         <ScrollRestoration />
         <Scripts />

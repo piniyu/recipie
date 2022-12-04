@@ -1,7 +1,7 @@
 import type { Recipe } from '@prisma/client'
 import type { LoaderFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
-import { useFetcher, useLoaderData } from '@remix-run/react'
+import { Outlet, useFetcher, useLoaderData } from '@remix-run/react'
 import { useEffect, useState } from 'react'
 import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'

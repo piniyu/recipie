@@ -1,4 +1,4 @@
-import { Form } from '@remix-run/react'
+import { Form, useLocation } from '@remix-run/react'
 import React, { ReactNode } from 'react'
 import img1 from '../../../public/assets/img1.jpeg'
 import NumberInput from '../inputs/number-input'
@@ -14,6 +14,7 @@ export default function CardListItem({
   recipeId: string
   subTitle?: ReactNode
 }): JSX.Element {
+  const location = useLocation()
   return (
     <div className="flex gap-4 ">
       <div className="w-24">
@@ -33,10 +34,15 @@ export default function CardListItem({
       </div>
       {onDelete ? (
         <Form className="flex " onSubmit={onDelete} method="post">
-          <input type="hidden" name="delete" value={recipeId} />
+          <input
+            type="hidden"
+            name="redirectTo"
+            value={`${location.pathname}${location.search}`}
+          />
+          <input type="hidden" name="deleteId" value={recipeId} />
           <button
             className="flex p-1 rounded-full"
-            name={recipeId}
+            // name={recipeId}
             type="submit"
           >
             <span className="material-symbols-rounded text-lg leading-none text-gray-500">
