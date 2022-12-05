@@ -142,7 +142,7 @@ export default function ServingForm({
         type="submit"
       >
         <span className="material-symbols-rounded text-xl leading-none">
-          {isSubmitSuccessful ? 'done' : ' shopping_basket '}
+          {isSubmitSuccessful && !isDirty ? 'done' : ' shopping_basket '}
         </span>
         {isSubmitSuccessful && !isDirty
           ? recipe

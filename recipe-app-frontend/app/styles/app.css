@@ -812,8 +812,32 @@ input[type='number'] {
   background-color: rgb(23 23 23 / 0.9);
 }
 
+.btn-primary:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(120 113 108 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(231 229 228 / var(--tw-text-opacity));
+}
+
+.btn-natrual {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 244 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23 / var(--tw-text-opacity));
+  transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.btn-natrual:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(231 229 228 / var(--tw-bg-opacity));
+}
+
 .btn-border {
-  border-width: 2px;
+  border-width: 1px;
   --tw-border-opacity: 1;
   border-color: rgb(251 191 36 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
@@ -915,6 +939,10 @@ input[type='number'] {
 
 #app .top-2 {
   top: 0.5rem;
+}
+
+#app .left-2 {
+  left: 0.5rem;
 }
 
 #app .left-\[calc\(50vw_-_48px\)\] {
@@ -1181,6 +1209,10 @@ input[type='number'] {
   width: 100%;
 }
 
+#app .w-96 {
+  width: 24rem;
+}
+
 #app .w-24 {
   width: 6rem;
 }
@@ -1411,6 +1443,18 @@ input[type='number'] {
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+#app .space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+
+#app .space-y-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+
 #app .space-y-10 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1423,12 +1467,6 @@ input[type='number'] {
   margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-#app .space-y-6 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
-}
-
 #app .space-x-8 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(2rem * var(--tw-space-x-reverse));
@@ -1439,12 +1477,6 @@ input[type='number'] {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
-#app .space-y-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
 #app .self-stretch {
@@ -1487,6 +1519,10 @@ input[type='number'] {
   border-radius: 0.25rem;
 }
 
+#app .rounded-xl {
+  border-radius: 0.75rem;
+}
+
 #app .rounded-2xl {
   border-radius: 1rem;
 }
@@ -1497,10 +1533,6 @@ input[type='number'] {
 
 #app .rounded-none {
   border-radius: 0px;
-}
-
-#app .rounded-xl {
-  border-radius: 0.75rem;
 }
 
 #app .rounded-l-lg {
@@ -1710,6 +1742,10 @@ input[type='number'] {
   padding: 0px !important;
 }
 
+#app .p-8 {
+  padding: 2rem;
+}
+
 #app .p-5 {
   padding: 1.25rem;
 }
@@ -1736,10 +1772,6 @@ input[type='number'] {
 
 #app .p-4 {
   padding: 1rem;
-}
-
-#app .p-8 {
-  padding: 2rem;
 }
 
 #app .px-4 {
@@ -1832,6 +1864,10 @@ input[type='number'] {
 
 #app .pb-8 {
   padding-bottom: 2rem;
+}
+
+#app .pt-32 {
+  padding-top: 8rem;
 }
 
 #app .pl-14 {
@@ -2049,13 +2085,13 @@ input[type='number'] {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
-#app .shadow-gray-200\/50 {
-  --tw-shadow-color: rgb(231 229 228 / 0.5);
+#app .shadow-gray-300\/50 {
+  --tw-shadow-color: rgb(214 211 209 / 0.5);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
-#app .shadow-gray-300\/50 {
-  --tw-shadow-color: rgb(214 211 209 / 0.5);
+#app .shadow-gray-200\/50 {
+  --tw-shadow-color: rgb(231 229 228 / 0.5);
   --tw-shadow: var(--tw-shadow-colored);
 }
 
@@ -2203,6 +2239,21 @@ input[type='number'] {
   position: absolute;
 }
 
+#app .before\:top-2::before {
+  content: var(--tw-content);
+  top: 0.5rem;
+}
+
+#app .before\:left-2::before {
+  content: var(--tw-content);
+  left: 0.5rem;
+}
+
+#app .before\:-top-2::before {
+  content: var(--tw-content);
+  top: -0.5rem;
+}
+
 #app .before\:-ml-9::before {
   content: var(--tw-content);
   margin-left: -2.25rem;
@@ -2221,6 +2272,64 @@ input[type='number'] {
 #app .before\:w-1::before {
   content: var(--tw-content);
   width: 0.25rem;
+}
+
+#app .before\:origin-top-left::before {
+  content: var(--tw-content);
+  transform-origin: top left;
+}
+
+#app .before\:scale-75::before {
+  content: var(--tw-content);
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+#app .before\:cursor-text::before {
+  content: var(--tw-content);
+  cursor: text;
+}
+
+#app .before\:bg-white::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+#app .before\:px-1::before {
+  content: var(--tw-content);
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+#app .before\:text-gray-400::before {
+  content: var(--tw-content);
+  --tw-text-opacity: 1;
+  color: rgb(168 162 158 / var(--tw-text-opacity));
+}
+
+#app .before\:text-gray-500::before {
+  content: var(--tw-content);
+  --tw-text-opacity: 1;
+  color: rgb(120 113 108 / var(--tw-text-opacity));
+}
+
+#app .before\:transition-all::before {
+  content: var(--tw-content);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+#app .before\:content-\[\'Email\'\]::before {
+  --tw-content: 'Email';
+  content: var(--tw-content);
+}
+
+#app .before\:content-\[\'Password\'\]::before {
+  --tw-content: 'Password';
+  content: var(--tw-content);
 }
 
 #app .before\:content-\[\"\"\]::before {
@@ -2289,6 +2398,24 @@ input[type='number'] {
 
 #app .focus-within\:outline:focus-within {
   outline-style: solid;
+}
+
+#app .focus-within\:before\:-top-2:focus-within::before {
+  content: var(--tw-content);
+  top: -0.5rem;
+}
+
+#app .focus-within\:before\:scale-75:focus-within::before {
+  content: var(--tw-content);
+  --tw-scale-x: .75;
+  --tw-scale-y: .75;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+#app .focus-within\:before\:text-black:focus-within::before {
+  content: var(--tw-content);
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23 / var(--tw-text-opacity));
 }
 
 #app .hover\:block:hover {

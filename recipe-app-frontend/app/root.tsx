@@ -30,6 +30,8 @@ import { persistor, store } from 'store/configure-store'
 import BasketModal from './components/layout/basket-modal'
 import { deleteRecipe } from './actions/basket/delete-recipe'
 
+export const metaTitlePostfix = ' - Recipie'
+
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
   title: 'Recipie',

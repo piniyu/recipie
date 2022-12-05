@@ -1,4 +1,4 @@
-import { useNavigate } from '@remix-run/react'
+import { Link, useNavigate } from '@remix-run/react'
 import { useContext } from 'react'
 import { SiderContext } from '../sider/sider-context'
 const Toolbar = () => {
@@ -26,7 +26,9 @@ const Toolbar = () => {
           </span>
         </button>
         <div className="flex-1"></div>
-        <button className="btn-sm btn-secondary mr-4">Uplode Recipe</button>
+        <Link to="/upload/details" className="btn-sm btn-secondary mr-4">
+          Uplode Recipe
+        </Link>
         <button
           className="icon-btn-sm icon-btn-ui"
           onClick={() => {

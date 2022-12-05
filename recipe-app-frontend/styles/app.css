@@ -90,10 +90,13 @@
     @apply bg-primary text-black font-medium hover:bg-primary/90 transition-colors;
   }
   .btn-primary {
-    @apply bg-secondary text-white hover:bg-secondary/90 transition-colors;
+    @apply bg-secondary text-white hover:bg-secondary/90 transition-colors disabled:bg-gray-500 disabled:text-gray-200;
+  }
+  .btn-natrual {
+    @apply bg-gray-100 text-black hover:bg-gray-200 transition-colors;
   }
   .btn-border {
-    @apply border-2 border-primary bg-white text-black font-medium hover:border-primary hover:bg-primary/10 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:border-gray-200;
+    @apply border border-primary bg-white text-black font-medium hover:border-primary hover:bg-primary/10 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:border-gray-200;
   }
   .btn-ghost {
     @apply text-black disabled:text-gray-400 disabled:cursor-not-allowed;

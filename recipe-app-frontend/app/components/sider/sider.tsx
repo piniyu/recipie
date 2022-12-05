@@ -168,7 +168,7 @@ export default function Sider(): JSX.Element | null {
           </span>
           <span>User Name</span>
           <Link
-            to="/upload"
+            to="/upload/details"
             className="btn-sm w-full bg-gradient-to-l from-primary to-primary/50 font-medium"
           >
             Upload recipe

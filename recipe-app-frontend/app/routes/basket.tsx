@@ -1,22 +1,16 @@
+import type { Basket, Ingredient, NumIngredientOnRecipe } from '@prisma/client'
+import { Recipe } from '@prisma/client'
 import {
-  Basket,
-  Ingredient,
-  NumIngredientOnRecipe,
-  Recipe,
-} from '@prisma/client'
-import { ActionFunction, json, LoaderFunction } from '@remix-run/node'
+  ActionFunction,
+  json,
+  LoaderFunction,
+  MetaFunction,
+} from '@remix-run/node'
 import { Outlet, useFetcher, useLoaderData, useSubmit } from '@remix-run/react'
-import React, { useEffect, useState } from 'react'
 import BasketTable from '~/components/basket/basket-table'
-import ServingsForm from '~/components/basket/servings-form'
-import CardGrid from '~/components/card/card-grid'
-import CardListItem from '~/components/card/card-list-item'
 import ContentCard from '~/components/card/content-card'
-import DropdownMenu from '~/components/drop-down-menu'
-import ServingForm from '~/components/recipe/recipe-ingredients/serving-form'
-import SearchBar from '~/components/search-bar'
+import { metaTitlePostfix } from '~/root'
 import { db } from '~/utils/db.server'
-import { mockCardGridData } from '.'
 
 type LoaderData = {
   basket: Basket & {
@@ -32,6 +26,11 @@ type LoaderData = {
     ingredient: Ingredient
   })[]
 } | null
+
+export const meta: MetaFunction = () => ({
+  charset: 'utf-8',
+  title: 'Basket' + metaTitlePostfix,
+})
 
 export const loader: LoaderFunction = async ({ request }) => {
   const basket = await db.basket.findUnique({

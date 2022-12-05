@@ -1,13 +1,19 @@
 import { Recipe } from '@prisma/client'
-import { json, LoaderFunction } from '@remix-run/node'
+import { json, LoaderFunction, MetaFunction } from '@remix-run/node'
 import { useFetcher, useLoaderData } from '@remix-run/react'
 import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
+import { metaTitlePostfix } from '~/root'
 import { db } from '~/utils/db.server'
 import { mockCardGridData } from '.'
 
 type LoaderData = string[] | null
+
+export const meta: MetaFunction = () => ({
+  charset: 'utf-8',
+  title: 'Favorite' + metaTitlePostfix,
+})
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url)
