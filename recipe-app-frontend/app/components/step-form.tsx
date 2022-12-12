@@ -6,26 +6,26 @@ import { SiderContext } from './sider/sider-context'
 import Textarea from './textarea'
 export interface StepFormProps {
   title: string
-  methods: { timeStemp: string | undefined; content: string }[]
+  methods: { timeStamp: string; content: string }[]
 }
 
 const defaultValues: StepFormProps = {
   title: '',
-  methods: [{ content: '', timeStemp: '' }],
+  methods: [{ content: '', timeStamp: '' }],
 }
 
 const mockData: StepFormProps[] = [
   {
     title: 'test1',
-    methods: [{ content: 'asdfasdf', timeStemp: '' }],
+    methods: [{ content: 'asdfasdf', timeStamp: '' }],
   },
   {
     title: 'test2',
-    methods: [{ content: '13213213', timeStemp: '' }],
+    methods: [{ content: '13213213', timeStamp: '' }],
   },
   {
     title: 'test3',
-    methods: [{ content: 'good', timeStemp: '' }],
+    methods: [{ content: 'good', timeStamp: '' }],
   },
 ]
 

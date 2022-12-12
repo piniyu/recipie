@@ -1,30 +1,92 @@
-import type { ErrorBoundaryComponent } from '@remix-run/node'
+import { ErrorBoundaryComponent, json, LoaderFunction } from '@remix-run/node'
 import { Link, NavLink, Outlet, useNavigate, useParams } from '@remix-run/react'
 import { useContext, useEffect, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 import ContentCard from '~/components/card/content-card'
-// import {
-//   SiderActionKind,
-//   SiderContext,
-// } from '~/components/sider/sider-context'
-// import { StepFormProps } from '~/components/step-form'
+import { useAppDispatch, useAppSelector } from '~/store/configure-store'
+import { addStep, deleteStep } from '~/store/upload-temp/step-form-slice'
+import { requireUserId } from '~/utils/session.server'
 import {
   getLocalValue,
   localStorageKey,
 } from '../components/localstorage-form/methods'
 
-const initialSideList = [
+const defaultSideList = [
   { value: 'Details', route: './details' },
   { value: 'Ingredients', route: './ingredients' },
+]
+const defaultStepList = [
   {
     value: 'Steps',
   },
   { stepId: '1', value: `title`, route: `./1` },
 ]
 
+const SideList = ({
+  route,
+  value,
+  idx,
+  stepId,
+  onDelete,
+}: {
+  stepId?: string | undefined
+  route?: string
+  value: string
+  idx: number
+  onDelete?: (id: string) => void
+}) => {
+  if (!route) {
+    return (
+      <li
+        key={`${value}_${route}`}
+        className="sider-item px-0 text-sm text-gray-400 uppercase tracking-wider"
+      >
+        {value}
+      </li>
+    )
+  }
+  return (
+    <li key={`${value}_${idx}`} className="relative flex">
+      <NavLink
+        to={route}
+        className={({ isActive }) => `
+        
+                        sider-item 
+                        sider-item-gray 
+                      ${isActive ? 'bg-gray-100/50 text-primary' : 'text-black'}
+                      `}
+      >
+        {stepId ? idx + 1 + ' . ' : null}
+        {value}
+      </NavLink>
+      {onDelete && stepId ? (
+        <button
+          className="absolute z-50 icon-btn-ui"
+          onClick={e => {
+            // e.stopPropagation()
+            console.log('click')
+            onDelete(stepId)
+          }}
+        >
+          <span className="material-symbols-outlined">delete</span>
+        </button>
+      ) : null}
+    </li>
+  )
+}
+
+export const loader: LoaderFunction = async ({ request }) => {
+  const userId = await requireUserId(request)
+  return json({ userId })
+}
+
 export default function Upload(): JSX.Element {
   // const { state, dispatch } = useContext(SiderContext)
   const { stepIdx } = useParams()
-  const [sideList, setSideList] = useState(initialSideList)
+  const [sideList, setSideList] = useState(defaultSideList)
+  const stepForms = useAppSelector(state => state.stepForm)
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   // useEffect(() => {
   //   const localValue = getLocalValue(localStorageKey.MOCK_STEP_FORM)
   //   // if (localValue[0].title !== '') {
@@ -51,13 +113,13 @@ export default function Upload(): JSX.Element {
   //   }
   // }, [dispatch])
 
-  useEffect(() => {
-    const local = getLocalValue(localStorageKey.MOCK_STEP_FORM)
-    if (stepIdx && +stepIdx > local.length) {
-      // console.log(stepIdx, local.length)
-      throw new Error()
-    }
-  }, [stepIdx])
+  // useEffect(() => {
+  //   const local = getLocalValue(localStorageKey.MOCK_STEP_FORM)
+  //   if (stepIdx && +stepIdx > local.length) {
+  //     // console.log(stepIdx, local.length)
+  //     throw new Error()
+  //   }
+  // }, [stepIdx])
 
   return (
     // <div>
@@ -71,56 +133,86 @@ export default function Upload(): JSX.Element {
         </div>
         {/* </ContentCard> */}
       </header>
-      <ContentCard className="!py-0 !pl-0">
-        <div className=" flex w-full space-x-8 ">
+      <ContentCard className="!py-0 !px-0 max-h-[700px] flex">
+        <div className="flex-1 flex w-full space-x-8">
           <div className="w-60 py-6 border-r border-gray-200 ">
             <nav className="flex flex-col h-full">
-              <ul className="flex-1 [font-family:var(--font-ui)] overflow-auto">
-                {sideList.map(({ stepId, value, route }, idx) => {
-                  if (!route) {
-                    return (
-                      <li
-                        key={`${value}_${route}`}
-                        className="sider-item px-0 text-sm text-gray-400"
-                      >
-                        {value}
-                      </li>
-                    )
-                  }
+              <ul className="flex-1  overflow-auto">
+                {defaultSideList.map(({ value, route }, idx) => {
                   return (
-                    <li key={`${value}_${idx}`} className="flex">
-                      <NavLink
-                        to={route}
-                        className={({ isActive }) => `
-                        flex-1 
-                        sider-item 
-                        transition-colors
-                        hover:bg-gray-100/70 
-                      
-                      ${
-                        isActive
-                          ? 'text-primary-600 bg-primary-600/10 hover:text-primary-600 hover:bg-primary-600/10'
-                          : 'text-black'
-                      }
-                      `}
-                      >
-                        {stepId}
-                        {stepId && ' . '}
-                        {value}
-                      </NavLink>
-                    </li>
+                    <SideList
+                      key={`${value}_${idx}`}
+                      route={route}
+                      value={value}
+                      idx={idx}
+                    />
                   )
                 })}
+                <SideList value="Steps" idx={999} />
+                {stepForms.length > 0
+                  ? stepForms.map(({ title, id }, idx) => {
+                      return (
+                        <SideList
+                          key={`${title}_${idx}`}
+                          route={`/upload/${idx + 1}`}
+                          value={title}
+                          stepId={id}
+                          idx={idx}
+                          onDelete={() => {
+                            if (stepIdx && +stepIdx === idx + 1) {
+                              navigate(`/upload/${idx}`)
+                            } else if (stepIdx && +stepIdx > idx + 1) {
+                              navigate(`/upload/${+stepIdx - 1}`)
+                            }
+                            dispatch(deleteStep({ id }))
+                            console.log(id)
+                          }}
+                        />
+                      )
+                    })
+                  : defaultStepList.map(({ value, stepId, route }, idx) => {
+                      return (
+                        <SideList
+                          key={`${value}_${idx}`}
+                          route={route}
+                          value={value}
+                          stepId={stepId}
+                          idx={idx}
+                          onDelete={stepId => {
+                            navigate(`/upload/${idx}`)
+                            dispatch(deleteStep({ id: stepId }))
+                          }}
+                        />
+                      )
+                    })}
               </ul>
-              <div className="flex">
-                <button className="flex-1 btn-sm btn-border sider-item  ">
+              <div className="flex pt-4">
+                <Link
+                  to={`/upload/${
+                    stepForms.length > 0
+                      ? stepForms.length + 1
+                      : defaultStepList.length + 1
+                  }`}
+                  className="flex-1 btn-sm btn-secondary sider-item  "
+                  onClick={() => {
+                    dispatch(
+                      addStep({
+                        title: '',
+                        methods: [{ timeStamp: '', content: '' }],
+                        id: uuidv4(),
+                      }),
+                    )
+                  }}
+                >
                   Add a step
-                </button>
+                </Link>
               </div>
             </nav>
           </div>
-          <div className="flex-1 py-6">
-            <Outlet />
+          <div className="flex-1 py-6 flex">
+            <div className="pr-9 flex-1 overflow-auto">
+              <Outlet />
+            </div>
           </div>
         </div>
       </ContentCard>

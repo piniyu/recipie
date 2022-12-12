@@ -56,12 +56,21 @@
   .layout-px {
     @apply px-9;
   }
+
   .sider-item {
-    @apply mx-5 px-5 py-3 rounded-lg;
+    @apply mx-5 px-4 py-3 rounded-lg tracking-wide;
   }
   .sider-item-svg svg {
     @apply w-5 h-5;
   }
+  .sider-item-gray {
+    @apply flex-1 transition-colors hover:bg-gray-100/50;
+  }
+
+  .drop-down-item {
+    @apply px-3 py-2 rounded-lg flex-1 transition-colors hover:bg-gray-100/70;
+  }
+
   .label {
     @apply mb-2 font-medium text-black;
   }
@@ -87,13 +96,13 @@
   }
   /** button style **/
   .btn-secondary {
-    @apply bg-primary text-black font-medium hover:bg-primary/90 transition-colors;
+    @apply bg-primary text-black font-medium hover:bg-primary/90 transition-colors disabled:bg-gray-200 disabled:text-gray-400;
   }
   .btn-primary {
     @apply bg-secondary text-white hover:bg-secondary/90 transition-colors disabled:bg-gray-500 disabled:text-gray-200;
   }
-  .btn-natrual {
-    @apply bg-gray-100 text-black hover:bg-gray-200 transition-colors;
+  .btn-gray {
+    @apply bg-gray-100 text-black hover:bg-gray-200/80 transition-colors;
   }
   .btn-border {
     @apply border border-primary bg-white text-black font-medium hover:border-primary hover:bg-primary/10 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:border-gray-200;
@@ -107,7 +116,7 @@
 
   /** icon button size **/
   .icon-btn-sm {
-    @apply p-2 flex items-center justify-center rounded-full;
+    @apply p-2 flex items-center justify-center rounded-full gap-1;
   }
   .icon-btn-md {
     @apply h-12 w-12 rounded-full flex items-center justify-center;
@@ -118,6 +127,11 @@
   }
   .icon-btn-ui {
     @apply text-gray-400 hover:bg-gray-200/70 transition-colors;
+  }
+
+  /** link **/
+  .link {
+    @apply text-blue-600;
   }
 }
 @layer utilities {

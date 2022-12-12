@@ -1,15 +1,15 @@
+import { Difficulty } from '@prisma/client'
 import { Link } from '@remix-run/react'
 import React, { useEffect, useState } from 'react'
 import { Controller, FormProvider, useForm } from 'react-hook-form'
-import {
-  components,
+import type {
   ControlProps,
-  CSSObjectWithLabel,
   GroupBase,
   MenuListProps,
   MenuProps,
   OptionProps,
 } from 'react-select'
+import { components } from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 import FileUploadInput from '~/components/image-input-form/img-upload-input'
 import {
@@ -17,7 +17,9 @@ import {
   localStorageKey,
   setLocalValue,
 } from '~/components/localstorage-form/methods'
-import Difficulty from '../../components/difficulty'
+import { useAppDispatch, useAppSelector } from '~/store/configure-store'
+import { updateDetails } from '~/store/upload-temp/details-form-slice'
+import DifficultyComponent from '../../components/difficulty'
 import Textarea from '../../components/textarea'
 
 type SelectOpeionType = { value: string; label: string }[]
@@ -31,7 +33,7 @@ export type ImgFormProp = {
 export interface DetailsFormProps {
   title: string
   tags: SelectOpeionType
-  difficulty: number
+  difficulty: Difficulty
   thumbnail: ImgFormProp
 }
 
@@ -43,7 +45,7 @@ const mockTags = [
 const defaultFormValues: DetailsFormProps = {
   title: '',
   tags: mockTags,
-  difficulty: 1,
+  difficulty: 'EASY1',
   thumbnail: { name: '', src: '', type: '', size: '' },
 }
 
@@ -111,31 +113,57 @@ const MenuListComponent = ({
 }
 
 export default function Details(): JSX.Element {
-  const [formValue, setFormValue] = useState<DetailsFormProps>()
+  // const [formValue, setFormValue] = useState<DetailsFormProps>()
+  const localDetails = useAppSelector(state => state.detailsForm)
+  const dispatch = useAppDispatch()
   const methods = useForm<DetailsFormProps>({
     defaultValues: defaultFormValues,
   })
+  const { getValues } = methods
+  // useEffect(() => {
+  //   const onBeforeunload = (e: BeforeUnloadEvent) => {
+  //     e.preventDefault()
+  //     setLocalValue(localStorageKey.MOCK_DETAILS_FORM, methods.getValues())
+  //   }
+  //   if (window) {
+  //     window.addEventListener('beforeunload', onBeforeunload)
+  //   }
+  //   return () => {
+  //     window.removeEventListener('beforeunload', onBeforeunload)
+  //   }
+  // }, [methods])
 
   useEffect(() => {
-    const onBeforeunload = (e: BeforeUnloadEvent) => {
-      e.preventDefault()
-      setLocalValue(localStorageKey.MOCK_DETAILS_FORM, methods.getValues())
+    if (localDetails) {
+      const { title, difficulty, tags, thumbnail } = localDetails
+      methods.reset({
+        title,
+        difficulty,
+        tags: tags.map(v => ({
+          value: v,
+          label: v.charAt(0).toLocaleUpperCase() + v.slice(1),
+        })),
+        thumbnail,
+      })
     }
-    if (window) {
-      window.addEventListener('beforeunload', onBeforeunload)
-    }
-    return () => {
-      window.removeEventListener('beforeunload', onBeforeunload)
-    }
-  }, [methods])
-
+  }, [localDetails, methods])
   useEffect(() => {
-    methods.reset(getLocalValue(localStorageKey.MOCK_DETAILS_FORM))
     return () => {
-      setLocalValue(localStorageKey.MOCK_DETAILS_FORM, methods.getValues())
-      // console.log('ditail unmount')
+      const value = getValues()
+      if (value) {
+        dispatch(
+          updateDetails({
+            title: value.title,
+            difficulty: value.difficulty,
+            tags: value.tags.map(v => {
+              return v.value
+            }),
+            thumbnail: value.thumbnail,
+          }),
+        )
+      }
     }
-  }, [methods])
+  }, [dispatch, getValues])
 
   return (
     <div className="space-y-12 ">
@@ -173,7 +201,7 @@ export default function Details(): JSX.Element {
             <label>
               <p className="label-required">Difficulty</p>
               <div className="flex items-center">
-                <Difficulty stars={1} isInput />
+                <DifficultyComponent isInput difficulty={'EASY1'} />
               </div>
             </label>
           </div>

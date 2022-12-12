@@ -17,7 +17,7 @@ import { Image, Layer, Rect, Stage } from 'react-konva'
 import useImage from 'use-image'
 import type { DetailsFormProps, ImgFormProp } from '../../routes/upload/details'
 import ImgUpload from './img-upload'
-import Modal from './modal'
+import { ImgModal } from './modal'
 import PageImg, { PageImgRef } from './page-img'
 import { useResizeObserver } from './use-resize-observer'
 
@@ -77,14 +77,14 @@ export default function ImgUploadInput({
           </div>
         )}
 
-        <Modal open={open}>
+        <ImgModal open={open}>
           <ImgUpload
             name={name}
             src={watchValue.src}
             onClose={() => setOpen(false)}
             pageImgRef={pageImgRef.current}
           />
-        </Modal>
+        </ImgModal>
       </div>
       <label>Size:</label>
       <output id="fileSize">{watchValue.size}</output>

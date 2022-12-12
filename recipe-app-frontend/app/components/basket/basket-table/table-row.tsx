@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { updateHadQuan } from 'store/ingredients-slice'
-import { useAppDispatch } from 'store/configure-store'
+import { updateHadQuan } from '../../../store/ingredients-slice'
+import { useAppDispatch } from '../../../store/configure-store'
 import TableRowForm from './table-row-form'
-import { BasketState } from 'store/selectBasket.client'
+import { BasketState } from '../../../store/selectBasket'
 
 // const sumServing = (servings: IngredientsState['servings']) => {
 //   return servings

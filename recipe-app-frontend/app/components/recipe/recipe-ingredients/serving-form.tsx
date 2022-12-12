@@ -1,7 +1,8 @@
 import { useParams, useSubmit } from '@remix-run/react'
 import React, { useCallback, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useAppDispatch, useAppSelector } from 'store/configure-store'
+import { useAppDispatch, useAppSelector } from '../../../store/configure-store'
+import AuthCheck from '~/components/auth/auth-check'
 
 type FormPropsType = {
   input: number
@@ -13,7 +14,6 @@ export default function ServingForm({
   onSubmit: (v: FormPropsType) => void
 }): JSX.Element {
   const { recipeId } = useParams()
-  console.log(recipeId)
   const recipeServing = useAppSelector(state => state.recipeServings)
   const recipe = recipeServing.find(recipe => recipe.recipeId === recipeId)
   const {
@@ -134,24 +134,32 @@ export default function ServingForm({
         </div>
         <span className=""> Servings</span>
       </div>
-      <button
-        className={`btn-md w-full gap-2 ${
-          isSubmitSuccessful && !isDirty ? 'btn-successful' : 'btn-secondary'
-        }`}
-        disabled={watchValue === 0}
-        type="submit"
-      >
-        <span className="material-symbols-rounded text-xl leading-none">
-          {isSubmitSuccessful && !isDirty ? 'done' : ' shopping_basket '}
-        </span>
-        {isSubmitSuccessful && !isDirty
-          ? recipe
-            ? 'Updated basket'
-            : 'Added to basket'
-          : recipe
-          ? 'Update basket servings'
-          : 'Add to basket'}
-      </button>
+      <AuthCheck>
+        {userId => (
+          <button
+            className={`btn-md w-full gap-2 ${
+              isSubmitSuccessful && !isDirty
+                ? 'btn-successful'
+                : 'btn-secondary'
+            }`}
+            disabled={userId === null || watchValue === 0}
+            type="submit"
+          >
+            <span className="material-symbols-rounded text-xl leading-none">
+              {isSubmitSuccessful && !isDirty ? 'done' : ' shopping_basket '}
+            </span>
+            {userId
+              ? isSubmitSuccessful && !isDirty
+                ? recipe
+                  ? 'Updated basket'
+                  : 'Added to basket'
+                : recipe
+                ? 'Update basket servings'
+                : 'Add to basket'
+              : 'Login to add in basket'}
+          </button>
+        )}
+      </AuthCheck>
     </form>
   )
 }

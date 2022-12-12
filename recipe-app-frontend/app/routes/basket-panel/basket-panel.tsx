@@ -16,21 +16,21 @@ export const action: ActionFunction = async ({ request, params }) => {
   return null
 }
 
-export default function BasketPanel() {
-  const data = useLoaderData() as {
-    recipes: {
-      id: string
-      title: string
-    }[]
-  } | null
-  const navigate = useNavigate()
-  return (
-    <BasketModal
-      open={true}
-      onClose={() => {
-        navigate(-1)
-      }}
-      basketData={data?.recipes}
-    />
-  )
-}
+// export default function BasketPanel() {
+//   const data = useLoaderData() as {
+//     recipes: {
+//       id: string
+//       title: string
+//     }[]
+//   } | null
+//   const navigate = useNavigate()
+//   return (
+//     <BasketModal
+//       open={true}
+//       onClose={() => {
+//         navigate(-1)
+//       }}
+//       basketData={data?.recipes}
+//     />
+//   )
+// }

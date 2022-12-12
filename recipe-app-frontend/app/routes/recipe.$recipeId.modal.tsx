@@ -1,13 +1,18 @@
 // import { CloseOutlined } from '@mui/icons-material'
 import type { LoaderFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
-import { Link, useFetcher, useLoaderData, useParams } from '@remix-run/react'
+import {
+  Link,
+  useFetcher,
+  useLoaderData,
+  useParams,
+  useSearchParams,
+} from '@remix-run/react'
 import React, { useCallback, useContext, useEffect } from 'react'
 import { useRef, useState } from 'react'
-
+import { SiderContext } from '../components/sider/sider-context'
 import { useIntersect } from '../lib/useIntersect'
 import img1 from '../../public/assets/img1.jpeg'
-import { SiderContext } from '~/components/sider/sider-context'
 
 type MockData = {
   id: string
@@ -110,6 +115,7 @@ const ModalContainer = ({
   showNext: boolean
   showPrevious: boolean
 }) => {
+  const { recipeId } = useParams()
   return (
     <div
       className="h-screen bg-gray-100 overflow-auto [scroll-snap-type:y_mandatory]"
@@ -152,7 +158,7 @@ const ModalContainer = ({
         <span className="material-symbols-rounded block">arrow_downward</span>
       </button>
       <Link
-        to="/recipe"
+        to={`/recipe/${recipeId}`}
         className="fixed w-fit top-0 right-[10px] btn-ghost btn-md justify-end text-gray-500 "
       >
         <span className="material-symbols-rounded">close</span>

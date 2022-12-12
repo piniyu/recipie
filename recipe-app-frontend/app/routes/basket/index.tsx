@@ -7,16 +7,16 @@ import {
 import { ActionFunction, json, LoaderFunction } from '@remix-run/node'
 import { useFetcher, useLoaderData, useTransition } from '@remix-run/react'
 import { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from 'store/configure-store'
+import { useAppDispatch, useAppSelector } from '../../store/configure-store'
 import {
   addIngredient,
   addRecipeId,
   deleteRecipeId,
-} from 'store/ingredients-slice'
+} from '../../store/ingredients-slice'
 import {
   addRecipeServings,
   deleteRecipeServings,
-} from 'store/recipe-servings-slice'
+} from '../../store/recipe-servings-slice'
 import RecipeServingsForm from '~/components/basket/recipe-servings-form'
 import CardListItem from '~/components/card/card-list-item'
 import SearchBar from '~/components/search-bar'

@@ -75,7 +75,7 @@ export default (): JSX.Element => {
         </label>
       </form>
       <div className="flex gap-4">
-        <Link to="./details" className="btn-sm btn-natrual">
+        <Link to="./details" className="btn-sm btn-gray">
           Previous
         </Link>
         <Link to="../1" className="btn-sm btn-primary">

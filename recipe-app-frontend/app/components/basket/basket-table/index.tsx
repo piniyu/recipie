@@ -4,11 +4,11 @@ import {
   addIngredient,
   addRecipeId,
   IngredientsState,
-} from 'store/ingredients-slice'
-import { useAppDispatch, useAppSelector } from 'store/configure-store'
+} from '../../../store/ingredients-slice'
+import { useAppDispatch, useAppSelector } from '../../../store/configure-store'
 import TableRow from './table-row'
-import { addRecipeServings } from 'store/recipe-servings-slice'
-import { BasketState, selectBasket } from 'store/selectBasket.client'
+import { addRecipeServings } from '../../../store/recipe-servings-slice'
+import { BasketState, selectBasket } from '../../../store/selectBasket'
 
 export type BasketTableRow = {
   item: string

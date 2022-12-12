@@ -1,11 +1,11 @@
 import { Ingredient, NumIngredientOnRecipe } from '@prisma/client'
-import { useAppDispatch } from 'store/configure-store'
+import { useAppDispatch } from '../../../store/configure-store'
 import ContentCard from '~/components/card/content-card'
 import RecipeIngredientsTable, {
   RecipeTableProps,
 } from './recipe-ingredients-table'
 import ServingForm from './serving-form'
-import { updateRecipeServings } from 'store/recipe-servings-slice'
+import { updateRecipeServings } from '../../../store/recipe-servings-slice'
 
 export type IngredientData = NumIngredientOnRecipe & { ingredient: Ingredient }
 

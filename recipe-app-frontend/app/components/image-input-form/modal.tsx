@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from 'react'
 import { useCallback } from 'react'
 import ReactDOM from 'react-dom'
 
-const Modal = ({
+export const ImgModal = ({
   children,
   open,
 }: {
@@ -45,5 +45,3 @@ const Modal = ({
     containerDiv,
   )
 }
-
-export default Modal

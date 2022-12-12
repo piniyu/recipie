@@ -8,7 +8,7 @@ import Recipe from '~/icons/recipe'
 
 export interface SiderItemType {
   icon?: JSX.Element
-  value: string
+  value: string | ReactNode
   route?: string
   children?: Omit<SiderItemType, 'children'>[]
   isBtn?: boolean

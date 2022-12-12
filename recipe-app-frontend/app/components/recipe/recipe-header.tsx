@@ -1,4 +1,4 @@
-import { Link, useNavigate } from '@remix-run/react'
+import { Link, useNavigate, useParams } from '@remix-run/react'
 import moment from 'moment'
 import { useEffect, useState } from 'react'
 import DifficultyBtn from '../difficulty'
@@ -22,7 +22,7 @@ export default function RecipeHeader({
   createdAt: Date
   difficulty: Difficulty
 }): JSX.Element {
-  const navigate = useNavigate()
+  const { recipeId } = useParams()
   return (
     <div className="flex flex-col space-y-10">
       <ContentCard>
@@ -51,7 +51,7 @@ export default function RecipeHeader({
             <div className="flex justify-center">
               <Link
                 className="btn-primary btn-md w-full h-fit text-lg cursor-pointer"
-                to={'/recipe/modal'}
+                to={`/recipe/${recipeId}/modal`}
               >
                 Start Cooking
               </Link>

@@ -1,10 +1,18 @@
-import { Link, useNavigate } from '@remix-run/react'
+import { Link, useLocation, useMatches, useNavigate } from '@remix-run/react'
 import { useContext } from 'react'
+import DropdownMenu from '../drop-down-menu'
 import { SiderContext } from '../sider/sider-context'
-const Toolbar = () => {
-  const { setClose, close } = useContext(SiderContext)
-  const navigate = useNavigate()
+import LogoutForm from '../logout-form'
+import AuthCheck from '../auth/auth-check'
 
+const Toolbar = () => {
+  const { setClose, close, hidden } = useContext(SiderContext)
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  console.log(location, window.location)
+  if (hidden) return null
+  // const userId = matches.find(match => match.pathname === '/')?.data.userId
   return (
     <header
       className={`fixed z-10 w-screen min-h-[64px] flex items-center bg-inherit ${
@@ -29,28 +37,59 @@ const Toolbar = () => {
         <Link to="/upload/details" className="btn-sm btn-secondary mr-4">
           Uplode Recipe
         </Link>
-        <button
-          className="icon-btn-sm icon-btn-ui"
-          onClick={() => {
-            navigate('?basket-panel=true')
-          }}
-        >
-          <span
-            className="material-symbols-rounded leading-none "
-            style={{ fontVariationSettings: "'wght' 300" }}
-          >
-            shopping_basket
-          </span>
-        </button>
+        <AuthCheck>
+          {user => (
+            <button
+              className="icon-btn-sm icon-btn-ui"
+              onClick={() => {
+                user && navigate('?basket-panel=true')
+              }}
+            >
+              <span
+                className="material-symbols-rounded leading-none "
+                style={{ fontVariationSettings: "'wght' 300" }}
+              >
+                shopping_basket
+              </span>
+            </button>
+          )}
+        </AuthCheck>
         <div className="w-[1px] h-[25px] mx-2 bg-gray-300"></div>
-        <button className="icon-btn-sm icon-btn-ui">
-          <span
-            className="material-symbols-rounded leading-none "
-            style={{ fontVariationSettings: "'wght' 300" }}
-          >
-            account_circle
-          </span>
-        </button>
+        <AuthCheck>
+          {user =>
+            user !== null ? (
+              <>
+                <DropdownMenu
+                  summary={
+                    <button className="icon-btn-sm icon-btn-ui">
+                      <span
+                        className="material-symbols-rounded leading-none "
+                        style={{ fontVariationSettings: "'wght' 300" }}
+                      >
+                        account_circle
+                      </span>
+                      <span>{user}</span>
+                    </button>
+                  }
+                  details={<LogoutForm btnClassName="drop-down-item" />}
+                />
+              </>
+            ) : (
+              <Link
+                to={`/login?redirectTo=${window.location.href}`}
+                className="icon-btn-sm icon-btn-ui"
+              >
+                <span
+                  className="material-symbols-rounded leading-none "
+                  style={{ fontVariationSettings: "'wght' 300" }}
+                >
+                  account_circle
+                </span>
+                <span>Login</span>
+              </Link>
+            )
+          }
+        </AuthCheck>
       </div>
     </header>
   )

@@ -15,14 +15,16 @@ const LayoutChildren = ({ children }: { children: ReactNode }) => {
 
 export default function Layout({
   children,
+  toolbar,
 }: {
   children: ReactNode
+  toolbar: ReactNode
 }): JSX.Element {
   return (
     <SiderProvider>
       <div className="flex bg-gray-100">
         <Sider />
-        <Toolbar />
+        {toolbar}
         <LayoutChildren>{children}</LayoutChildren>
       </div>
     </SiderProvider>

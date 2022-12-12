@@ -1,4 +1,10 @@
-import { Link, NavLink, useFetcher, useLoaderData } from '@remix-run/react'
+import {
+  Link,
+  NavLink,
+  useFetcher,
+  useLoaderData,
+  useMatches,
+} from '@remix-run/react'
 import React, { useContext } from 'react'
 import Basket from '~/icons/basket'
 import Favorite from '~/icons/favorite'
@@ -6,18 +12,9 @@ import Recipe from '~/icons/recipe'
 import { db } from '~/utils/db.server'
 import Logo from '../../icons/logo'
 import { localStorageKey, setLocalValue } from '../localstorage-form/methods'
+import LogoutForm from '../logout-form'
 import { SiderActionKind, SiderItemType } from './sider-context'
 import { SiderContext } from './sider-context'
-
-const defaultSiderValue: SiderItemType[] = [
-  //     {
-  //     icon: <Overview />, value: 'Overview'
-  // },
-  // { value: 'Upload recipe', route: 'upload', isBtn: true },
-  { icon: <Recipe />, value: 'Recipe', route: 'recipe/testrecipe0' },
-  { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
-  { icon: <Basket />, value: 'Basket', route: 'basket' },
-]
 
 function SiderItem({
   icon,
@@ -40,12 +37,8 @@ function SiderItem({
           relative
           sider-item sider-item-svg 
          
-          [font-family:var(--font-ui)]
           transition-colors
-          
-        
-            
-            hover:bg-primary
+          hover:bg-primary
           
           ${
             hasChild
@@ -61,10 +54,7 @@ function SiderItem({
             `
               : ''
           }
-          
-          
-
-          ${isActive ? '  bg-primary-400 ' : ' text-black '}
+          ${isActive ? '  bg-primary' : ' text-black '}
           `
         }
       >
@@ -86,17 +76,17 @@ function SiderItem({
         {value}
       </NavLink>
     )
+  } else if (typeof value !== 'string' && React.isValidElement(value)) {
+    return value
   }
   return (
     <span
       className={`
           flex items-center gap-4 
-          relative
-          ml-5 !mt-8 sider-item-svg 
+          ml-5 !mt-8
           text-sm uppercase
-          [font-family:var(--font-ui)]
-          
           text-gray-400
+          tracking-wider
           select-none
   `}
     >
@@ -105,33 +95,35 @@ function SiderItem({
   )
 }
 
-export const loader = async () => {
-  const basket = await db.basket.findUnique({
-    where: { userId: 'testuser0' },
-    include: {
-      recipes: { include: { _count: { select: { ingredientsNum: true } } } },
-    },
-  })
-  console.log(basket)
-  return basket?.recipes
-}
-
 export default function Sider(): JSX.Element | null {
+  const defaultSiderValue: SiderItemType[] = [
+    //     {
+    //     icon: <Overview />, value: 'Overview'
+    // },
+    // { value: 'Upload recipe', route: 'upload', isBtn: true },
+    { value: 'Pages' },
+    { icon: <Recipe />, value: 'Recipe', route: 'recipe/testrecipe0' },
+    { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
+    { icon: <Basket />, value: 'Basket', route: 'basket' },
+    { value: 'Authentication' },
+    {
+      value: 'Login',
+      route: `/login?redirectTo=${window ? window.location.href : ''}`,
+    },
+    {
+      value: (
+        <LogoutForm
+          formProps={{ className: 'flex items-center' }}
+          btnClassName=" gap-4 relative
+          sider-item sider-item-svg 
+          text-left
+          transition-colors hover:bg-primary"
+        />
+      ),
+    },
+  ]
   const { hidden, close } = useContext(SiderContext)
-  // const data = useLoaderData()
-  // const basket = async () =>
-  //   await db.basket.findUnique({
-  //     where: { userId: 'testuser0' },
-  //     include: {
-  //       recipes: { include: { _count: { select: { ingredientsNum: true } } } },
-  //     },
-  //   })
-  // console.log(db)
-  // basket().then(data => {
-  //   console.log(data)
-  // })
 
-  // console.log(state)
   if (hidden) {
     return null
   }
@@ -158,15 +150,15 @@ export default function Sider(): JSX.Element | null {
         </div>
       </NavLink>
 
-      <div className="sider-item px-0">
+      {/* <div className="sider-item px-0">
         <div className="flex flex-col items-center gap-3 my-8">
           <span
-            className="material-symbols-rounded p-1 text-4xl leading-none bg-black text-white rounded-full "
+            className="material-symbols-rounded p-1 text-4xl leading-none bg-primary text-black rounded-full "
             style={{ fontVariationSettings: "'FILL' 1" }}
           >
             person
           </span>
-          <span>User Name</span>
+          <span>{userId}</span>
           <Link
             to="/upload/details"
             className="btn-sm w-full bg-gradient-to-l from-primary to-primary/50 font-medium"
@@ -174,29 +166,25 @@ export default function Sider(): JSX.Element | null {
             Upload recipe
           </Link>
         </div>
-      </div>
+      </div> */}
       <div className="flex-1 space-y-4">
         {defaultSiderValue.map(
           ({ icon, value, children, route, isBtn }, idx) => {
             if (isBtn) {
               return (
                 <div className="sider-item px-0 pb-8" key={idx}>
-                  <Link
-                    to={route ? route : `/${value.toLowerCase()}`}
-                    className="btn-md btn-primary"
-                  >
-                    {value}
-                  </Link>
+                  {route ? (
+                    <Link to={route} className="btn-md btn-primary">
+                      {value}
+                    </Link>
+                  ) : (
+                    value
+                  )}
                 </div>
               )
             }
             return (
-              <React.Fragment key={`${value}_${idx}`}>
-                {value === 'Recipe' && (
-                  <div className="ml-5 text-sm text-gray-400 [font-family:var(--font-ui)]">
-                    PAGES
-                  </div>
-                )}
+              <React.Fragment key={idx}>
                 <SiderItem
                   {...{
                     value,

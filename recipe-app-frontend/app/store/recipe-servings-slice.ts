@@ -13,12 +13,12 @@ const recipeServingsSlice = createSlice({
   initialState,
   reducers: {
     addRecipeServings: (state, action: PayloadAction<RecipeServingState>) => {
-      const recipeIdx = state.findIndex(
-        item => item.recipeId === action.payload.recipeId,
-      )
-      if (recipeIdx === -1) {
-        state.push({ ...action.payload })
-      }
+      // const recipeIdx = state.findIndex(
+      //   item => item.recipeId === action.payload.recipeId,
+      // )
+      // if (recipeIdx === -1) {
+      state.push({ ...action.payload })
+      // }
     },
     deleteRecipeServings: (
       state,

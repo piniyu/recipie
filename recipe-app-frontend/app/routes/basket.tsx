@@ -11,6 +11,7 @@ import BasketTable from '~/components/basket/basket-table'
 import ContentCard from '~/components/card/content-card'
 import { metaTitlePostfix } from '~/root'
 import { db } from '~/utils/db.server'
+import { requireUserId } from '~/utils/session.server'
 
 type LoaderData = {
   basket: Basket & {
@@ -33,8 +34,9 @@ export const meta: MetaFunction = () => ({
 })
 
 export const loader: LoaderFunction = async ({ request }) => {
+  const userId = await requireUserId(request)
   const basket = await db.basket.findUnique({
-    where: { userId: 'testuser0' },
+    where: { userId },
     include: {
       recipes: {
         select: {
