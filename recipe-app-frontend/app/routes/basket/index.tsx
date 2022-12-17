@@ -125,7 +125,7 @@ export default function BasketSidePanel() {
         placeholder="Basket Search"
         border
         fetch={onSearch}
-        list={resList}
+        list={resList?.map(item => ({ id: '', value: item }))}
       />
       <div>
         <h4 className="mb-4 font-bold text-black">Recipes in basket</h4>

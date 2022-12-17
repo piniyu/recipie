@@ -8,7 +8,7 @@ export default function SearchBar({
 }: {
   placeholder?: string
   border?: boolean
-  list: string[] | null
+  list: { value: string; id: string }[] | undefined
   fetch: (inputValue: string) => void
 }): JSX.Element {
   return (
@@ -69,9 +69,9 @@ export default function SearchBar({
           <div>No results</div>
         ) : (
           list?.map((v, idx) => {
-            if (v === null || (list.length === 1 && v.length === 0))
-              return <div key={idx}>No results</div>
-            return <div key={v + idx}>{v}</div>
+            // if (v === null || (list.length === 1 && v.length === 0))
+            //   return <div key={idx}>No results</div>
+            return <div key={v.value + idx}>{v.value}</div>
           })
         )}
       </div>

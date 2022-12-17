@@ -64,7 +64,7 @@
     @apply w-5 h-5;
   }
   .sider-item-gray {
-    @apply flex-1 transition-colors hover:bg-gray-100/50;
+    @apply flex-1 transition-colors hover:bg-gray-100/70;
   }
 
   .drop-down-item {
@@ -116,17 +116,20 @@
 
   /** icon button size **/
   .icon-btn-sm {
-    @apply p-2 flex items-center justify-center rounded-full gap-1;
+    @apply p-2 flex items-center justify-center  gap-1;
   }
   .icon-btn-md {
-    @apply h-12 w-12 rounded-full flex items-center justify-center;
+    @apply h-12 w-12 flex items-center justify-center;
   }
   /** icon button style **/
   .icon-btn-float {
-    @apply bg-white shadow-md text-black transition-all hover:text-primary;
+    @apply bg-white shadow-md rounded-full text-black transition-all hover:text-primary;
   }
   .icon-btn-ui {
-    @apply text-gray-400 hover:bg-gray-200/70 transition-colors;
+    @apply text-gray-400  rounded-full hover:bg-gray-200/70 transition-colors;
+  }
+  .icon-btn-square {
+    @apply rounded-lg text-black bg-white hover:bg-gray-200 transition-colors;
   }
 
   /** link **/

@@ -1,4 +1,4 @@
-import type { Recipe } from '@prisma/client'
+import { Prisma, Recipe } from '@prisma/client'
 import type { LoaderFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { Outlet, useFetcher, useLoaderData } from '@remix-run/react'
@@ -7,56 +7,50 @@ import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
 import { db } from '~/utils/db.server'
+import { searchAllRecipes } from '../lib/loaders/search-recipes.server'
 
-export const mockCardGridData = [
-  { title: 'Korean noodles', favCounts: 32, basCounts: 21, user: 'User Name' },
-  { title: 'Korean noodles', favCounts: 32, basCounts: 21, user: 'User Name' },
-  { title: 'Korean noodles', favCounts: 32, basCounts: 21, user: 'User Name' },
-  { title: 'Korean noodles', favCounts: 32, basCounts: 21, user: 'User Name' },
-]
+export const recipesListData = Prisma.validator<Prisma.RecipeArgs>()({
+  select: {
+    title: true,
+    id: true,
+    favorite: true,
+    baskets: true,
+    author: true,
+  },
+})
 
-type LoaderData = { recipes: Recipe[] | null; list: string[] | null }
+type LoaderData = {
+  searcheRes: Awaited<ReturnType<typeof searchAllRecipes>>
+  allRecipe: Prisma.RecipeGetPayload<typeof recipesListData>[]
+}
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url)
-  const param = url.searchParams.get('search') ?? ''
-  const recipes = await db.recipe.findMany({
-    where: {
-      title: { contains: param },
-    },
-    take: 10,
+  const searchRes = await searchAllRecipes(request)
+  const allRecipe = await db.recipe.findMany({
+    take: 20,
+    ...recipesListData,
   })
-  const list = recipes.map(recipe => recipe.title)
-  if (param.length === 0) {
-    return json({ list: [], recipes })
-  }
-
-  return json({ list, recipes })
+  return { searchRes, allRecipe }
 }
 
 export default function Index() {
-  // const userName = 'user name'
   const data = useLoaderData() as LoaderData
   const fetcher = useFetcher<LoaderData>()
-  const [resList, setResList] = useState<LoaderData['list'] | null>([])
-
+  const [resList, setResList] = useState<LoaderData['searcheRes']>([])
   useEffect(() => {
-    if (fetcher.data?.list) {
-      console.log(fetcher.data.list)
-      setResList(fetcher.data.list)
+    if (fetcher.data?.searcheRes) {
+      setResList(fetcher.data.searcheRes)
     }
-  }, [fetcher.data?.list])
+  }, [fetcher.data?.searcheRes])
   return (
     <div className="layout-pt layout-px flex flex-col gap-9">
       <div className="flex justify-center gap-6">
         <SearchBar
-          list={resList}
+          list={resList?.map(item => ({ value: item.title, id: item.id }))}
           fetch={inputValue => {
             fetcher.load(`/?index&search=${inputValue}`)
           }}
         />
-        {/* </div> */}
-        {/* <div className="flex space-x-6"> */}
         <DropdownMenu
           summary="New"
           details={<span>Popular</span>}
@@ -68,16 +62,8 @@ export default function Index() {
           icon={<span className="material-symbols-rounded">tune</span>}
         />
       </div>
-      {/* <h1 className="[font-family:var(--font-ui)] font-bold text-black">Hi {userName}
-        <br /> Share your amazing recipes with everyone now!</h1> */}
-      {/* <div className='flex items-center'>
-        <Icon className='flex-1 text-9xl' icon='emojione:pot-of-food' />
-        <Icon className='flex-1 text-9xl' icon='emojione-v1:pot-of-food' />
-        <Icon className='flex-1 text-9xl' icon='emojione:curry-rice' />
-        <Icon className='flex-1 text-9xl' icon='noto-v1:curry-rice' />
-        <Icon className='flex-1 text-9xl' icon='emojione-v1:hamburger' />
-      </div> */}
-      <CardGrid data={mockCardGridData} />
+
+      <CardGrid data={data.allRecipe} />
     </div>
   )
 }

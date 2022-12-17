@@ -65,8 +65,8 @@ export default function RecipeHeader({
           </div>
           <div className="w-[1px] bg-gray-200 h-[35px]"></div>
           <div className="flex items-center gap-2">
-            <button className="icon-btn-sm bg-red-400 text-white">
-              <span className="material-symbols-rounded leading-none">
+            <button className="icon-btn-sm bg-red-400 rounded-full text-white">
+              <span className="material-symbols-rounded leading-none ">
                 favorite
               </span>
             </button>

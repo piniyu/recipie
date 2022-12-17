@@ -8,9 +8,7 @@ import AuthCheck from '../auth/auth-check'
 const Toolbar = () => {
   const { setClose, close, hidden } = useContext(SiderContext)
   const navigate = useNavigate()
-  const location = useLocation()
 
-  console.log(location, window.location)
   if (hidden) return null
   // const userId = matches.find(match => match.pathname === '/')?.data.userId
   return (
@@ -55,9 +53,9 @@ const Toolbar = () => {
           )}
         </AuthCheck>
         <div className="w-[1px] h-[25px] mx-2 bg-gray-300"></div>
-        <AuthCheck>
+        <AuthCheck loginConfirmModal={false}>
           {user =>
-            user !== null ? (
+            user !== null && user.id !== null && user.email ? (
               <>
                 <DropdownMenu
                   summary={
@@ -68,7 +66,7 @@ const Toolbar = () => {
                       >
                         account_circle
                       </span>
-                      <span>{user}</span>
+                      <span>{user.email.split('@')[0]}</span>
                     </button>
                   }
                   details={<LogoutForm btnClassName="drop-down-item" />}

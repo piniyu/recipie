@@ -1,15 +1,17 @@
 import { User } from '@prisma/client'
 import React from 'react'
 import { ReactNode } from 'react'
-import { userContext } from '../../lib/domain/auth/user-context'
-
-type UserProviderProps = User['id'] | null
+import {
+  userContext,
+  UserContextType,
+} from '../../lib/domain/auth/user-context'
 
 const UserProvider = ({
   user,
   children,
 }: {
-  user: UserProviderProps
+  user: UserContextType
+
   children: ReactNode
 }) => {
   const { Provider } = userContext

@@ -11,6 +11,7 @@ import Favorite from '~/icons/favorite'
 import Recipe from '~/icons/recipe'
 import { db } from '~/utils/db.server'
 import Logo from '../../icons/logo'
+import AuthCheck from '../auth/auth-check'
 import { localStorageKey, setLocalValue } from '../localstorage-form/methods'
 import LogoutForm from '../logout-form'
 import { SiderActionKind, SiderItemType } from './sider-context'
@@ -19,11 +20,10 @@ import { SiderContext } from './sider-context'
 function SiderItem({
   icon,
   value,
-  isChild = false,
+
   hasChild = false,
   route,
-  idx,
-}: SiderItemType & { isChild?: boolean; hasChild?: boolean; idx: number }) {
+}: SiderItemType & { hasChild?: boolean }) {
   // const { dispatch } = useContext(SiderContext)
   if (route) {
     // console.log(route)
@@ -102,25 +102,10 @@ export default function Sider(): JSX.Element | null {
     // },
     // { value: 'Upload recipe', route: 'upload', isBtn: true },
     { value: 'Pages' },
-    { icon: <Recipe />, value: 'Recipe', route: 'recipe/testrecipe0' },
+    { icon: <Recipe />, value: 'My Recipes', route: 'my-recipes' },
     { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
     { icon: <Basket />, value: 'Basket', route: 'basket' },
     { value: 'Authentication' },
-    {
-      value: 'Login',
-      route: `/login?redirectTo=${window ? window.location.href : ''}`,
-    },
-    {
-      value: (
-        <LogoutForm
-          formProps={{ className: 'flex items-center' }}
-          btnClassName=" gap-4 relative
-          sider-item sider-item-svg 
-          text-left
-          transition-colors hover:bg-primary"
-        />
-      ),
-    },
   ]
   const { hidden, close } = useContext(SiderContext)
 
@@ -202,8 +187,6 @@ export default function Sider(): JSX.Element | null {
                         icon={child.icon}
                         value={child.value}
                         route={child.route}
-                        idx={idx}
-                        isChild
                       />
                     ))}
                   </div>
@@ -212,6 +195,29 @@ export default function Sider(): JSX.Element | null {
             )
           },
         )}
+        <AuthCheck loginConfirmModal={false}>
+          {user => {
+            if (user && user.id !== null) {
+              return (
+                <LogoutForm
+                  formProps={{ className: 'flex items-center' }}
+                  btnClassName=" gap-4 relative
+          sider-item sider-item-svg 
+          text-left
+          transition-colors hover:bg-primary"
+                />
+              )
+            }
+            return (
+              <SiderItem
+                value={'Login'}
+                route={`/login?redirectTo=${
+                  window ? window.location.href : ''
+                }`}
+              />
+            )
+          }}
+        </AuthCheck>
       </div>
     </nav>
   )

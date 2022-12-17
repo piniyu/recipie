@@ -33,9 +33,11 @@ import { getUserId } from './utils/session.server'
 import { getDbRecipe } from './lib/basket/add-recipe.server'
 import Toolbar from './components/layout/toolbar'
 import UserProvider from './components/user/user-provider'
+import type { User } from '@prisma/client'
 
 type LoaderData = {
-  userId: string | null
+  email: User['email']
+  userId: User['id']
   basket: {
     recipes: {
       title: string
@@ -96,13 +98,17 @@ export const links: LinksFunction = () => {
 export const loader: LoaderFunction = async ({ request }) => {
   const userId = await getUserId(request)
 
-  if (!userId) return json({ userId: null, basket: null })
+  if (!userId) return json({ userId: null, basket: null, email: null })
+  const email = await db.user.findFirst({
+    where: { id: userId },
+    select: { email: true },
+  })
   const basket = await db.basket.findFirst({
     where: { userId },
     select: { recipes: { select: { id: true, title: true } } },
   })
 
-  return json({ basket, userId })
+  return json({ basket, userId, email: email?.email })
 }
 
 export const action: ActionFunction = async props => {
@@ -125,7 +131,7 @@ export default function App() {
       <body id="app">
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <UserProvider user={data.userId}>
+            <UserProvider user={{ id: data.userId, email: data.email }}>
               <Layout toolbar={<Toolbar />}>
                 <Outlet />
               </Layout>

@@ -1,13 +1,15 @@
+import { Link } from '@remix-run/react'
 import img1 from '../../../public/assets/img1.jpeg'
 
 export interface CardProps {
   title: string
   favCounts: number
-  basCounts: number
-  user: string
+  basketCounts: number
+  author: string
+  id: string
 }
 
-function Overlay({ user }: Pick<CardProps, 'user'>): JSX.Element {
+function Overlay({ author }: Pick<CardProps, 'author'>): JSX.Element {
   return (
     <div
       className={`
@@ -31,15 +33,15 @@ function Overlay({ user }: Pick<CardProps, 'user'>): JSX.Element {
               person
             </span>
           </span>
-          {user}
+          {author}
         </div>
         <div className="flex gap-3">
-          <button className="btn-ghost rounded-lg flex p-1 bg-white">
+          <button className="icon-btn-sm icon-btn-square flex ">
             <span className="material-symbols-rounded  leading-none">
               favorite
             </span>
           </button>
-          <button className="btn-ghost rounded-lg flex p-1 bg-white">
+          <button className="icon-btn-sm icon-btn-square flex  ">
             <span className="material-symbols-rounded  leading-none">
               shopping_basket
             </span>
@@ -51,16 +53,20 @@ function Overlay({ user }: Pick<CardProps, 'user'>): JSX.Element {
 }
 
 export default function Card({
+  id,
   title,
   favCounts,
-  basCounts,
-  user,
+  basketCounts,
+  author,
 }: CardProps): JSX.Element {
   return (
-    <div className="group flex flex-col gap-2 bg-white p-2 rounded-lg shadow-gray-200/50 shadow-xl hover:shadow-gray-200 hover:shadow-2xl hover:-translate-y-2 transition-all ease-in">
+    <Link
+      to={`/recipe/${id}`}
+      className="group flex flex-col gap-2 bg-white p-2 rounded-lg shadow-gray-200/50 shadow-xl hover:shadow-gray-200 hover:shadow-2xl hover:-translate-y-2 transition-all ease-in"
+    >
       <div className="relative aspect-w-4 aspect-h-3 flex items-center justify-center overflow-hidden rounded-lg">
         <img className="w-full h-full object-cover object-center " src={img1} />
-        <Overlay user={user} />
+        <Overlay author={author} />
       </div>
       <h4 className="line-clamp-1 text-center text-black font-medium">
         {title}
@@ -82,9 +88,9 @@ export default function Card({
           >
             shopping_basket
           </span>
-          {basCounts}
+          {basketCounts}
         </span>
       </div>
-    </div>
+    </Link>
   )
 }

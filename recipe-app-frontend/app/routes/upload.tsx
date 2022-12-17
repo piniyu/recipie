@@ -53,7 +53,7 @@ const SideList = ({
         
                         sider-item 
                         sider-item-gray 
-                      ${isActive ? 'bg-gray-100/50 text-primary' : 'text-black'}
+                      ${isActive ? 'bg-primary/10 ' : 'text-black'}
                       `}
       >
         {stepId ? idx + 1 + ' . ' : null}
@@ -61,14 +61,18 @@ const SideList = ({
       </NavLink>
       {onDelete && stepId ? (
         <button
-          className="absolute z-50 icon-btn-ui"
-          onClick={e => {
+          className="absolute z-50 icon-btn-ui flex h-fit right-8 top-2 p-1 rounded-full hover:bg-red-500 text-red-300 hover:text-white"
+          onClick={() => {
             // e.stopPropagation()
-            console.log('click')
             onDelete(stepId)
           }}
         >
-          <span className="material-symbols-outlined">delete</span>
+          <span
+            className="material-symbols-outlined leading-none "
+            style={{ fontVariationSettings: '"GRAD" -25' }}
+          >
+            delete
+          </span>
         </button>
       ) : null}
     </li>
@@ -165,7 +169,6 @@ export default function Upload(): JSX.Element {
                               navigate(`/upload/${+stepIdx - 1}`)
                             }
                             dispatch(deleteStep({ id }))
-                            console.log(id)
                           }}
                         />
                       )

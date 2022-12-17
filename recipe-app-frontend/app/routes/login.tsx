@@ -126,9 +126,21 @@ export default function Login() {
     <div className="mx-auto layout-px layout-pb pt-32 max-w-6xl flex justify-center">
       <div className="flex flex-col w-96 bg-white p-8 rounded-xl shadow-2xl shadow-gray-300/50 space-y-6">
         <h1> {formType === 'login' ? 'Login' : 'Create account'}</h1>
+        {formType === 'register' ? (
+          <div className="flex space-x-2 p-4 rounded-lg bg-primary/10">
+            <span className="material-symbols-rounded text-primary">
+              priority_high
+            </span>
+            <p>
+              Please do not input any sensitive personal informations, since
+              this is a demo website which does not protect your datas and would
+              delete the datas in 7 days.
+            </p>
+          </div>
+        ) : null}
         <form
           method="post"
-          className="flex flex-col space-y-8"
+          className="flex flex-col gap-y-6"
           onSubmit={handleSubmit(onSubmit)}
         >
           <input {...register('formType')} type="hidden" value={formType} />
@@ -224,9 +236,15 @@ export default function Login() {
             </button>
           </div>
         </form>
-        <button className="link" onClick={() => setFormType('register')}>
-          Create new account
-        </button>
+        {formType === 'login' ? (
+          <button className="link" onClick={() => setFormType('register')}>
+            Create new account
+          </button>
+        ) : (
+          <button className="link" onClick={() => setFormType('login')}>
+            Login
+          </button>
+        )}
       </div>
     </div>
   )

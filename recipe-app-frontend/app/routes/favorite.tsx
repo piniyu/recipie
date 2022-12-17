@@ -1,14 +1,19 @@
-import { Recipe } from '@prisma/client'
+import { Prisma, Recipe } from '@prisma/client'
 import { json, LoaderFunction, MetaFunction } from '@remix-run/node'
 import { useFetcher, useLoaderData } from '@remix-run/react'
 import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
+import { searchFavoriteRecipes } from '~/lib/loaders/search-recipes.server'
 import { metaTitlePostfix } from '~/root'
 import { db } from '~/utils/db.server'
-import { mockCardGridData } from '.'
+import { requireUserId } from '~/utils/session.server'
+import { recipesListData } from '.'
 
-type LoaderData = string[] | null
+type LoaderData = {
+  searchRes: Awaited<ReturnType<typeof searchFavoriteRecipes>>
+  favRecipes: Prisma.RecipeGetPayload<typeof recipesListData>[]
+}
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -16,19 +21,16 @@ export const meta: MetaFunction = () => ({
 })
 
 export const loader: LoaderFunction = async ({ request }) => {
-  const url = new URL(request.url)
-  const param = url.searchParams.get('search') ?? ''
-  const favorite = await db.recipe.findMany({
+  const userId = await requireUserId(request)
+  const searchRes = await searchFavoriteRecipes(request, userId)
+  const favRecipes = await db.recipe.findMany({
     where: {
-      AND: [
-        { title: { contains: param } },
-        { favorite: { some: { userId: 'testuser0' } } },
-      ],
+      favorite: { some: { userId } },
     },
-    take: 10,
+    ...recipesListData,
+    take: 20,
   })
-  const list = favorite.map(recipe => recipe.title)
-  return json(list)
+  return json({ searchRes, favRecipes })
 }
 
 export default function Favorite(): JSX.Element {
@@ -39,7 +41,10 @@ export default function Favorite(): JSX.Element {
       <div className="flex justify-center gap-6">
         <SearchBar
           placeholder="Favorite Search"
-          list={data}
+          list={data.searchRes.map(item => ({
+            id: item.id,
+            value: item.title,
+          }))}
           fetch={inputValue => {
             fetcher.load(`/favorite?search=${inputValue}`)
           }}
@@ -57,7 +62,7 @@ export default function Favorite(): JSX.Element {
           icon={<span className="material-symbols-rounded">tune</span>}
         />
       </div>
-      <CardGrid data={mockCardGridData} />
+      <CardGrid data={data.favRecipes} />
     </div>
   )
 }
