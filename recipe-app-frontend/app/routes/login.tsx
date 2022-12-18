@@ -15,10 +15,10 @@ type FormProps = {
 
 type ActionData = {
   formError?: string
-  fieldErrors?: {
-    email: string | undefined
-    password: string | undefined
-  }
+  // fieldErrors?: {
+  //   email: string | undefined
+  //   password: string | undefined
+  // }
   fields?: Omit<FormProps, 'redirectTo'>
 }
 

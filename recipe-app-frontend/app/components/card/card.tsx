@@ -1,4 +1,5 @@
-import { Link } from '@remix-run/react'
+import { Form, Link, useFetcher } from '@remix-run/react'
+import { useEffect } from 'react'
 import img1 from '../../../public/assets/img1.jpeg'
 
 export interface CardProps {
@@ -7,9 +8,48 @@ export interface CardProps {
   basketCounts: number
   author: string
   id: string
+  isLiked: boolean
 }
 
-function Overlay({ author }: Pick<CardProps, 'author'>): JSX.Element {
+function FavForm({
+  recipeId,
+  isLiked,
+}: {
+  recipeId: string
+  isLiked: boolean
+}) {
+  const fetcher = useFetcher()
+  // fetcher.load(`/recipe/like/${recipeId}`)
+  // useEffect(() => {
+  // }, [fetcher, recipeId])
+  return (
+    <fetcher.Form method="post" action={`/recipe/like/${recipeId}`}>
+      <button
+        type="submit"
+        className="icon-btn-sm icon-btn-square flex "
+        onClick={e => {
+          e.stopPropagation()
+          console.log('click')
+        }}
+      >
+        <span
+          className={`material-symbols-rounded  leading-none ${
+            isLiked ? 'text-red-500' : ''
+          }`}
+          style={isLiked ? { fontVariationSettings: '"FILL" 1' } : undefined}
+        >
+          favorite
+        </span>
+      </button>
+    </fetcher.Form>
+  )
+}
+
+function Overlay({
+  author,
+  id,
+  isLiked,
+}: Pick<CardProps, 'author' | 'id' | 'isLiked'>): JSX.Element {
   return (
     <div
       className={`
@@ -36,11 +76,7 @@ function Overlay({ author }: Pick<CardProps, 'author'>): JSX.Element {
           {author}
         </div>
         <div className="flex gap-3">
-          <button className="icon-btn-sm icon-btn-square flex ">
-            <span className="material-symbols-rounded  leading-none">
-              favorite
-            </span>
-          </button>
+          <FavForm recipeId={id} isLiked={isLiked} />
           <button className="icon-btn-sm icon-btn-square flex  ">
             <span className="material-symbols-rounded  leading-none">
               shopping_basket
@@ -58,6 +94,7 @@ export default function Card({
   favCounts,
   basketCounts,
   author,
+  isLiked,
 }: CardProps): JSX.Element {
   return (
     <Link
@@ -66,7 +103,7 @@ export default function Card({
     >
       <div className="relative aspect-w-4 aspect-h-3 flex items-center justify-center overflow-hidden rounded-lg">
         <img className="w-full h-full object-cover object-center " src={img1} />
-        <Overlay author={author} />
+        <Overlay author={author} id={id} isLiked={isLiked} />
       </div>
       <h4 className="line-clamp-1 text-center text-black font-medium">
         {title}

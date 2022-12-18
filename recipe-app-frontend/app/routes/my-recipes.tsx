@@ -5,13 +5,15 @@ import { requireUserId } from '../utils/session.server'
 import CardGrid from '../components/card/card-grid'
 import DropdownMenu from '../components/drop-down-menu'
 import SearchBar from '../components/search-bar'
-import { recipesListData } from '.'
 import { Prisma } from '@prisma/client'
 import { useFetcher, useLoaderData } from '@remix-run/react'
 import { searchUserRecipes } from '~/lib/loaders/search-recipes.server'
+import { recipesListData } from '~/lib/loaders/query-card-list'
 
 type LoaderData = {
-  myRecipes: Prisma.RecipeGetPayload<typeof recipesListData>[]
+  myRecipes: (Prisma.RecipeGetPayload<typeof recipesListData> & {
+    isLiked: boolean
+  })[]
   searchRes: Awaited<ReturnType<typeof searchUserRecipes>>
 }
 
@@ -22,6 +24,10 @@ export const loader: LoaderFunction = async ({ request }) => {
     where: { authorId: userId },
     ...recipesListData,
   })
+  const mappedMyRecipes = myRecipes.map(recipe => ({
+    ...recipe,
+    isLiked: !!recipe.favorite.find(item => item.userId === userId),
+  }))
   return json({ myRecipes, searchRes })
 }
 

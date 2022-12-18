@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from '@remix-run/react'
 import { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-
+import { v4 as uuidv4 } from 'uuid'
 import type { StepFormProps } from '~/components/step-form'
 import StepForm from '~/components/step-form'
 import { useAppDispatch, useAppSelector } from '~/store/configure-store'
@@ -64,8 +64,20 @@ export default function StepsPage(): JSX.Element {
           id: localStepForm.id,
         }),
       )
+    } else {
     }
     console.log(v)
+  }
+  const onSubmitAdd = (v: StepFormProps) => {
+    if (stepIdx && !localStepForms[+stepIdx]) {
+      dispatch(
+        addStep({
+          title: '',
+          methods: [{ timeStamp: '', content: '' }],
+          id: uuidv4(),
+        }),
+      )
+    }
   }
 
   return (
@@ -92,7 +104,7 @@ export default function StepsPage(): JSX.Element {
           <button
             className="btn-sm btn-primary"
             onClick={() => {
-              handleSubmit(onSubmit)()
+              handleSubmit(onSubmitAdd)()
               navigate(`../${+stepIdx + 1}`)
             }}
             type="submit"

@@ -4,15 +4,21 @@ import { useFetcher, useLoaderData } from '@remix-run/react'
 import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
+import {
+  getFavRecipes,
+  getLiked,
+  recipesListData,
+} from '~/lib/loaders/query-card-list'
 import { searchFavoriteRecipes } from '~/lib/loaders/search-recipes.server'
 import { metaTitlePostfix } from '~/root'
 import { db } from '~/utils/db.server'
 import { requireUserId } from '~/utils/session.server'
-import { recipesListData } from '.'
 
 type LoaderData = {
   searchRes: Awaited<ReturnType<typeof searchFavoriteRecipes>>
-  favRecipes: Prisma.RecipeGetPayload<typeof recipesListData>[]
+  favRecipes: (Prisma.RecipeGetPayload<typeof recipesListData> & {
+    isLiked: boolean
+  })[]
 }
 
 export const meta: MetaFunction = () => ({
@@ -23,14 +29,9 @@ export const meta: MetaFunction = () => ({
 export const loader: LoaderFunction = async ({ request }) => {
   const userId = await requireUserId(request)
   const searchRes = await searchFavoriteRecipes(request, userId)
-  const favRecipes = await db.recipe.findMany({
-    where: {
-      favorite: { some: { userId } },
-    },
-    ...recipesListData,
-    take: 20,
-  })
-  return json({ searchRes, favRecipes })
+  const favRecipes = await getFavRecipes(userId)
+  const favRecipesWithLiked = await getLiked(userId, favRecipes)
+  return json({ searchRes, favRecipes: favRecipesWithLiked })
 }
 
 export default function Favorite(): JSX.Element {

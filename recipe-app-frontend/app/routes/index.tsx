@@ -6,31 +6,33 @@ import { useEffect, useState } from 'react'
 import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
+import {
+  getAllRecipes,
+  getLiked,
+  recipesListData,
+} from '~/lib/loaders/query-card-list'
 import { db } from '~/utils/db.server'
+import { getUserId } from '~/utils/session.server'
 import { searchAllRecipes } from '../lib/loaders/search-recipes.server'
-
-export const recipesListData = Prisma.validator<Prisma.RecipeArgs>()({
-  select: {
-    title: true,
-    id: true,
-    favorite: true,
-    baskets: true,
-    author: true,
-  },
-})
 
 type LoaderData = {
   searcheRes: Awaited<ReturnType<typeof searchAllRecipes>>
-  allRecipe: Prisma.RecipeGetPayload<typeof recipesListData>[]
+  allRecipe: (Prisma.RecipeGetPayload<typeof recipesListData> & {
+    isLiked: boolean
+  })[]
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
   const searchRes = await searchAllRecipes(request)
-  const allRecipe = await db.recipe.findMany({
-    take: 20,
-    ...recipesListData,
-  })
-  return { searchRes, allRecipe }
+  const userId = await getUserId(request)
+  const allRecipe = await getAllRecipes()
+  if (!userId) {
+    return json({ searchRes, allRecipe })
+  }
+
+  const allRecipeWithLiked = await getLiked(userId, allRecipe)
+
+  return json({ searchRes, allRecipe: allRecipeWithLiked })
 }
 
 export default function Index() {
