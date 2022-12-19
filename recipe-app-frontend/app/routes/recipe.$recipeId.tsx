@@ -123,11 +123,8 @@ export default function RecipeIndex(): JSX.Element {
   return (
     <div className="flex flex-col mx-auto min-h-screen relative max-w-7xl">
       <div className="flex-1 relative ">
-        {/* <div className="absolute bg-white mask-image w-full h-20 -translate-y-full"></div> */}
         <div className="layout-px layout-pt pb-8 space-y-10">
-          {/* <div className="flex"> */}
           <RecipeHeader {...{ title, createdAt, difficulty, authorName }} />
-          {/* </div> */}
           <div className="flex space-x-10 text-black ">
             <IngredientsCard data={ingredientsNum} />
             <RecipeNutrition data={nutritionData} />

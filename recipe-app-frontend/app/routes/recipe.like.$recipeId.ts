@@ -3,18 +3,18 @@ import { db } from '~/utils/db.server'
 import { badRequest } from '~/utils/request.server'
 import { getUserId, requireUserId } from '~/utils/session.server'
 
-export const loader: LoaderFunction = async ({ request, params }) => {
-  const userId = await requireUserId(request)
-  const recipeId = params.recipeId
-  if (!recipeId || typeof recipeId !== 'string') {
-    throw new Error('recipe not exist!')
-  }
-  const isLiked = await db.favorite.findFirst({
-    where: { userId, recipes: { some: { id: recipeId } } },
-    select: { id: true },
-  })
-  return json(isLiked)
-}
+// export const loader: LoaderFunction = async ({ request, params }) => {
+//   const userId = await requireUserId(request)
+//   const recipeId = params.recipeId
+//   if (!recipeId || typeof recipeId !== 'string') {
+//     throw new Error('recipe not exist!')
+//   }
+//   const isLiked = await db.favorite.findFirst({
+//     where: { userId, recipes: { some: { id: recipeId } } },
+//     select: { id: true },
+//   })
+//   return json(isLiked)
+// }
 
 async function requireFav(userId: string) {
   const hasFav = await db.favorite.findFirst({
@@ -45,8 +45,6 @@ export const action: ActionFunction = async ({ request, params }) => {
   })
 
   if (!isLiked) {
-    console.log(recipeId)
-
     await db.favorite.update({
       where: { userId },
       data: { recipes: { connect: { id: recipeId } } },

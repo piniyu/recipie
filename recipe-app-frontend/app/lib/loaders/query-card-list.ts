@@ -1,11 +1,18 @@
 import { Prisma } from '@prisma/client'
 import { db } from '~/utils/db.server'
 
-export async function getLiked(
-  userId: string,
-  recipes: Prisma.RecipeGetPayload<typeof recipesListData>[],
-) {
+export async function getLikedAndBasket({
+  userId,
+  recipes,
+}: {
+  userId: string
+  recipes: Prisma.RecipeGetPayload<typeof recipesListData>[]
+}) {
   const userFavs = await db.favorite.findFirst({
+    where: { userId },
+    select: { recipes: { select: { id: true } } },
+  })
+  const userBasket = await db.basket.findFirst({
     where: { userId },
     select: { recipes: { select: { id: true } } },
   })
@@ -13,6 +20,7 @@ export async function getLiked(
     return {
       ...recipe,
       isLiked: !!userFavs?.recipes.find(item => item.id === recipe.id),
+      isInBasket: !!userBasket?.recipes.find(item => item.id === recipe.id),
     }
   })
 }

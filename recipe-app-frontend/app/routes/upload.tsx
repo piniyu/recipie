@@ -132,7 +132,6 @@ export default function Upload(): JSX.Element {
         {/* <ContentCard className="flex items-center justify-between"> */}
         <h2 className="">Upload Recipe</h2>
         <div className="flex gap-2">
-          <button className="btn-border btn-sm">Save</button>
           <button className="btn-secondary btn-sm">Public</button>
         </div>
         {/* </ContentCard> */}

@@ -64,9 +64,7 @@ export default function StepsPage(): JSX.Element {
           id: localStepForm.id,
         }),
       )
-    } else {
     }
-    console.log(v)
   }
   const onSubmitAdd = (v: StepFormProps) => {
     if (stepIdx && !localStepForms[+stepIdx]) {

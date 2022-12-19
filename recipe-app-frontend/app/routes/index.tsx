@@ -6,20 +6,14 @@ import { useEffect, useState } from 'react'
 import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
-import {
-  getAllRecipes,
-  getLiked,
-  recipesListData,
-} from '~/lib/loaders/query-card-list'
+import { getAllRecipes, getLikedAndBasket } from '~/lib/loaders/query-card-list'
 import { db } from '~/utils/db.server'
 import { getUserId } from '~/utils/session.server'
 import { searchAllRecipes } from '../lib/loaders/search-recipes.server'
 
-type LoaderData = {
+export interface CardListLoaderData {
   searcheRes: Awaited<ReturnType<typeof searchAllRecipes>>
-  allRecipe: (Prisma.RecipeGetPayload<typeof recipesListData> & {
-    isLiked: boolean
-  })[]
+  allRecipe: Awaited<ReturnType<typeof getLikedAndBasket>>
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -30,15 +24,18 @@ export const loader: LoaderFunction = async ({ request }) => {
     return json({ searchRes, allRecipe })
   }
 
-  const allRecipeWithLiked = await getLiked(userId, allRecipe)
+  const allRecipeWithLiked = await getLikedAndBasket({
+    userId,
+    recipes: allRecipe,
+  })
 
   return json({ searchRes, allRecipe: allRecipeWithLiked })
 }
 
 export default function Index() {
-  const data = useLoaderData() as LoaderData
-  const fetcher = useFetcher<LoaderData>()
-  const [resList, setResList] = useState<LoaderData['searcheRes']>([])
+  const data = useLoaderData() as CardListLoaderData
+  const fetcher = useFetcher<CardListLoaderData>()
+  const [resList, setResList] = useState<CardListLoaderData['searcheRes']>([])
   useEffect(() => {
     if (fetcher.data?.searcheRes) {
       setResList(fetcher.data.searcheRes)

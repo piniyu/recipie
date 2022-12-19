@@ -82,9 +82,7 @@ export default function BasketIndex(): JSX.Element {
   return (
     <div className="layout-py layout-px">
       <div className="max-w-6xl mx-auto grid [grid-template-areas:'header_header''ingredients_sideList'] grid-rows-[auto,1fr] grid-cols-[3fr,2fr] gap-6">
-        {/* <ContentCard className="[grid-area:header] text-black font-semibold"> */}
         <h2>Basket</h2>
-        {/* </ContentCard> */}
         <div className="[grid-area:ingredients] ">
           {/* --- table --- */}
           <ContentCard className="!p-0">

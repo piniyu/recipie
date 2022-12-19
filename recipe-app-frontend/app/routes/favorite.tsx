@@ -6,19 +6,18 @@ import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
 import {
   getFavRecipes,
-  getLiked,
+  getLikedAndBasket,
   recipesListData,
 } from '~/lib/loaders/query-card-list'
 import { searchFavoriteRecipes } from '~/lib/loaders/search-recipes.server'
 import { metaTitlePostfix } from '~/root'
 import { db } from '~/utils/db.server'
 import { requireUserId } from '~/utils/session.server'
+import { CardListLoaderData } from '.'
 
 type LoaderData = {
-  searchRes: Awaited<ReturnType<typeof searchFavoriteRecipes>>
-  favRecipes: (Prisma.RecipeGetPayload<typeof recipesListData> & {
-    isLiked: boolean
-  })[]
+  searchRes: CardListLoaderData['searcheRes']
+  favRecipes: CardListLoaderData['allRecipe']
 }
 
 export const meta: MetaFunction = () => ({
@@ -30,7 +29,10 @@ export const loader: LoaderFunction = async ({ request }) => {
   const userId = await requireUserId(request)
   const searchRes = await searchFavoriteRecipes(request, userId)
   const favRecipes = await getFavRecipes(userId)
-  const favRecipesWithLiked = await getLiked(userId, favRecipes)
+  const favRecipesWithLiked = await getLikedAndBasket({
+    userId,
+    recipes: favRecipes,
+  })
   return json({ searchRes, favRecipes: favRecipesWithLiked })
 }
 

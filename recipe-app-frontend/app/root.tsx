@@ -146,6 +146,7 @@ export default function App() {
               basketData={data.basket?.recipes}
             />
           ) : null}
+          <div id="modal-container"></div>
         </Provider>
         <ScrollRestoration />
         <Scripts />

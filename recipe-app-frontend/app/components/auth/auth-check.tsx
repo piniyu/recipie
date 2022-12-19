@@ -23,7 +23,7 @@ export default function AuthCheck({
   if (!user || !user.id) {
     return (
       <div
-        onClick={() => {
+        onClick={e => {
           if (loginConfirmModal) {
             setOpen(true)
           }
@@ -41,12 +41,16 @@ export default function AuthCheck({
               <Link
                 to={`/login?redirectTo=${window.location.href}`}
                 className="btn-sm btn-secondary"
+                onClick={e => e.stopPropagation()}
               >
                 Login
               </Link>
               <button
                 className="btn-sm btn-gray"
-                onClick={() => setOpen(false)}
+                onClick={e => {
+                  e.stopPropagation()
+                  setOpen(false)
+                }}
               >
                 Cancel
               </button>

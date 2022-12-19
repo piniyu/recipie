@@ -2,18 +2,6 @@ import { json } from '@remix-run/node'
 import { db } from '../../utils/db.server'
 import { getUserId, requireUserId } from '../../utils/session.server'
 
-export async function addDbRecipe(request: Request, recipeId: string) {
-  const userId = await getUserId(request)
-  if (!userId) {
-    return null
-  }
-  const basket = await db.basket.update({
-    where: { userId },
-    data: { recipes: { connect: { id: recipeId } } },
-  })
-  return json({ basket })
-}
-
 export async function deletedbRecipe(request: Request, recipeId: string) {
   const userId = await getUserId(request)
   if (!userId) {

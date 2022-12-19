@@ -1,16 +1,21 @@
 import type { Prisma } from '@prisma/client'
 import { useEffect, useState } from 'react'
 import { recipesListData } from '~/lib/loaders/query-card-list'
+import { CardListLoaderData } from '~/routes'
 import type { CardProps } from './card'
 import Card from './card'
 
-type CardGridProps = {
-  data:
-    | (Prisma.RecipeGetPayload<typeof recipesListData> & { isLiked: boolean })[]
-    | null
-}
+// type CardGridProps = {
+//   data:
+//     | (Prisma.RecipeGetPayload<typeof recipesListData> & { isLiked: boolean })[]
+//     | null
+// }
 
-export default function CardGrid({ data }: CardGridProps): JSX.Element | null {
+export default function CardGrid({
+  data,
+}: {
+  data: CardListLoaderData['allRecipe']
+}): JSX.Element | null {
   const [modifiedData, setModifiedData] = useState<CardProps[]>([])
 
   useEffect(() => {
@@ -31,10 +36,21 @@ export default function CardGrid({ data }: CardGridProps): JSX.Element | null {
   return (
     <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-9">
       {modifiedData.map(
-        ({ id, title, favCounts, basketCounts, author, isLiked }, idx) => (
+        (
+          { id, title, favCounts, basketCounts, author, isLiked, isInBasket },
+          idx,
+        ) => (
           <Card
             key={`${title}_${idx}`}
-            {...{ id, title, favCounts, basketCounts, author, isLiked }}
+            {...{
+              id,
+              title,
+              favCounts,
+              basketCounts,
+              author,
+              isLiked,
+              isInBasket,
+            }}
           />
         ),
       )}

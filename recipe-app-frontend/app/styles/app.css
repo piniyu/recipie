@@ -1249,6 +1249,10 @@ input[type='number'] {
   height: 2.25rem;
 }
 
+#app .h-full {
+  height: 100%;
+}
+
 #app .max-h-\[70vh\] {
   max-height: 70vh;
 }
@@ -1337,6 +1341,10 @@ input[type='number'] {
 
 #app .w-8 {
   width: 2rem;
+}
+
+#app .w-full {
+  width: 100%;
 }
 
 #app .min-w-0 {
@@ -1505,6 +1513,38 @@ input[type='number'] {
   gap: 0.25rem;
 }
 
+#app .gap-2 {
+  gap: 0.5rem;
+}
+
+#app .gap-3 {
+  gap: 0.75rem;
+}
+
+#app .gap-4 {
+  gap: 1rem;
+}
+
+#app .gap-1 {
+  gap: 0.25rem;
+}
+
+#app .gap-2 {
+  gap: 0.5rem;
+}
+
+#app .gap-3 {
+  gap: 0.75rem;
+}
+
+#app .gap-4 {
+  gap: 1rem;
+}
+
+#app .gap-1 {
+  gap: 0.25rem;
+}
+
 #app .gap-y-6 {
   row-gap: 1.5rem;
 }
@@ -1623,6 +1663,22 @@ input[type='number'] {
 
 #app .rounded-none {
   border-radius: 0px;
+}
+
+#app .rounded-full {
+  border-radius: 9999px;
+}
+
+#app .rounded-lg {
+  border-radius: 0.5rem;
+}
+
+#app .rounded-full {
+  border-radius: 9999px;
+}
+
+#app .rounded-lg {
+  border-radius: 0.5rem;
 }
 
 #app .rounded-l-lg {
@@ -1769,12 +1825,21 @@ input[type='number'] {
   background-color: rgb(255 255 255 / 0.5);
 }
 
+#app .bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
 #app .bg-gradient-to-t {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
 
 #app .bg-gradient-to-l {
   background-image: linear-gradient(to left, var(--tw-gradient-stops));
+}
+
+#app .bg-gradient-to-t {
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
 
 #app .from-gray-800\/80 {
@@ -1786,6 +1851,12 @@ input[type='number'] {
 #app .from-primary {
   --tw-gradient-from: #fbbf24;
   --tw-gradient-to: rgb(251 191 36 / 0);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+#app .from-gray-800\/80 {
+  --tw-gradient-from: rgb(41 37 36 / 0.8);
+  --tw-gradient-to: rgb(41 37 36 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
@@ -1850,6 +1921,38 @@ input[type='number'] {
 
 #app .p-1 {
   padding: 0.25rem;
+}
+
+#app .p-3 {
+  padding: 0.75rem;
+}
+
+#app .p-0\.5 {
+  padding: 0.125rem;
+}
+
+#app .p-0 {
+  padding: 0px;
+}
+
+#app .p-2 {
+  padding: 0.5rem;
+}
+
+#app .p-3 {
+  padding: 0.75rem;
+}
+
+#app .p-0\.5 {
+  padding: 0.125rem;
+}
+
+#app .p-0 {
+  padding: 0px;
+}
+
+#app .p-2 {
+  padding: 0.5rem;
 }
 
 #app .p-3 {
@@ -2070,6 +2173,26 @@ input[type='number'] {
   line-height: 2.25rem;
 }
 
+#app .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+#app .text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+#app .text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+#app .text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
 #app .font-bold {
   font-weight: 700;
 }
@@ -2154,6 +2277,56 @@ input[type='number'] {
   color: rgb(214 211 209 / var(--tw-text-opacity));
 }
 
+#app .text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+#app .text-black {
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23 / var(--tw-text-opacity));
+}
+
+#app .text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
+#app .text-blue-50 {
+  --tw-text-opacity: 1;
+  color: rgb(240 249 255 / var(--tw-text-opacity));
+}
+
+#app .text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(168 162 158 / var(--tw-text-opacity));
+}
+
+#app .text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+#app .text-black {
+  --tw-text-opacity: 1;
+  color: rgb(23 23 23 / var(--tw-text-opacity));
+}
+
+#app .text-red-500 {
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
+#app .text-blue-500 {
+  --tw-text-opacity: 1;
+  color: rgb(14 165 233 / var(--tw-text-opacity));
+}
+
+#app .text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(168 162 158 / var(--tw-text-opacity));
+}
+
 #app .opacity-0 {
   opacity: 0;
 }
@@ -2198,6 +2371,12 @@ input[type='number'] {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
 
+#app .shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 #app .shadow-gray-300 {
   --tw-shadow-color: #d6d3d1;
   --tw-shadow: var(--tw-shadow-colored);
@@ -2216,6 +2395,11 @@ input[type='number'] {
 #app .\!shadow-focus-outline {
   --tw-shadow-color: var(--focus-outline-color) !important;
   --tw-shadow: var(--tw-shadow-colored) !important;
+}
+
+#app .shadow-gray-200\/50 {
+  --tw-shadow-color: rgb(231 229 228 / 0.5);
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 #app .outline-\[3px\] {
@@ -2265,6 +2449,12 @@ input[type='number'] {
   transition-property: color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+#app .transition-all {
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }

@@ -1,6 +1,8 @@
 import { Form, Link, useFetcher } from '@remix-run/react'
-import { useEffect } from 'react'
+import { ReactNode, useEffect } from 'react'
+import { CardListLoaderData } from '~/routes'
 import img1 from '../../../public/assets/img1.jpeg'
+import AuthCheck from '../auth/auth-check'
 
 export interface CardProps {
   title: string
@@ -9,39 +11,42 @@ export interface CardProps {
   author: string
   id: string
   isLiked: boolean
+  isInBasket: boolean
 }
 
-function FavForm({
+function IconForm({
   recipeId,
-  isLiked,
+  action,
+  icon,
 }: {
   recipeId: string
-  isLiked: boolean
+  action: string
+  icon: ReactNode
 }) {
   const fetcher = useFetcher()
   // fetcher.load(`/recipe/like/${recipeId}`)
   // useEffect(() => {
   // }, [fetcher, recipeId])
   return (
-    <fetcher.Form method="post" action={`/recipe/like/${recipeId}`}>
-      <button
-        type="submit"
-        className="icon-btn-sm icon-btn-square flex "
-        onClick={e => {
-          e.stopPropagation()
-          console.log('click')
-        }}
-      >
-        <span
-          className={`material-symbols-rounded  leading-none ${
-            isLiked ? 'text-red-500' : ''
-          }`}
-          style={isLiked ? { fontVariationSettings: '"FILL" 1' } : undefined}
-        >
-          favorite
-        </span>
-      </button>
-    </fetcher.Form>
+    <AuthCheck loginConfirmModal>
+      {user => (
+        <fetcher.Form method="post" action={action}>
+          <button
+            type="submit"
+            className="icon-btn-sm icon-btn-square flex "
+            onClick={e => {
+              if (!user?.id) {
+                e.preventDefault()
+              } else {
+                e.stopPropagation()
+              }
+            }}
+          >
+            {icon}
+          </button>
+        </fetcher.Form>
+      )}
+    </AuthCheck>
   )
 }
 
@@ -49,7 +54,8 @@ function Overlay({
   author,
   id,
   isLiked,
-}: Pick<CardProps, 'author' | 'id' | 'isLiked'>): JSX.Element {
+  isInBasket,
+}: Pick<CardProps, 'author' | 'id' | 'isLiked' | 'isInBasket'>): JSX.Element {
   return (
     <div
       className={`
@@ -76,12 +82,38 @@ function Overlay({
           {author}
         </div>
         <div className="flex gap-3">
-          <FavForm recipeId={id} isLiked={isLiked} />
-          <button className="icon-btn-sm icon-btn-square flex  ">
-            <span className="material-symbols-rounded  leading-none">
-              shopping_basket
-            </span>
-          </button>
+          <IconForm
+            recipeId={id}
+            action={`/recipe/like/${id}`}
+            icon={
+              <span
+                className={`material-symbols-rounded  leading-none ${
+                  isLiked ? 'text-red-500' : ''
+                }`}
+                style={
+                  isLiked ? { fontVariationSettings: '"FILL" 1' } : undefined
+                }
+              >
+                favorite
+              </span>
+            }
+          />
+          <IconForm
+            recipeId={id}
+            action={`/add-basket/${id}`}
+            icon={
+              <span
+                className={` material-symbols-rounded  leading-none ${
+                  isInBasket ? 'text-blue-500' : ''
+                }`}
+                style={
+                  isInBasket ? { fontVariationSettings: '"FILL" 1' } : undefined
+                }
+              >
+                shopping_basket
+              </span>
+            }
+          />
         </div>
       </div>
     </div>
@@ -95,6 +127,7 @@ export default function Card({
   basketCounts,
   author,
   isLiked,
+  isInBasket,
 }: CardProps): JSX.Element {
   return (
     <Link
@@ -103,7 +136,12 @@ export default function Card({
     >
       <div className="relative aspect-w-4 aspect-h-3 flex items-center justify-center overflow-hidden rounded-lg">
         <img className="w-full h-full object-cover object-center " src={img1} />
-        <Overlay author={author} id={id} isLiked={isLiked} />
+        <Overlay
+          author={author}
+          id={id}
+          isLiked={isLiked}
+          isInBasket={isInBasket}
+        />
       </div>
       <h4 className="line-clamp-1 text-center text-black font-medium">
         {title}

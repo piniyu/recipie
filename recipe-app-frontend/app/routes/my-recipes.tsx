@@ -9,12 +9,11 @@ import { Prisma } from '@prisma/client'
 import { useFetcher, useLoaderData } from '@remix-run/react'
 import { searchUserRecipes } from '~/lib/loaders/search-recipes.server'
 import { recipesListData } from '~/lib/loaders/query-card-list'
+import { CardListLoaderData } from '.'
 
 type LoaderData = {
-  myRecipes: (Prisma.RecipeGetPayload<typeof recipesListData> & {
-    isLiked: boolean
-  })[]
-  searchRes: Awaited<ReturnType<typeof searchUserRecipes>>
+  myRecipes: CardListLoaderData['allRecipe']
+  searchRes: CardListLoaderData['searcheRes']
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
