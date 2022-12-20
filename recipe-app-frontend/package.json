@@ -8,7 +8,9 @@
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
     "generate:css": "npx tailwindcss -i ./styles/tailwind.css -o ./app/tailwind.css",
     "start": "remix-serve build",
-    "typecheck": "tsc -b"
+    "typecheck": "tsc -b",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
@@ -23,6 +25,7 @@
     "argon2": "^0.30.2",
     "bcryptjs": "^2.4.3",
     "canvas": "^2.10.1",
+    "gh-pages": "^4.0.0",
     "konva": "^8.3.13",
     "moment": "^2.29.4",
     "prettier": "^2.7.1",

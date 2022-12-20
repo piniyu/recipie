@@ -1,4 +1,4 @@
-import { Prisma, Recipe } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import type { LoaderFunction } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { Outlet, useFetcher, useLoaderData } from '@remix-run/react'
