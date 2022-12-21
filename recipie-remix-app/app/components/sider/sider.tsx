@@ -4,18 +4,17 @@ import {
   useFetcher,
   useLoaderData,
   useMatches,
-} from '@remix-run/react'
-import React, { useContext } from 'react'
-import Basket from '~/icons/basket'
-import Favorite from '~/icons/favorite'
-import Recipe from '~/icons/recipe'
-import { db } from '~/utils/db.server'
-import Logo from '../../icons/logo'
-import AuthCheck from '../auth/auth-check'
-import { localStorageKey, setLocalValue } from '../localstorage-form/methods'
-import LogoutForm from '../logout-form'
-import { SiderActionKind, SiderItemType } from './sider-context'
-import { SiderContext } from './sider-context'
+} from "@remix-run/react";
+import React, { useContext } from "react";
+import Basket from "~/icons/basket";
+import Favorite from "~/icons/favorite";
+import Recipe from "~/icons/recipe";
+import { db } from "~/utils/db.server";
+import Logo from "../../icons/logo";
+import AuthCheck from "../auth/auth-check";
+import LogoutForm from "../logout-form";
+import { SiderActionKind, SiderItemType } from "./sider-context";
+import { SiderContext } from "./sider-context";
 
 function SiderItem({
   icon,
@@ -33,9 +32,9 @@ function SiderItem({
         onClick={() => {}}
         className={({ isActive }) =>
           `
-          flex items-center gap-4 
-          relative
-          sider-item sider-item-svg 
+          sider-item sider-item-svg relative 
+          flex
+          items-center gap-4 
          
           transition-colors
           hover:bg-primary
@@ -43,18 +42,18 @@ function SiderItem({
           ${
             hasChild
               ? `
-            after:content-['']
-            after:block
             after:absolute
-            after:w-full
-            after:h-[1px]
-            after:-ml-9
             after:bottom-0
+            after:-ml-9
+            after:block
+            after:h-[1px]
+            after:w-full
             after:bg-white
+            after:content-['']
             `
-              : ''
+              : ""
           }
-          ${isActive ? '  bg-primary' : ' text-black '}
+          ${isActive ? "  bg-primary" : " text-black "}
           `
         }
       >
@@ -75,24 +74,24 @@ function SiderItem({
         {icon}
         {value}
       </NavLink>
-    )
-  } else if (typeof value !== 'string' && React.isValidElement(value)) {
-    return value
+    );
+  } else if (typeof value !== "string" && React.isValidElement(value)) {
+    return value;
   }
   return (
     <span
       className={`
-          flex items-center gap-4 
-          ml-5 !mt-8
-          text-sm uppercase
-          text-gray-400
+          ml-5 !mt-8 flex 
+          select-none items-center
+          gap-4 text-sm
+          uppercase
           tracking-wider
-          select-none
+          text-gray-400
   `}
     >
       {value}
     </span>
-  )
+  );
 }
 
 export default function Sider(): JSX.Element | null {
@@ -101,36 +100,36 @@ export default function Sider(): JSX.Element | null {
     //     icon: <Overview />, value: 'Overview'
     // },
     // { value: 'Upload recipe', route: 'upload', isBtn: true },
-    { value: 'Pages' },
-    { icon: <Recipe />, value: 'My Recipes', route: 'my-recipes' },
-    { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
-    { icon: <Basket />, value: 'Basket', route: 'basket' },
-    { value: 'Authentication' },
-  ]
-  const { hidden, close } = useContext(SiderContext)
+    { value: "Pages" },
+    { icon: <Recipe />, value: "My Recipes", route: "my-recipes" },
+    { icon: <Favorite />, value: "Favorite", route: "favorite" },
+    { icon: <Basket />, value: "Basket", route: "basket" },
+    { value: "Authentication" },
+  ];
+  const { hidden, close } = useContext(SiderContext);
 
   if (hidden) {
-    return null
+    return null;
   }
   return (
     <nav
       className={`
-      fixed z-20 
-      flex-shrink-0 
-      w-[255px] h-screen 
-      top-0 
-      flex flex-col 
+      fixed top-0 
+      z-20 
+      flex h-screen 
+      w-[255px] 
+      flex-shrink-0 flex-col 
       space-y-4 
-      pt-4 
+      overflow-auto 
       bg-white 
-      shadow-xl 
-      overflow-auto
+      pt-4 
+      shadow-xl
       transition-transform
-     ${close ? '-translate-x-full' : ''}
+     ${close ? "-translate-x-full" : ""}
      `}
     >
       <NavLink to="/">
-        <div className="sider-item flex p-0 h-7">
+        <div className="sider-item flex h-7 p-0">
           <Logo />
         </div>
       </NavLink>
@@ -166,7 +165,7 @@ export default function Sider(): JSX.Element | null {
                     value
                   )}
                 </div>
-              )
+              );
             }
             return (
               <React.Fragment key={idx}>
@@ -174,7 +173,7 @@ export default function Sider(): JSX.Element | null {
                   {...{
                     value,
                     icon,
-                    hasChild: typeof children !== 'undefined',
+                    hasChild: typeof children !== "undefined",
                     route,
                     idx,
                   }}
@@ -192,33 +191,33 @@ export default function Sider(): JSX.Element | null {
                   </div>
                 )}
               </React.Fragment>
-            )
-          },
+            );
+          }
         )}
         <AuthCheck loginConfirmModal={false}>
-          {user => {
+          {(user) => {
             if (user && user.id !== null) {
               return (
                 <LogoutForm
-                  formProps={{ className: 'flex items-center' }}
+                  formProps={{ className: "flex items-center" }}
                   btnClassName=" gap-4 relative
           sider-item sider-item-svg 
           text-left
           transition-colors hover:bg-primary"
                 />
-              )
+              );
             }
             return (
               <SiderItem
-                value={'Login'}
+                value={"Login"}
                 route={`/login?redirectTo=${
-                  window ? window.location.href : ''
+                  window ? window.location.href : ""
                 }`}
               />
-            )
+            );
           }}
         </AuthCheck>
       </div>
     </nav>
-  )
+  );
 }
