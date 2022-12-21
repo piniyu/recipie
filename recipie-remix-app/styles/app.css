@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-ui: 'DM Sans', sans-serif;
+  --font-default: 'Inter';
+  --focus-outline-color: theme(colors.primary.DEFAULT / 50%);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-ui), system-ui, sans-serif;
+  }
+  h1 {
+    @apply text-4xl font-bold;
+  }
+  h2 {
+    @apply text-3xl font-bold;
+  }
+  h3 {
+    @apply text-xl font-bold;
+  }
+  h4 {
+    /* @apply font-medium; */
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+@layer components {
+  .font-ui {
+    font-family: var(--font-ui);
+  }
+  .mask-image {
+    mask-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 1) 0%,
+      /* rgba(0, 0, 0, 1) 30%, */ transparent 100%
+    );
+  }
+  .layout-pt {
+    @apply pt-8;
+  }
+  .layout-py {
+    @apply py-8;
+  }
+  .layout-px {
+    @apply px-9;
+  }
+
+  .sider-item {
+    @apply mx-5 px-4 py-3 rounded-lg tracking-wide;
+  }
+  .sider-item-svg svg {
+    @apply w-5 h-5;
+  }
+  .sider-item-gray {
+    @apply flex-1 transition-colors hover:bg-gray-100/70;
+  }
+
+  .drop-down-item {
+    @apply px-3 py-2 rounded-lg flex-1 transition-colors hover:bg-gray-100/70;
+  }
+
+  .label {
+    @apply mb-2 font-medium text-black;
+  }
+  .label-required {
+    @apply block mb-2 font-medium text-black after:content-['*'] after:text-red-500;
+  }
+  .input {
+    @apply p-2 border rounded-lg outline-focus-outline;
+  }
+
+  /** button size **/
+  .btn-sm {
+    font-family: var(--font-ui);
+    @apply flex justify-center items-center px-4 py-2 rounded-lg;
+  }
+  .btn-md {
+    font-family: var(--font-ui);
+    @apply flex justify-center items-center px-4 py-3 rounded-lg;
+  }
+  .btn-lg {
+    font-family: var(--font-ui);
+    @apply flex justify-center items-center px-5 py-4 rounded-lg;
+  }
+  /** button style **/
+  .btn-secondary {
+    @apply bg-primary text-black font-medium hover:bg-primary/90 transition-colors disabled:bg-gray-200 disabled:text-gray-400;
+  }
+  .btn-primary {
+    @apply bg-secondary text-white hover:bg-secondary/90 transition-colors disabled:bg-gray-500 disabled:text-gray-200;
+  }
+  .btn-gray {
+    @apply bg-gray-100 text-black hover:bg-gray-200/80 transition-colors;
+  }
+  .btn-border {
+    @apply border border-primary bg-white text-black font-medium hover:border-primary hover:bg-primary/10 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:border-gray-200;
+  }
+  .btn-ghost {
+    @apply text-black disabled:text-gray-400 disabled:cursor-not-allowed;
+  }
+  .btn-successful {
+    @apply bg-green-600 text-white font-medium;
+  }
+
+  /** icon button size **/
+  .icon-btn-sm {
+    @apply p-2 flex items-center justify-center  gap-1;
+  }
+  .icon-btn-md {
+    @apply h-12 w-12 flex items-center justify-center;
+  }
+  /** icon button style **/
+  .icon-btn-float {
+    @apply bg-white shadow-md rounded-full text-black transition-all hover:text-primary;
+  }
+  .icon-btn-ui {
+    @apply text-gray-400  rounded-full hover:bg-gray-200/70 transition-colors;
+  }
+  .icon-btn-square {
+    @apply rounded-lg text-black bg-white hover:bg-gray-200 transition-colors;
+  }
+
+  /** link **/
+  .link {
+    @apply text-blue-600;
+  }
+}
+@layer utilities {
+}
