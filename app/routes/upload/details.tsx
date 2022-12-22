@@ -1,53 +1,48 @@
-import { Difficulty } from '@prisma/client'
-import { Link } from '@remix-run/react'
-import React, { useEffect, useState } from 'react'
-import { Controller, FormProvider, useForm } from 'react-hook-form'
+import { Difficulty } from "@prisma/client";
+import { Link } from "@remix-run/react";
+import React, { useEffect, useState } from "react";
+import { Controller, FormProvider, useForm } from "react-hook-form";
 import type {
   ControlProps,
   GroupBase,
   MenuListProps,
   MenuProps,
   OptionProps,
-} from 'react-select'
-import { components } from 'react-select'
-import CreatableSelect from 'react-select/creatable'
-import FileUploadInput from '~/components/image-input-form/img-upload-input'
-import {
-  getLocalValue,
-  localStorageKey,
-  setLocalValue,
-} from '~/components/localstorage-form/methods'
-import { useAppDispatch, useAppSelector } from '~/store/configure-store'
-import { updateDetails } from '~/store/upload-temp/details-form-slice'
-import DifficultyComponent from '../../components/difficulty'
-import Textarea from '../../components/textarea'
+} from "react-select";
+import { components } from "react-select";
+import CreatableSelect from "react-select/creatable";
+import FileUploadInput from "~/components/image-input-form/img-upload-input";
+import { useAppDispatch, useAppSelector } from "~/store/configure-store";
+import { updateDetails } from "~/store/upload-temp/details-form-slice";
+import DifficultyComponent from "../../components/difficulty";
+import Textarea from "../../components/textarea";
 
-type SelectOpeionType = { value: string; label: string }[]
+type SelectOpeionType = { value: string; label: string }[];
 
 export type ImgFormProp = {
-  name: string
-  src: string
-  type: string
-  size: string
-}
+  name: string;
+  src: string;
+  type: string;
+  size: string;
+};
 export interface DetailsFormProps {
-  title: string
-  tags: SelectOpeionType
-  difficulty: Difficulty
-  thumbnail: ImgFormProp
+  title: string;
+  tags: SelectOpeionType;
+  difficulty: Difficulty;
+  thumbnail: ImgFormProp;
 }
 
 const mockTags = [
-  { value: 'breakfast', label: 'Breakfast' },
-  { value: 'dinner', label: 'Dinner' },
-]
+  { value: "breakfast", label: "Breakfast" },
+  { value: "dinner", label: "Dinner" },
+];
 
 const defaultFormValues: DetailsFormProps = {
-  title: '',
+  title: "",
   tags: mockTags,
-  difficulty: 'EASY1',
-  thumbnail: { name: '', src: '', type: '', size: '' },
-}
+  difficulty: "EASY1",
+  thumbnail: { name: "", src: "", type: "", size: "" },
+};
 
 const ControlComponent = ({
   children,
@@ -57,22 +52,22 @@ const ControlComponent = ({
   true,
   GroupBase<{ value: string; label: string }>
 >) => {
-  const { isFocused } = props
+  const { isFocused } = props;
   return (
     <components.Control
       {...props}
       className={` py-0.5 ${
         isFocused
-          ? '!shadow-[0_0_0_1px_black] !shadow-focus-outline !border-focus-outline '
-          : 'border-gray-200'
+          ? "!border-focus-outline !shadow-[0_0_0_1px_black] !shadow-focus-outline "
+          : "border-gray-200"
       }
       rounded-lg
       `}
     >
       {children}
     </components.Control>
-  )
-}
+  );
+};
 
 const OptionComponent = ({
   children,
@@ -81,25 +76,25 @@ const OptionComponent = ({
   return (
     <components.Option
       {...props}
-      className={` rounded-lg cursor-pointer ${
-        props.isFocused ? 'text-primary-600 bg-primary-600/10' : ''
+      className={` cursor-pointer rounded-lg ${
+        props.isFocused ? "text-primary-600 bg-primary-600/10" : ""
       } `}
     >
       {children}
     </components.Option>
-  )
-}
+  );
+};
 
 const MenuComponent = ({
   children,
   ...props
 }: MenuProps<{ value: string; label: string }, true>) => {
   return (
-    <components.Menu {...props} className="shadow-lg rounded-lg">
+    <components.Menu {...props} className="rounded-lg shadow-lg">
       {children}
     </components.Menu>
-  )
-}
+  );
+};
 
 const MenuListComponent = ({
   children,
@@ -109,17 +104,17 @@ const MenuListComponent = ({
     <components.MenuList {...props} className="p-2">
       {children}
     </components.MenuList>
-  )
-}
+  );
+};
 
 export default function Details(): JSX.Element {
   // const [formValue, setFormValue] = useState<DetailsFormProps>()
-  const localDetails = useAppSelector(state => state.detailsForm)
-  const dispatch = useAppDispatch()
+  const localDetails = useAppSelector((state) => state.detailsForm);
+  const dispatch = useAppDispatch();
   const methods = useForm<DetailsFormProps>({
     defaultValues: defaultFormValues,
-  })
-  const { getValues } = methods
+  });
+  const { getValues } = methods;
   // useEffect(() => {
   //   const onBeforeunload = (e: BeforeUnloadEvent) => {
   //     e.preventDefault()
@@ -135,42 +130,42 @@ export default function Details(): JSX.Element {
 
   useEffect(() => {
     if (localDetails) {
-      const { title, difficulty, tags, thumbnail } = localDetails
+      const { title, difficulty, tags, thumbnail } = localDetails;
       methods.reset({
         title,
         difficulty,
-        tags: tags.map(v => ({
+        tags: tags.map((v) => ({
           value: v,
           label: v.charAt(0).toLocaleUpperCase() + v.slice(1),
         })),
         thumbnail,
-      })
+      });
     }
-  }, [localDetails, methods])
+  }, [localDetails, methods]);
   useEffect(() => {
     return () => {
-      const value = getValues()
+      const value = getValues();
       if (value) {
         dispatch(
           updateDetails({
             title: value.title,
             difficulty: value.difficulty,
-            tags: value.tags.map(v => {
-              return v.value
+            tags: value.tags.map((v) => {
+              return v.value;
             }),
             thumbnail: value.thumbnail,
-          }),
-        )
+          })
+        );
       }
-    }
-  }, [dispatch, getValues])
+    };
+  }, [dispatch, getValues]);
 
   return (
     <div className="space-y-12 ">
       <h3 className="font-medium text-black">Details</h3>
       <FormProvider {...methods}>
         <form className="flex gap-6">
-          <div className="flex-1 flex flex-col space-y-12">
+          <div className="flex flex-1 flex-col space-y-12">
             <label>
               <p className="label-required">Tilte</p>
               <Textarea name="title" maxLength={100} rows={2} />
@@ -201,7 +196,7 @@ export default function Details(): JSX.Element {
             <label>
               <p className="label-required">Difficulty</p>
               <div className="flex items-center">
-                <DifficultyComponent isInput difficulty={'EASY1'} />
+                <DifficultyComponent isInput difficulty={"EASY1"} />
               </div>
             </label>
           </div>
@@ -215,5 +210,5 @@ export default function Details(): JSX.Element {
         Next
       </Link>
     </div>
-  )
+  );
 }
