@@ -7,10 +7,10 @@ module.exports = {
   serverDependenciesToBundle: [
     "recharts",
     "d3-shape",
-    // 'canvas',
+    // "canvas",
     "react-konva",
     /^konva.*/,
     /^redux-persist.*/,
   ],
-  devServerPort: 8002,
+  // devServerPort: 8002,
 };
