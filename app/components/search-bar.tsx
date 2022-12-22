@@ -1,39 +1,37 @@
-import { useSearchFetch } from './use-search-fetch'
-
 export default function SearchBar({
-  placeholder = 'Search',
+  placeholder = "Search",
   border = false,
   list,
   fetch,
 }: {
-  placeholder?: string
-  border?: boolean
-  list: { value: string; id: string }[] | undefined
-  fetch: (inputValue: string) => void
+  placeholder?: string;
+  border?: boolean;
+  list: { value: string; id: string }[] | undefined;
+  fetch: (inputValue: string) => void;
 }): JSX.Element {
   return (
-    <div className=" relative max-w-md w-full text-black">
+    <div className=" relative w-full max-w-md text-black">
       <div
         className={`
             peer
-						flex items-center gap-2
-						w-full
+						flex w-full items-center
+						gap-2
 						rounded-lg 
 						bg-white
 						
 						outline-[3px] outline-offset-1 
-						transition-all
-            ease-in 
-            focus-within:outline outline-focus-outline
+						outline-focus-outline
+            transition-all 
+            ease-in focus-within:outline
             ${
               border
-                ? 'rounded border border-gray-200 hover:border-gray-400 focus-within:border-transparent'
-                : 'shadow-sm shadow-gray-300 hover:shadow-lg focus-within:shadow-lg'
+                ? "rounded border border-gray-200 focus-within:border-transparent hover:border-gray-400"
+                : "shadow-sm shadow-gray-300 focus-within:shadow-lg hover:shadow-lg"
             }
             
             `}
       >
-        <span className="material-symbols-rounded pl-4 text-gray-400 text-xl leading-none">
+        <span className="material-symbols-rounded pl-4 text-xl leading-none text-gray-400">
           search
         </span>
         <input
@@ -42,27 +40,27 @@ export default function SearchBar({
           className={`
               min-w-0
 							flex-1
-							py-3 pr-4
-							focus:outline-none
-              bg-transparent
+							bg-transparent py-3
+							pr-4
+              focus:outline-none
           `}
-          onChange={e => fetch(e.target.value)}
+          onChange={(e) => fetch(e.target.value)}
         />
       </div>
 
       <div
         className={`
+            absolute
+            z-10
+            mt-2
             hidden
+            w-full rounded-lg 
+            border 
+            border-gray-100 bg-white px-4 
+            py-3 
+            shadow-lg hover:block 
+            focus:block 
             peer-focus-within:block
-            focus:block
-            hover:block
-            absolute z-10 
-            w-full 
-            mt-2 px-4 py-3 
-            rounded-lg 
-            border border-gray-100 
-            bg-white 
-            shadow-lg
             `}
       >
         {list === undefined || list?.length === 0 ? (
@@ -71,10 +69,10 @@ export default function SearchBar({
           list?.map((v, idx) => {
             // if (v === null || (list.length === 1 && v.length === 0))
             //   return <div key={idx}>No results</div>
-            return <div key={v.value + idx}>{v.value}</div>
+            return <div key={v.value + idx}>{v.value}</div>;
           })
         )}
       </div>
     </div>
-  )
+  );
 }
