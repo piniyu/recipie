@@ -1,0 +1,1 @@
+import{t as d}from"/build/_shared/chunk-ZFWZJZG4.js";import{e}from"/build/_shared/chunk-ADMCF34Z.js";var r=e(d());function l({className:o,children:a}){return(0,r.jsx)("div",{className:`w-full h-full border border-gray-50 bg-white px-9 py-8 rounded-3xl shadow-2xl shadow-gray-300/50 ${o}`,children:a})}export{l as a};

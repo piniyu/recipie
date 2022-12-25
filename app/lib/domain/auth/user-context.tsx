@@ -1,14 +1,14 @@
-import { User } from '@prisma/client'
-import React from 'react'
-import { useContext } from 'react'
+import { User } from "@prisma/client";
+import React from "react";
+import { useContext } from "react";
 
 export type UserContextType = {
-  id: User['id'] | null
-  email: User['email'] | null
-} | null
+  id: User["id"] | null;
+  email: User["email"] | null;
+} | null;
 
-export const userContext = React.createContext<UserContextType>(null)
+export const UserContext = React.createContext<UserContextType>(null);
 
 export function useUser() {
-  return useContext(userContext)
+  return useContext(UserContext);
 }
