@@ -11,6 +11,7 @@ import {
   ResponsiveContainer,
   Text,
 } from 'recharts'
+import { Theme, useTheme } from '~/utils/theme-provider'
 import type { NutritionBarChartProps } from '.'
 
 export default function RadialChart({
@@ -20,6 +21,7 @@ export default function RadialChart({
   fillColorClass: string
   data: NutritionBarChartProps[]
 }): JSX.Element {
+  const [theme] = useTheme()
   const [rpcWidth, setRpcWidth] = useState(0)
   const [hasRpc, setHasRpc] = useState(false)
   const rpcElementRef = useRef<any>(null)
@@ -64,7 +66,8 @@ export default function RadialChart({
       ref={rpcRef}
     >
       <RadialBarChart
-        id="test"
+        // id="test"
+
         innerRadius="100%"
         // outerRadius="180"
         data={data}
@@ -83,13 +86,13 @@ export default function RadialChart({
         <RadialBar
           id={`radialBar`}
           className={fillColorClass}
-          background
+          background={theme === Theme.DARK ? { style: { fill: '#555' } } : true}
           // clockWise={true}
           dataKey="pct"
           cornerRadius={rpcWidth / 15}
         >
           <LabelList
-            className="font-ui font-bold "
+            className="fill-inherit font-bold "
             formatter={(v: any) => {
               return v + '%'
             }}
@@ -102,7 +105,7 @@ export default function RadialChart({
             }}
           />
           <LabelList
-            className="font-bold fill-black "
+            className="fill-black font-bold dark:fill-gray-200 "
             dataKey="name"
             position="centerTop"
             style={{
@@ -113,7 +116,7 @@ export default function RadialChart({
             }}
           />
           <LabelList
-            className="fill-gray-500"
+            className="fill-gray-500 dark:fill-gray-300"
             dataKey="qat.value"
             formatter={(v: any) => {
               return v + data[0].qat.mes

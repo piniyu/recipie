@@ -27,109 +27,29 @@ export default function BasketTable({
 }): JSX.Element {
   const selectBasketMemo = useMemo(selectBasket, [])
   const basket = useAppSelector(selectBasketMemo)
-  const ingredients = useAppSelector(state => state.ingredients)
-  const recipeServings = useAppSelector(state => state.recipeServings)
-  const dispatch = useAppDispatch()
-
-  // useEffect(() => {
-  //   return () => {
-  //     data?.forEach(item => {
-  //       const haslocal = basket.findIndex(
-  //         ({ name }) => name === item.ingredient.name,
-  //       )
-  //       const hasLocalIngredient = ingredients.findIndex(
-  //         ({ name }) => name === item.ingredient.name,
-  //       )
-  //       const hasLocalRecipe = recipeServings.findIndex(
-  //         recipeServing => item.recipeId === recipeServing.recipeId,
-  //       )
-
-  //       if (hasLocalIngredient > -1) {
-  //         const hasRecipeId = ingredients[
-  //           hasLocalIngredient
-  //         ].recipeIds.findIndex(id => id === item.recipeId)
-  //         if (hasRecipeId === -1) {
-  //           dispatch(
-  //             addRecipeId({
-  //               name: item.ingredient.name,
-  //               recipeId: item.recipeId,
-  //             }),
-  //           )
-  //         }
-  //       }
-
-  //       if (haslocal === -1) {
-  //         dispatch(
-  //           addIngredient({
-  //             name: item.ingredient.name,
-  //             hadQant: 0,
-  //             recipeIds: [item.recipeId],
-  //           }),
-  //         )
-  //       }
-  //       if (hasLocalRecipe === -1) {
-  //         dispatch(addRecipeServings({ recipeId: item.recipeId, servings: 1 }))
-  //       }
-  //       if (hasLocalIngredient === -1) {
-  //         dispatch(
-  //           addIngredient({
-  //             name: item.ingredient.name,
-  //             recipeIds: [item.recipeId],
-  //             hadQant: 0,
-  //           }),
-  //         )
-  //       }
-  //     })
-  //   }
-  // }, [])
-  // const setItem = (name: string): BasketState => {
-  //   if (!data) {
-  //     throw 'no data!'
-  //   }
-  //   const defaultBasket = { name, hadQant: 0, servings: 1 }
-  //   const newItem = {
-  //     name,
-  //     hadQant: defaultBasket.hadQant,
-  //     recipeIds: [...data.map(({ recipeId }) => recipeId)],
-  //   }
-  //   dispatch(addIngredient(newItem))
-  //   newItem.recipeIds.forEach(id => {
-  //     dispatch(
-  //       addRecipeServings({ recipeId: id, servings: defaultBasket.servings }),
-  //     )
-  //   })
-  //   return defaultBasket
-  // }
-  // const getItem = (baskets: BasketState[], name: string) => {
-  //   const item = baskets.find(e => e.name === name)
-  //   if (!item) {
-  //     return setItem(name)
-  //   }
-  //   return item
-  // }
 
   return (
-    <div className="table table-auto w-full text-black ">
+    <div className="table w-full table-auto text-black dark:text-gray-200 ">
       <div className="table-header-group font-medium ">
         <div className="table-row ">
-          <div className="table-cell  text-left px-4 pt-8 pb-3 first:pl-8 last:pr-8 border-b border-gray-200">
+          <div className="table-cell  border-b border-gray-200 px-4 pb-3 pt-9 text-left first:pl-8 last:pr-8 dark:border-gray-600">
             INGREDIENTS
           </div>
-          <div className="table-cell w-28 text-left px-4 pt-8 pb-3 first:pl-8 last:pr-8 border-b border-gray-200">
+          <div className="table-cell w-28 border-b border-gray-200 px-4  pb-3 pt-9 text-left first:pl-8 last:pr-8 dark:border-gray-600">
             NEED
           </div>
-          {/* <div className="table-cell w-4 text-center px-4 pt-8 pb-3 first:pl-8 last:pr-8 border-b border-gray-200"></div> */}
-          <div className="table-cell text-left px-4 pt-8 pb-3 first:pl-8 last:pr-8 border-b border-gray-200">
+          {/* <div className="table-cell w-4 text-center px-4 pt-8 pb-3 pt-9 first:pl-8 last:pr-8 border-b border-gray-200 dark:border-gray-500"></div> */}
+          <div className="table-cell border-b border-gray-200 px-4  pb-3 pt-9 text-left first:pl-8 last:pr-8 dark:border-gray-600">
             REQUIRE
           </div>
-          {/* <div className="table-cell w-4 text-left px-4 pt-8 pb-3 first:pl-8 last:pr-8 border-b border-gray-200"></div> */}
-          <div className="table-cell text-left px-4 pt-8 pb-3 first:pl-8 last:pr-8 border-b border-gray-200">
+          {/* <div className="table-cell w-4 text-left px-4 pt-8 pb-3 pt-9 first:pl-8 last:pr-8 border-b border-gray-200 dark:border-gray-500"></div> */}
+          <div className="table-cell border-b border-gray-200 px-4  pb-3 pt-9 text-left first:pl-8 last:pr-8 dark:border-gray-600">
             HAVE
           </div>
           {/* <div className="table-cell text-center border-b-2 border-black">
             SERVINGS
           </div> */}
-          <div className="table-cell w-8 text-left px-4 pt-8 pb-3 first:pl-8 last:pr-8 border-b border-gray-200"></div>
+          <div className="table-cell w-8 border-b border-gray-200 px-4  pb-3 pt-9 text-left first:pl-8 last:pr-8 dark:border-gray-600"></div>
         </div>
       </div>
       {data?.map(({ ingredient: { name }, value, unit }, idx) => (

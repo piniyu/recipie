@@ -11,17 +11,17 @@ export default function RecipeIngredientsTable({
   data: IngredientData[]
 }): JSX.Element {
   return (
-    <div className="table mb-8">
+    <div className="mb-8 table">
       <div className="table-row-group">
         {data.map(({ ingredient, ingredientId, unit, value }) => (
           <div className="table-row" key={ingredientId}>
-            <div className="table-cell py-3 w-full">
+            <div className="table-cell w-full py-3">
               <div className="flex items-center">
                 {ingredient.name}
-                <span className="flex-1 h-0 mx-3 border-b-2 border-gray-300 border-dotted"></span>
+                <span className="mx-3 h-0 flex-1 border-b-2 border-dotted border-gray-300"></span>
               </div>
             </div>
-            <div className="table-cell py-3 font-semibold text-secondary">
+            <div className="table-cell py-3 font-semibold ">
               {value}
               {unit}
             </div>

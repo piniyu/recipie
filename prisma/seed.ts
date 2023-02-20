@@ -1,32 +1,38 @@
-import { PrismaClient } from "@prisma/client";
-import { testHelper } from "../app/test/test-helper";
+import { PrismaClient } from '@prisma/client'
+
+import { testHelper } from '../app/test/test-helper'
 
 // const db = new PrismaClient()
 
-const prisma = new PrismaClient({ errorFormat: "pretty" });
+const prisma = new PrismaClient({ errorFormat: 'pretty' })
 
 async function main() {
-  console.log("Truncating databse...");
-  await prisma.$queryRaw`TRUNCATE "User", "Recipe", "Basket", "Ingredient", "NumIngredientOnRecipe", "Favorite" CASCADE;`;
+  console.log('Truncating databse...')
+  // await resetS3Data()
+  await prisma.$queryRaw`TRUNCATE "User","Recipe","Thumbnail","Basket", "Ingredient", "NumIngredientOnRecipe" ,"Favorite","RecipeTags","Tag" CASCADE;`
 
-  await testHelper.createUsers(prisma);
-  await testHelper.createIngredients(prisma);
-  await testHelper.createRecipes(prisma);
-  await testHelper.createNumIngrediens(prisma);
-  await testHelper.createBaskets(prisma);
+  await testHelper.createUsers(prisma)
+  await testHelper.createIngredients(prisma)
+  await testHelper.createTags(prisma)
+  await testHelper.createRecipes(prisma)
+  await testHelper.createThumbnail(prisma)
+  await testHelper.createInstruction(prisma)
+  await testHelper.createNumIngrediens(prisma)
+  await testHelper.createRecipeTags(prisma)
+  await testHelper.createBaskets(prisma)
 }
 
 main()
-  .catch((err) => {
-    console.error("error", err);
-    throw new Error();
+  .catch(err => {
+    console.error('error', err)
+    throw new Error()
   })
   .finally(async () => {
-    console.log("Done, closing primsa");
+    console.log('Done, closing primsa')
     // scraper.dump()
-    prisma.$disconnect();
-    process.exit();
-  });
+    prisma.$disconnect()
+    process.exit()
+  })
 
 // function getRecipes() {
 //   return [

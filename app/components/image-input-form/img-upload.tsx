@@ -1,124 +1,152 @@
-import type Konva from 'konva'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import _ from 'lodash'
 import { useFormContext } from 'react-hook-form'
-import { Layer, Rect, Stage, Image, Transformer } from 'react-konva'
-import useImage from 'use-image'
-import ImgCanvas from './img-canvas'
-import { PageImgRef } from './page-img'
+import { useAppDispatch } from '~/store/configure-store'
+import { updateDetails } from '~/store/upload-temp/details-form-slice'
 import { useResizeObserver } from './use-resize-observer'
-
-const getFileSize = (
-  files: FileList,
-): { text: string; isOverSize: boolean } => {
-  let numberOfBytes = 0
-  for (const file of files) {
-    numberOfBytes += file.size
-  }
-  const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-  const exponent = Math.min(
-    Math.floor(Math.log(numberOfBytes) / Math.log(1024)),
-    units.length - 1,
-  )
-  const approx = numberOfBytes / 1024 ** exponent
-  const output =
-    exponent === 0
-      ? numberOfBytes + ' bytes'
-      : `${approx.toFixed(3)} ${units[exponent]} (${numberOfBytes} bytes)`
-  return { text: output, isOverSize: false }
-}
+import AvatarEditor from 'react-avatar-editor'
+import Dropzone from 'react-dropzone'
+import { getFileSize } from './img-upload-input'
+import { useActionData, useFetcher, useSubmit } from '@remix-run/react'
+import { s3 } from '~/utils/s3.server'
+import { PutObjectCommand } from '@aws-sdk/client-s3'
+import cuid from 'cuid'
 
 export default function ImgUpload({
   name,
-  src,
+  defaultImgSrc,
   onClose,
-  pageImgRef,
 }: {
   name: string
-  src: string
+  defaultImgSrc: string
   onClose: () => void
-  pageImgRef: PageImgRef | null
 }): JSX.Element {
-  const { register, setValue, setError } = useFormContext()
+  const { register, setValue, setError, watch } = useFormContext()
+  const dispatch = useAppDispatch()
 
   const containerRef = useRef<HTMLDivElement>(null)
-  const imgCanvasRef = useRef<{ onConfirm: () => void }>(null)
+  const editorRef = useRef<AvatarEditor>(null)
+  const imgDraftKey = useRef(cuid())
 
-  const [width, height] = useResizeObserver(containerRef)
+  const [scale, setScale] = useState(1)
 
-  const [isNewImg, setIsNewImg] = useState(false)
+  const watchValue = watch(name)
 
-  const onSubmitFile = async (e: React.ChangeEvent) => {
-    // setValue(name,)
-    const element = e.target as HTMLInputElement
-    const files = element.files
-    if (files) {
-      const size = getFileSize(files)
-      if (size.isOverSize) {
-        setError(name, {
-          type: 'overSize',
-          message:
-            'The size of file is over the limit. Your file size should be under 2MB!',
-        })
-        return
-      }
-      const file = files[0]
-      // const url = URL.createObjectURL(file)
-      const reader = new FileReader()
-      reader.addEventListener(
-        'load',
-        () => {
-          // console.log('onChange')
-          setValue(name, {
-            name: file.name,
-            type: file.type,
-            src: reader.result,
-            size: size.text,
-          })
-        },
-        false,
-      )
-      reader.readAsDataURL(file)
-    }
-    setIsNewImg(true)
+  const onWheel = (e: WheelEvent) => {
+    setScale(prev => Math.max(prev + e.deltaY / 80, 1))
   }
+
+  const throttledOnWheel = useCallback(
+    _.throttle(onWheel, 40, { trailing: false }),
+    [],
+  )
+
+  useEffect(() => {
+    const container = containerRef.current
+
+    if (container) {
+      container.addEventListener('wheel', throttledOnWheel)
+    }
+    return () => {
+      if (container) {
+        container.removeEventListener('wheel', throttledOnWheel)
+      }
+    }
+  }, [])
+
+  const onConfirm = async () => {
+    const editor = editorRef.current
+    if (editor) {
+      // editor.getImageScaledToCanvas().toBlob(blob => {
+      //   if (!blob) throw new Error('no Blob')
+      //   const file = new File([blob], imgDraftKey.current, {
+      //     type: 'image/jpeg',
+      //   })
+      //   const formData = new FormData()
+      //   formData.append('img', file)
+      //   // fetcher.submit(formData, {
+      //     //   method: 'post',
+      //     //   action: `/action/upload-img`,
+      //     //   encType: 'multipart/form-data',
+      //     // })
+      //   }, 'image/jpeg')
+      const url = editor.getImageScaledToCanvas().toDataURL('image/jpeg')
+      // const res = await fetch(url)
+      // const file = new File([await res.blob()], imgDraftKey.current, {
+      //   type: 'image/jpeg',
+      // })
+      // console.log(res)
+      const obj = {
+        name: imgDraftKey.current,
+        src: url,
+        type: 'image/jpeg',
+      }
+      setValue(name, obj)
+      // dispatch(updateDetails({ thumbnail: obj }))
+    }
+    onClose()
+  }
+
+  // useEffect(() => {
+  //   if (fetcher.data) {
+  //     const obj = {
+  //       name: imgDraftKey.current,
+  //       src: fetcher.data,
+  //       type: 'image/jpeg',
+  //       size: '',
+  //     }
+  //     setValue(name, obj)
+  //     dispatch(updateDetails({ thumbnail: obj }))
+  //     onClose()
+
+  //   }
+  // }, [fetcher.data])
+
   return (
     <>
-      <div
-        className="flex justify-center w-full h-fit max-h-[60vh] overflow-hidden bg-gray-600"
-        ref={containerRef}
-      >
-        {src.length > 0 ? (
-          <ImgCanvas
-            {...{
-              src,
-              width,
-              height,
-              container: containerRef.current,
-              pageImgRef,
-              ref: imgCanvasRef,
-              isNewImg,
-              setIsNewImg,
+      {/* <div className=" h-full"> */}
+      {defaultImgSrc?.length > 0 ? (
+        <div
+          className="flex max-h-[60vh]  w-full items-center justify-center overflow-hidden rounded-t-xl bg-gray-500"
+          ref={containerRef}
+        >
+          <Dropzone
+            onDrop={dropped => {
+              // console.log(dropped)
             }}
-          />
-        ) : (
+            noClick
+            noKeyboard
+          >
+            {/** TODO: on scroll to scale and mobile scale gestrue*/}
+            {({ getRootProps, getInputProps }) => (
+              <div {...getRootProps()}>
+                <AvatarEditor
+                  image={defaultImgSrc}
+                  width={720}
+                  height={540}
+                  border={50}
+                  color={[0, 0, 0, 0.6]}
+                  scale={scale}
+                  disableCanvasRotation
+                  ref={editorRef}
+                />
+              </div>
+            )}
+          </Dropzone>
+        </div>
+      ) : (
+        <div
+          className="flex h-full w-full justify-center overflow-hidden rounded-t-xl bg-gray-600"
+          ref={containerRef}
+        >
           <div className="flex items-center justify-center">
-            <p className=" p-4 text-gray-500 font-medium text-center">
+            <p className=" p-4 text-center font-medium text-gray-500">
               No file yet!
             </p>
           </div>
-        )}
-      </div>
-      <div className="flex justify-between my-4 mx-6">
-        <label className="btn-border btn-sm cursor-pointer">
-          Choose File
-          <input
-            className="hidden"
-            type="file"
-            accept="image/*"
-            onChange={onSubmitFile}
-          />
-          <input {...register(name, { required: true })} type="hidden" />
-        </label>
+        </div>
+      )}
+      <div className="mx-6 flex justify-between py-4">
         <div className="flex space-x-4">
           <button
             className="btn-ghost btn-md"
@@ -133,8 +161,7 @@ export default function ImgUpload({
             className="btn-primary btn-md"
             onClick={e => {
               e.stopPropagation()
-              imgCanvasRef.current?.onConfirm()
-              onClose()
+              onConfirm()
             }}
           >
             Comfirm

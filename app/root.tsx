@@ -5,7 +5,6 @@ import {
   LinksFunction,
   LoaderFunction,
   MetaFunction,
-  redirect,
 } from '@remix-run/node'
 import {
   Link,
@@ -15,11 +14,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useFetcher,
   useLoaderData,
-  useLocation,
   useNavigate,
-  useSearchParams,
 } from '@remix-run/react'
 import styles from './styles/app.css'
 import Layout from './components/layout'
@@ -27,13 +23,18 @@ import { db } from './utils/db.server'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistor, store } from './store/configure-store'
-import BasketModal from './components/layout/basket-modal'
 import { deleteRecipe } from './actions/basket/delete-recipe'
 import { getUserId } from './utils/session.server'
-import { getDbRecipe } from './lib/basket/add-recipe.server'
 import Toolbar from './components/layout/toolbar'
 import UserProvider from './components/user/user-provider'
 import type { User } from '@prisma/client'
+import {
+  NonFlashOfWrongThemeEls,
+  Theme,
+  ThemeProvider,
+  useTheme,
+} from './utils/theme-provider'
+import { getThemeSession } from './utils/theme-session.server'
 
 type LoaderData = {
   email: User['email']
@@ -44,6 +45,7 @@ type LoaderData = {
       id: string
     }[]
   } | null
+  theme: Theme | null
 }
 
 export const metaTitlePostfix = ' - Recipie'
@@ -103,49 +105,41 @@ export const loader: LoaderFunction = async ({ request }) => {
     where: { id: userId },
     select: { email: true },
   })
-  const basket = await db.basket.findFirst({
-    where: { userId },
-    select: { recipes: { select: { id: true, title: true } } },
-  })
 
-  return json({ basket, userId, email: email?.email })
+  const themeSession = await getThemeSession(request)
+  return json({
+    // basket,
+    userId,
+    email: email?.email,
+    theme: themeSession.getTheme(),
+  })
 }
 
 export const action: ActionFunction = async props => {
   return await deleteRecipe(props)
 }
 
-export default function App() {
+function App() {
   const data = useLoaderData() as LoaderData
-  const [searchParams] = useSearchParams()
-  const navigate = useNavigate()
-  const location = useLocation()
+  const [theme] = useTheme()
 
   return (
-    <html lang="en">
+    <html lang="en" id="app" className={theme ?? ''}>
       <head>
         <Meta />
         <Links />
+        <NonFlashOfWrongThemeEls ssrTheme={!!data.theme} />
       </head>
 
-      <body id="app">
+      <body>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <UserProvider user={{ id: data.userId, email: data.email }}>
-              <Layout toolbar={<Toolbar />}>
+              <Layout>
                 <Outlet />
               </Layout>
             </UserProvider>
           </PersistGate>
-          {searchParams.get('basket-panel') ? (
-            <BasketModal
-              open={searchParams.get('basket-panel') ? true : false}
-              onClose={() => {
-                navigate(`${location.pathname}`)
-              }}
-              basketData={data.basket?.recipes}
-            />
-          ) : null}
           <div id="modal-container"></div>
         </Provider>
         <ScrollRestoration />
@@ -156,10 +150,21 @@ export default function App() {
   )
 }
 
+export default function AppWithProvider() {
+  const data = useLoaderData() as LoaderData
+
+  return (
+    <ThemeProvider specifiedTheme={data.theme}>
+      <App />
+    </ThemeProvider>
+  )
+}
+
 export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   const navigate = useNavigate()
 
   if (error) {
+    console.log(error)
     return (
       <div>
         Oops! Something went wrong!
@@ -176,4 +181,3 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   }
   return null
 }
-// TODO:make user register

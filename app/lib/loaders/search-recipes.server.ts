@@ -4,6 +4,7 @@ import { db } from '../../utils/db.server'
 function getSearchParams(requestUrl: string) {
   const url = new URL(requestUrl)
   const param = url.searchParams.get('search') ?? ''
+
   return param
 }
 

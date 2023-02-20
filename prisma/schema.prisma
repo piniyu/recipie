@@ -30,29 +30,43 @@ model Basket {
 }
 
 model Recipe {
-  id             String                  @id @default(cuid())
-  authorId       String
-  title          String
-  createdAt      DateTime                @default(now())
-  updatedAt      DateTime?               @updatedAt
-  difficulty     Difficulty              @default(NOSCALE)
+  id           String        @id @default(cuid())
+  authorId     String
+  title        String
+  // thumbnailId String
+  thumbnail    Thumbnail?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime?     @updatedAt
+  difficulty   Difficulty    @default(NOSCALE)
+  instructions Instruction[]
+  tags         RecipeTags[]
+
+  basketsNum     Int                     @default(0)
+  likesNum       Int                     @default(0)
+  serving        Int                     @default(1)
+  viewrs         Int                     @default(0)
+  author         User                    @relation(fields: [authorId], references: [id])
   baskets        Basket[]
   favorite       Favorite[]
   ingredientsNum NumIngredientOnRecipe[]
-  instructions   String[]
-  // itemList Item[]
-  likesNum       Int                     @default(0)
-  serving        Int                     @default(0)
-  viewrs         Int                     @default(0)
-  author         User                    @relation(fields: [authorId], references: [id])
-  @@unique([authorId, title])
+
+  // @@unique([authorId, title])
+}
+
+model Instruction {
+  id       String   @id @default(cuid())
+  recipeId String
+  recipe   Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  step     Int
+  title    String
+  photo    String
+  methods  String[]
 }
 
 model Ingredient {
   id        String                  @id @default(cuid())
   name      String                  @unique
   onRecipes NumIngredientOnRecipe[]
-  // basket    Basket[]
 }
 
 model NumIngredientOnRecipe {
@@ -62,6 +76,7 @@ model NumIngredientOnRecipe {
   recipe       Recipe     @relation(fields: [recipeId], references: [id], onDelete: Cascade)
   unit         String
   value        String
+
   @@id([recipeId, ingredientId])
 }
 
@@ -80,6 +95,35 @@ model Favorite {
 //   value Int
 //   fromRecipe Recipe @relation(fields: [fromRecipeId], references: [id])
 // }
+
+model Thumbnail {
+  id       String @id @default(cuid())
+  recipeId String @unique
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  s3Key    String
+}
+
+// model Image {
+//   id        String @id @default(cuid())
+//   // publicId  String @unique
+//   format    String
+//   // version  String
+//   recipeId  String @unique
+//   // recipe    Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+//   stepIndex Int //0:thumbnail 1~:steps
+// }
+model Tag {
+  id        String       @id @default(cuid())
+  name      String       @unique
+  onRecipes RecipeTags[]
+}
+
+model RecipeTags {
+  recipeId String @unique
+  recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  tagId    String
+  tag      Tag    @relation(fields: [tagId], references: [id])
+}
 
 enum Difficulty {
   DIFFICULT5

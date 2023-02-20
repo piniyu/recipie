@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { BasketTableRow } from '.'
 import NumberInput from '../../inputs/number-input'
@@ -19,20 +19,32 @@ export default function TableRowForm({
   defaultValue: number | undefined
 }) {
   const methods = useForm<{ input: number }>({
-    mode: 'onChange',
+    mode: 'all',
   })
-  const { reset, watch } = methods
+  const {
+    reset,
+    watch,
+    trigger,
+    getValues,
+    formState: { errors },
+  } = methods
 
   useEffect(() => {
     if (defaultValue) {
       reset({ input: defaultValue })
-      console.log(defaultValue)
+
+      // trigger('input')
     }
   }, [defaultValue, reset])
 
   useEffect(() => {
+    trigger('input')
+  }, [getValues('input')])
+
+  useEffect(() => {
     const subscription = watch(v => {
       if (v.input) {
+        // console.log(errors)
         setInputValue(v.input)
       }
     })

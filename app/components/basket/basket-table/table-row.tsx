@@ -27,9 +27,9 @@ export default function TableRow({
   const dispatch = useAppDispatch()
 
   return (
-    <div className={`relative table-row-group text-secondary `}>
+    <div className={`relative table-row-group text-inherit `}>
       <div className="table-row">
-        <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 ">
+        <div className="table-cell px-4 py-3 first:pl-8 last:pr-8 ">
           <div className="flex items-center">
             <span>{name}</span>
           </div>
@@ -37,13 +37,13 @@ export default function TableRow({
         <div
           className={`
           relative 
-          table-cell px-4 first:pl-8 last:pr-8 
-          py-3 
-          text-secondary font-bold 
-          text-lg
+          table-cell px-4 py-4 text-lg 
+          font-bold 
+           first:pl-8 
+          last:pr-8
           `}
         >
-          <span className="[background:linear-gradient(to_bottom,transparent_50%,#fbbf2490_50%)]">
+          <span className="[background:linear-gradient(to_bottom,transparent_50%,#fbbf2450_50%)]">
             {value * localBasket.servings -
               (isNaN(localBasket.hadQant) ? 0 : localBasket.hadQant) +
               unit}
@@ -52,13 +52,13 @@ export default function TableRow({
         {/* <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 text-gray-500">
           =
         </div> */}
-        <div className="table-cell px-4 first:pl-8 last:pr-8 py-3">
+        <div className="table-cell px-4 py-4 first:pl-8 last:pr-8">
           <div className="">{value * localBasket.servings + unit}</div>
         </div>
         {/* <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 text-gray-500">
           -
         </div> */}
-        <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 ">
+        <div className="table-cell px-4 py-4 first:pl-8 last:pr-8 ">
           <TableRowForm
             {...{
               setInputValue: (value: number) =>
@@ -82,7 +82,7 @@ export default function TableRow({
             }}
           />
         </div> */}
-        <div className="table-cell px-4 first:pl-8 last:pr-8 align-middle py-3 text-gray-500">
+        <div className="table-cell px-4 py-3 align-middle text-gray-500 first:pl-8 last:pr-8">
           <button
             className="flex p-1"
             onClick={() => {
@@ -91,7 +91,9 @@ export default function TableRow({
           >
             <span
               className={`material-symbols-outlined leading-none ${
-                isDeleted ? 'text-green-500' : 'text-red-600'
+                isDeleted
+                  ? 'text-green-500 dark:text-green-400'
+                  : 'text-red-600 dark:text-red-400'
               }`}
             >
               {isDeleted ? 'undo' : 'delete'}
@@ -101,7 +103,7 @@ export default function TableRow({
       </div>
       {isDeleted && (
         <div
-          className="absolute top-0 left-0  h-full bg-white/50 mix-blend-screen"
+          className="absolute top-0 left-0  h-full bg-white/50 mix-blend-screen dark:bg-dark-gray/50 dark:mix-blend-darken"
           style={{ width: 'calc(100% - 56px)' }}
         ></div>
       )}

@@ -4,17 +4,17 @@ import {
   useFetcher,
   useLoaderData,
   useMatches,
-} from "@remix-run/react";
-import React, { useContext } from "react";
-import Basket from "~/icons/basket";
-import Favorite from "~/icons/favorite";
-import Recipe from "~/icons/recipe";
-import { db } from "~/utils/db.server";
-import Logo from "../../icons/logo";
-import AuthCheck from "../auth/auth-check";
-import LogoutForm from "../logout-form";
-import { SiderActionKind, SiderItemType } from "./sider-context";
-import { SiderContext } from "./sider-context";
+} from '@remix-run/react'
+import React, { useContext } from 'react'
+import Basket from '~/icons/basket'
+import Favorite from '~/icons/favorite'
+import Recipe from '~/icons/recipe'
+import { db } from '~/utils/db.server'
+import Logo from '../../icons/logo'
+import AuthCheck from '../auth/auth-check'
+import LogoutForm from '../logout-form'
+import { SiderActionKind, SiderItemType } from './sider-context'
+import { SiderContext } from './sider-context'
 
 function SiderItem({
   icon,
@@ -38,6 +38,7 @@ function SiderItem({
          
           transition-colors
           hover:bg-primary
+          dark:hover:bg-primary-dark
           
           ${
             hasChild
@@ -51,9 +52,9 @@ function SiderItem({
             after:bg-white
             after:content-['']
             `
-              : ""
+              : ''
           }
-          ${isActive ? "  bg-primary" : " text-black "}
+          ${isActive ? '  bg-primary dark:bg-primary-dark' : 'text-inherit'}
           `
         }
       >
@@ -74,9 +75,9 @@ function SiderItem({
         {icon}
         {value}
       </NavLink>
-    );
-  } else if (typeof value !== "string" && React.isValidElement(value)) {
-    return value;
+    )
+  } else if (typeof value !== 'string' && React.isValidElement(value)) {
+    return value
   }
   return (
     <span
@@ -91,7 +92,7 @@ function SiderItem({
     >
       {value}
     </span>
-  );
+  )
 }
 
 export default function Sider(): JSX.Element | null {
@@ -100,16 +101,16 @@ export default function Sider(): JSX.Element | null {
     //     icon: <Overview />, value: 'Overview'
     // },
     // { value: 'Upload recipe', route: 'upload', isBtn: true },
-    { value: "Pages" },
-    { icon: <Recipe />, value: "My Recipes", route: "my-recipes" },
-    { icon: <Favorite />, value: "Favorite", route: "favorite" },
-    { icon: <Basket />, value: "Basket", route: "basket" },
-    { value: "Authentication" },
-  ];
-  const { hidden, close } = useContext(SiderContext);
+    { value: 'Pages' },
+    { icon: <Recipe />, value: 'My Recipes', route: 'my-recipes' },
+    { icon: <Favorite />, value: 'Favorite', route: 'favorite' },
+    { icon: <Basket />, value: 'Basket', route: 'basket' },
+    { value: 'Authentication' },
+  ]
+  const { hidden, close } = useContext(SiderContext)
 
   if (hidden) {
-    return null;
+    return null
   }
   return (
     <nav
@@ -123,9 +124,13 @@ export default function Sider(): JSX.Element | null {
       overflow-auto 
       bg-white 
       pt-4 
+      text-inherit
       shadow-xl
       transition-transform
-     ${close ? "-translate-x-full" : ""}
+     ${close ? '-translate-x-full' : ''}
+
+     dark:bg-dark-gray
+     dark:shadow-gray-900
      `}
     >
       <NavLink to="/">
@@ -133,7 +138,12 @@ export default function Sider(): JSX.Element | null {
           <Logo />
         </div>
       </NavLink>
-
+      <Link
+        to="/upload/details"
+        className="sider-item btn-sm btn-secondary mr-4"
+      >
+        Uplode Recipe
+      </Link>
       {/* <div className="sider-item px-0">
         <div className="flex flex-col items-center gap-3 my-8">
           <span
@@ -165,7 +175,7 @@ export default function Sider(): JSX.Element | null {
                     value
                   )}
                 </div>
-              );
+              )
             }
             return (
               <React.Fragment key={idx}>
@@ -173,7 +183,7 @@ export default function Sider(): JSX.Element | null {
                   {...{
                     value,
                     icon,
-                    hasChild: typeof children !== "undefined",
+                    hasChild: typeof children !== 'undefined',
                     route,
                     idx,
                   }}
@@ -191,33 +201,34 @@ export default function Sider(): JSX.Element | null {
                   </div>
                 )}
               </React.Fragment>
-            );
-          }
+            )
+          },
         )}
         <AuthCheck loginConfirmModal={false}>
-          {(user) => {
+          {user => {
             if (user && user.id !== null) {
               return (
                 <LogoutForm
-                  formProps={{ className: "flex items-center" }}
-                  btnClassName=" gap-4 relative
-          sider-item sider-item-svg 
-          text-left
-          transition-colors hover:bg-primary"
+                  formProps={{ className: 'flex items-center' }}
+                  btnClassName="gap-4 relative
+                                sider-item sider-item-svg 
+                                text-left
+                                text-black dark:text-gray-50
+                                transition-colors hover:bg-primary dark:hover:bg-primary-dark"
                 />
-              );
+              )
             }
             return (
               <SiderItem
-                value={"Login"}
+                value={'Login'}
                 route={`/login?redirectTo=${
-                  window ? window.location.href : ""
+                  window ? window.location.href : ''
                 }`}
               />
-            );
+            )
           }}
         </AuthCheck>
       </div>
     </nav>
-  );
+  )
 }

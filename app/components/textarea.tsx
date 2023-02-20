@@ -1,12 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { ErrorMessage } from '@hookform/error-message'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import type {
   ControllerFieldState,
   ControllerRenderProps,
   FieldValues,
+  UseFormRegister,
   UseFormReturn,
   UseFormStateReturn,
 } from 'react-hook-form'
 import { Control, Controller, useFormContext, useWatch } from 'react-hook-form'
+import { useAppDispatch } from '~/store/configure-store'
+import { ErrorMessageComponent } from './error-message'
 
 const MyTextarea = ({
   field,
@@ -74,20 +78,29 @@ export default function Textarea({
   name,
   rows,
   placeholder = '',
+  onChangeCallback,
+  registerOptions,
 }: {
   methods?: UseFormReturn<FieldValues, any>
   maxLength?: number
   name: string
   rows?: number
   placeholder?: string
-  // isOptional?: boolean
+  registerOptions?: Parameters<UseFormRegister<FieldValues>>['1']
+  onChangeCallback?: (name: string, value: any, e: React.ChangeEvent) => void
 }): JSX.Element {
-  const { register, watch, control } = useFormContext()
-  const watchValue = watch(name)
-  let textareaMyRef: HTMLTextAreaElement | null = null
-  const { ref, ...rest } = register(name)
+  const {
+    register,
+    watch,
+    control,
+    getValues,
+    trigger,
 
-  // const [length, setLength] = useState(0)
+    formState: { errors },
+  } = useFormContext()
+  const watchValue = useWatch({ control, defaultValue: { name } })
+  let textareaMyRef: HTMLTextAreaElement | null = null
+
   useEffect(() => {
     if (textareaMyRef && window) {
       const computedStyle = window.getComputedStyle(textareaMyRef)
@@ -102,48 +115,42 @@ export default function Textarea({
         textareaMyRef.scrollHeight + borderBottom + borderTop + 'px'
     }
   }, [watchValue, textareaMyRef])
-  // console.log(watchValue, name)
-  // useEffect(() => {
-  //   const subscribe = watch(value => {
-  //     setLength(value.title.length)
-  //     // console.log(value)
-  //   })
-  //   return () => {
-  //     subscribe.unsubscribe()
-  //   }
-  // }, [watch])
-  return (
-    <div className="relative w-full">
-      {/* <textarea {...register(name)} /> */}
-      <textarea
-        {...rest}
-        rows={rows}
-        className={` input w-full resize-none align-bottom text-black ${
-          maxLength ? 'pb-8' : ''
-        }`}
-        maxLength={maxLength}
-        placeholder={placeholder}
-        ref={e => {
-          // register(name).ref(v)
-          ref(e)
-          textareaMyRef = e
-        }}
-      />
-      {/* <Controller
-        name={name}
-        control={control}
-        render={props => {
-          return (
-            <MyTextarea {...{ ...props, maxLength, name, rows, placeholder }} />
-          )
-        }}
-      /> */}
 
-      {maxLength !== undefined && (
-        <span className="absolute inline-block right-0 bottom-0 mr-2 mb-2 text-gray-400 text-xs">
-          {watchValue ? watchValue.length : 0}/{maxLength}
-        </span>
-      )}
-    </div>
+  return (
+    <>
+      <div className="relative w-full">
+        <textarea
+          {...register(name, {
+            ...registerOptions,
+            onChange: e => {
+              trigger(name)
+              registerOptions?.onChange && registerOptions.onChange(e)
+              if (onChangeCallback) {
+                onChangeCallback(name, getValues(name), e)
+              }
+            },
+          })}
+          rows={rows}
+          className={` input w-full resize-none align-bottom text-inherit ${
+            maxLength ? 'pb-8' : ''
+          } ${errors[name]?.message ? 'input-error' : ''}
+        `}
+          maxLength={maxLength}
+          placeholder={placeholder}
+          ref={e => {
+            // register(name).ref(v)
+            register(name).ref(e)
+            textareaMyRef = e
+          }}
+        />
+        {maxLength !== undefined && (
+          <span className="absolute right-0 bottom-0 mr-2 mb-2 inline-block text-xs text-gray-400">
+            {/* {console.log(watchValue)} */}
+            {watch(name) ? watch(name).length : 0}/{maxLength}
+          </span>
+        )}
+      </div>
+      <ErrorMessageComponent errors={errors} name={name} />
+    </>
   )
 }

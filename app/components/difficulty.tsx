@@ -1,32 +1,50 @@
 import { Difficulty } from '@prisma/client'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-const getDifficulty = (difficulty: Difficulty) => {
-  switch (difficulty) {
-    case Difficulty.DIFFICULT5:
-      return 5
-    case Difficulty.DIFFICULT4:
-      return 4
-    case Difficulty.MODERATE3:
-      return 3
-    case Difficulty.EASY2:
-      return 2
-    case Difficulty.EASY1:
-      return 1
-    default:
-      return 1
+type GetDifficultyReturnType<T> = T extends Difficulty ? number : Difficulty
+
+export function getDifficulty(
+  difficulty: Difficulty | number,
+): GetDifficultyReturnType<typeof difficulty> {
+  const difficulties: Record<Difficulty, number> = {
+    EASY1: 1,
+    EASY2: 2,
+    MODERATE3: 3,
+    DIFFICULT4: 4,
+    DIFFICULT5: 5,
+    NOSCALE: 0,
   }
+  if (typeof difficulty === 'number') {
+    const keys = Object.keys(difficulties) as Difficulty[]
+    const findDifficulty = keys.find(e => difficulties[e] === difficulty)
+
+    if (typeof findDifficulty !== 'string') return 'NOSCALE'
+
+    return findDifficulty
+  }
+  return difficulties[difficulty]
 }
 
 export default function DifficultyBtn({
   difficulty,
   isInput,
+  onChange,
 }: {
   difficulty: Difficulty
   isInput?: boolean
+  onChange?: (value: number) => void
 }): JSX.Element {
-  const [starValue, setStarValue] = useState(getDifficulty(difficulty))
-  const [clicked, setClicked] = useState(0)
+  const [starValue, setStarValue] = useState(
+    getDifficulty(difficulty) as number,
+  )
+  const [clicked, setClicked] = useState(getDifficulty(difficulty) as number)
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(clicked)
+    }
+  }, [clicked])
+
   return (
     <>
       {Array(5)
@@ -62,7 +80,11 @@ export default function DifficultyBtn({
           </span>
         ))}
 
-      <span className={` ${isInput ? 'text-black' : 'text-gray-500'}`}>
+      <span
+        className={` ${
+          isInput ? 'text-inherit' : 'text-gray-500 dark:text-gray-400'
+        }`}
+      >
         {starValue.toFixed(1)}
       </span>
     </>

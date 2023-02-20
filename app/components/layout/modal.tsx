@@ -8,12 +8,14 @@ export default function Modal({
   children,
   className,
   dialogClassName,
+  disableClickOutsideClose,
 }: {
   onClose: () => void
   open: boolean
   children: ReactNode
   className?: string
   dialogClassName?: string
+  disableClickOutsideClose?: boolean
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null)
   const modalContainer = document.getElementById('modal-container')
@@ -26,9 +28,17 @@ export default function Modal({
         onClose()
       }
     }
-    document.addEventListener('click', onClick)
+    if (!disableClickOutsideClose) {
+      document.addEventListener('click', onClick)
+    }
+    // document.addEventListener('scroll', () => {
+    //   console.log('modal scrolling')
+    // })
     return () => {
-      document.removeEventListener('click', onClick)
+      if (!disableClickOutsideClose) {
+        document.removeEventListener('click', onClick)
+      }
+      // document.removeEventListener('scroll', () => {})
     }
   }, [onClose])
   useEffect(() => {
@@ -36,9 +46,18 @@ export default function Modal({
       return
     }
     if (open) {
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
+      if (document.body.clientHeight > window.innerHeight) {
+        document.body.style.overflowY = 'scroll'
+      }
       dialogRef.current.showModal()
     } else {
       dialogRef.current.close()
+    }
+    return () => {
+      document.body.style.position = 'static'
+      document.body.style.overflow = 'unset'
     }
   }, [open])
 
@@ -46,12 +65,20 @@ export default function Modal({
     throw new Error('modal-container not found!')
   }
 
+  if (!open) {
+    return null
+  }
+
   return ReactDOM.createPortal(
     <dialog
-      className={` p-0 bg-transparent ${dialogClassName ?? ''}`}
+      className={` bg-transparent p-0 backdrop:backdrop-brightness-50 ${
+        dialogClassName ?? ''
+      } `}
       ref={dialogRef}
     >
-      <div className={` bg-white ${className ?? ''}`}>{children}</div>
+      <div className={` bg-white dark:bg-dark-gray ${className ?? ''}`}>
+        {children}
+      </div>
     </dialog>,
     modalContainer,
   )

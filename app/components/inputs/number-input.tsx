@@ -24,27 +24,18 @@ const NumberInput = ({
     register,
     setValue,
     handleSubmit,
+    getValues,
+    trigger,
     formState: { errors },
   } = useFormContext()
   const input = watch(registerName)
   const inputRef = useRef<HTMLInputElement | null>(null)
 
-  useEffect(() => {
-    const subscription = watch(() => {
-      if (onSubmit) {
-        handleSubmit(onSubmit)()
-      }
-    })
-    return () => {
-      subscription.unsubscribe()
-    }
-  }, [handleSubmit, onSubmit, watch])
-
   return (
     <div className="flex">
       {hasSetBtn ? (
         <button
-          className=" flex items-center rounded-l-lg border border-r-0 border-gray-200 disabled:text-gray-400"
+          className=" flex items-center rounded-l-lg border border-r-0 border-gray-200 disabled:text-gray-400 dark:border-gray-500 dark:text-gray-300 dark:disabled:text-gray-600"
           type="button"
           onClick={() => {
             if (inputRef.current && parseInt(inputRef.current.value) > 1) {
@@ -62,15 +53,13 @@ const NumberInput = ({
         {...register(registerName, {
           valueAsNumber: true,
           max: maxValue
-            ? { value: maxValue, message: 'Out of original quantity' }
+            ? { value: maxValue, message: 'Out of quantity' }
             : undefined,
           min: 0,
         })}
         type="number"
-        className={`input max-w-[60px] text-right ${
-          errors.input?.message
-            ? 'outline-red-500 bg-red-50 border-red-500 text-red-500'
-            : ''
+        className={`input max-w-[60px] text-right dark:border-gray-500 ${
+          errors.input?.message ? 'input-error' : ''
         }
         ${hasSetBtn ? 'rounded-none' : ''}
         `}
@@ -103,7 +92,7 @@ const NumberInput = ({
       {hasSetBtn ? (
         <button
           type="button"
-          className="flex items-center border border-l-0 border-gray-200 rounded-r-lg"
+          className="flex items-center rounded-r-lg border border-l-0 border-gray-200  dark:border-gray-500 dark:text-gray-300"
           onClick={() => {
             if (inputRef.current) {
               inputRef.current.value = parseInt(inputRef.current.value) + 1 + ''
@@ -120,7 +109,7 @@ const NumberInput = ({
           name={registerName}
           errors={errors}
           render={({ message }) => (
-            <span className="absolute left-0 top-full text-red-500 text-xs">
+            <span className="absolute left-0 top-full text-xs text-red-500 dark:text-red-400">
               {message}
             </span>
           )}

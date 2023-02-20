@@ -13,6 +13,7 @@ import rootReducer from './reducer'
 import type { TypedUseSelectorHook } from 'react-redux'
 import { useDispatch, useSelector } from 'react-redux'
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
+import storageSession from 'redux-persist/lib/storage/session'
 import storage from './storage'
 
 const persistConfig = {

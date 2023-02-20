@@ -1,7 +1,7 @@
 import RadialChart from './radial-chart'
 
 export type NutritionBarChartProps = {
-  name: 'Protein' | 'Fat' | 'Soldium' | 'Cholestral'
+  name: 'Protein' | 'Fat' | 'Soldium' | 'Fiber'
   pct: number
   qat: { value: number; mes: string }
 }

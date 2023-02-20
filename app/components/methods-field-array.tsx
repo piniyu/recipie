@@ -1,10 +1,12 @@
 import {
   Controller,
+  FieldPath,
   FieldValues,
   useFieldArray,
   useFormContext,
   UseFormReturn,
 } from 'react-hook-form'
+import { StepFormProps } from './step-form'
 import Textarea from './textarea'
 
 const regexNum = new RegExp('^[0-9]$')
@@ -56,29 +58,46 @@ const TimeInput = ({
   )
 }
 
-export default function MethodsFieldArray({
-  name,
-}: {
-  name: string
-}): JSX.Element {
-  const methods = useFormContext()
-  const { register, control, setValue } = methods
+export default function MethodsFieldArray(): JSX.Element {
+  const name: FieldPath<StepFormProps> = 'methods'
+  const methods = useFormContext<StepFormProps>()
+  const { register, control, setValue, watch, setError, clearErrors } = methods
   const { fields, append, remove } = useFieldArray({
     control,
     name,
   })
+  const watchFieldArray = watch(name)
+  const controlledFields = fields.map((field, index) => {
+    return {
+      ...field,
+      ...watchFieldArray[index],
+    }
+  })
   return (
     <ul className="space-y-4">
-      {fields.map((field, idx) => {
+      {controlledFields.map((field, idx) => {
         return (
           <div key={field.id}>
             <div className="flex gap-4">
-              <TimeInput {...methods} name={`${name}.${idx}.timeStemp`} />
+              {/* <TimeInput {...methods} name={`${name}.${idx}.timeStemp`} /> */}
               <Textarea
                 {...methods}
                 name={`${name}.${idx}.content`}
                 rows={1}
                 placeholder="Method"
+                registerOptions={{
+                  onChange: () => {
+                    clearErrors(name)
+                  },
+                  onBlur: () => {
+                    if (watchFieldArray.every(e => e.content.length === 0)) {
+                      setError(name, {
+                        type: 'required',
+                        message: 'Please add one methods at least!',
+                      })
+                    }
+                  },
+                }}
               />
               <button
                 type="button"
@@ -98,7 +117,7 @@ export default function MethodsFieldArray({
         className="btn-sm btn-border"
         type="button"
         onClick={() => {
-          append({ content: '', timeStemp: '' })
+          append({ content: '' })
         }}
       >
         Add a method

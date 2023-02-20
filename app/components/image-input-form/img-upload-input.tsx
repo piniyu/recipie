@@ -1,99 +1,138 @@
-import Konva from 'konva'
-import { ImageConfig } from 'konva/lib/shapes/Image'
-import React, {
-  LegacyRef,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { useRef, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
-// import { Layer, Rect, Stage } from 'react-konva'
+import { useAppSelector } from '~/store/configure-store'
 
-import { KonvaNodeComponent, Transformer } from 'react-konva'
-import { Image, Layer, Rect, Stage } from 'react-konva'
-import useImage from 'use-image'
-import type { DetailsFormProps, ImgFormProp } from '../../routes/upload/details'
+import type {
+  DetailsFormProps,
+  ImgFormProp,
+} from '../../routes/__toolbar/upload/details'
+import Modal from '../layout/modal'
 import ImgUpload from './img-upload'
-import { ImgModal } from './modal'
-import PageImg, { PageImgRef } from './page-img'
-import { useResizeObserver } from './use-resize-observer'
+
+export const getFileSize = (
+  input: FileList | number,
+): { text: string; isOverSize: boolean } => {
+  let numberOfBytes = 0
+  if (input instanceof FileList) {
+    for (const file of input) {
+      numberOfBytes += file.size
+    }
+  } else {
+    numberOfBytes = input
+  }
+  const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+  const exponent = Math.min(
+    Math.floor(Math.log(numberOfBytes) / Math.log(1024)),
+    units.length - 1,
+  )
+  const approx = numberOfBytes / 1024 ** exponent
+  const output =
+    exponent === 0
+      ? numberOfBytes + ' bytes'
+      : `${approx.toFixed(3)} ${units[exponent]} (${numberOfBytes} bytes)`
+  return { text: output, isOverSize: false }
+}
 
 export default function ImgUploadInput({
   name,
   text,
+  src,
 }: {
   name: string
   text: string
+  src: string | undefined
 }): JSX.Element {
-  const {
-    register,
-    setValue,
-    watch,
-    getValues,
-    setError,
-    formState: { errors },
-  } = useFormContext<any>()
+  const { setValue, watch, register } = useFormContext<any>()
   const watchValue = watch(name) as ImgFormProp
 
   const [open, setOpen] = useState(false)
+  const [defaultImgSrc, setDefaultImgSrc] = useState('')
 
-  const pageImgRef = useRef<PageImgRef>(null)
-  const pageStageRef = useRef<Konva.Stage>(null)
   const canvasContainerRef = useRef<HTMLDivElement>(null)
 
-  const [width, height] = useResizeObserver(canvasContainerRef)
+  const onSubmitFile = async (e: React.ChangeEvent) => {
+    const element = e.target as HTMLInputElement
+    const files = element.files
+    if (files) {
+      const file = files[0]
+      const reader = new FileReader()
+      reader.addEventListener(
+        'load',
+        () => {
+          //
+          setDefaultImgSrc(
+            typeof reader.result === 'string' ? reader.result : '',
+          )
+          /** update details hook form */
+          // setValue(name, thumbnailFormValue)
+        },
+        false,
+      )
+      reader.readAsDataURL(file)
+    }
+  }
 
   return (
     <div className="h-full">
       <div
         className={` 
-          items-center justify-center 
-          border rounded-lg 
-          hover:border-gray-300 hover:bg-gray-50 
-          aspect-w-4 aspect-h-3
-          overflow-hidden
-          `}
-        onClick={e => {
-          // e.preventDefault()
-          setOpen(true)
-        }}
+        aspect-w-4 aspect-h-3 
+        items-center justify-center 
+        overflow-hidden rounded-lg 
+        border hover:border-gray-300 hover:bg-gray-50 dark:border-gray-500
+        dark:hover:bg-gray-700
+        `}
         ref={canvasContainerRef}
       >
-        {watchValue.src.length > 0 ? (
-          // <div className="w-full h-full">
-          <PageImg
-            src={watchValue.src}
-            container={canvasContainerRef.current}
-            ref={pageImgRef}
-          />
+        {src && src.length > 0 ? (
+          <img src={src} />
         ) : (
           <div className="flex items-center justify-center">
-            <p className=" p-4 text-gray-500 font-medium text-center">
+            <p className=" p-4 text-center font-medium text-gray-500">
               Click here to upload {text}
             </p>
           </div>
         )}
 
-        <ImgModal open={open}>
+        <label className="h-full w-full">
+          <input
+            {...register(name, {
+              onChange: e => {
+                if (e.target.files.length > 0) {
+                  setOpen(true)
+                  onSubmitFile(e)
+                } else {
+                  setOpen(false)
+                }
+              },
+              required: 'require a thumbnail',
+            })}
+            className="h-full w-full opacity-0"
+            type="file"
+            accept="image/*"
+            multiple={false}
+            // onFocus={e => console.log(e)}
+          />
+        </label>
+        <Modal
+          open={open}
+          onClose={() => setOpen(false)}
+          className={` h-fit max-h-[70vh] w-[50vw] flex-col rounded-xl `}
+          disableClickOutsideClose
+        >
           <ImgUpload
             name={name}
-            src={watchValue.src}
+            defaultImgSrc={defaultImgSrc}
             onClose={() => setOpen(false)}
-            pageImgRef={pageImgRef.current}
           />
-        </ImgModal>
+        </Modal>
       </div>
-      <label>Size:</label>
-      <output id="fileSize">{watchValue.size}</output>
-      {/* <p>{errors}</p> */}
-      {errors && (
-        <p className="text-red-500 font-medium">
+
+      {/* {errors && (
+        <p className="font-medium text-red-500">
           {errors[name]?.message as string}
         </p>
-      )}
+      )} */}
     </div>
   )
 }

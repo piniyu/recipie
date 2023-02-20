@@ -35,12 +35,12 @@ export default function DropdownMenu({
   return (
     <div
       // key={`${summary}`}
-      className="relative select-none text-gray-500"
+      className="relative select-none text-gray-500 dark:text-gray-400"
       ref={detailsRef}
     >
       {typeof summary === 'string' ? (
         <button
-          className="h-full btn-sm bg-white border-none shadow-sm flex items-center gap-2  cursor-pointer"
+          className="btn-sm flex h-full cursor-pointer items-center gap-2 border-none bg-white shadow-sm  dark:bg-dark-gray"
           onClick={e => {
             setOpen(o => !o)
           }}
@@ -64,12 +64,14 @@ export default function DropdownMenu({
         <div
           className={`
           absolute z-10 
-          flex flex-col 
-           border-gray-200 rounded-lg 
-          mt-1 px-2 py-2 
-          bg-white shadow-xl
+          mt-1 flex 
+           flex-col rounded-lg 
+           bg-white
+           px-2 py-2 shadow-xl dark:border 
+          dark:border-gray-600 dark:bg-dark-gray
           ${direction === 'left' ? '' : 'right-0'}
 				`}
+          onClick={() => setOpen(false)}
         >
           {details}
         </div>

@@ -10,8 +10,10 @@ type FormPropsType = {
 
 export default function ServingForm({
   onSubmit,
+  defaultServings,
 }: {
   onSubmit: (v: FormPropsType) => void
+  defaultServings: number
 }): JSX.Element {
   const { recipeId } = useParams()
   const recipeServing = useAppSelector(state => state.recipeServings)
@@ -24,7 +26,9 @@ export default function ServingForm({
     reset,
     formState: { isSubmitSuccessful, isDirty },
   } = useForm<FormPropsType>({
-    defaultValues: recipe ? { input: recipe.servings } : { input: 1 },
+    defaultValues: recipe
+      ? { input: recipe.servings }
+      : { input: defaultServings },
   })
   const watchValue = watch('input')
   const servingInputRef = useRef<HTMLInputElement | null>(null)
@@ -51,16 +55,16 @@ export default function ServingForm({
         )
       })}
     >
-      <div className="flex items-center justify-center gap-2 text-center mb-6 py-9 text-xl font-bold">
+      <div className="mb-6 flex items-center justify-center gap-2 py-9 text-center text-xl font-bold">
         <span className="">I need </span>
-        <div className="relative inline-block min-w-[60px] max-w-[80px] h-9  text-3xl  ">
+        <div className="relative inline-block h-9 min-w-[60px] max-w-[80px]  text-3xl  ">
           <button
             className={`
                     absolute 
-                    bottom-full left-1/2 -translate-x-1/2 
+                    bottom-full left-1/2 mb-1 
                     flex 
-                    mb-1 p-1 
-                    border border-gray-200 rounded-full`}
+                    -translate-x-1/2 rounded-full 
+                    border border-gray-200 p-1`}
             type="button"
             onClick={() => {
               if (servingInputRef.current) {
@@ -74,7 +78,7 @@ export default function ServingForm({
             </span>
           </button>
           <span
-            className="whitespace-pre inline-block max-w-[80px] overflow-hidden"
+            className="inline-block max-w-[80px] overflow-hidden whitespace-pre"
             // ref={inputTemplate}
           >
             {watchValue}
@@ -82,7 +86,7 @@ export default function ServingForm({
           <input
             {...register('input')}
             type="number"
-            className="absolute w-full top-0 left-0 text-center align-top outline-focus-outline"
+            className="absolute top-0 left-0 w-full text-center align-top outline-focus-outline"
             // onChange={e => {
             //   console.log(e, inputValue)
             //   // setInputValue(e.target.value)
@@ -108,10 +112,10 @@ export default function ServingForm({
           <button
             className={`
                     absolute 
-                    top-full left-1/2 -translate-x-1/2 
+                    top-full left-1/2 mt-1 
                     flex 
-                    mt-1 p-1 
-                    border border-gray-200 rounded-full
+                    -translate-x-1/2 rounded-full 
+                    border border-gray-200 p-1
                     ${watchValue === 1 ? 'text-gray-300 ' : 'text-gray-500'}
                     `}
             type="button"

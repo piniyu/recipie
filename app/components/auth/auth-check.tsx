@@ -34,17 +34,19 @@ export default function AuthCheck({
           <Modal
             onClose={() => setOpen(false)}
             open={open}
-            className="w-96 rounded-xl layout-px layout-py"
+            className="layout-px layout-py w-96 rounded-xl"
           >
             <h3 className="mb-10 text-center">Login to continue</h3>
             <div className="flex justify-center gap-6">
-              <Link
-                to={`/login?redirectTo=${window.location.href}`}
-                className="btn-sm btn-secondary"
-                onClick={e => e.stopPropagation()}
-              >
-                Login
-              </Link>
+              {location.pathname === '/login' ? null : (
+                <Link
+                  to={`/login?redirectTo=${window.location.href}`}
+                  className="btn-sm btn-secondary"
+                  onClick={e => e.stopPropagation()}
+                >
+                  Login
+                </Link>
+              )}
               <button
                 className="btn-sm btn-gray"
                 onClick={e => {

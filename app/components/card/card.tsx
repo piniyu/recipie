@@ -1,7 +1,7 @@
-import { Form, Link, useFetcher } from '@remix-run/react'
-import { ReactNode, useEffect } from 'react'
-import { CardListLoaderData } from '~/routes'
-import img1 from '../../../public/assets/img1.jpeg'
+import { Thumbnail } from '@prisma/client'
+import { Form, FormProps, Link, useFetcher } from '@remix-run/react'
+import { FormHTMLAttributes, ReactNode, useEffect } from 'react'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import AuthCheck from '../auth/auth-check'
 
 export interface CardProps {
@@ -12,33 +12,37 @@ export interface CardProps {
   id: string
   isLiked: boolean
   isInBasket: boolean
+  thumbnail: string
 }
 
-function IconForm({
-  recipeId,
+export function IconForm({
   action,
   icon,
+  className,
+  onClickHandler,
+  ...props
 }: {
-  recipeId: string
   action: string
   icon: ReactNode
-}) {
+  className?: string
+  onClickHandler?: () => void
+} & FormHTMLAttributes<HTMLFormElement> &
+  FormProps) {
   const fetcher = useFetcher()
-  // fetcher.load(`/recipe/like/${recipeId}`)
-  // useEffect(() => {
-  // }, [fetcher, recipeId])
+
   return (
     <AuthCheck loginConfirmModal>
       {user => (
-        <fetcher.Form method="post" action={action}>
+        <fetcher.Form {...props} method="post" action={action}>
           <button
             type="submit"
-            className="icon-btn-sm icon-btn-square flex "
+            className={`icon-btn-sm icon-btn-square flex ${className ?? ''} `}
             onClick={e => {
               if (!user?.id) {
                 e.preventDefault()
               } else {
                 e.stopPropagation()
+                onClickHandler && onClickHandler()
               }
             }}
           >
@@ -59,22 +63,22 @@ function Overlay({
   return (
     <div
       className={`
-      opacity-0
       invisible
-      group-hover:opacity-100 group-hover:visible
-      transition-all
+      absolute
+      flex h-full
+      w-full
 
-      absolute 
-      flex items-end 
-      w-full h-full 
-      p-3 
-      bg-gradient-to-t from-gray-800/80 via-transparent 
-       text-white
+      items-end 
+      bg-gradient-to-t from-gray-800/80 via-transparent
+      p-5 text-white opacity-0
+      transition-all 
+      group-hover:visible group-hover:opacity-100 dark:from-black 
+       dark:text-gray-200
       `}
     >
-      <div className="flex-1 flex justify-between">
+      <div className="flex flex-1 justify-between">
         <div className="flex items-center gap-2">
-          <span className="inline-flex p-0.5 rounded-full bg-white">
+          <span className="inline-flex rounded-full bg-white p-1 dark:bg-gray-200">
             <span className="material-icons-round  leading-none text-black">
               person
             </span>
@@ -83,8 +87,7 @@ function Overlay({
         </div>
         <div className="flex gap-3">
           <IconForm
-            recipeId={id}
-            action={`/recipe/like/${id}`}
+            action={`/action/recipe/like/${id}`}
             icon={
               <span
                 className={`material-symbols-rounded  leading-none ${
@@ -99,8 +102,7 @@ function Overlay({
             }
           />
           <IconForm
-            recipeId={id}
-            action={`/add-basket/${id}`}
+            action={`/action/add-basket/${id}`}
             icon={
               <span
                 className={` material-symbols-rounded  leading-none ${
@@ -128,14 +130,23 @@ export default function Card({
   author,
   isLiked,
   isInBasket,
+  thumbnail,
 }: CardProps): JSX.Element {
   return (
     <Link
       to={`/recipe/${id}`}
-      className="group flex flex-col gap-2 bg-white p-2 rounded-lg shadow-gray-200/50 shadow-xl hover:shadow-gray-200 hover:shadow-2xl hover:-translate-y-2 transition-all ease-in"
+      className="group flex flex-col rounded-lg bg-white p-0.5 shadow-xl shadow-gray-200/50 transition-all ease-in dark:bg-dark-gray dark:shadow-black"
     >
-      <div className="relative aspect-w-4 aspect-h-3 flex items-center justify-center overflow-hidden rounded-lg">
-        <img className="w-full h-full object-cover object-center " src={img1} />
+      <div className="aspect-w-4 aspect-h-3 relative flex items-center justify-center overflow-hidden rounded-t-lg">
+        {/* <picture> */}
+        {/* <source srcSet={thumbnail?.webpSrc} /> */}
+        <LazyLoadImage
+          className="h-full w-full object-cover object-center "
+          src={thumbnail}
+          effect="opacity"
+        />
+
+        {/* </picture> */}
         <Overlay
           author={author}
           id={id}
@@ -143,28 +154,30 @@ export default function Card({
           isInBasket={isInBasket}
         />
       </div>
-      <h4 className="line-clamp-1 text-center text-black font-medium">
-        {title}
-      </h4>
-      <div className="flex justify-center gap-4">
-        <span className="flex items-center gap-1 text-gray-400 text-sm">
-          <span
-            className="material-symbols-outlined text-xl leading-none "
-            style={{ fontVariationSettings: '"wght" 300, "FILL" 0' }}
-          >
-            favorite
+      <div className="mx-5 my-4 flex flex-col gap-2">
+        <h4 className="font-medium text-black line-clamp-2 dark:text-gray-200">
+          {title}
+        </h4>
+        <div className="flex gap-4">
+          <span className="flex items-center gap-1 text-sm text-gray-400 ">
+            <span
+              className="material-symbols-outlined text-xl leading-none "
+              style={{ fontVariationSettings: '"wght" 300, "FILL" 0' }}
+            >
+              favorite
+            </span>
+            {favCounts}
           </span>
-          {favCounts}
-        </span>
-        <span className="flex items-center gap-1 text-gray-400 text-sm">
-          <span
-            className="material-symbols-outlined text-xl leading-none "
-            style={{ fontVariationSettings: '"wght" 300,"FILL" 0' }}
-          >
-            shopping_basket
+          <span className="flex items-center gap-1 text-sm text-gray-400 ">
+            <span
+              className="material-symbols-outlined text-xl leading-none "
+              style={{ fontVariationSettings: '"wght" 300,"FILL" 0' }}
+            >
+              shopping_basket
+            </span>
+            {basketCounts}
           </span>
-          {basketCounts}
-        </span>
+        </div>
       </div>
     </Link>
   )

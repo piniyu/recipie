@@ -1,16 +1,15 @@
-import { ReactNode } from 'react'
+import { HtmlHTMLAttributes, ReactNode } from 'react'
 
 export default function ContentCard({
   className,
   children,
+  ...props
 }: {
   className?: string
   children: ReactNode
-}): JSX.Element {
+} & HtmlHTMLAttributes<HTMLDivElement>): JSX.Element {
   return (
-    <div
-      className={`w-full h-full border border-gray-50 bg-white px-9 py-8 rounded-3xl shadow-2xl shadow-gray-300/50 ${className}`}
-    >
+    <div className={`content-card ${className}`} {...props}>
       {children}
     </div>
   )

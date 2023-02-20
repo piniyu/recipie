@@ -1,18 +1,25 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors')
 module.exports = {
-  important: '#app',
+  important: true,
+  darkMode: 'class',
   content: ['./app/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      // backgroundColor: ['dark'],
+      // textColor: ['dark'],
       colors: {
         transparent: 'transparent',
         current: 'currentColor',
-        primary: { DEFAULT: colors.amber['400'] },
-        secondary: '#171717',
+        primary: {
+          DEFAULT: colors.amber['400'],
+          dark: '#916e12',
+        },
+        secondary: { DEFAULT: '#171717', dark: colors.neutral['100'] },
         black: '#171717',
         white: colors.white,
-        gray: colors.stone,
+        'dark-gray': '#333333',
+        gray: colors.neutral,
 
         yellow: colors.yellow,
         green: colors.teal,

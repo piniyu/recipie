@@ -11,8 +11,10 @@ export type IngredientData = NumIngredientOnRecipe & { ingredient: Ingredient }
 
 export default function Index({
   data,
+  defaultServings,
 }: {
   data: IngredientData[]
+  defaultServings: number
 }): JSX.Element {
   const dispatch = useAppDispatch()
   return (
@@ -22,9 +24,10 @@ export default function Index({
 
       <div className="mb-3 border-b border-gray-200"></div>
       <p className="mb-9 text-right text-sm text-gray-400">
-        Original recipe yields <b>1</b> servings
+        Original recipe yields <b>{defaultServings}</b> servings
       </p>
       <ServingForm
+        defaultServings={defaultServings}
         onSubmit={v => {
           data.forEach(item => {
             dispatch(

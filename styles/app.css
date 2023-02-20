@@ -10,7 +10,8 @@
 
 @layer base {
   body {
-    font-family: var(--font-ui), system-ui, sans-serif;
+    /* font-family: var(--font-ui), system-ui, sans-serif; */
+    @apply font-['var(--font-ui),system-ui,sans-serif'] text-black dark:text-gray-200;
   }
   h1 {
     @apply text-4xl font-bold;
@@ -35,6 +36,10 @@
   input[type='number'] {
     -moz-appearance: textfield;
   }
+
+  img {
+    @apply dark:brightness-90;
+  }
 }
 @layer components {
   .font-ui {
@@ -58,83 +63,93 @@
   }
 
   .sider-item {
-    @apply mx-5 px-4 py-3 rounded-lg tracking-wide;
+    @apply mx-5 rounded-lg px-4 py-3 tracking-wide;
   }
   .sider-item-svg svg {
-    @apply w-5 h-5;
+    @apply h-5 w-5;
   }
   .sider-item-gray {
-    @apply flex-1 transition-colors hover:bg-gray-100/70;
+    @apply flex-1 transition-colors hover:bg-gray-100/70 dark:hover:bg-gray-700/70;
   }
 
   .drop-down-item {
-    @apply px-3 py-2 rounded-lg flex-1 transition-colors hover:bg-gray-100/70;
+    @apply flex-1 rounded-lg px-3 py-2 transition-colors hover:bg-gray-100/70 dark:hover:bg-gray-700/70;
   }
 
   .label {
-    @apply mb-2 font-medium text-black;
+    @apply mb-2 font-medium text-black dark:text-gray-200;
   }
   .label-required {
-    @apply block mb-2 font-medium text-black after:content-['*'] after:text-red-500;
+    @apply mb-2 block font-medium text-black after:text-red-500 after:content-['*'] dark:text-gray-200;
   }
   .input {
-    @apply p-2 border rounded-lg outline-focus-outline;
+    @apply rounded-lg border bg-white p-2 text-inherit outline-focus-outline dark:border-gray-500 dark:bg-dark-gray;
+  }
+  .input-error {
+    @apply border-red-500 bg-red-50 text-red-500 outline-red-500 dark:border-red-400 dark:bg-red-800/10 dark:text-red-400 dark:outline-red-400;
   }
 
   /** button size **/
   .btn-sm {
     font-family: var(--font-ui);
-    @apply flex justify-center items-center px-4 py-2 rounded-lg;
+    @apply flex items-center justify-center rounded-lg px-4 py-2;
   }
   .btn-md {
     font-family: var(--font-ui);
-    @apply flex justify-center items-center px-4 py-3 rounded-lg;
+    @apply flex items-center justify-center rounded-lg px-4 py-3;
   }
   .btn-lg {
     font-family: var(--font-ui);
-    @apply flex justify-center items-center px-5 py-4 rounded-lg;
+    @apply flex items-center justify-center rounded-lg px-5 py-4;
   }
   /** button style **/
   .btn-secondary {
-    @apply bg-primary text-black font-medium hover:bg-primary/90 transition-colors disabled:bg-gray-200 disabled:text-gray-400;
+    @apply bg-primary font-medium text-inherit transition-colors hover:bg-primary/90 disabled:bg-gray-200 disabled:text-gray-400
+    dark:bg-primary-dark dark:disabled:bg-gray-700 dark:disabled:text-gray-400;
   }
   .btn-primary {
-    @apply bg-secondary text-white hover:bg-secondary/90 transition-colors disabled:bg-gray-500 disabled:text-gray-200;
+    @apply bg-secondary text-white transition-colors disabled:bg-gray-500 disabled:text-gray-200 dark:bg-secondary-dark dark:text-black dark:disabled:bg-gray-600 dark:disabled:text-gray-400;
   }
   .btn-gray {
-    @apply bg-gray-100 text-black hover:bg-gray-200/80 transition-colors;
+    @apply bg-gray-100 text-black transition-colors hover:bg-gray-200/80 dark:bg-gray-600 dark:text-gray-200 dark:hover:bg-gray-500/80;
   }
   .btn-border {
-    @apply border border-primary bg-white text-black font-medium hover:border-primary hover:bg-primary/10 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:border-gray-200;
+    @apply border border-primary bg-white font-medium text-inherit hover:bg-primary/10 disabled:cursor-not-allowed disabled:text-gray-400 disabled:hover:border-gray-200
+    dark:bg-dark-gray dark:hover:bg-primary-dark/20;
   }
   .btn-ghost {
-    @apply text-black disabled:text-gray-400 disabled:cursor-not-allowed;
+    @apply text-black disabled:cursor-not-allowed disabled:text-gray-400 dark:text-gray-200 dark:disabled:text-gray-500;
   }
   .btn-successful {
-    @apply bg-green-600 text-white font-medium;
+    @apply bg-green-600 font-medium text-white;
   }
 
   /** icon button size **/
   .icon-btn-sm {
-    @apply p-2 flex items-center justify-center  gap-1;
+    @apply flex items-center justify-center gap-1  p-2;
   }
   .icon-btn-md {
-    @apply h-12 w-12 flex items-center justify-center;
+    @apply flex h-12 w-12 items-center justify-center;
   }
   /** icon button style **/
   .icon-btn-float {
-    @apply bg-white shadow-md rounded-full text-black transition-all hover:text-primary;
+    @apply rounded-full bg-white text-black shadow-md transition-all hover:text-primary;
   }
   .icon-btn-ui {
-    @apply text-gray-400  rounded-full hover:bg-gray-200/70 transition-colors;
+    @apply rounded-full  text-gray-400 transition-colors hover:bg-gray-200/70 dark:hover:bg-dark-gray;
   }
   .icon-btn-square {
-    @apply rounded-lg text-black bg-white hover:bg-gray-200 transition-colors;
+    @apply rounded-lg bg-white text-black transition-colors hover:bg-gray-200 dark:bg-gray-200 dark:hover:bg-gray-300;
   }
 
   /** link **/
   .link {
-    @apply text-blue-600;
+    @apply text-blue-600 dark:text-blue-400;
+  }
+
+  /** card **/
+  .content-card {
+    @apply h-full w-full rounded-3xl border border-gray-50 bg-white px-9 py-8 shadow-2xl shadow-gray-300/50 dark:border-gray-700 dark:bg-dark-gray dark:shadow-black;
   }
 }
 @layer utilities {
