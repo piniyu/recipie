@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../app/components/card/content-card.tsx"],
-  "sourcesContent": ["import { ReactNode } from 'react'\n\nexport default function ContentCard({\n  className,\n  children,\n}: {\n  className?: string\n  children: ReactNode\n}): JSX.Element {\n  return (\n    <div\n      className={`w-full h-full border border-gray-50 bg-white px-9 py-8 rounded-3xl shadow-2xl shadow-gray-300/50 ${className}`}\n    >\n      {children}\n    </div>\n  )\n}\n"],
-  "mappings": ";;;;;;;;AAUI;AARW,SAAR,YAA6B;AAAA,EAClC;AAAA,EACA;AACF,GAGgB;AACd,SACE;AAAA,IAAC;AAAA;AAAA,MACC,WAAW,oGAAoG;AAAA,MAE9G;AAAA;AAAA,IAHH;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,EAIA;AAEJ;",
-  "names": []
-}
