@@ -15,7 +15,7 @@ import {
   useParams,
 } from '@remix-run/react'
 import cuid from 'cuid'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import ContentCard from '~/components/card/content-card'
 import { StepFormProps } from '~/components/step-form'
@@ -37,6 +37,9 @@ import { db } from '~/utils/db.server'
 import { s3 } from '~/utils/s3.server'
 import { requireUserId } from '~/utils/session.server'
 import { DetailsFormProps } from './upload/details'
+import DeleteIcon from '~/components/icons/DeleteFill0Wght400Grad25Opsz48'
+import Modal from '~/components/layout/modal'
+import MenuIcon from '~/components/icons/MenuFill1Wght400Grad25Opsz48'
 
 type RecursiveNonNullable<T> = {
   [K in keyof T]: T[K] extends Object
@@ -50,13 +53,14 @@ const defaultSideList = [
 ]
 const defaultStepList = [{ stepId: '1', value: `title`, route: `./1` }]
 
-const SideList = ({
+const SideListItem = ({
   route,
   value,
   idx,
   stepId,
   onDelete,
   disabledDelete,
+  onClickLink,
 }: {
   stepId?: string | undefined
   route?: string
@@ -64,6 +68,7 @@ const SideList = ({
   idx: number
   onDelete?: (id: string) => void
   disabledDelete?: boolean
+  onClickLink?: () => void
 }) => {
   if (!route) {
     return (
@@ -88,14 +93,17 @@ const SideList = ({
                           : 'text-inherit'
                       }
                       `}
+        onClick={() => {
+          onClickLink && onClickLink()
+        }}
       >
         {stepId ? idx + 1 + ' . ' : null}
         {value}
       </NavLink>
       {onDelete && stepId ? (
         <button
-          className={`icon-btn-ui absolute right-8 top-2 z-50 flex h-fit rounded-full p-1 text-red-400 hover:bg-red-500 hover:text-white disabled:text-gray-200 hover:disabled:bg-transparent hover:disabled:text-gray-200 dark:hover:bg-red-400 dark:hover:text-gray-200
-          dark:disabled:text-gray-600 dark:disabled:hover:bg-transparent
+          className={`icon-btn-ui absolute right-8 top-2 z-50 flex h-fit rounded-full fill-red-400 p-1 hover:bg-red-500 hover:fill-white disabled:fill-gray-200 hover:disabled:bg-transparent hover:disabled:fill-gray-200 dark:hover:bg-red-400 dark:hover:fill-gray-200
+          dark:disabled:fill-gray-600 dark:disabled:hover:bg-transparent
           `}
           onClick={() => {
             // e.stopPropagation()
@@ -103,12 +111,7 @@ const SideList = ({
           }}
           disabled={disabledDelete}
         >
-          <span
-            className="material-symbols-outlined leading-none "
-            style={{ fontVariationSettings: '"GRAD" -25' }}
-          >
-            delete
-          </span>
+          <DeleteIcon className="svg-md" />
         </button>
       ) : null}
     </li>
@@ -242,21 +245,145 @@ export const action: ActionFunction = async ({ request }) => {
   // console.log(detailsData)
 }
 
+const SiderListComponent = ({
+  stepIdx,
+  onClickLink: onClickLink,
+}: {
+  stepIdx: number | undefined
+  onClickLink?: () => void
+}) => {
+  const stepForms = useAppSelector(state => state.stepForm)
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  return (
+    <div className=" w-60  py-6  ">
+      <nav className="flex h-full flex-col">
+        <ul className="flex-1  overflow-auto">
+          {defaultSideList.map(({ value, route }, idx) => {
+            return (
+              <SideListItem
+                key={`${value}_${idx}`}
+                route={route}
+                value={value}
+                idx={idx}
+                onClickLink={onClickLink}
+              />
+            )
+          })}
+          <SideListItem value="Steps" idx={999} />
+          {stepForms.map(({ title, id }, idx) => {
+            return (
+              <SideListItem
+                key={`${title}_${idx}`}
+                route={`/upload/${idx + 1}`}
+                value={title}
+                stepId={id}
+                idx={idx}
+                onDelete={() => {
+                  if (stepIdx && stepIdx === idx + 1) {
+                    if (stepIdx > 1) {
+                      navigate(`/upload/${idx}`)
+                    }
+                  } else if (stepIdx && stepIdx > idx + 1) {
+                    navigate(`/upload/${+stepIdx - 1}`)
+                  }
+                  dispatch(deleteStep({ id }))
+                }}
+                onClickLink={onClickLink}
+                disabledDelete={idx === 0 && stepForms.length === 1}
+              />
+            )
+          })}
+        </ul>
+        <div className="flex pt-4">
+          <Link
+            to={`/upload/${
+              stepForms.length > 0
+                ? stepForms.length + 1
+                : defaultStepList.length + 1
+            }`}
+            className="btn-sm btn-secondary sider-item flex-1  "
+            onClick={() => {
+              dispatch(
+                addStep({
+                  title: '',
+                  methods: [{ content: '' }],
+                  id: uuidv4(),
+                  photo: { name: '', src: '', type: '' },
+                }),
+              )
+              onClickLink && onClickLink()
+            }}
+          >
+            Add a step
+          </Link>
+        </div>
+      </nav>
+    </div>
+  )
+}
+
 export default function Upload(): JSX.Element {
   const { stepIdx } = useParams()
-  const stepForms = useAppSelector(state => state.stepForm)
   const detailFormData = useAppSelector(state => state.detailsForm)
   const ingredientsFormData = useAppSelector(state => state.ingredientsForm)
   const stepsFormData = useAppSelector(state => state.stepForm)
   const publishState = useAppSelector(state => state.publishState)
   const dispatch = useAppDispatch()
-  const navigate = useNavigate()
   const fetcher = useFetcher()
+  const containerRef = useRef<HTMLDivElement>(null)
+  const sideListRef = useRef<HTMLDivElement>(null)
+  const [openSiddList, setOpenSideList] = useState(false)
+  const [switchToModal, setSwitchToModal] = useState(false)
+
+  useEffect(() => {
+    const onResize = (e: ResizeObserverEntry[]) => {
+      for (const entry of e) {
+        if (entry.contentBoxSize[0].inlineSize <= 768) {
+          setSwitchToModal(true)
+        } else {
+          setSwitchToModal(false)
+        }
+      }
+    }
+    const observer = new ResizeObserver(onResize)
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
+    }
+
+    const onClick = (e: MouseEvent) => {
+      if (
+        sideListRef.current &&
+        !sideListRef.current.contains(e.target as Node)
+      ) {
+        setOpenSideList(false)
+      }
+    }
+
+    // window.addEventListener('click', onClick)
+    return () => {
+      observer.disconnect()
+      // window.removeEventListener('click',onClick)
+    }
+  }, [])
 
   return (
-    <div className="layout-px mx-auto flex  flex-1 flex-col gap-y-6 pt-8 pb-16">
+    <div
+      className=" layout-px relative mx-auto flex flex-1 flex-col gap-y-6 pt-8 pb-16"
+      ref={containerRef}
+    >
       <header className="flex items-center justify-between">
-        <h2>Upload Recipe</h2>
+        <div className="flex gap-2">
+          <h2>Upload Recipe</h2>
+          {switchToModal ? (
+            <button
+              className="icon-btn-ui icon-btn-sm"
+              onClick={() => setOpenSideList(prev => !prev)}
+            >
+              <MenuIcon className=" svg-md svg-gray" />
+            </button>
+          ) : null}
+        </div>
         <button
           className="btn-secondary btn-sm disabled:cursor-not-allowed"
           type="submit"
@@ -283,70 +410,36 @@ export default function Upload(): JSX.Element {
           Publish
         </button>
       </header>
-      <ContentCard className="flex !p-0 !py-0 !px-0">
-        <div className="flex w-full flex-1 space-x-8">
-          <div className="w-60 border-r border-gray-200 py-6 dark:border-gray-600 ">
-            <nav className="flex h-full flex-col">
-              <ul className="flex-1  overflow-auto">
-                {defaultSideList.map(({ value, route }, idx) => {
-                  return (
-                    <SideList
-                      key={`${value}_${idx}`}
-                      route={route}
-                      value={value}
-                      idx={idx}
-                    />
-                  )
-                })}
-                <SideList value="Steps" idx={999} />
-                {stepForms.map(({ title, id }, idx) => {
-                  return (
-                    <SideList
-                      key={`${title}_${idx}`}
-                      route={`/upload/${idx + 1}`}
-                      value={title}
-                      stepId={id}
-                      idx={idx}
-                      onDelete={() => {
-                        if (stepIdx && +stepIdx === idx + 1) {
-                          if (+stepIdx > 1) {
-                            navigate(`/upload/${idx}`)
-                          }
-                        } else if (stepIdx && +stepIdx > idx + 1) {
-                          navigate(`/upload/${+stepIdx - 1}`)
-                        }
-                        dispatch(deleteStep({ id }))
-                      }}
-                      disabledDelete={idx === 0 && stepForms.length === 1}
-                    />
-                  )
-                })}
-              </ul>
-              <div className="flex pt-4">
-                <Link
-                  to={`/upload/${
-                    stepForms.length > 0
-                      ? stepForms.length + 1
-                      : defaultStepList.length + 1
-                  }`}
-                  className="btn-sm btn-secondary sider-item flex-1  "
-                  onClick={() => {
-                    dispatch(
-                      addStep({
-                        title: '',
-                        methods: [{ content: '' }],
-                        id: uuidv4(),
-                        photo: { name: '', src: '', type: '' },
-                      }),
-                    )
-                  }}
-                >
-                  Add a step
-                </Link>
+      <ContentCard className="flex  !p-0 !py-0 !px-0">
+        <div className="flex w-full flex-1 gap-8">
+          {switchToModal ? (
+            <div
+              className={`absolute top-0 left-0 z-10 rounded-xl bg-white shadow-xl dark:bg-dark-gray dark:shadow-gray-900
+            ${
+              openSiddList ? 'translate-x-0 ' : ' -translate-x-full '
+            } transition-all`}
+              ref={sideListRef}
+            >
+              {openSiddList ? (
+                <div
+                  className="fixed left-0 top-0 h-screen w-screen"
+                  onClick={() => setOpenSideList(false)}
+                ></div>
+              ) : null}
+              {/* <div className="fixed top-0 left-0 h-screen w-screen bg-black/30 backdrop-brightness-50"></div> */}
+              <div className="">
+                <SiderListComponent
+                  stepIdx={stepIdx ? +stepIdx : undefined}
+                  onClickLink={() => setOpenSideList(false)}
+                />
               </div>
-            </nav>
-          </div>
-          <div className="flex flex-1 py-6 pr-9">
+            </div>
+          ) : (
+            <div className="border-r border-gray-200 dark:border-gray-600">
+              <SiderListComponent stepIdx={stepIdx ? +stepIdx : undefined} />
+            </div>
+          )}
+          <div className="flex flex-1 py-6 px-9">
             <div className="flex-1">
               <Outlet />
             </div>

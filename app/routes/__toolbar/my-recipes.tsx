@@ -28,9 +28,15 @@ export const loader = async ({ request }: LoaderArgs) => {
     | 'popular'
     | null
   const myRecipes = await getMyRecipes({ userId, orderBy: recipeOrder })
-  const withThumbnail = await getThumbnails(myRecipes)
-  const mappedRecipes = withThumbnail.map(recipe => ({
+  const withThumbnail = await getThumbnails(
+    myRecipes.map(e => ({
+      recipeId: e.id,
+      thumbnails3Key: e.thumbnail?.s3Key ?? '',
+    })),
+  )
+  const mappedRecipes = myRecipes.map(recipe => ({
     ...recipe,
+    thumbnail: withThumbnail?.find(e => e.recipeId === recipe.id)?.thumbnail,
     isLiked: !!recipe.favorite.find(e => e.userId === userId),
     isInBasket: !!recipe.baskets.find(e => e.userId === userId),
   }))
@@ -61,10 +67,13 @@ export default function MyRecipes() {
 
   return (
     <div className="layout-pt layout-px flex flex-col gap-9">
-      <div className="flex justify-center gap-6">
+      <div className="mx-auto flex flex-wrap gap-6 md:flex-nowrap">
         <SearchBar
           placeholder="My Recipes Search"
-          list={searchList.map(item => ({ value: item.title, id: item.id }))}
+          list={searchList.map(item => ({
+            value: item.title,
+            link: `/recipe/${item.id}`,
+          }))}
           fetch={inputValue => {
             fetcher.load(`/my-recipes?search=${inputValue}`)
           }}
@@ -114,7 +123,7 @@ export default function MyRecipes() {
       <CardGrid
         data={recipeList.map(recipe => ({
           id: recipe.id,
-          thumbnail: recipe.thumbnail.jpgSrc,
+          thumbnail: recipe.thumbnail?.jpgSrc ?? '',
           author: recipe.author.name ?? recipe.author.email.split('@')[0],
           title: recipe.title,
           isLiked: recipe.isLiked,

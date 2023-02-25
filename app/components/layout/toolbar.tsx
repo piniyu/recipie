@@ -6,11 +6,18 @@ import LogoutForm from '../logout-form'
 import AuthCheck from '../auth/auth-check'
 import { Theme, useTheme } from '~/utils/theme-provider'
 import BasketModal from './basket-modal'
+import PersonIcon from '~/components/icons/PersonFill0Wght400Grad25Opsz48'
+import DarkModeIcon from '~/components/icons/DarkModeFill0Wght400Grad25Opsz48'
+import LightModeIcon from '~/components/icons/LightModeFill0Wght400Grad25Opsz48'
+import MenuIcon from '~/components/icons/MenuFill1Wght400Grad25Opsz48'
 
 const Toolbar = ({
   basketData,
 }: {
-  basketData: { id: string; title: string }[] | null | undefined
+  basketData:
+    | { id: string; title: string; thumbnailSrc: string }[]
+    | null
+    | undefined
 }) => {
   const { setClose, close, hidden } = useContext(SiderContext)
   const [theme, setTheme] = useTheme()
@@ -20,22 +27,19 @@ const Toolbar = ({
   return (
     <header
       className={`fixed z-10 flex min-h-[64px] w-screen items-center bg-inherit ${
-        close ? '' : 'pl-[255px]'
+        close ? '' : 'lg:pl-[255px] '
       }`}
     >
       <div className="layout-px flex w-full items-center">
         <button
-          className="icon-btn-sm icon-btn-ui -ml-2"
+          className={`icon-btn-sm icon-btn-ui -ml-2 ${
+            close ? '' : 'hidden lg:block'
+          }`}
           onClick={() => {
             setClose(prev => !prev)
           }}
         >
-          <span
-            className="material-symbols-rounded leading-none "
-            style={{ fontVariationSettings: '"wght" 300 ' }}
-          >
-            menu
-          </span>
+          <MenuIcon className="svg-md svg-gray" />
         </button>
         <div className="flex-1"></div>
 
@@ -62,12 +66,11 @@ const Toolbar = ({
         <DropdownMenu
           summary={
             <button className={`icon-btn-sm icon-btn-ui`}>
-              <span
-                className="material-symbols-outlined"
-                style={{ fontVariationSettings: "'wght' 300" }}
-              >
-                {theme === Theme.LIGHT ? 'light_mode' : 'dark_mode'}
-              </span>
+              {theme === Theme.LIGHT ? (
+                <LightModeIcon className="svg-md svg-gray" />
+              ) : (
+                <DarkModeIcon className="svg-md svg-gray" />
+              )}
             </button>
           }
           details={
@@ -77,12 +80,7 @@ const Toolbar = ({
                   className="drop-down-item flex gap-1"
                   onClick={() => setTheme(Theme.LIGHT)}
                 >
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontVariationSettings: "'wght' 300" }}
-                  >
-                    light_mode
-                  </span>
+                  <LightModeIcon className="svg-md svg-gray" />
                   Light
                 </button>
               </li>
@@ -91,12 +89,7 @@ const Toolbar = ({
                   className="drop-down-item flex gap-1"
                   onClick={() => setTheme(Theme.DARK)}
                 >
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontVariationSettings: "'wght' 300" }}
-                  >
-                    dark_mode
-                  </span>
+                  <DarkModeIcon className="svg-md svg-gray" />
                   Dark
                 </button>
               </li>
@@ -110,12 +103,8 @@ const Toolbar = ({
                 <DropdownMenu
                   summary={
                     <button className="icon-btn-sm icon-btn-ui">
-                      <span
-                        className="material-symbols-rounded leading-none "
-                        style={{ fontVariationSettings: "'wght' 300" }}
-                      >
-                        account_circle
-                      </span>
+                      <PersonIcon className="svg-md svg-gray" />
+
                       <span>{user.email.split('@')[0]}</span>
                     </button>
                   }
@@ -127,12 +116,8 @@ const Toolbar = ({
                 to={`/login?redirectTo=${window.location.href}`}
                 className="icon-btn-sm icon-btn-ui"
               >
-                <span
-                  className="material-symbols-rounded leading-none "
-                  style={{ fontVariationSettings: "'wght' 300" }}
-                >
-                  account_circle
-                </span>
+                <PersonIcon className="svg-md svg-gray" />
+
                 <span>Login</span>
               </Link>
             )

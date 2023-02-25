@@ -32,10 +32,10 @@ const NumberInput = ({
   const inputRef = useRef<HTMLInputElement | null>(null)
 
   return (
-    <div className="flex">
+    <div className="flex text-sm">
       {hasSetBtn ? (
         <button
-          className=" flex items-center rounded-l-lg border border-r-0 border-gray-200 disabled:text-gray-400 dark:border-gray-500 dark:text-gray-300 dark:disabled:text-gray-600"
+          className=" flex items-center rounded-l-lg border border-r-0 border-gray-200 disabled:text-gray-400 dark:border-gray-600 dark:text-gray-300 dark:disabled:text-gray-600"
           type="button"
           onClick={() => {
             if (inputRef.current && parseInt(inputRef.current.value) > 1) {
@@ -58,7 +58,7 @@ const NumberInput = ({
           min: 0,
         })}
         type="number"
-        className={`input max-w-[60px] text-right dark:border-gray-500 ${
+        className={`input max-w-[60px] text-right dark:border-gray-600 ${
           errors.input?.message ? 'input-error' : ''
         }
         ${hasSetBtn ? 'rounded-none' : ''}
@@ -92,7 +92,7 @@ const NumberInput = ({
       {hasSetBtn ? (
         <button
           type="button"
-          className="flex items-center rounded-r-lg border border-l-0 border-gray-200  dark:border-gray-500 dark:text-gray-300"
+          className="flex items-center rounded-r-lg border border-l-0 border-gray-200  dark:border-gray-600 dark:text-gray-300"
           onClick={() => {
             if (inputRef.current) {
               inputRef.current.value = parseInt(inputRef.current.value) + 1 + ''

@@ -1,5 +1,9 @@
 {
-  "exclude": ["./cypress", "./cypress.config.ts"],
+  "ts-node": {
+    // Do not forget to `npm i -D tsconfig-paths`
+    "require": ["tsconfig-paths/register"]
+  },
+  "exclude": ["./cypress", "./cypress.config.ts", "node_modules"],
   "include": [
     "remix.env.d.ts",
     "./types/enviroment.d.ts",
@@ -20,7 +24,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["app/*"]
     },
     "skipLibCheck": true,
     "noEmit": true,

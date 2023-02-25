@@ -172,7 +172,7 @@ const ModalContainer = ({
   const { recipeId } = useParams()
   return (
     <div
-      className="h-screen overflow-auto bg-inherit [scroll-snap-type:y_mandatory]"
+      className="overflow-auto bg-inherit [scroll-snap-type:y_mandatory] lg:h-screen"
       // ref={rootRef}
     >
       {children}
@@ -357,14 +357,14 @@ export default function RecipeModal(): JSX.Element {
       showPrevious={stepInView !== 1}
       onPrevious={() => {
         targets[stepInView - 2].scrollIntoView({
-          block: 'center',
+          block: 'start',
           behavior: 'smooth',
         })
         setStepInView(prev => prev - 1)
       }}
       onNext={() => {
         targets[stepInView].scrollIntoView({
-          block: 'center',
+          block: 'start',
           behavior: 'smooth',
         })
         setStepInView(prev => prev + 1)
@@ -376,12 +376,12 @@ export default function RecipeModal(): JSX.Element {
           <div
             key={idx}
             data-key={idx}
-            className="mx-auto flex h-screen max-w-7xl scroll-m-0 justify-center space-x-6 py-20 px-8 [scroll-snap-align:center] "
+            className="mx-auto flex max-w-7xl scroll-m-0 flex-col gap-6 py-20 px-2 [scroll-snap-align:start] md:px-8 lg:h-screen lg:flex-row lg:justify-center lg:[scroll-snap-align:center] "
             ref={targetRef}
           >
             <div className="flex  w-full items-center">
               <div
-                className={`h-full max-h-[70vh] w-full flex-1 rounded-2xl bg-white p-5 shadow-2xl dark:bg-dark-gray dark:shadow-gray-900`}
+                className={` max-h-[70vh] w-full flex-1 rounded-2xl bg-white p-3 shadow-2xl dark:bg-dark-gray dark:shadow-gray-900 md:p-5`}
                 // style={{ backgroundImage: `url(${img1})` }}
               >
                 <img
@@ -391,19 +391,19 @@ export default function RecipeModal(): JSX.Element {
                 />
               </div>
             </div>
-            <div className=" flex w-2/5 flex-shrink-0 flex-col">
+            <div className=" flex w-full flex-shrink-0 lg:w-2/5">
               <div className="flex-1 overflow-y-auto">
-                <div className="mt-2 mb-14 text-center">
+                <div className="mt-2 mb-8 text-center lg:mb-14">
                   <h4 className="font-medium text-primary">STEP {step.step}</h4>
                   <h2 className="text-inherit">{step.title}</h2>
                 </div>
-                <ul className=" list-disc pl-14 pr-14 text-inherit marker:text-xl marker:leading-none marker:text-gray-300 dark:marker:text-gray-500">
+                <ol className="list-decimal pl-8 pr-3 text-inherit marker:text-xl marker:leading-none marker:text-gray-300 dark:marker:text-gray-500 lg:pl-14 lg:pr-14">
                   {step.methods?.map((method, index) => (
                     <li key={index} className="mb-8">
                       <span className="relative left-1 ">{method}</span>
                     </li>
                   ))}
-                </ul>
+                </ol>
               </div>
             </div>
           </div>

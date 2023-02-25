@@ -76,9 +76,7 @@ export default function Modal({
       } `}
       ref={dialogRef}
     >
-      <div className={` bg-white dark:bg-dark-gray ${className ?? ''}`}>
-        {children}
-      </div>
+      <div className={`${className ?? ''}`}>{children}</div>
     </dialog>,
     modalContainer,
   )

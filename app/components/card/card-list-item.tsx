@@ -1,18 +1,19 @@
 import { Form, useLocation } from '@remix-run/react'
 import React, { ReactNode } from 'react'
-import img1 from '../../../public/assets/img1.jpeg'
-import NumberInput from '../inputs/number-input'
+import DeletIcon from '~/components/icons/DeleteFill0Wght400Grad25Opsz48'
 
 export default function CardListItem({
   title,
   onDelete,
   recipeId,
   subTitle,
+  imgSrc,
 }: {
   title: string
   onDelete?: (e: React.FormEvent) => void
   recipeId: string
   subTitle?: ReactNode
+  imgSrc: string
 }): JSX.Element {
   const location = useLocation()
   return (
@@ -22,7 +23,7 @@ export default function CardListItem({
           {/* <div className="p-1 bg-white rounded-lg"> */}
           <img
             className="h-full w-full object-cover object-center "
-            src={img1}
+            src={imgSrc}
           />
           {/* </div> */}
         </div>
@@ -45,9 +46,7 @@ export default function CardListItem({
             // name={recipeId}
             type="submit"
           >
-            <span className="material-symbols-rounded text-lg leading-none text-gray-500 dark:text-gray-300">
-              close
-            </span>
+            <DeletIcon className="svg-md fill-red-500 dark:fill-red-400" />
           </button>
         </Form>
       ) : null}

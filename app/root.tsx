@@ -88,11 +88,11 @@ export const links: LinksFunction = () => {
       rel: 'stylesheet preload',
       href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap',
     },
-    {
-      as: 'style',
-      rel: 'stylesheet preload',
-      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
-    },
+    // {
+    //   as: 'style',
+    //   rel: 'stylesheet preload',
+    //   href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+    // },
     { as: 'style', rel: 'stylesheet preload', href: styles },
   ]
 }

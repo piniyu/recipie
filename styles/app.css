@@ -11,13 +11,13 @@
 @layer base {
   body {
     /* font-family: var(--font-ui), system-ui, sans-serif; */
-    @apply font-['var(--font-ui),system-ui,sans-serif'] text-black dark:text-gray-200;
+    @apply font-['var(--font-ui),system-ui,sans-serif'] text-black  dark:text-gray-200;
   }
   h1 {
-    @apply text-4xl font-bold;
+    @apply text-3xl font-bold md:text-4xl;
   }
   h2 {
-    @apply text-3xl font-bold;
+    @apply text-2xl font-bold md:text-3xl;
   }
   h3 {
     @apply text-xl font-bold;
@@ -59,7 +59,7 @@
     @apply py-8;
   }
   .layout-px {
-    @apply px-9;
+    @apply px-4 md:px-9;
   }
 
   .sider-item {
@@ -149,7 +149,26 @@
 
   /** card **/
   .content-card {
-    @apply h-full w-full rounded-3xl border border-gray-50 bg-white px-9 py-8 shadow-2xl shadow-gray-300/50 dark:border-gray-700 dark:bg-dark-gray dark:shadow-black;
+    @apply h-full w-full rounded-3xl border border-gray-50 bg-white 
+    px-5 py-4
+    shadow-2xl shadow-gray-300/50 dark:border-gray-700 dark:bg-dark-gray dark:shadow-black md:px-9 md:py-8;
+  }
+
+  /** svg **/
+  .svg-sm {
+    @apply h-5 w-5;
+  }
+  .svg-md {
+    @apply h-6 w-6;
+  }
+  .svg-lg {
+    @apply h-8 w-8;
+  }
+  .svg-gray {
+    @apply fill-gray-400;
+  }
+  .svg-neutral {
+    @apply fill-black dark:fill-gray-200;
   }
 }
 @layer utilities {

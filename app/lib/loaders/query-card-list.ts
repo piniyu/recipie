@@ -54,10 +54,15 @@ export const getThumbnailAndLikeAndBasket = async (
   recipes: (Recipe & Prisma.RecipeGetPayload<typeof recipesListData>)[],
   userId: string | null,
 ) => {
-  const recipesWithThumbnails = await getThumbnails(recipes)
+  const recipesWithThumbnails = await getThumbnails(
+    recipes.map(e => ({
+      recipeId: e.id,
+      thumbnails3Key: e.thumbnail?.s3Key ?? '',
+    })),
+  )
 
   if (!userId) {
-    return recipesWithThumbnails.map(recipe => ({
+    return recipesWithThumbnails?.map(recipe => ({
       ...recipe,
       isLiked: false,
       isInBasket: false,
@@ -124,16 +129,16 @@ export const getMyRecipes = async ({
 }
 
 export const getThumbnails = async (
-  recipes: (Recipe & Prisma.RecipeGetPayload<typeof recipesListData>)[],
+  queryList: { recipeId: string; thumbnails3Key: string }[] | undefined,
 ) => {
+  if (!queryList) {
+    return null
+  }
+
   const thumbnails = await Promise.allSettled(
-    recipes.map(recipe => {
-      if (recipe.thumbnail) {
-        return getThumbnailPresignedUrl(
-          recipe.thumbnail.s3Key,
-          recipe.id,
-          'jpg',
-        )
+    queryList.map(e => {
+      if (e.thumbnails3Key) {
+        return getThumbnailPresignedUrl(e.thumbnails3Key, e.recipeId, 'jpg')
         // getThumbnailPresignedUrl(recipe.thumbnail.webpSrc, recipe.id)
       }
     }),
@@ -144,16 +149,16 @@ export const getThumbnails = async (
     return thumbnail.value
   })
 
-  return recipes.map(recipe => {
+  return queryList.map(e => {
     return {
-      ...recipe,
+      ...e,
       thumbnail: {
-        id: recipe.thumbnail?.id ?? '',
-        recipeId: recipe.id,
+        // id: e.thumbnail?.id ?? '',
+        recipeId: e.recipeId,
         jpgSrc:
           thumbnailsData.find(
             thumbnail =>
-              thumbnail?.recipeId === recipe.id && thumbnail.type === 'jpg',
+              thumbnail?.recipeId === e.recipeId && thumbnail?.type === 'jpg',
           )?.preSignedUrl ?? '',
         // webpSrc:
         //   thumbnailsData.find(

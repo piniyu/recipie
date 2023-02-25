@@ -1,5 +1,7 @@
 import { Difficulty } from '@prisma/client'
 import { useEffect, useState } from 'react'
+import StarIcon from '~/components/icons/StarFill0Wght400Grad25Opsz48'
+import StarIconFill from '~/components/icons/StarFill1Wght400Grad25Opsz48'
 
 type GetDifficultyReturnType<T> = T extends Difficulty ? number : Difficulty
 
@@ -46,20 +48,12 @@ export default function DifficultyBtn({
   }, [clicked])
 
   return (
-    <>
+    <div className="flex">
       {Array(5)
         .fill('')
         .map((_, idx) => (
           <span
             key={idx}
-            className={`material-symbols-rounded leading-none text-primary ${
-              isInput ? 'cursor-pointer' : ''
-            }`}
-            style={
-              starValue > idx
-                ? { fontVariationSettings: '"FILL" 1' }
-                : undefined
-            }
             onMouseEnter={() => {
               if (isInput) {
                 setStarValue(idx + 1)
@@ -76,7 +70,19 @@ export default function DifficultyBtn({
               setClicked(idx + 1)
             }}
           >
-            star
+            {starValue > idx ? (
+              <StarIconFill
+                className={`svg-sm fill-primary ${
+                  isInput ? 'cursor-pointer' : ''
+                }`}
+              />
+            ) : (
+              <StarIcon
+                className={`svg-sm fill-primary ${
+                  isInput ? 'cursor-pointer' : ''
+                }`}
+              />
+            )}
           </span>
         ))}
 
@@ -87,6 +93,6 @@ export default function DifficultyBtn({
       >
         {starValue.toFixed(1)}
       </span>
-    </>
+    </div>
   )
 }

@@ -123,7 +123,7 @@ export default function RecipeIndex(): JSX.Element {
   return (
     <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col">
       <div className="relative flex-1 ">
-        <div className="layout-px layout-pt space-y-10 pb-8">
+        <div className="layout-px layout-pt space-y-6 pb-8 lg:space-y-10">
           <RecipeHeader
             {...{
               recipeId: id,
@@ -140,7 +140,7 @@ export default function RecipeIndex(): JSX.Element {
               isInBasket,
             }}
           />
-          <div className="flex space-x-10 text-black dark:text-gray-200 ">
+          <div className="flex flex-col gap-6 text-black dark:text-gray-200 lg:flex-row lg:gap-10 ">
             <IngredientsCard data={ingredientsNum} defaultServings={serving} />
             <RecipeNutrition data={nutritionData} />
           </div>

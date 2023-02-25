@@ -34,9 +34,15 @@ export const loader = async ({ request }: LoaderArgs) => {
   //   userId,
   //   recipes: favRecipes,
   // })
-  const withThumbnail = await getThumbnails(favRecipes)
-  const mappedRecipes = withThumbnail.map(recipe => ({
+  const withThumbnail = await getThumbnails(
+    favRecipes.map(e => ({
+      recipeId: e.id,
+      thumbnails3Key: e.thumbnail?.s3Key ?? '',
+    })),
+  )
+  const mappedRecipes = favRecipes.map(recipe => ({
     ...recipe,
+    thumbnail: withThumbnail?.find(e => e.recipeId === recipe.id)?.thumbnail,
     isLiked: !!recipe.favorite.find(e => e.userId === userId),
     isInBasket: !!recipe.baskets.find(e => e.userId === userId),
   }))
@@ -58,11 +64,11 @@ export default function Favorite(): JSX.Element {
   }, [fetcher.data?.favRecipes, data.favRecipes])
   return (
     <div className="layout-pt layout-px flex flex-col gap-9">
-      <div className="flex justify-center gap-6">
+      <div className="mx-auto flex flex-wrap gap-6 md:flex-nowrap">
         <SearchBar
           placeholder="Favorite Search"
           list={data.searchRes.map(item => ({
-            id: item.id,
+            link: `/recipe/${item.id}`,
             value: item.title,
           }))}
           fetch={inputValue => {
@@ -113,7 +119,7 @@ export default function Favorite(): JSX.Element {
       <CardGrid
         data={recipeList.map(recipe => ({
           id: recipe.id,
-          thumbnail: recipe.thumbnail.jpgSrc,
+          thumbnail: recipe.thumbnail?.jpgSrc ?? '',
           author: recipe.author.name ?? recipe.author.email.split('@')[0],
           title: recipe.title,
           isLiked: recipe.isLiked,

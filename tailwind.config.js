@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// @ts-ignore
 const colors = require('tailwindcss/colors')
 module.exports = {
   important: true,

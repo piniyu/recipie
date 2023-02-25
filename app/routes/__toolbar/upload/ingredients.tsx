@@ -238,7 +238,7 @@ export default function IngredientsPage(): JSX.Element {
           <ul className="space-y-4">
             {controlledFields.map((field, idx) => {
               return (
-                <div key={field.id} className="flex gap-4">
+                <div key={field.id} className="flex flex-wrap gap-4 ">
                   <label className="w-full ">
                     <Controller
                       name={`ingredients.${idx}.name` as const}

@@ -1,5 +1,7 @@
+import { Link } from '@remix-run/react'
 import _ from 'lodash'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import SearchIcon from '~/components/icons/SearchFill1Wght400Grad25Opsz48'
 
 export default function SearchBar({
   placeholder = 'Search',
@@ -9,22 +11,17 @@ export default function SearchBar({
 }: {
   placeholder?: string
   border?: boolean
-  list: { value: string; id: string }[] | undefined
+  list: { value: string; link: string }[] | undefined
   fetch: (inputValue: string) => void
 }): JSX.Element {
-  const [inputValue, setInputValue] = useState('')
-  const debounceFetch = useCallback(
-    () =>
-      _.debounce(
-        () => {
-          console.log(inputValue)
-          fetch(inputValue)
-        },
-        300,
-        { trailing: true },
-      ),
-    [],
-  )
+  // const inputRef = useRef<HTMLInputElement>(null)
+  // useEffect(() => {
+  //   if (inputRef.current) {
+  //     inputRef.current.blur()
+  //     console.log('render1')
+  //   }
+  // }, [inputRef.current])
+  // console.log(list)
   /** TODO: use react-select ? */
   return (
     <div className=" relative w-full max-w-md text-black dark:text-gray-50">
@@ -48,9 +45,7 @@ export default function SearchBar({
             
             `}
       >
-        <span className="material-symbols-rounded pl-4 text-xl leading-none text-gray-400">
-          search
-        </span>
+        <SearchIcon className="svg-md svg-gray ml-4" />
         <input
           type="text"
           placeholder={placeholder}
@@ -62,10 +57,9 @@ export default function SearchBar({
               focus:outline-none
           `}
           onChange={e => {
-            // setInputValue(e.target.value)
-            // debounceFetch()
             fetch(e.target.value)
           }}
+          // ref={inputRef}
         />
       </div>
 
@@ -75,9 +69,11 @@ export default function SearchBar({
             z-10
             mt-2
             hidden
-            w-full rounded-lg 
+            w-full
+            rounded-lg 
             border 
-            border-gray-100 bg-white px-4 py-3
+            border-gray-100 
+            bg-white py-2 
             shadow-lg 
             hover:block 
             focus:block peer-focus-within:block 
@@ -85,13 +81,21 @@ export default function SearchBar({
             dark:bg-dark-gray
             `}
       >
-        {list === undefined || list?.length === 0 ? (
-          <div>No results</div>
+        {!list || list?.length === 0 ? (
+          <div className="px-4 py-2">No results</div>
         ) : (
-          list?.map((v, idx) => {
+          list.map((v, idx) => {
             // if (v === null || (list.length === 1 && v.length === 0))
             //   return <div key={idx}>No results</div>
-            return <div key={v.value + idx}>{v.value}</div>
+            return (
+              <Link
+                key={v.value + idx}
+                to={v.link}
+                className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                {v.value}
+              </Link>
+            )
           })
         )}
       </div>

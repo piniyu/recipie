@@ -9,7 +9,7 @@ export default function ContentCard({
   children: ReactNode
 } & HtmlHTMLAttributes<HTMLDivElement>): JSX.Element {
   return (
-    <div className={`content-card ${className}`} {...props}>
+    <div className={`content-card ${className ?? ''}`} {...props}>
       {children}
     </div>
   )

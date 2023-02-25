@@ -3,6 +3,11 @@ import { Form, FormProps, Link, useFetcher } from '@remix-run/react'
 import { FormHTMLAttributes, ReactNode, useEffect } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import AuthCheck from '../auth/auth-check'
+import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
+import BasketIconFill from '~/components/icons/ShoppingBasketFill1Wght400Grad25Opsz48'
+import LikeIcon from '~/components/icons/FavoriteFill0Wght400Grad25Opsz48'
+import LikeIconFill from '~/components/icons/FavoriteFill1Wght400Grad25Opsz48'
+import PersonIcon from '~/components/icons/PersonFill0Wght400Grad25Opsz48'
 
 export interface CardProps {
   title: string
@@ -79,9 +84,10 @@ function Overlay({
       <div className="flex flex-1 justify-between">
         <div className="flex items-center gap-2">
           <span className="inline-flex rounded-full bg-white p-1 dark:bg-gray-200">
-            <span className="material-icons-round  leading-none text-black">
+            {/* <span className="material-icons-round  leading-none text-black">
               person
-            </span>
+            </span> */}
+            <PersonIcon className="svg-lg fill-black" />
           </span>
           {author}
         </div>
@@ -89,31 +95,21 @@ function Overlay({
           <IconForm
             action={`/action/recipe/like/${id}`}
             icon={
-              <span
-                className={`material-symbols-rounded  leading-none ${
-                  isLiked ? 'text-red-500' : ''
-                }`}
-                style={
-                  isLiked ? { fontVariationSettings: '"FILL" 1' } : undefined
-                }
-              >
-                favorite
-              </span>
+              isLiked ? (
+                <LikeIconFill className="svg-md fill-red-500" />
+              ) : (
+                <LikeIcon className="svg-md" />
+              )
             }
           />
           <IconForm
             action={`/action/add-basket/${id}`}
             icon={
-              <span
-                className={` material-symbols-rounded  leading-none ${
-                  isInBasket ? 'text-blue-500' : ''
-                }`}
-                style={
-                  isInBasket ? { fontVariationSettings: '"FILL" 1' } : undefined
-                }
-              >
-                shopping_basket
-              </span>
+              isInBasket ? (
+                <BasketIconFill className="svg-md fill-blue-500" />
+              ) : (
+                <BasketIcon className="svg-md" />
+              )
             }
           />
         </div>
@@ -160,21 +156,11 @@ export default function Card({
         </h4>
         <div className="flex gap-4">
           <span className="flex items-center gap-1 text-sm text-gray-400 ">
-            <span
-              className="material-symbols-outlined text-xl leading-none "
-              style={{ fontVariationSettings: '"wght" 300, "FILL" 0' }}
-            >
-              favorite
-            </span>
+            <LikeIcon className="svg-sm svg-gray" />
             {favCounts}
           </span>
           <span className="flex items-center gap-1 text-sm text-gray-400 ">
-            <span
-              className="material-symbols-outlined text-xl leading-none "
-              style={{ fontVariationSettings: '"wght" 300,"FILL" 0' }}
-            >
-              shopping_basket
-            </span>
+            <BasketIcon className="svg-sm svg-gray" />
             {basketCounts}
           </span>
         </div>

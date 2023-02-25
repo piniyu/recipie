@@ -1,4 +1,5 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import ExpandIcon from '~/components/icons/ExpandMoreFill0Wght400Grad25Opsz48'
 
 export default function DropdownMenu({
   hasDownArrow,
@@ -48,13 +49,11 @@ export default function DropdownMenu({
           {icon}
           {summary}
           {hasDownArrow && (
-            <span
-              className={`material-symbols-rounded transition-transform ${
+            <ExpandIcon
+              className={`svg-md svg-gray transition-transform ${
                 open ? '-rotate-180' : ''
-              }`}
-            >
-              expand_more
-            </span>
+              } `}
+            />
           )}
         </button>
       ) : (

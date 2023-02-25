@@ -319,7 +319,7 @@ export default function Details(): JSX.Element {
     <div className="space-y-12 ">
       <h3 className="font-medium ">Details</h3>
       <FormProvider {...methods}>
-        <form className="flex gap-6">
+        <form className="flex flex-col gap-6  md:flex-row">
           <div className="flex flex-1 flex-col space-y-12">
             <label>
               <p className="label-required">Tilte</p>
@@ -416,7 +416,7 @@ export default function Details(): JSX.Element {
               </div>
             </label>
           </div>
-          <div className="w-2/5 justify-self-stretch">
+          <div className="w-full justify-self-stretch md:w-2/5">
             <label className="label-required">Thumbnail</label>
             <FileUploadInput
               name="thumbnail"

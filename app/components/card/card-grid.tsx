@@ -8,7 +8,7 @@ export default function CardGrid({
 }): JSX.Element | null {
   if (!data) return null
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,minmax(270px,1fr))] gap-9">
+    <div className="grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-9 md:grid-cols-[repeat(auto-fill,minmax(270px,1fr))]">
       {data.map(
         (
           {

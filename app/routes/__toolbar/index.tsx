@@ -30,9 +30,15 @@ export const loader = async ({ request }: LoaderArgs) => {
     | null
   const allRecipes = await getAllRecipes({ orderBy: recipeOrder })
 
-  const withThumbnail = await getThumbnails(allRecipes)
-  const mappedRecipes = withThumbnail.map(recipe => ({
+  const withThumbnail = await getThumbnails(
+    allRecipes.map(e => ({
+      recipeId: e.id,
+      thumbnails3Key: e.thumbnail?.s3Key ?? '',
+    })),
+  )
+  const mappedRecipes = allRecipes.map(recipe => ({
     ...recipe,
+    thumbnail: withThumbnail?.find(e => e.recipeId === recipe.id)?.thumbnail,
     isLiked: !!recipe.favorite.find(e => e.userId === userId),
     isInBasket: !!recipe.baskets.find(e => e.userId === userId),
   }))
@@ -63,9 +69,12 @@ export default function Index() {
 
   return (
     <div className="layout-pt layout-px flex flex-col gap-9">
-      <div className="flex justify-center gap-6">
+      <div className="mx-auto flex flex-wrap gap-6 md:flex-nowrap">
         <SearchBar
-          list={resList?.map(item => ({ value: item.title, id: item.id }))}
+          list={resList?.map(item => ({
+            value: item.title,
+            link: `/recipe/${item.id}`,
+          }))}
           fetch={inputValue => {
             fetcher.load(`/?index&search=${inputValue}`)
           }}
@@ -120,7 +129,7 @@ export default function Index() {
       <CardGrid
         data={recipeList.map(recipe => ({
           id: recipe.id,
-          thumbnail: recipe.thumbnail.jpgSrc,
+          thumbnail: recipe.thumbnail?.jpgSrc ?? '',
           author: recipe.author.name ?? recipe.author.email.split('@')[0],
           title: recipe.title,
           isLiked: recipe.isLiked,

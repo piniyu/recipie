@@ -1,10 +1,10 @@
 import { useLocation } from '@remix-run/react'
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { createContext, useReducer } from 'react'
 import Basket from '~/icons/basket'
 import Favorite from '~/icons/favorite'
 import Overview from '~/icons/overview'
-import Recipe from '~/icons/recipe'
+import Recipe from '~/components/icons/recipe'
 
 export interface SiderItemType {
   icon?: JSX.Element
@@ -40,64 +40,31 @@ export const SiderContext = createContext<Context>({
 })
 const { Provider } = SiderContext
 
-// const isChild = (
-//   value: SiderAction['payload'],
-// ): value is Omit<SiderItemType, 'children'> => {
-//   return !Array.isArray(value)
-// }
-
-// const reducer = (
-//   state: SiderItemType[],
-//   action: SiderAction,
-// ): SiderItemType[] => {
-//   const newState = [...state]
-//   switch (action.type) {
-//     case SiderActionKind.ADD_CHILD:
-//       if (isChild(action.payload) && typeof action.index !== 'undefined') {
-//         let children = newState[action.index].children
-//           ? newState[action.index].children
-//           : undefined
-//         if (isChild(action.payload) && children !== undefined) {
-//           children[children.length - 1] = action.payload
-//           children.push({
-//             value: 'Add a step',
-//             route: `upload/${children?.length + 1}`,
-//           })
-//           return [...newState]
-//         }
-//       }
-//     case SiderActionKind.UPDATE_CHILD:
-//       // console.log(isChild(action.payload))
-//       if (
-//         typeof action.childIndex === 'number' &&
-//         typeof action.index === 'number' &&
-//         isChild(action.payload)
-//       ) {
-//         let children = newState[action.index].children
-//           ? newState[action.index].children
-//           : undefined
-//         typeof children !== 'undefined' &&
-//           (children[action.childIndex].value = action.payload.value)
-//         return [...newState]
-//       }
-//     case SiderActionKind.SET_NEW_SIDER:
-//       if (!isChild(action.payload)) {
-//         return action.payload
-//       }
-//     default:
-//       return state
-//   }
-// }
-
 export default function SiderProvider({
   children,
 }: {
   children: ReactNode
 }): JSX.Element {
-  const location = useLocation()
-  // const [state, dispatch] = useReducer(reducer, defaultSiderValue)
   const [hidden, setHidden] = useState(false)
-  const [close, setClose] = useState(false)
+  const [close, setClose] = useState(document.body.clientWidth <= 768)
+
+  useEffect(() => {
+    const onResize = (e: UIEvent) => {
+      console.log(e)
+      // for (const entry of e) {
+      if (window.innerWidth <= 768) {
+        setClose(true)
+      }
+      // }
+    }
+    // const resizeObserver = new ResizeObserver(onResize)
+    window.addEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('resize', onResize)
+      // resizeObserver.disconnect()
+    }
+  }, [])
+
   return (
     <Provider value={{ hidden, setHidden, close, setClose }}>
       {children}

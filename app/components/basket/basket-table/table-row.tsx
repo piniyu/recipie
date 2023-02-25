@@ -3,14 +3,8 @@ import { updateHadQuan } from '../../../store/ingredients-slice'
 import { useAppDispatch } from '../../../store/configure-store'
 import TableRowForm from './table-row-form'
 import { BasketState } from '../../../store/selectBasket'
-
-// const sumServing = (servings: IngredientsState['servings']) => {
-//   return servings
-//     .map(({ serving }) => {
-//       return serving
-//     })
-//     .reduce((a, b) => a + b)
-// }
+import DeleteIcon from '~/components/icons/DeleteFill0Wght400Grad25Opsz48'
+import UndoIcon from '~/components/icons/UndoFill0Wght400Grad25Opsz48'
 
 export default function TableRow({
   name,
@@ -27,79 +21,48 @@ export default function TableRow({
   const dispatch = useAppDispatch()
 
   return (
-    <div className={`relative table-row-group text-inherit `}>
-      <div className="table-row">
-        <div className="table-cell px-4 py-3 first:pl-8 last:pr-8 ">
-          <div className="flex items-center">
-            <span>{name}</span>
+    <div
+      className={`relative mx-8 my-6 border-b border-gray-200 pb-4 text-inherit last:border-none dark:border-gray-600`}
+    >
+      <div className="flex items-center space-x-8">
+        <div className="flex flex-1 flex-col gap-2 md:flex-row ">
+          <b className="flex-1 ">{name}</b>
+          <div className="space-y-2">
+            <div className=" flex items-center  space-x-1">
+              <span className="text-sm text-gray-400">You have: </span>
+              <TableRowForm
+                {...{
+                  setInputValue: (value: number) =>
+                    void dispatch(updateHadQuan({ name, hadQant: value })),
+                  defaultValue: localBasket?.hadQant ?? 0,
+                  isDeleted,
+                  value,
+                  unit,
+                }}
+              />
+            </div>
+            <p className=" align-baseline text-sm">
+              <span className="text-gray-400">You need: </span>
+              <span className="text-lg font-bold ">
+                {value * localBasket.servings -
+                  (isNaN(localBasket.hadQant) ? 0 : localBasket.hadQant) +
+                  unit}
+              </span>
+            </p>
           </div>
         </div>
-        <div
-          className={`
-          relative 
-          table-cell px-4 py-4 text-lg 
-          font-bold 
-           first:pl-8 
-          last:pr-8
-          `}
+        <button
+          className="flex p-1"
+          onClick={() => {
+            setIsDeleted(prev => !prev)
+          }}
         >
-          <span className="[background:linear-gradient(to_bottom,transparent_50%,#fbbf2450_50%)]">
-            {value * localBasket.servings -
-              (isNaN(localBasket.hadQant) ? 0 : localBasket.hadQant) +
-              unit}
-          </span>
-        </div>
-        {/* <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 text-gray-500">
-          =
-        </div> */}
-        <div className="table-cell px-4 py-4 first:pl-8 last:pr-8">
-          <div className="">{value * localBasket.servings + unit}</div>
-        </div>
-        {/* <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 text-gray-500">
-          -
-        </div> */}
-        <div className="table-cell px-4 py-4 first:pl-8 last:pr-8 ">
-          <TableRowForm
-            {...{
-              setInputValue: (value: number) =>
-                void dispatch(updateHadQuan({ name, hadQant: value })),
-              defaultValue: localBasket?.hadQant ?? 0,
-              isDeleted,
-              value,
-              unit,
-            }}
-          />
-        </div>
-        {/* <div className="table-cell px-4 first:pl-8 last:pr-8 py-3 align-bottom">
-          <TableRowForm
-            {...{
-              setInputValue: (value: number) =>
-                void dispatch(updateServings({ name, servings: value })),
-              defaultValue: localBasket?.servings ?? 1,
-              isDeleted,
-              value,
-              hasSetBtn: true,
-            }}
-          />
-        </div> */}
-        <div className="table-cell px-4 py-3 align-middle text-gray-500 first:pl-8 last:pr-8">
-          <button
-            className="flex p-1"
-            onClick={() => {
-              setIsDeleted(prev => !prev)
-            }}
-          >
-            <span
-              className={`material-symbols-outlined leading-none ${
-                isDeleted
-                  ? 'text-green-500 dark:text-green-400'
-                  : 'text-red-600 dark:text-red-400'
-              }`}
-            >
-              {isDeleted ? 'undo' : 'delete'}
-            </span>
-          </button>
-        </div>
+          {isDeleted ? (
+            <UndoIcon className="svg-md fill-green-500 dark:fill-green-400 " />
+          ) : (
+            <DeleteIcon className="svg-md fill-red-600 dark:fill-red-400" />
+          )}
+        </button>
       </div>
       {isDeleted && (
         <div
