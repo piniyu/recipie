@@ -1,26 +1,14 @@
 // import { CloseOutlined } from '@mui/icons-material'
-import type { LoaderArgs, LoaderFunction } from '@remix-run/node'
+import type { LoaderArgs } from '@remix-run/node'
 import { json } from '@remix-run/node'
-import {
-  Link,
-  useFetcher,
-  useLoaderData,
-  useParams,
-  useSearchParams,
-} from '@remix-run/react'
+import { Link, useFetcher, useLoaderData, useParams } from '@remix-run/react'
 import React, { useCallback, useContext, useEffect } from 'react'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { SiderContext } from '~/components/sider/sider-context'
-import { useIntersect } from '~/lib/useIntersect'
-import img1 from '../../public/assets/img1.jpeg'
 import { db } from '~/utils/db.server'
 import { badRequest } from '~/utils/request.server'
 import { s3 } from '~/utils/s3.server'
-import {
-  GetObjectCommand,
-  ListObjectsCommand,
-  PutObjectCommand,
-} from '@aws-sdk/client-s3'
+import { GetObjectCommand } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 
 type MockData = {
@@ -28,79 +16,6 @@ type MockData = {
   title: string
   steps: { id: string; timeStemp: null | string; text: string }[]
 }
-
-const mockData: MockData[] = [
-  {
-    id: '1',
-    title: 'Preparation',
-    steps: [
-      {
-        id: '1',
-        timeStemp: null,
-        text: 'Preheated 400 degrees F (200 degrees C) oven for 5 to 8 minutes',
-      },
-      {
-        id: '2',
-        timeStemp: null,
-        text: 'Preheated 400 degrees F (200 degrees C) oven for 5 to 8 minutes',
-      },
-      {
-        id: '3',
-        timeStemp: null,
-        text: 'Preheated 400 degrees F (200 degrees C) oven for 5 to 8 minutes',
-      },
-      {
-        id: '4',
-        timeStemp: null,
-        text: 'Preheated 400 degrees F (200 degrees C) oven for 5 to 8 minutes',
-      },
-    ],
-  },
-  {
-    id: '2',
-    title: 'Preparation',
-    steps: [
-      {
-        id: '1',
-        timeStemp: null,
-        text: 'Preheated 400 degrees F (200 degrees C) oven for 5 to 8 minutes',
-      },
-    ],
-  },
-  {
-    id: '3',
-    title: 'Preparation',
-    steps: [
-      {
-        id: '1',
-        timeStemp: null,
-        text: 'Preheated 400 degrees F (200 degrees C) oven for 5 to 8 minutes',
-      },
-    ],
-  },
-  {
-    id: '4',
-    title: 'Preparation',
-    steps: [
-      {
-        id: '1',
-        timeStemp: null,
-        text: 'Preheated 400 degrees F (200 degrees C) oven for 5 to 8 minutes',
-      },
-    ],
-  },
-  {
-    id: '5',
-    title: 'Preparation',
-    steps: [
-      {
-        id: '1',
-        timeStemp: null,
-        text: 'Preheated 400 degrees F (200 degrees C) oven for 5 to 8 minutes',
-      },
-    ],
-  },
-]
 
 export const loader = async ({ request, params, context }: LoaderArgs) => {
   const recipeId = params.recipeId
@@ -123,16 +38,8 @@ export const loader = async ({ request, params, context }: LoaderArgs) => {
   const step11 = await db.instruction.findFirst({
     where: { recipeId, step: step + 1 },
   })
-  console.log(step11, step + 1)
 
   const steps = await Promise.allSettled([step1(), step2()])
-
-  const handleRes = <T,>(input: PromiseSettledResult<T>) => {
-    if (input.status === 'fulfilled') {
-      return input.value
-    }
-    throw new Error(input.reason)
-  }
 
   const getPhotos = steps.map(async e => {
     if (e.status === 'fulfilled') {
@@ -171,10 +78,7 @@ const ModalContainer = ({
 }) => {
   const { recipeId } = useParams()
   return (
-    <div
-      className="overflow-auto bg-inherit [scroll-snap-type:y_mandatory] lg:h-screen"
-      // ref={rootRef}
-    >
+    <div className="overflow-auto bg-inherit [scroll-snap-type:y_mandatory] lg:h-screen">
       {children}
       <button
         onClick={onPrevious}
@@ -256,11 +160,6 @@ export default function RecipeModal(): JSX.Element {
     }
   }, [])
 
-  //infinite scrolling intersect
-
-  // useEffect(() => {
-  //   console.log(stepInView, maxStep)
-  // }, [maxStep, stepInView])
   useEffect(() => {
     const options = {
       threshold: 1,
@@ -269,7 +168,6 @@ export default function RecipeModal(): JSX.Element {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const key = entry.target.getAttribute('data-key')
-          // console.log(key)
           if (
             key &&
             +key === targets.length - 2 &&
@@ -277,15 +175,10 @@ export default function RecipeModal(): JSX.Element {
             +key !== maxStep - 1 &&
             maxStep === Infinity
           ) {
-            console.log('fetch', nextStep)
             setShouldFetch(true)
             setNextStep(parseInt(key) + 3)
-            // console.log(idx + 2)
           }
           if (key) {
-            // step.current = idx + 1
-            // entry.target.scrollIntoView({ behavior: 'smooth', block: 'center' })
-            // console.log(entry.target)
             setStepInView(parseInt(key) + 1)
           }
         }
@@ -304,16 +197,12 @@ export default function RecipeModal(): JSX.Element {
 
   // fetch data
   useEffect(() => {
-    // console.log(startStepRef.current)
-    // console.log(nextStep, targets.length)
     if (!shouldFetch || !hasData) {
       return
     }
     fetcher.load(`/recipe/${recipeId}/modal?step=${nextStep}`)
     setShouldFetch(false)
   }, [fetcher, hasData, nextStep, shouldFetch])
-
-  // console.log('render')
 
   // fetcher data change
   useEffect(() => {
@@ -325,7 +214,6 @@ export default function RecipeModal(): JSX.Element {
     ) {
       setHasData(false)
       setShouldFetch(false)
-      // setMaxStep(nextStep - 1)
       return
     }
     if (
@@ -341,7 +229,6 @@ export default function RecipeModal(): JSX.Element {
     }
     if (fetcherData !== undefined && Array.isArray(fetcherData)) {
       setStepData(prev => [...prev, ...fetcherData])
-      // setNextStep(prev => prev + 1)
     }
   }, [fetcher.data])
 
@@ -382,7 +269,6 @@ export default function RecipeModal(): JSX.Element {
             <div className="flex  w-full items-center">
               <div
                 className={` max-h-[70vh] w-full flex-1 rounded-2xl bg-white p-3 shadow-2xl dark:bg-dark-gray dark:shadow-gray-900 md:p-5`}
-                // style={{ backgroundImage: `url(${img1})` }}
               >
                 <img
                   src={step.photo}

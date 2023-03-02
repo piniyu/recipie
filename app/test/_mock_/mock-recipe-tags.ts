@@ -6,11 +6,27 @@ export const mockRecipeTags: RecipeTags[] = [
     tagId: 'tag1',
   },
   {
-    recipeId: 'testrecipe1',
+    recipeId: 'testrecipe0',
     tagId: 'tag2',
   },
   {
-    recipeId: 'testrecipe2',
+    recipeId: 'testrecipe0',
     tagId: 'tag3',
+  },
+  {
+    recipeId: 'testrecipe1',
+    tagId: 'tag4',
+  },
+  {
+    recipeId: 'testrecipe1',
+    tagId: 'tag6',
+  },
+  {
+    recipeId: 'testrecipe1',
+    tagId: 'tag7',
+  },
+  {
+    recipeId: 'testrecipe2',
+    tagId: 'tag5',
   },
 ]

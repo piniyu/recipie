@@ -1,5 +1,4 @@
 import { ErrorMessage } from '@hookform/error-message'
-import { ReactNode } from 'react'
 
 export function ErrorMessageComponent({
   errors,

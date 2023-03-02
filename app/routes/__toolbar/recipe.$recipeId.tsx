@@ -2,24 +2,11 @@ import type { NutritionBarChartProps } from '~/components/recipe/recipe-nutritio
 import RecipeHeader from '~/components/recipe/recipe-header'
 import IngredientsCard from '~/components/recipe/recipe-ingredients'
 import RecipeNutrition from '~/components/recipe/recipe-nutrition'
-import { json, LoaderArgs, LoaderFunction } from '@remix-run/node'
-import {
-  Ingredient,
-  NumIngredientOnRecipe,
-  Prisma,
-  Recipe,
-  Thumbnail,
-} from '@prisma/client'
+import { json, LoaderArgs } from '@remix-run/node'
+import { Prisma } from '@prisma/client'
 import { db } from '~/utils/db.server'
 import { useLoaderData } from '@remix-run/react'
-import {
-  getRecipePresignedUrls,
-  getThumbnailPresignedUrl,
-} from '~/utils/s3.server'
-import {
-  getBigThumbnails,
-  getThumbnailAndLikeAndBasket,
-} from '~/lib/loaders/query-card-list'
+import { getBigThumbnails } from '~/utils/loaders/query-card-list'
 import { getUserId } from '~/utils/session.server'
 import { badRequest } from '~/utils/request.server'
 
@@ -91,13 +78,6 @@ export const loader = async ({ request, params }: LoaderArgs) => {
 export default function RecipeIndex(): JSX.Element {
   const data = useLoaderData<typeof loader>()
 
-  // useEffect(() => {
-  //   const scrollValue = localStorage.getItem('scrollPosition')
-  //   if (scrollValue) {
-  //     window.scrollTo({ top: parseInt(scrollValue) })
-  //   }
-  // }, [])
-
   if (!data || typeof data === 'string') {
     return <div>Not found the recipe!</div>
   }
@@ -109,8 +89,6 @@ export default function RecipeIndex(): JSX.Element {
     difficulty,
     author,
     ingredientsNum,
-    favorite,
-    baskets,
     id,
     tags,
     isLiked,
@@ -121,7 +99,7 @@ export default function RecipeIndex(): JSX.Element {
   } = data[0]
 
   return (
-    <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col">
+    <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col">
       <div className="relative flex-1 ">
         <div className="layout-px layout-pt space-y-6 pb-8 lg:space-y-10">
           <RecipeHeader

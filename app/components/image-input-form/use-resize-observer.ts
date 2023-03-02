@@ -13,7 +13,6 @@ export const useResizeObserver = (
       }
 
       const entry = entries[0]
-      // console.log(entry)
       setWidth(
         entry.contentRect.width +
           parseFloat(window.getComputedStyle(entry.target).paddingLeft) +

@@ -1,4 +1,3 @@
-import type { Thumbnail, User } from '@prisma/client'
 import Card, { CardProps } from './card'
 
 export default function CardGrid({

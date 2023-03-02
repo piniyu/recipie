@@ -1,9 +1,7 @@
 import { Ingredient, NumIngredientOnRecipe } from '@prisma/client'
 import { useAppDispatch } from '../../../store/configure-store'
 import ContentCard from '~/components/card/content-card'
-import RecipeIngredientsTable, {
-  RecipeTableProps,
-} from './recipe-ingredients-table'
+import RecipeIngredientsTable from './recipe-ingredients-table'
 import ServingForm from './serving-form'
 import { updateRecipeServings } from '../../../store/recipe-servings-slice'
 

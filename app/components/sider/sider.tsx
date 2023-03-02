@@ -1,32 +1,18 @@
-import {
-  Link,
-  NavLink,
-  useFetcher,
-  useLoaderData,
-  useMatches,
-} from '@remix-run/react'
+import { Link, NavLink } from '@remix-run/react'
 import React, { useContext } from 'react'
-// import Basket from '~/icons/basket'
 
 import Recipe from '~/components/icons/recipe'
-import { db } from '~/utils/db.server'
 import Logo from '~/components/icons/Logo'
 import AuthCheck from '../auth/auth-check'
 import LogoutForm from '../logout-form'
-import { SiderActionKind, SiderItemType } from './sider-context'
+import { SiderItemType } from './sider-context'
 import { SiderContext } from './sider-context'
 import LoginIcon from '~/components/icons/LoginFill0Wght400Grad25Opsz48'
 import LogoutIcon from '~/components/icons/LogoutFill0Wght400Grad25Opsz48'
 import LikeIcon from '~/components/icons/FavoriteFill0Wght400Grad25Opsz48'
 import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
 
-function SiderItem({
-  icon,
-  value,
-
-  hasChild = false,
-  route,
-}: SiderItemType & { hasChild?: boolean }) {
+function SiderItem({ icon, value, route }: SiderItemType) {
   const { setClose } = useContext(SiderContext)
 
   if (route) {

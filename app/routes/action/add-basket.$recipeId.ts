@@ -1,4 +1,4 @@
-import { ActionFunction, LoaderFunction } from '@remix-run/node'
+import { ActionFunction } from '@remix-run/node'
 import { db } from '~/utils/db.server'
 import { badRequest } from '~/utils/request.server'
 import { requireUserId } from '~/utils/session.server'
@@ -10,7 +10,6 @@ export const action: ActionFunction = async ({ request, params }) => {
     throw new Error('Recipe no exist!')
   }
 
-  // await updateBasket({ recipeId, userId })
   const isInBasket = await db.basket.findFirst({
     where: { userId, recipes: { some: { id: recipeId } } },
   })

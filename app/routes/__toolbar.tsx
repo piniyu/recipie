@@ -3,7 +3,7 @@ import { json, LoaderArgs } from '@remix-run/server-runtime'
 import { ReactNode, useContext } from 'react'
 import Toolbar from '~/components/layout/toolbar'
 import { SiderContext } from '~/components/sider/sider-context'
-import { getThumbnails } from '~/lib/loaders/query-card-list'
+import { getThumbnails } from '~/utils/loaders/query-card-list'
 import { db } from '~/utils/db.server'
 import { getUserId } from '~/utils/session.server'
 

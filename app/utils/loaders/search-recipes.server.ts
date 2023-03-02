@@ -1,5 +1,4 @@
 import { db } from '../../utils/db.server'
-// import { recipesListData } from '~/routes'
 
 function getSearchParams(requestUrl: string) {
   const url = new URL(requestUrl)

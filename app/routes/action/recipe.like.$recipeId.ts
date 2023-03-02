@@ -1,7 +1,7 @@
-import { ActionFunction, json, LoaderFunction } from '@remix-run/node'
+import { ActionFunction } from '@remix-run/node'
 import { db } from '../../utils/db.server'
 import { badRequest } from '../../utils/request.server'
-import { getUserId, requireUserId } from '../../utils/session.server'
+import { requireUserId } from '../../utils/session.server'
 
 export const action: ActionFunction = async ({ request, params }) => {
   const userId = await requireUserId(request)

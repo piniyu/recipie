@@ -1,5 +1,5 @@
 /** @see https://www.mattstobbs.com/remix-dark-mode/ */
-import { useFetcher, useSubmit } from '@remix-run/react'
+import { useFetcher } from '@remix-run/react'
 import {
   createContext,
   Dispatch,
@@ -32,7 +32,6 @@ const clientThemeCode = `
   const theme = window.matchMedia(${JSON.stringify(prefersDarkMQ)}).matches
     ? 'dark'
     : 'light';
-    console.log(window)
   const cl = document.documentElement.classList;
   const themeAlreadyApplied = cl.contains('light') || cl.contains('dark');
   if (themeAlreadyApplied) {

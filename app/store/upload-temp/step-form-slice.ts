@@ -30,7 +30,6 @@ const stepFormSlice = createSlice({
     updateStep: (state, action: PayloadAction<StepFormState>) => {
       const idx = state.findIndex(step => step.id === action.payload.id)
       const newPayload = structuredClone(action.payload)
-      console.log(newPayload)
       if (idx > -1) {
         state[idx] = newPayload
       }

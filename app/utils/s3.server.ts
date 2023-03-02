@@ -4,17 +4,6 @@ import {
   S3Client,
 } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
-import { loadSharedConfigFiles } from '@aws-sdk/shared-ini-file-loader'
-import { Thumbnail } from '@prisma/client'
-
-// const sharedConfig = async () => {
-//   return await loadSharedConfigFiles()
-// }
-// const _s3Client = loadSharedConfigFiles()
-//   .then(res => {
-//     return new S3Client({ ...res.configFile })
-//   })
-//   .catch(err => console.log(err))
 
 const s3 = new S3Client({ region: process.env.AWS_REGION })
 
@@ -24,7 +13,6 @@ const getImageKeysByUser = async (recipeId: string) => {
     Prefix: recipeId,
   })
   const { Contents = [] } = await s3.send(command)
-  console.log(Contents[0])
   return Contents.map(image => image.Key)
 }
 

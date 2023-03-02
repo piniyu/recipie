@@ -1,4 +1,3 @@
-import { Difficulty } from '@prisma/client'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 

@@ -1,7 +1,5 @@
 import { Thumbnail } from '@prisma/client'
 
-const s3FolderKey = 'testrecipe'
-
 const mockThumbnails: Thumbnail[] = [
   {
     id: 'testthumbnail0',
@@ -19,20 +17,5 @@ const mockThumbnails: Thumbnail[] = [
     s3Key: 'testrecipe2/thumbnail-jpg',
   },
 ]
-
-// const mockImagesInRecipe = [
-//   {
-//     id: 'testimg1',
-//     recipeId: 'testrecipe0',
-//   },
-//   {
-//     id: 'testimg1',
-//     recipeId: 'testrecipe1',
-//   },
-//   {
-//     id: 'testimg1',
-//     recipeId: 'testrecipe2',
-//   },
-// ]
 
 export { mockThumbnails }

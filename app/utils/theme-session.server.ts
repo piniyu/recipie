@@ -1,4 +1,4 @@
-import { createCookieSessionStorage, redirect } from '@remix-run/node'
+import { createCookieSessionStorage } from '@remix-run/node'
 import { isTheme, Theme } from './theme-provider'
 
 const sessionSecret = process.env.SESSION_SECRET

@@ -1,21 +1,13 @@
-import { Prisma, Recipe } from '@prisma/client'
-import { json, LoaderArgs, LoaderFunction, MetaFunction } from '@remix-run/node'
+import { json, LoaderArgs, MetaFunction } from '@remix-run/node'
 import { useFetcher, useLoaderData } from '@remix-run/react'
 import { useEffect, useState } from 'react'
 import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
-import {
-  getFavRecipes,
-  getLikedAndBasket,
-  getThumbnails,
-  recipesListData,
-} from '~/lib/loaders/query-card-list'
-import { searchFavoriteRecipes } from '~/lib/loaders/search-recipes.server'
+import { getFavRecipes, getThumbnails } from '~/utils/loaders/query-card-list'
+import { searchFavoriteRecipes } from '~/utils/loaders/search-recipes.server'
 import { metaTitlePostfix } from '~/root'
-import { db } from '~/utils/db.server'
 import { requireUserId } from '~/utils/session.server'
-// import { CardListLoaderData } from '.'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -30,10 +22,6 @@ export const loader = async ({ request }: LoaderArgs) => {
     | 'popular'
     | null
   const favRecipes = await getFavRecipes({ userId, orderBy: recipeOrder })
-  // const favRecipesWithLiked = await getLikedAndBasket({
-  //   userId,
-  //   recipes: favRecipes,
-  // })
   const withThumbnail = await getThumbnails(
     favRecipes.map(e => ({
       recipeId: e.id,

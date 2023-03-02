@@ -1,8 +1,12 @@
-import { useParams, useSubmit } from '@remix-run/react'
-import React, { useCallback, useRef, useState } from 'react'
+import { useParams } from '@remix-run/react'
+import { useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
-import { useAppDispatch, useAppSelector } from '../../../store/configure-store'
+import { useAppSelector } from '../../../store/configure-store'
 import AuthCheck from '~/components/auth/auth-check'
+import ArrowDownIcon from '~/components/icons/ExpandMoreFill0Wght400Grad25Opsz48'
+import ArrowUpIcon from '~/components/icons/ExpandLessFill0Wght400Grad25Opsz48'
+import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
+import DoneIcon from '~/components/icons/DoneFill0Wght400Grad25Opsz48'
 
 type FormPropsType = {
   input: number
@@ -42,7 +46,6 @@ export default function ServingForm({
     [register],
   )
 
-  // const [inputValue, setInputValue] = useState('2')
   return (
     <form
       onSubmit={handleSubmit(e => {
@@ -73,31 +76,18 @@ export default function ServingForm({
               }
             }}
           >
-            <span className="material-symbols-rounded text-lg leading-none text-gray-500">
-              keyboard_arrow_up
-            </span>
+            <ArrowUpIcon className="svg-md svg-gray" />
           </button>
-          <span
-            className="inline-block max-w-[80px] overflow-hidden whitespace-pre"
-            // ref={inputTemplate}
-          >
+          <span className="inline-block max-w-[80px] overflow-hidden whitespace-pre">
             {watchValue}
           </span>
           <input
             {...register('input')}
             type="number"
             className="absolute top-0 left-0 w-full text-center align-top outline-focus-outline"
-            // onChange={e => {
-            //   console.log(e, inputValue)
-            //   // setInputValue(e.target.value)
-            //   if (inputTemplate.current) {
-            //     inputTemplate.current.textContent = e.target.value
-            //   }
-            // }}
             onWheel={e => {
               ;(e.target as HTMLElement).blur()
             }}
-            // value={inputValue}
             onKeyDown={e => {
               if (
                 ((e.target as HTMLInputElement).value.length === 0 &&
@@ -120,10 +110,6 @@ export default function ServingForm({
                     `}
             type="button"
             onClick={e => {
-              // if (inputValue === '1') {
-              //   e.preventDefault()
-              //   return
-              // }
               if (servingInputRef.current) {
                 servingInputRef.current.stepDown()
                 setValue('input', watchValue - 1, { shouldDirty: true })
@@ -131,9 +117,7 @@ export default function ServingForm({
             }}
             disabled={watchValue === 1}
           >
-            <span className={`material-symbols-rounded text-lg leading-none  `}>
-              keyboard_arrow_down
-            </span>
+            <ArrowDownIcon className="svg-md svg-gray" />
           </button>
         </div>
         <span className=""> Servings</span>
@@ -150,7 +134,11 @@ export default function ServingForm({
             type="submit"
           >
             <span className="material-symbols-rounded text-xl leading-none">
-              {isSubmitSuccessful && !isDirty ? 'done' : ' shopping_basket '}
+              {isSubmitSuccessful && !isDirty ? (
+                <DoneIcon className="svg-sm svg-neutral" />
+              ) : (
+                <BasketIcon className="svg-sm svg-neutral" />
+              )}
             </span>
             {userId
               ? isSubmitSuccessful && !isDirty

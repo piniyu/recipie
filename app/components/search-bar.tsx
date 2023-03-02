@@ -1,6 +1,5 @@
 import { Link } from '@remix-run/react'
 import _ from 'lodash'
-import { useCallback, useEffect, useRef, useState } from 'react'
 import SearchIcon from '~/components/icons/SearchFill1Wght400Grad25Opsz48'
 
 export default function SearchBar({
@@ -14,14 +13,6 @@ export default function SearchBar({
   list: { value: string; link: string }[] | undefined
   fetch: (inputValue: string) => void
 }): JSX.Element {
-  // const inputRef = useRef<HTMLInputElement>(null)
-  // useEffect(() => {
-  //   if (inputRef.current) {
-  //     inputRef.current.blur()
-  //     console.log('render1')
-  //   }
-  // }, [inputRef.current])
-  // console.log(list)
   /** TODO: use react-select ? */
   return (
     <div className=" relative w-full max-w-md text-black dark:text-gray-50">
@@ -59,7 +50,6 @@ export default function SearchBar({
           onChange={e => {
             fetch(e.target.value)
           }}
-          // ref={inputRef}
         />
       </div>
 
@@ -85,8 +75,6 @@ export default function SearchBar({
           <div className="px-4 py-2">No results</div>
         ) : (
           list.map((v, idx) => {
-            // if (v === null || (list.length === 1 && v.length === 0))
-            //   return <div key={idx}>No results</div>
             return (
               <Link
                 key={v.value + idx}

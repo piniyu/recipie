@@ -1,6 +1,5 @@
-import { Thumbnail } from '@prisma/client'
-import { Form, FormProps, Link, useFetcher } from '@remix-run/react'
-import { FormHTMLAttributes, ReactNode, useEffect } from 'react'
+import { FormProps, Link, useFetcher } from '@remix-run/react'
+import { FormHTMLAttributes, ReactNode } from 'react'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import AuthCheck from '../auth/auth-check'
 import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
@@ -84,9 +83,6 @@ function Overlay({
       <div className="flex flex-1 justify-between">
         <div className="flex items-center gap-2">
           <span className="inline-flex rounded-full bg-white p-1 dark:bg-gray-200">
-            {/* <span className="material-icons-round  leading-none text-black">
-              person
-            </span> */}
             <PersonIcon className="svg-lg fill-black" />
           </span>
           {author}
@@ -134,15 +130,12 @@ export default function Card({
       className="group flex flex-col rounded-lg bg-white p-0.5 shadow-xl shadow-gray-200/50 transition-all ease-in dark:bg-dark-gray dark:shadow-black"
     >
       <div className="aspect-w-4 aspect-h-3 relative flex items-center justify-center overflow-hidden rounded-t-lg">
-        {/* <picture> */}
-        {/* <source srcSet={thumbnail?.webpSrc} /> */}
         <LazyLoadImage
           className="h-full w-full object-cover object-center "
           src={thumbnail}
           effect="opacity"
         />
 
-        {/* </picture> */}
         <Overlay
           author={author}
           id={id}

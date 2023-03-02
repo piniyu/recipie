@@ -20,12 +20,10 @@ export default function CardListItem({
     <div className="flex gap-4 ">
       <div className="w-24">
         <div className="aspect-w-4 aspect-h-3 overflow-hidden rounded-lg shadow-md">
-          {/* <div className="p-1 bg-white rounded-lg"> */}
           <img
             className="h-full w-full object-cover object-center "
             src={imgSrc}
           />
-          {/* </div> */}
         </div>
       </div>
 
@@ -41,11 +39,7 @@ export default function CardListItem({
             value={`${location.pathname}${location.search}`}
           />
           <input type="hidden" name="deleteId" value={recipeId} />
-          <button
-            className="flex rounded-full p-1"
-            // name={recipeId}
-            type="submit"
-          >
+          <button className="flex rounded-full p-1" type="submit">
             <DeletIcon className="svg-md fill-red-500 dark:fill-red-400" />
           </button>
         </Form>

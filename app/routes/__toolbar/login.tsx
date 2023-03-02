@@ -6,6 +6,7 @@ import ContentCard from '~/components/card/content-card'
 import { metaTitlePostfix } from '~/root'
 import { db } from '~/utils/db.server'
 import { createUserSession, login, register } from '~/utils/session.server'
+import PriorityHighIcon from '~/components/icons/PriorityHighFill0Wght400Grad25Opsz48'
 
 type FormProps = {
   email: string
@@ -16,10 +17,6 @@ type FormProps = {
 
 type ActionData = {
   formError?: string
-  // fieldErrors?: {
-  //   email: string | undefined
-  //   password: string | undefined
-  // }
   fields?: Omit<FormProps, 'redirectTo'>
 }
 
@@ -28,8 +25,6 @@ export const meta: MetaFunction = () => ({
 })
 
 function validateUrl(url: any, host: string) {
-  console.log(url)
-  // let urls = ['/', 'http://localhost:3000']
   if (url.includes(host)) {
     return url
   }
@@ -66,16 +61,13 @@ export const action: ActionFunction = async ({ request }) => {
   switch (formType) {
     case 'login': {
       const user = await login({ email, password })
-      console.log({ user })
       if (!user) {
         return badRequest({
           fields,
           formError: `Email of Password combination is incorrect`,
         })
       }
-      console.log(redirectTo)
       return createUserSession(user.id, redirectTo)
-      // return badRequest({ fields, formError: 'Not implemented' })
     }
     case 'register': {
       const userExists = await db.user.findFirst({
@@ -107,11 +99,11 @@ export default function Login() {
     register,
     watch,
     handleSubmit,
-    formState: { errors, isDirty },
+    formState: { isValid },
   } = useForm<FormProps>({
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'test@test.com',
+      password: '1234',
       redirectTo: '',
       formType: 'login',
     },
@@ -119,29 +111,35 @@ export default function Login() {
   const [watchEmail, watchPsw] = watch(['email', 'password'])
 
   const onSubmit = (v: FormProps, e?: any) => {
-    console.log(v, e)
     submit(e.target)
   }
 
   return (
     <div className="layout-px layout-py mx-auto flex h-full max-w-6xl items-center justify-center">
       <ContentCard className="h-fit max-w-md">
-        <div className="flex flex-col space-y-8">
-          <h1 className="mb-4">
+        <div className="flex flex-col gap-8">
+          <h1 className="">
             {formType === 'login' ? 'Login' : 'Create account'}
           </h1>
-          {formType === 'register' ? (
-            <div className="flex space-x-2 rounded-lg bg-primary/10 p-4">
-              <span className="material-symbols-rounded text-primary">
-                priority_high
-              </span>
+          <div className="flex space-x-2 rounded-lg bg-primary/10 p-4">
+            <PriorityHighIcon className="svg-md flex-shrink-0 fill-primary" />
+            {formType === 'register' ? (
               <p>
-                Please do not input any sensitive personal informations, since
-                this is a demo website which does not protect your datas and
-                would delete the datas in 7 days.
+                Please do not input any sensitive personal informations. This
+                website would not protect your informations.
               </p>
-            </div>
-          ) : null}
+            ) : (
+              <p>
+                <i className="text-sm">Default account:</i>
+                <br />
+                <i className="text-sm">Email:</i>
+                <b className="pl-2">test@test.com</b>
+                <br />
+                <i className="text-sm">Password:</i>
+                <b className="pl-2">1234</b>
+              </p>
+            )}
+          </div>
           <form
             method="post"
             className="flex flex-col gap-y-8"
@@ -225,7 +223,7 @@ export default function Login() {
                 className="input w-full"
                 autoComplete="current-password"
               />
-              <span
+              {/* <span
                 className={`text-xs ${
                   errors.password
                     ? 'text-red-500 dark:text-red-400'
@@ -234,13 +232,13 @@ export default function Login() {
               >
                 Your passwords must be 8-32 characters in length, first
                 cheracter must be letter, and must contain number
-              </span>
+              </span> */}
             </label>
             <div>
               <button
                 type="submit"
                 className="btn-primary btn-md w-full"
-                disabled={!isDirty}
+                disabled={!isValid}
               >
                 Submit
               </button>

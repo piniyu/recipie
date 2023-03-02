@@ -41,16 +41,6 @@ const deletFolder = async () => {
   }
 }
 
-/** delete photos */
-// const deletePhotos=async()=>{
-//   try{
-//     await s3.send(new DeleteObjectCommand({
-//       Bucket:process.env.AWS_BUCKET_NAME,
-//       Key:s3FolderKey+'/'
-//     }))
-//   }
-// }
-
 /** create recipes' folders */
 const createFolders = async () => {
   try {
@@ -68,7 +58,6 @@ const createFolders = async () => {
 
 /** add photo to folder */
 const uploadFiles = async () => {
-  // const filename = path.basename(imgPath)
   /** upload multiple files at the same time */
   try {
     await Promise.all(

@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { json, LoaderArgs, LoaderFunction } from '@remix-run/node'
-import { db } from '~/utils/db.server'
+import { useEffect, useState } from 'react'
+import { json, LoaderArgs } from '@remix-run/node'
 import { requireUserId } from '~/utils/session.server'
 import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
-import { Prisma } from '@prisma/client'
 import { useFetcher, useLoaderData } from '@remix-run/react'
-import { searchUserRecipes } from '~/lib/loaders/search-recipes.server'
-import {
-  getMyRecipes,
-  getThumbnails,
-  recipesListData,
-} from '~/lib/loaders/query-card-list'
-// import { CardListLoaderData } from '.'
-
-// type LoaderData = {
-//   myRecipes: CardListLoaderData['allRecipes']
-//   searchRes: CardListLoaderData['searcheRes']
-// }
+import { searchUserRecipes } from '~/utils/loaders/search-recipes.server'
+import { getMyRecipes, getThumbnails } from '~/utils/loaders/query-card-list'
 
 export const loader = async ({ request }: LoaderArgs) => {
   const userId = await requireUserId(request)
@@ -52,7 +40,6 @@ export default function MyRecipes() {
 
   useEffect(() => {
     if (fetcher.data?.searchRes) {
-      console.log(fetcher.data.searchRes)
       setSearchList(fetcher.data.searchRes)
     }
   }, [fetcher.data?.searchRes])

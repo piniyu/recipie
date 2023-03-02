@@ -2,7 +2,6 @@ import { useAppDispatch, useAppSelector } from '../../store/configure-store'
 import { IngredientsState } from '../../store/ingredients-slice'
 import {
   addRecipeServings,
-  RecipeServingState,
   updateRecipeServings,
 } from '../../store/recipe-servings-slice'
 
@@ -20,7 +19,6 @@ export function useGetServings(recipeId: string, servings?: number) {
 }
 
 export function useUpdateServings(recipeId: string, servings: number) {
-  // const recipe=useGetServings(recipeId,servings)
   const dispatch = useAppDispatch()
   dispatch(updateRecipeServings({ recipeId, servings }))
 }

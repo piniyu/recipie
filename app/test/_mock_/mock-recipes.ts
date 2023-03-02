@@ -5,10 +5,8 @@ export const mockRecipes: Recipe[] = [
   {
     id: 'testrecipe0',
     authorId: 'testuser0',
-    title: 'testrecipe 0',
+    title: 'Korean Noodle',
     difficulty: 'MODERATE3',
-    // tags:['tag1'],
-    // instructions: ['test instruct'],
     createdAt: new Date(),
     updatedAt: new Date(),
     likesNum: 0,
@@ -21,7 +19,7 @@ export const mockRecipes: Recipe[] = [
   {
     id: 'testrecipe1',
     authorId: 'testuser1',
-    title: 'testrecipe 1',
+    title: 'chocolate cake with ice cream',
     difficulty: 'MODERATE3',
     // tags:['teg2'],
     createdAt: new Date(),
@@ -36,9 +34,8 @@ export const mockRecipes: Recipe[] = [
   {
     id: 'testrecipe2',
     authorId: 'testuser2',
-    title: 'testrecipe 2',
-    difficulty: 'MODERATE3',
-    // tags:['teg3'],
+    title: 'seafood pizza',
+    difficulty: 'EASY2',
     createdAt: new Date(),
     updatedAt: new Date(),
     likesNum: 0,

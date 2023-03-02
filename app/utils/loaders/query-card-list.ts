@@ -1,6 +1,4 @@
 import { Prisma, Recipe, Thumbnail } from '@prisma/client'
-import { json } from '@remix-run/server-runtime'
-import { flatMap } from 'lodash'
 import { db } from '~/utils/db.server'
 import { getThumbnailPresignedUrl } from '~/utils/s3.server'
 
@@ -19,7 +17,6 @@ export async function getLikedAndBasket({
         isInBasket: false,
       }
     })
-  // try {
   const userFavs = await db.favorite.findFirst({
     where: { userId },
     select: { recipes: { select: { id: true } } },
@@ -35,10 +32,6 @@ export async function getLikedAndBasket({
       isInBasket: !!userBasket?.recipes.find(item => item.id === recipe.id),
     }
   })
-  // } catch (err) {
-  //   console.log(err)
-  //   return
-  // }
 }
 
 export const recipesListData = Prisma.validator<Prisma.RecipeArgs>()({
@@ -139,7 +132,6 @@ export const getThumbnails = async (
     queryList.map(e => {
       if (e.thumbnails3Key) {
         return getThumbnailPresignedUrl(e.thumbnails3Key, e.recipeId, 'jpg')
-        // getThumbnailPresignedUrl(recipe.thumbnail.webpSrc, recipe.id)
       }
     }),
   )
@@ -153,18 +145,12 @@ export const getThumbnails = async (
     return {
       ...e,
       thumbnail: {
-        // id: e.thumbnail?.id ?? '',
         recipeId: e.recipeId,
         jpgSrc:
           thumbnailsData.find(
             thumbnail =>
               thumbnail?.recipeId === e.recipeId && thumbnail?.type === 'jpg',
           )?.preSignedUrl ?? '',
-        // webpSrc:
-        //   thumbnailsData.find(
-        //     thumbnail =>
-        //       thumbnail?.recipeId === recipe.id && thumbnail.type === 'webpSrc',
-        //   )?.preSignedUrl ?? '',
       },
     }
   })
@@ -177,9 +163,10 @@ export const getBigThumbnails = async <
   const thumbnails = await Promise.allSettled(
     recipes.map(recipe => {
       if (recipe.thumbnail) {
-        return (
-          // getThumbnailPresignedUrl(recipe.thumbnail.s3Key, recipe.id, 'webp'),
-          getThumbnailPresignedUrl(recipe.thumbnail.s3Key, recipe.id, 'jpg')
+        return getThumbnailPresignedUrl(
+          recipe.thumbnail.s3Key,
+          recipe.id,
+          'jpg',
         )
       }
     }),
@@ -196,11 +183,6 @@ export const getBigThumbnails = async <
       thumbnail: {
         id: recipe.thumbnail?.id ?? '',
         recipeId: recipe.id,
-        // webpSrc:
-        //   thumbnailsData.find(
-        //     thumbnail =>
-        //       thumbnail?.recipeId === recipe.id && thumbnail.type === 'webp',
-        //   )?.preSignedUrl ?? '',
         jpgSrc:
           thumbnailsData.find(
             thumbnail =>

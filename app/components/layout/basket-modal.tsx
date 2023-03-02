@@ -1,5 +1,4 @@
-import { useFetcher, useMatches, useSubmit } from '@remix-run/react'
-import React, { useEffect, useState } from 'react'
+import { useMatches, useSubmit } from '@remix-run/react'
 import { useAppSelector } from '../../store/configure-store'
 import RecipeServingsForm from '../basket/recipe-servings-form'
 import CardListItem from '../card/card-list-item'
@@ -20,13 +19,6 @@ export default function BasketModal({
 }) {
   const recipes = useAppSelector(state => state.recipeServings)
   const submit = useSubmit()
-  const matches = useMatches()
-  // const basketData = matches.find(match => match.id === 'root')?.data.basket
-  //   .recipes as { id: string; title: string }[] | undefined | null
-  // // return null
-  // if (basketData === null || basketData === undefined) {
-  //   return null
-  // }
 
   return (
     <Modal
@@ -49,7 +41,6 @@ export default function BasketModal({
               onDelete={e =>
                 submit(e.currentTarget as HTMLFormElement, {
                   replace: true,
-                  // action: '/api/basket/delete-recipe',
                 })
               }
               subTitle={

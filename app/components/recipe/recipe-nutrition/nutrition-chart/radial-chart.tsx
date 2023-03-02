@@ -49,7 +49,6 @@ export default function RadialChart({
       }
     })
     if (hasRpc && rpcElementRef.current) {
-      // console.log(rpcElementRef.current)
       resizeObserver.observe(rpcElementRef.current as HTMLDivElement)
     }
     return () => {

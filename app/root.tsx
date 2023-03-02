@@ -23,7 +23,7 @@ import { db } from './utils/db.server'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistor, store } from './store/configure-store'
-import { deleteRecipe } from './actions/basket/delete-recipe'
+import { deleteRecipe } from './routes/action/delete-recipe'
 import { getUserId } from './utils/session.server'
 import Toolbar from './components/layout/toolbar'
 import UserProvider from './components/user/user-provider'
@@ -58,31 +58,31 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => {
   return [
-    {
-      as: 'style',
-      rel: 'stylesheet preload',
-      href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
-    },
-    {
-      as: 'style',
-      rel: 'stylesheet preload',
-      href: 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined',
-    },
-    {
-      as: 'style',
-      rel: 'stylesheet preload',
-      href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
-    },
-    {
-      as: 'style',
-      rel: 'stylesheet preload',
-      href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
-    },
-    {
-      as: 'style',
-      rel: 'stylesheet preload',
-      href: 'https://fonts.googleapis.com/icon?family=Material+Icons+Round',
-    },
+    // {
+    //   as: 'style',
+    //   rel: 'stylesheet preload',
+    //   href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+    // },
+    // {
+    //   as: 'style',
+    //   rel: 'stylesheet preload',
+    //   href: 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined',
+    // },
+    // {
+    //   as: 'style',
+    //   rel: 'stylesheet preload',
+    //   href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
+    // },
+    // {
+    //   as: 'style',
+    //   rel: 'stylesheet preload',
+    //   href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
+    // },
+    // {
+    //   as: 'style',
+    //   rel: 'stylesheet preload',
+    //   href: 'https://fonts.googleapis.com/icon?family=Material+Icons+Round',
+    // },
     {
       as: 'style',
       rel: 'stylesheet preload',

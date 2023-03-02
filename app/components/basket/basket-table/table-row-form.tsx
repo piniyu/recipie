@@ -1,21 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { BasketTableRow } from '.'
 import NumberInput from '../../inputs/number-input'
 
 export default function TableRowForm({
   value,
   unit,
   setInputValue,
-  isDeleted,
-  hasSetBtn,
   defaultValue,
 }: {
   value: number
   unit?: string
   setInputValue: (value: number) => void
-  isDeleted: boolean
-  hasSetBtn?: boolean
   defaultValue: number | undefined
 }) {
   const methods = useForm<{ input: number }>({
@@ -32,8 +27,6 @@ export default function TableRowForm({
   useEffect(() => {
     if (defaultValue) {
       reset({ input: defaultValue })
-
-      // trigger('input')
     }
   }, [defaultValue, reset])
 
@@ -44,7 +37,6 @@ export default function TableRowForm({
   useEffect(() => {
     const subscription = watch(v => {
       if (v.input) {
-        // console.log(errors)
         setInputValue(v.input)
       }
     })

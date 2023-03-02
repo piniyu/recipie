@@ -1,4 +1,4 @@
-import { Link, useLocation, useMatches, useNavigate } from '@remix-run/react'
+import { Link } from '@remix-run/react'
 import { useContext, useState } from 'react'
 import DropdownMenu from '../drop-down-menu'
 import { SiderContext } from '../sider/sider-context'
@@ -10,6 +10,7 @@ import PersonIcon from '~/components/icons/PersonFill0Wght400Grad25Opsz48'
 import DarkModeIcon from '~/components/icons/DarkModeFill0Wght400Grad25Opsz48'
 import LightModeIcon from '~/components/icons/LightModeFill0Wght400Grad25Opsz48'
 import MenuIcon from '~/components/icons/MenuFill1Wght400Grad25Opsz48'
+import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
 
 const Toolbar = ({
   basketData,
@@ -53,12 +54,7 @@ const Toolbar = ({
                 }
               }}
             >
-              <span
-                className="material-symbols-rounded leading-none "
-                style={{ fontVariationSettings: "'wght' 300" }}
-              >
-                shopping_basket
-              </span>
+              <BasketIcon className="svg-md svg-gray" />
             </button>
           )}
         </AuthCheck>

@@ -12,56 +12,56 @@ import Textarea from './textarea'
 const regexNum = new RegExp('^[0-9]$')
 const regexChar = new RegExp('^[a-zA-Z]$')
 
-const TimeInput = ({
-  name,
-  ...methods
-}: { name: string } & UseFormReturn<FieldValues, any>): JSX.Element => {
-  const { register, control, watch, setValue } = methods
-  const watchValue = watch(name)
-  return (
-    // <Controller
-    //   name={name}
-    //   control={control}
-    //   render={({ field }) => (
-    <input
-      {...register(name)}
-      type="text"
-      className="input w-20 text-right"
-      placeholder="0:00"
-      onKeyDown={e => {
-        if (
-          watchValue.length === 4 &&
-          // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,].includes(parseInt(e.key))
-          regexNum.test(e.key)
-        ) {
-          e.preventDefault()
-        }
-        if (regexChar.test(e.key)) {
-          e.preventDefault()
-        }
-      }}
-      onFocus={e => {
-        setValue(name, e.target.value.replace(':', ''))
-      }}
-      onBlur={e => {
-        const arr = e.target.value.split('')
-        while (arr.length < 4) {
-          arr.unshift('0')
-        }
-        const length = arr.length
-        arr.splice(length - 2, 0, ':')
-        setValue(name, arr.join(''))
-      }}
-    />
-    // )}
-    // />
-  )
-}
+// const TimeInput = ({
+//   name,
+//   ...methods
+// }: { name: string } & UseFormReturn<FieldValues, any>): JSX.Element => {
+//   const { register, control, watch, setValue } = methods
+//   const watchValue = watch(name)
+//   return (
+//     // <Controller
+//     //   name={name}
+//     //   control={control}
+//     //   render={({ field }) => (
+//     <input
+//       {...register(name)}
+//       type="text"
+//       className="input w-20 text-right"
+//       placeholder="0:00"
+//       onKeyDown={e => {
+//         if (
+//           watchValue.length === 4 &&
+//           // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,].includes(parseInt(e.key))
+//           regexNum.test(e.key)
+//         ) {
+//           e.preventDefault()
+//         }
+//         if (regexChar.test(e.key)) {
+//           e.preventDefault()
+//         }
+//       }}
+//       onFocus={e => {
+//         setValue(name, e.target.value.replace(':', ''))
+//       }}
+//       onBlur={e => {
+//         const arr = e.target.value.split('')
+//         while (arr.length < 4) {
+//           arr.unshift('0')
+//         }
+//         const length = arr.length
+//         arr.splice(length - 2, 0, ':')
+//         setValue(name, arr.join(''))
+//       }}
+//     />
+//     // )}
+//     // />
+//   )
+// }
 
 export default function MethodsFieldArray(): JSX.Element {
   const name: FieldPath<StepFormProps> = 'methods'
   const methods = useFormContext<StepFormProps>()
-  const { register, control, setValue, watch, setError, clearErrors } = methods
+  const { control, watch, setError, clearErrors } = methods
   const { fields, append, remove } = useFieldArray({
     control,
     name,

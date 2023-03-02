@@ -15,10 +15,9 @@ import {
   useParams,
 } from '@remix-run/react'
 import cuid from 'cuid'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import ContentCard from '~/components/card/content-card'
-import { StepFormProps } from '~/components/step-form'
 import { useAppDispatch, useAppSelector } from '~/store/configure-store'
 import { resetDetails } from '~/store/upload-temp/details-form-slice'
 import {
@@ -26,7 +25,6 @@ import {
   resetIngredients,
 } from '~/store/upload-temp/ingredients-form-slice'
 import { resetPublish } from '~/store/upload-temp/publish-slice'
-// import { IngredientsFormProps } from '~/store/upload-temp/ingredients-form-slice'
 import {
   addStep,
   deleteStep,
@@ -38,7 +36,6 @@ import { s3 } from '~/utils/s3.server'
 import { requireUserId } from '~/utils/session.server'
 import { DetailsFormProps } from './upload/details'
 import DeleteIcon from '~/components/icons/DeleteFill0Wght400Grad25Opsz48'
-import Modal from '~/components/layout/modal'
 import MenuIcon from '~/components/icons/MenuFill1Wght400Grad25Opsz48'
 
 type RecursiveNonNullable<T> = {
@@ -106,7 +103,6 @@ const SideListItem = ({
           dark:disabled:fill-gray-600 dark:disabled:hover:bg-transparent
           `}
           onClick={() => {
-            // e.stopPropagation()
             onDelete(stepId)
           }}
           disabled={disabledDelete}
@@ -168,11 +164,6 @@ export const action: ActionFunction = async ({ request }) => {
         },
       })
 
-      // await db.ingredient.deleteMany({
-      //   where: {
-      //     onRecipes: { none: {} },
-      //   },
-      // })
       return recipeData
     }
 
@@ -241,8 +232,6 @@ export const action: ActionFunction = async ({ request }) => {
     console.log(err)
     throw err
   }
-
-  // console.log(detailsData)
 }
 
 const SiderListComponent = ({
@@ -351,19 +340,8 @@ export default function Upload(): JSX.Element {
       observer.observe(containerRef.current)
     }
 
-    const onClick = (e: MouseEvent) => {
-      if (
-        sideListRef.current &&
-        !sideListRef.current.contains(e.target as Node)
-      ) {
-        setOpenSideList(false)
-      }
-    }
-
-    // window.addEventListener('click', onClick)
     return () => {
       observer.disconnect()
-      // window.removeEventListener('click',onClick)
     }
   }, [])
 
@@ -426,7 +404,6 @@ export default function Upload(): JSX.Element {
                   onClick={() => setOpenSideList(false)}
                 ></div>
               ) : null}
-              {/* <div className="fixed top-0 left-0 h-screen w-screen bg-black/30 backdrop-brightness-50"></div> */}
               <div className="">
                 <SiderListComponent
                   stepIdx={stepIdx ? +stepIdx : undefined}

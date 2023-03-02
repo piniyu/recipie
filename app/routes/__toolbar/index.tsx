@@ -1,25 +1,14 @@
 import { Recipe, User } from '@prisma/client'
 import type { LoaderArgs, LoaderFunction, TypedResponse } from '@remix-run/node'
 import { json } from '@remix-run/node'
-import { Outlet, useFetcher, useLoaderData } from '@remix-run/react'
+import { useFetcher, useLoaderData } from '@remix-run/react'
 import { useEffect, useState } from 'react'
 import CardGrid from '~/components/card/card-grid'
 import DropdownMenu from '~/components/drop-down-menu'
 import SearchBar from '~/components/search-bar'
-import {
-  getAllRecipes,
-  getLikedAndBasket,
-  getThumbnails,
-  getThumbnailAndLikeAndBasket,
-} from '~/lib/loaders/query-card-list'
-import { badRequest } from '~/utils/request.server'
+import { getAllRecipes, getThumbnails } from '~/utils/loaders/query-card-list'
 import { getUserId } from '~/utils/session.server'
-import { searchAllRecipes } from '~/lib/loaders/search-recipes.server'
-
-// export interface CardListLoaderData {
-//   searcheRes: Awaited<ReturnType<typeof searchAllRecipes>>
-//   allRecipes: (Recipe & { isLiked: boolean; isInBasket: boolean; likesNum: number; basketsNum: number; author: User; })[]
-// }
+import { searchAllRecipes } from '~/utils/loaders/search-recipes.server'
 
 export const loader = async ({ request }: LoaderArgs) => {
   const searchRes = await searchAllRecipes(request)

@@ -4,6 +4,8 @@ export { default as ArrowUpwardFill0Wght400Grad25Opsz48 } from "./ArrowUpwardFil
 export { default as CloseFill0Wght400Grad25Opsz48 } from "./CloseFill0Wght400Grad25Opsz48";
 export { default as DarkModeFill0Wght400Grad25Opsz48 } from "./DarkModeFill0Wght400Grad25Opsz48";
 export { default as DeleteFill0Wght400Grad25Opsz48 } from "./DeleteFill0Wght400Grad25Opsz48";
+export { default as DoneFill0Wght400Grad25Opsz48 } from "./DoneFill0Wght400Grad25Opsz48";
+export { default as ExpandLessFill0Wght400Grad25Opsz48 } from "./ExpandLessFill0Wght400Grad25Opsz48";
 export { default as ExpandMoreFill0Wght400Grad25Opsz48 } from "./ExpandMoreFill0Wght400Grad25Opsz48";
 export { default as FavoriteFill0Wght400Grad25Opsz48 } from "./FavoriteFill0Wght400Grad25Opsz48";
 export { default as FavoriteFill1Wght400Grad25Opsz48 } from "./FavoriteFill1Wght400Grad25Opsz48";
@@ -12,6 +14,7 @@ export { default as LoginFill0Wght400Grad25Opsz48 } from "./LoginFill0Wght400Gra
 export { default as LogoutFill0Wght400Grad25Opsz48 } from "./LogoutFill0Wght400Grad25Opsz48";
 export { default as MenuFill1Wght400Grad25Opsz48 } from "./MenuFill1Wght400Grad25Opsz48";
 export { default as PersonFill0Wght400Grad25Opsz48 } from "./PersonFill0Wght400Grad25Opsz48";
+export { default as PriorityHighFill0Wght400Grad25Opsz48 } from "./PriorityHighFill0Wght400Grad25Opsz48";
 export { default as RemoveFill1Wght400Grad25Opsz48 } from "./RemoveFill1Wght400Grad25Opsz48";
 export { default as SearchFill1Wght400Grad25Opsz48 } from "./SearchFill1Wght400Grad25Opsz48";
 export { default as ShoppingBasketFill0Wght400Grad25Opsz48 } from "./ShoppingBasketFill0Wght400Grad25Opsz48";

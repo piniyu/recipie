@@ -26,7 +26,6 @@ export function useIntersect(option?: IntersectionObserverInit | undefined) {
         const obs = new IntersectionObserver(onIntersect, option)
         obs.observe(node)
         setObserver(obs)
-        console.log(node)
       }
     },
     [option?.root, option?.rootMargin, option?.threshold],

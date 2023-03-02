@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 :root {
-  --font-ui: 'DM Sans', sans-serif;
-  --font-default: 'Inter';
+  --font-default: 'DM Sans', sans-serif;
+  /* --font-default: 'Inter'; */
   --focus-outline-color: theme(colors.primary.DEFAULT / 50%);
 }
 
 @layer base {
   body {
     /* font-family: var(--font-ui), system-ui, sans-serif; */
-    @apply font-['var(--font-ui),system-ui,sans-serif'] text-black  dark:text-gray-200;
+    @apply font-['var(--font-default),system-ui,sans-serif'] text-black  dark:text-gray-200;
   }
   h1 {
     @apply text-3xl font-bold md:text-4xl;
@@ -43,7 +43,7 @@
 }
 @layer components {
   .font-ui {
-    font-family: var(--font-ui);
+    font-family: var(--font-default);
   }
   .mask-image {
     mask-image: linear-gradient(
@@ -91,15 +91,15 @@
 
   /** button size **/
   .btn-sm {
-    font-family: var(--font-ui);
+    font-family: var(--font-default);
     @apply flex items-center justify-center rounded-lg px-4 py-2;
   }
   .btn-md {
-    font-family: var(--font-ui);
+    font-family: var(--font-default);
     @apply flex items-center justify-center rounded-lg px-4 py-3;
   }
   .btn-lg {
-    font-family: var(--font-ui);
+    font-family: var(--font-default);
     @apply flex items-center justify-center rounded-lg px-5 py-4;
   }
   /** button style **/

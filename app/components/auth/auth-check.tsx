@@ -1,8 +1,7 @@
-import { User } from '@prisma/client'
 import { useLocation } from '@remix-run/react'
-import React, { ReactElement, ReactNode, useEffect, useState } from 'react'
+import { ReactElement, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { UserContextType, useUser } from '../../lib/domain/auth/user-context'
+import { UserContextType, useUser } from '../../utils/domain/auth/user-context'
 import Modal from '../layout/modal'
 
 export default function AuthCheck({
@@ -64,10 +63,4 @@ export default function AuthCheck({
   }
 
   return children(user)
-  // if (user) {
-  //   if (typeof children === 'function') {
-  //   }
-  //   return <>{children}</>
-  // }
-  // return null
 }

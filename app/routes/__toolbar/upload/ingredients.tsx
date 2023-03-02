@@ -1,5 +1,3 @@
-// import { useFieldArray, useForm } from 'react-hook-form'
-
 import { Link, useFetcher, useLoaderData } from '@remix-run/react'
 import { ActionFunction, json, LoaderArgs } from '@remix-run/server-runtime'
 import _ from 'lodash'
@@ -8,7 +6,7 @@ import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { SingleValueProps, components } from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 import Select from 'react-select'
-import { searchIngredients } from '~/lib/loaders/search-ingredients.server'
+import { searchIngredients } from '~/utils/loaders/search-ingredients.server'
 import { useAppDispatch, useAppSelector } from '~/store/configure-store'
 import {
   IngredientsProps,
@@ -26,7 +24,6 @@ import {
 import cuid from 'cuid'
 import { db } from '~/utils/db.server'
 import { badRequest } from '~/utils/request.server'
-import { validate } from 'uuid'
 import { ErrorMessageComponent } from '~/components/error-message'
 import { updatePublish } from '~/store/upload-temp/publish-slice'
 
@@ -132,7 +129,6 @@ export default function IngredientsPage(): JSX.Element {
 
   const {
     register,
-    getValues,
     control,
     watch,
     setValue,
@@ -275,9 +271,6 @@ export default function IngredientsPage(): JSX.Element {
                           }}
                           onBlur={() => {
                             if (
-                              // (!controllerField.value ||
-                              //   controllerField.value.value.length === 0 ||
-                              //   controllerField.value.value === null) &&
                               watchFieldArray.every(
                                 e =>
                                   !e.name ||
@@ -324,10 +317,10 @@ export default function IngredientsPage(): JSX.Element {
                         <Select
                           {...controllerField}
                           id={`ingredients_${idx}_${field.id}`}
-                          // value={{ label: field.unit, value: field.unit }}
                           placeholder="Unit"
                           isSearchable
                           options={[
+                            { label: 'No unit', value: '' },
                             {
                               label: 'Volume',
                               options: Object.values(Volume).map(e => ({
@@ -366,25 +359,13 @@ export default function IngredientsPage(): JSX.Element {
                             MenuList: MenuListComponent,
                             SingleValue: SingleValueComponent,
                             DropdownIndicator: DropdownIndicatorComponent,
-
                             Input: InputComponent,
                           }}
                         />
                       )}
                     />
                   </label>
-                  {/* <input
-                    {...register(`ingredients.${idx}.unit` as const)}
-                    type="text"
-                    name={`ingredients.${idx}.qty`}
-                    className="input w-20"
-                    placeholder="Unit"
-                    onKeyDown={e => {
-                      if ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9].includes(+e.key)) {
-                        e.preventDefault()
-                      }
-                    }}
-                  /> */}
+
                   <button
                     className={` btn-sm btn-ghost ${
                       fields.length === 1

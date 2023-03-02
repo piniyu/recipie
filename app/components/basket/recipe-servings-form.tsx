@@ -37,13 +37,12 @@ const ServingsForm = ({
   return (
     <FormProvider {...methods}>
       <Form onSubmit={e => void e.preventDefault()}>
-        {/* <input type="hidden" value={location.pathname} name="redirectTo" /> */}
         <NumberInput
           registerName="input"
           hasSetBtn
-          onSubmit={(v: FormProps) => {
-            onChangeSubmit(v)
-          }}
+          // onSubmit={(v: FormProps) => {
+          //   onChangeSubmit(v)
+          // }}
         />
       </Form>
     </FormProvider>

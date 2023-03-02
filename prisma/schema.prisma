@@ -119,10 +119,12 @@ model Tag {
 }
 
 model RecipeTags {
-  recipeId String @unique
+  recipeId String
   recipe   Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
   tagId    String
   tag      Tag    @relation(fields: [tagId], references: [id])
+
+  @@id([recipeId, tagId])
 }
 
 enum Difficulty {

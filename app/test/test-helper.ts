@@ -1,4 +1,4 @@
-import { Prisma, prisma, PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import { mockBaskets, mockRecipesInBaskets } from './_mock_/mock-baskets'
 import { mockThumbnails } from './_mock_/mock-thumbnails'
 import { mockIngreds } from './_mock_/mock-ingredients'

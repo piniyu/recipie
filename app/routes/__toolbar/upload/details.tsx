@@ -9,7 +9,6 @@ import type {
   ClearIndicatorProps,
   ControlProps,
   DropdownIndicatorProps,
-  GroupBase,
   InputProps,
   MenuListProps,
   MenuProps,
@@ -21,7 +20,7 @@ import { components } from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 import { ErrorMessageComponent } from '~/components/error-message'
 import FileUploadInput from '~/components/image-input-form/img-upload-input'
-import { searchTags } from '~/lib/loaders/search-ingredients.server'
+import { searchTags } from '~/utils/loaders/search-ingredients.server'
 import { useAppDispatch, useAppSelector } from '~/store/configure-store'
 import {
   DetailsFormState,
@@ -40,7 +39,6 @@ export type ImgFormProp = {
   name: string
   src: string | null
   type: string
-  // size: string
 }
 export interface DetailsFormProps {
   title: string
@@ -53,13 +51,6 @@ const mockTags = [
   { value: 'breakfast', label: 'Breakfast' },
   { value: 'dinner', label: 'Dinner' },
 ]
-
-const defaultFormValues: DetailsFormProps = {
-  title: '',
-  tags: mockTags,
-  difficulty: 'EASY1',
-  thumbnail: { name: '', src: '', type: '' },
-}
 
 export const ControlComponent = ({ children, ...props }: ControlProps<any>) => {
   const { isFocused } = props
@@ -247,17 +238,11 @@ export default function Details(): JSX.Element {
   })
   const {
     setValue,
-    trigger,
-    getValues,
     setError,
     clearErrors,
     watch,
     formState: { errors },
   } = methods
-
-  // const onChangeSave = (name: string, value: any) => {
-  //   dispatch(updateDetails({ [name]: value }))
-  // }
 
   useEffect(() => {
     const subscription = watch(
@@ -327,9 +312,6 @@ export default function Details(): JSX.Element {
                 name="title"
                 maxLength={100}
                 rows={2}
-                // onChangeCallback={(name, value, e) => {
-                //   // onChangeSave(name, value)
-                // }}
                 registerOptions={{ required: 'Require title!' }}
               />
             </label>
@@ -399,7 +381,6 @@ export default function Details(): JSX.Element {
                   />
                 )}
               />
-              {/* {console.log(getValues('tags'))} */}
               <ErrorMessageComponent errors={errors} name="tags" />
             </label>
             <label>
@@ -410,7 +391,6 @@ export default function Details(): JSX.Element {
                   difficulty={localDetails.difficulty}
                   onChange={value => {
                     setValue('difficulty', getDifficulty(value) as Difficulty)
-                    // onChangeSave('difficulty', getDifficulty(value))
                   }}
                 />
               </div>

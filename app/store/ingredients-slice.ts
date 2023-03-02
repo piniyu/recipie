@@ -25,14 +25,7 @@ const basketSlice = createSlice({
     deleteIngredient: (state, action: PayloadAction<string>) => {
       return state.filter(item => item.name !== action.payload)
     },
-    // updateIngredient: (state, action: PayloadAction<IngredientsState>) => {
-    //   const newState = [...state]
-    //   const filterState = newState.filter(
-    //     item => item.name !== action.payload.name,
-    //   )
-    //   filterState.push(action.payload)
-    //   return filterState
-    // },
+
     updateHadQuan: (
       state,
       action: PayloadAction<Pick<IngredientsState, 'hadQant' | 'name'>>,
@@ -90,7 +83,6 @@ export default basketSlice.reducer
 export const {
   addIngredient,
   deleteIngredient,
-  // updateIngredient,
   updateHadQuan,
   addRecipeId,
   deleteRecipeId,

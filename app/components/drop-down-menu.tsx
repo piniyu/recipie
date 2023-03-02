@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import ExpandIcon from '~/components/icons/ExpandMoreFill0Wght400Grad25Opsz48'
 
 export default function DropdownMenu({
@@ -35,7 +35,6 @@ export default function DropdownMenu({
 
   return (
     <div
-      // key={`${summary}`}
       className="relative select-none text-gray-500 dark:text-gray-400"
       ref={detailsRef}
     >

@@ -1,12 +1,10 @@
-import { Link, useNavigate, useParams } from '@remix-run/react'
+import { Link } from '@remix-run/react'
 import moment from 'moment'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import DifficultyBtn from '../difficulty'
-import IconBtn from '../Icon-btn'
 import Tag from '../tag'
 import HeaderImg from './header-img'
-import img1 from '../../../public/assets/img1.jpeg'
-import type { Difficulty, Thumbnail } from '@prisma/client'
+import type { Difficulty } from '@prisma/client'
 import ContentCard from '../card/content-card'
 import { IconForm } from '../card/card'
 import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
@@ -32,7 +30,6 @@ export default function RecipeHeader({
   authorName: string
   createdAt: string
   difficulty: Difficulty
-  // preSignedUrl: string
   thumbnailSrc: string
   favCounts: number
   basketCounts: number
@@ -106,7 +103,6 @@ export default function RecipeHeader({
                   }
                   return !prev
                 })
-                // console.log(e)
               }}
             />
             <span>{likeCounts}</span>

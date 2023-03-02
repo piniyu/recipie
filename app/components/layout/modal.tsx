@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 
 export default function Modal({
@@ -31,14 +31,10 @@ export default function Modal({
     if (!disableClickOutsideClose) {
       document.addEventListener('click', onClick)
     }
-    // document.addEventListener('scroll', () => {
-    //   console.log('modal scrolling')
-    // })
     return () => {
       if (!disableClickOutsideClose) {
         document.removeEventListener('click', onClick)
       }
-      // document.removeEventListener('scroll', () => {})
     }
   }, [onClose])
   useEffect(() => {

@@ -1,14 +1,7 @@
-import {
-  GetObjectCommand,
-  PutObjectCommand,
-  PutObjectCommandInput,
-} from '@aws-sdk/client-s3'
+import { GetObjectCommand, PutObjectCommandInput } from '@aws-sdk/client-s3'
 import { Upload } from '@aws-sdk/lib-storage'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
-import {
-  unstable_createFileUploadHandler,
-  writeAsyncIterableToWritable,
-} from '@remix-run/node'
+import { writeAsyncIterableToWritable } from '@remix-run/node'
 import {
   ActionFunction,
   unstable_composeUploadHandlers,
@@ -16,9 +9,7 @@ import {
   unstable_parseMultipartFormData,
   UploadHandler,
 } from '@remix-run/server-runtime'
-import cuid from 'cuid'
 import { PassThrough } from 'stream'
-import { db } from '~/utils/db.server'
 import { s3 } from '~/utils/s3.server'
 
 const uploadStream = ({ Key }: Pick<PutObjectCommandInput, 'Key'>) => {
@@ -74,5 +65,4 @@ export const action: ActionFunction = async ({ request }) => {
     console.log(err)
     return null
   }
-  // console.log(form.get('img'))
 }

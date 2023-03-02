@@ -1,6 +1,6 @@
 import { json } from '@remix-run/node'
-import { db } from '../../utils/db.server'
-import { getUserId, requireUserId } from '../../utils/session.server'
+import { db } from '../db.server'
+import { getUserId } from '../session.server'
 
 export async function deletedbRecipe(request: Request, recipeId: string) {
   const userId = await getUserId(request)

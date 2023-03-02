@@ -8,24 +8,17 @@ const NumberInput = ({
   registerName,
   maxValue,
   showErrors,
-  onChange,
-  onSubmit,
 }: {
   showErrors?: boolean
   maxValue?: number
   registerName: string
   hasSetBtn?: boolean
   unit?: string
-  onChange?: (e: React.ChangeEvent) => void
-  onSubmit?: (value: any) => void
 }) => {
   const {
     watch,
     register,
     setValue,
-    handleSubmit,
-    getValues,
-    trigger,
     formState: { errors },
   } = useFormContext()
   const input = watch(registerName)
@@ -41,7 +34,6 @@ const NumberInput = ({
             if (inputRef.current && parseInt(inputRef.current.value) > 1) {
               inputRef.current.value = parseInt(inputRef.current.value) - 1 + ''
               setValue('input', parseInt(inputRef.current.value))
-              // console.log(input)
             }
           }}
           disabled={input <= 1}

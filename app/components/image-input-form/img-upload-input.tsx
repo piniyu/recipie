@@ -1,11 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { useAppSelector } from '~/store/configure-store'
 
-import type {
-  DetailsFormProps,
-  ImgFormProp,
-} from '../../routes/__toolbar/upload/details'
+import type { ImgFormProp } from '../../routes/__toolbar/upload/details'
 import Modal from '../layout/modal'
 import ImgUpload from './img-upload'
 
@@ -42,7 +38,7 @@ export default function ImgUploadInput({
   text: string
   src: string | undefined
 }): JSX.Element {
-  const { setValue, watch, register } = useFormContext<any>()
+  const { watch, register } = useFormContext<any>()
   const watchValue = watch(name) as ImgFormProp
 
   const [open, setOpen] = useState(false)
@@ -59,12 +55,9 @@ export default function ImgUploadInput({
       reader.addEventListener(
         'load',
         () => {
-          //
           setDefaultImgSrc(
             typeof reader.result === 'string' ? reader.result : '',
           )
-          /** update details hook form */
-          // setValue(name, thumbnailFormValue)
         },
         false,
       )
@@ -111,7 +104,6 @@ export default function ImgUploadInput({
             type="file"
             accept="image/*"
             multiple={false}
-            // onFocus={e => console.log(e)}
           />
         </label>
         <Modal
@@ -127,12 +119,6 @@ export default function ImgUploadInput({
           />
         </Modal>
       </div>
-
-      {/* {errors && (
-        <p className="font-medium text-red-500">
-          {errors[name]?.message as string}
-        </p>
-      )} */}
     </div>
   )
 }

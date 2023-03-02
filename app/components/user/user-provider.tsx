@@ -1,21 +1,19 @@
-import { User } from "@prisma/client";
-import React from "react";
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 import {
   UserContext,
   UserContextType,
-} from "../../lib/domain/auth/user-context";
+} from '../../utils/domain/auth/user-context'
 
 const UserProvider = ({
   user,
   children,
 }: {
-  user: UserContextType;
+  user: UserContextType
 
-  children: ReactNode;
+  children: ReactNode
 }) => {
-  const { Provider } = UserContext;
-  return <Provider value={user}>{children}</Provider>;
-};
+  const { Provider } = UserContext
+  return <Provider value={user}>{children}</Provider>
+}
 
-export default UserProvider;
+export default UserProvider

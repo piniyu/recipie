@@ -1,16 +1,6 @@
-import {
-  Basket,
-  Ingredient,
-  NumIngredientOnRecipe,
-  Recipe,
-} from '@prisma/client'
-import {
-  ActionFunction,
-  json,
-  LoaderArgs,
-  LoaderFunction,
-} from '@remix-run/node'
-import { useFetcher, useLoaderData, useTransition } from '@remix-run/react'
+import { Basket, Ingredient, NumIngredientOnRecipe } from '@prisma/client'
+import { ActionFunction, json, LoaderArgs } from '@remix-run/node'
+import { useFetcher, useLoaderData } from '@remix-run/react'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../store/configure-store'
 import {
@@ -24,9 +14,8 @@ import {
 } from '../../../store/recipe-servings-slice'
 import RecipeServingsForm from '~/components/basket/recipe-servings-form'
 import CardListItem from '~/components/card/card-list-item'
-import SearchBar from '~/components/search-bar'
 import { db } from '~/utils/db.server'
-import { getThumbnails } from '~/lib/loaders/query-card-list'
+import { getThumbnails } from '~/utils/loaders/query-card-list'
 
 type LoaderData = {
   basket: Basket & {
@@ -77,30 +66,6 @@ export const loader = async ({ request }: LoaderArgs) => {
     })),
   }
 
-  // const url = new URL(request.url)
-  // const query = url.searchParams.get('search') ?? ''
-  // const res = (async () => {
-  //   if (query.length === 0) {
-  //     return [null]
-  //   } else {
-  //     const recipes = await db.recipe.findMany({
-  //       where: {
-  //         AND: [
-  //           { baskets: { some: { id: 'testbasket0' } } },
-  //           { title: { contains: query } },
-  //         ],
-  //       },
-  //       take: 10,
-  //     })
-  //     return recipes
-  //   }
-  // })()
-
-  // const list = (await res).map(v => {
-  //   if (v === null) return v
-  //   return v.title
-  // })
-
   return { basket: mappedBasket }
 }
 export const action: ActionFunction = async ({ request }) => {
@@ -134,24 +99,8 @@ export default function BasketSidePanel() {
     })
   }, [data?.basket.recipes, dispatch])
 
-  const onSearch = (inputValue: string) => {
-    fetcher.load(`/basket?index&search=${inputValue}`)
-  }
-
-  useEffect(() => {
-    if (fetcher.data?.list) {
-      setResList(fetcher.data.list)
-    }
-  }, [fetcher.data?.list])
-
   return (
     <>
-      {/* <SearchBar
-        placeholder="Basket Search"
-        border
-        fetch={onSearch}
-        list={resList?.map(item => ({ id: '', value: item }))}
-      /> */}
       <div>
         <h4 className="mb-4 text-lg font-bold text-inherit">
           Recipes in basket
@@ -183,7 +132,6 @@ export default function BasketSidePanel() {
                   subTitle={
                     <RecipeServingsForm
                       recipeId={id}
-                      // ingredients={ingredientsNum}
                       defaultValue={
                         servings.find(item => item.recipeId === id)?.servings
                       }

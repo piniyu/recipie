@@ -1,10 +1,5 @@
-import { useLocation } from '@remix-run/react'
 import { ReactNode, useEffect, useState } from 'react'
-import { createContext, useReducer } from 'react'
-import Basket from '~/icons/basket'
-import Favorite from '~/icons/favorite'
-import Overview from '~/icons/overview'
-import Recipe from '~/components/icons/recipe'
+import { createContext } from 'react'
 
 export interface SiderItemType {
   icon?: JSX.Element
@@ -17,12 +12,6 @@ export enum SiderActionKind {
   ADD_CHILD = 'ADD_CHILD',
   UPDATE_CHILD = 'UPDATE_CHILD',
   SET_NEW_SIDER = 'SET_NEW_SIDER',
-}
-interface SiderAction {
-  type: SiderActionKind
-  payload: Omit<SiderItemType, 'children'> | SiderItemType[]
-  index?: number
-  childIndex?: number
 }
 
 type Context = {
@@ -50,18 +39,13 @@ export default function SiderProvider({
 
   useEffect(() => {
     const onResize = (e: UIEvent) => {
-      console.log(e)
-      // for (const entry of e) {
       if (window.innerWidth <= 768) {
         setClose(true)
       }
-      // }
     }
-    // const resizeObserver = new ResizeObserver(onResize)
     window.addEventListener('resize', onResize)
     return () => {
       window.removeEventListener('resize', onResize)
-      // resizeObserver.disconnect()
     }
   }, [])
 
