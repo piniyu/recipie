@@ -1132,6 +1132,10 @@ input[type='number'] {
   position: relative !important;
 }
 
+.sticky {
+  position: sticky !important;
+}
+
 .right-0 {
   right: 0px !important;
 }
@@ -1238,6 +1242,16 @@ input[type='number'] {
 .mx-3 {
   margin-left: 0.75rem !important;
   margin-right: 0.75rem !important;
+}
+
+.my-2 {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.my-8 {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
 }
 
 .mt-1 {
@@ -1387,6 +1401,10 @@ input[type='number'] {
 
 .h-9 {
   height: 2.25rem !important;
+}
+
+.h-\[1px\] {
+  height: 1px !important;
 }
 
 .max-h-\[70vh\] {
@@ -1660,12 +1678,6 @@ input[type='number'] {
   margin-bottom: calc(3rem * var(--tw-space-y-reverse)) !important;
 }
 
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0 !important;
-  margin-right: calc(1rem * var(--tw-space-x-reverse)) !important;
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse))) !important;
-}
-
 .space-y-10 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0 !important;
   margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse))) !important;
@@ -1702,8 +1714,16 @@ input[type='number'] {
   margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse))) !important;
 }
 
+.self-end {
+  align-self: flex-end !important;
+}
+
 .self-stretch {
   align-self: stretch !important;
+}
+
+.justify-self-end {
+  justify-self: end !important;
 }
 
 .justify-self-stretch {
@@ -1796,6 +1816,10 @@ input[type='number'] {
 
 .border-b-2 {
   border-bottom-width: 2px !important;
+}
+
+.border-t {
+  border-top-width: 1px !important;
 }
 
 .border-dotted {
@@ -2575,6 +2599,10 @@ input[type='number'] {
   animation: bounce-y-up 1s ease infinite !important;
 }
 
+.hover\:cursor-pointer:hover {
+  cursor: pointer !important;
+}
+
 .hover\:border-gray-400:hover {
   --tw-border-opacity: 1 !important;
   border-color: rgb(163 163 163 / var(--tw-border-opacity)) !important;
@@ -2728,11 +2756,6 @@ input[type='number'] {
   background-color: rgb(64 64 64 / var(--tw-bg-opacity)) !important;
 }
 
-.dark .dark\:bg-black {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(23 23 23 / var(--tw-bg-opacity)) !important;
-}
-
 .dark .dark\:from-black {
   --tw-gradient-from: #171717 !important;
   --tw-gradient-to: rgb(23 23 23 / 0) !important;
@@ -2845,6 +2868,11 @@ input[type='number'] {
 
 .dark .dark\:hover\:bg-red-600\/80:hover {
   background-color: rgb(220 38 38 / 0.8) !important;
+}
+
+.dark .hover\:dark\:bg-primary-dark:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(145 110 18 / var(--tw-bg-opacity)) !important;
 }
 
 .dark .dark\:hover\:fill-gray-200:hover {

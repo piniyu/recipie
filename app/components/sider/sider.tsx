@@ -11,6 +11,7 @@ import LoginIcon from '~/components/icons/LoginFill0Wght400Grad25Opsz48'
 import LogoutIcon from '~/components/icons/LogoutFill0Wght400Grad25Opsz48'
 import LikeIcon from '~/components/icons/FavoriteFill0Wght400Grad25Opsz48'
 import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
+import GithubIcon from '~/components/icons/Github'
 
 function SiderItem({ icon, value, route }: SiderItemType) {
   const { setClose } = useContext(SiderContext)
@@ -48,7 +49,7 @@ function SiderItem({ icon, value, route }: SiderItemType) {
   return (
     <span
       className={`
-          ml-5 mt-8 flex 
+          ml-5 mt-8 mb-2 flex 
           select-none items-center
           gap-4 text-sm
           uppercase
@@ -137,7 +138,7 @@ export default function Sider(): JSX.Element | null {
           Uplode Recipe
         </Link>
 
-        <div className="flex flex-1 flex-col gap-y-4">
+        <div className="flex flex-1 flex-col ">
           {defaultSiderValue.map(
             ({ icon, value, children, route, isBtn }, idx) => {
               if (isBtn) {
@@ -206,6 +207,15 @@ export default function Sider(): JSX.Element | null {
               )
             }}
           </AuthCheck>
+        </div>
+        <div className=" my-2 border-t border-gray-200 py-4 dark:border-gray-600">
+          <a
+            className=" sider-item sider-item-svg flex items-center gap-4 hover:cursor-pointer hover:bg-primary hover:dark:bg-primary-dark"
+            href="https://github.com/piniyu/recipie-remix-app"
+            target="_blank"
+          >
+            <GithubIcon /> Github page
+          </a>
         </div>
       </nav>
     </>

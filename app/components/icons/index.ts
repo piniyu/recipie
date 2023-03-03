@@ -9,6 +9,7 @@ export { default as ExpandLessFill0Wght400Grad25Opsz48 } from "./ExpandLessFill0
 export { default as ExpandMoreFill0Wght400Grad25Opsz48 } from "./ExpandMoreFill0Wght400Grad25Opsz48";
 export { default as FavoriteFill0Wght400Grad25Opsz48 } from "./FavoriteFill0Wght400Grad25Opsz48";
 export { default as FavoriteFill1Wght400Grad25Opsz48 } from "./FavoriteFill1Wght400Grad25Opsz48";
+export { default as Github } from "./Github";
 export { default as LightModeFill0Wght400Grad25Opsz48 } from "./LightModeFill0Wght400Grad25Opsz48";
 export { default as LoginFill0Wght400Grad25Opsz48 } from "./LoginFill0Wght400Grad25Opsz48";
 export { default as LogoutFill0Wght400Grad25Opsz48 } from "./LogoutFill0Wght400Grad25Opsz48";
