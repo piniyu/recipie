@@ -96,27 +96,25 @@ export default function ImgUpload({
           </div>
         </div>
       )}
-      <div className="mx-6 flex justify-between py-4">
-        <div className="flex space-x-4">
-          <button
-            className="btn-ghost btn-md"
-            onClick={e => {
-              e.stopPropagation()
-              onClose()
-            }}
-          >
-            Cancel
-          </button>
-          <button
-            className="btn-primary btn-md"
-            onClick={e => {
-              e.stopPropagation()
-              onConfirm()
-            }}
-          >
-            Comfirm
-          </button>
-        </div>
+      <div className="mx-6 flex justify-end gap-4 py-4">
+        <button
+          className="btn-ghost btn-md"
+          onClick={e => {
+            e.stopPropagation()
+            onClose()
+          }}
+        >
+          Cancel
+        </button>
+        <button
+          className="btn-primary btn-md"
+          onClick={e => {
+            e.stopPropagation()
+            onConfirm()
+          }}
+        >
+          Comfirm
+        </button>
       </div>
     </>
   )

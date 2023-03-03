@@ -109,7 +109,7 @@ export default function ImgUploadInput({
         <Modal
           open={open}
           onClose={() => setOpen(false)}
-          className={` h-fit max-h-[70vh] w-[50vw] flex-col rounded-xl `}
+          className={` h-fit max-h-[70vh] w-[50vw] flex-col rounded-xl bg-white dark:bg-dark-gray`}
           disableClickOutsideClose
         >
           <ImgUpload

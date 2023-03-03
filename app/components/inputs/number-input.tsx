@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { useController, useFormContext } from 'react-hook-form'
 import { ErrorMessage } from '@hookform/error-message'
+import AddIcon from '~/components/icons/AddFill1Wght400Grad25Opsz48'
+import RemoveIcon from '~/components/icons/RemoveFill1Wght400Grad25Opsz48'
 
 const NumberInput = ({
   hasSetBtn,
@@ -38,7 +40,7 @@ const NumberInput = ({
           }}
           disabled={input <= 1}
         >
-          <span className="material-symbols-outlined">remove</span>
+          <RemoveIcon className="svg-sm svg-gray" />
         </button>
       ) : null}
       <input
@@ -92,7 +94,7 @@ const NumberInput = ({
             }
           }}
         >
-          <span className="material-symbols-outlined">add</span>
+          <AddIcon className="svg-sm svg-gray" />
         </button>
       ) : null}
       {unit ? <span className="ml-2 flex items-center">{unit}</span> : null}
