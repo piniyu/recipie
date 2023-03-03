@@ -1,8 +1,15 @@
-# Remix Blues Stack
+# About
+
+---
+
+This project is based on **Remix Blues Stack** Learn more about [Remix Stacks](https://remix.run/stacks).
+
+#
+
+<!-- # Remix Blues Stack
 
 ![The Remix Blues Stack](https://repository-images.githubusercontent.com/461012689/37d5bd8b-fa9c-4ab0-893c-f0a199d5012d)
 
-Learn more about [Remix Stacks](https://remix.run/stacks).
 
 ```
 npx create-remix@latest --template remix-run/blues-stack
@@ -214,4 +221,4 @@ This project uses ESLint for linting. That is configured in `.eslintrc.js`.
 
 ### Formatting
 
-We use [Prettier](https://prettier.io/) for auto-formatting in this project. It's recommended to install an editor plugin (like the [VSCode Prettier plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)) to get auto-formatting on save. There's also a `npm run format` script you can run to format all files in the project.
+We use [Prettier](https://prettier.io/) for auto-formatting in this project. It's recommended to install an editor plugin (like the [VSCode Prettier plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)) to get auto-formatting on save. There's also a `npm run format` script you can run to format all files in the project. -->
