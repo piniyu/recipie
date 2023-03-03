@@ -1,10 +1,12 @@
 # About
 
----
-
 This project is based on **Remix Blues Stack** Learn more about [Remix Stacks](https://remix.run/stacks).
 
-#
+---
+
+# Live Demo
+
+see [Live Demo](https://recipie-remix-app.fly.dev/)
 
 <!-- # Remix Blues Stack
 
