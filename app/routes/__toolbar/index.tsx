@@ -57,7 +57,7 @@ export default function Index() {
   }, [fetcher.data?.allRecipes, data.allRecipes])
 
   return (
-    <div className="layout-pt layout-px flex flex-col gap-9">
+    <div className="layout-py layout-px flex flex-col gap-9">
       <div className="mx-auto flex flex-wrap gap-6 md:flex-nowrap">
         <SearchBar
           list={resList?.map(item => ({

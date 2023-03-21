@@ -229,7 +229,7 @@ export const action: ActionFunction = async ({ request }) => {
 
     return redirect(`/recipe/${recipeData.id}`)
   } catch (err) {
-    console.log(err)
+    console.error(err)
     throw err
   }
 }

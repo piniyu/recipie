@@ -22,11 +22,11 @@ export default function TableRow({
 
   return (
     <div
-      className={`relative mx-8 my-6 border-b border-gray-200 pb-4 text-inherit last:border-none dark:border-gray-600`}
+      className={`relative mb-6 border-b border-gray-200 pb-4 text-inherit last:mb-0 last:border-none dark:border-gray-600`}
     >
       <div className="flex items-center space-x-8">
         <div className="flex flex-1 flex-col gap-2 md:flex-row ">
-          <b className="flex-1 ">{name}</b>
+          <b className="mb-2 flex-1">{name}</b>
           <div className="space-y-2">
             <div className=" flex items-center  space-x-1">
               <span className="text-sm text-gray-400">You have: </span>

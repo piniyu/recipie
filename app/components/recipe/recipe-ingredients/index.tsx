@@ -17,7 +17,7 @@ export default function Index({
   const dispatch = useAppDispatch()
   return (
     <ContentCard>
-      <h3 className="mb-6">Ingredients</h3>
+      <h3 className="mb-3 md:mb-6">Ingredients</h3>
       <RecipeIngredientsTable data={data} />
 
       <div className="mb-3 border-b border-gray-200"></div>

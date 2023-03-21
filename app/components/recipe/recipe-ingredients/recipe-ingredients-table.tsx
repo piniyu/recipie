@@ -11,7 +11,7 @@ export default function RecipeIngredientsTable({
   data: IngredientData[]
 }): JSX.Element {
   return (
-    <div className="mb-8 table">
+    <div className="mb-8 table text-sm md:text-base">
       <div className="table-row-group">
         {data.map(({ ingredient, ingredientId, unit, value }) => (
           <div className="table-row" key={ingredientId}>

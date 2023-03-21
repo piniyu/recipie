@@ -11,10 +11,10 @@
 @layer base {
   body {
     /* font-family: var(--font-ui), system-ui, sans-serif; */
-    @apply font-['var(--font-default),system-ui,sans-serif'] text-black  dark:text-gray-200;
+    @apply fill-black font-['var(--font-default),system-ui,sans-serif']  text-black dark:fill-gray-200 dark:text-gray-200;
   }
   h1 {
-    @apply text-3xl font-bold md:text-4xl;
+    @apply text-3xl font-bold lg:text-4xl;
   }
   h2 {
     @apply text-2xl font-bold md:text-3xl;

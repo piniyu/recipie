@@ -98,7 +98,7 @@ export default function BasketIndex(): JSX.Element {
         </div>
         <div className="[grid-area:ingredients] ">
           {/* --- table --- */}
-          <ContentCard className="!p-0">
+          <ContentCard className="">
             <BasketTable data={data?.ingredients} />
           </ContentCard>
           {/* --- /table --- */}

@@ -58,41 +58,12 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => {
   return [
-    // {
-    //   as: 'style',
-    //   rel: 'stylesheet preload',
-    //   href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
-    // },
-    // {
-    //   as: 'style',
-    //   rel: 'stylesheet preload',
-    //   href: 'https://fonts.googleapis.com/icon?family=Material+Icons+Outlined',
-    // },
-    // {
-    //   as: 'style',
-    //   rel: 'stylesheet preload',
-    //   href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
-    // },
-    // {
-    //   as: 'style',
-    //   rel: 'stylesheet preload',
-    //   href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200',
-    // },
-    // {
-    //   as: 'style',
-    //   rel: 'stylesheet preload',
-    //   href: 'https://fonts.googleapis.com/icon?family=Material+Icons+Round',
-    // },
     {
       as: 'style',
       rel: 'stylesheet preload',
       href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap',
     },
-    // {
-    //   as: 'style',
-    //   rel: 'stylesheet preload',
-    //   href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
-    // },
+    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.png' },
     { as: 'style', rel: 'stylesheet preload', href: styles },
   ]
 }
@@ -164,7 +135,7 @@ export const ErrorBoundary: ErrorBoundaryComponent = ({ error }) => {
   const navigate = useNavigate()
 
   if (error) {
-    console.log(error)
+    console.error(error)
     return (
       <div>
         Oops! Something went wrong!

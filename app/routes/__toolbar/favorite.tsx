@@ -51,7 +51,7 @@ export default function Favorite(): JSX.Element {
     }
   }, [fetcher.data?.favRecipes, data.favRecipes])
   return (
-    <div className="layout-pt layout-px flex flex-col gap-9">
+    <div className="layout-py layout-px flex flex-col gap-9">
       <div className="mx-auto flex flex-wrap gap-6 md:flex-nowrap">
         <SearchBar
           placeholder="Favorite Search"

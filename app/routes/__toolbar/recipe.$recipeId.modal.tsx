@@ -2,7 +2,7 @@
 import type { LoaderArgs } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { Link, useFetcher, useLoaderData, useParams } from '@remix-run/react'
-import React, { useCallback, useContext, useEffect } from 'react'
+import React, { useCallback, useContext, useEffect, useRef } from 'react'
 import { useState } from 'react'
 import { SiderContext } from '~/components/sider/sider-context'
 import { db } from '~/utils/db.server'
@@ -10,12 +10,16 @@ import { badRequest } from '~/utils/request.server'
 import { s3 } from '~/utils/s3.server'
 import { GetObjectCommand } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
+import { CloseFill0Wght400Grad25Opsz48 as CloseIcon } from '~/components/icons'
+import { ArrowDownwardFill0Wght400Grad25Opsz48 as ArrowDownIcon } from '~/components/icons'
+import { ArrowUpwardFill0Wght400Grad25Opsz48 as ArrowUpIcon } from '~/components/icons'
+import _ from 'lodash'
 
-type MockData = {
-  id: string
-  title: string
-  steps: { id: string; timeStemp: null | string; text: string }[]
-}
+// type MockData = {
+//   id: string
+//   title: string
+//   steps: { id: string; timeStemp: null | string; text: string }[]
+// }
 
 export const loader = async ({ request, params, context }: LoaderArgs) => {
   const recipeId = params.recipeId
@@ -77,49 +81,88 @@ const ModalContainer = ({
   showPrevious: boolean
 }) => {
   const { recipeId } = useParams()
+  const [showButton, setShowButton] = useState(false)
+  // const [mouseEnter, setMouseEnter] = useState(false)
+  const mouseEnter = useRef(false)
+
+  const onHideBtn = useCallback(
+    _.debounce(() => {
+      if (!mouseEnter.current) {
+        setShowButton(false)
+      }
+    }, 2000),
+    [],
+  )
+
+  const onMouseEnter = () => {
+    mouseEnter.current = true
+  }
+  const onMouseLeave = () => {
+    mouseEnter.current = false
+    onHideBtn()
+  }
+
   return (
-    <div className="overflow-auto bg-inherit [scroll-snap-type:y_mandatory] lg:h-screen">
+    <div
+      className="h-screen overflow-auto bg-inherit [scroll-snap-type:y_mandatory]"
+      onScrollCapture={() => {}}
+      onScroll={() => {
+        setShowButton(true)
+        onHideBtn()
+      }}
+    >
       {children}
-      <button
-        onClick={onPrevious}
-        className={`
-        btn-ghost 
-        btn-sm 
-        fixed top-2 
-        left-[calc(50vw_-_48px)] w-24 
-        select-none 
-        flex-col bg-gray-200/70 text-inherit
-        backdrop-blur-md 
-        hover:animate-bounce-y-down
-        dark:bg-gray-700/70
-        ${showPrevious ? '' : 'pointer-events-none invisible'}`}
-      >
-        <span className="material-symbols-rounded block">arrow_upward</span>
-        Previous
-      </button>
-      <button
-        onClick={onNext}
-        id="next_btn"
-        className={`
-        btn-ghost 
-        btn-md 
-        fixed bottom-2 
-        left-[calc(50vw_-_48px)] 
-        w-24 select-none
-        flex-col bg-gray-200/70 text-inherit
-        backdrop-blur-md
-        hover:animate-bounce-y-up 
-        dark:bg-gray-700/70
-        ${showNext ? '' : 'pointer-events-none invisible'}`}
-      >
-        Next
-        <span className="material-symbols-rounded block">arrow_downward</span>
-      </button>
+      {showButton ? (
+        <>
+          <button
+            onClick={onPrevious}
+            className={`
+              btn-ghost 
+              btn-md 
+              fixed top-2 
+              left-1/2
+              -translate-x-1/2
+              select-none 
+              flex-col 
+              bg-gray-200/70 fill-inherit text-sm
+              text-inherit 
+              backdrop-blur-md
+              dark:bg-gray-700/70
+              ${showPrevious ? '' : 'pointer-events-none invisible'}`}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+          >
+            <ArrowUpIcon className="svg-sm" />
+            {/* Previous */}
+          </button>
+          <button
+            onClick={onNext}
+            id="next_btn"
+            className={`
+              btn-ghost 
+              btn-md 
+              fixed bottom-2 
+              left-1/2
+              -translate-x-1/2
+              select-none
+              flex-col bg-gray-200/70 fill-inherit text-inherit
+              backdrop-blur-md
+              
+              dark:bg-gray-700/70
+              ${showNext ? '' : 'pointer-events-none invisible'}`}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+          >
+            {/* Next */}
+            <ArrowDownIcon className="svg-sm" />
+          </button>
+        </>
+      ) : null}
       <Link
         to={`/recipe/${recipeId}`}
         className="btn-ghost btn-md fixed top-0 right-[10px] w-fit justify-end text-gray-500 "
       >
-        <span className="material-symbols-rounded">close</span>
+        <CloseIcon className="svg-md svg-gray" />
       </Link>
     </div>
   )
@@ -162,7 +205,7 @@ export default function RecipeModal(): JSX.Element {
 
   useEffect(() => {
     const options = {
-      threshold: 1,
+      threshold: 0.5,
     }
     const onIntersect: IntersectionObserverCallback = (entries, observer) => {
       entries.forEach(entry => {
@@ -263,12 +306,25 @@ export default function RecipeModal(): JSX.Element {
           <div
             key={idx}
             data-key={idx}
-            className="mx-auto flex max-w-7xl scroll-m-0 flex-col gap-6 py-20 px-2 [scroll-snap-align:start] md:px-8 lg:h-screen lg:flex-row lg:justify-center lg:[scroll-snap-align:center] "
+            className={`
+              mx-auto
+              flex
+              min-h-screen
+              max-w-7xl
+              scroll-m-0
+              flex-col-reverse
+              justify-end
+              gap-6
+              py-10 px-2
+              [scroll-snap-align:start]
+              md:px-8 lg:h-screen
+              lg:flex-row lg:justify-center lg:py-20 lg:[scroll-snap-align:center]
+              `}
             ref={targetRef}
           >
-            <div className="flex  w-full items-center">
+            <div className="flex  w-full items-center justify-center">
               <div
-                className={` max-h-[70vh] w-full flex-1 rounded-2xl bg-white p-3 shadow-2xl dark:bg-dark-gray dark:shadow-gray-900 md:p-5`}
+                className={`flex-1 rounded-2xl bg-white p-2 shadow-2xl dark:bg-dark-gray dark:shadow-gray-900 md:max-w-[60vw]  lg:w-full lg:p-3 xl:p-5`}
               >
                 <img
                   src={step.photo}
@@ -277,11 +333,13 @@ export default function RecipeModal(): JSX.Element {
                 />
               </div>
             </div>
-            <div className=" flex w-full flex-shrink-0 lg:w-2/5">
+            <div className=" flex w-full lg:mt-[10%]">
               <div className="flex-1 overflow-y-auto">
-                <div className="mt-2 mb-8 text-center lg:mb-14">
+                <div className="mt-2 mb-8 text-center  xl:mb-14">
                   <h4 className="font-medium text-primary">STEP {step.step}</h4>
-                  <h2 className="text-inherit">{step.title}</h2>
+                  {step.title ? (
+                    <h2 className="text-inherit">{step.title}</h2>
+                  ) : null}
                 </div>
                 <ol className="list-decimal pl-8 pr-3 text-inherit marker:text-xl marker:leading-none marker:text-gray-300 dark:marker:text-gray-500 lg:pl-14 lg:pr-14">
                   {step.methods?.map((method, index) => (

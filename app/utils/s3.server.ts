@@ -26,7 +26,7 @@ const getRecipePresignedUrls = async (recipeId: string) => {
           Bucket: process.env.AWS_BUCKET_NAME,
           Key: key,
         })
-        return getSignedUrl(s3, command, { expiresIn: 900 })
+        return getSignedUrl(s3, command, { expiresIn: 604800 })
       }),
     )
 
@@ -52,7 +52,7 @@ const getThumbnailPresignedUrl = async (
       Bucket: process.env.AWS_BUCKET_NAME,
       Key: s3Key,
     })
-    const preSignedUrl = await getSignedUrl(s3, command, { expiresIn: 900 })
+    const preSignedUrl = await getSignedUrl(s3, command, { expiresIn: 604800 })
 
     return {
       preSignedUrl,
