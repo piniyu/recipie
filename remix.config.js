@@ -2,15 +2,15 @@
  * @type {import('@remix-run/dev').AppConfig}
  */
 module.exports = {
-  cacheDirectory: "./node_modules/.cache/remix",
-  ignoredRouteFiles: ["**/.*", "**/*.css", "**/*.test.{js,jsx,ts,tsx}"],
+  cacheDirectory: './node_modules/.cache/remix',
+  ignoredRouteFiles: ['**/.*', '**/*.css', '**/*.test.{js,jsx,ts,tsx}'],
   serverDependenciesToBundle: [
-    "recharts",
-    "d3-shape",
+    'recharts',
+    'd3-shape',
     // "canvas",
-    "react-konva",
+    'react-konva',
     /^konva.*/,
     /^redux-persist.*/,
   ],
   // devServerPort: 8002,
-};
+}

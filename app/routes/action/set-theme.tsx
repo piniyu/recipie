@@ -1,6 +1,6 @@
 import { ActionFunction, json, redirect } from '@remix-run/server-runtime'
-import { isTheme } from '~/utils/theme-provider'
-import { getThemeSession } from '~/utils/theme-session.server'
+import { isTheme } from '~/context/theme-provider'
+import { getThemeSession } from '~/service/theme-session.server'
 
 export const action: ActionFunction = async ({ request }) => {
   const themeSession = await getThemeSession(request)

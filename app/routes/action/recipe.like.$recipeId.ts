@@ -1,7 +1,7 @@
 import { ActionFunction } from '@remix-run/node'
-import { db } from '../../utils/db.server'
-import { badRequest } from '../../utils/request.server'
-import { requireUserId } from '../../utils/session.server'
+import { badRequest } from '~/service/request.server'
+import { requireUserId } from '~/service/session.server'
+import { db } from '../../service/db.server'
 
 export const action: ActionFunction = async ({ request, params }) => {
   const userId = await requireUserId(request)

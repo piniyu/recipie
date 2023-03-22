@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-
-import { testHelper } from '../app/test/test-helper'
+import { testHelper } from 'test/test-helper'
 
 // const db = new PrismaClient()
 

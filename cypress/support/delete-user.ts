@@ -3,36 +3,36 @@
 // npx ts-node --require tsconfig-paths/register ./cypress/support/delete-user.ts username@example.com
 // and that user will get deleted
 
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
-import { installGlobals } from "@remix-run/node";
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime'
+import { installGlobals } from '@remix-run/node'
 
 // import { prisma } from "~/db.server";
-import { db } from "../../app/utils/db.server";
+import { db } from '../../app/service/db.server'
 
-installGlobals();
+installGlobals()
 
 async function deleteUser(email: string) {
   if (!email) {
-    throw new Error("email required for login");
+    throw new Error('email required for login')
   }
-  if (!email.endsWith("@example.com")) {
-    throw new Error("All test emails must end in @example.com");
+  if (!email.endsWith('@example.com')) {
+    throw new Error('All test emails must end in @example.com')
   }
 
   try {
-    await db.user.delete({ where: { email } });
+    await db.user.delete({ where: { email } })
   } catch (error) {
     if (
       error instanceof PrismaClientKnownRequestError &&
-      error.code === "P2025"
+      error.code === 'P2025'
     ) {
-      console.log("User not found, so no need to delete");
+      console.log('User not found, so no need to delete')
     } else {
-      throw error;
+      throw error
     }
   } finally {
-    await db.$disconnect();
+    await db.$disconnect()
   }
 }
 
-deleteUser(process.argv[2]);
+deleteUser(process.argv[2])

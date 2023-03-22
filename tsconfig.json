@@ -5,6 +5,7 @@
   },
   "exclude": ["./cypress", "./cypress.config.ts", "node_modules"],
   "include": [
+    "./app",
     "remix.env.d.ts",
     "./types/enviroment.d.ts",
     "**/*.ts",
@@ -24,7 +25,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["app/*"]
+      "~/*": ["./app/*"]
     },
     "skipLibCheck": true,
     "noEmit": true,

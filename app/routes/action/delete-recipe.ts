@@ -1,6 +1,6 @@
 import type { ActionFunction } from '@remix-run/node'
 import { json, redirect } from '@remix-run/node'
-import { db } from '~/utils/db.server'
+import { db } from '~/service/db.server'
 
 export const deleteRecipe: ActionFunction = async ({ request }) => {
   const formData = await request.formData()

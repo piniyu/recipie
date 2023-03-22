@@ -18,23 +18,23 @@ import {
   useNavigate,
 } from '@remix-run/react'
 import styles from './styles/app.css'
-import Layout from './components/layout'
-import { db } from './utils/db.server'
+import Layout from './components/ui/layout'
+import { db } from './service/db.server'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistor, store } from './store/configure-store'
 import { deleteRecipe } from './routes/action/delete-recipe'
-import { getUserId } from './utils/session.server'
-import Toolbar from './components/layout/toolbar'
-import UserProvider from './components/user/user-provider'
+
+import UserProvider from './context/user/user-provider'
 import type { User } from '@prisma/client'
 import {
   NonFlashOfWrongThemeEls,
   Theme,
   ThemeProvider,
   useTheme,
-} from './utils/theme-provider'
-import { getThemeSession } from './utils/theme-session.server'
+} from './context/theme-provider'
+import { getThemeSession } from './service/theme-session.server'
+import { getUserId } from './service/session.server'
 
 type LoaderData = {
   email: User['email']
