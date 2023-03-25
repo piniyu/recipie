@@ -1,6 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react'
 import { createContext } from 'react'
-import useResizeObserver from '@react-hook/resize-observer'
 import { useSize } from '~/hooks/use-resize-observer'
 export interface SiderItemType {
   icon?: JSX.Element

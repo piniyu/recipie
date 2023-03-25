@@ -39,10 +39,6 @@ export const loader = async ({ request, params, context }: LoaderArgs) => {
       where: { recipeId, step: step + 2 },
     })
 
-  const step11 = await db.instruction.findFirst({
-    where: { recipeId, step: step + 1 },
-  })
-
   const steps = await Promise.allSettled([step1(), step2()])
 
   const getPhotos = steps.map(async e => {
@@ -64,7 +60,7 @@ export const loader = async ({ request, params, context }: LoaderArgs) => {
     }
     return null
   })
-  return json(response)
+  return json(response, { headers: { 'Cache-Control': 'max-age=3600' } })
 }
 
 const ModalContainer = ({

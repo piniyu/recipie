@@ -17349,7 +17349,7 @@ function SiderProvider({
     setClose(!!(size != null && size.width) && size.width <= 768);
   }, [size == null ? void 0 : size.width]), /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(Provider, { value: { hidden, setHidden, close, setClose }, children }, void 0, !1, {
     fileName: "app/components/ui/sider/sider-context.tsx",
-    lineNumber: 49,
+    lineNumber: 48,
     columnNumber: 5
   }, this);
 }
@@ -19849,7 +19849,7 @@ function ToolbarRoute() {
           return {
             id: e.id,
             title: e.title,
-            thumbnailSrc: ((_a2 = e.thumbnail) == null ? void 0 : _a2.jpgSrc) ?? ""
+            thumbnailSrc: ((_a2 = e.thumbnail) == null ? void 0 : _a2.url) ?? ""
           };
         })
       },
@@ -20197,8 +20197,6 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
     where: { recipeId, step: step + 1 }
   }), step2 = async () => db.instruction.findFirst({
     where: { recipeId, step: step + 2 }
-  }), step11 = await db.instruction.findFirst({
-    where: { recipeId, step: step + 1 }
   }), getPhotos = (await Promise.allSettled([step1(), step2()])).map(async (e) => {
     var _a;
     if (e.status === "fulfilled") {
@@ -20210,7 +20208,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
     }
     throw new Error(e.reason);
   }), response = (await Promise.allSettled(getPhotos)).map((e) => e.status === "fulfilled" ? e.value : null);
-  return (0, import_node8.json)(response);
+  return (0, import_node8.json)(response, { headers: { "Cache-Control": "max-age=3600" } });
 }, ModalContainer = ({
   children,
   onPrevious,
@@ -20261,7 +20259,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
               onMouseLeave,
               children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(ArrowUpwardFill0Wght400Grad25Opsz48_default, { className: "svg-sm" }, void 0, !1, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 135,
+                lineNumber: 131,
                 columnNumber: 13
               }, this)
             },
@@ -20269,7 +20267,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
             !1,
             {
               fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-              lineNumber: 117,
+              lineNumber: 113,
               columnNumber: 11
             },
             this
@@ -20295,7 +20293,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
               onMouseLeave,
               children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(ArrowDownwardFill0Wght400Grad25Opsz48_default, { className: "svg-sm" }, void 0, !1, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 157,
+                lineNumber: 153,
                 columnNumber: 13
               }, this)
             },
@@ -20303,14 +20301,14 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
             !1,
             {
               fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-              lineNumber: 138,
+              lineNumber: 134,
               columnNumber: 11
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-          lineNumber: 116,
+          lineNumber: 112,
           columnNumber: 9
         }, this) : null,
         /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
@@ -20320,7 +20318,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
             className: "btn-ghost btn-md fixed top-0 right-[10px] w-fit justify-end text-gray-500 ",
             children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(CloseFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
               fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-              lineNumber: 165,
+              lineNumber: 161,
               columnNumber: 9
             }, this)
           },
@@ -20328,7 +20326,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
           !1,
           {
             fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-            lineNumber: 161,
+            lineNumber: 157,
             columnNumber: 7
           },
           this
@@ -20339,7 +20337,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
     !0,
     {
       fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-      lineNumber: 106,
+      lineNumber: 102,
       columnNumber: 5
     },
     this
@@ -20444,7 +20442,7 @@ function RecipeModal() {
                     !1,
                     {
                       fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                      lineNumber: 329,
+                      lineNumber: 325,
                       columnNumber: 17
                     },
                     this
@@ -20454,13 +20452,13 @@ function RecipeModal() {
                 !1,
                 {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 326,
+                  lineNumber: 322,
                   columnNumber: 15
                 },
                 this
               ) }, void 0, !1, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 325,
+                lineNumber: 321,
                 columnNumber: 13
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("div", { className: " flex w-full lg:mt-[10%]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("div", { className: "flex-1 overflow-y-auto", children: [
@@ -20470,39 +20468,39 @@ function RecipeModal() {
                     step.step
                   ] }, void 0, !0, {
                     fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                    lineNumber: 339,
+                    lineNumber: 335,
                     columnNumber: 19
                   }, this),
                   step.title ? /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("h2", { className: "text-inherit", children: step.title }, void 0, !1, {
                     fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                    lineNumber: 341,
+                    lineNumber: 337,
                     columnNumber: 21
                   }, this) : null
                 ] }, void 0, !0, {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 338,
+                  lineNumber: 334,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("ol", { className: "list-decimal pl-8 pr-3 text-inherit marker:text-xl marker:leading-none marker:text-gray-300 dark:marker:text-gray-500 lg:pl-14 lg:pr-14", children: (_a = step.methods) == null ? void 0 : _a.map((method, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("li", { className: "mb-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("span", { className: "relative left-1 ", children: method }, void 0, !1, {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 347,
+                  lineNumber: 343,
                   columnNumber: 23
                 }, this) }, index, !1, {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 346,
+                  lineNumber: 342,
                   columnNumber: 21
                 }, this)) }, void 0, !1, {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 344,
+                  lineNumber: 340,
                   columnNumber: 17
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 337,
+                lineNumber: 333,
                 columnNumber: 15
               }, this) }, void 0, !1, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 336,
+                lineNumber: 332,
                 columnNumber: 13
               }, this)
             ]
@@ -20511,7 +20509,7 @@ function RecipeModal() {
           !0,
           {
             fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-            lineNumber: 306,
+            lineNumber: 302,
             columnNumber: 11
           },
           this
@@ -20522,7 +20520,7 @@ function RecipeModal() {
     !1,
     {
       fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-      lineNumber: 285,
+      lineNumber: 281,
       columnNumber: 5
     },
     this
@@ -21777,7 +21775,7 @@ var import_jsx_dev_runtime58 = require("react/jsx-dev-runtime"), nutritionData =
     isLiked: !!recipe.favorite.find((e) => e.userId === userId),
     isInBasket: !!recipe.baskets.find((e) => e.userId === userId)
   }, withThumbnail = await getBigThumbnails([mappedRecipe]);
-  return (0, import_node9.json)(withThumbnail);
+  return (0, import_node9.json)(withThumbnail, { headers: { "Cache-Control": "max-age=3600" } });
 };
 function RecipeIndex() {
   let data = (0, import_react37.useLoaderData)();
@@ -25362,7 +25360,7 @@ async function loader16({ request }) {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "4dfbfb3c", entry: { module: "/build/entry.client-WACBTB4V.js", imports: ["/build/_shared/chunk-SGQGV2BV.js", "/build/_shared/chunk-UAIS7CJ2.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-E4564N5M.js", imports: ["/build/_shared/chunk-3U7XZZIV.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-RJS6FNQP.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar": { id: "routes/__with-toolbar", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar-Z2QHEQVO.js", imports: ["/build/_shared/chunk-ZHGYVEIN.js", "/build/_shared/chunk-246UR5KV.js", "/build/_shared/chunk-VXQD2M25.js", "/build/_shared/chunk-AT22WG6D.js", "/build/_shared/chunk-PPJTJZKU.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-IIQWZOBQ.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-4YSSWV3V.js", "/build/_shared/chunk-WH5BV7J3.js", "/build/_shared/chunk-EVTSCZ7B.js", "/build/_shared/chunk-MYHG3B7D.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket": { id: "routes/__with-toolbar/basket", parentId: "routes/__with-toolbar", path: "basket", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket-CSAEFF7B.js", imports: ["/build/_shared/chunk-RYUMXWFI.js", "/build/_shared/chunk-3U7XZZIV.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-RJS6FNQP.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket/index": { id: "routes/__with-toolbar/basket/index", parentId: "routes/__with-toolbar/basket", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket/index-E4545YU7.js", imports: ["/build/_shared/chunk-AT22WG6D.js", "/build/_shared/chunk-PPJTJZKU.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-IIQWZOBQ.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-MYHG3B7D.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/favorite": { id: "routes/__with-toolbar/favorite", parentId: "routes/__with-toolbar", path: "favorite", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/favorite-RYMF47KM.js", imports: ["/build/_shared/chunk-PO5XMXY2.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-3U7XZZIV.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-RJS6FNQP.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/index": { id: "routes/__with-toolbar/index", parentId: "routes/__with-toolbar", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/index-2HOQQGWO.js", imports: ["/build/_shared/chunk-PO5XMXY2.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/login": { id: "routes/__with-toolbar/login", parentId: "routes/__with-toolbar", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/login-RC6RDW5H.js", imports: ["/build/_shared/chunk-FCMA5ZVB.js", "/build/_shared/chunk-3U7XZZIV.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-RJS6FNQP.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/logout": { id: "routes/__with-toolbar/logout", parentId: "routes/__with-toolbar", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/logout-USWDJXU4.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/my-recipes": { id: "routes/__with-toolbar/my-recipes", parentId: "routes/__with-toolbar", path: "my-recipes", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/my-recipes-USF64UIZ.js", imports: ["/build/_shared/chunk-PO5XMXY2.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId": { id: "routes/__with-toolbar/recipe.$recipeId", parentId: "routes/__with-toolbar", path: "recipe/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId-QGSN7PCE.js", imports: ["/build/_shared/chunk-CSCJFWGN.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-EKPOTMCO.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId.modal": { id: "routes/__with-toolbar/recipe.$recipeId.modal", parentId: "routes/__with-toolbar", path: "recipe/:recipeId/modal", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId.modal-YPBZ7QDS.js", imports: ["/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-FCMA5ZVB.js", "/build/_shared/chunk-EKPOTMCO.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-RYUMXWFI.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-RJS6FNQP.js", "/build/_shared/chunk-O3ICDGYK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload": { id: "routes/__with-toolbar/upload", parentId: "routes/__with-toolbar", path: "upload", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload-2MPU5J2V.js", imports: ["/build/_shared/chunk-53PTV3VH.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar/upload/$stepIdx": { id: "routes/__with-toolbar/upload/$stepIdx", parentId: "routes/__with-toolbar/upload", path: ":stepIdx", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/$stepIdx-MRONFCKJ.js", imports: ["/build/_shared/chunk-GIM6WBJR.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-CDCMVHQ2.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/details": { id: "routes/__with-toolbar/upload/details", parentId: "routes/__with-toolbar/upload", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/details-WNFV7SHI.js", imports: ["/build/_shared/chunk-SQ24ZYA5.js", "/build/_shared/chunk-GIM6WBJR.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-CSCJFWGN.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-CDCMVHQ2.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/ingredients": { id: "routes/__with-toolbar/upload/ingredients", parentId: "routes/__with-toolbar/upload", path: "ingredients", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/ingredients-NHOGH4GK.js", imports: ["/build/_shared/chunk-SQ24ZYA5.js", "/build/_shared/chunk-GIM6WBJR.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-CSCJFWGN.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-CDCMVHQ2.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/add-basket.$recipeId": { id: "routes/action/add-basket.$recipeId", parentId: "root", path: "action/add-basket/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/add-basket.$recipeId-4377X2QB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/delete-recipe": { id: "routes/action/delete-recipe", parentId: "root", path: "action/delete-recipe", index: void 0, caseSensitive: void 0, module: "/build/routes/action/delete-recipe-7XG3NHIJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/recipe.like.$recipeId": { id: "routes/action/recipe.like.$recipeId", parentId: "root", path: "action/recipe/like/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/recipe.like.$recipeId-O2LGOEND.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/set-theme": { id: "routes/action/set-theme", parentId: "root", path: "action/set-theme", index: void 0, caseSensitive: void 0, module: "/build/routes/action/set-theme-3FQOE7YO.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/basket-panel/basket-panel": { id: "routes/basket-panel/basket-panel", parentId: "root", path: "basket-panel/basket-panel", index: void 0, caseSensitive: void 0, module: "/build/routes/basket-panel/basket-panel-B6JBNWWT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/healthcheck": { id: "routes/healthcheck", parentId: "root", path: "healthcheck", index: void 0, caseSensitive: void 0, module: "/build/routes/healthcheck-J7D3QFOD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-4DFBFB3C.js" };
+var assets_manifest_default = { version: "973a1779", entry: { module: "/build/entry.client-WACBTB4V.js", imports: ["/build/_shared/chunk-SGQGV2BV.js", "/build/_shared/chunk-UAIS7CJ2.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-RZ3IFZ5N.js", imports: ["/build/_shared/chunk-MDRQS7YA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar": { id: "routes/__with-toolbar", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar-EOVKSYES.js", imports: ["/build/_shared/chunk-ZHGYVEIN.js", "/build/_shared/chunk-246UR5KV.js", "/build/_shared/chunk-VXQD2M25.js", "/build/_shared/chunk-AT22WG6D.js", "/build/_shared/chunk-PPJTJZKU.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-IIQWZOBQ.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-4YSSWV3V.js", "/build/_shared/chunk-WH5BV7J3.js", "/build/_shared/chunk-EVTSCZ7B.js", "/build/_shared/chunk-MYHG3B7D.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket": { id: "routes/__with-toolbar/basket", parentId: "routes/__with-toolbar", path: "basket", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket-J4BNQDQY.js", imports: ["/build/_shared/chunk-RYUMXWFI.js", "/build/_shared/chunk-MDRQS7YA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket/index": { id: "routes/__with-toolbar/basket/index", parentId: "routes/__with-toolbar/basket", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket/index-E4545YU7.js", imports: ["/build/_shared/chunk-AT22WG6D.js", "/build/_shared/chunk-PPJTJZKU.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-IIQWZOBQ.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-MYHG3B7D.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/favorite": { id: "routes/__with-toolbar/favorite", parentId: "routes/__with-toolbar", path: "favorite", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/favorite-JQBJIFIW.js", imports: ["/build/_shared/chunk-PO5XMXY2.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-MDRQS7YA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/index": { id: "routes/__with-toolbar/index", parentId: "routes/__with-toolbar", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/index-2HOQQGWO.js", imports: ["/build/_shared/chunk-PO5XMXY2.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/login": { id: "routes/__with-toolbar/login", parentId: "routes/__with-toolbar", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/login-L2QZLV4C.js", imports: ["/build/_shared/chunk-FCMA5ZVB.js", "/build/_shared/chunk-MDRQS7YA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/logout": { id: "routes/__with-toolbar/logout", parentId: "routes/__with-toolbar", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/logout-USWDJXU4.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/my-recipes": { id: "routes/__with-toolbar/my-recipes", parentId: "routes/__with-toolbar", path: "my-recipes", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/my-recipes-USF64UIZ.js", imports: ["/build/_shared/chunk-PO5XMXY2.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId": { id: "routes/__with-toolbar/recipe.$recipeId", parentId: "routes/__with-toolbar", path: "recipe/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId-3QGYB52I.js", imports: ["/build/_shared/chunk-CSCJFWGN.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-EKPOTMCO.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId.modal": { id: "routes/__with-toolbar/recipe.$recipeId.modal", parentId: "routes/__with-toolbar", path: "recipe/:recipeId/modal", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId.modal-3A3M7WYV.js", imports: ["/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-FCMA5ZVB.js", "/build/_shared/chunk-EKPOTMCO.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-RYUMXWFI.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-O3ICDGYK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload": { id: "routes/__with-toolbar/upload", parentId: "routes/__with-toolbar", path: "upload", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload-2MPU5J2V.js", imports: ["/build/_shared/chunk-53PTV3VH.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar/upload/$stepIdx": { id: "routes/__with-toolbar/upload/$stepIdx", parentId: "routes/__with-toolbar/upload", path: ":stepIdx", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/$stepIdx-MRONFCKJ.js", imports: ["/build/_shared/chunk-GIM6WBJR.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-CDCMVHQ2.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/details": { id: "routes/__with-toolbar/upload/details", parentId: "routes/__with-toolbar/upload", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/details-WNFV7SHI.js", imports: ["/build/_shared/chunk-SQ24ZYA5.js", "/build/_shared/chunk-GIM6WBJR.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-CSCJFWGN.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-CDCMVHQ2.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/ingredients": { id: "routes/__with-toolbar/upload/ingredients", parentId: "routes/__with-toolbar/upload", path: "ingredients", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/ingredients-NHOGH4GK.js", imports: ["/build/_shared/chunk-SQ24ZYA5.js", "/build/_shared/chunk-GIM6WBJR.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-CSCJFWGN.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-CDCMVHQ2.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/add-basket.$recipeId": { id: "routes/action/add-basket.$recipeId", parentId: "root", path: "action/add-basket/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/add-basket.$recipeId-4377X2QB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/delete-recipe": { id: "routes/action/delete-recipe", parentId: "root", path: "action/delete-recipe", index: void 0, caseSensitive: void 0, module: "/build/routes/action/delete-recipe-7XG3NHIJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/recipe.like.$recipeId": { id: "routes/action/recipe.like.$recipeId", parentId: "root", path: "action/recipe/like/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/recipe.like.$recipeId-O2LGOEND.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/set-theme": { id: "routes/action/set-theme", parentId: "root", path: "action/set-theme", index: void 0, caseSensitive: void 0, module: "/build/routes/action/set-theme-3FQOE7YO.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/basket-panel/basket-panel": { id: "routes/basket-panel/basket-panel", parentId: "root", path: "basket-panel/basket-panel", index: void 0, caseSensitive: void 0, module: "/build/routes/basket-panel/basket-panel-B6JBNWWT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/healthcheck": { id: "routes/healthcheck", parentId: "root", path: "healthcheck", index: void 0, caseSensitive: void 0, module: "/build/routes/healthcheck-J7D3QFOD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-973A1779.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

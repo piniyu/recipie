@@ -50,7 +50,7 @@ export default function ToolbarRoute() {
         basketData={data.basket?.map(e => ({
           id: e.id,
           title: e.title,
-          thumbnailSrc: e.thumbnail?.jpgSrc ?? '',
+          thumbnailSrc: e.thumbnail?.url ?? '',
         }))}
       />
       <LayoutChildren>

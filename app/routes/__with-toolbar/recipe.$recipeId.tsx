@@ -72,7 +72,7 @@ export const loader = async ({ request, params }: LoaderArgs) => {
   }
   const withThumbnail = await getBigThumbnails([mappedRecipe])
 
-  return json(withThumbnail)
+  return json(withThumbnail, { headers: { 'Cache-Control': 'max-age=3600' } })
 }
 
 export default function RecipeIndex(): JSX.Element {
