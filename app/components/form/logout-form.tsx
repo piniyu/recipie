@@ -1,16 +1,24 @@
+import { Form } from '@remix-run/react'
 import React, { ReactNode } from 'react'
 
 export default function LogoutForm({
   btnClassName,
-  formProps,
+  formClassName,
   icon,
 }: {
   btnClassName?: string
-  formProps?: React.FormHTMLAttributes<HTMLFormElement>
+  formClassName?: string
   icon?: ReactNode
 }) {
   return (
-    <form action="/logout" method="post" {...formProps}>
+    <form
+      action="/logout"
+      method="post"
+      className={formClassName ? formClassName : ''}
+      onSubmit={() => {
+        console.log('onSubmit')
+      }}
+    >
       <button
         type="submit"
         className={`flex h-full w-full ${btnClassName ? btnClassName : ''}`}

@@ -81,7 +81,7 @@ export const getAllRecipes = async ({
     take: take,
     ...recipesListData,
     orderBy:
-      orderBy === 'popular' ? { likesNum: 'desc' } : { updatedAt: 'desc' },
+      orderBy === 'popular' ? { likesNum: 'desc' } : { createdAt: 'desc' },
   })
 
   return recipes
@@ -146,11 +146,15 @@ export const getThumbnails = async (
       ...e,
       thumbnail: {
         recipeId: e.recipeId,
-        jpgSrc:
-          thumbnailsData.find(
-            thumbnail =>
-              thumbnail?.recipeId === e.recipeId && thumbnail?.type === 'jpg',
-          )?.preSignedUrl ?? '',
+        url: thumbnailsData.find(thumbnail => {
+          if (thumbnail === null) {
+            return ''
+          } else {
+            return (
+              thumbnail?.recipeId === e.recipeId && thumbnail?.type === 'jpg'
+            )
+          }
+        })?.preSignedUrl,
       },
     }
   })

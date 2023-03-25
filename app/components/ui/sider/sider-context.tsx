@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react'
 import { createContext } from 'react'
-
+import useResizeObserver from '@react-hook/resize-observer'
+import { useSize } from '~/hooks/use-resize-observer'
 export interface SiderItemType {
   icon?: JSX.Element
   value: string | ReactNode
@@ -35,19 +36,14 @@ export default function SiderProvider({
   children: ReactNode
 }): JSX.Element {
   const [hidden, setHidden] = useState(false)
-  const [close, setClose] = useState(document.body.clientWidth <= 768)
+  const size = useSize(document.body)
+  const [close, setClose] = useState(
+    document ? document.body.clientWidth <= 768 : true,
+  )
 
   useEffect(() => {
-    const onResize = (e: UIEvent) => {
-      if (window.innerWidth <= 768) {
-        setClose(true)
-      }
-    }
-    window.addEventListener('resize', onResize)
-    return () => {
-      window.removeEventListener('resize', onResize)
-    }
-  }, [])
+    setClose(!!size?.width && size.width <= 768)
+  }, [size?.width])
 
   return (
     <Provider value={{ hidden, setHidden, close, setClose }}>

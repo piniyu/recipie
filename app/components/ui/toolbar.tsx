@@ -1,4 +1,4 @@
-import { Link } from '@remix-run/react'
+import { Link, useLocation } from '@remix-run/react'
 import { useContext, useState } from 'react'
 import DropdownMenu from './drop-down-menu'
 import { SiderContext } from './sider/sider-context'
@@ -20,6 +20,7 @@ const Toolbar = ({
     | null
     | undefined
 }) => {
+  const location = useLocation()
   const { setClose, close, hidden } = useContext(SiderContext)
   const [theme, setTheme] = useTheme()
   const [openBasket, setOpenBasket] = useState(false)
@@ -98,19 +99,21 @@ const Toolbar = ({
               <>
                 <DropdownMenu
                   summary={
-                    <button className="icon-btn-sm icon-btn-ui">
+                    <button className="icon-btn-sm icon-btn-ui" type="button">
                       <PersonIcon className="svg-md svg-gray" />
 
                       <span>{user.email.split('@')[0]}</span>
                     </button>
                   }
                   details={<LogoutForm btnClassName="drop-down-item" />}
+                  data-cy="avatar"
                 />
               </>
             ) : (
               <Link
-                to={`/login?redirectTo=${window.location.href}`}
+                to={`/login?redirectTo=${location.pathname}`}
                 className="icon-btn-sm icon-btn-ui"
+                data-cy="login"
               >
                 <PersonIcon className="svg-md svg-gray" />
 

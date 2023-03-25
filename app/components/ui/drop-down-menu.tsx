@@ -7,12 +7,14 @@ export default function DropdownMenu({
   summary,
   details,
   direction = 'left',
+  shouldCloseAfterClick,
 }: {
   hasDownArrow?: boolean
   icon?: ReactNode
   summary: string | ReactNode
   details: ReactNode
   direction?: 'left' | 'right'
+  shouldCloseAfterClick?: boolean
 }): JSX.Element {
   const [open, setOpen] = useState(false)
   const detailsRef = useRef<HTMLDivElement>(null)
@@ -44,6 +46,7 @@ export default function DropdownMenu({
           onClick={e => {
             setOpen(o => !o)
           }}
+          type="button"
         >
           {icon}
           {summary}
@@ -69,7 +72,11 @@ export default function DropdownMenu({
           dark:border-gray-600 dark:bg-dark-gray
           ${direction === 'left' ? '' : 'right-0'}
 				`}
-          onClick={() => setOpen(false)}
+          onClick={() => {
+            if (shouldCloseAfterClick) {
+              setOpen(false)
+            }
+          }}
         >
           {details}
         </div>

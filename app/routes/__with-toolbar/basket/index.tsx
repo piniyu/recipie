@@ -60,13 +60,17 @@ export const loader = async ({ request }: LoaderArgs) => {
       ...e,
       thumbnail: {
         ...e.thumbnail,
-        jpgSrc: withThumbnail?.find(el => el.recipeId === e.id)?.thumbnail
-          .jpgSrc,
+        url:
+          withThumbnail?.find(el => el.recipeId === e.id)?.thumbnail.url ??
+          null,
       },
     })),
   }
 
-  return { basket: mappedBasket }
+  return json(
+    { basket: mappedBasket },
+    { headers: { 'Cache-Control': 'max-age=3600' } },
+  )
 }
 export const action: ActionFunction = async ({ request }) => {
   const form = await request.formData()
@@ -85,7 +89,6 @@ export default function BasketSidePanel() {
   const fetcher = useFetcher<LoaderData>()
   const servings = useAppSelector(state => state.recipeServings)
   const dispatch = useAppDispatch()
-  const [resList, setResList] = useState<string[] | null>(null)
 
   useEffect(() => {
     data?.basket.recipes?.forEach(({ id, ingredientsNum }) => {
@@ -114,7 +117,7 @@ export default function BasketSidePanel() {
                   key={`${title}_${idx}`}
                   title={title}
                   recipeId={id}
-                  imgSrc={thumbnail.jpgSrc ?? ''}
+                  imgSrc={thumbnail.url ?? ''}
                   onDelete={(e: React.FormEvent) => {
                     ingredientsNum.forEach(item => {
                       dispatch(

@@ -63,7 +63,7 @@ export const links: LinksFunction = () => {
       rel: 'stylesheet preload',
       href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap',
     },
-    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.png' },
+    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.ico' },
     { as: 'style', rel: 'stylesheet preload', href: styles },
   ]
 }

@@ -48,7 +48,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     }
   })
 
-  return json({ ingredients })
+  return json({ ingredients }, { headers: { 'Cache-Control': 'max-age=3600' } })
 }
 
 export default function BasketIndex(): JSX.Element {

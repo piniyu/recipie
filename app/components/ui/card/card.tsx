@@ -16,7 +16,7 @@ export interface CardProps {
   id: string
   isLiked: boolean
   isInBasket: boolean
-  thumbnail: string
+  thumbnail: string | null
 }
 
 export function IconForm({
@@ -132,7 +132,7 @@ export default function Card({
       <div className="aspect-w-4 aspect-h-3 relative flex items-center justify-center overflow-hidden rounded-t-lg">
         <LazyLoadImage
           className="h-full w-full object-cover object-center "
-          src={thumbnail}
+          src={thumbnail ? thumbnail : ''}
           effect="opacity"
         />
 

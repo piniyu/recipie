@@ -75,24 +75,25 @@ const uploadFiles = async () => {
               Key: `${s3FolderKey}${index}/thumbnail-jpg`,
               Body: buffer,
               ContentType: 'image/jpdg',
+              CacheControl: 'public, max-age=86400',
             }),
           )
         }
-        const uploadWebp = async () => {
-          const buffer = await sharp(file)
-            .resize(720, 540, { fit: 'cover' })
-            .toFormat('webp')
-            .toBuffer()
-          return await s3.send(
-            new PutObjectCommand({
-              Bucket: process.env.AWS_BUCKET_NAME,
-              Key: `${s3FolderKey}${index}/thumbnail-webp`,
-              Body: buffer,
-              ContentType: 'image/webp',
-            }),
-          )
-        }
-        return Promise.all([uploadJpg(), uploadWebp()])
+        // const uploadWebp = async () => {
+        //   const buffer = await sharp(file)
+        //     .resize(720, 540, { fit: 'cover' })
+        //     .toFormat('webp')
+        //     .toBuffer()
+        //   return await s3.send(
+        //     new PutObjectCommand({
+        //       Bucket: process.env.AWS_BUCKET_NAME,
+        //       Key: `${s3FolderKey}${index}/thumbnail-webp`,
+        //       Body: buffer,
+        //       ContentType: 'image/webp',
+        //     }),
+        //   )
+        // }
+        return Promise.all([uploadJpg()])
       }),
     ).then(() => {
       console.log('Success. Add photos')

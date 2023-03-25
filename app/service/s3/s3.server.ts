@@ -37,6 +37,18 @@ const getRecipePresignedUrls = async (recipeId: string) => {
   }
 }
 
+// round the time to the last 10-minute mark
+const getTruncatedTime = () => {
+  const currentTime = new Date()
+  const d = new Date(currentTime)
+
+  d.setMinutes(Math.floor(d.getMinutes() / 10) * 10)
+  d.setSeconds(0)
+  d.setMilliseconds(0)
+
+  return d
+}
+
 const getThumbnailPresignedUrl = async (
   s3Key: string,
   recipeId: string,
@@ -46,22 +58,31 @@ const getThumbnailPresignedUrl = async (
   recipeId?: string
   error?: undefined | unknown
   type?: 'webp' | 'jpg'
+  etag: string | null
+  // headers?:Headers
 }> => {
   try {
     const command = new GetObjectCommand({
       Bucket: process.env.AWS_BUCKET_NAME,
       Key: s3Key,
+      ResponseCacheControl: 'public, max-age=604800, immutable',
     })
     const preSignedUrl = await getSignedUrl(s3, command, { expiresIn: 604800 })
+    const response = await fetch(preSignedUrl)
+    const etag = response.headers.get('etag')
 
     return {
       preSignedUrl,
       recipeId,
       type,
-      error: undefined,
+      etag,
+      // headers: {
+      //   'cache-control': 'max-age=604800',
+      //   'etag':etag
+      // }
     }
   } catch (error) {
-    return { error }
+    return Promise.reject(error)
   }
 }
 

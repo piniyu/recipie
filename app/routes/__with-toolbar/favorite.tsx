@@ -2,12 +2,12 @@ import { json, LoaderArgs, MetaFunction } from '@remix-run/node'
 import { useFetcher, useLoaderData } from '@remix-run/react'
 import { useEffect, useState } from 'react'
 import CardGrid from '~/components/ui/card/card-grid'
-import DropdownMenu from '~/components/ui/drop-down-menu'
 import SearchBar from '~/components/form/inputs/search-bar'
 import { getFavRecipes, getThumbnails } from '~/service/loaders/query-card-list'
 import { searchFavoriteRecipes } from '~/service/loaders/search-recipes.server'
 import { metaTitlePostfix } from '~/root'
 import { requireUserId } from '~/service/session.server'
+import { SortingDropdown } from '~/components/ui/sorting-dropdown'
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -34,14 +34,16 @@ export const loader = async ({ request }: LoaderArgs) => {
     isLiked: !!recipe.favorite.find(e => e.userId === userId),
     isInBasket: !!recipe.baskets.find(e => e.userId === userId),
   }))
-  return json({ searchRes, favRecipes: mappedRecipes })
+  return json(
+    { searchRes, favRecipes: mappedRecipes },
+    { headers: { 'Cache-Control': 'max-age=3600' } },
+  )
 }
 
 export default function Favorite(): JSX.Element {
   const data = useLoaderData<typeof loader>()
   const fetcher = useFetcher<typeof loader>()
   const [recipeList, setRecipeList] = useState(data.favRecipes)
-  const [listOrder, setListOrder] = useState<'New' | 'Popular'>('New')
 
   useEffect(() => {
     if (fetcher.data?.favRecipes) {
@@ -64,40 +66,7 @@ export default function Favorite(): JSX.Element {
           }}
         />
 
-        <DropdownMenu
-          summary={listOrder}
-          details={
-            <ul>
-              <li
-                className={`drop-down-item ${
-                  listOrder === 'New'
-                    ? 'bg-primary text-black dark:bg-primary-dark dark:text-gray-200'
-                    : ''
-                }`}
-                onClick={() => {
-                  setListOrder('New')
-                  fetcher.load(`/?index&orderby=new`)
-                }}
-              >
-                New
-              </li>
-              <li
-                className={`drop-down-item ${
-                  listOrder === 'Popular'
-                    ? 'bg-primary text-black dark:bg-primary-dark dark:text-gray-200'
-                    : ''
-                }`}
-                onClick={() => {
-                  setListOrder('Popular')
-                  fetcher.load(`/?index&orderby=popular`)
-                }}
-              >
-                Popular
-              </li>
-            </ul>
-          }
-          hasDownArrow
-        />
+        <SortingDropdown fetcher={fetcher} />
         {/* <DropdownMenu
           summary="Filter"
           details={<div>filter checkbox</div>}
@@ -107,7 +76,7 @@ export default function Favorite(): JSX.Element {
       <CardGrid
         data={recipeList.map(recipe => ({
           id: recipe.id,
-          thumbnail: recipe.thumbnail?.jpgSrc ?? '',
+          thumbnail: recipe.thumbnail?.url ?? null,
           author: recipe.author.name ?? recipe.author.email.split('@')[0],
           title: recipe.title,
           isLiked: recipe.isLiked,

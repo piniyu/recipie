@@ -183,6 +183,7 @@ export default function Login() {
                 type="email"
                 className="input w-full"
                 autoComplete="email"
+                data-cy="email"
               />
             </label>
             <label
@@ -222,6 +223,7 @@ export default function Login() {
                 type="password"
                 className="input w-full"
                 autoComplete="current-password"
+                data-cy="password"
               />
               {/* <span
                 className={`text-xs ${
@@ -239,6 +241,7 @@ export default function Login() {
                 type="submit"
                 className="btn-primary btn-md w-full"
                 disabled={!isValid}
+                data-cy="submit"
               >
                 Submit
               </button>

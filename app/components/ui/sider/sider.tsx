@@ -187,7 +187,7 @@ export default function Sider(): JSX.Element | null {
                 return (
                   <LogoutForm
                     icon={<LogoutIcon className="svg-md svg-neutral" />}
-                    formProps={{ className: 'flex items-center' }}
+                    formClassName="flex items-center"
                     btnClassName="gap-4 relative
                 sider-item sider-item-svg 
                 text-left
