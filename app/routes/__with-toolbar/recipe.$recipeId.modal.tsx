@@ -1,10 +1,8 @@
-// import { CloseOutlined } from '@mui/icons-material'
 import type { LoaderArgs } from '@remix-run/node'
 import { json } from '@remix-run/node'
 import { Link, useFetcher, useLoaderData, useParams } from '@remix-run/react'
 import React, { useCallback, useContext, useEffect, useRef } from 'react'
 import { useState } from 'react'
-import { SiderContext } from '~/components/ui/sider/sider-context'
 import { db } from '~/service/db.server'
 import { GetObjectCommand } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
@@ -14,12 +12,8 @@ import { ArrowUpwardFill0Wght400Grad25Opsz48 as ArrowUpIcon } from '~/components
 import _ from 'lodash'
 import { badRequest } from '~/service/request.server'
 import { s3 } from '~/service/s3/s3.server'
-
-// type MockData = {
-//   id: string
-//   title: string
-//   steps: { id: string; timeStemp: null | string; text: string }[]
-// }
+import { useAppDispatch } from '~/store/configure-store'
+import { setSiderHidden } from '~/store/sider-slice'
 
 export const loader = async ({ request, params, context }: LoaderArgs) => {
   const recipeId = params.recipeId
@@ -78,7 +72,6 @@ const ModalContainer = ({
 }) => {
   const { recipeId } = useParams()
   const [showButton, setShowButton] = useState(false)
-  // const [mouseEnter, setMouseEnter] = useState(false)
   const mouseEnter = useRef(false)
 
   const onHideBtn = useCallback(
@@ -165,7 +158,6 @@ const ModalContainer = ({
 }
 
 export default function RecipeModal(): JSX.Element {
-  const { setHidden } = useContext(SiderContext)
   const data = useLoaderData<typeof loader>()
   const { recipeId } = useParams()
   const [stepData, setStepData] = useState(data)
@@ -178,13 +170,14 @@ export default function RecipeModal(): JSX.Element {
   const [hasData, setHasData] = useState(true)
   const [targets, setTergets] = useState<HTMLDivElement[]>([])
   const [nextStep, setNextStep] = useState(3)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
-    setHidden(true)
+    dispatch(setSiderHidden(true))
     return () => {
-      setHidden(false)
+      dispatch(setSiderHidden(false))
     }
-  }, [setHidden])
+  }, [])
 
   const targetRef = useCallback((node: HTMLDivElement | null) => {
     if (node !== null) {

@@ -1,7 +1,6 @@
 import { Link, useLocation } from '@remix-run/react'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import DropdownMenu from './drop-down-menu'
-import { SiderContext } from './sider/sider-context'
 import LogoutForm from '../form/logout-form'
 import AuthCheck from '../../feature/auth/auth-check'
 import { Theme, useTheme } from '~/context/theme-provider'
@@ -11,6 +10,8 @@ import DarkModeIcon from '~/components/icons/DarkModeFill0Wght400Grad25Opsz48'
 import LightModeIcon from '~/components/icons/LightModeFill0Wght400Grad25Opsz48'
 import MenuIcon from '~/components/icons/MenuFill1Wght400Grad25Opsz48'
 import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
+import { useAppDispatch, useAppSelector } from '~/store/configure-store'
+import { setSiderOpen } from '~/store/sider-slice'
 
 const Toolbar = ({
   basketData,
@@ -21,24 +22,25 @@ const Toolbar = ({
     | undefined
 }) => {
   const location = useLocation()
-  const { setClose, close, hidden } = useContext(SiderContext)
   const [theme, setTheme] = useTheme()
   const [openBasket, setOpenBasket] = useState(false)
+  const dispatch = useAppDispatch()
+  const siderState = useAppSelector(s => s.sider)
 
-  if (hidden) return null
+  if (siderState.hidden) return null
   return (
     <header
       className={`fixed z-10 flex min-h-[64px] w-screen items-center bg-inherit ${
-        close ? '' : 'lg:pl-[255px] '
+        !siderState.open ? '' : 'lg:pl-[255px] '
       }`}
     >
       <div className="layout-px flex w-full items-center">
         <button
           className={`icon-btn-sm icon-btn-ui -ml-2 ${
-            close ? '' : 'hidden lg:block'
+            !siderState.open ? '' : 'hidden lg:block'
           }`}
           onClick={() => {
-            setClose(prev => !prev)
+            dispatch(setSiderOpen(!siderState.open))
           }}
         >
           <MenuIcon className="svg-md svg-gray" />

@@ -15,7 +15,7 @@ import {
   useParams,
 } from '@remix-run/react'
 import cuid from 'cuid'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import ContentCard from '~/components/ui/card/content-card'
 import { useAppDispatch, useAppSelector } from '~/store/configure-store'
@@ -37,6 +37,7 @@ import DeleteIcon from '~/components/icons/DeleteFill0Wght400Grad25Opsz48'
 import MenuIcon from '~/components/icons/MenuFill1Wght400Grad25Opsz48'
 import { requireUserId } from '~/service/session.server'
 import { s3 } from '~/service/s3/s3.server'
+import useResizeObserver from 'use-resize-observer'
 
 type RecursiveNonNullable<T> = {
   [K in keyof T]: T[K] extends Object
@@ -320,35 +321,23 @@ export default function Upload(): JSX.Element {
   const publishState = useAppSelector(state => state.publishState)
   const dispatch = useAppDispatch()
   const fetcher = useFetcher()
-  const containerRef = useRef<HTMLDivElement>(null)
   const sideListRef = useRef<HTMLDivElement>(null)
   const [openSiddList, setOpenSideList] = useState(false)
   const [switchToModal, setSwitchToModal] = useState(false)
-
-  useEffect(() => {
-    const onResize = (e: ResizeObserverEntry[]) => {
-      for (const entry of e) {
-        if (entry.contentBoxSize[0].inlineSize <= 768) {
-          setSwitchToModal(true)
-        } else {
-          setSwitchToModal(false)
-        }
+  const { ref } = useResizeObserver({
+    onResize: ({ width }) => {
+      if (width && width <= 768) {
+        setSwitchToModal(true)
+      } else {
+        setSwitchToModal(false)
       }
-    }
-    const observer = new ResizeObserver(onResize)
-    if (containerRef.current) {
-      observer.observe(containerRef.current)
-    }
-
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
+    },
+  })
 
   return (
     <div
       className=" layout-px relative mx-auto flex flex-1 flex-col gap-y-6 pt-8 pb-16"
-      ref={containerRef}
+      ref={ref}
     >
       <header className="flex items-center justify-between">
         <div className="flex gap-2">

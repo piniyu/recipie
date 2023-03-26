@@ -1,15 +1,10 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
-import { RadialBarProps } from 'recharts'
+import { useState } from 'react'
 import {
-  Label,
   LabelList,
-  Legend,
   PolarAngleAxis,
-  PolarRadiusAxis,
   RadialBar,
   RadialBarChart,
   ResponsiveContainer,
-  Text,
 } from 'recharts'
 import { Theme, useTheme } from '~/context/theme-provider'
 import type { NutritionBarChartProps } from '.'
@@ -22,39 +17,7 @@ export default function RadialChart({
   data: NutritionBarChartProps[]
 }): JSX.Element {
   const [theme] = useTheme()
-  const [rpcWidth, setRpcWidth] = useState(0)
-  const [hasRpc, setHasRpc] = useState(false)
-  const rpcElementRef = useRef<any>(null)
-  const rpcRef = useCallback((node: React.MutableRefObject<HTMLDivElement>) => {
-    if (node !== null) {
-      setRpcWidth(
-        (node.current as HTMLDivElement).getBoundingClientRect().width,
-      )
-      setHasRpc(true)
-      rpcElementRef.current = node.current
-    }
-  }, [])
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver(entries => {
-      for (const entry of entries) {
-        if (entry.contentBoxSize) {
-          // Firefox implements `contentBoxSize` as a single content rect, rather than an array
-          const contentBoxSize: ResizeObserverSize = Array.isArray(
-            entry.contentBoxSize,
-          )
-            ? entry.contentBoxSize[0]
-            : entry.contentBoxSize
-          setRpcWidth(contentBoxSize.blockSize)
-        }
-      }
-    })
-    if (hasRpc && rpcElementRef.current) {
-      resizeObserver.observe(rpcElementRef.current as HTMLDivElement)
-    }
-    return () => {
-      resizeObserver.disconnect()
-    }
-  }, [hasRpc, rpcWidth])
+  const [width, setWidth] = useState(0)
 
   return (
     <ResponsiveContainer
@@ -62,23 +25,21 @@ export default function RadialChart({
       aspect={1}
       height="auto"
       debounce={2}
-      ref={rpcRef}
+      onResize={width => {
+        setWidth(width)
+      }}
     >
       <RadialBarChart
-        // id="test"
-
         innerRadius="100%"
-        // outerRadius="180"
         data={data}
         startAngle={90}
         endAngle={-180}
-        barSize={rpcWidth / 30}
+        barSize={width / 30}
       >
         <PolarAngleAxis
           type="number"
           dataKey="pct"
           domain={[0, 100]}
-          // angleAxisId={0}
           tick={false}
           axisLine={false}
         />
@@ -86,9 +47,8 @@ export default function RadialChart({
           id={`radialBar`}
           className={fillColorClass}
           background={theme === Theme.DARK ? { style: { fill: '#555' } } : true}
-          // clockWise={true}
           dataKey="pct"
-          cornerRadius={rpcWidth / 15}
+          cornerRadius={width / 15}
         >
           <LabelList
             className="fill-inherit font-bold "
@@ -97,9 +57,9 @@ export default function RadialChart({
             }}
             position="center"
             style={{
-              fontSize: rpcWidth ? rpcWidth / 100 + 'rem' : '1.875rem',
-              transform: rpcWidth
-                ? `translateY(-${rpcWidth * 0.08}px)`
+              fontSize: width ? width / 100 + 'rem' : '1.875rem',
+              transform: width
+                ? `translateY(-${width * 0.08}px)`
                 : `translateY(-16px)`,
             }}
           />
@@ -108,9 +68,9 @@ export default function RadialChart({
             dataKey="name"
             position="centerTop"
             style={{
-              fontSize: rpcWidth ? rpcWidth / 210 + 'rem' : '1.875rem',
-              transform: rpcWidth
-                ? `translateY(${rpcWidth * 0.05}px)`
+              fontSize: width ? width / 210 + 'rem' : '1.875rem',
+              transform: width
+                ? `translateY(${width * 0.05}px)`
                 : `translateY(8px)`,
             }}
           />
@@ -122,9 +82,9 @@ export default function RadialChart({
             }}
             position="centerTop"
             style={{
-              fontSize: rpcWidth ? rpcWidth / 210 + 'rem' : '1.875rem',
-              transform: rpcWidth
-                ? `translateY(${rpcWidth * 0.15}px)`
+              fontSize: width ? width / 210 + 'rem' : '1.875rem',
+              transform: width
+                ? `translateY(${width * 0.15}px)`
                 : `translateY(8px)`,
             }}
           />

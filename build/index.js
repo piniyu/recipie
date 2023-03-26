@@ -20,117 +20,6 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 )), __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: !0 }), mod);
 
-// node_modules/redux-persist/lib/integration/react.js
-var require_react = __commonJS({
-  "node_modules/redux-persist/lib/integration/react.js"(exports) {
-    "use strict";
-    exports.__esModule = !0;
-    exports.PersistGate = void 0;
-    var _react = _interopRequireWildcard(require("react"));
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
-        return obj;
-      var newObj = {};
-      if (obj != null) {
-        for (var key in obj)
-          if (Object.prototype.hasOwnProperty.call(obj, key)) {
-            var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
-            desc.get || desc.set ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
-          }
-      }
-      return newObj.default = obj, newObj;
-    }
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
-    function _classCallCheck(instance, Constructor) {
-      if (!(instance instanceof Constructor))
-        throw new TypeError("Cannot call a class as a function");
-    }
-    function _defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-    function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
-    }
-    function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
-    }
-    function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
-        return o2.__proto__ || Object.getPrototypeOf(o2);
-      }, _getPrototypeOf(o);
-    }
-    function _assertThisInitialized(self2) {
-      if (self2 === void 0)
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-      return self2;
-    }
-    function _inherits(subClass, superClass) {
-      if (typeof superClass != "function" && superClass !== null)
-        throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
-    }
-    function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
-        return o2.__proto__ = p2, o2;
-      }, _setPrototypeOf(o, p);
-    }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
-    var PersistGate2 = /* @__PURE__ */ function(_PureComponent) {
-      _inherits(PersistGate3, _PureComponent);
-      function PersistGate3() {
-        var _getPrototypeOf2, _this;
-        _classCallCheck(this, PersistGate3);
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
-          args[_key] = arguments[_key];
-        return _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(PersistGate3)).call.apply(_getPrototypeOf2, [this].concat(args))), _defineProperty3(_assertThisInitialized(_this), "state", {
-          bootstrapped: !1
-        }), _defineProperty3(_assertThisInitialized(_this), "_unsubscribe", void 0), _defineProperty3(_assertThisInitialized(_this), "handlePersistorState", function() {
-          var persistor2 = _this.props.persistor, _persistor$getState = persistor2.getState(), bootstrapped = _persistor$getState.bootstrapped;
-          bootstrapped && (_this.props.onBeforeLift ? Promise.resolve(_this.props.onBeforeLift()).finally(function() {
-            return _this.setState({
-              bootstrapped: !0
-            });
-          }) : _this.setState({
-            bootstrapped: !0
-          }), _this._unsubscribe && _this._unsubscribe());
-        }), _this;
-      }
-      return _createClass(PersistGate3, [{
-        key: "componentDidMount",
-        value: function() {
-          this._unsubscribe = this.props.persistor.subscribe(this.handlePersistorState), this.handlePersistorState();
-        }
-      }, {
-        key: "componentWillUnmount",
-        value: function() {
-          this._unsubscribe && this._unsubscribe();
-        }
-      }, {
-        key: "render",
-        value: function() {
-          return typeof this.props.children == "function" && this.props.loading && console.error("redux-persist: PersistGate expects either a function child or loading prop, but not both. The loading prop will be ignored."), typeof this.props.children == "function" ? this.props.children(this.state.bootstrapped) : this.state.bootstrapped ? this.props.children : this.props.loading;
-        }
-      }]), PersistGate3;
-    }(_react.PureComponent);
-    exports.PersistGate = PersistGate2;
-    _defineProperty3(PersistGate2, "defaultProps", {
-      children: null,
-      loading: null
-    });
-  }
-});
-
 // node_modules/redux-persist/lib/constants.js
 var require_constants = __commonJS({
   "node_modules/redux-persist/lib/constants.js"(exports) {
@@ -579,11 +468,11 @@ var require_persistStore = __commonJS({
     function _defineProperty3(obj, key, value) {
       return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
     }
-    var initialState7 = {
+    var initialState8 = {
       registry: [],
       bootstrapped: !1
     }, persistorReducer = function() {
-      var state = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : initialState7, action11 = arguments.length > 1 ? arguments[1] : void 0;
+      var state = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : initialState8, action11 = arguments.length > 1 ? arguments[1] : void 0;
       switch (action11.type) {
         case _constants.REGISTER:
           return _objectSpread3({}, state, {
@@ -604,7 +493,7 @@ var require_persistStore = __commonJS({
       bannedKeys.forEach(function(k) {
         optionsToTest[k] && console.error('redux-persist: invalid option passed to persistStore: "'.concat(k, '". You may be incorrectly passing persistConfig into persistStore, whereas it should be passed into persistReducer.'));
       });
-      var boostrappedCb = cb || !1, _pStore = (0, _redux.createStore)(persistorReducer, initialState7, options && options.enhancer ? options.enhancer : void 0), register2 = function(key) {
+      var boostrappedCb = cb || !1, _pStore = (0, _redux.createStore)(persistorReducer, initialState8, options && options.enhancer ? options.enhancer : void 0), register2 = function(key) {
         _pStore.dispatch({
           type: _constants.REGISTER,
           key
@@ -828,17 +717,25 @@ var require_createWebStorage = __commonJS({
   }
 });
 
-// node_modules/recharts/lib/util/types.js
-var require_types = __commonJS({
-  "node_modules/recharts/lib/util/types.js"(exports) {
+// node_modules/redux-persist/lib/integration/react.js
+var require_react = __commonJS({
+  "node_modules/redux-persist/lib/integration/react.js"(exports) {
     "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: !0
-    });
-    exports.adaptEventsOfChild = exports.adaptEventHandlers = exports.filterProps = void 0;
-    var _isObject2 = _interopRequireDefault(require("lodash/isObject")), _react = require("react");
-    function _interopRequireDefault(obj) {
-      return obj && obj.__esModule ? obj : { default: obj };
+    exports.__esModule = !0;
+    exports.PersistGate = void 0;
+    var _react = _interopRequireWildcard(require("react"));
+    function _interopRequireWildcard(obj) {
+      if (obj && obj.__esModule)
+        return obj;
+      var newObj = {};
+      if (obj != null) {
+        for (var key in obj)
+          if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};
+            desc.get || desc.set ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
+          }
+      }
+      return newObj.default = obj, newObj;
     }
     function _typeof2(obj) {
       return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
@@ -847,18 +744,536 @@ var require_types = __commonJS({
         return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
       }, _typeof2(obj);
     }
-    var SVGContainerPropKeys = ["viewBox", "children"], SVGElementPropKeys = ["aria-activedescendant", "aria-atomic", "aria-autocomplete", "aria-busy", "aria-checked", "aria-colcount", "aria-colindex", "aria-colspan", "aria-controls", "aria-current", "aria-describedby", "aria-details", "aria-disabled", "aria-errormessage", "aria-expanded", "aria-flowto", "aria-haspopup", "aria-hidden", "aria-invalid", "aria-keyshortcuts", "aria-label", "aria-labelledby", "aria-level", "aria-live", "aria-modal", "aria-multiline", "aria-multiselectable", "aria-orientation", "aria-owns", "aria-placeholder", "aria-posinset", "aria-pressed", "aria-readonly", "aria-relevant", "aria-required", "aria-roledescription", "aria-rowcount", "aria-rowindex", "aria-rowspan", "aria-selected", "aria-setsize", "aria-sort", "aria-valuemax", "aria-valuemin", "aria-valuenow", "aria-valuetext", "className", "color", "height", "id", "lang", "max", "media", "method", "min", "name", "style", "target", "type", "width", "role", "tabIndex", "accentHeight", "accumulate", "additive", "alignmentBaseline", "allowReorder", "alphabetic", "amplitude", "arabicForm", "ascent", "attributeName", "attributeType", "autoReverse", "azimuth", "baseFrequency", "baselineShift", "baseProfile", "bbox", "begin", "bias", "by", "calcMode", "capHeight", "clip", "clipPath", "clipPathUnits", "clipRule", "colorInterpolation", "colorInterpolationFilters", "colorProfile", "colorRendering", "contentScriptType", "contentStyleType", "cursor", "cx", "cy", "d", "decelerate", "descent", "diffuseConstant", "direction", "display", "divisor", "dominantBaseline", "dur", "dx", "dy", "edgeMode", "elevation", "enableBackground", "end", "exponent", "externalResourcesRequired", "fill", "fillOpacity", "fillRule", "filter", "filterRes", "filterUnits", "floodColor", "floodOpacity", "focusable", "fontFamily", "fontSize", "fontSizeAdjust", "fontStretch", "fontStyle", "fontVariant", "fontWeight", "format", "from", "fx", "fy", "g1", "g2", "glyphName", "glyphOrientationHorizontal", "glyphOrientationVertical", "glyphRef", "gradientTransform", "gradientUnits", "hanging", "horizAdvX", "horizOriginX", "href", "ideographic", "imageRendering", "in2", "in", "intercept", "k1", "k2", "k3", "k4", "k", "kernelMatrix", "kernelUnitLength", "kerning", "keyPoints", "keySplines", "keyTimes", "lengthAdjust", "letterSpacing", "lightingColor", "limitingConeAngle", "local", "markerEnd", "markerHeight", "markerMid", "markerStart", "markerUnits", "markerWidth", "mask", "maskContentUnits", "maskUnits", "mathematical", "mode", "numOctaves", "offset", "opacity", "operator", "order", "orient", "orientation", "origin", "overflow", "overlinePosition", "overlineThickness", "paintOrder", "panose1", "pathLength", "patternContentUnits", "patternTransform", "patternUnits", "pointerEvents", "points", "pointsAtX", "pointsAtY", "pointsAtZ", "preserveAlpha", "preserveAspectRatio", "primitiveUnits", "r", "radius", "refX", "refY", "renderingIntent", "repeatCount", "repeatDur", "requiredExtensions", "requiredFeatures", "restart", "result", "rotate", "rx", "ry", "seed", "shapeRendering", "slope", "spacing", "specularConstant", "specularExponent", "speed", "spreadMethod", "startOffset", "stdDeviation", "stemh", "stemv", "stitchTiles", "stopColor", "stopOpacity", "strikethroughPosition", "strikethroughThickness", "string", "stroke", "strokeDasharray", "strokeDashoffset", "strokeLinecap", "strokeLinejoin", "strokeMiterlimit", "strokeOpacity", "strokeWidth", "surfaceScale", "systemLanguage", "tableValues", "targetX", "targetY", "textAnchor", "textDecoration", "textLength", "textRendering", "to", "transform", "u1", "u2", "underlinePosition", "underlineThickness", "unicode", "unicodeBidi", "unicodeRange", "unitsPerEm", "vAlphabetic", "values", "vectorEffect", "version", "vertAdvY", "vertOriginX", "vertOriginY", "vHanging", "vIdeographic", "viewTarget", "visibility", "vMathematical", "widths", "wordSpacing", "writingMode", "x1", "x2", "x", "xChannelSelector", "xHeight", "xlinkActuate", "xlinkArcrole", "xlinkHref", "xlinkRole", "xlinkShow", "xlinkTitle", "xlinkType", "xmlBase", "xmlLang", "xmlns", "xmlnsXlink", "xmlSpace", "y1", "y2", "y", "yChannelSelector", "z", "zoomAndPan", "ref", "key", "angle"], EventKeys = ["dangerouslySetInnerHTML", "onCopy", "onCopyCapture", "onCut", "onCutCapture", "onPaste", "onPasteCapture", "onCompositionEnd", "onCompositionEndCapture", "onCompositionStart", "onCompositionStartCapture", "onCompositionUpdate", "onCompositionUpdateCapture", "onFocus", "onFocusCapture", "onBlur", "onBlurCapture", "onChange", "onChangeCapture", "onBeforeInput", "onBeforeInputCapture", "onInput", "onInputCapture", "onReset", "onResetCapture", "onSubmit", "onSubmitCapture", "onInvalid", "onInvalidCapture", "onLoad", "onLoadCapture", "onError", "onErrorCapture", "onKeyDown", "onKeyDownCapture", "onKeyPress", "onKeyPressCapture", "onKeyUp", "onKeyUpCapture", "onAbort", "onAbortCapture", "onCanPlay", "onCanPlayCapture", "onCanPlayThrough", "onCanPlayThroughCapture", "onDurationChange", "onDurationChangeCapture", "onEmptied", "onEmptiedCapture", "onEncrypted", "onEncryptedCapture", "onEnded", "onEndedCapture", "onLoadedData", "onLoadedDataCapture", "onLoadedMetadata", "onLoadedMetadataCapture", "onLoadStart", "onLoadStartCapture", "onPause", "onPauseCapture", "onPlay", "onPlayCapture", "onPlaying", "onPlayingCapture", "onProgress", "onProgressCapture", "onRateChange", "onRateChangeCapture", "onSeeked", "onSeekedCapture", "onSeeking", "onSeekingCapture", "onStalled", "onStalledCapture", "onSuspend", "onSuspendCapture", "onTimeUpdate", "onTimeUpdateCapture", "onVolumeChange", "onVolumeChangeCapture", "onWaiting", "onWaitingCapture", "onAuxClick", "onAuxClickCapture", "onClick", "onClickCapture", "onContextMenu", "onContextMenuCapture", "onDoubleClick", "onDoubleClickCapture", "onDrag", "onDragCapture", "onDragEnd", "onDragEndCapture", "onDragEnter", "onDragEnterCapture", "onDragExit", "onDragExitCapture", "onDragLeave", "onDragLeaveCapture", "onDragOver", "onDragOverCapture", "onDragStart", "onDragStartCapture", "onDrop", "onDropCapture", "onMouseDown", "onMouseDownCapture", "onMouseEnter", "onMouseLeave", "onMouseMove", "onMouseMoveCapture", "onMouseOut", "onMouseOutCapture", "onMouseOver", "onMouseOverCapture", "onMouseUp", "onMouseUpCapture", "onSelect", "onSelectCapture", "onTouchCancel", "onTouchCancelCapture", "onTouchEnd", "onTouchEndCapture", "onTouchMove", "onTouchMoveCapture", "onTouchStart", "onTouchStartCapture", "onPointerDown", "onPointerDownCapture", "onPointerMove", "onPointerMoveCapture", "onPointerUp", "onPointerUpCapture", "onPointerCancel", "onPointerCancelCapture", "onPointerEnter", "onPointerEnterCapture", "onPointerLeave", "onPointerLeaveCapture", "onPointerOver", "onPointerOverCapture", "onPointerOut", "onPointerOutCapture", "onGotPointerCapture", "onGotPointerCaptureCapture", "onLostPointerCapture", "onLostPointerCaptureCapture", "onScroll", "onScrollCapture", "onWheel", "onWheelCapture", "onAnimationStart", "onAnimationStartCapture", "onAnimationEnd", "onAnimationEndCapture", "onAnimationIteration", "onAnimationIterationCapture", "onTransitionEnd", "onTransitionEndCapture"], filterProps = function(props, includeEvents, isSvg) {
-      if (!props || typeof props == "function" || typeof props == "boolean")
-        return null;
-      var inputProps = props;
-      if (/* @__PURE__ */ (0, _react.isValidElement)(props) && (inputProps = props.props), !(0, _isObject2.default)(inputProps))
-        return null;
-      var out = {};
-      return Object.keys(inputProps).forEach(function(key) {
-        (SVGElementPropKeys.includes(key) || isSvg && SVGContainerPropKeys.includes(key) || includeEvents && EventKeys.includes(key)) && (out[key] = inputProps[key]);
-      }), out;
+    function _classCallCheck(instance, Constructor) {
+      if (!(instance instanceof Constructor))
+        throw new TypeError("Cannot call a class as a function");
+    }
+    function _defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+    function _createClass(Constructor, protoProps, staticProps) {
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+    }
+    function _possibleConstructorReturn(self2, call) {
+      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+    }
+    function _getPrototypeOf(o) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+        return o2.__proto__ || Object.getPrototypeOf(o2);
+      }, _getPrototypeOf(o);
+    }
+    function _assertThisInitialized(self2) {
+      if (self2 === void 0)
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      return self2;
+    }
+    function _inherits(subClass, superClass) {
+      if (typeof superClass != "function" && superClass !== null)
+        throw new TypeError("Super expression must either be null or a function");
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+    }
+    function _setPrototypeOf(o, p) {
+      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+        return o2.__proto__ = p2, o2;
+      }, _setPrototypeOf(o, p);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    var PersistGate2 = /* @__PURE__ */ function(_PureComponent) {
+      _inherits(PersistGate3, _PureComponent);
+      function PersistGate3() {
+        var _getPrototypeOf2, _this;
+        _classCallCheck(this, PersistGate3);
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
+          args[_key] = arguments[_key];
+        return _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(PersistGate3)).call.apply(_getPrototypeOf2, [this].concat(args))), _defineProperty3(_assertThisInitialized(_this), "state", {
+          bootstrapped: !1
+        }), _defineProperty3(_assertThisInitialized(_this), "_unsubscribe", void 0), _defineProperty3(_assertThisInitialized(_this), "handlePersistorState", function() {
+          var persistor2 = _this.props.persistor, _persistor$getState = persistor2.getState(), bootstrapped = _persistor$getState.bootstrapped;
+          bootstrapped && (_this.props.onBeforeLift ? Promise.resolve(_this.props.onBeforeLift()).finally(function() {
+            return _this.setState({
+              bootstrapped: !0
+            });
+          }) : _this.setState({
+            bootstrapped: !0
+          }), _this._unsubscribe && _this._unsubscribe());
+        }), _this;
+      }
+      return _createClass(PersistGate3, [{
+        key: "componentDidMount",
+        value: function() {
+          this._unsubscribe = this.props.persistor.subscribe(this.handlePersistorState), this.handlePersistorState();
+        }
+      }, {
+        key: "componentWillUnmount",
+        value: function() {
+          this._unsubscribe && this._unsubscribe();
+        }
+      }, {
+        key: "render",
+        value: function() {
+          return typeof this.props.children == "function" && this.props.loading && console.error("redux-persist: PersistGate expects either a function child or loading prop, but not both. The loading prop will be ignored."), typeof this.props.children == "function" ? this.props.children(this.state.bootstrapped) : this.state.bootstrapped ? this.props.children : this.props.loading;
+        }
+      }]), PersistGate3;
+    }(_react.PureComponent);
+    exports.PersistGate = PersistGate2;
+    _defineProperty3(PersistGate2, "defaultProps", {
+      children: null,
+      loading: null
+    });
+  }
+});
+
+// node_modules/recharts/lib/util/DataUtils.js
+var require_DataUtils = __commonJS({
+  "node_modules/recharts/lib/util/DataUtils.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: !0
+    });
+    exports.findEntryInArray = findEntryInArray;
+    exports.uniqueId = exports.mathSign = exports.isPercent = exports.isNumber = exports.isNumOrStr = exports.interpolateNumber = exports.hasDuplicate = exports.getPercentValue = exports.getLinearRegression = exports.getAnyElementOfObject = void 0;
+    var _get2 = _interopRequireDefault(require("lodash/get")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _isNaN2 = _interopRequireDefault(require("lodash/isNaN")), _isNumber2 = _interopRequireDefault(require("lodash/isNumber")), _isString2 = _interopRequireDefault(require("lodash/isString"));
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    var mathSign = function(value) {
+      return value === 0 ? 0 : value > 0 ? 1 : -1;
     };
-    exports.filterProps = filterProps;
+    exports.mathSign = mathSign;
+    var isPercent = function(value) {
+      return (0, _isString2.default)(value) && value.indexOf("%") === value.length - 1;
+    };
+    exports.isPercent = isPercent;
+    var isNumber = function(value) {
+      return (0, _isNumber2.default)(value) && !(0, _isNaN2.default)(value);
+    };
+    exports.isNumber = isNumber;
+    var isNumOrStr = function(value) {
+      return isNumber(value) || (0, _isString2.default)(value);
+    };
+    exports.isNumOrStr = isNumOrStr;
+    var idCounter = 0, uniqueId = function(prefix) {
+      var id = ++idCounter;
+      return "".concat(prefix || "").concat(id);
+    };
+    exports.uniqueId = uniqueId;
+    var getPercentValue = function(percent, totalValue) {
+      var defaultValue = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 0, validate = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : !1;
+      if (!isNumber(percent) && !(0, _isString2.default)(percent))
+        return defaultValue;
+      var value;
+      if (isPercent(percent)) {
+        var index = percent.indexOf("%");
+        value = totalValue * parseFloat(percent.slice(0, index)) / 100;
+      } else
+        value = +percent;
+      return (0, _isNaN2.default)(value) && (value = defaultValue), validate && value > totalValue && (value = totalValue), value;
+    };
+    exports.getPercentValue = getPercentValue;
+    var getAnyElementOfObject = function(obj) {
+      if (!obj)
+        return null;
+      var keys = Object.keys(obj);
+      return keys && keys.length ? obj[keys[0]] : null;
+    };
+    exports.getAnyElementOfObject = getAnyElementOfObject;
+    var hasDuplicate = function(ary) {
+      if (!(0, _isArray2.default)(ary))
+        return !1;
+      for (var len = ary.length, cache = {}, i = 0; i < len; i++)
+        if (!cache[ary[i]])
+          cache[ary[i]] = !0;
+        else
+          return !0;
+      return !1;
+    };
+    exports.hasDuplicate = hasDuplicate;
+    var interpolateNumber = function(numberA, numberB) {
+      return isNumber(numberA) && isNumber(numberB) ? function(t) {
+        return numberA + t * (numberB - numberA);
+      } : function() {
+        return numberB;
+      };
+    };
+    exports.interpolateNumber = interpolateNumber;
+    function findEntryInArray(ary, specifiedKey, specifiedValue) {
+      return !ary || !ary.length ? null : ary.find(function(entry2) {
+        return entry2 && (typeof specifiedKey == "function" ? specifiedKey(entry2) : (0, _get2.default)(entry2, specifiedKey)) === specifiedValue;
+      });
+    }
+    var getLinearRegression = function(data) {
+      if (!data || !data.length)
+        return null;
+      for (var len = data.length, xsum = 0, ysum = 0, xysum = 0, xxsum = 0, xmin = 1 / 0, xmax = -1 / 0, xcurrent = 0, ycurrent = 0, i = 0; i < len; i++)
+        xcurrent = data[i].cx || 0, ycurrent = data[i].cy || 0, xsum += xcurrent, ysum += ycurrent, xysum += xcurrent * ycurrent, xxsum += xcurrent * xcurrent, xmin = Math.min(xmin, xcurrent), xmax = Math.max(xmax, xcurrent);
+      var a = len * xxsum !== xsum * xsum ? (len * xysum - xsum * ysum) / (len * xxsum - xsum * xsum) : 0;
+      return {
+        xmin,
+        xmax,
+        a,
+        b: (ysum - a * xsum) / len
+      };
+    };
+    exports.getLinearRegression = getLinearRegression;
+  }
+});
+
+// node_modules/recharts/lib/util/ShallowEqual.js
+var require_ShallowEqual = __commonJS({
+  "node_modules/recharts/lib/util/ShallowEqual.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: !0
+    });
+    exports.shallowEqual = shallowEqual;
+    function shallowEqual(a, b) {
+      for (var key in a)
+        if ({}.hasOwnProperty.call(a, key) && (!{}.hasOwnProperty.call(b, key) || a[key] !== b[key]))
+          return !1;
+      for (var _key in b)
+        if ({}.hasOwnProperty.call(b, _key) && !{}.hasOwnProperty.call(a, _key))
+          return !1;
+      return !0;
+    }
+  }
+});
+
+// node_modules/recharts/lib/util/types.js
+var require_types = __commonJS({
+  "node_modules/recharts/lib/util/types.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: !0
+    });
+    exports.adaptEventsOfChild = exports.adaptEventHandlers = exports.SVGElementPropKeys = exports.FilteredElementKeyMap = exports.EventKeys = void 0;
+    var _isObject2 = _interopRequireDefault(require("lodash/isObject")), _react = require("react");
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
+    var SVGContainerPropKeys = ["viewBox", "children"], SVGElementPropKeys = [
+      "aria-activedescendant",
+      "aria-atomic",
+      "aria-autocomplete",
+      "aria-busy",
+      "aria-checked",
+      "aria-colcount",
+      "aria-colindex",
+      "aria-colspan",
+      "aria-controls",
+      "aria-current",
+      "aria-describedby",
+      "aria-details",
+      "aria-disabled",
+      "aria-errormessage",
+      "aria-expanded",
+      "aria-flowto",
+      "aria-haspopup",
+      "aria-hidden",
+      "aria-invalid",
+      "aria-keyshortcuts",
+      "aria-label",
+      "aria-labelledby",
+      "aria-level",
+      "aria-live",
+      "aria-modal",
+      "aria-multiline",
+      "aria-multiselectable",
+      "aria-orientation",
+      "aria-owns",
+      "aria-placeholder",
+      "aria-posinset",
+      "aria-pressed",
+      "aria-readonly",
+      "aria-relevant",
+      "aria-required",
+      "aria-roledescription",
+      "aria-rowcount",
+      "aria-rowindex",
+      "aria-rowspan",
+      "aria-selected",
+      "aria-setsize",
+      "aria-sort",
+      "aria-valuemax",
+      "aria-valuemin",
+      "aria-valuenow",
+      "aria-valuetext",
+      "className",
+      "color",
+      "height",
+      "id",
+      "lang",
+      "max",
+      "media",
+      "method",
+      "min",
+      "name",
+      "style",
+      "target",
+      "width",
+      "role",
+      "tabIndex",
+      "accentHeight",
+      "accumulate",
+      "additive",
+      "alignmentBaseline",
+      "allowReorder",
+      "alphabetic",
+      "amplitude",
+      "arabicForm",
+      "ascent",
+      "attributeName",
+      "attributeType",
+      "autoReverse",
+      "azimuth",
+      "baseFrequency",
+      "baselineShift",
+      "baseProfile",
+      "bbox",
+      "begin",
+      "bias",
+      "by",
+      "calcMode",
+      "capHeight",
+      "clip",
+      "clipPath",
+      "clipPathUnits",
+      "clipRule",
+      "colorInterpolation",
+      "colorInterpolationFilters",
+      "colorProfile",
+      "colorRendering",
+      "contentScriptType",
+      "contentStyleType",
+      "cursor",
+      "cx",
+      "cy",
+      "d",
+      "decelerate",
+      "descent",
+      "diffuseConstant",
+      "direction",
+      "display",
+      "divisor",
+      "dominantBaseline",
+      "dur",
+      "dx",
+      "dy",
+      "edgeMode",
+      "elevation",
+      "enableBackground",
+      "end",
+      "exponent",
+      "externalResourcesRequired",
+      "fill",
+      "fillOpacity",
+      "fillRule",
+      "filter",
+      "filterRes",
+      "filterUnits",
+      "floodColor",
+      "floodOpacity",
+      "focusable",
+      "fontFamily",
+      "fontSize",
+      "fontSizeAdjust",
+      "fontStretch",
+      "fontStyle",
+      "fontVariant",
+      "fontWeight",
+      "format",
+      "from",
+      "fx",
+      "fy",
+      "g1",
+      "g2",
+      "glyphName",
+      "glyphOrientationHorizontal",
+      "glyphOrientationVertical",
+      "glyphRef",
+      "gradientTransform",
+      "gradientUnits",
+      "hanging",
+      "horizAdvX",
+      "horizOriginX",
+      "href",
+      "ideographic",
+      "imageRendering",
+      "in2",
+      "in",
+      "intercept",
+      "k1",
+      "k2",
+      "k3",
+      "k4",
+      "k",
+      "kernelMatrix",
+      "kernelUnitLength",
+      "kerning",
+      "keyPoints",
+      "keySplines",
+      "keyTimes",
+      "lengthAdjust",
+      "letterSpacing",
+      "lightingColor",
+      "limitingConeAngle",
+      "local",
+      "markerEnd",
+      "markerHeight",
+      "markerMid",
+      "markerStart",
+      "markerUnits",
+      "markerWidth",
+      "mask",
+      "maskContentUnits",
+      "maskUnits",
+      "mathematical",
+      "mode",
+      "numOctaves",
+      "offset",
+      "opacity",
+      "operator",
+      "order",
+      "orient",
+      "orientation",
+      "origin",
+      "overflow",
+      "overlinePosition",
+      "overlineThickness",
+      "paintOrder",
+      "panose1",
+      "pathLength",
+      "patternContentUnits",
+      "patternTransform",
+      "patternUnits",
+      "pointerEvents",
+      "pointsAtX",
+      "pointsAtY",
+      "pointsAtZ",
+      "preserveAlpha",
+      "preserveAspectRatio",
+      "primitiveUnits",
+      "r",
+      "radius",
+      "refX",
+      "refY",
+      "renderingIntent",
+      "repeatCount",
+      "repeatDur",
+      "requiredExtensions",
+      "requiredFeatures",
+      "restart",
+      "result",
+      "rotate",
+      "rx",
+      "ry",
+      "seed",
+      "shapeRendering",
+      "slope",
+      "spacing",
+      "specularConstant",
+      "specularExponent",
+      "speed",
+      "spreadMethod",
+      "startOffset",
+      "stdDeviation",
+      "stemh",
+      "stemv",
+      "stitchTiles",
+      "stopColor",
+      "stopOpacity",
+      "strikethroughPosition",
+      "strikethroughThickness",
+      "string",
+      "stroke",
+      "strokeDasharray",
+      "strokeDashoffset",
+      "strokeLinecap",
+      "strokeLinejoin",
+      "strokeMiterlimit",
+      "strokeOpacity",
+      "strokeWidth",
+      "surfaceScale",
+      "systemLanguage",
+      "tableValues",
+      "targetX",
+      "targetY",
+      "textAnchor",
+      "textDecoration",
+      "textLength",
+      "textRendering",
+      "to",
+      "transform",
+      "u1",
+      "u2",
+      "underlinePosition",
+      "underlineThickness",
+      "unicode",
+      "unicodeBidi",
+      "unicodeRange",
+      "unitsPerEm",
+      "vAlphabetic",
+      "values",
+      "vectorEffect",
+      "version",
+      "vertAdvY",
+      "vertOriginX",
+      "vertOriginY",
+      "vHanging",
+      "vIdeographic",
+      "viewTarget",
+      "visibility",
+      "vMathematical",
+      "widths",
+      "wordSpacing",
+      "writingMode",
+      "x1",
+      "x2",
+      "x",
+      "xChannelSelector",
+      "xHeight",
+      "xlinkActuate",
+      "xlinkArcrole",
+      "xlinkHref",
+      "xlinkRole",
+      "xlinkShow",
+      "xlinkTitle",
+      "xlinkType",
+      "xmlBase",
+      "xmlLang",
+      "xmlns",
+      "xmlnsXlink",
+      "xmlSpace",
+      "y1",
+      "y2",
+      "y",
+      "yChannelSelector",
+      "z",
+      "zoomAndPan",
+      "ref",
+      "key",
+      "angle"
+    ];
+    exports.SVGElementPropKeys = SVGElementPropKeys;
+    var PolyElementKeys = ["points", "pathLength"], FilteredElementKeyMap = {
+      svg: SVGContainerPropKeys,
+      polygon: PolyElementKeys,
+      polyline: PolyElementKeys
+    };
+    exports.FilteredElementKeyMap = FilteredElementKeyMap;
+    var EventKeys = ["dangerouslySetInnerHTML", "onCopy", "onCopyCapture", "onCut", "onCutCapture", "onPaste", "onPasteCapture", "onCompositionEnd", "onCompositionEndCapture", "onCompositionStart", "onCompositionStartCapture", "onCompositionUpdate", "onCompositionUpdateCapture", "onFocus", "onFocusCapture", "onBlur", "onBlurCapture", "onChange", "onChangeCapture", "onBeforeInput", "onBeforeInputCapture", "onInput", "onInputCapture", "onReset", "onResetCapture", "onSubmit", "onSubmitCapture", "onInvalid", "onInvalidCapture", "onLoad", "onLoadCapture", "onError", "onErrorCapture", "onKeyDown", "onKeyDownCapture", "onKeyPress", "onKeyPressCapture", "onKeyUp", "onKeyUpCapture", "onAbort", "onAbortCapture", "onCanPlay", "onCanPlayCapture", "onCanPlayThrough", "onCanPlayThroughCapture", "onDurationChange", "onDurationChangeCapture", "onEmptied", "onEmptiedCapture", "onEncrypted", "onEncryptedCapture", "onEnded", "onEndedCapture", "onLoadedData", "onLoadedDataCapture", "onLoadedMetadata", "onLoadedMetadataCapture", "onLoadStart", "onLoadStartCapture", "onPause", "onPauseCapture", "onPlay", "onPlayCapture", "onPlaying", "onPlayingCapture", "onProgress", "onProgressCapture", "onRateChange", "onRateChangeCapture", "onSeeked", "onSeekedCapture", "onSeeking", "onSeekingCapture", "onStalled", "onStalledCapture", "onSuspend", "onSuspendCapture", "onTimeUpdate", "onTimeUpdateCapture", "onVolumeChange", "onVolumeChangeCapture", "onWaiting", "onWaitingCapture", "onAuxClick", "onAuxClickCapture", "onClick", "onClickCapture", "onContextMenu", "onContextMenuCapture", "onDoubleClick", "onDoubleClickCapture", "onDrag", "onDragCapture", "onDragEnd", "onDragEndCapture", "onDragEnter", "onDragEnterCapture", "onDragExit", "onDragExitCapture", "onDragLeave", "onDragLeaveCapture", "onDragOver", "onDragOverCapture", "onDragStart", "onDragStartCapture", "onDrop", "onDropCapture", "onMouseDown", "onMouseDownCapture", "onMouseEnter", "onMouseLeave", "onMouseMove", "onMouseMoveCapture", "onMouseOut", "onMouseOutCapture", "onMouseOver", "onMouseOverCapture", "onMouseUp", "onMouseUpCapture", "onSelect", "onSelectCapture", "onTouchCancel", "onTouchCancelCapture", "onTouchEnd", "onTouchEndCapture", "onTouchMove", "onTouchMoveCapture", "onTouchStart", "onTouchStartCapture", "onPointerDown", "onPointerDownCapture", "onPointerMove", "onPointerMoveCapture", "onPointerUp", "onPointerUpCapture", "onPointerCancel", "onPointerCancelCapture", "onPointerEnter", "onPointerEnterCapture", "onPointerLeave", "onPointerLeaveCapture", "onPointerOver", "onPointerOverCapture", "onPointerOut", "onPointerOutCapture", "onGotPointerCapture", "onGotPointerCaptureCapture", "onLostPointerCapture", "onLostPointerCaptureCapture", "onScroll", "onScrollCapture", "onWheel", "onWheelCapture", "onAnimationStart", "onAnimationStartCapture", "onAnimationEnd", "onAnimationEndCapture", "onAnimationIteration", "onAnimationIterationCapture", "onTransitionEnd", "onTransitionEndCapture"];
+    exports.EventKeys = EventKeys;
     var adaptEventHandlers = function(props, newHandler) {
       if (!props || typeof props == "function" || typeof props == "boolean")
         return null;
@@ -890,6 +1305,187 @@ var require_types = __commonJS({
   }
 });
 
+// node_modules/recharts/lib/util/ReactUtils.js
+var require_ReactUtils = __commonJS({
+  "node_modules/recharts/lib/util/ReactUtils.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: !0
+    });
+    exports.filterSvgElements = exports.filterProps = exports.TOOLTIP_TYPES = exports.SCALE_TYPES = exports.LEGEND_TYPES = void 0;
+    exports.findAllByType = findAllByType;
+    exports.findChildByType = findChildByType;
+    exports.withoutType = exports.validateWidthHeight = exports.toArray = exports.renderByOrder = exports.parseChildIndex = exports.isValidSpreadableProp = exports.isSingleChildEqual = exports.isChildrenEqual = exports.getReactEventByType = exports.getDisplayName = void 0;
+    var _isObject2 = _interopRequireDefault(require("lodash/isObject")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isString2 = _interopRequireDefault(require("lodash/isString")), _get2 = _interopRequireDefault(require("lodash/get")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = require("react"), _reactIs = require("react-is"), _DataUtils = require_DataUtils(), _ShallowEqual = require_ShallowEqual(), _types = require_types(), _excluded = ["children"], _excluded2 = ["children"];
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _objectWithoutProperties2(source, excluded) {
+      if (source == null)
+        return {};
+      var target = _objectWithoutPropertiesLoose2(source, excluded), key, i;
+      if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for (i = 0; i < sourceSymbolKeys.length; i++)
+          key = sourceSymbolKeys[i], !(excluded.indexOf(key) >= 0) && (!Object.prototype.propertyIsEnumerable.call(source, key) || (target[key] = source[key]));
+      }
+      return target;
+    }
+    function _objectWithoutPropertiesLoose2(source, excluded) {
+      if (source == null)
+        return {};
+      var target = {}, sourceKeys = Object.keys(source), key, i;
+      for (i = 0; i < sourceKeys.length; i++)
+        key = sourceKeys[i], !(excluded.indexOf(key) >= 0) && (target[key] = source[key]);
+      return target;
+    }
+    var REACT_BROWSER_EVENT_MAP = {
+      click: "onClick",
+      mousedown: "onMouseDown",
+      mouseup: "onMouseUp",
+      mouseover: "onMouseOver",
+      mousemove: "onMouseMove",
+      mouseout: "onMouseOut",
+      mouseenter: "onMouseEnter",
+      mouseleave: "onMouseLeave",
+      touchcancel: "onTouchCancel",
+      touchend: "onTouchEnd",
+      touchmove: "onTouchMove",
+      touchstart: "onTouchStart"
+    }, SCALE_TYPES = ["auto", "linear", "pow", "sqrt", "log", "identity", "time", "band", "point", "ordinal", "quantile", "quantize", "utc", "sequential", "threshold"];
+    exports.SCALE_TYPES = SCALE_TYPES;
+    var LEGEND_TYPES = ["plainline", "line", "square", "rect", "circle", "cross", "diamond", "star", "triangle", "wye", "none"];
+    exports.LEGEND_TYPES = LEGEND_TYPES;
+    var TOOLTIP_TYPES = ["none"];
+    exports.TOOLTIP_TYPES = TOOLTIP_TYPES;
+    var getDisplayName = function(Comp) {
+      return typeof Comp == "string" ? Comp : Comp ? Comp.displayName || Comp.name || "Component" : "";
+    };
+    exports.getDisplayName = getDisplayName;
+    var lastChildren = null, lastResult = null, toArray = function toArray2(children) {
+      if (children === lastChildren && (0, _isArray2.default)(lastResult))
+        return lastResult;
+      var result = [];
+      return _react.Children.forEach(children, function(child) {
+        (0, _isNil2.default)(child) || ((0, _reactIs.isFragment)(child) ? result = result.concat(toArray2(child.props.children)) : result.push(child));
+      }), lastResult = result, lastChildren = children, result;
+    };
+    exports.toArray = toArray;
+    function findAllByType(children, type) {
+      var result = [], types = [];
+      return (0, _isArray2.default)(type) ? types = type.map(function(t) {
+        return getDisplayName(t);
+      }) : types = [getDisplayName(type)], toArray(children).forEach(function(child) {
+        var childType = (0, _get2.default)(child, "type.displayName") || (0, _get2.default)(child, "type.name");
+        types.indexOf(childType) !== -1 && result.push(child);
+      }), result;
+    }
+    function findChildByType(children, type) {
+      var result = findAllByType(children, type);
+      return result && result[0];
+    }
+    var withoutType = function(children, type) {
+      var newChildren = [], types;
+      return (0, _isArray2.default)(type) ? types = type.map(function(t) {
+        return getDisplayName(t);
+      }) : types = [getDisplayName(type)], toArray(children).forEach(function(child) {
+        var displayName = (0, _get2.default)(child, "type.displayName");
+        displayName && types.indexOf(displayName) !== -1 || newChildren.push(child);
+      }), newChildren;
+    };
+    exports.withoutType = withoutType;
+    var validateWidthHeight = function(el) {
+      if (!el || !el.props)
+        return !1;
+      var _el$props = el.props, width = _el$props.width, height = _el$props.height;
+      return !(!(0, _DataUtils.isNumber)(width) || width <= 0 || !(0, _DataUtils.isNumber)(height) || height <= 0);
+    };
+    exports.validateWidthHeight = validateWidthHeight;
+    var SVG_TAGS = ["a", "altGlyph", "altGlyphDef", "altGlyphItem", "animate", "animateColor", "animateMotion", "animateTransform", "circle", "clipPath", "color-profile", "cursor", "defs", "desc", "ellipse", "feBlend", "feColormatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence", "filter", "font", "font-face", "font-face-format", "font-face-name", "font-face-url", "foreignObject", "g", "glyph", "glyphRef", "hkern", "image", "line", "lineGradient", "marker", "mask", "metadata", "missing-glyph", "mpath", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "script", "set", "stop", "style", "svg", "switch", "symbol", "text", "textPath", "title", "tref", "tspan", "use", "view", "vkern"], isSvgElement = function(child) {
+      return child && child.type && (0, _isString2.default)(child.type) && SVG_TAGS.indexOf(child.type) >= 0;
+    }, isValidSpreadableProp = function(property, key, includeEvents, svgElementType) {
+      var _FilteredElementKeyMa, matchingElementTypeKeys = (_FilteredElementKeyMa = _types.FilteredElementKeyMap === null || _types.FilteredElementKeyMap === void 0 ? void 0 : _types.FilteredElementKeyMap[svgElementType]) !== null && _FilteredElementKeyMa !== void 0 ? _FilteredElementKeyMa : [];
+      return !(0, _isFunction2.default)(property) && (svgElementType && matchingElementTypeKeys.includes(key) || _types.SVGElementPropKeys.includes(key)) || includeEvents && _types.EventKeys.includes(key);
+    };
+    exports.isValidSpreadableProp = isValidSpreadableProp;
+    var filterSvgElements = function(children) {
+      var svgElements = [];
+      return toArray(children).forEach(function(entry2) {
+        isSvgElement(entry2) && svgElements.push(entry2);
+      }), svgElements;
+    };
+    exports.filterSvgElements = filterSvgElements;
+    var filterProps = function(props, includeEvents, svgElementType) {
+      if (!props || typeof props == "function" || typeof props == "boolean")
+        return null;
+      var inputProps = props;
+      if (/* @__PURE__ */ (0, _react.isValidElement)(props) && (inputProps = props.props), !(0, _isObject2.default)(inputProps))
+        return null;
+      var out = {};
+      return Object.keys(inputProps).forEach(function(key) {
+        var _inputProps;
+        isValidSpreadableProp((_inputProps = inputProps) === null || _inputProps === void 0 ? void 0 : _inputProps[key], key, includeEvents, svgElementType) && (out[key] = inputProps[key]);
+      }), out;
+    };
+    exports.filterProps = filterProps;
+    var isChildrenEqual = function isChildrenEqual2(nextChildren, prevChildren) {
+      if (nextChildren === prevChildren)
+        return !0;
+      var count = _react.Children.count(nextChildren);
+      if (count !== _react.Children.count(prevChildren))
+        return !1;
+      if (count === 0)
+        return !0;
+      if (count === 1)
+        return isSingleChildEqual((0, _isArray2.default)(nextChildren) ? nextChildren[0] : nextChildren, (0, _isArray2.default)(prevChildren) ? prevChildren[0] : prevChildren);
+      for (var i = 0; i < count; i++) {
+        var nextChild = nextChildren[i], prevChild = prevChildren[i];
+        if ((0, _isArray2.default)(nextChild) || (0, _isArray2.default)(prevChild)) {
+          if (!isChildrenEqual2(nextChild, prevChild))
+            return !1;
+        } else if (!isSingleChildEqual(nextChild, prevChild))
+          return !1;
+      }
+      return !0;
+    };
+    exports.isChildrenEqual = isChildrenEqual;
+    var isSingleChildEqual = function(nextChild, prevChild) {
+      if ((0, _isNil2.default)(nextChild) && (0, _isNil2.default)(prevChild))
+        return !0;
+      if (!(0, _isNil2.default)(nextChild) && !(0, _isNil2.default)(prevChild)) {
+        var _ref = nextChild.props || {}, nextChildren = _ref.children, nextProps = _objectWithoutProperties2(_ref, _excluded), _ref2 = prevChild.props || {}, prevChildren = _ref2.children, prevProps = _objectWithoutProperties2(_ref2, _excluded2);
+        return nextChildren && prevChildren ? (0, _ShallowEqual.shallowEqual)(nextProps, prevProps) && isChildrenEqual(nextChildren, prevChildren) : !nextChildren && !prevChildren ? (0, _ShallowEqual.shallowEqual)(nextProps, prevProps) : !1;
+      }
+      return !1;
+    };
+    exports.isSingleChildEqual = isSingleChildEqual;
+    var renderByOrder = function(children, renderMap) {
+      var elements = [], record = {};
+      return toArray(children).forEach(function(child, index) {
+        if (isSvgElement(child))
+          elements.push(child);
+        else if (child) {
+          var displayName = getDisplayName(child.type), _ref3 = renderMap[displayName] || {}, handler = _ref3.handler, once = _ref3.once;
+          if (handler && (!once || !record[displayName])) {
+            var results = handler(child, displayName, index);
+            elements.push(results), record[displayName] = !0;
+          }
+        }
+      }), elements;
+    };
+    exports.renderByOrder = renderByOrder;
+    var getReactEventByType = function(e) {
+      var type = e && e.type;
+      return type && REACT_BROWSER_EVENT_MAP[type] ? REACT_BROWSER_EVENT_MAP[type] : null;
+    };
+    exports.getReactEventByType = getReactEventByType;
+    var parseChildIndex = function(child, children) {
+      return toArray(children).indexOf(child);
+    };
+    exports.parseChildIndex = parseChildIndex;
+  }
+});
+
 // node_modules/recharts/lib/container/Surface.js
 var require_Surface = __commonJS({
   "node_modules/recharts/lib/container/Surface.js"(exports) {
@@ -898,12 +1494,12 @@ var require_Surface = __commonJS({
       value: !0
     });
     exports.Surface = Surface;
-    var _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _types = require_types();
+    var _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _ReactUtils = require_ReactUtils(), _excluded = ["children", "width", "height", "viewBox", "className", "style"];
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -932,19 +1528,18 @@ var require_Surface = __commonJS({
       return target;
     }
     function Surface(props) {
-      var children = props.children, width = props.width, height = props.height, viewBox = props.viewBox, className = props.className, style = props.style, others = _objectWithoutProperties2(props, ["children", "width", "height", "viewBox", "className", "style"]), svgView = viewBox || {
+      var children = props.children, width = props.width, height = props.height, viewBox = props.viewBox, className = props.className, style = props.style, others = _objectWithoutProperties2(props, _excluded), svgView = viewBox || {
         width,
         height,
         x: 0,
         y: 0
       }, layerClass = (0, _classnames.default)("recharts-surface", className);
-      return /* @__PURE__ */ _react.default.createElement("svg", _extends({}, (0, _types.filterProps)(others, !0, !0), {
+      return /* @__PURE__ */ _react.default.createElement("svg", _extends({}, (0, _ReactUtils.filterProps)(others, !0, "svg"), {
         className: layerClass,
         width,
         height,
         style,
-        viewBox: "".concat(svgView.x, " ").concat(svgView.y, " ").concat(svgView.width, " ").concat(svgView.height),
-        version: "1.1"
+        viewBox: "".concat(svgView.x, " ").concat(svgView.y, " ").concat(svgView.width, " ").concat(svgView.height)
       }), /* @__PURE__ */ _react.default.createElement("title", null, props.title), /* @__PURE__ */ _react.default.createElement("desc", null, props.desc), children);
     }
   }
@@ -958,12 +1553,12 @@ var require_Layer = __commonJS({
       value: !0
     });
     exports.Layer = void 0;
-    var _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _types = require_types();
+    var _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _ReactUtils = require_ReactUtils(), _excluded = ["children", "className"];
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -992,10 +1587,10 @@ var require_Layer = __commonJS({
       return target;
     }
     var Layer = /* @__PURE__ */ _react.default.forwardRef(function(props, ref) {
-      var children = props.children, className = props.className, others = _objectWithoutProperties2(props, ["children", "className"]), layerClass = (0, _classnames.default)("recharts-layer", className);
+      var children = props.children, className = props.className, others = _objectWithoutProperties2(props, _excluded), layerClass = (0, _classnames.default)("recharts-layer", className);
       return /* @__PURE__ */ _react.default.createElement("g", _extends({
         className: layerClass
-      }, (0, _types.filterProps)(others, !0), {
+      }, (0, _ReactUtils.filterProps)(others, !0), {
         ref
       }), children);
     });
@@ -1003,1302 +1598,34 @@ var require_Layer = __commonJS({
   }
 });
 
-// node_modules/d3-shape/dist/d3-shape.js
-var require_d3_shape = __commonJS({
-  "node_modules/d3-shape/dist/d3-shape.js"(exports, module2) {
-    (function(global2, factory) {
-      typeof exports == "object" && typeof module2 < "u" ? factory(exports, require("d3-path")) : typeof define == "function" && define.amd ? define(["exports", "d3-path"], factory) : (global2 = typeof globalThis < "u" ? globalThis : global2 || self, factory(global2.d3 = global2.d3 || {}, global2.d3));
-    })(exports, function(exports2, d3Path) {
-      "use strict";
-      function constant(x2) {
-        return function() {
-          return x2;
-        };
-      }
-      var abs = Math.abs, atan2 = Math.atan2, cos = Math.cos, max = Math.max, min = Math.min, sin = Math.sin, sqrt = Math.sqrt, epsilon = 1e-12, pi = Math.PI, halfPi = pi / 2, tau = 2 * pi;
-      function acos(x2) {
-        return x2 > 1 ? 0 : x2 < -1 ? pi : Math.acos(x2);
-      }
-      function asin(x2) {
-        return x2 >= 1 ? halfPi : x2 <= -1 ? -halfPi : Math.asin(x2);
-      }
-      function arcInnerRadius(d) {
-        return d.innerRadius;
-      }
-      function arcOuterRadius(d) {
-        return d.outerRadius;
-      }
-      function arcStartAngle(d) {
-        return d.startAngle;
-      }
-      function arcEndAngle(d) {
-        return d.endAngle;
-      }
-      function arcPadAngle(d) {
-        return d && d.padAngle;
-      }
-      function intersect(x0, y0, x1, y1, x2, y2, x3, y3) {
-        var x10 = x1 - x0, y10 = y1 - y0, x32 = x3 - x2, y32 = y3 - y2, t = y32 * x10 - x32 * y10;
-        if (!(t * t < epsilon))
-          return t = (x32 * (y0 - y2) - y32 * (x0 - x2)) / t, [x0 + t * x10, y0 + t * y10];
-      }
-      function cornerTangents(x0, y0, x1, y1, r1, rc, cw) {
-        var x01 = x0 - x1, y01 = y0 - y1, lo = (cw ? rc : -rc) / sqrt(x01 * x01 + y01 * y01), ox = lo * y01, oy = -lo * x01, x11 = x0 + ox, y11 = y0 + oy, x10 = x1 + ox, y10 = y1 + oy, x00 = (x11 + x10) / 2, y00 = (y11 + y10) / 2, dx = x10 - x11, dy = y10 - y11, d2 = dx * dx + dy * dy, r = r1 - rc, D = x11 * y10 - x10 * y11, d = (dy < 0 ? -1 : 1) * sqrt(max(0, r * r * d2 - D * D)), cx0 = (D * dy - dx * d) / d2, cy0 = (-D * dx - dy * d) / d2, cx1 = (D * dy + dx * d) / d2, cy1 = (-D * dx + dy * d) / d2, dx0 = cx0 - x00, dy0 = cy0 - y00, dx1 = cx1 - x00, dy1 = cy1 - y00;
-        return dx0 * dx0 + dy0 * dy0 > dx1 * dx1 + dy1 * dy1 && (cx0 = cx1, cy0 = cy1), {
-          cx: cx0,
-          cy: cy0,
-          x01: -ox,
-          y01: -oy,
-          x11: cx0 * (r1 / r - 1),
-          y11: cy0 * (r1 / r - 1)
-        };
-      }
-      function arc() {
-        var innerRadius = arcInnerRadius, outerRadius = arcOuterRadius, cornerRadius = constant(0), padRadius = null, startAngle = arcStartAngle, endAngle = arcEndAngle, padAngle = arcPadAngle, context = null;
-        function arc2() {
-          var buffer, r, r0 = +innerRadius.apply(this, arguments), r1 = +outerRadius.apply(this, arguments), a0 = startAngle.apply(this, arguments) - halfPi, a1 = endAngle.apply(this, arguments) - halfPi, da = abs(a1 - a0), cw = a1 > a0;
-          if (context || (context = buffer = d3Path.path()), r1 < r0 && (r = r1, r1 = r0, r0 = r), !(r1 > epsilon))
-            context.moveTo(0, 0);
-          else if (da > tau - epsilon)
-            context.moveTo(r1 * cos(a0), r1 * sin(a0)), context.arc(0, 0, r1, a0, a1, !cw), r0 > epsilon && (context.moveTo(r0 * cos(a1), r0 * sin(a1)), context.arc(0, 0, r0, a1, a0, cw));
-          else {
-            var a01 = a0, a11 = a1, a00 = a0, a10 = a1, da0 = da, da1 = da, ap = padAngle.apply(this, arguments) / 2, rp = ap > epsilon && (padRadius ? +padRadius.apply(this, arguments) : sqrt(r0 * r0 + r1 * r1)), rc = min(abs(r1 - r0) / 2, +cornerRadius.apply(this, arguments)), rc0 = rc, rc1 = rc, t0, t1;
-            if (rp > epsilon) {
-              var p0 = asin(rp / r0 * sin(ap)), p1 = asin(rp / r1 * sin(ap));
-              (da0 -= p0 * 2) > epsilon ? (p0 *= cw ? 1 : -1, a00 += p0, a10 -= p0) : (da0 = 0, a00 = a10 = (a0 + a1) / 2), (da1 -= p1 * 2) > epsilon ? (p1 *= cw ? 1 : -1, a01 += p1, a11 -= p1) : (da1 = 0, a01 = a11 = (a0 + a1) / 2);
-            }
-            var x01 = r1 * cos(a01), y01 = r1 * sin(a01), x10 = r0 * cos(a10), y10 = r0 * sin(a10);
-            if (rc > epsilon) {
-              var x11 = r1 * cos(a11), y11 = r1 * sin(a11), x00 = r0 * cos(a00), y00 = r0 * sin(a00), oc;
-              if (da < pi && (oc = intersect(x01, y01, x00, y00, x11, y11, x10, y10))) {
-                var ax = x01 - oc[0], ay = y01 - oc[1], bx = x11 - oc[0], by = y11 - oc[1], kc = 1 / sin(acos((ax * bx + ay * by) / (sqrt(ax * ax + ay * ay) * sqrt(bx * bx + by * by))) / 2), lc = sqrt(oc[0] * oc[0] + oc[1] * oc[1]);
-                rc0 = min(rc, (r0 - lc) / (kc - 1)), rc1 = min(rc, (r1 - lc) / (kc + 1));
-              }
-            }
-            da1 > epsilon ? rc1 > epsilon ? (t0 = cornerTangents(x00, y00, x01, y01, r1, rc1, cw), t1 = cornerTangents(x11, y11, x10, y10, r1, rc1, cw), context.moveTo(t0.cx + t0.x01, t0.cy + t0.y01), rc1 < rc ? context.arc(t0.cx, t0.cy, rc1, atan2(t0.y01, t0.x01), atan2(t1.y01, t1.x01), !cw) : (context.arc(t0.cx, t0.cy, rc1, atan2(t0.y01, t0.x01), atan2(t0.y11, t0.x11), !cw), context.arc(0, 0, r1, atan2(t0.cy + t0.y11, t0.cx + t0.x11), atan2(t1.cy + t1.y11, t1.cx + t1.x11), !cw), context.arc(t1.cx, t1.cy, rc1, atan2(t1.y11, t1.x11), atan2(t1.y01, t1.x01), !cw))) : (context.moveTo(x01, y01), context.arc(0, 0, r1, a01, a11, !cw)) : context.moveTo(x01, y01), !(r0 > epsilon) || !(da0 > epsilon) ? context.lineTo(x10, y10) : rc0 > epsilon ? (t0 = cornerTangents(x10, y10, x11, y11, r0, -rc0, cw), t1 = cornerTangents(x01, y01, x00, y00, r0, -rc0, cw), context.lineTo(t0.cx + t0.x01, t0.cy + t0.y01), rc0 < rc ? context.arc(t0.cx, t0.cy, rc0, atan2(t0.y01, t0.x01), atan2(t1.y01, t1.x01), !cw) : (context.arc(t0.cx, t0.cy, rc0, atan2(t0.y01, t0.x01), atan2(t0.y11, t0.x11), !cw), context.arc(0, 0, r0, atan2(t0.cy + t0.y11, t0.cx + t0.x11), atan2(t1.cy + t1.y11, t1.cx + t1.x11), cw), context.arc(t1.cx, t1.cy, rc0, atan2(t1.y11, t1.x11), atan2(t1.y01, t1.x01), !cw))) : context.arc(0, 0, r0, a10, a00, cw);
-          }
-          if (context.closePath(), buffer)
-            return context = null, buffer + "" || null;
-        }
-        return arc2.centroid = function() {
-          var r = (+innerRadius.apply(this, arguments) + +outerRadius.apply(this, arguments)) / 2, a2 = (+startAngle.apply(this, arguments) + +endAngle.apply(this, arguments)) / 2 - pi / 2;
-          return [cos(a2) * r, sin(a2) * r];
-        }, arc2.innerRadius = function(_6) {
-          return arguments.length ? (innerRadius = typeof _6 == "function" ? _6 : constant(+_6), arc2) : innerRadius;
-        }, arc2.outerRadius = function(_6) {
-          return arguments.length ? (outerRadius = typeof _6 == "function" ? _6 : constant(+_6), arc2) : outerRadius;
-        }, arc2.cornerRadius = function(_6) {
-          return arguments.length ? (cornerRadius = typeof _6 == "function" ? _6 : constant(+_6), arc2) : cornerRadius;
-        }, arc2.padRadius = function(_6) {
-          return arguments.length ? (padRadius = _6 == null ? null : typeof _6 == "function" ? _6 : constant(+_6), arc2) : padRadius;
-        }, arc2.startAngle = function(_6) {
-          return arguments.length ? (startAngle = typeof _6 == "function" ? _6 : constant(+_6), arc2) : startAngle;
-        }, arc2.endAngle = function(_6) {
-          return arguments.length ? (endAngle = typeof _6 == "function" ? _6 : constant(+_6), arc2) : endAngle;
-        }, arc2.padAngle = function(_6) {
-          return arguments.length ? (padAngle = typeof _6 == "function" ? _6 : constant(+_6), arc2) : padAngle;
-        }, arc2.context = function(_6) {
-          return arguments.length ? (context = _6 ?? null, arc2) : context;
-        }, arc2;
-      }
-      var slice = Array.prototype.slice;
-      function array(x2) {
-        return typeof x2 == "object" && "length" in x2 ? x2 : Array.from(x2);
-      }
-      function Linear(context) {
-        this._context = context;
-      }
-      Linear.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._point = 0;
-        },
-        lineEnd: function() {
-          (this._line || this._line !== 0 && this._point === 1) && this._context.closePath(), this._line = 1 - this._line;
-        },
-        point: function(x2, y2) {
-          switch (x2 = +x2, y2 = +y2, this._point) {
-            case 0:
-              this._point = 1, this._line ? this._context.lineTo(x2, y2) : this._context.moveTo(x2, y2);
-              break;
-            case 1:
-              this._point = 2;
-            default:
-              this._context.lineTo(x2, y2);
-              break;
-          }
-        }
-      };
-      function curveLinear(context) {
-        return new Linear(context);
-      }
-      function x(p) {
-        return p[0];
-      }
-      function y(p) {
-        return p[1];
-      }
-      function line(x$1, y$1) {
-        var defined = constant(!0), context = null, curve = curveLinear, output = null;
-        x$1 = typeof x$1 == "function" ? x$1 : x$1 === void 0 ? x : constant(x$1), y$1 = typeof y$1 == "function" ? y$1 : y$1 === void 0 ? y : constant(y$1);
-        function line2(data) {
-          var i, n = (data = array(data)).length, d, defined0 = !1, buffer;
-          for (context == null && (output = curve(buffer = d3Path.path())), i = 0; i <= n; ++i)
-            !(i < n && defined(d = data[i], i, data)) === defined0 && ((defined0 = !defined0) ? output.lineStart() : output.lineEnd()), defined0 && output.point(+x$1(d, i, data), +y$1(d, i, data));
-          if (buffer)
-            return output = null, buffer + "" || null;
-        }
-        return line2.x = function(_6) {
-          return arguments.length ? (x$1 = typeof _6 == "function" ? _6 : constant(+_6), line2) : x$1;
-        }, line2.y = function(_6) {
-          return arguments.length ? (y$1 = typeof _6 == "function" ? _6 : constant(+_6), line2) : y$1;
-        }, line2.defined = function(_6) {
-          return arguments.length ? (defined = typeof _6 == "function" ? _6 : constant(!!_6), line2) : defined;
-        }, line2.curve = function(_6) {
-          return arguments.length ? (curve = _6, context != null && (output = curve(context)), line2) : curve;
-        }, line2.context = function(_6) {
-          return arguments.length ? (_6 == null ? context = output = null : output = curve(context = _6), line2) : context;
-        }, line2;
-      }
-      function area(x0, y0, y1) {
-        var x1 = null, defined = constant(!0), context = null, curve = curveLinear, output = null;
-        x0 = typeof x0 == "function" ? x0 : x0 === void 0 ? x : constant(+x0), y0 = typeof y0 == "function" ? y0 : constant(y0 === void 0 ? 0 : +y0), y1 = typeof y1 == "function" ? y1 : y1 === void 0 ? y : constant(+y1);
-        function area2(data) {
-          var i, j, k2, n = (data = array(data)).length, d, defined0 = !1, buffer, x0z = new Array(n), y0z = new Array(n);
-          for (context == null && (output = curve(buffer = d3Path.path())), i = 0; i <= n; ++i) {
-            if (!(i < n && defined(d = data[i], i, data)) === defined0)
-              if (defined0 = !defined0)
-                j = i, output.areaStart(), output.lineStart();
-              else {
-                for (output.lineEnd(), output.lineStart(), k2 = i - 1; k2 >= j; --k2)
-                  output.point(x0z[k2], y0z[k2]);
-                output.lineEnd(), output.areaEnd();
-              }
-            defined0 && (x0z[i] = +x0(d, i, data), y0z[i] = +y0(d, i, data), output.point(x1 ? +x1(d, i, data) : x0z[i], y1 ? +y1(d, i, data) : y0z[i]));
-          }
-          if (buffer)
-            return output = null, buffer + "" || null;
-        }
-        function arealine() {
-          return line().defined(defined).curve(curve).context(context);
-        }
-        return area2.x = function(_6) {
-          return arguments.length ? (x0 = typeof _6 == "function" ? _6 : constant(+_6), x1 = null, area2) : x0;
-        }, area2.x0 = function(_6) {
-          return arguments.length ? (x0 = typeof _6 == "function" ? _6 : constant(+_6), area2) : x0;
-        }, area2.x1 = function(_6) {
-          return arguments.length ? (x1 = _6 == null ? null : typeof _6 == "function" ? _6 : constant(+_6), area2) : x1;
-        }, area2.y = function(_6) {
-          return arguments.length ? (y0 = typeof _6 == "function" ? _6 : constant(+_6), y1 = null, area2) : y0;
-        }, area2.y0 = function(_6) {
-          return arguments.length ? (y0 = typeof _6 == "function" ? _6 : constant(+_6), area2) : y0;
-        }, area2.y1 = function(_6) {
-          return arguments.length ? (y1 = _6 == null ? null : typeof _6 == "function" ? _6 : constant(+_6), area2) : y1;
-        }, area2.lineX0 = area2.lineY0 = function() {
-          return arealine().x(x0).y(y0);
-        }, area2.lineY1 = function() {
-          return arealine().x(x0).y(y1);
-        }, area2.lineX1 = function() {
-          return arealine().x(x1).y(y0);
-        }, area2.defined = function(_6) {
-          return arguments.length ? (defined = typeof _6 == "function" ? _6 : constant(!!_6), area2) : defined;
-        }, area2.curve = function(_6) {
-          return arguments.length ? (curve = _6, context != null && (output = curve(context)), area2) : curve;
-        }, area2.context = function(_6) {
-          return arguments.length ? (_6 == null ? context = output = null : output = curve(context = _6), area2) : context;
-        }, area2;
-      }
-      function descending$1(a2, b) {
-        return b < a2 ? -1 : b > a2 ? 1 : b >= a2 ? 0 : NaN;
-      }
-      function identity(d) {
-        return d;
-      }
-      function pie() {
-        var value = identity, sortValues = descending$1, sort = null, startAngle = constant(0), endAngle = constant(tau), padAngle = constant(0);
-        function pie2(data) {
-          var i, n = (data = array(data)).length, j, k2, sum2 = 0, index = new Array(n), arcs = new Array(n), a0 = +startAngle.apply(this, arguments), da = Math.min(tau, Math.max(-tau, endAngle.apply(this, arguments) - a0)), a1, p = Math.min(Math.abs(da) / n, padAngle.apply(this, arguments)), pa = p * (da < 0 ? -1 : 1), v;
-          for (i = 0; i < n; ++i)
-            (v = arcs[index[i] = i] = +value(data[i], i, data)) > 0 && (sum2 += v);
-          for (sortValues != null ? index.sort(function(i2, j2) {
-            return sortValues(arcs[i2], arcs[j2]);
-          }) : sort != null && index.sort(function(i2, j2) {
-            return sort(data[i2], data[j2]);
-          }), i = 0, k2 = sum2 ? (da - n * pa) / sum2 : 0; i < n; ++i, a0 = a1)
-            j = index[i], v = arcs[j], a1 = a0 + (v > 0 ? v * k2 : 0) + pa, arcs[j] = {
-              data: data[j],
-              index: i,
-              value: v,
-              startAngle: a0,
-              endAngle: a1,
-              padAngle: p
-            };
-          return arcs;
-        }
-        return pie2.value = function(_6) {
-          return arguments.length ? (value = typeof _6 == "function" ? _6 : constant(+_6), pie2) : value;
-        }, pie2.sortValues = function(_6) {
-          return arguments.length ? (sortValues = _6, sort = null, pie2) : sortValues;
-        }, pie2.sort = function(_6) {
-          return arguments.length ? (sort = _6, sortValues = null, pie2) : sort;
-        }, pie2.startAngle = function(_6) {
-          return arguments.length ? (startAngle = typeof _6 == "function" ? _6 : constant(+_6), pie2) : startAngle;
-        }, pie2.endAngle = function(_6) {
-          return arguments.length ? (endAngle = typeof _6 == "function" ? _6 : constant(+_6), pie2) : endAngle;
-        }, pie2.padAngle = function(_6) {
-          return arguments.length ? (padAngle = typeof _6 == "function" ? _6 : constant(+_6), pie2) : padAngle;
-        }, pie2;
-      }
-      var curveRadialLinear = curveRadial$1(curveLinear);
-      function Radial(curve) {
-        this._curve = curve;
-      }
-      Radial.prototype = {
-        areaStart: function() {
-          this._curve.areaStart();
-        },
-        areaEnd: function() {
-          this._curve.areaEnd();
-        },
-        lineStart: function() {
-          this._curve.lineStart();
-        },
-        lineEnd: function() {
-          this._curve.lineEnd();
-        },
-        point: function(a2, r) {
-          this._curve.point(r * Math.sin(a2), r * -Math.cos(a2));
-        }
-      };
-      function curveRadial$1(curve) {
-        function radial(context) {
-          return new Radial(curve(context));
-        }
-        return radial._curve = curve, radial;
-      }
-      function lineRadial(l) {
-        var c2 = l.curve;
-        return l.angle = l.x, delete l.x, l.radius = l.y, delete l.y, l.curve = function(_6) {
-          return arguments.length ? c2(curveRadial$1(_6)) : c2()._curve;
-        }, l;
-      }
-      function lineRadial$1() {
-        return lineRadial(line().curve(curveRadialLinear));
-      }
-      function areaRadial() {
-        var a2 = area().curve(curveRadialLinear), c2 = a2.curve, x0 = a2.lineX0, x1 = a2.lineX1, y0 = a2.lineY0, y1 = a2.lineY1;
-        return a2.angle = a2.x, delete a2.x, a2.startAngle = a2.x0, delete a2.x0, a2.endAngle = a2.x1, delete a2.x1, a2.radius = a2.y, delete a2.y, a2.innerRadius = a2.y0, delete a2.y0, a2.outerRadius = a2.y1, delete a2.y1, a2.lineStartAngle = function() {
-          return lineRadial(x0());
-        }, delete a2.lineX0, a2.lineEndAngle = function() {
-          return lineRadial(x1());
-        }, delete a2.lineX1, a2.lineInnerRadius = function() {
-          return lineRadial(y0());
-        }, delete a2.lineY0, a2.lineOuterRadius = function() {
-          return lineRadial(y1());
-        }, delete a2.lineY1, a2.curve = function(_6) {
-          return arguments.length ? c2(curveRadial$1(_6)) : c2()._curve;
-        }, a2;
-      }
-      function pointRadial(x2, y2) {
-        return [(y2 = +y2) * Math.cos(x2 -= Math.PI / 2), y2 * Math.sin(x2)];
-      }
-      function linkSource(d) {
-        return d.source;
-      }
-      function linkTarget(d) {
-        return d.target;
-      }
-      function link(curve) {
-        var source = linkSource, target = linkTarget, x$1 = x, y$1 = y, context = null;
-        function link2() {
-          var buffer, argv = slice.call(arguments), s2 = source.apply(this, argv), t = target.apply(this, argv);
-          if (context || (context = buffer = d3Path.path()), curve(context, +x$1.apply(this, (argv[0] = s2, argv)), +y$1.apply(this, argv), +x$1.apply(this, (argv[0] = t, argv)), +y$1.apply(this, argv)), buffer)
-            return context = null, buffer + "" || null;
-        }
-        return link2.source = function(_6) {
-          return arguments.length ? (source = _6, link2) : source;
-        }, link2.target = function(_6) {
-          return arguments.length ? (target = _6, link2) : target;
-        }, link2.x = function(_6) {
-          return arguments.length ? (x$1 = typeof _6 == "function" ? _6 : constant(+_6), link2) : x$1;
-        }, link2.y = function(_6) {
-          return arguments.length ? (y$1 = typeof _6 == "function" ? _6 : constant(+_6), link2) : y$1;
-        }, link2.context = function(_6) {
-          return arguments.length ? (context = _6 ?? null, link2) : context;
-        }, link2;
-      }
-      function curveHorizontal(context, x0, y0, x1, y1) {
-        context.moveTo(x0, y0), context.bezierCurveTo(x0 = (x0 + x1) / 2, y0, x0, y1, x1, y1);
-      }
-      function curveVertical(context, x0, y0, x1, y1) {
-        context.moveTo(x0, y0), context.bezierCurveTo(x0, y0 = (y0 + y1) / 2, x1, y0, x1, y1);
-      }
-      function curveRadial(context, x0, y0, x1, y1) {
-        var p0 = pointRadial(x0, y0), p1 = pointRadial(x0, y0 = (y0 + y1) / 2), p2 = pointRadial(x1, y0), p3 = pointRadial(x1, y1);
-        context.moveTo(p0[0], p0[1]), context.bezierCurveTo(p1[0], p1[1], p2[0], p2[1], p3[0], p3[1]);
-      }
-      function linkHorizontal() {
-        return link(curveHorizontal);
-      }
-      function linkVertical() {
-        return link(curveVertical);
-      }
-      function linkRadial() {
-        var l = link(curveRadial);
-        return l.angle = l.x, delete l.x, l.radius = l.y, delete l.y, l;
-      }
-      var circle = {
-        draw: function(context, size) {
-          var r = Math.sqrt(size / pi);
-          context.moveTo(r, 0), context.arc(0, 0, r, 0, tau);
-        }
-      }, cross = {
-        draw: function(context, size) {
-          var r = Math.sqrt(size / 5) / 2;
-          context.moveTo(-3 * r, -r), context.lineTo(-r, -r), context.lineTo(-r, -3 * r), context.lineTo(r, -3 * r), context.lineTo(r, -r), context.lineTo(3 * r, -r), context.lineTo(3 * r, r), context.lineTo(r, r), context.lineTo(r, 3 * r), context.lineTo(-r, 3 * r), context.lineTo(-r, r), context.lineTo(-3 * r, r), context.closePath();
-        }
-      }, tan30 = Math.sqrt(1 / 3), tan30_2 = tan30 * 2, diamond = {
-        draw: function(context, size) {
-          var y2 = Math.sqrt(size / tan30_2), x2 = y2 * tan30;
-          context.moveTo(0, -y2), context.lineTo(x2, 0), context.lineTo(0, y2), context.lineTo(-x2, 0), context.closePath();
-        }
-      }, ka = 0.8908130915292852, kr = Math.sin(pi / 10) / Math.sin(7 * pi / 10), kx = Math.sin(tau / 10) * kr, ky = -Math.cos(tau / 10) * kr, star = {
-        draw: function(context, size) {
-          var r = Math.sqrt(size * ka), x2 = kx * r, y2 = ky * r;
-          context.moveTo(0, -r), context.lineTo(x2, y2);
-          for (var i = 1; i < 5; ++i) {
-            var a2 = tau * i / 5, c2 = Math.cos(a2), s2 = Math.sin(a2);
-            context.lineTo(s2 * r, -c2 * r), context.lineTo(c2 * x2 - s2 * y2, s2 * x2 + c2 * y2);
-          }
-          context.closePath();
-        }
-      }, square = {
-        draw: function(context, size) {
-          var w = Math.sqrt(size), x2 = -w / 2;
-          context.rect(x2, x2, w, w);
-        }
-      }, sqrt3 = Math.sqrt(3), triangle = {
-        draw: function(context, size) {
-          var y2 = -Math.sqrt(size / (sqrt3 * 3));
-          context.moveTo(0, y2 * 2), context.lineTo(-sqrt3 * y2, -y2), context.lineTo(sqrt3 * y2, -y2), context.closePath();
-        }
-      }, c = -0.5, s = Math.sqrt(3) / 2, k = 1 / Math.sqrt(12), a = (k / 2 + 1) * 3, wye = {
-        draw: function(context, size) {
-          var r = Math.sqrt(size / a), x0 = r / 2, y0 = r * k, x1 = x0, y1 = r * k + r, x2 = -x1, y2 = y1;
-          context.moveTo(x0, y0), context.lineTo(x1, y1), context.lineTo(x2, y2), context.lineTo(c * x0 - s * y0, s * x0 + c * y0), context.lineTo(c * x1 - s * y1, s * x1 + c * y1), context.lineTo(c * x2 - s * y2, s * x2 + c * y2), context.lineTo(c * x0 + s * y0, c * y0 - s * x0), context.lineTo(c * x1 + s * y1, c * y1 - s * x1), context.lineTo(c * x2 + s * y2, c * y2 - s * x2), context.closePath();
-        }
-      }, symbols = [
-        circle,
-        cross,
-        diamond,
-        square,
-        star,
-        triangle,
-        wye
-      ];
-      function symbol(type, size) {
-        var context = null;
-        type = typeof type == "function" ? type : constant(type || circle), size = typeof size == "function" ? size : constant(size === void 0 ? 64 : +size);
-        function symbol2() {
-          var buffer;
-          if (context || (context = buffer = d3Path.path()), type.apply(this, arguments).draw(context, +size.apply(this, arguments)), buffer)
-            return context = null, buffer + "" || null;
-        }
-        return symbol2.type = function(_6) {
-          return arguments.length ? (type = typeof _6 == "function" ? _6 : constant(_6), symbol2) : type;
-        }, symbol2.size = function(_6) {
-          return arguments.length ? (size = typeof _6 == "function" ? _6 : constant(+_6), symbol2) : size;
-        }, symbol2.context = function(_6) {
-          return arguments.length ? (context = _6 ?? null, symbol2) : context;
-        }, symbol2;
-      }
-      function noop() {
-      }
-      function point$3(that, x2, y2) {
-        that._context.bezierCurveTo(
-          (2 * that._x0 + that._x1) / 3,
-          (2 * that._y0 + that._y1) / 3,
-          (that._x0 + 2 * that._x1) / 3,
-          (that._y0 + 2 * that._y1) / 3,
-          (that._x0 + 4 * that._x1 + x2) / 6,
-          (that._y0 + 4 * that._y1 + y2) / 6
-        );
-      }
-      function Basis(context) {
-        this._context = context;
-      }
-      Basis.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._x0 = this._x1 = this._y0 = this._y1 = NaN, this._point = 0;
-        },
-        lineEnd: function() {
-          switch (this._point) {
-            case 3:
-              point$3(this, this._x1, this._y1);
-            case 2:
-              this._context.lineTo(this._x1, this._y1);
-              break;
-          }
-          (this._line || this._line !== 0 && this._point === 1) && this._context.closePath(), this._line = 1 - this._line;
-        },
-        point: function(x2, y2) {
-          switch (x2 = +x2, y2 = +y2, this._point) {
-            case 0:
-              this._point = 1, this._line ? this._context.lineTo(x2, y2) : this._context.moveTo(x2, y2);
-              break;
-            case 1:
-              this._point = 2;
-              break;
-            case 2:
-              this._point = 3, this._context.lineTo((5 * this._x0 + this._x1) / 6, (5 * this._y0 + this._y1) / 6);
-            default:
-              point$3(this, x2, y2);
-              break;
-          }
-          this._x0 = this._x1, this._x1 = x2, this._y0 = this._y1, this._y1 = y2;
-        }
-      };
-      function basis(context) {
-        return new Basis(context);
-      }
-      function BasisClosed(context) {
-        this._context = context;
-      }
-      BasisClosed.prototype = {
-        areaStart: noop,
-        areaEnd: noop,
-        lineStart: function() {
-          this._x0 = this._x1 = this._x2 = this._x3 = this._x4 = this._y0 = this._y1 = this._y2 = this._y3 = this._y4 = NaN, this._point = 0;
-        },
-        lineEnd: function() {
-          switch (this._point) {
-            case 1: {
-              this._context.moveTo(this._x2, this._y2), this._context.closePath();
-              break;
-            }
-            case 2: {
-              this._context.moveTo((this._x2 + 2 * this._x3) / 3, (this._y2 + 2 * this._y3) / 3), this._context.lineTo((this._x3 + 2 * this._x2) / 3, (this._y3 + 2 * this._y2) / 3), this._context.closePath();
-              break;
-            }
-            case 3: {
-              this.point(this._x2, this._y2), this.point(this._x3, this._y3), this.point(this._x4, this._y4);
-              break;
-            }
-          }
-        },
-        point: function(x2, y2) {
-          switch (x2 = +x2, y2 = +y2, this._point) {
-            case 0:
-              this._point = 1, this._x2 = x2, this._y2 = y2;
-              break;
-            case 1:
-              this._point = 2, this._x3 = x2, this._y3 = y2;
-              break;
-            case 2:
-              this._point = 3, this._x4 = x2, this._y4 = y2, this._context.moveTo((this._x0 + 4 * this._x1 + x2) / 6, (this._y0 + 4 * this._y1 + y2) / 6);
-              break;
-            default:
-              point$3(this, x2, y2);
-              break;
-          }
-          this._x0 = this._x1, this._x1 = x2, this._y0 = this._y1, this._y1 = y2;
-        }
-      };
-      function basisClosed(context) {
-        return new BasisClosed(context);
-      }
-      function BasisOpen(context) {
-        this._context = context;
-      }
-      BasisOpen.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._x0 = this._x1 = this._y0 = this._y1 = NaN, this._point = 0;
-        },
-        lineEnd: function() {
-          (this._line || this._line !== 0 && this._point === 3) && this._context.closePath(), this._line = 1 - this._line;
-        },
-        point: function(x2, y2) {
-          switch (x2 = +x2, y2 = +y2, this._point) {
-            case 0:
-              this._point = 1;
-              break;
-            case 1:
-              this._point = 2;
-              break;
-            case 2:
-              this._point = 3;
-              var x0 = (this._x0 + 4 * this._x1 + x2) / 6, y0 = (this._y0 + 4 * this._y1 + y2) / 6;
-              this._line ? this._context.lineTo(x0, y0) : this._context.moveTo(x0, y0);
-              break;
-            case 3:
-              this._point = 4;
-            default:
-              point$3(this, x2, y2);
-              break;
-          }
-          this._x0 = this._x1, this._x1 = x2, this._y0 = this._y1, this._y1 = y2;
-        }
-      };
-      function basisOpen(context) {
-        return new BasisOpen(context);
-      }
-      class Bump {
-        constructor(context, x2) {
-          this._context = context, this._x = x2;
-        }
-        areaStart() {
-          this._line = 0;
-        }
-        areaEnd() {
-          this._line = NaN;
-        }
-        lineStart() {
-          this._point = 0;
-        }
-        lineEnd() {
-          (this._line || this._line !== 0 && this._point === 1) && this._context.closePath(), this._line = 1 - this._line;
-        }
-        point(x2, y2) {
-          switch (x2 = +x2, y2 = +y2, this._point) {
-            case 0: {
-              this._point = 1, this._line ? this._context.lineTo(x2, y2) : this._context.moveTo(x2, y2);
-              break;
-            }
-            case 1:
-              this._point = 2;
-            default: {
-              this._x ? this._context.bezierCurveTo(this._x0 = (this._x0 + x2) / 2, this._y0, this._x0, y2, x2, y2) : this._context.bezierCurveTo(this._x0, this._y0 = (this._y0 + y2) / 2, x2, this._y0, x2, y2);
-              break;
-            }
-          }
-          this._x0 = x2, this._y0 = y2;
-        }
-      }
-      function bumpX(context) {
-        return new Bump(context, !0);
-      }
-      function bumpY(context) {
-        return new Bump(context, !1);
-      }
-      function Bundle(context, beta) {
-        this._basis = new Basis(context), this._beta = beta;
-      }
-      Bundle.prototype = {
-        lineStart: function() {
-          this._x = [], this._y = [], this._basis.lineStart();
-        },
-        lineEnd: function() {
-          var x2 = this._x, y2 = this._y, j = x2.length - 1;
-          if (j > 0)
-            for (var x0 = x2[0], y0 = y2[0], dx = x2[j] - x0, dy = y2[j] - y0, i = -1, t; ++i <= j; )
-              t = i / j, this._basis.point(
-                this._beta * x2[i] + (1 - this._beta) * (x0 + t * dx),
-                this._beta * y2[i] + (1 - this._beta) * (y0 + t * dy)
-              );
-          this._x = this._y = null, this._basis.lineEnd();
-        },
-        point: function(x2, y2) {
-          this._x.push(+x2), this._y.push(+y2);
-        }
-      };
-      var bundle = function custom(beta) {
-        function bundle2(context) {
-          return beta === 1 ? new Basis(context) : new Bundle(context, beta);
-        }
-        return bundle2.beta = function(beta2) {
-          return custom(+beta2);
-        }, bundle2;
-      }(0.85);
-      function point$2(that, x2, y2) {
-        that._context.bezierCurveTo(
-          that._x1 + that._k * (that._x2 - that._x0),
-          that._y1 + that._k * (that._y2 - that._y0),
-          that._x2 + that._k * (that._x1 - x2),
-          that._y2 + that._k * (that._y1 - y2),
-          that._x2,
-          that._y2
-        );
-      }
-      function Cardinal(context, tension) {
-        this._context = context, this._k = (1 - tension) / 6;
-      }
-      Cardinal.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._x0 = this._x1 = this._x2 = this._y0 = this._y1 = this._y2 = NaN, this._point = 0;
-        },
-        lineEnd: function() {
-          switch (this._point) {
-            case 2:
-              this._context.lineTo(this._x2, this._y2);
-              break;
-            case 3:
-              point$2(this, this._x1, this._y1);
-              break;
-          }
-          (this._line || this._line !== 0 && this._point === 1) && this._context.closePath(), this._line = 1 - this._line;
-        },
-        point: function(x2, y2) {
-          switch (x2 = +x2, y2 = +y2, this._point) {
-            case 0:
-              this._point = 1, this._line ? this._context.lineTo(x2, y2) : this._context.moveTo(x2, y2);
-              break;
-            case 1:
-              this._point = 2, this._x1 = x2, this._y1 = y2;
-              break;
-            case 2:
-              this._point = 3;
-            default:
-              point$2(this, x2, y2);
-              break;
-          }
-          this._x0 = this._x1, this._x1 = this._x2, this._x2 = x2, this._y0 = this._y1, this._y1 = this._y2, this._y2 = y2;
-        }
-      };
-      var cardinal = function custom(tension) {
-        function cardinal2(context) {
-          return new Cardinal(context, tension);
-        }
-        return cardinal2.tension = function(tension2) {
-          return custom(+tension2);
-        }, cardinal2;
-      }(0);
-      function CardinalClosed(context, tension) {
-        this._context = context, this._k = (1 - tension) / 6;
-      }
-      CardinalClosed.prototype = {
-        areaStart: noop,
-        areaEnd: noop,
-        lineStart: function() {
-          this._x0 = this._x1 = this._x2 = this._x3 = this._x4 = this._x5 = this._y0 = this._y1 = this._y2 = this._y3 = this._y4 = this._y5 = NaN, this._point = 0;
-        },
-        lineEnd: function() {
-          switch (this._point) {
-            case 1: {
-              this._context.moveTo(this._x3, this._y3), this._context.closePath();
-              break;
-            }
-            case 2: {
-              this._context.lineTo(this._x3, this._y3), this._context.closePath();
-              break;
-            }
-            case 3: {
-              this.point(this._x3, this._y3), this.point(this._x4, this._y4), this.point(this._x5, this._y5);
-              break;
-            }
-          }
-        },
-        point: function(x2, y2) {
-          switch (x2 = +x2, y2 = +y2, this._point) {
-            case 0:
-              this._point = 1, this._x3 = x2, this._y3 = y2;
-              break;
-            case 1:
-              this._point = 2, this._context.moveTo(this._x4 = x2, this._y4 = y2);
-              break;
-            case 2:
-              this._point = 3, this._x5 = x2, this._y5 = y2;
-              break;
-            default:
-              point$2(this, x2, y2);
-              break;
-          }
-          this._x0 = this._x1, this._x1 = this._x2, this._x2 = x2, this._y0 = this._y1, this._y1 = this._y2, this._y2 = y2;
-        }
-      };
-      var cardinalClosed = function custom(tension) {
-        function cardinal2(context) {
-          return new CardinalClosed(context, tension);
-        }
-        return cardinal2.tension = function(tension2) {
-          return custom(+tension2);
-        }, cardinal2;
-      }(0);
-      function CardinalOpen(context, tension) {
-        this._context = context, this._k = (1 - tension) / 6;
-      }
-      CardinalOpen.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._x0 = this._x1 = this._x2 = this._y0 = this._y1 = this._y2 = NaN, this._point = 0;
-        },
-        lineEnd: function() {
-          (this._line || this._line !== 0 && this._point === 3) && this._context.closePath(), this._line = 1 - this._line;
-        },
-        point: function(x2, y2) {
-          switch (x2 = +x2, y2 = +y2, this._point) {
-            case 0:
-              this._point = 1;
-              break;
-            case 1:
-              this._point = 2;
-              break;
-            case 2:
-              this._point = 3, this._line ? this._context.lineTo(this._x2, this._y2) : this._context.moveTo(this._x2, this._y2);
-              break;
-            case 3:
-              this._point = 4;
-            default:
-              point$2(this, x2, y2);
-              break;
-          }
-          this._x0 = this._x1, this._x1 = this._x2, this._x2 = x2, this._y0 = this._y1, this._y1 = this._y2, this._y2 = y2;
-        }
-      };
-      var cardinalOpen = function custom(tension) {
-        function cardinal2(context) {
-          return new CardinalOpen(context, tension);
-        }
-        return cardinal2.tension = function(tension2) {
-          return custom(+tension2);
-        }, cardinal2;
-      }(0);
-      function point$1(that, x2, y2) {
-        var x1 = that._x1, y1 = that._y1, x22 = that._x2, y22 = that._y2;
-        if (that._l01_a > epsilon) {
-          var a2 = 2 * that._l01_2a + 3 * that._l01_a * that._l12_a + that._l12_2a, n = 3 * that._l01_a * (that._l01_a + that._l12_a);
-          x1 = (x1 * a2 - that._x0 * that._l12_2a + that._x2 * that._l01_2a) / n, y1 = (y1 * a2 - that._y0 * that._l12_2a + that._y2 * that._l01_2a) / n;
-        }
-        if (that._l23_a > epsilon) {
-          var b = 2 * that._l23_2a + 3 * that._l23_a * that._l12_a + that._l12_2a, m = 3 * that._l23_a * (that._l23_a + that._l12_a);
-          x22 = (x22 * b + that._x1 * that._l23_2a - x2 * that._l12_2a) / m, y22 = (y22 * b + that._y1 * that._l23_2a - y2 * that._l12_2a) / m;
-        }
-        that._context.bezierCurveTo(x1, y1, x22, y22, that._x2, that._y2);
-      }
-      function CatmullRom(context, alpha) {
-        this._context = context, this._alpha = alpha;
-      }
-      CatmullRom.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._x0 = this._x1 = this._x2 = this._y0 = this._y1 = this._y2 = NaN, this._l01_a = this._l12_a = this._l23_a = this._l01_2a = this._l12_2a = this._l23_2a = this._point = 0;
-        },
-        lineEnd: function() {
-          switch (this._point) {
-            case 2:
-              this._context.lineTo(this._x2, this._y2);
-              break;
-            case 3:
-              this.point(this._x2, this._y2);
-              break;
-          }
-          (this._line || this._line !== 0 && this._point === 1) && this._context.closePath(), this._line = 1 - this._line;
-        },
-        point: function(x2, y2) {
-          if (x2 = +x2, y2 = +y2, this._point) {
-            var x23 = this._x2 - x2, y23 = this._y2 - y2;
-            this._l23_a = Math.sqrt(this._l23_2a = Math.pow(x23 * x23 + y23 * y23, this._alpha));
-          }
-          switch (this._point) {
-            case 0:
-              this._point = 1, this._line ? this._context.lineTo(x2, y2) : this._context.moveTo(x2, y2);
-              break;
-            case 1:
-              this._point = 2;
-              break;
-            case 2:
-              this._point = 3;
-            default:
-              point$1(this, x2, y2);
-              break;
-          }
-          this._l01_a = this._l12_a, this._l12_a = this._l23_a, this._l01_2a = this._l12_2a, this._l12_2a = this._l23_2a, this._x0 = this._x1, this._x1 = this._x2, this._x2 = x2, this._y0 = this._y1, this._y1 = this._y2, this._y2 = y2;
-        }
-      };
-      var catmullRom = function custom(alpha) {
-        function catmullRom2(context) {
-          return alpha ? new CatmullRom(context, alpha) : new Cardinal(context, 0);
-        }
-        return catmullRom2.alpha = function(alpha2) {
-          return custom(+alpha2);
-        }, catmullRom2;
-      }(0.5);
-      function CatmullRomClosed(context, alpha) {
-        this._context = context, this._alpha = alpha;
-      }
-      CatmullRomClosed.prototype = {
-        areaStart: noop,
-        areaEnd: noop,
-        lineStart: function() {
-          this._x0 = this._x1 = this._x2 = this._x3 = this._x4 = this._x5 = this._y0 = this._y1 = this._y2 = this._y3 = this._y4 = this._y5 = NaN, this._l01_a = this._l12_a = this._l23_a = this._l01_2a = this._l12_2a = this._l23_2a = this._point = 0;
-        },
-        lineEnd: function() {
-          switch (this._point) {
-            case 1: {
-              this._context.moveTo(this._x3, this._y3), this._context.closePath();
-              break;
-            }
-            case 2: {
-              this._context.lineTo(this._x3, this._y3), this._context.closePath();
-              break;
-            }
-            case 3: {
-              this.point(this._x3, this._y3), this.point(this._x4, this._y4), this.point(this._x5, this._y5);
-              break;
-            }
-          }
-        },
-        point: function(x2, y2) {
-          if (x2 = +x2, y2 = +y2, this._point) {
-            var x23 = this._x2 - x2, y23 = this._y2 - y2;
-            this._l23_a = Math.sqrt(this._l23_2a = Math.pow(x23 * x23 + y23 * y23, this._alpha));
-          }
-          switch (this._point) {
-            case 0:
-              this._point = 1, this._x3 = x2, this._y3 = y2;
-              break;
-            case 1:
-              this._point = 2, this._context.moveTo(this._x4 = x2, this._y4 = y2);
-              break;
-            case 2:
-              this._point = 3, this._x5 = x2, this._y5 = y2;
-              break;
-            default:
-              point$1(this, x2, y2);
-              break;
-          }
-          this._l01_a = this._l12_a, this._l12_a = this._l23_a, this._l01_2a = this._l12_2a, this._l12_2a = this._l23_2a, this._x0 = this._x1, this._x1 = this._x2, this._x2 = x2, this._y0 = this._y1, this._y1 = this._y2, this._y2 = y2;
-        }
-      };
-      var catmullRomClosed = function custom(alpha) {
-        function catmullRom2(context) {
-          return alpha ? new CatmullRomClosed(context, alpha) : new CardinalClosed(context, 0);
-        }
-        return catmullRom2.alpha = function(alpha2) {
-          return custom(+alpha2);
-        }, catmullRom2;
-      }(0.5);
-      function CatmullRomOpen(context, alpha) {
-        this._context = context, this._alpha = alpha;
-      }
-      CatmullRomOpen.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._x0 = this._x1 = this._x2 = this._y0 = this._y1 = this._y2 = NaN, this._l01_a = this._l12_a = this._l23_a = this._l01_2a = this._l12_2a = this._l23_2a = this._point = 0;
-        },
-        lineEnd: function() {
-          (this._line || this._line !== 0 && this._point === 3) && this._context.closePath(), this._line = 1 - this._line;
-        },
-        point: function(x2, y2) {
-          if (x2 = +x2, y2 = +y2, this._point) {
-            var x23 = this._x2 - x2, y23 = this._y2 - y2;
-            this._l23_a = Math.sqrt(this._l23_2a = Math.pow(x23 * x23 + y23 * y23, this._alpha));
-          }
-          switch (this._point) {
-            case 0:
-              this._point = 1;
-              break;
-            case 1:
-              this._point = 2;
-              break;
-            case 2:
-              this._point = 3, this._line ? this._context.lineTo(this._x2, this._y2) : this._context.moveTo(this._x2, this._y2);
-              break;
-            case 3:
-              this._point = 4;
-            default:
-              point$1(this, x2, y2);
-              break;
-          }
-          this._l01_a = this._l12_a, this._l12_a = this._l23_a, this._l01_2a = this._l12_2a, this._l12_2a = this._l23_2a, this._x0 = this._x1, this._x1 = this._x2, this._x2 = x2, this._y0 = this._y1, this._y1 = this._y2, this._y2 = y2;
-        }
-      };
-      var catmullRomOpen = function custom(alpha) {
-        function catmullRom2(context) {
-          return alpha ? new CatmullRomOpen(context, alpha) : new CardinalOpen(context, 0);
-        }
-        return catmullRom2.alpha = function(alpha2) {
-          return custom(+alpha2);
-        }, catmullRom2;
-      }(0.5);
-      function LinearClosed(context) {
-        this._context = context;
-      }
-      LinearClosed.prototype = {
-        areaStart: noop,
-        areaEnd: noop,
-        lineStart: function() {
-          this._point = 0;
-        },
-        lineEnd: function() {
-          this._point && this._context.closePath();
-        },
-        point: function(x2, y2) {
-          x2 = +x2, y2 = +y2, this._point ? this._context.lineTo(x2, y2) : (this._point = 1, this._context.moveTo(x2, y2));
-        }
-      };
-      function linearClosed(context) {
-        return new LinearClosed(context);
-      }
-      function sign(x2) {
-        return x2 < 0 ? -1 : 1;
-      }
-      function slope3(that, x2, y2) {
-        var h0 = that._x1 - that._x0, h1 = x2 - that._x1, s0 = (that._y1 - that._y0) / (h0 || h1 < 0 && -0), s1 = (y2 - that._y1) / (h1 || h0 < 0 && -0), p = (s0 * h1 + s1 * h0) / (h0 + h1);
-        return (sign(s0) + sign(s1)) * Math.min(Math.abs(s0), Math.abs(s1), 0.5 * Math.abs(p)) || 0;
-      }
-      function slope2(that, t) {
-        var h = that._x1 - that._x0;
-        return h ? (3 * (that._y1 - that._y0) / h - t) / 2 : t;
-      }
-      function point(that, t0, t1) {
-        var x0 = that._x0, y0 = that._y0, x1 = that._x1, y1 = that._y1, dx = (x1 - x0) / 3;
-        that._context.bezierCurveTo(x0 + dx, y0 + dx * t0, x1 - dx, y1 - dx * t1, x1, y1);
-      }
-      function MonotoneX(context) {
-        this._context = context;
-      }
-      MonotoneX.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._x0 = this._x1 = this._y0 = this._y1 = this._t0 = NaN, this._point = 0;
-        },
-        lineEnd: function() {
-          switch (this._point) {
-            case 2:
-              this._context.lineTo(this._x1, this._y1);
-              break;
-            case 3:
-              point(this, this._t0, slope2(this, this._t0));
-              break;
-          }
-          (this._line || this._line !== 0 && this._point === 1) && this._context.closePath(), this._line = 1 - this._line;
-        },
-        point: function(x2, y2) {
-          var t1 = NaN;
-          if (x2 = +x2, y2 = +y2, !(x2 === this._x1 && y2 === this._y1)) {
-            switch (this._point) {
-              case 0:
-                this._point = 1, this._line ? this._context.lineTo(x2, y2) : this._context.moveTo(x2, y2);
-                break;
-              case 1:
-                this._point = 2;
-                break;
-              case 2:
-                this._point = 3, point(this, slope2(this, t1 = slope3(this, x2, y2)), t1);
-                break;
-              default:
-                point(this, this._t0, t1 = slope3(this, x2, y2));
-                break;
-            }
-            this._x0 = this._x1, this._x1 = x2, this._y0 = this._y1, this._y1 = y2, this._t0 = t1;
-          }
-        }
-      };
-      function MonotoneY(context) {
-        this._context = new ReflectContext(context);
-      }
-      (MonotoneY.prototype = Object.create(MonotoneX.prototype)).point = function(x2, y2) {
-        MonotoneX.prototype.point.call(this, y2, x2);
-      };
-      function ReflectContext(context) {
-        this._context = context;
-      }
-      ReflectContext.prototype = {
-        moveTo: function(x2, y2) {
-          this._context.moveTo(y2, x2);
-        },
-        closePath: function() {
-          this._context.closePath();
-        },
-        lineTo: function(x2, y2) {
-          this._context.lineTo(y2, x2);
-        },
-        bezierCurveTo: function(x1, y1, x2, y2, x3, y3) {
-          this._context.bezierCurveTo(y1, x1, y2, x2, y3, x3);
-        }
-      };
-      function monotoneX(context) {
-        return new MonotoneX(context);
-      }
-      function monotoneY(context) {
-        return new MonotoneY(context);
-      }
-      function Natural(context) {
-        this._context = context;
-      }
-      Natural.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._x = [], this._y = [];
-        },
-        lineEnd: function() {
-          var x2 = this._x, y2 = this._y, n = x2.length;
-          if (n)
-            if (this._line ? this._context.lineTo(x2[0], y2[0]) : this._context.moveTo(x2[0], y2[0]), n === 2)
-              this._context.lineTo(x2[1], y2[1]);
-            else
-              for (var px = controlPoints(x2), py = controlPoints(y2), i0 = 0, i1 = 1; i1 < n; ++i0, ++i1)
-                this._context.bezierCurveTo(px[0][i0], py[0][i0], px[1][i0], py[1][i0], x2[i1], y2[i1]);
-          (this._line || this._line !== 0 && n === 1) && this._context.closePath(), this._line = 1 - this._line, this._x = this._y = null;
-        },
-        point: function(x2, y2) {
-          this._x.push(+x2), this._y.push(+y2);
-        }
-      };
-      function controlPoints(x2) {
-        var i, n = x2.length - 1, m, a2 = new Array(n), b = new Array(n), r = new Array(n);
-        for (a2[0] = 0, b[0] = 2, r[0] = x2[0] + 2 * x2[1], i = 1; i < n - 1; ++i)
-          a2[i] = 1, b[i] = 4, r[i] = 4 * x2[i] + 2 * x2[i + 1];
-        for (a2[n - 1] = 2, b[n - 1] = 7, r[n - 1] = 8 * x2[n - 1] + x2[n], i = 1; i < n; ++i)
-          m = a2[i] / b[i - 1], b[i] -= m, r[i] -= m * r[i - 1];
-        for (a2[n - 1] = r[n - 1] / b[n - 1], i = n - 2; i >= 0; --i)
-          a2[i] = (r[i] - a2[i + 1]) / b[i];
-        for (b[n - 1] = (x2[n] + a2[n - 1]) / 2, i = 0; i < n - 1; ++i)
-          b[i] = 2 * x2[i + 1] - a2[i + 1];
-        return [a2, b];
-      }
-      function natural(context) {
-        return new Natural(context);
-      }
-      function Step(context, t) {
-        this._context = context, this._t = t;
-      }
-      Step.prototype = {
-        areaStart: function() {
-          this._line = 0;
-        },
-        areaEnd: function() {
-          this._line = NaN;
-        },
-        lineStart: function() {
-          this._x = this._y = NaN, this._point = 0;
-        },
-        lineEnd: function() {
-          0 < this._t && this._t < 1 && this._point === 2 && this._context.lineTo(this._x, this._y), (this._line || this._line !== 0 && this._point === 1) && this._context.closePath(), this._line >= 0 && (this._t = 1 - this._t, this._line = 1 - this._line);
-        },
-        point: function(x2, y2) {
-          switch (x2 = +x2, y2 = +y2, this._point) {
-            case 0:
-              this._point = 1, this._line ? this._context.lineTo(x2, y2) : this._context.moveTo(x2, y2);
-              break;
-            case 1:
-              this._point = 2;
-            default: {
-              if (this._t <= 0)
-                this._context.lineTo(this._x, y2), this._context.lineTo(x2, y2);
-              else {
-                var x1 = this._x * (1 - this._t) + x2 * this._t;
-                this._context.lineTo(x1, this._y), this._context.lineTo(x1, y2);
-              }
-              break;
-            }
-          }
-          this._x = x2, this._y = y2;
-        }
-      };
-      function step(context) {
-        return new Step(context, 0.5);
-      }
-      function stepBefore(context) {
-        return new Step(context, 0);
-      }
-      function stepAfter(context) {
-        return new Step(context, 1);
-      }
-      function none$1(series, order) {
-        if ((n = series.length) > 1)
-          for (var i = 1, j, s0, s1 = series[order[0]], n, m = s1.length; i < n; ++i)
-            for (s0 = s1, s1 = series[order[i]], j = 0; j < m; ++j)
-              s1[j][1] += s1[j][0] = isNaN(s0[j][1]) ? s0[j][0] : s0[j][1];
-      }
-      function none(series) {
-        for (var n = series.length, o = new Array(n); --n >= 0; )
-          o[n] = n;
-        return o;
-      }
-      function stackValue(d, key) {
-        return d[key];
-      }
-      function stackSeries(key) {
-        let series = [];
-        return series.key = key, series;
-      }
-      function stack() {
-        var keys = constant([]), order = none, offset = none$1, value = stackValue;
-        function stack2(data) {
-          var sz = Array.from(keys.apply(this, arguments), stackSeries), i, n = sz.length, j = -1, oz;
-          for (let d of data)
-            for (i = 0, ++j; i < n; ++i)
-              (sz[i][j] = [0, +value(d, sz[i].key, j, data)]).data = d;
-          for (i = 0, oz = array(order(sz)); i < n; ++i)
-            sz[oz[i]].index = i;
-          return offset(sz, oz), sz;
-        }
-        return stack2.keys = function(_6) {
-          return arguments.length ? (keys = typeof _6 == "function" ? _6 : constant(Array.from(_6)), stack2) : keys;
-        }, stack2.value = function(_6) {
-          return arguments.length ? (value = typeof _6 == "function" ? _6 : constant(+_6), stack2) : value;
-        }, stack2.order = function(_6) {
-          return arguments.length ? (order = _6 == null ? none : typeof _6 == "function" ? _6 : constant(Array.from(_6)), stack2) : order;
-        }, stack2.offset = function(_6) {
-          return arguments.length ? (offset = _6 ?? none$1, stack2) : offset;
-        }, stack2;
-      }
-      function expand(series, order) {
-        if ((n = series.length) > 0) {
-          for (var i, n, j = 0, m = series[0].length, y2; j < m; ++j) {
-            for (y2 = i = 0; i < n; ++i)
-              y2 += series[i][j][1] || 0;
-            if (y2)
-              for (i = 0; i < n; ++i)
-                series[i][j][1] /= y2;
-          }
-          none$1(series, order);
-        }
-      }
-      function diverging(series, order) {
-        if ((n = series.length) > 0)
-          for (var i, j = 0, d, dy, yp, yn, n, m = series[order[0]].length; j < m; ++j)
-            for (yp = yn = 0, i = 0; i < n; ++i)
-              (dy = (d = series[order[i]][j])[1] - d[0]) > 0 ? (d[0] = yp, d[1] = yp += dy) : dy < 0 ? (d[1] = yn, d[0] = yn += dy) : (d[0] = 0, d[1] = dy);
-      }
-      function silhouette(series, order) {
-        if ((n = series.length) > 0) {
-          for (var j = 0, s0 = series[order[0]], n, m = s0.length; j < m; ++j) {
-            for (var i = 0, y2 = 0; i < n; ++i)
-              y2 += series[i][j][1] || 0;
-            s0[j][1] += s0[j][0] = -y2 / 2;
-          }
-          none$1(series, order);
-        }
-      }
-      function wiggle(series, order) {
-        if (!(!((n = series.length) > 0) || !((m = (s0 = series[order[0]]).length) > 0))) {
-          for (var y2 = 0, j = 1, s0, m, n; j < m; ++j) {
-            for (var i = 0, s1 = 0, s2 = 0; i < n; ++i) {
-              for (var si = series[order[i]], sij0 = si[j][1] || 0, sij1 = si[j - 1][1] || 0, s32 = (sij0 - sij1) / 2, k2 = 0; k2 < i; ++k2) {
-                var sk = series[order[k2]], skj0 = sk[j][1] || 0, skj1 = sk[j - 1][1] || 0;
-                s32 += skj0 - skj1;
-              }
-              s1 += sij0, s2 += s32 * sij0;
-            }
-            s0[j - 1][1] += s0[j - 1][0] = y2, s1 && (y2 -= s2 / s1);
-          }
-          s0[j - 1][1] += s0[j - 1][0] = y2, none$1(series, order);
-        }
-      }
-      function appearance(series) {
-        var peaks = series.map(peak);
-        return none(series).sort(function(a2, b) {
-          return peaks[a2] - peaks[b];
-        });
-      }
-      function peak(series) {
-        for (var i = -1, j = 0, n = series.length, vi, vj = -1 / 0; ++i < n; )
-          (vi = +series[i][1]) > vj && (vj = vi, j = i);
-        return j;
-      }
-      function ascending(series) {
-        var sums = series.map(sum);
-        return none(series).sort(function(a2, b) {
-          return sums[a2] - sums[b];
-        });
-      }
-      function sum(series) {
-        for (var s2 = 0, i = -1, n = series.length, v; ++i < n; )
-          (v = +series[i][1]) && (s2 += v);
-        return s2;
-      }
-      function descending(series) {
-        return ascending(series).reverse();
-      }
-      function insideOut(series) {
-        var n = series.length, i, j, sums = series.map(sum), order = appearance(series), top = 0, bottom = 0, tops = [], bottoms = [];
-        for (i = 0; i < n; ++i)
-          j = order[i], top < bottom ? (top += sums[j], tops.push(j)) : (bottom += sums[j], bottoms.push(j));
-        return bottoms.reverse().concat(tops);
-      }
-      function reverse(series) {
-        return none(series).reverse();
-      }
-      exports2.arc = arc, exports2.area = area, exports2.areaRadial = areaRadial, exports2.curveBasis = basis, exports2.curveBasisClosed = basisClosed, exports2.curveBasisOpen = basisOpen, exports2.curveBumpX = bumpX, exports2.curveBumpY = bumpY, exports2.curveBundle = bundle, exports2.curveCardinal = cardinal, exports2.curveCardinalClosed = cardinalClosed, exports2.curveCardinalOpen = cardinalOpen, exports2.curveCatmullRom = catmullRom, exports2.curveCatmullRomClosed = catmullRomClosed, exports2.curveCatmullRomOpen = catmullRomOpen, exports2.curveLinear = curveLinear, exports2.curveLinearClosed = linearClosed, exports2.curveMonotoneX = monotoneX, exports2.curveMonotoneY = monotoneY, exports2.curveNatural = natural, exports2.curveStep = step, exports2.curveStepAfter = stepAfter, exports2.curveStepBefore = stepBefore, exports2.line = line, exports2.lineRadial = lineRadial$1, exports2.linkHorizontal = linkHorizontal, exports2.linkRadial = linkRadial, exports2.linkVertical = linkVertical, exports2.pie = pie, exports2.pointRadial = pointRadial, exports2.radialArea = areaRadial, exports2.radialLine = lineRadial$1, exports2.stack = stack, exports2.stackOffsetDiverging = diverging, exports2.stackOffsetExpand = expand, exports2.stackOffsetNone = none$1, exports2.stackOffsetSilhouette = silhouette, exports2.stackOffsetWiggle = wiggle, exports2.stackOrderAppearance = appearance, exports2.stackOrderAscending = ascending, exports2.stackOrderDescending = descending, exports2.stackOrderInsideOut = insideOut, exports2.stackOrderNone = none, exports2.stackOrderReverse = reverse, exports2.symbol = symbol, exports2.symbolCircle = circle, exports2.symbolCross = cross, exports2.symbolDiamond = diamond, exports2.symbolSquare = square, exports2.symbolStar = star, exports2.symbolTriangle = triangle, exports2.symbolWye = wye, exports2.symbols = symbols, Object.defineProperty(exports2, "__esModule", { value: !0 });
-    });
-  }
-});
-
 // node_modules/recharts/lib/shape/Symbols.js
 var require_Symbols = __commonJS({
   "node_modules/recharts/lib/shape/Symbols.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Symbols = void 0;
-    var _upperFirst2 = _interopRequireDefault(require("lodash/upperFirst")), _react = _interopRequireWildcard(require("react")), _d3Shape = require_d3_shape(), _classnames = _interopRequireDefault(require("classnames")), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _upperFirst2 = _interopRequireDefault(require("lodash/upperFirst")), _react = _interopRequireWildcard(require("react")), _d3Shape = require("victory-vendor/d3-shape"), _classnames = _interopRequireDefault(require("classnames")), _ReactUtils = require_ReactUtils();
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -2307,8 +1634,15 @@ var require_Symbols = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -2324,19 +1658,19 @@ var require_Symbols = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -2353,7 +1687,11 @@ var require_Symbols = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -2373,9 +1711,28 @@ var require_Symbols = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var symbolFactories = {
       symbolCircle: _d3Shape.symbolCircle,
@@ -2424,8 +1781,8 @@ var require_Symbols = __commonJS({
       }, {
         key: "render",
         value: function() {
-          var _this$props2 = this.props, className = _this$props2.className, cx = _this$props2.cx, cy = _this$props2.cy, size = _this$props2.size;
-          return cx === +cx && cy === +cy && size === +size ? /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(this.props, !0), {
+          var _this$props2 = this.props, className = _this$props2.className, cx = _this$props2.cx, cy = _this$props2.cy, size = _this$props2.size, filteredProps = (0, _ReactUtils.filterProps)(this.props, !0);
+          return cx === +cx && cy === +cy && size === +size ? /* @__PURE__ */ _react.default.createElement("path", _extends({}, filteredProps, {
             className: (0, _classnames.default)("recharts-symbols", className),
             transform: "translate(".concat(cx, ", ").concat(cy, ")"),
             d: this.getPath()
@@ -2434,14 +1791,14 @@ var require_Symbols = __commonJS({
       }]), Symbols2;
     }(_react.PureComponent);
     exports.Symbols = Symbols;
-    Symbols.defaultProps = {
+    _defineProperty3(Symbols, "defaultProps", {
       type: "circle",
       size: 64,
       sizeType: "area"
-    };
-    Symbols.registerSymbol = function(key, factory) {
+    });
+    _defineProperty3(Symbols, "registerSymbol", function(key, factory) {
       symbolFactories["symbol".concat((0, _upperFirst2.default)(key))] = factory;
-    };
+    });
   }
 });
 
@@ -2449,13 +1806,6 @@ var require_Symbols = __commonJS({
 var require_DefaultLegendContent = __commonJS({
   "node_modules/recharts/lib/component/DefaultLegendContent.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
@@ -2464,32 +1814,39 @@ var require_DefaultLegendContent = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
       return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -2519,9 +1876,6 @@ var require_DefaultLegendContent = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -2529,19 +1883,19 @@ var require_DefaultLegendContent = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -2558,7 +1912,11 @@ var require_DefaultLegendContent = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -2578,9 +1936,28 @@ var require_DefaultLegendContent = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var SIZE = 32, DefaultLegendContent = /* @__PURE__ */ function(_PureComponent) {
       _inherits(DefaultLegendContent2, _PureComponent);
@@ -2694,109 +2071,14 @@ var require_DefaultLegendContent = __commonJS({
       }]), DefaultLegendContent2;
     }(_react.PureComponent);
     exports.DefaultLegendContent = DefaultLegendContent;
-    DefaultLegendContent.displayName = "Legend";
-    DefaultLegendContent.defaultProps = {
+    _defineProperty3(DefaultLegendContent, "displayName", "Legend");
+    _defineProperty3(DefaultLegendContent, "defaultProps", {
       iconSize: 14,
       layout: "horizontal",
       align: "center",
       verticalAlign: "middle",
       inactiveColor: "#ccc"
-    };
-  }
-});
-
-// node_modules/recharts/lib/util/DataUtils.js
-var require_DataUtils = __commonJS({
-  "node_modules/recharts/lib/util/DataUtils.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: !0
     });
-    exports.findEntryInArray = findEntryInArray;
-    exports.getLinearRegression = exports.interpolateNumber = exports.hasDuplicate = exports.getAnyElementOfObject = exports.getPercentValue = exports.uniqueId = exports.isNumOrStr = exports.isNumber = exports.isPercent = exports.mathSign = void 0;
-    var _get2 = _interopRequireDefault(require("lodash/get")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _isNaN2 = _interopRequireDefault(require("lodash/isNaN")), _isNumber2 = _interopRequireDefault(require("lodash/isNumber")), _isString2 = _interopRequireDefault(require("lodash/isString"));
-    function _interopRequireDefault(obj) {
-      return obj && obj.__esModule ? obj : { default: obj };
-    }
-    var mathSign = function(value) {
-      return value === 0 ? 0 : value > 0 ? 1 : -1;
-    };
-    exports.mathSign = mathSign;
-    var isPercent = function(value) {
-      return (0, _isString2.default)(value) && value.indexOf("%") === value.length - 1;
-    };
-    exports.isPercent = isPercent;
-    var isNumber = function(value) {
-      return (0, _isNumber2.default)(value) && !(0, _isNaN2.default)(value);
-    };
-    exports.isNumber = isNumber;
-    var isNumOrStr = function(value) {
-      return isNumber(value) || (0, _isString2.default)(value);
-    };
-    exports.isNumOrStr = isNumOrStr;
-    var idCounter = 0, uniqueId = function(prefix) {
-      var id = ++idCounter;
-      return "".concat(prefix || "").concat(id);
-    };
-    exports.uniqueId = uniqueId;
-    var getPercentValue = function(percent, totalValue) {
-      var defaultValue = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 0, validate = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : !1;
-      if (!isNumber(percent) && !(0, _isString2.default)(percent))
-        return defaultValue;
-      var value;
-      if (isPercent(percent)) {
-        var index = percent.indexOf("%");
-        value = totalValue * parseFloat(percent.slice(0, index)) / 100;
-      } else
-        value = +percent;
-      return (0, _isNaN2.default)(value) && (value = defaultValue), validate && value > totalValue && (value = totalValue), value;
-    };
-    exports.getPercentValue = getPercentValue;
-    var getAnyElementOfObject = function(obj) {
-      if (!obj)
-        return null;
-      var keys = Object.keys(obj);
-      return keys && keys.length ? obj[keys[0]] : null;
-    };
-    exports.getAnyElementOfObject = getAnyElementOfObject;
-    var hasDuplicate = function(ary) {
-      if (!(0, _isArray2.default)(ary))
-        return !1;
-      for (var len = ary.length, cache = {}, i = 0; i < len; i++)
-        if (!cache[ary[i]])
-          cache[ary[i]] = !0;
-        else
-          return !0;
-      return !1;
-    };
-    exports.hasDuplicate = hasDuplicate;
-    var interpolateNumber = function(numberA, numberB) {
-      return isNumber(numberA) && isNumber(numberB) ? function(t) {
-        return numberA + t * (numberB - numberA);
-      } : function() {
-        return numberB;
-      };
-    };
-    exports.interpolateNumber = interpolateNumber;
-    function findEntryInArray(ary, specifiedKey, specifiedValue) {
-      return !ary || !ary.length ? null : ary.find(function(entry2) {
-        return entry2 && (typeof specifiedKey == "function" ? specifiedKey(entry2) : (0, _get2.default)(entry2, specifiedKey)) === specifiedValue;
-      });
-    }
-    var getLinearRegression = function(data) {
-      if (!data || !data.length)
-        return null;
-      for (var len = data.length, xsum = 0, ysum = 0, xysum = 0, xxsum = 0, xmin = 1 / 0, xmax = -1 / 0, xcurrent = 0, ycurrent = 0, i = 0; i < len; i++)
-        xcurrent = data[i].cx || 0, ycurrent = data[i].cy || 0, xsum += xcurrent, ysum += ycurrent, xysum += xcurrent * ycurrent, xxsum += xcurrent * xcurrent, xmin = Math.min(xmin, xcurrent), xmax = Math.max(xmax, xcurrent);
-      var a = len * xxsum !== xsum * xsum ? (len * xysum - xsum * ysum) / (len * xxsum - xsum * xsum) : 0;
-      return {
-        xmin,
-        xmax,
-        a,
-        b: (ysum - a * xsum) / len
-      };
-    };
-    exports.getLinearRegression = getLinearRegression;
   }
 });
 
@@ -2805,9 +2087,9 @@ var require_Legend = __commonJS({
   "node_modules/recharts/lib/component/Legend.js"(exports) {
     "use strict";
     function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
         return typeof obj2;
-      } : _typeof2 = function(obj2) {
+      } : function(obj2) {
         return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
       }, _typeof2(obj);
     }
@@ -2815,26 +2097,26 @@ var require_Legend = __commonJS({
       value: !0
     });
     exports.Legend = void 0;
-    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _uniqBy2 = _interopRequireDefault(require("lodash/uniqBy")), _react = _interopRequireWildcard(require("react")), _DefaultLegendContent = require_DefaultLegendContent(), _DataUtils = require_DataUtils();
-    function _getRequireWildcardCache() {
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _uniqBy2 = _interopRequireDefault(require("lodash/uniqBy")), _react = _interopRequireWildcard(require("react")), _DefaultLegendContent = require_DefaultLegendContent(), _DataUtils = require_DataUtils(), _excluded = ["ref"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -2864,9 +2146,6 @@ var require_Legend = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -2874,19 +2153,19 @@ var require_Legend = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -2903,7 +2182,11 @@ var require_Legend = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -2923,9 +2206,28 @@ var require_Legend = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function _objectWithoutProperties2(source, excluded) {
       if (source == null)
@@ -2957,23 +2259,23 @@ var require_Legend = __commonJS({
         return /* @__PURE__ */ _react.default.cloneElement(content, props);
       if ((0, _isFunction2.default)(content))
         return /* @__PURE__ */ _react.default.createElement(content, props);
-      var ref = props.ref, otherProps = _objectWithoutProperties2(props, ["ref"]);
+      var ref = props.ref, otherProps = _objectWithoutProperties2(props, _excluded);
       return /* @__PURE__ */ _react.default.createElement(_DefaultLegendContent.DefaultLegendContent, otherProps);
     }
-    var EPS = 1, Legend2 = /* @__PURE__ */ function(_PureComponent) {
-      _inherits(Legend3, _PureComponent);
-      var _super = _createSuper(Legend3);
-      function Legend3() {
+    var EPS = 1, Legend = /* @__PURE__ */ function(_PureComponent) {
+      _inherits(Legend2, _PureComponent);
+      var _super = _createSuper(Legend2);
+      function Legend2() {
         var _this;
-        _classCallCheck(this, Legend3);
+        _classCallCheck(this, Legend2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.wrapperNode = void 0, _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           boxWidth: -1,
           boxHeight: -1
-        }, _this;
+        }), _this;
       }
-      return _createClass(Legend3, [{
+      return _createClass(Legend2, [{
         key: "componentDidMount",
         value: function() {
           this.updateBBox();
@@ -3079,16 +2381,16 @@ var require_Legend = __commonJS({
             width: item.props.width || chartWidth
           } : null;
         }
-      }]), Legend3;
+      }]), Legend2;
     }(_react.PureComponent);
-    exports.Legend = Legend2;
-    Legend2.displayName = "Legend";
-    Legend2.defaultProps = {
+    exports.Legend = Legend;
+    _defineProperty3(Legend, "displayName", "Legend");
+    _defineProperty3(Legend, "defaultProps", {
       iconSize: 14,
       layout: "horizontal",
       align: "center",
       verticalAlign: "bottom"
-    };
+    });
   }
 });
 
@@ -3096,37 +2398,30 @@ var require_Legend = __commonJS({
 var require_DefaultTooltipContent = __commonJS({
   "node_modules/recharts/lib/component/DefaultTooltipContent.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.DefaultTooltipContent = void 0;
     var _isNil2 = _interopRequireDefault(require("lodash/isNil")), _sortBy2 = _interopRequireDefault(require("lodash/sortBy")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _DataUtils = require_DataUtils();
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -3134,6 +2429,13 @@ var require_DefaultTooltipContent = __commonJS({
     }
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
     }
     function _slicedToArray(arr, i) {
       return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
@@ -3160,16 +2462,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return arr2;
     }
     function _iterableToArrayLimit(arr, i) {
-      if (!(typeof Symbol > "u" || !(Symbol.iterator in Object(arr)))) {
-        var _arr = [], _n = !0, _d = !1, _e = void 0;
+      var _i = arr == null ? null : typeof Symbol < "u" && arr[Symbol.iterator] || arr["@@iterator"];
+      if (_i != null) {
+        var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
         try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-            ;
+          if (_x = (_i = _i.call(arr)).next, i === 0) {
+            if (Object(_i) !== _i)
+              return;
+            _n = !1;
+          } else
+            for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+              ;
         } catch (err) {
           _d = !0, _e = err;
         } finally {
           try {
-            !_n && _i.return != null && _i.return();
+            if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+              return;
           } finally {
             if (_d)
               throw _e;
@@ -3203,9 +2512,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -3213,19 +2519,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -3242,7 +2548,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -3262,9 +2572,28 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function defaultFormatter(value) {
       return (0, _isArray2.default)(value) && (0, _DataUtils.isNumOrStr)(value[0]) && (0, _DataUtils.isNumOrStr)(value[1]) ? value.join(" ~ ") : value;
@@ -3344,13 +2673,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }]), DefaultTooltipContent2;
     }(_react.PureComponent);
     exports.DefaultTooltipContent = DefaultTooltipContent;
-    DefaultTooltipContent.displayName = "DefaultTooltipContent";
-    DefaultTooltipContent.defaultProps = {
+    _defineProperty3(DefaultTooltipContent, "displayName", "DefaultTooltipContent");
+    _defineProperty3(DefaultTooltipContent, "defaultProps", {
       separator: " : ",
       contentStyle: {},
       itemStyle: {},
       labelStyle: {}
-    };
+    });
   }
 });
 
@@ -3388,37 +2717,30 @@ var require_Global = __commonJS({
 var require_Tooltip = __commonJS({
   "node_modules/recharts/lib/component/Tooltip.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Tooltip = void 0;
     var _isNil2 = _interopRequireDefault(require("lodash/isNil")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _uniqBy2 = _interopRequireDefault(require("lodash/uniqBy")), _react = _interopRequireWildcard(require("react")), _reactSmooth = require("react-smooth"), _classnames = _interopRequireDefault(require("classnames")), _DefaultTooltipContent = require_DefaultTooltipContent(), _Global = require_Global(), _DataUtils = require_DataUtils();
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -3426,6 +2748,13 @@ var require_Tooltip = __commonJS({
     }
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
     }
     function ownKeys3(object, enumerableOnly) {
       var keys = Object.keys(object);
@@ -3448,9 +2777,6 @@ var require_Tooltip = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -3458,19 +2784,19 @@ var require_Tooltip = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -3487,7 +2813,11 @@ var require_Tooltip = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -3507,9 +2837,28 @@ var require_Tooltip = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var CLS_PREFIX = "recharts-tooltip-wrapper", EPS = 1;
     function defaultUniqBy(entry2) {
@@ -3529,7 +2878,7 @@ var require_Tooltip = __commonJS({
         _classCallCheck(this, Tooltip2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           boxWidth: -1,
           boxHeight: -1,
           dismissed: !1,
@@ -3537,7 +2886,7 @@ var require_Tooltip = __commonJS({
             x: 0,
             y: 0
           }
-        }, _this.wrapperNode = void 0, _this.getTranslate = function(_ref) {
+        }), _defineProperty3(_assertThisInitialized(_this), "getTranslate", function(_ref) {
           var key = _ref.key, tooltipDimension = _ref.tooltipDimension, viewBoxDimension = _ref.viewBoxDimension, _this$props = _this.props, allowEscapeViewBox = _this$props.allowEscapeViewBox, reverseDirection = _this$props.reverseDirection, coordinate = _this$props.coordinate, offset = _this$props.offset, position = _this$props.position, viewBox = _this$props.viewBox;
           if (position && (0, _DataUtils.isNumber)(position[key]))
             return position[key];
@@ -3545,13 +2894,12 @@ var require_Tooltip = __commonJS({
           if (allowEscapeViewBox[key])
             return reverseDirection[key] ? negative : positive;
           if (reverseDirection[key]) {
-            var tooltipBoundary = negative, viewBoxBoundary = viewBox[key];
-            return tooltipBoundary < viewBoxBoundary ? Math.max(positive, viewBox[key]) : Math.max(negative, viewBox[key]);
-          } else {
-            var _tooltipBoundary = positive + tooltipDimension, _viewBoxBoundary = viewBox[key] + viewBoxDimension;
-            return _tooltipBoundary > _viewBoxBoundary ? Math.max(negative, viewBox[key]) : Math.max(positive, viewBox[key]);
+            var _tooltipBoundary = negative, _viewBoxBoundary = viewBox[key];
+            return _tooltipBoundary < _viewBoxBoundary ? Math.max(positive, viewBox[key]) : Math.max(negative, viewBox[key]);
           }
-        }, _this;
+          var tooltipBoundary = positive + tooltipDimension, viewBoxBoundary = viewBox[key] + viewBoxDimension;
+          return tooltipBoundary > viewBoxBoundary ? Math.max(negative, viewBox[key]) : Math.max(positive, viewBox[key]);
+        }), _this;
       }
       return _createClass(Tooltip2, [{
         key: "componentDidMount",
@@ -3639,8 +2987,8 @@ var require_Tooltip = __commonJS({
       }]), Tooltip2;
     }(_react.PureComponent);
     exports.Tooltip = Tooltip;
-    Tooltip.displayName = "Tooltip";
-    Tooltip.defaultProps = {
+    _defineProperty3(Tooltip, "displayName", "Tooltip");
+    _defineProperty3(Tooltip, "defaultProps", {
       active: !1,
       allowEscapeViewBox: {
         x: !1,
@@ -3674,7 +3022,7 @@ var require_Tooltip = __commonJS({
       animationDuration: 400,
       filterNull: !0,
       useTranslate3d: !1
-    };
+    });
   }
 });
 
@@ -3708,9 +3056,9 @@ var require_ResponsiveContainer = __commonJS({
   "node_modules/recharts/lib/component/ResponsiveContainer.js"(exports) {
     "use strict";
     function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
         return typeof obj2;
-      } : _typeof2 = function(obj2) {
+      } : function(obj2) {
         return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
       }, _typeof2(obj);
     }
@@ -3718,26 +3066,26 @@ var require_ResponsiveContainer = __commonJS({
       value: !0
     });
     exports.ResponsiveContainer = void 0;
-    var _debounce2 = _interopRequireDefault(require("lodash/debounce")), _classnames = _interopRequireDefault(require("classnames")), _react = _interopRequireWildcard(require("react")), _reactResizeDetector = _interopRequireDefault(require("react-resize-detector")), _DataUtils = require_DataUtils(), _LogUtils = require_LogUtils();
-    function _getRequireWildcardCache() {
+    var _classnames = _interopRequireDefault(require("classnames")), _react = _interopRequireWildcard(require("react")), _reactResizeDetector = _interopRequireDefault(require("react-resize-detector")), _DataUtils = require_DataUtils(), _LogUtils = require_LogUtils();
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -3747,7 +3095,7 @@ var require_ResponsiveContainer = __commonJS({
       return obj && obj.__esModule ? obj : { default: obj };
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -3781,16 +3129,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return arr2;
     }
     function _iterableToArrayLimit(arr, i) {
-      if (!(typeof Symbol > "u" || !(Symbol.iterator in Object(arr)))) {
-        var _arr = [], _n = !0, _d = !1, _e = void 0;
+      var _i = arr == null ? null : typeof Symbol < "u" && arr[Symbol.iterator] || arr["@@iterator"];
+      if (_i != null) {
+        var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
         try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-            ;
+          if (_x = (_i = _i.call(arr)).next, i === 0) {
+            if (Object(_i) !== _i)
+              return;
+            _n = !1;
+          } else
+            for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+              ;
         } catch (err) {
           _d = !0, _e = err;
         } finally {
           try {
-            !_n && _i.return != null && _i.return();
+            if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+              return;
           } finally {
             if (_d)
               throw _e;
@@ -3804,30 +3159,31 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return arr;
     }
     var ResponsiveContainer2 = /* @__PURE__ */ (0, _react.forwardRef)(function(_ref, ref) {
-      var aspect = _ref.aspect, _ref$width = _ref.width, width = _ref$width === void 0 ? "100%" : _ref$width, _ref$height = _ref.height, height = _ref$height === void 0 ? "100%" : _ref$height, minWidth = _ref.minWidth, minHeight = _ref.minHeight, maxHeight = _ref.maxHeight, children = _ref.children, _ref$debounce = _ref.debounce, debounce = _ref$debounce === void 0 ? 0 : _ref$debounce, id = _ref.id, className = _ref.className, _useState = (0, _react.useState)({
+      var aspect = _ref.aspect, _ref$width = _ref.width, width = _ref$width === void 0 ? "100%" : _ref$width, _ref$height = _ref.height, height = _ref$height === void 0 ? "100%" : _ref$height, _ref$minWidth = _ref.minWidth, minWidth = _ref$minWidth === void 0 ? 0 : _ref$minWidth, minHeight = _ref.minHeight, maxHeight = _ref.maxHeight, children = _ref.children, _ref$debounce = _ref.debounce, debounce = _ref$debounce === void 0 ? 0 : _ref$debounce, id = _ref.id, className = _ref.className, onResize = _ref.onResize, _useState = (0, _react.useState)({
         containerWidth: -1,
         containerHeight: -1
       }), _useState2 = _slicedToArray(_useState, 2), sizes = _useState2[0], setSizes = _useState2[1], containerRef = (0, _react.useRef)(null);
       (0, _react.useImperativeHandle)(ref, function() {
         return containerRef;
       }, [containerRef]);
-      var _useState3 = (0, _react.useState)(!1), _useState4 = _slicedToArray(_useState3, 2), mounted = _useState4[0], setMounted = _useState4[1], getContainerSize = function() {
+      var getContainerSize = (0, _react.useCallback)(function() {
         return containerRef.current ? {
           containerWidth: containerRef.current.clientWidth,
           containerHeight: containerRef.current.clientHeight
         } : null;
-      }, updateDimensionsImmediate = function() {
-        if (!!mounted) {
-          var newSize = getContainerSize();
-          if (newSize) {
-            var oldWidth = sizes.containerWidth, oldHeight = sizes.containerHeight, containerWidth = newSize.containerWidth, containerHeight = newSize.containerHeight;
-            (containerWidth !== oldWidth || containerHeight !== oldHeight) && setSizes({
+      }, []), updateDimensionsImmediate = (0, _react.useCallback)(function() {
+        var newSize = getContainerSize();
+        if (newSize) {
+          var containerWidth = newSize.containerWidth, containerHeight = newSize.containerHeight;
+          onResize && onResize(containerWidth, containerHeight), setSizes(function(currentSizes) {
+            var oldWidth = currentSizes.containerWidth, oldHeight = currentSizes.containerHeight;
+            return containerWidth !== oldWidth || containerHeight !== oldHeight ? {
               containerWidth,
               containerHeight
-            });
-          }
+            } : currentSizes;
+          });
         }
-      }, handleResize = debounce > 0 ? (0, _debounce2.default)(updateDimensionsImmediate, debounce) : updateDimensionsImmediate, renderChart = function() {
+      }, [getContainerSize]), chartContent = (0, _react.useMemo)(function() {
         var containerWidth = sizes.containerWidth, containerHeight = sizes.containerHeight;
         if (containerWidth < 0 || containerHeight < 0)
           return null;
@@ -3841,15 +3197,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           width: calculatedWidth,
           height: calculatedHeight
         });
-      };
+      }, [aspect, children, height, maxHeight, minHeight, minWidth, sizes, width]);
       (0, _react.useEffect)(function() {
-        if (mounted) {
-          var size = getContainerSize();
-          size && setSizes(size);
-        }
-      }, [mounted]), (0, _react.useEffect)(function() {
-        setMounted(!0);
-      }, []);
+        var size = getContainerSize();
+        size && setSizes(size);
+      }, [getContainerSize]);
       var style = {
         width,
         height,
@@ -3860,15 +3212,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return /* @__PURE__ */ _react.default.createElement(_reactResizeDetector.default, {
         handleWidth: !0,
         handleHeight: !0,
-        onResize: handleResize,
-        targetRef: containerRef
+        onResize: updateDimensionsImmediate,
+        targetRef: containerRef,
+        refreshMode: debounce > 0 ? "debounce" : void 0,
+        refreshRate: debounce
       }, /* @__PURE__ */ _react.default.createElement("div", _extends({}, id != null ? {
         id: "".concat(id)
       } : {}, {
         className: (0, _classnames.default)("recharts-responsive-container", className),
         style,
         ref: containerRef
-      }), renderChart()));
+      }), chartContent));
     });
     exports.ResponsiveContainer = ResponsiveContainer2;
   }
@@ -3894,10 +3248,17 @@ var require_Cell = __commonJS({
 var require_DOMUtils = __commonJS({
   "node_modules/recharts/lib/util/DOMUtils.js"(exports) {
     "use strict";
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.calculateChartCoordinate = exports.getOffset = exports.getStringSize = exports.getStyleString = void 0;
+    exports.getStyleString = exports.getStringSize = exports.getOffset = exports.calculateChartCoordinate = void 0;
     var _Global = require_Global();
     function ownKeys3(object, enumerableOnly) {
       var keys = Object.keys(object);
@@ -3921,7 +3282,23 @@ var require_DOMUtils = __commonJS({
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function _toConsumableArray(arr) {
       return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
@@ -3942,7 +3319,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _iterableToArray(iter) {
-      if (typeof Symbol < "u" && Symbol.iterator in Object(iter))
+      if (typeof Symbol < "u" && iter[Symbol.iterator] != null || iter["@@iterator"] != null)
         return Array.from(iter);
     }
     function _arrayWithoutHoles(arr) {
@@ -4037,37 +3414,30 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 var require_Text = __commonJS({
   "node_modules/recharts/lib/component/Text.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Text = void 0;
-    var _isNil2 = _interopRequireDefault(require("lodash/isNil")), _react = _interopRequireWildcard(require("react")), _reduceCssCalc = _interopRequireDefault(require("reduce-css-calc")), _classnames = _interopRequireDefault(require("classnames")), _DataUtils = require_DataUtils(), _Global = require_Global(), _types = require_types(), _DOMUtils = require_DOMUtils();
-    function _getRequireWildcardCache() {
+    var _isNil2 = _interopRequireDefault(require("lodash/isNil")), _react = _interopRequireWildcard(require("react")), _reduceCssCalc = _interopRequireDefault(require("reduce-css-calc")), _classnames = _interopRequireDefault(require("classnames")), _DataUtils = require_DataUtils(), _Global = require_Global(), _ReactUtils = require_ReactUtils(), _DOMUtils = require_DOMUtils(), _excluded = ["dx", "dy", "textAnchor", "verticalAnchor", "scaleToFit", "angle", "lineHeight", "capHeight", "className", "breakAll"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -4076,8 +3446,15 @@ var require_Text = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -4112,19 +3489,19 @@ var require_Text = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -4141,7 +3518,11 @@ var require_Text = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -4161,7 +3542,7 @@ var require_Text = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
     }
@@ -4190,16 +3571,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return arr2;
     }
     function _iterableToArrayLimit(arr, i) {
-      if (!(typeof Symbol > "u" || !(Symbol.iterator in Object(arr)))) {
-        var _arr = [], _n = !0, _d = !1, _e = void 0;
+      var _i = arr == null ? null : typeof Symbol < "u" && arr[Symbol.iterator] || arr["@@iterator"];
+      if (_i != null) {
+        var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
         try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-            ;
+          if (_x = (_i = _i.call(arr)).next, i === 0) {
+            if (Object(_i) !== _i)
+              return;
+            _n = !1;
+          } else
+            for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+              ;
         } catch (err) {
           _d = !0, _e = err;
         } finally {
           try {
-            !_n && _i.return != null && _i.return();
+            if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+              return;
           } finally {
             if (_d)
               throw _e;
@@ -4234,7 +3622,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var BREAKING_SPACES = /[ \f\n\r\t\v\u2028\u2029]+/, calculateWordWidths = function(props) {
       try {
@@ -4309,20 +3713,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }
       }
       return getWordsWithoutCalculate(props.children);
-    }, Text2 = /* @__PURE__ */ function(_Component) {
-      _inherits(Text3, _Component);
-      var _super = _createSuper(Text3);
-      function Text3() {
+    }, Text = /* @__PURE__ */ function(_Component) {
+      _inherits(Text2, _Component);
+      var _super = _createSuper(Text2);
+      function Text2() {
         var _this;
-        _classCallCheck(this, Text3);
+        _classCallCheck(this, Text2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {}, _this;
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {}), _this;
       }
-      return _createClass(Text3, [{
+      return _createClass(Text2, [{
         key: "render",
         value: function() {
-          var _this$props = this.props, dx = _this$props.dx, dy = _this$props.dy, textAnchor = _this$props.textAnchor, verticalAnchor = _this$props.verticalAnchor, scaleToFit = _this$props.scaleToFit, angle = _this$props.angle, lineHeight = _this$props.lineHeight, capHeight = _this$props.capHeight, className = _this$props.className, breakAll = _this$props.breakAll, textProps = _objectWithoutProperties2(_this$props, ["dx", "dy", "textAnchor", "verticalAnchor", "scaleToFit", "angle", "lineHeight", "capHeight", "className", "breakAll"]), wordsByLines = this.state.wordsByLines;
+          var _this$props = this.props, dx = _this$props.dx, dy = _this$props.dy, textAnchor = _this$props.textAnchor, verticalAnchor = _this$props.verticalAnchor, scaleToFit = _this$props.scaleToFit, angle = _this$props.angle, lineHeight = _this$props.lineHeight, capHeight = _this$props.capHeight, className = _this$props.className, breakAll = _this$props.breakAll, textProps = _objectWithoutProperties2(_this$props, _excluded), wordsByLines = this.state.wordsByLines;
           if (!(0, _DataUtils.isNumOrStr)(textProps.x) || !(0, _DataUtils.isNumOrStr)(textProps.y))
             return null;
           var x = textProps.x + ((0, _DataUtils.isNumber)(dx) ? dx : 0), y = textProps.y + ((0, _DataUtils.isNumber)(dy) ? dy : 0), startDy;
@@ -4342,12 +3746,12 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             var lineWidth = wordsByLines[0].width, width = this.props.width;
             transforms.push("scale(".concat(((0, _DataUtils.isNumber)(width) ? width / lineWidth : 1) / lineWidth, ")"));
           }
-          return angle && transforms.push("rotate(".concat(angle, ", ").concat(x, ", ").concat(y, ")")), transforms.length && (textProps.transform = transforms.join(" ")), /* @__PURE__ */ _react.default.createElement("text", _extends({}, (0, _types.filterProps)(textProps, !0), {
+          return angle && transforms.push("rotate(".concat(angle, ", ").concat(x, ", ").concat(y, ")")), transforms.length && (textProps.transform = transforms.join(" ")), /* @__PURE__ */ _react.default.createElement("text", _extends({}, (0, _ReactUtils.filterProps)(textProps, !0), {
             x,
             y,
             className: (0, _classnames.default)("recharts-text", className),
             textAnchor,
-            fill: textProps.fill.includes("url") ? Text3.defaultProps.fill : textProps.fill
+            fill: textProps.fill.includes("url") ? Text2.defaultProps.fill : textProps.fill
           }), wordsByLines.map(function(line, index) {
             return /* @__PURE__ */ _react.default.createElement("tspan", {
               x,
@@ -4371,10 +3775,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           }
           return null;
         }
-      }]), Text3;
+      }]), Text2;
     }(_react.Component);
-    exports.Text = Text2;
-    Text2.defaultProps = {
+    exports.Text = Text;
+    _defineProperty3(Text, "defaultProps", {
       x: 0,
       y: 0,
       lineHeight: "1em",
@@ -4383,41 +3787,85 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       textAnchor: "start",
       verticalAnchor: "end",
       fill: "#808080"
-    };
+    });
   }
 });
 
-// node_modules/recharts/lib/util/ShallowEqual.js
-var require_ShallowEqual = __commonJS({
-  "node_modules/recharts/lib/util/ShallowEqual.js"(exports) {
+// node_modules/recharts/lib/cartesian/ErrorBar.js
+var require_ErrorBar = __commonJS({
+  "node_modules/recharts/lib/cartesian/ErrorBar.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.shallowEqual = shallowEqual;
-    function shallowEqual(a, b) {
-      for (var key in a)
-        if ({}.hasOwnProperty.call(a, key) && (!{}.hasOwnProperty.call(b, key) || a[key] !== b[key]))
-          return !1;
-      for (var _key in b)
-        if ({}.hasOwnProperty.call(b, _key) && !{}.hasOwnProperty.call(a, _key))
-          return !1;
-      return !0;
-    }
-  }
-});
-
-// node_modules/recharts/lib/util/ReactUtils.js
-var require_ReactUtils = __commonJS({
-  "node_modules/recharts/lib/util/ReactUtils.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: !0
-    });
-    exports.parseChildIndex = exports.getReactEventByType = exports.renderByOrder = exports.isSingleChildEqual = exports.isChildrenEqual = exports.filterSvgElements = exports.validateWidthHeight = exports.withoutType = exports.findChildByType = exports.findAllByType = exports.toArray = exports.getDisplayName = exports.TOOLTIP_TYPES = exports.LEGEND_TYPES = exports.SCALE_TYPES = void 0;
-    var _isString2 = _interopRequireDefault(require("lodash/isString")), _get2 = _interopRequireDefault(require("lodash/get")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = require("react"), _reactIs = require("react-is"), _DataUtils = require_DataUtils(), _ShallowEqual = require_ShallowEqual();
+    exports.ErrorBar = ErrorBar;
+    var _react = _interopRequireDefault(require("react")), _Layer = require_Layer(), _ReactUtils = require_ReactUtils(), _excluded = ["offset", "layout", "width", "dataKey", "data", "dataPointFormatter", "xAxis", "yAxis"];
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _extends() {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source)
+            Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+        }
+        return target;
+      }, _extends.apply(this, arguments);
+    }
+    function _slicedToArray(arr, i) {
+      return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+    }
+    function _nonIterableRest() {
+      throw new TypeError(`Invalid attempt to destructure non-iterable instance.
+In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+    }
+    function _unsupportedIterableToArray(o, minLen) {
+      if (!!o) {
+        if (typeof o == "string")
+          return _arrayLikeToArray(o, minLen);
+        var n = Object.prototype.toString.call(o).slice(8, -1);
+        if (n === "Object" && o.constructor && (n = o.constructor.name), n === "Map" || n === "Set")
+          return Array.from(o);
+        if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+          return _arrayLikeToArray(o, minLen);
+      }
+    }
+    function _arrayLikeToArray(arr, len) {
+      (len == null || len > arr.length) && (len = arr.length);
+      for (var i = 0, arr2 = new Array(len); i < len; i++)
+        arr2[i] = arr[i];
+      return arr2;
+    }
+    function _iterableToArrayLimit(arr, i) {
+      var _i = arr == null ? null : typeof Symbol < "u" && arr[Symbol.iterator] || arr["@@iterator"];
+      if (_i != null) {
+        var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
+        try {
+          if (_x = (_i = _i.call(arr)).next, i === 0) {
+            if (Object(_i) !== _i)
+              return;
+            _n = !1;
+          } else
+            for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+              ;
+        } catch (err) {
+          _d = !0, _e = err;
+        } finally {
+          try {
+            if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+              return;
+          } finally {
+            if (_d)
+              throw _e;
+          }
+        }
+        return _arr;
+      }
+    }
+    function _arrayWithHoles(arr) {
+      if (Array.isArray(arr))
+        return arr;
     }
     function _objectWithoutProperties2(source, excluded) {
       if (source == null)
@@ -4438,134 +3886,75 @@ var require_ReactUtils = __commonJS({
         key = sourceKeys[i], !(excluded.indexOf(key) >= 0) && (target[key] = source[key]);
       return target;
     }
-    var REACT_BROWSER_EVENT_MAP = {
-      click: "onClick",
-      mousedown: "onMouseDown",
-      mouseup: "onMouseUp",
-      mouseover: "onMouseOver",
-      mousemove: "onMouseMove",
-      mouseout: "onMouseOut",
-      mouseenter: "onMouseEnter",
-      mouseleave: "onMouseLeave",
-      touchcancel: "onTouchCancel",
-      touchend: "onTouchEnd",
-      touchmove: "onTouchMove",
-      touchstart: "onTouchStart"
-    }, SCALE_TYPES = ["auto", "linear", "pow", "sqrt", "log", "identity", "time", "band", "point", "ordinal", "quantile", "quantize", "utc", "sequential", "threshold"];
-    exports.SCALE_TYPES = SCALE_TYPES;
-    var LEGEND_TYPES = ["plainline", "line", "square", "rect", "circle", "cross", "diamond", "star", "triangle", "wye", "none"];
-    exports.LEGEND_TYPES = LEGEND_TYPES;
-    var TOOLTIP_TYPES = ["none"];
-    exports.TOOLTIP_TYPES = TOOLTIP_TYPES;
-    var getDisplayName = function(Comp) {
-      return typeof Comp == "string" ? Comp : Comp ? Comp.displayName || Comp.name || "Component" : "";
-    };
-    exports.getDisplayName = getDisplayName;
-    var lastChildren = null, lastResult = null, toArray = function toArray2(children) {
-      if (children === lastChildren && (0, _isArray2.default)(lastResult))
-        return lastResult;
-      var result = [];
-      return _react.Children.forEach(children, function(child) {
-        (0, _isNil2.default)(child) || ((0, _reactIs.isFragment)(child) ? result = result.concat(toArray2(child.props.children)) : result.push(child));
-      }), lastResult = result, lastChildren = children, result;
-    };
-    exports.toArray = toArray;
-    var findAllByType = function(children, type) {
-      var result = [], types = [];
-      return (0, _isArray2.default)(type) ? types = type.map(function(t) {
-        return getDisplayName(t);
-      }) : types = [getDisplayName(type)], toArray(children).forEach(function(child) {
-        var childType = (0, _get2.default)(child, "type.displayName") || (0, _get2.default)(child, "type.name");
-        types.indexOf(childType) !== -1 && result.push(child);
-      }), result;
-    };
-    exports.findAllByType = findAllByType;
-    var findChildByType = function(children, type) {
-      var result = findAllByType(children, type);
-      return result && result[0];
-    };
-    exports.findChildByType = findChildByType;
-    var withoutType = function(children, type) {
-      var newChildren = [], types;
-      return (0, _isArray2.default)(type) ? types = type.map(function(t) {
-        return getDisplayName(t);
-      }) : types = [getDisplayName(type)], toArray(children).forEach(function(child) {
-        var displayName = (0, _get2.default)(child, "type.displayName");
-        displayName && types.indexOf(displayName) !== -1 || newChildren.push(child);
-      }), newChildren;
-    };
-    exports.withoutType = withoutType;
-    var validateWidthHeight = function(el) {
-      if (!el || !el.props)
-        return !1;
-      var _el$props = el.props, width = _el$props.width, height = _el$props.height;
-      return !(!(0, _DataUtils.isNumber)(width) || width <= 0 || !(0, _DataUtils.isNumber)(height) || height <= 0);
-    };
-    exports.validateWidthHeight = validateWidthHeight;
-    var SVG_TAGS = ["a", "altGlyph", "altGlyphDef", "altGlyphItem", "animate", "animateColor", "animateMotion", "animateTransform", "circle", "clipPath", "color-profile", "cursor", "defs", "desc", "ellipse", "feBlend", "feColormatrix", "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap", "feDistantLight", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR", "feGaussianBlur", "feImage", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight", "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence", "filter", "font", "font-face", "font-face-format", "font-face-name", "font-face-url", "foreignObject", "g", "glyph", "glyphRef", "hkern", "image", "line", "lineGradient", "marker", "mask", "metadata", "missing-glyph", "mpath", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "script", "set", "stop", "style", "svg", "switch", "symbol", "text", "textPath", "title", "tref", "tspan", "use", "view", "vkern"], isSvgElement = function(child) {
-      return child && child.type && (0, _isString2.default)(child.type) && SVG_TAGS.indexOf(child.type) >= 0;
-    }, filterSvgElements = function(children) {
-      var svgElements = [];
-      return toArray(children).forEach(function(entry2) {
-        isSvgElement(entry2) && svgElements.push(entry2);
-      }), svgElements;
-    };
-    exports.filterSvgElements = filterSvgElements;
-    var isChildrenEqual = function isChildrenEqual2(nextChildren, prevChildren) {
-      if (nextChildren === prevChildren)
-        return !0;
-      var count = _react.Children.count(nextChildren);
-      if (count !== _react.Children.count(prevChildren))
-        return !1;
-      if (count === 0)
-        return !0;
-      if (count === 1)
-        return isSingleChildEqual((0, _isArray2.default)(nextChildren) ? nextChildren[0] : nextChildren, (0, _isArray2.default)(prevChildren) ? prevChildren[0] : prevChildren);
-      for (var i = 0; i < count; i++) {
-        var nextChild = nextChildren[i], prevChild = prevChildren[i];
-        if ((0, _isArray2.default)(nextChild) || (0, _isArray2.default)(prevChild)) {
-          if (!isChildrenEqual2(nextChild, prevChild))
-            return !1;
-        } else if (!isSingleChildEqual(nextChild, prevChild))
-          return !1;
-      }
-      return !0;
-    };
-    exports.isChildrenEqual = isChildrenEqual;
-    var isSingleChildEqual = function(nextChild, prevChild) {
-      if ((0, _isNil2.default)(nextChild) && (0, _isNil2.default)(prevChild))
-        return !0;
-      if (!(0, _isNil2.default)(nextChild) && !(0, _isNil2.default)(prevChild)) {
-        var _ref = nextChild.props || {}, nextChildren = _ref.children, nextProps = _objectWithoutProperties2(_ref, ["children"]), _ref2 = prevChild.props || {}, prevChildren = _ref2.children, prevProps = _objectWithoutProperties2(_ref2, ["children"]);
-        return nextChildren && prevChildren ? (0, _ShallowEqual.shallowEqual)(nextProps, prevProps) && isChildrenEqual(nextChildren, prevChildren) : !nextChildren && !prevChildren ? (0, _ShallowEqual.shallowEqual)(nextProps, prevProps) : !1;
-      }
-      return !1;
-    };
-    exports.isSingleChildEqual = isSingleChildEqual;
-    var renderByOrder = function(children, renderMap) {
-      var elements = [], record = {};
-      return toArray(children).forEach(function(child, index) {
-        if (isSvgElement(child))
-          elements.push(child);
-        else if (child) {
-          var displayName = getDisplayName(child.type), _ref3 = renderMap[displayName] || {}, handler = _ref3.handler, once = _ref3.once;
-          if (handler && (!once || !record[displayName])) {
-            var results = handler(child, displayName, index);
-            elements.push(results), record[displayName] = !0;
-          }
+    function ErrorBar(props) {
+      var offset = props.offset, layout = props.layout, width = props.width, dataKey = props.dataKey, data = props.data, dataPointFormatter = props.dataPointFormatter, xAxis = props.xAxis, yAxis = props.yAxis, others = _objectWithoutProperties2(props, _excluded), svgProps = (0, _ReactUtils.filterProps)(others), errorBars = data.map(function(entry2, i) {
+        var _dataPointFormatter = dataPointFormatter(entry2, dataKey), x = _dataPointFormatter.x, y = _dataPointFormatter.y, value = _dataPointFormatter.value, errorVal = _dataPointFormatter.errorVal;
+        if (!errorVal)
+          return null;
+        var lineCoordinates = [], lowBound, highBound;
+        if (Array.isArray(errorVal)) {
+          var _errorVal = _slicedToArray(errorVal, 2);
+          lowBound = _errorVal[0], highBound = _errorVal[1];
+        } else
+          lowBound = highBound = errorVal;
+        if (layout === "vertical") {
+          var scale = xAxis.scale, yMid = y + offset, yMin = yMid + width, yMax = yMid - width, xMin = scale(value - lowBound), xMax = scale(value + highBound);
+          lineCoordinates.push({
+            x1: xMax,
+            y1: yMin,
+            x2: xMax,
+            y2: yMax
+          }), lineCoordinates.push({
+            x1: xMin,
+            y1: yMid,
+            x2: xMax,
+            y2: yMid
+          }), lineCoordinates.push({
+            x1: xMin,
+            y1: yMin,
+            x2: xMin,
+            y2: yMax
+          });
+        } else if (layout === "horizontal") {
+          var _scale = yAxis.scale, xMid = x + offset, _xMin = xMid - width, _xMax = xMid + width, _yMin = _scale(value - lowBound), _yMax = _scale(value + highBound);
+          lineCoordinates.push({
+            x1: _xMin,
+            y1: _yMax,
+            x2: _xMax,
+            y2: _yMax
+          }), lineCoordinates.push({
+            x1: xMid,
+            y1: _yMin,
+            x2: xMid,
+            y2: _yMax
+          }), lineCoordinates.push({
+            x1: _xMin,
+            y1: _yMin,
+            x2: _xMax,
+            y2: _yMin
+          });
         }
-      }), elements;
+        return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, _extends({
+          className: "recharts-errorBar",
+          key: "bar-".concat(i)
+        }, svgProps), lineCoordinates.map(function(coordinates, index) {
+          return /* @__PURE__ */ _react.default.createElement("line", _extends({}, coordinates, {
+            key: "line-".concat(index)
+          }));
+        }));
+      });
+      return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
+        className: "recharts-errorBars"
+      }, errorBars);
+    }
+    ErrorBar.defaultProps = {
+      stroke: "black",
+      strokeWidth: 1.5,
+      width: 5,
+      offset: 0,
+      layout: "horizontal"
     };
-    exports.renderByOrder = renderByOrder;
-    var getReactEventByType = function(e) {
-      var type = e && e.type;
-      return type && REACT_BROWSER_EVENT_MAP[type] ? REACT_BROWSER_EVENT_MAP[type] : null;
-    };
-    exports.getReactEventByType = getReactEventByType;
-    var parseChildIndex = function(child, children) {
-      return toArray(children).indexOf(child);
-    };
-    exports.parseChildIndex = parseChildIndex;
+    ErrorBar.displayName = "ErrorBar";
   }
 });
 
@@ -4573,39 +3962,34 @@ var require_ReactUtils = __commonJS({
 var require_ChartUtils = __commonJS({
   "node_modules/recharts/lib/util/ChartUtils.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.getValueByDataKey = getValueByDataKey;
+    exports.getCoordinatesOfGrid = exports.getCateCoordinateOfLine = exports.getCateCoordinateOfBar = exports.getBaseValueOfBar = exports.getBarSizeList = exports.getBarPosition = exports.getBandSizeOfAxis = exports.findPositionOfBar = exports.combineEventHandlers = exports.checkDomainOfScale = exports.calculateActiveTickIndex = exports.appendOffsetOfLegend = exports.MIN_VALUE_REG = exports.MAX_VALUE_REG = void 0;
     exports.getDomainOfDataByKey = getDomainOfDataByKey;
-    exports.getTooltipItem = exports.parseDomainOfCategoryAxis = exports.getBandSizeOfAxis = exports.parseSpecifiedDomain = exports.MAX_VALUE_REG = exports.MIN_VALUE_REG = exports.getDomainOfStackGroups = exports.getStackedDataOfItem = exports.getBaseValueOfBar = exports.getCateCoordinateOfBar = exports.getCateCoordinateOfLine = exports.getTicksOfScale = exports.calculateDomainOfTicks = exports.getStackGroupsByAxisId = exports.getStackedData = exports.offsetPositive = exports.offsetSign = exports.truncateByDomain = exports.findPositionOfBar = exports.checkDomainOfScale = exports.parseScale = exports.combineEventHandlers = exports.getTicksOfAxis = exports.getCoordinatesOfGrid = exports.isCategoricalAxis = exports.getDomainOfItemsWithSameAxis = exports.parseErrorBarsOfAxis = exports.getDomainOfErrorBars = exports.appendOffsetOfLegend = exports.getBarPosition = exports.getBarSizeList = exports.getLegendProps = exports.getMainColorOfGraphicItem = exports.calculateActiveTickIndex = void 0;
-    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _sortBy2 = _interopRequireDefault(require("lodash/sortBy")), _isNaN2 = _interopRequireDefault(require("lodash/isNaN")), _upperFirst2 = _interopRequireDefault(require("lodash/upperFirst")), _isString2 = _interopRequireDefault(require("lodash/isString")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _max2 = _interopRequireDefault(require("lodash/max")), _min2 = _interopRequireDefault(require("lodash/min")), _flatMap2 = _interopRequireDefault(require("lodash/flatMap")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _get2 = _interopRequireDefault(require("lodash/get")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _rechartsScale = require("recharts-scale"), d3Scales = _interopRequireWildcard(require("d3-scale")), _d3Shape = require_d3_shape(), _DataUtils = require_DataUtils(), _Legend = require_Legend(), _ReactUtils = require_ReactUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    exports.getTooltipItem = exports.getTicksOfScale = exports.getTicksOfAxis = exports.getStackedDataOfItem = exports.getStackedData = exports.getStackGroupsByAxisId = exports.getMainColorOfGraphicItem = exports.getLegendProps = exports.getDomainOfStackGroups = exports.getDomainOfItemsWithSameAxis = exports.getDomainOfErrorBars = void 0;
+    exports.getValueByDataKey = getValueByDataKey;
+    exports.truncateByDomain = exports.parseSpecifiedDomain = exports.parseScale = exports.parseErrorBarsOfAxis = exports.parseDomainOfCategoryAxis = exports.offsetSign = exports.offsetPositive = exports.isCategoricalAxis = void 0;
+    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _sortBy2 = _interopRequireDefault(require("lodash/sortBy")), _upperFirst2 = _interopRequireDefault(require("lodash/upperFirst")), _isString2 = _interopRequireDefault(require("lodash/isString")), _isNaN2 = _interopRequireDefault(require("lodash/isNaN")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _max2 = _interopRequireDefault(require("lodash/max")), _min2 = _interopRequireDefault(require("lodash/min")), _flatMap2 = _interopRequireDefault(require("lodash/flatMap")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _get2 = _interopRequireDefault(require("lodash/get")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), d3Scales = _interopRequireWildcard(require("victory-vendor/d3-scale")), _d3Shape = require("victory-vendor/d3-shape"), _rechartsScale = require("recharts-scale"), _ErrorBar = require_ErrorBar(), _Legend = require_Legend(), _DataUtils = require_DataUtils(), _ReactUtils = require_ReactUtils();
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -4613,6 +3997,13 @@ var require_ChartUtils = __commonJS({
     }
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
     }
     function _toConsumableArray(arr) {
       return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
@@ -4633,7 +4024,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _iterableToArray(iter) {
-      if (typeof Symbol < "u" && Symbol.iterator in Object(iter))
+      if (typeof Symbol < "u" && iter[Symbol.iterator] != null || iter["@@iterator"] != null)
         return Array.from(iter);
     }
     function _arrayWithoutHoles(arr) {
@@ -4668,7 +4059,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function getValueByDataKey(obj, dataKey, defaultValue) {
       return (0, _isNil2.default)(obj) || (0, _isNil2.default)(dataKey) ? defaultValue : (0, _DataUtils.isNumOrStr)(dataKey) ? (0, _get2.default)(obj, dataKey, defaultValue) : (0, _isFunction2.default)(dataKey) ? dataKey(obj) : defaultValue;
@@ -4692,42 +4099,41 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     }
     var calculateActiveTickIndex = function(coordinate) {
       var _ticks$length, ticks = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : [], unsortedTicks = arguments.length > 2 ? arguments[2] : void 0, axis = arguments.length > 3 ? arguments[3] : void 0, index = -1, len = (_ticks$length = ticks == null ? void 0 : ticks.length) !== null && _ticks$length !== void 0 ? _ticks$length : 0;
-      if (len > 1) {
-        if (axis && axis.axisType === "angleAxis" && Math.abs(Math.abs(axis.range[1] - axis.range[0]) - 360) <= 1e-6)
-          for (var range = axis.range, i = 0; i < len; i++) {
-            var before = i > 0 ? unsortedTicks[i - 1].coordinate : unsortedTicks[len - 1].coordinate, cur = unsortedTicks[i].coordinate, after = i >= len - 1 ? unsortedTicks[0].coordinate : unsortedTicks[i + 1].coordinate, sameDirectionCoord = void 0;
-            if ((0, _DataUtils.mathSign)(cur - before) !== (0, _DataUtils.mathSign)(after - cur)) {
-              var diffInterval = [];
-              if ((0, _DataUtils.mathSign)(after - cur) === (0, _DataUtils.mathSign)(range[1] - range[0])) {
-                sameDirectionCoord = after;
-                var curInRange = cur + range[1] - range[0];
-                diffInterval[0] = Math.min(curInRange, (curInRange + before) / 2), diffInterval[1] = Math.max(curInRange, (curInRange + before) / 2);
-              } else {
-                sameDirectionCoord = before;
-                var afterInRange = after + range[1] - range[0];
-                diffInterval[0] = Math.min(cur, (afterInRange + cur) / 2), diffInterval[1] = Math.max(cur, (afterInRange + cur) / 2);
-              }
-              var sameInterval = [Math.min(cur, (sameDirectionCoord + cur) / 2), Math.max(cur, (sameDirectionCoord + cur) / 2)];
-              if (coordinate > sameInterval[0] && coordinate <= sameInterval[1] || coordinate >= diffInterval[0] && coordinate <= diffInterval[1]) {
-                index = unsortedTicks[i].index;
-                break;
-              }
+      if (len <= 1)
+        return 0;
+      if (axis && axis.axisType === "angleAxis" && Math.abs(Math.abs(axis.range[1] - axis.range[0]) - 360) <= 1e-6)
+        for (var range = axis.range, i = 0; i < len; i++) {
+          var before = i > 0 ? unsortedTicks[i - 1].coordinate : unsortedTicks[len - 1].coordinate, cur = unsortedTicks[i].coordinate, after = i >= len - 1 ? unsortedTicks[0].coordinate : unsortedTicks[i + 1].coordinate, sameDirectionCoord = void 0;
+          if ((0, _DataUtils.mathSign)(cur - before) !== (0, _DataUtils.mathSign)(after - cur)) {
+            var diffInterval = [];
+            if ((0, _DataUtils.mathSign)(after - cur) === (0, _DataUtils.mathSign)(range[1] - range[0])) {
+              sameDirectionCoord = after;
+              var curInRange = cur + range[1] - range[0];
+              diffInterval[0] = Math.min(curInRange, (curInRange + before) / 2), diffInterval[1] = Math.max(curInRange, (curInRange + before) / 2);
             } else {
-              var min = Math.min(before, after), max = Math.max(before, after);
-              if (coordinate > (min + cur) / 2 && coordinate <= (max + cur) / 2) {
-                index = unsortedTicks[i].index;
-                break;
-              }
+              sameDirectionCoord = before;
+              var afterInRange = after + range[1] - range[0];
+              diffInterval[0] = Math.min(cur, (afterInRange + cur) / 2), diffInterval[1] = Math.max(cur, (afterInRange + cur) / 2);
             }
-          }
-        else
-          for (var _i = 0; _i < len; _i++)
-            if (_i === 0 && coordinate <= (ticks[_i].coordinate + ticks[_i + 1].coordinate) / 2 || _i > 0 && _i < len - 1 && coordinate > (ticks[_i].coordinate + ticks[_i - 1].coordinate) / 2 && coordinate <= (ticks[_i].coordinate + ticks[_i + 1].coordinate) / 2 || _i === len - 1 && coordinate > (ticks[_i].coordinate + ticks[_i - 1].coordinate) / 2) {
-              index = ticks[_i].index;
+            var sameInterval = [Math.min(cur, (sameDirectionCoord + cur) / 2), Math.max(cur, (sameDirectionCoord + cur) / 2)];
+            if (coordinate > sameInterval[0] && coordinate <= sameInterval[1] || coordinate >= diffInterval[0] && coordinate <= diffInterval[1]) {
+              index = unsortedTicks[i].index;
               break;
             }
-      } else
-        index = 0;
+          } else {
+            var min = Math.min(before, after), max = Math.max(before, after);
+            if (coordinate > (min + cur) / 2 && coordinate <= (max + cur) / 2) {
+              index = unsortedTicks[i].index;
+              break;
+            }
+          }
+        }
+      else
+        for (var _i = 0; _i < len; _i++)
+          if (_i === 0 && coordinate <= (ticks[_i].coordinate + ticks[_i + 1].coordinate) / 2 || _i > 0 && _i < len - 1 && coordinate > (ticks[_i].coordinate + ticks[_i - 1].coordinate) / 2 && coordinate <= (ticks[_i].coordinate + ticks[_i + 1].coordinate) / 2 || _i === len - 1 && coordinate > (ticks[_i].coordinate + ticks[_i - 1].coordinate) / 2) {
+            index = ticks[_i].index;
+            break;
+          }
       return index;
     };
     exports.calculateActiveTickIndex = calculateActiveTickIndex;
@@ -4749,7 +4155,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     };
     exports.getMainColorOfGraphicItem = getMainColorOfGraphicItem;
     var getLegendProps = function(_ref2) {
-      var children = _ref2.children, formattedGraphicalItems = _ref2.formattedGraphicalItems, legendWidth = _ref2.legendWidth, legendContent = _ref2.legendContent, legendItem = (0, _ReactUtils.findChildByType)(children, _Legend.Legend.displayName);
+      var children = _ref2.children, formattedGraphicalItems = _ref2.formattedGraphicalItems, legendWidth = _ref2.legendWidth, legendContent = _ref2.legendContent, legendItem = (0, _ReactUtils.findChildByType)(children, _Legend.Legend);
       if (!legendItem)
         return null;
       var legendData;
@@ -4861,7 +4267,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }), newOffset = offset;
       if (legendProps) {
         var box = legendBox || {}, align = legendProps.align, verticalAlign = legendProps.verticalAlign, layout = legendProps.layout;
-        (layout === "vertical" || layout === "horizontal" && verticalAlign === "center") && (0, _DataUtils.isNumber)(offset[align]) && (newOffset = _objectSpread3(_objectSpread3({}, offset), {}, _defineProperty3({}, align, newOffset[align] + (box.width || 0)))), (layout === "horizontal" || layout === "vertical" && align === "center") && (0, _DataUtils.isNumber)(offset[verticalAlign]) && (newOffset = _objectSpread3(_objectSpread3({}, offset), {}, _defineProperty3({}, verticalAlign, newOffset[verticalAlign] + (box.height || 0))));
+        (layout === "vertical" || layout === "horizontal" && verticalAlign === "middle") && (0, _DataUtils.isNumber)(offset[align]) && (newOffset = _objectSpread3(_objectSpread3({}, offset), {}, _defineProperty3({}, align, newOffset[align] + (box.width || 0)))), (layout === "horizontal" || layout === "vertical" && align === "center") && (0, _DataUtils.isNumber)(offset[verticalAlign]) && (newOffset = _objectSpread3(_objectSpread3({}, offset), {}, _defineProperty3({}, verticalAlign, newOffset[verticalAlign] + (box.height || 0))));
       }
       return newOffset;
     };
@@ -4869,7 +4275,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     var isErrorBarRelevantForAxis = function(layout, axisType, direction) {
       return (0, _isNil2.default)(axisType) ? !0 : layout === "horizontal" ? axisType === "yAxis" : layout === "vertical" || direction === "x" ? axisType === "xAxis" : direction === "y" ? axisType === "yAxis" : !0;
     }, getDomainOfErrorBars = function(data, item, dataKey, layout, axisType) {
-      var children = item.props.children, errorBars = (0, _ReactUtils.findAllByType)(children, "ErrorBar").filter(function(errorBarChild) {
+      var children = item.props.children, errorBars = (0, _ReactUtils.findAllByType)(children, _ErrorBar.ErrorBar).filter(function(errorBarChild) {
         return isErrorBarRelevantForAxis(layout, axisType, errorBarChild.props.direction);
       });
       if (errorBars && errorBars.length) {
@@ -4930,14 +4336,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (!axis)
         return null;
       var scale = axis.scale, duplicateDomain = axis.duplicateDomain, type = axis.type, range = axis.range, offsetForBand = axis.realScaleType === "scaleBand" ? scale.bandwidth() / 2 : 2, offset = (isGrid || isAll) && type === "category" && scale.bandwidth ? scale.bandwidth() / offsetForBand : 0;
-      return offset = axis.axisType === "angleAxis" ? (0, _DataUtils.mathSign)(range[0] - range[1]) * 2 * offset : offset, isGrid && (axis.ticks || axis.niceTicks) ? (axis.ticks || axis.niceTicks).map(function(entry2) {
-        var scaleContent = duplicateDomain ? duplicateDomain.indexOf(entry2) : entry2;
-        return {
-          coordinate: scale(scaleContent) + offset,
-          value: entry2,
-          offset
-        };
-      }) : axis.isCategorical && axis.categoricalDomain ? axis.categoricalDomain.map(function(entry2, index) {
+      if (offset = axis.axisType === "angleAxis" && (range == null ? void 0 : range.length) >= 2 ? (0, _DataUtils.mathSign)(range[0] - range[1]) * 2 * offset : offset, isGrid && (axis.ticks || axis.niceTicks)) {
+        var result = (axis.ticks || axis.niceTicks).map(function(entry2) {
+          var scaleContent = duplicateDomain ? duplicateDomain.indexOf(entry2) : entry2;
+          return {
+            coordinate: scale(scaleContent) + offset,
+            value: entry2,
+            offset
+          };
+        });
+        return result.filter(function(row) {
+          return !(0, _isNaN2.default)(row.coordinate);
+        });
+      }
+      return axis.isCategorical && axis.categoricalDomain ? axis.categoricalDomain.map(function(entry2, index) {
         return {
           coordinate: scale(entry2) + offset,
           value: entry2,
@@ -5101,10 +4513,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, {});
     };
     exports.getStackGroupsByAxisId = getStackGroupsByAxisId;
-    var calculateDomainOfTicks = function(ticks, type) {
-      return type === "number" ? [(0, _min2.default)(ticks), (0, _max2.default)(ticks)] : ticks;
-    };
-    exports.calculateDomainOfTicks = calculateDomainOfTicks;
     var getTicksOfScale = function(scale, opts) {
       var realScaleType = opts.realScaleType, type = opts.type, tickCount = opts.tickCount, originalDomain = opts.originalDomain, allowDecimals = opts.allowDecimals, scaleType = realScaleType || opts.scale;
       if (scaleType !== "auto" && scaleType !== "linear")
@@ -5114,7 +4522,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         if (!domain.length)
           return null;
         var tickValues = (0, _rechartsScale.getNiceTickValues)(domain, tickCount, allowDecimals);
-        return scale.domain(calculateDomainOfTicks(tickValues, type)), {
+        return scale.domain([(0, _min2.default)(tickValues), (0, _max2.default)(tickValues)]), {
           niceTicks: tickValues
         };
       }
@@ -5241,7 +4649,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     exports.parseDomainOfCategoryAxis = parseDomainOfCategoryAxis;
     var getTooltipItem = function(graphicalItem, payload) {
       var _graphicalItem$props = graphicalItem.props, dataKey = _graphicalItem$props.dataKey, name = _graphicalItem$props.name, unit = _graphicalItem$props.unit, formatter = _graphicalItem$props.formatter, tooltipType = _graphicalItem$props.tooltipType, chartType = _graphicalItem$props.chartType;
-      return _objectSpread3(_objectSpread3({}, (0, _types.filterProps)(graphicalItem)), {}, {
+      return _objectSpread3(_objectSpread3({}, (0, _ReactUtils.filterProps)(graphicalItem)), {}, {
         dataKey,
         unit,
         formatter,
@@ -5261,10 +4669,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 var require_PolarUtils = __commonJS({
   "node_modules/recharts/lib/util/PolarUtils.js"(exports) {
     "use strict";
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.inRangeOfSector = exports.formatAngleOfSector = exports.getAngleOfPoint = exports.distanceBetweenPoints = exports.formatAxisMap = exports.getMaxRadius = exports.polarToCartesian = exports.radianToDegree = exports.degreeToRadian = exports.RADIAN = void 0;
+    exports.radianToDegree = exports.polarToCartesian = exports.inRangeOfSector = exports.getMaxRadius = exports.getAngleOfPoint = exports.formatAxisMap = exports.formatAngleOfSector = exports.distanceBetweenPoints = exports.degreeToRadian = exports.RADIAN = void 0;
     var _isNil2 = _interopRequireDefault(require("lodash/isNil")), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils();
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
@@ -5291,7 +4706,23 @@ var require_PolarUtils = __commonJS({
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function _slicedToArray(arr, i) {
       return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
@@ -5318,16 +4749,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return arr2;
     }
     function _iterableToArrayLimit(arr, i) {
-      if (!(typeof Symbol > "u" || !(Symbol.iterator in Object(arr)))) {
-        var _arr = [], _n = !0, _d = !1, _e = void 0;
+      var _i = arr == null ? null : typeof Symbol < "u" && arr[Symbol.iterator] || arr["@@iterator"];
+      if (_i != null) {
+        var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
         try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-            ;
+          if (_x = (_i = _i.call(arr)).next, i === 0) {
+            if (Object(_i) !== _i)
+              return;
+            _n = !1;
+          } else
+            for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+              ;
         } catch (err) {
           _d = !0, _e = err;
         } finally {
           try {
-            !_n && _i.return != null && _i.return();
+            if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+              return;
           } finally {
             if (_d)
               throw _e;
@@ -5471,36 +4909,36 @@ var require_Label = __commonJS({
   "node_modules/recharts/lib/component/Label.js"(exports) {
     "use strict";
     function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
         return typeof obj2;
-      } : _typeof2 = function(obj2) {
+      } : function(obj2) {
         return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
       }, _typeof2(obj);
     }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.Label = Label2;
-    var _isObject2 = _interopRequireDefault(require("lodash/isObject")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Text = require_Text(), _ReactUtils = require_ReactUtils(), _DataUtils = require_DataUtils(), _PolarUtils = require_PolarUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    exports.Label = Label;
+    var _isObject2 = _interopRequireDefault(require("lodash/isObject")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Text = require_Text(), _ReactUtils = require_ReactUtils(), _DataUtils = require_DataUtils(), _PolarUtils = require_PolarUtils();
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -5528,7 +4966,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _iterableToArray(iter) {
-      if (typeof Symbol < "u" && Symbol.iterator in Object(iter))
+      if (typeof Symbol < "u" && iter[Symbol.iterator] != null || iter["@@iterator"] != null)
         return Array.from(iter);
     }
     function _arrayWithoutHoles(arr) {
@@ -5563,10 +5001,26 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -5741,9 +5195,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         verticalAnchor: "middle"
       }, sizeAttrs);
     }, isPolar = function(viewBox) {
-      return (0, _DataUtils.isNumber)(viewBox.cx);
+      return "cx" in viewBox && (0, _DataUtils.isNumber)(viewBox.cx);
     };
-    function Label2(props) {
+    function Label(props) {
       var viewBox = props.viewBox, position = props.position, value = props.value, children = props.children, content = props.content, _props$className = props.className, className = _props$className === void 0 ? "" : _props$className, textBreakAll = props.textBreakAll;
       if (!viewBox || (0, _isNil2.default)(value) && (0, _isNil2.default)(children) && !/* @__PURE__ */ (0, _react.isValidElement)(content) && !(0, _isFunction2.default)(content))
         return null;
@@ -5755,7 +5209,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return label;
       } else
         label = getLabel(props);
-      var isPolarLabel = isPolar(viewBox), attrs = (0, _types.filterProps)(props, !0);
+      var isPolarLabel = isPolar(viewBox), attrs = (0, _ReactUtils.filterProps)(props, !0);
       if (isPolarLabel && (position === "insideStart" || position === "insideEnd" || position === "end"))
         return renderRadialLabel(props, label, attrs);
       var positionAttrs = isPolarLabel ? getAttrsOfPolarLabel(props) : getAttrsOfCartesianLabel(props);
@@ -5765,8 +5219,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         breakAll: textBreakAll
       }), label);
     }
-    Label2.displayName = "Label";
-    Label2.defaultProps = {
+    Label.displayName = "Label";
+    Label.defaultProps = {
       offset: 5
     };
     var parseViewBox = function(props) {
@@ -5804,25 +5258,25 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         clockWise
       } : props.viewBox ? props.viewBox : {};
     }, parseLabel = function(label, viewBox) {
-      return label ? label === !0 ? /* @__PURE__ */ _react.default.createElement(Label2, {
+      return label ? label === !0 ? /* @__PURE__ */ _react.default.createElement(Label, {
         key: "label-implicit",
         viewBox
-      }) : (0, _DataUtils.isNumOrStr)(label) ? /* @__PURE__ */ _react.default.createElement(Label2, {
+      }) : (0, _DataUtils.isNumOrStr)(label) ? /* @__PURE__ */ _react.default.createElement(Label, {
         key: "label-implicit",
         viewBox,
         value: label
-      }) : /* @__PURE__ */ (0, _react.isValidElement)(label) ? label.type === Label2 ? /* @__PURE__ */ (0, _react.cloneElement)(label, {
+      }) : /* @__PURE__ */ (0, _react.isValidElement)(label) ? label.type === Label ? /* @__PURE__ */ (0, _react.cloneElement)(label, {
         key: "label-implicit",
         viewBox
-      }) : /* @__PURE__ */ _react.default.createElement(Label2, {
-        key: "label-implicit",
-        content: label,
-        viewBox
-      }) : (0, _isFunction2.default)(label) ? /* @__PURE__ */ _react.default.createElement(Label2, {
+      }) : /* @__PURE__ */ _react.default.createElement(Label, {
         key: "label-implicit",
         content: label,
         viewBox
-      }) : (0, _isObject2.default)(label) ? /* @__PURE__ */ _react.default.createElement(Label2, _extends({
+      }) : (0, _isFunction2.default)(label) ? /* @__PURE__ */ _react.default.createElement(Label, {
+        key: "label-implicit",
+        content: label,
+        viewBox
+      }) : (0, _isObject2.default)(label) ? /* @__PURE__ */ _react.default.createElement(Label, _extends({
         viewBox
       }, label, {
         key: "label-implicit"
@@ -5831,7 +5285,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var checkPropsLabel = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : !0;
       if (!parentProps || !parentProps.children && checkPropsLabel && !parentProps.label)
         return null;
-      var children = parentProps.children, parentViewBox = parseViewBox(parentProps), explicitChildren = (0, _ReactUtils.findAllByType)(children, Label2.displayName).map(function(child, index) {
+      var children = parentProps.children, parentViewBox = parseViewBox(parentProps), explicitChildren = (0, _ReactUtils.findAllByType)(children, Label).map(function(child, index) {
         return /* @__PURE__ */ (0, _react.cloneElement)(child, {
           viewBox: viewBox || parentViewBox,
           key: "label-".concat(index)
@@ -5842,8 +5296,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       var implicitLabel = parseLabel(parentProps.label, viewBox || parentViewBox);
       return [implicitLabel].concat(_toConsumableArray(explicitChildren));
     };
-    Label2.parseViewBox = parseViewBox;
-    Label2.renderCallByParent = renderCallByParent;
+    Label.parseViewBox = parseViewBox;
+    Label.renderCallByParent = renderCallByParent;
   }
 });
 
@@ -5852,9 +5306,9 @@ var require_LabelList = __commonJS({
   "node_modules/recharts/lib/component/LabelList.js"(exports) {
     "use strict";
     function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
         return typeof obj2;
-      } : _typeof2 = function(obj2) {
+      } : function(obj2) {
         return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
       }, _typeof2(obj);
     }
@@ -5862,26 +5316,26 @@ var require_LabelList = __commonJS({
       value: !0
     });
     exports.LabelList = LabelList2;
-    var _isObject2 = _interopRequireDefault(require("lodash/isObject")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _last2 = _interopRequireDefault(require("lodash/last")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _Label = require_Label(), _Layer = require_Layer(), _ReactUtils = require_ReactUtils(), _ChartUtils = require_ChartUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _isObject2 = _interopRequireDefault(require("lodash/isObject")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _last2 = _interopRequireDefault(require("lodash/last")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _Label = require_Label(), _Layer = require_Layer(), _ReactUtils = require_ReactUtils(), _ChartUtils = require_ChartUtils(), _excluded = ["data", "valueAccessor", "dataKey", "clockWise", "id", "textBreakAll"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -5909,7 +5363,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _iterableToArray(iter) {
-      if (typeof Symbol < "u" && Symbol.iterator in Object(iter))
+      if (typeof Symbol < "u" && iter[Symbol.iterator] != null || iter["@@iterator"] != null)
         return Array.from(iter);
     }
     function _arrayWithoutHoles(arr) {
@@ -5923,7 +5377,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return arr2;
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -5954,7 +5408,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function _objectWithoutProperties2(source, excluded) {
       if (source == null)
@@ -5981,14 +5451,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     };
     function LabelList2(props) {
-      var data = props.data, valueAccessor = props.valueAccessor, dataKey = props.dataKey, clockWise = props.clockWise, id = props.id, textBreakAll = props.textBreakAll, others = _objectWithoutProperties2(props, ["data", "valueAccessor", "dataKey", "clockWise", "id", "textBreakAll"]);
+      var data = props.data, valueAccessor = props.valueAccessor, dataKey = props.dataKey, clockWise = props.clockWise, id = props.id, textBreakAll = props.textBreakAll, others = _objectWithoutProperties2(props, _excluded);
       return !data || !data.length ? null : /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
         className: "recharts-label-list"
       }, data.map(function(entry2, index) {
         var value = (0, _isNil2.default)(dataKey) ? valueAccessor(entry2, index) : (0, _ChartUtils.getValueByDataKey)(entry2 && entry2.payload, dataKey), idProps = (0, _isNil2.default)(id) ? {} : {
           id: "".concat(id, "-").concat(index)
         };
-        return /* @__PURE__ */ _react.default.createElement(_Label.Label, _extends({}, (0, _types.filterProps)(entry2, !0), others, idProps, {
+        return /* @__PURE__ */ _react.default.createElement(_Label.Label, _extends({}, (0, _ReactUtils.filterProps)(entry2, !0), others, idProps, {
           parentViewBox: entry2.parentViewBox,
           index,
           value,
@@ -6016,19 +5486,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       })) : null : null;
     }
     function renderCallByParent(parentProps, data) {
-      var ckeckPropsLabel = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : !0;
-      if (!parentProps || !parentProps.children && ckeckPropsLabel && !parentProps.label)
+      var checkPropsLabel = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : !0;
+      if (!parentProps || !parentProps.children && checkPropsLabel && !parentProps.label)
         return null;
-      var children = parentProps.children, explicitChilren = (0, _ReactUtils.findAllByType)(children, LabelList2.displayName).map(function(child, index) {
+      var children = parentProps.children, explicitChildren = (0, _ReactUtils.findAllByType)(children, LabelList2).map(function(child, index) {
         return /* @__PURE__ */ (0, _react.cloneElement)(child, {
           data,
           key: "labelList-".concat(index)
         });
       });
-      if (!ckeckPropsLabel)
-        return explicitChilren;
+      if (!checkPropsLabel)
+        return explicitChildren;
       var implicitLabelList = parseLabelList(parentProps.label, data);
-      return [implicitLabelList].concat(_toConsumableArray(explicitChilren));
+      return [implicitLabelList].concat(_toConsumableArray(explicitChildren));
     }
     LabelList2.renderCallByParent = renderCallByParent;
     LabelList2.defaultProps = defaultProps;
@@ -6043,26 +5513,26 @@ var require_Customized = __commonJS({
       value: !0
     });
     exports.Customized = Customized;
-    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireWildcard(require("react")), _Layer = require_Layer(), _LogUtils = require_LogUtils();
-    function _getRequireWildcardCache() {
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireWildcard(require("react")), _Layer = require_Layer(), _LogUtils = require_LogUtils(), _excluded = ["component"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -6072,9 +5542,9 @@ var require_Customized = __commonJS({
       return obj && obj.__esModule ? obj : { default: obj };
     }
     function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
         return typeof obj2;
-      } : _typeof2 = function(obj2) {
+      } : function(obj2) {
         return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
       }, _typeof2(obj);
     }
@@ -6098,7 +5568,7 @@ var require_Customized = __commonJS({
       return target;
     }
     function Customized(_ref) {
-      var component = _ref.component, props = _objectWithoutProperties2(_ref, ["component"]), child;
+      var component = _ref.component, props = _objectWithoutProperties2(_ref, _excluded), child;
       return /* @__PURE__ */ (0, _react.isValidElement)(component) ? child = /* @__PURE__ */ (0, _react.cloneElement)(component, props) : (0, _isFunction2.default)(component) ? child = /* @__PURE__ */ (0, _react.createElement)(component, props) : (0, _LogUtils.warn)(!1, "Customized's props `component` must be React.element or Function, but got %s.", _typeof2(component)), /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
         className: "recharts-customized-wrapper"
       }, child);
@@ -6111,47 +5581,47 @@ var require_Customized = __commonJS({
 var require_Sector = __commonJS({
   "node_modules/recharts/lib/shape/Sector.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Sector = void 0;
-    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _types = require_types(), _PolarUtils = require_PolarUtils(), _DataUtils = require_DataUtils();
+    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _ReactUtils = require_ReactUtils(), _PolarUtils = require_PolarUtils(), _DataUtils = require_DataUtils();
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
       return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -6167,19 +5637,19 @@ var require_Sector = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -6196,7 +5666,11 @@ var require_Sector = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -6216,9 +5690,28 @@ var require_Sector = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var getDeltaAngle = function(startAngle, endAngle) {
       var sign = (0, _DataUtils.mathSign)(endAngle - startAngle), deltaAngle = Math.min(Math.abs(endAngle - startAngle), 359.999);
@@ -6340,7 +5833,7 @@ var require_Sector = __commonJS({
             outerRadius,
             startAngle,
             endAngle
-          }), /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(this.props, !0), {
+          }), /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(this.props, !0), {
             className: layerClass,
             d: path,
             role: "img"
@@ -6349,7 +5842,7 @@ var require_Sector = __commonJS({
       }]), Sector2;
     }(_react.PureComponent);
     exports.Sector = Sector;
-    Sector.defaultProps = {
+    _defineProperty3(Sector, "defaultProps", {
       cx: 0,
       cy: 0,
       innerRadius: 0,
@@ -6359,7 +5852,7 @@ var require_Sector = __commonJS({
       cornerRadius: 0,
       forceCornerRadius: !1,
       cornerIsExternal: !1
-    };
+    });
   }
 });
 
@@ -6367,37 +5860,30 @@ var require_Sector = __commonJS({
 var require_Curve = __commonJS({
   "node_modules/recharts/lib/shape/Curve.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Curve = void 0;
-    var _isArray2 = _interopRequireDefault(require("lodash/isArray")), _upperFirst2 = _interopRequireDefault(require("lodash/upperFirst")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireWildcard(require("react")), _d3Shape = require_d3_shape(), _classnames = _interopRequireDefault(require("classnames")), _types = require_types(), _DataUtils = require_DataUtils();
-    function _getRequireWildcardCache() {
+    var _isArray2 = _interopRequireDefault(require("lodash/isArray")), _upperFirst2 = _interopRequireDefault(require("lodash/upperFirst")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireWildcard(require("react")), _d3Shape = require("victory-vendor/d3-shape"), _classnames = _interopRequireDefault(require("classnames")), _types = require_types(), _ReactUtils = require_ReactUtils(), _DataUtils = require_DataUtils();
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -6406,8 +5892,15 @@ var require_Curve = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -6437,9 +5930,6 @@ var require_Curve = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -6447,19 +5937,19 @@ var require_Curve = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -6476,7 +5966,11 @@ var require_Curve = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -6496,9 +5990,28 @@ var require_Curve = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var CURVE_FACTORIES = {
       curveBasisClosed: _d3Shape.curveBasisClosed,
@@ -6558,7 +6071,7 @@ var require_Curve = __commonJS({
           if ((!points || !points.length) && !path)
             return null;
           var realPath = points && points.length ? this.getPath() : path;
-          return /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(this.props), (0, _types.adaptEventHandlers)(this.props), {
+          return /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(this.props), (0, _types.adaptEventHandlers)(this.props), {
             className: (0, _classnames.default)("recharts-curve", className),
             d: realPath,
             ref: pathRef
@@ -6567,11 +6080,11 @@ var require_Curve = __commonJS({
       }]), Curve2;
     }(_react.PureComponent);
     exports.Curve = Curve;
-    Curve.defaultProps = {
+    _defineProperty3(Curve, "defaultProps", {
       type: "linear",
       points: [],
       connectNulls: !1
-    };
+    });
   }
 });
 
@@ -6579,47 +6092,47 @@ var require_Curve = __commonJS({
 var require_Rectangle = __commonJS({
   "node_modules/recharts/lib/shape/Rectangle.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.Rectangle = exports.isInRectangle = void 0;
-    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _types = require_types();
+    exports.isInRectangle = exports.Rectangle = void 0;
+    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _ReactUtils = require_ReactUtils();
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
       return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -6635,19 +6148,19 @@ var require_Rectangle = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -6664,7 +6177,11 @@ var require_Rectangle = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -6684,9 +6201,28 @@ var require_Rectangle = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var getRectanglePath = function(x, y, width, height, radius) {
       var maxRadius = Math.min(Math.abs(width) / 2, Math.abs(height) / 2), ySign = height >= 0 ? 1 : -1, xSign = width >= 0 ? 1 : -1, clockWise = height >= 0 && width >= 0 || height < 0 && width < 0 ? 1 : 0, path;
@@ -6729,9 +6265,9 @@ var require_Rectangle = __commonJS({
         _classCallCheck(this, Rectangle2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           totalLength: -1
-        }, _this.node = void 0, _this;
+        }), _this;
       }
       return _createClass(Rectangle2, [{
         key: "componentDidMount",
@@ -6780,14 +6316,14 @@ var require_Rectangle = __commonJS({
               duration: animationDuration,
               isActive: isAnimationActive,
               easing: animationEasing
-            }, /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(_this2.props, !0), {
+            }, /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(_this2.props, !0), {
               className: layerClass,
               d: getRectanglePath(currX, currY, currWidth, currHeight, radius),
               ref: function(node) {
                 _this2.node = node;
               }
             })));
-          }) : /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(this.props, !0), {
+          }) : /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(this.props, !0), {
             className: layerClass,
             d: getRectanglePath(x, y, width, height, radius)
           }));
@@ -6795,7 +6331,7 @@ var require_Rectangle = __commonJS({
       }]), Rectangle2;
     }(_react.PureComponent);
     exports.Rectangle = Rectangle;
-    Rectangle.defaultProps = {
+    _defineProperty3(Rectangle, "defaultProps", {
       x: 0,
       y: 0,
       width: 0,
@@ -6806,7 +6342,7 @@ var require_Rectangle = __commonJS({
       animationBegin: 0,
       animationDuration: 1500,
       animationEasing: "ease"
-    };
+    });
   }
 });
 
@@ -6815,9 +6351,9 @@ var require_Polygon = __commonJS({
   "node_modules/recharts/lib/shape/Polygon.js"(exports) {
     "use strict";
     function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
         return typeof obj2;
-      } : _typeof2 = function(obj2) {
+      } : function(obj2) {
         return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
       }, _typeof2(obj);
     }
@@ -6825,36 +6361,36 @@ var require_Polygon = __commonJS({
       value: !0
     });
     exports.Polygon = void 0;
-    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _types = require_types();
+    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _ReactUtils = require_ReactUtils(), _excluded = ["points", "className", "baseLinePoints", "connectNulls"];
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
       return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -6889,19 +6425,35 @@ var require_Polygon = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -6918,7 +6470,11 @@ var require_Polygon = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -6938,7 +6494,7 @@ var require_Polygon = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
     }
@@ -6961,7 +6517,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _iterableToArray(iter) {
-      if (typeof Symbol < "u" && Symbol.iterator in Object(iter))
+      if (typeof Symbol < "u" && iter[Symbol.iterator] != null || iter["@@iterator"] != null)
         return Array.from(iter);
     }
     function _arrayWithoutHoles(arr) {
@@ -7004,7 +6560,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return _createClass(Polygon2, [{
         key: "render",
         value: function() {
-          var _this$props = this.props, points = _this$props.points, className = _this$props.className, baseLinePoints = _this$props.baseLinePoints, connectNulls = _this$props.connectNulls, others = _objectWithoutProperties2(_this$props, ["points", "className", "baseLinePoints", "connectNulls"]);
+          var _this$props = this.props, points = _this$props.points, className = _this$props.className, baseLinePoints = _this$props.baseLinePoints, connectNulls = _this$props.connectNulls, others = _objectWithoutProperties2(_this$props, _excluded);
           if (!points || !points.length)
             return null;
           var layerClass = (0, _classnames.default)("recharts-polygon", className);
@@ -7012,20 +6568,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             var hasStroke = others.stroke && others.stroke !== "none", rangePath = getRanglePath(points, baseLinePoints, connectNulls);
             return /* @__PURE__ */ _react.default.createElement("g", {
               className: layerClass
-            }, /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(others, !0), {
+            }, /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(others, !0), {
               fill: rangePath.slice(-1) === "Z" ? others.fill : "none",
               stroke: "none",
               d: rangePath
-            })), hasStroke ? /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(others, !0), {
+            })), hasStroke ? /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(others, !0), {
               fill: "none",
               d: getSinglePolygonPath(points, connectNulls)
-            })) : null, hasStroke ? /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(others, !0), {
+            })) : null, hasStroke ? /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(others, !0), {
               fill: "none",
               d: getSinglePolygonPath(baseLinePoints, connectNulls)
             })) : null);
           }
           var singlePath = getSinglePolygonPath(points, connectNulls);
-          return /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(others, !0), {
+          return /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(others, !0), {
             fill: singlePath.slice(-1) === "Z" ? others.fill : "none",
             className: layerClass,
             d: singlePath
@@ -7042,9 +6598,9 @@ var require_Dot = __commonJS({
   "node_modules/recharts/lib/shape/Dot.js"(exports) {
     "use strict";
     function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
         return typeof obj2;
-      } : _typeof2 = function(obj2) {
+      } : function(obj2) {
         return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
       }, _typeof2(obj);
     }
@@ -7052,36 +6608,36 @@ var require_Dot = __commonJS({
       value: !0
     });
     exports.Dot = void 0;
-    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _types = require_types();
+    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _types = require_types(), _ReactUtils = require_ReactUtils();
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
       return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -7097,19 +6653,35 @@ var require_Dot = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -7126,7 +6698,11 @@ var require_Dot = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -7146,7 +6722,7 @@ var require_Dot = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
     }
@@ -7160,7 +6736,7 @@ var require_Dot = __commonJS({
         key: "render",
         value: function() {
           var _this$props = this.props, cx = _this$props.cx, cy = _this$props.cy, r = _this$props.r, className = _this$props.className, layerClass = (0, _classnames.default)("recharts-dot", className);
-          return cx === +cx && cy === +cy && r === +r ? /* @__PURE__ */ _react.default.createElement("circle", _extends({}, (0, _types.filterProps)(this.props), (0, _types.adaptEventHandlers)(this.props), {
+          return cx === +cx && cy === +cy && r === +r ? /* @__PURE__ */ _react.default.createElement("circle", _extends({}, (0, _ReactUtils.filterProps)(this.props), (0, _types.adaptEventHandlers)(this.props), {
             className: layerClass,
             cx,
             cy,
@@ -7177,47 +6753,47 @@ var require_Dot = __commonJS({
 var require_Cross = __commonJS({
   "node_modules/recharts/lib/shape/Cross.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Cross = void 0;
-    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _DataUtils = require_DataUtils(), _types = require_types();
+    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _DataUtils = require_DataUtils(), _ReactUtils = require_ReactUtils();
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
       return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -7233,19 +6809,19 @@ var require_Cross = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -7262,7 +6838,11 @@ var require_Cross = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -7282,9 +6862,28 @@ var require_Cross = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var Cross = /* @__PURE__ */ function(_PureComponent) {
       _inherits(Cross2, _PureComponent);
@@ -7296,7 +6895,7 @@ var require_Cross = __commonJS({
         key: "render",
         value: function() {
           var _this$props = this.props, x = _this$props.x, y = _this$props.y, width = _this$props.width, height = _this$props.height, top = _this$props.top, left = _this$props.left, className = _this$props.className;
-          return !(0, _DataUtils.isNumber)(x) || !(0, _DataUtils.isNumber)(y) || !(0, _DataUtils.isNumber)(width) || !(0, _DataUtils.isNumber)(height) || !(0, _DataUtils.isNumber)(top) || !(0, _DataUtils.isNumber)(left) ? null : /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(this.props, !0), {
+          return !(0, _DataUtils.isNumber)(x) || !(0, _DataUtils.isNumber)(y) || !(0, _DataUtils.isNumber)(width) || !(0, _DataUtils.isNumber)(height) || !(0, _DataUtils.isNumber)(top) || !(0, _DataUtils.isNumber)(left) ? null : /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(this.props, !0), {
             className: (0, _classnames.default)("recharts-cross", className),
             d: Cross2.getPath(x, y, width, height, top, left)
           }));
@@ -7309,14 +6908,14 @@ var require_Cross = __commonJS({
       }]), Cross2;
     }(_react.PureComponent);
     exports.Cross = Cross;
-    Cross.defaultProps = {
+    _defineProperty3(Cross, "defaultProps", {
       x: 0,
       y: 0,
       top: 0,
       left: 0,
       width: 0,
       height: 0
-    };
+    });
   }
 });
 
@@ -7324,44 +6923,44 @@ var require_Cross = __commonJS({
 var require_PolarGrid = __commonJS({
   "node_modules/recharts/lib/polar/PolarGrid.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.PolarGrid = void 0;
-    var _react = _interopRequireWildcard(require("react")), _PolarUtils = require_PolarUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _react = _interopRequireWildcard(require("react")), _PolarUtils = require_PolarUtils(), _ReactUtils = require_ReactUtils();
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
       return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -7391,9 +6990,6 @@ var require_PolarGrid = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -7401,19 +6997,19 @@ var require_PolarGrid = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -7430,7 +7026,11 @@ var require_PolarGrid = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -7450,9 +7050,28 @@ var require_PolarGrid = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var PolarGrid = /* @__PURE__ */ function(_PureComponent) {
       _inherits(PolarGrid2, _PureComponent);
@@ -7477,7 +7096,7 @@ var require_PolarGrid = __commonJS({
             return null;
           var props = _objectSpread3({
             stroke: "#ccc"
-          }, (0, _types.filterProps)(this.props));
+          }, (0, _ReactUtils.filterProps)(this.props));
           return /* @__PURE__ */ _react.default.createElement("g", {
             className: "recharts-polar-grid-angle"
           }, polarAngles.map(function(entry2, i) {
@@ -7496,7 +7115,7 @@ var require_PolarGrid = __commonJS({
         value: function(radius, index, extraProps) {
           var _this$props3 = this.props, cx = _this$props3.cx, cy = _this$props3.cy, props = _objectSpread3(_objectSpread3({
             stroke: "#ccc"
-          }, (0, _types.filterProps)(this.props)), {}, {
+          }, (0, _ReactUtils.filterProps)(this.props)), {}, {
             fill: "none"
           }, extraProps);
           return /* @__PURE__ */ _react.default.createElement("circle", _extends({}, props, {
@@ -7512,7 +7131,7 @@ var require_PolarGrid = __commonJS({
         value: function(radius, index, extraProps) {
           var props = _objectSpread3(_objectSpread3({
             stroke: "#ccc"
-          }, (0, _types.filterProps)(this.props)), {}, {
+          }, (0, _ReactUtils.filterProps)(this.props)), {}, {
             fill: "none"
           }, extraProps);
           return /* @__PURE__ */ _react.default.createElement("path", _extends({}, props, {
@@ -7542,15 +7161,15 @@ var require_PolarGrid = __commonJS({
       }]), PolarGrid2;
     }(_react.PureComponent);
     exports.PolarGrid = PolarGrid;
-    PolarGrid.displayName = "PolarGrid";
-    PolarGrid.defaultProps = {
+    _defineProperty3(PolarGrid, "displayName", "PolarGrid");
+    _defineProperty3(PolarGrid, "defaultProps", {
       cx: 0,
       cy: 0,
       innerRadius: 0,
       outerRadius: 0,
       gridType: "polygon",
       radialLines: !0
-    };
+    });
   }
 });
 
@@ -7558,37 +7177,30 @@ var require_PolarGrid = __commonJS({
 var require_PolarRadiusAxis = __commonJS({
   "node_modules/recharts/lib/polar/PolarRadiusAxis.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.PolarRadiusAxis = void 0;
-    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _minBy2 = _interopRequireDefault(require("lodash/minBy")), _maxBy2 = _interopRequireDefault(require("lodash/maxBy")), _react = _interopRequireWildcard(require("react")), _Text = require_Text(), _Label = require_Label(), _Layer = require_Layer(), _PolarUtils = require_PolarUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _minBy2 = _interopRequireDefault(require("lodash/minBy")), _maxBy2 = _interopRequireDefault(require("lodash/maxBy")), _react = _interopRequireWildcard(require("react")), _Text = require_Text(), _Label = require_Label(), _Layer = require_Layer(), _PolarUtils = require_PolarUtils(), _types = require_types(), _ReactUtils = require_ReactUtils(), _excluded = ["cx", "cy", "angle", "ticks", "axisLine"], _excluded2 = ["ticks", "tick", "angle", "tickFormatter", "stroke"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -7597,8 +7209,15 @@ var require_PolarRadiusAxis = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -7628,9 +7247,6 @@ var require_PolarRadiusAxis = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _objectWithoutProperties2(source, excluded) {
       if (source == null)
         return {};
@@ -7657,19 +7273,19 @@ var require_PolarRadiusAxis = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -7686,7 +7302,11 @@ var require_PolarRadiusAxis = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -7706,17 +7326,36 @@ var require_PolarRadiusAxis = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
     }
-    var PolarRadiusAxis2 = /* @__PURE__ */ function(_PureComponent) {
-      _inherits(PolarRadiusAxis3, _PureComponent);
-      var _super = _createSuper(PolarRadiusAxis3);
-      function PolarRadiusAxis3() {
-        return _classCallCheck(this, PolarRadiusAxis3), _super.apply(this, arguments);
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
       }
-      return _createClass(PolarRadiusAxis3, [{
+      return (hint === "string" ? String : Number)(input);
+    }
+    var PolarRadiusAxis = /* @__PURE__ */ function(_PureComponent) {
+      _inherits(PolarRadiusAxis2, _PureComponent);
+      var _super = _createSuper(PolarRadiusAxis2);
+      function PolarRadiusAxis2() {
+        return _classCallCheck(this, PolarRadiusAxis2), _super.apply(this, arguments);
+      }
+      return _createClass(PolarRadiusAxis2, [{
         key: "getTickValueCoord",
         value: function(_ref) {
           var coordinate = _ref.coordinate, _this$props = this.props, angle = _this$props.angle, cx = _this$props.cx, cy = _this$props.cy;
@@ -7759,11 +7398,11 @@ var require_PolarRadiusAxis = __commonJS({
       }, {
         key: "renderAxisLine",
         value: function() {
-          var _this$props3 = this.props, cx = _this$props3.cx, cy = _this$props3.cy, angle = _this$props3.angle, ticks = _this$props3.ticks, axisLine = _this$props3.axisLine, others = _objectWithoutProperties2(_this$props3, ["cx", "cy", "angle", "ticks", "axisLine"]), extent = ticks.reduce(function(result, entry2) {
+          var _this$props3 = this.props, cx = _this$props3.cx, cy = _this$props3.cy, angle = _this$props3.angle, ticks = _this$props3.ticks, axisLine = _this$props3.axisLine, others = _objectWithoutProperties2(_this$props3, _excluded), extent = ticks.reduce(function(result, entry2) {
             return [Math.min(result[0], entry2.coordinate), Math.max(result[1], entry2.coordinate)];
-          }, [1 / 0, -1 / 0]), point0 = (0, _PolarUtils.polarToCartesian)(cx, cy, extent[0], angle), point1 = (0, _PolarUtils.polarToCartesian)(cx, cy, extent[1], angle), props = _objectSpread3(_objectSpread3(_objectSpread3({}, (0, _types.filterProps)(others)), {}, {
+          }, [1 / 0, -1 / 0]), point0 = (0, _PolarUtils.polarToCartesian)(cx, cy, extent[0], angle), point1 = (0, _PolarUtils.polarToCartesian)(cx, cy, extent[1], angle), props = _objectSpread3(_objectSpread3(_objectSpread3({}, (0, _ReactUtils.filterProps)(others)), {}, {
             fill: "none"
-          }, (0, _types.filterProps)(axisLine)), {}, {
+          }, (0, _ReactUtils.filterProps)(axisLine)), {}, {
             x1: point0.x,
             y1: point0.y,
             x2: point1.x,
@@ -7776,7 +7415,7 @@ var require_PolarRadiusAxis = __commonJS({
       }, {
         key: "renderTicks",
         value: function() {
-          var _this = this, _this$props4 = this.props, ticks = _this$props4.ticks, tick = _this$props4.tick, angle = _this$props4.angle, tickFormatter = _this$props4.tickFormatter, stroke = _this$props4.stroke, others = _objectWithoutProperties2(_this$props4, ["ticks", "tick", "angle", "tickFormatter", "stroke"]), textAnchor = this.getTickTextAnchor(), axisProps = (0, _types.filterProps)(others), customTickProps = (0, _types.filterProps)(tick), items = ticks.map(function(entry2, i) {
+          var _this = this, _this$props4 = this.props, ticks = _this$props4.ticks, tick = _this$props4.tick, angle = _this$props4.angle, tickFormatter = _this$props4.tickFormatter, stroke = _this$props4.stroke, others = _objectWithoutProperties2(_this$props4, _excluded2), textAnchor = this.getTickTextAnchor(), axisProps = (0, _ReactUtils.filterProps)(others), customTickProps = (0, _ReactUtils.filterProps)(tick), items = ticks.map(function(entry2, i) {
             var coord = _this.getTickValueCoord(entry2), tickProps = _objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3({
               textAnchor,
               transform: "rotate(".concat(90 - angle, ", ").concat(coord.x, ", ").concat(coord.y, ")")
@@ -7791,7 +7430,7 @@ var require_PolarRadiusAxis = __commonJS({
             return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, _extends({
               className: "recharts-polar-radius-axis-tick",
               key: "tick-".concat(i)
-            }, (0, _types.adaptEventsOfChild)(_this.props, entry2, i)), PolarRadiusAxis3.renderTickItem(tick, tickProps, tickFormatter ? tickFormatter(entry2.value, i) : entry2.value));
+            }, (0, _types.adaptEventsOfChild)(_this.props, entry2, i)), PolarRadiusAxis2.renderTickItem(tick, tickProps, tickFormatter ? tickFormatter(entry2.value, i) : entry2.value));
           });
           return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
             className: "recharts-polar-radius-axis-ticks"
@@ -7813,12 +7452,12 @@ var require_PolarRadiusAxis = __commonJS({
             className: "recharts-polar-radius-axis-tick-value"
           }), value), tickItem;
         }
-      }]), PolarRadiusAxis3;
+      }]), PolarRadiusAxis2;
     }(_react.PureComponent);
-    exports.PolarRadiusAxis = PolarRadiusAxis2;
-    PolarRadiusAxis2.displayName = "PolarRadiusAxis";
-    PolarRadiusAxis2.axisType = "radiusAxis";
-    PolarRadiusAxis2.defaultProps = {
+    exports.PolarRadiusAxis = PolarRadiusAxis;
+    _defineProperty3(PolarRadiusAxis, "displayName", "PolarRadiusAxis");
+    _defineProperty3(PolarRadiusAxis, "axisType", "radiusAxis");
+    _defineProperty3(PolarRadiusAxis, "defaultProps", {
       type: "number",
       radiusAxisId: 0,
       cx: 0,
@@ -7829,11 +7468,10 @@ var require_PolarRadiusAxis = __commonJS({
       axisLine: !0,
       tick: !0,
       tickCount: 5,
-      domain: [0, "auto"],
       allowDataOverflow: !1,
       scale: "auto",
       allowDuplicatedCategory: !0
-    };
+    });
   }
 });
 
@@ -7841,37 +7479,30 @@ var require_PolarRadiusAxis = __commonJS({
 var require_PolarAngleAxis = __commonJS({
   "node_modules/recharts/lib/polar/PolarAngleAxis.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.PolarAngleAxis = void 0;
-    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireWildcard(require("react")), _Layer = require_Layer(), _Dot = require_Dot(), _Polygon = require_Polygon(), _Text = require_Text(), _types = require_types(), _PolarUtils = require_PolarUtils();
-    function _getRequireWildcardCache() {
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireWildcard(require("react")), _Layer = require_Layer(), _Dot = require_Dot(), _Polygon = require_Polygon(), _Text = require_Text(), _types = require_types(), _ReactUtils = require_ReactUtils(), _PolarUtils = require_PolarUtils();
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -7880,8 +7511,15 @@ var require_PolarAngleAxis = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -7911,9 +7549,6 @@ var require_PolarAngleAxis = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -7921,19 +7556,19 @@ var require_PolarAngleAxis = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -7950,7 +7585,11 @@ var require_PolarAngleAxis = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -7970,9 +7609,28 @@ var require_PolarAngleAxis = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var RADIAN = Math.PI / 180, eps = 1e-5, PolarAngleAxis2 = /* @__PURE__ */ function(_PureComponent) {
       _inherits(PolarAngleAxis3, _PureComponent);
@@ -8000,9 +7658,9 @@ var require_PolarAngleAxis = __commonJS({
       }, {
         key: "renderAxisLine",
         value: function() {
-          var _this$props2 = this.props, cx = _this$props2.cx, cy = _this$props2.cy, radius = _this$props2.radius, axisLine = _this$props2.axisLine, axisLineType = _this$props2.axisLineType, props = _objectSpread3(_objectSpread3({}, (0, _types.filterProps)(this.props)), {}, {
+          var _this$props2 = this.props, cx = _this$props2.cx, cy = _this$props2.cy, radius = _this$props2.radius, axisLine = _this$props2.axisLine, axisLineType = _this$props2.axisLineType, props = _objectSpread3(_objectSpread3({}, (0, _ReactUtils.filterProps)(this.props)), {}, {
             fill: "none"
-          }, (0, _types.filterProps)(axisLine));
+          }, (0, _ReactUtils.filterProps)(axisLine));
           if (axisLineType === "circle")
             return /* @__PURE__ */ _react.default.createElement(_Dot.Dot, _extends({
               className: "recharts-polar-angle-axis-line"
@@ -8023,9 +7681,9 @@ var require_PolarAngleAxis = __commonJS({
       }, {
         key: "renderTicks",
         value: function() {
-          var _this = this, _this$props3 = this.props, ticks = _this$props3.ticks, tick = _this$props3.tick, tickLine = _this$props3.tickLine, tickFormatter = _this$props3.tickFormatter, stroke = _this$props3.stroke, axisProps = (0, _types.filterProps)(this.props), customTickProps = (0, _types.filterProps)(tick), tickLineProps = _objectSpread3(_objectSpread3({}, axisProps), {}, {
+          var _this = this, _this$props3 = this.props, ticks = _this$props3.ticks, tick = _this$props3.tick, tickLine = _this$props3.tickLine, tickFormatter = _this$props3.tickFormatter, stroke = _this$props3.stroke, axisProps = (0, _ReactUtils.filterProps)(this.props), customTickProps = (0, _ReactUtils.filterProps)(tick), tickLineProps = _objectSpread3(_objectSpread3({}, axisProps), {}, {
             fill: "none"
-          }, (0, _types.filterProps)(tickLine)), items = ticks.map(function(entry2, i) {
+          }, (0, _ReactUtils.filterProps)(tickLine)), items = ticks.map(function(entry2, i) {
             var lineCoord = _this.getTickLineCoord(entry2), textAnchor = _this.getTickTextAnchor(entry2), tickProps = _objectSpread3(_objectSpread3(_objectSpread3({
               textAnchor
             }, axisProps), {}, {
@@ -8067,15 +7725,14 @@ var require_PolarAngleAxis = __commonJS({
       }]), PolarAngleAxis3;
     }(_react.PureComponent);
     exports.PolarAngleAxis = PolarAngleAxis2;
-    PolarAngleAxis2.displayName = "PolarAngleAxis";
-    PolarAngleAxis2.axisType = "angleAxis";
-    PolarAngleAxis2.defaultProps = {
+    _defineProperty3(PolarAngleAxis2, "displayName", "PolarAngleAxis");
+    _defineProperty3(PolarAngleAxis2, "axisType", "angleAxis");
+    _defineProperty3(PolarAngleAxis2, "defaultProps", {
       type: "category",
       angleAxisId: 0,
       scale: "auto",
       cx: 0,
       cy: 0,
-      domain: [0, "auto"],
       orientation: "outer",
       axisLine: !0,
       tickLine: !0,
@@ -8083,7 +7740,7 @@ var require_PolarAngleAxis = __commonJS({
       tick: !0,
       hide: !1,
       allowDuplicatedCategory: !0
-    };
+    });
   }
 });
 
@@ -8091,37 +7748,30 @@ var require_PolarAngleAxis = __commonJS({
 var require_Pie = __commonJS({
   "node_modules/recharts/lib/polar/Pie.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Pie = void 0;
     var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _get2 = _interopRequireDefault(require("lodash/get")), _isPlainObject2 = _interopRequireDefault(require("lodash/isPlainObject")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _react = _interopRequireWildcard(require("react")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _classnames = _interopRequireDefault(require("classnames")), _Layer = require_Layer(), _Sector = require_Sector(), _Curve = require_Curve(), _Text = require_Text(), _Label = require_Label(), _LabelList = require_LabelList(), _Cell = require_Cell(), _ReactUtils = require_ReactUtils(), _Global = require_Global(), _PolarUtils = require_PolarUtils(), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils(), _LogUtils = require_LogUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -8130,8 +7780,15 @@ var require_Pie = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -8161,9 +7818,6 @@ var require_Pie = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -8171,19 +7825,19 @@ var require_Pie = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -8200,7 +7854,11 @@ var require_Pie = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -8220,26 +7878,45 @@ var require_Pie = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var Pie = /* @__PURE__ */ function(_PureComponent) {
       _inherits(Pie2, _PureComponent);
       var _super = _createSuper(Pie2);
       function Pie2(props) {
         var _this;
-        return _classCallCheck(this, Pie2), _this = _super.call(this, props), _this.pieRef = null, _this.sectorRefs = [], _this.state = void 0, _this.id = (0, _DataUtils.uniqueId)("recharts-pie-"), _this.handleAnimationEnd = function() {
+        return _classCallCheck(this, Pie2), _this = _super.call(this, props), _defineProperty3(_assertThisInitialized(_this), "pieRef", null), _defineProperty3(_assertThisInitialized(_this), "sectorRefs", []), _defineProperty3(_assertThisInitialized(_this), "id", (0, _DataUtils.uniqueId)("recharts-pie-")), _defineProperty3(_assertThisInitialized(_this), "handleAnimationEnd", function() {
           var onAnimationEnd = _this.props.onAnimationEnd;
           _this.setState({
             isAnimationFinished: !0
           }), (0, _isFunction2.default)(onAnimationEnd) && onAnimationEnd();
-        }, _this.handleAnimationStart = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationStart", function() {
           var onAnimationStart = _this.props.onAnimationStart;
           _this.setState({
             isAnimationFinished: !1
           }), (0, _isFunction2.default)(onAnimationStart) && onAnimationStart();
-        }, _this.state = {
+        }), _this.state = {
           isAnimationFinished: !props.isAnimationActive,
           prevIsAnimationActive: props.isAnimationActive,
           prevAnimationId: props.animationId,
@@ -8264,7 +7941,7 @@ var require_Pie = __commonJS({
           var isAnimationActive = this.props.isAnimationActive;
           if (isAnimationActive && !this.state.isAnimationFinished)
             return null;
-          var _this$props = this.props, label = _this$props.label, labelLine = _this$props.labelLine, dataKey = _this$props.dataKey, valueKey = _this$props.valueKey, pieProps = (0, _types.filterProps)(this.props), customLabelProps = (0, _types.filterProps)(label), customLabelLineProps = (0, _types.filterProps)(labelLine), offsetRadius = label && label.offsetRadius || 20, labels = sectors.map(function(entry2, i) {
+          var _this$props = this.props, label = _this$props.label, labelLine = _this$props.labelLine, dataKey = _this$props.dataKey, valueKey = _this$props.valueKey, pieProps = (0, _ReactUtils.filterProps)(this.props), customLabelProps = (0, _ReactUtils.filterProps)(label), customLabelLineProps = (0, _ReactUtils.filterProps)(labelLine), offsetRadius = label && label.offsetRadius || 20, labels = sectors.map(function(entry2, i) {
             var midAngle = (entry2.startAngle + entry2.endAngle) / 2, endPoint = (0, _PolarUtils.polarToCartesian)(entry2.cx, entry2.cy, entry2.outerRadius + offsetRadius, midAngle), labelProps = _objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3({}, pieProps), entry2), {}, {
               stroke: "none"
             }, customLabelProps), {}, {
@@ -8455,8 +8132,8 @@ var require_Pie = __commonJS({
       }]), Pie2;
     }(_react.PureComponent);
     exports.Pie = Pie;
-    Pie.displayName = "Pie";
-    Pie.defaultProps = {
+    _defineProperty3(Pie, "displayName", "Pie");
+    _defineProperty3(Pie, "defaultProps", {
       stroke: "#fff",
       fill: "#808080",
       legendType: "rect",
@@ -8476,13 +8153,13 @@ var require_Pie = __commonJS({
       animationEasing: "ease",
       nameKey: "name",
       blendStroke: !1
-    };
-    Pie.parseDeltaAngle = function(startAngle, endAngle) {
+    });
+    _defineProperty3(Pie, "parseDeltaAngle", function(startAngle, endAngle) {
       var sign = (0, _DataUtils.mathSign)(endAngle - startAngle), deltaAngle = Math.min(Math.abs(endAngle - startAngle), 360);
       return sign * deltaAngle;
-    };
-    Pie.getRealPieData = function(item) {
-      var _item$props = item.props, data = _item$props.data, children = _item$props.children, presentationProps = (0, _types.filterProps)(item.props), cells = (0, _ReactUtils.findAllByType)(children, _Cell.Cell.displayName);
+    });
+    _defineProperty3(Pie, "getRealPieData", function(item) {
+      var _item$props = item.props, data = _item$props.data, children = _item$props.children, presentationProps = (0, _ReactUtils.filterProps)(item.props), cells = (0, _ReactUtils.findAllByType)(children, _Cell.Cell);
       return data && data.length ? data.map(function(entry2, index) {
         return _objectSpread3(_objectSpread3(_objectSpread3({
           payload: entry2
@@ -8490,8 +8167,8 @@ var require_Pie = __commonJS({
       }) : cells && cells.length ? cells.map(function(cell) {
         return _objectSpread3(_objectSpread3({}, presentationProps), cell.props);
       }) : [];
-    };
-    Pie.parseCoordinateOfPie = function(item, offset) {
+    });
+    _defineProperty3(Pie, "parseCoordinateOfPie", function(item, offset) {
       var top = offset.top, left = offset.left, width = offset.width, height = offset.height, maxPieRadius = (0, _PolarUtils.getMaxRadius)(width, height), cx = left + (0, _DataUtils.getPercentValue)(item.props.cx, width, width / 2), cy = top + (0, _DataUtils.getPercentValue)(item.props.cy, height, height / 2), innerRadius = (0, _DataUtils.getPercentValue)(item.props.innerRadius, maxPieRadius, 0), outerRadius = (0, _DataUtils.getPercentValue)(item.props.outerRadius, maxPieRadius, maxPieRadius * 0.8), maxRadius = item.props.maxRadius || Math.sqrt(width * width + height * height) / 2;
       return {
         cx,
@@ -8500,8 +8177,8 @@ var require_Pie = __commonJS({
         outerRadius,
         maxRadius
       };
-    };
-    Pie.getComposedData = function(_ref4) {
+    });
+    _defineProperty3(Pie, "getComposedData", function(_ref4) {
       var item = _ref4.item, offset = _ref4.offset, pieData = Pie.getRealPieData(item);
       if (!pieData || !pieData.length)
         return null;
@@ -8548,7 +8225,7 @@ var require_Pie = __commonJS({
         sectors,
         data: pieData
       });
-    };
+    });
   }
 });
 
@@ -8556,37 +8233,30 @@ var require_Pie = __commonJS({
 var require_Radar = __commonJS({
   "node_modules/recharts/lib/polar/Radar.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Radar = void 0;
-    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _first2 = _interopRequireDefault(require("lodash/first")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _last2 = _interopRequireDefault(require("lodash/last")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _classnames = _interopRequireDefault(require("classnames")), _DataUtils = require_DataUtils(), _Global = require_Global(), _PolarUtils = require_PolarUtils(), _ChartUtils = require_ChartUtils(), _Polygon = require_Polygon(), _Dot = require_Dot(), _Layer = require_Layer(), _LabelList = require_LabelList(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _first2 = _interopRequireDefault(require("lodash/first")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _last2 = _interopRequireDefault(require("lodash/last")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _classnames = _interopRequireDefault(require("classnames")), _DataUtils = require_DataUtils(), _Global = require_Global(), _PolarUtils = require_PolarUtils(), _ChartUtils = require_ChartUtils(), _Polygon = require_Polygon(), _Dot = require_Dot(), _Layer = require_Layer(), _LabelList = require_LabelList(), _ReactUtils = require_ReactUtils();
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -8595,8 +8265,15 @@ var require_Radar = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -8626,9 +8303,6 @@ var require_Radar = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -8636,19 +8310,19 @@ var require_Radar = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -8665,7 +8339,11 @@ var require_Radar = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -8685,9 +8363,28 @@ var require_Radar = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var Radar = /* @__PURE__ */ function(_PureComponent) {
       _inherits(Radar2, _PureComponent);
@@ -8697,30 +8394,30 @@ var require_Radar = __commonJS({
         _classCallCheck(this, Radar2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           isAnimationFinished: !1
-        }, _this.handleAnimationEnd = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationEnd", function() {
           var onAnimationEnd = _this.props.onAnimationEnd;
           _this.setState({
             isAnimationFinished: !0
           }), (0, _isFunction2.default)(onAnimationEnd) && onAnimationEnd();
-        }, _this.handleAnimationStart = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationStart", function() {
           var onAnimationStart = _this.props.onAnimationStart;
           _this.setState({
             isAnimationFinished: !1
           }), (0, _isFunction2.default)(onAnimationStart) && onAnimationStart();
-        }, _this.handleMouseEnter = function(e) {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleMouseEnter", function(e) {
           var onMouseEnter = _this.props.onMouseEnter;
           onMouseEnter && onMouseEnter(_this.props, e);
-        }, _this.handleMouseLeave = function(e) {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleMouseLeave", function(e) {
           var onMouseLeave = _this.props.onMouseLeave;
           onMouseLeave && onMouseLeave(_this.props, e);
-        }, _this;
+        }), _this;
       }
       return _createClass(Radar2, [{
         key: "renderDots",
         value: function(points) {
-          var _this$props = this.props, dot = _this$props.dot, dataKey = _this$props.dataKey, baseProps = (0, _types.filterProps)(this.props), customDotProps = (0, _types.filterProps)(dot), dots = points.map(function(entry2, i) {
+          var _this$props = this.props, dot = _this$props.dot, dataKey = _this$props.dataKey, baseProps = (0, _ReactUtils.filterProps)(this.props), customDotProps = (0, _ReactUtils.filterProps)(dot), dots = points.map(function(entry2, i) {
             var dotProps = _objectSpread3(_objectSpread3(_objectSpread3({
               key: "dot-".concat(i),
               r: 3
@@ -8745,7 +8442,7 @@ var require_Radar = __commonJS({
             points
           })) : (0, _isFunction2.default)(shape) ? radar = shape(_objectSpread3(_objectSpread3({}, this.props), {}, {
             points
-          })) : radar = /* @__PURE__ */ _react.default.createElement(_Polygon.Polygon, _extends({}, (0, _types.filterProps)(this.props, !0), {
+          })) : radar = /* @__PURE__ */ _react.default.createElement(_Polygon.Polygon, _extends({}, (0, _ReactUtils.filterProps)(this.props, !0), {
             onMouseEnter: this.handleMouseEnter,
             onMouseLeave: this.handleMouseLeave,
             points,
@@ -8831,8 +8528,8 @@ var require_Radar = __commonJS({
       }]), Radar2;
     }(_react.PureComponent);
     exports.Radar = Radar;
-    Radar.displayName = "Radar";
-    Radar.defaultProps = {
+    _defineProperty3(Radar, "displayName", "Radar");
+    _defineProperty3(Radar, "defaultProps", {
       angleAxisId: 0,
       radiusAxisId: 0,
       hide: !1,
@@ -8843,8 +8540,8 @@ var require_Radar = __commonJS({
       animationBegin: 0,
       animationDuration: 1500,
       animationEasing: "ease"
-    };
-    Radar.getComposedData = function(_ref2) {
+    });
+    _defineProperty3(Radar, "getComposedData", function(_ref2) {
       var radiusAxis = _ref2.radiusAxis, angleAxis = _ref2.angleAxis, displayedData = _ref2.displayedData, dataKey = _ref2.dataKey, bandSize = _ref2.bandSize, cx = angleAxis.cx, cy = angleAxis.cy, isRange = !1, points = [];
       displayedData.forEach(function(entry2, i) {
         var name = (0, _ChartUtils.getValueByDataKey)(entry2, angleAxis.dataKey, i), value = (0, _ChartUtils.getValueByDataKey)(entry2, dataKey), angle = angleAxis.scale(name) + (bandSize || 0), pointValue = (0, _isArray2.default)(value) ? (0, _last2.default)(value) : value, radius = (0, _isNil2.default)(pointValue) ? void 0 : radiusAxis.scale(pointValue);
@@ -8872,7 +8569,7 @@ var require_Radar = __commonJS({
         isRange,
         baseLinePoints
       };
-    };
+    });
   }
 });
 
@@ -8880,37 +8577,30 @@ var require_Radar = __commonJS({
 var require_RadialBar = __commonJS({
   "node_modules/recharts/lib/polar/RadialBar.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.RadialBar = void 0;
-    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _Sector = require_Sector(), _Layer = require_Layer(), _ReactUtils = require_ReactUtils(), _Global = require_Global(), _LabelList = require_LabelList(), _Cell = require_Cell(), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils(), _types = require_types(), _PolarUtils = require_PolarUtils();
-    function _getRequireWildcardCache() {
+    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _Sector = require_Sector(), _Layer = require_Layer(), _ReactUtils = require_ReactUtils(), _Global = require_Global(), _LabelList = require_LabelList(), _Cell = require_Cell(), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils(), _types = require_types(), _PolarUtils = require_PolarUtils(), _excluded = ["shape", "activeShape", "activeIndex", "cornerRadius"], _excluded2 = ["value", "background"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -8918,6 +8608,13 @@ var require_RadialBar = __commonJS({
     }
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
     }
     function ownKeys3(object, enumerableOnly) {
       var keys = Object.keys(object);
@@ -8939,9 +8636,6 @@ var require_RadialBar = __commonJS({
         });
       }
       return target;
-    }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
     }
     function _objectWithoutProperties2(source, excluded) {
       if (source == null)
@@ -8969,19 +8663,19 @@ var require_RadialBar = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -8998,7 +8692,11 @@ var require_RadialBar = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -9018,9 +8716,28 @@ var require_RadialBar = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var RadialBar2 = /* @__PURE__ */ function(_PureComponent) {
       _inherits(RadialBar3, _PureComponent);
@@ -9030,19 +8747,19 @@ var require_RadialBar = __commonJS({
         _classCallCheck(this, RadialBar3);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           isAnimationFinished: !1
-        }, _this.handleAnimationEnd = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationEnd", function() {
           var onAnimationEnd = _this.props.onAnimationEnd;
           _this.setState({
             isAnimationFinished: !0
           }), (0, _isFunction2.default)(onAnimationEnd) && onAnimationEnd();
-        }, _this.handleAnimationStart = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationStart", function() {
           var onAnimationStart = _this.props.onAnimationStart;
           _this.setState({
             isAnimationFinished: !1
           }), (0, _isFunction2.default)(onAnimationStart) && onAnimationStart();
-        }, _this;
+        }), _this;
       }
       return _createClass(RadialBar3, [{
         key: "getDeltaAngle",
@@ -9053,7 +8770,7 @@ var require_RadialBar = __commonJS({
       }, {
         key: "renderSectorsStatically",
         value: function(sectors) {
-          var _this2 = this, _this$props2 = this.props, shape = _this$props2.shape, activeShape = _this$props2.activeShape, activeIndex = _this$props2.activeIndex, cornerRadius = _this$props2.cornerRadius, others = _objectWithoutProperties2(_this$props2, ["shape", "activeShape", "activeIndex", "cornerRadius"]), baseProps = (0, _types.filterProps)(others);
+          var _this2 = this, _this$props2 = this.props, shape = _this$props2.shape, activeShape = _this$props2.activeShape, activeIndex = _this$props2.activeIndex, cornerRadius = _this$props2.cornerRadius, others = _objectWithoutProperties2(_this$props2, _excluded), baseProps = (0, _ReactUtils.filterProps)(others);
           return sectors.map(function(entry2, i) {
             var props = _objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3({}, baseProps), {}, {
               cornerRadius
@@ -9111,9 +8828,9 @@ var require_RadialBar = __commonJS({
       }, {
         key: "renderBackground",
         value: function(sectors) {
-          var _this4 = this, cornerRadius = this.props.cornerRadius, backgroundProps = (0, _types.filterProps)(this.props.background);
+          var _this4 = this, cornerRadius = this.props.cornerRadius, backgroundProps = (0, _ReactUtils.filterProps)(this.props.background);
           return sectors.map(function(entry2, i) {
-            var value = entry2.value, background = entry2.background, rest = _objectWithoutProperties2(entry2, ["value", "background"]);
+            var value = entry2.value, background = entry2.background, rest = _objectWithoutProperties2(entry2, _excluded2);
             if (!background)
               return null;
             var props = _objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3({
@@ -9141,9 +8858,7 @@ var require_RadialBar = __commonJS({
             className: "recharts-radial-bar-background"
           }, this.renderBackground(data)), /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
             className: "recharts-radial-bar-sectors"
-          }, this.renderSectors()), (!isAnimationActive || isAnimationFinished) && _LabelList.LabelList.renderCallByParent(_objectSpread3(_objectSpread3({}, this.props), {}, {
-            clockWise: this.getDeltaAngle() < 0
-          }), data));
+          }, this.renderSectors()), (!isAnimationActive || isAnimationFinished) && _LabelList.LabelList.renderCallByParent(_objectSpread3({}, this.props), data));
         }
       }], [{
         key: "getDerivedStateFromProps",
@@ -9165,8 +8880,8 @@ var require_RadialBar = __commonJS({
       }]), RadialBar3;
     }(_react.PureComponent);
     exports.RadialBar = RadialBar2;
-    RadialBar2.displayName = "RadialBar";
-    RadialBar2.defaultProps = {
+    _defineProperty3(RadialBar2, "displayName", "RadialBar");
+    _defineProperty3(RadialBar2, "defaultProps", {
       angleAxisId: 0,
       radiusAxisId: 0,
       minPointSize: 0,
@@ -9179,14 +8894,14 @@ var require_RadialBar = __commonJS({
       animationEasing: "ease",
       forceCornerRadius: !1,
       cornerIsExternal: !1
-    };
-    RadialBar2.getComposedData = function(_ref2) {
+    });
+    _defineProperty3(RadialBar2, "getComposedData", function(_ref2) {
       var item = _ref2.item, props = _ref2.props, radiusAxis = _ref2.radiusAxis, radiusAxisTicks = _ref2.radiusAxisTicks, angleAxis = _ref2.angleAxis, angleAxisTicks = _ref2.angleAxisTicks, displayedData = _ref2.displayedData, dataKey = _ref2.dataKey, stackedData = _ref2.stackedData, barPosition = _ref2.barPosition, bandSize = _ref2.bandSize, dataStartIndex = _ref2.dataStartIndex, pos = (0, _ChartUtils.findPositionOfBar)(barPosition, item);
       if (!pos)
         return null;
       var cx = angleAxis.cx, cy = angleAxis.cy, layout = props.layout, _item$props = item.props, children = _item$props.children, minPointSize = _item$props.minPointSize, numericAxis = layout === "radial" ? angleAxis : radiusAxis, stackedDomain = stackedData ? numericAxis.scale.domain() : null, baseValue = (0, _ChartUtils.getBaseValueOfBar)({
         numericAxis
-      }), cells = (0, _ReactUtils.findAllByType)(children, _Cell.Cell.displayName), sectors = displayedData.map(function(entry2, index) {
+      }), cells = (0, _ReactUtils.findAllByType)(children, _Cell.Cell), sectors = displayedData.map(function(entry2, index) {
         var value, innerRadius, outerRadius, startAngle, endAngle, backgroundSector;
         if (stackedData ? value = (0, _ChartUtils.truncateByDomain)(stackedData[dataStartIndex + index], stackedDomain) : (value = (0, _ChartUtils.getValueByDataKey)(entry2, dataKey), (0, _isArray2.default)(value) || (value = [baseValue, value])), layout === "radial") {
           innerRadius = (0, _ChartUtils.getCateCoordinateOfBar)({
@@ -9245,7 +8960,7 @@ var require_RadialBar = __commonJS({
         data: sectors,
         layout
       };
-    };
+    });
   }
 });
 
@@ -9257,6 +8972,13 @@ var require_CssPrefixUtils = __commonJS({
       value: !0
     });
     exports.generatePrefixStyle = void 0;
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function ownKeys3(object, enumerableOnly) {
       var keys = Object.keys(object);
       if (Object.getOwnPropertySymbols) {
@@ -9279,7 +9001,23 @@ var require_CssPrefixUtils = __commonJS({
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var PREFIX_LIST = ["Webkit", "Moz", "O", "ms"], generatePrefixStyle = function(name, value) {
       if (!name)
@@ -9299,37 +9037,30 @@ var require_CssPrefixUtils = __commonJS({
 var require_Brush = __commonJS({
   "node_modules/recharts/lib/cartesian/Brush.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Brush = void 0;
-    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _range2 = _interopRequireDefault(require("lodash/range")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _d3Scale = require("d3-scale"), _Layer = require_Layer(), _Text = require_Text(), _ChartUtils = require_ChartUtils(), _DataUtils = require_DataUtils(), _CssPrefixUtils = require_CssPrefixUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _range2 = _interopRequireDefault(require("lodash/range")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _d3Scale = require("victory-vendor/d3-scale"), _Layer = require_Layer(), _Text = require_Text(), _ChartUtils = require_ChartUtils(), _DataUtils = require_DataUtils(), _CssPrefixUtils = require_CssPrefixUtils(), _ReactUtils = require_ReactUtils();
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -9338,8 +9069,15 @@ var require_Brush = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -9369,9 +9107,6 @@ var require_Brush = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -9379,19 +9114,19 @@ var require_Brush = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -9408,7 +9143,11 @@ var require_Brush = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -9428,9 +9167,28 @@ var require_Brush = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var createScale = function(_ref) {
       var data = _ref.data, startIndex = _ref.startIndex, endIndex = _ref.endIndex, x = _ref.x, width = _ref.width, travellerWidth = _ref.travellerWidth;
@@ -9455,33 +9213,33 @@ var require_Brush = __commonJS({
       var _super = _createSuper(Brush2);
       function Brush2(props) {
         var _this;
-        return _classCallCheck(this, Brush2), _this = _super.call(this, props), _this.leaveTimer = void 0, _this.travellerDragStartHandlers = void 0, _this.handleDrag = function(e) {
+        return _classCallCheck(this, Brush2), _this = _super.call(this, props), _defineProperty3(_assertThisInitialized(_this), "handleDrag", function(e) {
           _this.leaveTimer && (clearTimeout(_this.leaveTimer), _this.leaveTimer = null), _this.state.isTravellerMoving ? _this.handleTravellerMove(e) : _this.state.isSlideMoving && _this.handleSlideDrag(e);
-        }, _this.handleTouchMove = function(e) {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleTouchMove", function(e) {
           e.changedTouches != null && e.changedTouches.length > 0 && _this.handleDrag(e.changedTouches[0]);
-        }, _this.handleDragEnd = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleDragEnd", function() {
           _this.setState({
             isTravellerMoving: !1,
             isSlideMoving: !1
           }), _this.detachDragEndListener();
-        }, _this.handleLeaveWrapper = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleLeaveWrapper", function() {
           (_this.state.isTravellerMoving || _this.state.isSlideMoving) && (_this.leaveTimer = window.setTimeout(_this.handleDragEnd, _this.props.leaveTimeOut));
-        }, _this.handleEnterSlideOrTraveller = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleEnterSlideOrTraveller", function() {
           _this.setState({
             isTextActive: !0
           });
-        }, _this.handleLeaveSlideOrTraveller = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleLeaveSlideOrTraveller", function() {
           _this.setState({
             isTextActive: !1
           });
-        }, _this.handleSlideDragStart = function(e) {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleSlideDragStart", function(e) {
           var event = isTouch(e) ? e.changedTouches[0] : e;
           _this.setState({
             isTravellerMoving: !1,
             isSlideMoving: !0,
             slideMoveStartX: event.pageX
           }), _this.attachDragEndListener();
-        }, _this.travellerDragStartHandlers = {
+        }), _this.travellerDragStartHandlers = {
           startX: _this.handleTravellerDragStart.bind(_assertThisInitialized(_this), "startX"),
           endX: _this.handleTravellerDragStart.bind(_assertThisInitialized(_this), "endX")
         }, _this.state = {}, _this;
@@ -9588,7 +9346,7 @@ var require_Brush = __commonJS({
       }, {
         key: "renderTravellerLayer",
         value: function(travellerX, id) {
-          var _this$props7 = this.props, y = _this$props7.y, travellerWidth = _this$props7.travellerWidth, height = _this$props7.height, traveller = _this$props7.traveller, x = Math.max(travellerX, this.props.x), travellerProps = _objectSpread3(_objectSpread3({}, (0, _types.filterProps)(this.props)), {}, {
+          var _this$props7 = this.props, y = _this$props7.y, travellerWidth = _this$props7.travellerWidth, height = _this$props7.height, traveller = _this$props7.traveller, x = Math.max(travellerX, this.props.x), travellerProps = _objectSpread3(_objectSpread3({}, (0, _ReactUtils.filterProps)(this.props)), {}, {
             x,
             y,
             width: travellerWidth,
@@ -9747,8 +9505,8 @@ var require_Brush = __commonJS({
       }]), Brush2;
     }(_react.PureComponent);
     exports.Brush = Brush;
-    Brush.displayName = "Brush";
-    Brush.defaultProps = {
+    _defineProperty3(Brush, "displayName", "Brush");
+    _defineProperty3(Brush, "defaultProps", {
       height: 40,
       travellerWidth: 5,
       gap: 1,
@@ -9762,7 +9520,7 @@ var require_Brush = __commonJS({
       },
       leaveTimeOut: 1e3,
       alwaysShowText: !1
-    };
+    });
   }
 });
 
@@ -9782,17 +9540,98 @@ var require_IfOverflowMatches = __commonJS({
   }
 });
 
-// node_modules/recharts/lib/util/CartesianUtils.js
-var require_CartesianUtils = __commonJS({
-  "node_modules/recharts/lib/util/CartesianUtils.js"(exports) {
+// node_modules/recharts/lib/cartesian/Bar.js
+var require_Bar = __commonJS({
+  "node_modules/recharts/lib/cartesian/Bar.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.createLabeledScales = exports.ScaleHelper = exports.rectWithCoords = exports.rectWithPoints = exports.formatAxisMap = void 0;
-    var _every2 = _interopRequireDefault(require("lodash/every")), _mapValues2 = _interopRequireDefault(require("lodash/mapValues")), _ChartUtils = require_ChartUtils(), _ReactUtils = require_ReactUtils(), _DataUtils = require_DataUtils();
+    exports.Bar = void 0;
+    var _isNil2 = _interopRequireDefault(require("lodash/isNil")), _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _Rectangle = require_Rectangle(), _Layer = require_Layer(), _ErrorBar = require_ErrorBar(), _Cell = require_Cell(), _LabelList = require_LabelList(), _DataUtils = require_DataUtils(), _ReactUtils = require_ReactUtils(), _Global = require_Global(), _ChartUtils = require_ChartUtils(), _types = require_types(), _excluded = ["value", "background"];
+    function _getRequireWildcardCache(nodeInterop) {
+      if (typeof WeakMap != "function")
+        return null;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
+    }
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
+        return obj;
+      if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
+        return { default: obj };
+      var cache = _getRequireWildcardCache(nodeInterop);
+      if (cache && cache.has(obj))
+        return cache.get(obj);
+      var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
+      for (var key in obj)
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
+          var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
+          desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
+        }
+      return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
+    }
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
+    function _objectWithoutProperties2(source, excluded) {
+      if (source == null)
+        return {};
+      var target = _objectWithoutPropertiesLoose2(source, excluded), key, i;
+      if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for (i = 0; i < sourceSymbolKeys.length; i++)
+          key = sourceSymbolKeys[i], !(excluded.indexOf(key) >= 0) && (!Object.prototype.propertyIsEnumerable.call(source, key) || (target[key] = source[key]));
+      }
+      return target;
+    }
+    function _objectWithoutPropertiesLoose2(source, excluded) {
+      if (source == null)
+        return {};
+      var target = {}, sourceKeys = Object.keys(source), key, i;
+      for (i = 0; i < sourceKeys.length; i++)
+        key = sourceKeys[i], !(excluded.indexOf(key) >= 0) && (target[key] = source[key]);
+      return target;
+    }
+    function _extends() {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
+        for (var i = 1; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source)
+            Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+        }
+        return target;
+      }, _extends.apply(this, arguments);
+    }
+    function ownKeys3(object, enumerableOnly) {
+      var keys = Object.keys(object);
+      if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        enumerableOnly && (symbols = symbols.filter(function(sym) {
+          return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        })), keys.push.apply(keys, symbols);
+      }
+      return keys;
+    }
+    function _objectSpread3(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i] != null ? arguments[i] : {};
+        i % 2 ? ownKeys3(Object(source), !0).forEach(function(key) {
+          _defineProperty3(target, key, source[key]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys3(Object(source)).forEach(function(key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+      }
+      return target;
     }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
@@ -9801,11 +9640,378 @@ var require_CartesianUtils = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
+    }
+    function _inherits(subClass, superClass) {
+      if (typeof superClass != "function" && superClass !== null)
+        throw new TypeError("Super expression must either be null or a function");
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
+    }
+    function _setPrototypeOf(o, p) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
+        return o2.__proto__ = p2, o2;
+      }, _setPrototypeOf(o, p);
+    }
+    function _createSuper(Derived) {
+      var hasNativeReflectConstruct = _isNativeReflectConstruct();
+      return function() {
+        var Super = _getPrototypeOf(Derived), result;
+        if (hasNativeReflectConstruct) {
+          var NewTarget = _getPrototypeOf(this).constructor;
+          result = Reflect.construct(Super, arguments, NewTarget);
+        } else
+          result = Super.apply(this, arguments);
+        return _possibleConstructorReturn(this, result);
+      };
+    }
+    function _possibleConstructorReturn(self2, call) {
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
+    }
+    function _assertThisInitialized(self2) {
+      if (self2 === void 0)
+        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      return self2;
+    }
+    function _isNativeReflectConstruct() {
+      if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham)
+        return !1;
+      if (typeof Proxy == "function")
+        return !0;
+      try {
+        return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+        })), !0;
+      } catch {
+        return !1;
+      }
+    }
+    function _getPrototypeOf(o) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
+        return o2.__proto__ || Object.getPrototypeOf(o2);
+      }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
+    }
+    var Bar = /* @__PURE__ */ function(_PureComponent) {
+      _inherits(Bar2, _PureComponent);
+      var _super = _createSuper(Bar2);
+      function Bar2() {
+        var _this;
+        _classCallCheck(this, Bar2);
+        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
+          args[_key] = arguments[_key];
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
+          isAnimationFinished: !1
+        }), _defineProperty3(_assertThisInitialized(_this), "id", (0, _DataUtils.uniqueId)("recharts-bar-")), _defineProperty3(_assertThisInitialized(_this), "handleAnimationEnd", function() {
+          var onAnimationEnd = _this.props.onAnimationEnd;
+          _this.setState({
+            isAnimationFinished: !0
+          }), onAnimationEnd && onAnimationEnd();
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationStart", function() {
+          var onAnimationStart = _this.props.onAnimationStart;
+          _this.setState({
+            isAnimationFinished: !1
+          }), onAnimationStart && onAnimationStart();
+        }), _this;
+      }
+      return _createClass(Bar2, [{
+        key: "renderRectanglesStatically",
+        value: function(data) {
+          var _this2 = this, shape = this.props.shape, baseProps = (0, _ReactUtils.filterProps)(this.props);
+          return data && data.map(function(entry2, i) {
+            var props = _objectSpread3(_objectSpread3(_objectSpread3({}, baseProps), entry2), {}, {
+              index: i
+            });
+            return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, _extends({
+              className: "recharts-bar-rectangle"
+            }, (0, _types.adaptEventsOfChild)(_this2.props, entry2, i), {
+              key: "rectangle-".concat(i),
+              role: "img"
+            }), Bar2.renderRectangle(shape, props));
+          });
+        }
+      }, {
+        key: "renderRectanglesWithAnimation",
+        value: function() {
+          var _this3 = this, _this$props = this.props, data = _this$props.data, layout = _this$props.layout, isAnimationActive = _this$props.isAnimationActive, animationBegin = _this$props.animationBegin, animationDuration = _this$props.animationDuration, animationEasing = _this$props.animationEasing, animationId = _this$props.animationId, prevData = this.state.prevData;
+          return /* @__PURE__ */ _react.default.createElement(_reactSmooth.default, {
+            begin: animationBegin,
+            duration: animationDuration,
+            isActive: isAnimationActive,
+            easing: animationEasing,
+            from: {
+              t: 0
+            },
+            to: {
+              t: 1
+            },
+            key: "bar-".concat(animationId),
+            onAnimationEnd: this.handleAnimationEnd,
+            onAnimationStart: this.handleAnimationStart
+          }, function(_ref) {
+            var t = _ref.t, stepData = data.map(function(entry2, index) {
+              var prev = prevData && prevData[index];
+              if (prev) {
+                var interpolatorX = (0, _DataUtils.interpolateNumber)(prev.x, entry2.x), interpolatorY = (0, _DataUtils.interpolateNumber)(prev.y, entry2.y), interpolatorWidth = (0, _DataUtils.interpolateNumber)(prev.width, entry2.width), interpolatorHeight = (0, _DataUtils.interpolateNumber)(prev.height, entry2.height);
+                return _objectSpread3(_objectSpread3({}, entry2), {}, {
+                  x: interpolatorX(t),
+                  y: interpolatorY(t),
+                  width: interpolatorWidth(t),
+                  height: interpolatorHeight(t)
+                });
+              }
+              if (layout === "horizontal") {
+                var _interpolatorHeight = (0, _DataUtils.interpolateNumber)(0, entry2.height), h = _interpolatorHeight(t);
+                return _objectSpread3(_objectSpread3({}, entry2), {}, {
+                  y: entry2.y + entry2.height - h,
+                  height: h
+                });
+              }
+              var interpolator = (0, _DataUtils.interpolateNumber)(0, entry2.width), w = interpolator(t);
+              return _objectSpread3(_objectSpread3({}, entry2), {}, {
+                width: w
+              });
+            });
+            return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, null, _this3.renderRectanglesStatically(stepData));
+          });
+        }
+      }, {
+        key: "renderRectangles",
+        value: function() {
+          var _this$props2 = this.props, data = _this$props2.data, isAnimationActive = _this$props2.isAnimationActive, prevData = this.state.prevData;
+          return isAnimationActive && data && data.length && (!prevData || !(0, _isEqual2.default)(prevData, data)) ? this.renderRectanglesWithAnimation() : this.renderRectanglesStatically(data);
+        }
+      }, {
+        key: "renderBackground",
+        value: function() {
+          var _this4 = this, data = this.props.data, backgroundProps = (0, _ReactUtils.filterProps)(this.props.background);
+          return data.map(function(entry2, i) {
+            var value = entry2.value, background = entry2.background, rest = _objectWithoutProperties2(entry2, _excluded);
+            if (!background)
+              return null;
+            var props = _objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3({}, rest), {}, {
+              fill: "#eee"
+            }, background), backgroundProps), (0, _types.adaptEventsOfChild)(_this4.props, entry2, i)), {}, {
+              index: i,
+              key: "background-bar-".concat(i),
+              className: "recharts-bar-background-rectangle"
+            });
+            return Bar2.renderRectangle(_this4.props.background, props);
+          });
+        }
+      }, {
+        key: "renderErrorBar",
+        value: function(needClip, clipPathId) {
+          if (this.props.isAnimationActive && !this.state.isAnimationFinished)
+            return null;
+          var _this$props3 = this.props, data = _this$props3.data, xAxis = _this$props3.xAxis, yAxis = _this$props3.yAxis, layout = _this$props3.layout, children = _this$props3.children, errorBarItems = (0, _ReactUtils.findAllByType)(children, _ErrorBar.ErrorBar);
+          if (!errorBarItems)
+            return null;
+          var offset = layout === "vertical" ? data[0].height / 2 : data[0].width / 2;
+          function dataPointFormatter(dataPoint, dataKey) {
+            return {
+              x: dataPoint.x,
+              y: dataPoint.y,
+              value: dataPoint.value,
+              errorVal: (0, _ChartUtils.getValueByDataKey)(dataPoint, dataKey)
+            };
+          }
+          var errorBarProps = {
+            clipPath: needClip ? "url(#clipPath-".concat(clipPathId, ")") : null
+          };
+          return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, errorBarProps, errorBarItems.map(function(item, i) {
+            return /* @__PURE__ */ _react.default.cloneElement(item, {
+              key: "error-bar-".concat(i),
+              data,
+              xAxis,
+              yAxis,
+              layout,
+              offset,
+              dataPointFormatter
+            });
+          }));
+        }
+      }, {
+        key: "render",
+        value: function() {
+          var _this$props4 = this.props, hide = _this$props4.hide, data = _this$props4.data, className = _this$props4.className, xAxis = _this$props4.xAxis, yAxis = _this$props4.yAxis, left = _this$props4.left, top = _this$props4.top, width = _this$props4.width, height = _this$props4.height, isAnimationActive = _this$props4.isAnimationActive, background = _this$props4.background, id = _this$props4.id;
+          if (hide || !data || !data.length)
+            return null;
+          var isAnimationFinished = this.state.isAnimationFinished, layerClass = (0, _classnames.default)("recharts-bar", className), needClip = xAxis && xAxis.allowDataOverflow || yAxis && yAxis.allowDataOverflow, clipPathId = (0, _isNil2.default)(id) ? this.id : id;
+          return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
+            className: layerClass
+          }, needClip ? /* @__PURE__ */ _react.default.createElement("defs", null, /* @__PURE__ */ _react.default.createElement("clipPath", {
+            id: "clipPath-".concat(clipPathId)
+          }, /* @__PURE__ */ _react.default.createElement("rect", {
+            x: left,
+            y: top,
+            width,
+            height
+          }))) : null, /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
+            className: "recharts-bar-rectangles",
+            clipPath: needClip ? "url(#clipPath-".concat(clipPathId, ")") : null
+          }, background ? this.renderBackground() : null, this.renderRectangles()), this.renderErrorBar(needClip, clipPathId), (!isAnimationActive || isAnimationFinished) && _LabelList.LabelList.renderCallByParent(this.props, data));
+        }
+      }], [{
+        key: "getDerivedStateFromProps",
+        value: function(nextProps, prevState) {
+          return nextProps.animationId !== prevState.prevAnimationId ? {
+            prevAnimationId: nextProps.animationId,
+            curData: nextProps.data,
+            prevData: prevState.curData
+          } : nextProps.data !== prevState.curData ? {
+            curData: nextProps.data
+          } : null;
+        }
+      }, {
+        key: "renderRectangle",
+        value: function(option, props) {
+          var rectangle;
+          return /* @__PURE__ */ _react.default.isValidElement(option) ? rectangle = /* @__PURE__ */ _react.default.cloneElement(option, props) : (0, _isFunction2.default)(option) ? rectangle = option(props) : rectangle = /* @__PURE__ */ _react.default.createElement(_Rectangle.Rectangle, props), rectangle;
+        }
+      }]), Bar2;
+    }(_react.PureComponent);
+    exports.Bar = Bar;
+    _defineProperty3(Bar, "displayName", "Bar");
+    _defineProperty3(Bar, "defaultProps", {
+      xAxisId: 0,
+      yAxisId: 0,
+      legendType: "rect",
+      minPointSize: 0,
+      hide: !1,
+      data: [],
+      layout: "vertical",
+      isAnimationActive: !_Global.Global.isSsr,
+      animationBegin: 0,
+      animationDuration: 400,
+      animationEasing: "ease"
+    });
+    _defineProperty3(Bar, "getComposedData", function(_ref2) {
+      var props = _ref2.props, item = _ref2.item, barPosition = _ref2.barPosition, bandSize = _ref2.bandSize, xAxis = _ref2.xAxis, yAxis = _ref2.yAxis, xAxisTicks = _ref2.xAxisTicks, yAxisTicks = _ref2.yAxisTicks, stackedData = _ref2.stackedData, dataStartIndex = _ref2.dataStartIndex, displayedData = _ref2.displayedData, offset = _ref2.offset, pos = (0, _ChartUtils.findPositionOfBar)(barPosition, item);
+      if (!pos)
+        return null;
+      var layout = props.layout, _item$props = item.props, dataKey = _item$props.dataKey, children = _item$props.children, minPointSize = _item$props.minPointSize, numericAxis = layout === "horizontal" ? yAxis : xAxis, stackedDomain = stackedData ? numericAxis.scale.domain() : null, baseValue = (0, _ChartUtils.getBaseValueOfBar)({
+        numericAxis
+      }), cells = (0, _ReactUtils.findAllByType)(children, _Cell.Cell), rects = displayedData.map(function(entry2, index) {
+        var value, x, y, width, height, background;
+        if (stackedData ? value = (0, _ChartUtils.truncateByDomain)(stackedData[dataStartIndex + index], stackedDomain) : (value = (0, _ChartUtils.getValueByDataKey)(entry2, dataKey), (0, _isArray2.default)(value) || (value = [baseValue, value])), layout === "horizontal") {
+          var _ref4, _ref3 = [yAxis.scale(value[0]), yAxis.scale(value[1])], baseValueScale = _ref3[0], currentValueScale = _ref3[1];
+          x = (0, _ChartUtils.getCateCoordinateOfBar)({
+            axis: xAxis,
+            ticks: xAxisTicks,
+            bandSize,
+            offset: pos.offset,
+            entry: entry2,
+            index
+          }), y = (_ref4 = currentValueScale ?? baseValueScale) !== null && _ref4 !== void 0 ? _ref4 : void 0, width = pos.size;
+          var computedHeight = baseValueScale - currentValueScale;
+          if (height = Number.isNaN(computedHeight) ? 0 : computedHeight, background = {
+            x,
+            y: yAxis.y,
+            width,
+            height: yAxis.height
+          }, Math.abs(minPointSize) > 0 && Math.abs(height) < Math.abs(minPointSize)) {
+            var delta = (0, _DataUtils.mathSign)(height || minPointSize) * (Math.abs(minPointSize) - Math.abs(height));
+            y -= delta, height += delta;
+          }
+        } else {
+          var _ref5 = [xAxis.scale(value[0]), xAxis.scale(value[1])], _baseValueScale = _ref5[0], _currentValueScale = _ref5[1];
+          if (x = _baseValueScale, y = (0, _ChartUtils.getCateCoordinateOfBar)({
+            axis: yAxis,
+            ticks: yAxisTicks,
+            bandSize,
+            offset: pos.offset,
+            entry: entry2,
+            index
+          }), width = _currentValueScale - _baseValueScale, height = pos.size, background = {
+            x: xAxis.x,
+            y,
+            width: xAxis.width,
+            height
+          }, Math.abs(minPointSize) > 0 && Math.abs(width) < Math.abs(minPointSize)) {
+            var _delta = (0, _DataUtils.mathSign)(width || minPointSize) * (Math.abs(minPointSize) - Math.abs(width));
+            width += _delta;
+          }
+        }
+        return _objectSpread3(_objectSpread3(_objectSpread3({}, entry2), {}, {
+          x,
+          y,
+          width,
+          height,
+          value: stackedData ? value : value[1],
+          payload: entry2,
+          background
+        }, cells && cells[index] && cells[index].props), {}, {
+          tooltipPayload: [(0, _ChartUtils.getTooltipItem)(item, entry2)],
+          tooltipPosition: {
+            x: x + width / 2,
+            y: y + height / 2
+          }
+        });
+      });
+      return _objectSpread3({
+        data: rects,
+        layout
+      }, offset);
+    });
+  }
+});
+
+// node_modules/recharts/lib/util/CartesianUtils.js
+var require_CartesianUtils = __commonJS({
+  "node_modules/recharts/lib/util/CartesianUtils.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: !0
+    });
+    exports.rectWithPoints = exports.rectWithCoords = exports.formatAxisMap = exports.createLabeledScales = exports.ScaleHelper = void 0;
+    var _every2 = _interopRequireDefault(require("lodash/every")), _mapValues2 = _interopRequireDefault(require("lodash/mapValues")), _ChartUtils = require_ChartUtils(), _ReactUtils = require_ReactUtils(), _DataUtils = require_DataUtils(), _Bar = require_Bar();
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
+    function _classCallCheck(instance, Constructor) {
+      if (!(instance instanceof Constructor))
+        throw new TypeError("Cannot call a class as a function");
+    }
+    function _defineProperties(target, props) {
+      for (var i = 0; i < props.length; i++) {
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
+      }
+    }
+    function _createClass(Constructor, protoProps, staticProps) {
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function ownKeys3(object, enumerableOnly) {
       var keys = Object.keys(object);
@@ -9829,7 +10035,23 @@ var require_CartesianUtils = __commonJS({
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var formatAxisMap = function(props, axisMap, offset, axisType, chartName) {
       var width = props.width, height = props.height, layout = props.layout, children = props.children, ids = Object.keys(axisMap), steps = {
@@ -9841,7 +10063,7 @@ var require_CartesianUtils = __commonJS({
         topMirror: offset.top,
         bottom: height - offset.bottom,
         bottomMirror: height - offset.bottom
-      }, hasBar = !!(0, _ReactUtils.findChildByType)(children, "Bar");
+      }, hasBar = !!(0, _ReactUtils.findChildByType)(children, _Bar.Bar);
       return ids.reduce(function(result, id) {
         var axis = axisMap[id], orientation = axis.orientation, domain = axis.domain, _axis$padding = axis.padding, padding = _axis$padding === void 0 ? {} : _axis$padding, mirror = axis.mirror, reversed = axis.reversed, offsetKey = "".concat(orientation).concat(mirror ? "Mirror" : ""), calculatedPadding, range, x, y, needSpace;
         if (axis.type === "number" && (axis.padding === "gap" || axis.padding === "no-gap")) {
@@ -9897,7 +10119,7 @@ var require_CartesianUtils = __commonJS({
     exports.rectWithCoords = rectWithCoords;
     var ScaleHelper = /* @__PURE__ */ function() {
       function ScaleHelper2(scale) {
-        _classCallCheck(this, ScaleHelper2), this.scale = void 0, this.scale = scale;
+        _classCallCheck(this, ScaleHelper2), this.scale = scale;
       }
       return _createClass(ScaleHelper2, [{
         key: "domain",
@@ -9965,7 +10187,7 @@ var require_CartesianUtils = __commonJS({
       }]), ScaleHelper2;
     }();
     exports.ScaleHelper = ScaleHelper;
-    ScaleHelper.EPS = 1e-4;
+    _defineProperty3(ScaleHelper, "EPS", 1e-4);
     var createLabeledScales = function(options) {
       var scales = Object.keys(options).reduce(function(res, key) {
         return _objectSpread3(_objectSpread3({}, res), {}, _defineProperty3({}, key, ScaleHelper.create(options[key])));
@@ -9995,11 +10217,18 @@ var require_CartesianUtils = __commonJS({
 var require_ReferenceLine = __commonJS({
   "node_modules/recharts/lib/cartesian/ReferenceLine.js"(exports) {
     "use strict";
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.ReferenceLine = ReferenceLine;
-    var _some2 = _interopRequireDefault(require("lodash/some")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Layer = require_Layer(), _Label = require_Label(), _IfOverflowMatches = require_IfOverflowMatches(), _DataUtils = require_DataUtils(), _CartesianUtils = require_CartesianUtils(), _LogUtils = require_LogUtils(), _types = require_types();
+    var _some2 = _interopRequireDefault(require("lodash/some")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Layer = require_Layer(), _Label = require_Label(), _IfOverflowMatches = require_IfOverflowMatches(), _DataUtils = require_DataUtils(), _CartesianUtils = require_CartesianUtils(), _LogUtils = require_LogUtils(), _ReactUtils = require_ReactUtils();
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
@@ -10025,7 +10254,23 @@ var require_ReferenceLine = __commonJS({
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     function _slicedToArray(arr, i) {
       return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
@@ -10052,16 +10297,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return arr2;
     }
     function _iterableToArrayLimit(arr, i) {
-      if (!(typeof Symbol > "u" || !(Symbol.iterator in Object(arr)))) {
-        var _arr = [], _n = !0, _d = !1, _e = void 0;
+      var _i = arr == null ? null : typeof Symbol < "u" && arr[Symbol.iterator] || arr["@@iterator"];
+      if (_i != null) {
+        var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
         try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-            ;
+          if (_x = (_i = _i.call(arr)).next, i === 0) {
+            if (Object(_i) !== _i)
+              return;
+            _n = !1;
+          } else
+            for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+              ;
         } catch (err) {
           _d = !0, _e = err;
         } finally {
           try {
-            !_n && _i.return != null && _i.return();
+            if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+              return;
           } finally {
             if (_d)
               throw _e;
@@ -10075,7 +10327,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return arr;
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -10144,7 +10396,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return null;
       var _endPoints = _slicedToArray(endPoints, 2), _endPoints$ = _endPoints[0], x1 = _endPoints$.x, y1 = _endPoints$.y, _endPoints$2 = _endPoints[1], x2 = _endPoints$2.x, y2 = _endPoints$2.y, clipPath = (0, _IfOverflowMatches.ifOverflowMatches)(props, "hidden") ? "url(#".concat(clipPathId, ")") : void 0, lineProps = _objectSpread3(_objectSpread3({
         clipPath
-      }, (0, _types.filterProps)(props, !0)), {}, {
+      }, (0, _ReactUtils.filterProps)(props, !0)), {}, {
         x1,
         y1,
         x2,
@@ -10182,12 +10434,19 @@ var require_ReferenceDot = __commonJS({
       value: !0
     });
     exports.ReferenceDot = ReferenceDot;
-    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Layer = require_Layer(), _Dot = require_Dot(), _Label = require_Label(), _DataUtils = require_DataUtils(), _IfOverflowMatches = require_IfOverflowMatches(), _CartesianUtils = require_CartesianUtils(), _LogUtils = require_LogUtils(), _types = require_types();
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Layer = require_Layer(), _Dot = require_Dot(), _Label = require_Label(), _DataUtils = require_DataUtils(), _IfOverflowMatches = require_IfOverflowMatches(), _CartesianUtils = require_CartesianUtils(), _LogUtils = require_LogUtils(), _ReactUtils = require_ReactUtils();
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -10218,7 +10477,23 @@ var require_ReferenceDot = __commonJS({
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var getCoordinate = function(props) {
       var x = props.x, y = props.y, xAxis = props.xAxis, yAxis = props.yAxis, scales = (0, _CartesianUtils.createLabeledScales)({
@@ -10241,7 +10516,7 @@ var require_ReferenceDot = __commonJS({
         return null;
       var cx = coordinate.x, cy = coordinate.y, shape = props.shape, className = props.className, clipPath = (0, _IfOverflowMatches.ifOverflowMatches)(props, "hidden") ? "url(#".concat(clipPathId, ")") : void 0, dotProps = _objectSpread3(_objectSpread3({
         clipPath
-      }, (0, _types.filterProps)(props, !0)), {}, {
+      }, (0, _ReactUtils.filterProps)(props, !0)), {}, {
         cx,
         cy
       });
@@ -10285,12 +10560,19 @@ var require_ReferenceArea = __commonJS({
       value: !0
     });
     exports.ReferenceArea = ReferenceArea;
-    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Layer = require_Layer(), _Label = require_Label(), _CartesianUtils = require_CartesianUtils(), _IfOverflowMatches = require_IfOverflowMatches(), _DataUtils = require_DataUtils(), _LogUtils = require_LogUtils(), _Rectangle = require_Rectangle(), _types = require_types();
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireDefault(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Layer = require_Layer(), _Label = require_Label(), _CartesianUtils = require_CartesianUtils(), _IfOverflowMatches = require_IfOverflowMatches(), _DataUtils = require_DataUtils(), _LogUtils = require_LogUtils(), _Rectangle = require_Rectangle(), _ReactUtils = require_ReactUtils();
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -10321,7 +10603,23 @@ var require_ReferenceArea = __commonJS({
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var getRect = function(hasX1, hasX2, hasY1, hasY2, props) {
       var xValue1 = props.x1, xValue2 = props.x2, yValue1 = props.y1, yValue2 = props.y2, xAxis = props.xAxis, yAxis = props.yAxis;
@@ -10361,7 +10659,7 @@ var require_ReferenceArea = __commonJS({
         className: (0, _classnames.default)("recharts-reference-area", className)
       }, ReferenceArea.renderRect(shape, _objectSpread3(_objectSpread3({
         clipPath
-      }, (0, _types.filterProps)(props, !0)), rect)), _Label.Label.renderCallByParent(props, rect));
+      }, (0, _ReactUtils.filterProps)(props, !0)), rect)), _Label.Label.renderCallByParent(props, rect));
     }
     ReferenceArea.displayName = "ReferenceArea";
     ReferenceArea.defaultProps = {
@@ -10384,41 +10682,240 @@ var require_ReferenceArea = __commonJS({
   }
 });
 
+// node_modules/recharts/lib/util/getEveryNthWithCondition.js
+var require_getEveryNthWithCondition = __commonJS({
+  "node_modules/recharts/lib/util/getEveryNthWithCondition.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: !0
+    });
+    exports.getEveryNthWithCondition = getEveryNthWithCondition;
+    function getEveryNthWithCondition(array, n, isValid) {
+      if (n < 1)
+        return [];
+      if (n === 1 && isValid === void 0)
+        return array;
+      for (var result = [], i = 0; i < array.length; i += n)
+        if (isValid === void 0 || isValid(array[i]) === !0)
+          result.push(array[i]);
+        else
+          return;
+      return result;
+    }
+  }
+});
+
+// node_modules/recharts/lib/cartesian/getTicks.js
+var require_getTicks = __commonJS({
+  "node_modules/recharts/lib/cartesian/getTicks.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", {
+      value: !0
+    });
+    exports.getEveryNThTick = getEveryNThTick;
+    exports.getNumberIntervalTicks = getNumberIntervalTicks;
+    exports.getTicks = getTicks;
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _DataUtils = require_DataUtils(), _DOMUtils = require_DOMUtils(), _Global = require_Global(), _getEveryNthWithCondition = require_getEveryNthWithCondition();
+    function _interopRequireDefault(obj) {
+      return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
+    function ownKeys3(object, enumerableOnly) {
+      var keys = Object.keys(object);
+      if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        enumerableOnly && (symbols = symbols.filter(function(sym) {
+          return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        })), keys.push.apply(keys, symbols);
+      }
+      return keys;
+    }
+    function _objectSpread3(target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i] != null ? arguments[i] : {};
+        i % 2 ? ownKeys3(Object(source), !0).forEach(function(key) {
+          _defineProperty3(target, key, source[key]);
+        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys3(Object(source)).forEach(function(key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+      }
+      return target;
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
+    }
+    function getEveryNThTick(ticks) {
+      for (var N = 1, previous = (0, _getEveryNthWithCondition.getEveryNthWithCondition)(ticks, N, function(tickItem) {
+        return tickItem.isShow;
+      }); N <= ticks.length; ) {
+        if (previous !== void 0)
+          return previous;
+        N++, previous = (0, _getEveryNthWithCondition.getEveryNthWithCondition)(ticks, N, function(tickItem) {
+          return tickItem.isShow;
+        });
+      }
+      return ticks.slice(0, 1);
+    }
+    function getNumberIntervalTicks(ticks, interval) {
+      return (0, _getEveryNthWithCondition.getEveryNthWithCondition)(ticks, interval + 1);
+    }
+    function getTicksEnd(_ref) {
+      var ticks = _ref.ticks, tickFormatter = _ref.tickFormatter, viewBox = _ref.viewBox, orientation = _ref.orientation, minTickGap = _ref.minTickGap, unit = _ref.unit, fontSize = _ref.fontSize, letterSpacing = _ref.letterSpacing, x = viewBox.x, y = viewBox.y, width = viewBox.width, height = viewBox.height, sizeKey = orientation === "top" || orientation === "bottom" ? "width" : "height", unitSize = unit && sizeKey === "width" ? (0, _DOMUtils.getStringSize)(unit, {
+        fontSize,
+        letterSpacing
+      })[sizeKey] : 0, result = (ticks || []).slice(), len = result.length, sign = len >= 2 ? (0, _DataUtils.mathSign)(result[1].coordinate - result[0].coordinate) : 1, start, end;
+      sign === 1 ? (start = sizeKey === "width" ? x : y, end = sizeKey === "width" ? x + width : y + height) : (start = sizeKey === "width" ? x + width : y + height, end = sizeKey === "width" ? x : y);
+      for (var i = len - 1; i >= 0; i--) {
+        var entry2 = result[i], content = (0, _isFunction2.default)(tickFormatter) ? tickFormatter(entry2.value, len - i - 1) : entry2.value, size = (0, _DOMUtils.getStringSize)(content, {
+          fontSize,
+          letterSpacing
+        })[sizeKey] + unitSize;
+        if (i === len - 1) {
+          var gap = sign * (entry2.coordinate + sign * size / 2 - end);
+          result[i] = entry2 = _objectSpread3(_objectSpread3({}, entry2), {}, {
+            tickCoord: gap > 0 ? entry2.coordinate - gap * sign : entry2.coordinate
+          });
+        } else
+          result[i] = entry2 = _objectSpread3(_objectSpread3({}, entry2), {}, {
+            tickCoord: entry2.coordinate
+          });
+        var isShow = sign * (entry2.tickCoord - sign * size / 2 - start) >= 0 && sign * (entry2.tickCoord + sign * size / 2 - end) <= 0;
+        isShow && (end = entry2.tickCoord - sign * (size / 2 + minTickGap), result[i] = _objectSpread3(_objectSpread3({}, entry2), {}, {
+          isShow: !0
+        }));
+      }
+      return result;
+    }
+    function getTicksStart(_ref2, preserveEnd) {
+      var ticks = _ref2.ticks, tickFormatter = _ref2.tickFormatter, viewBox = _ref2.viewBox, orientation = _ref2.orientation, minTickGap = _ref2.minTickGap, unit = _ref2.unit, fontSize = _ref2.fontSize, letterSpacing = _ref2.letterSpacing, x = viewBox.x, y = viewBox.y, width = viewBox.width, height = viewBox.height, sizeKey = orientation === "top" || orientation === "bottom" ? "width" : "height", result = (ticks || []).slice(), unitSize = unit && sizeKey === "width" ? (0, _DOMUtils.getStringSize)(unit, {
+        fontSize,
+        letterSpacing
+      })[sizeKey] : 0, len = result.length, sign = len >= 2 ? (0, _DataUtils.mathSign)(result[1].coordinate - result[0].coordinate) : 1, start, end;
+      if (sign === 1 ? (start = sizeKey === "width" ? x : y, end = sizeKey === "width" ? x + width : y + height) : (start = sizeKey === "width" ? x + width : y + height, end = sizeKey === "width" ? x : y), preserveEnd) {
+        var tail = ticks[len - 1], tailContent = (0, _isFunction2.default)(tickFormatter) ? tickFormatter(tail.value, len - 1) : tail.value, tailSize = (0, _DOMUtils.getStringSize)(tailContent, {
+          fontSize,
+          letterSpacing
+        })[sizeKey] + unitSize, tailGap = sign * (tail.coordinate + sign * tailSize / 2 - end);
+        result[len - 1] = tail = _objectSpread3(_objectSpread3({}, tail), {}, {
+          tickCoord: tailGap > 0 ? tail.coordinate - tailGap * sign : tail.coordinate
+        });
+        var isTailShow = sign * (tail.tickCoord - sign * tailSize / 2 - start) >= 0 && sign * (tail.tickCoord + sign * tailSize / 2 - end) <= 0;
+        isTailShow && (end = tail.tickCoord - sign * (tailSize / 2 + minTickGap), result[len - 1] = _objectSpread3(_objectSpread3({}, tail), {}, {
+          isShow: !0
+        }));
+      }
+      for (var count = preserveEnd ? len - 1 : len, i = 0; i < count; i++) {
+        var entry2 = result[i], content = (0, _isFunction2.default)(tickFormatter) ? tickFormatter(entry2.value, i) : entry2.value, size = (0, _DOMUtils.getStringSize)(content, {
+          fontSize,
+          letterSpacing
+        })[sizeKey] + unitSize;
+        if (i === 0) {
+          var gap = sign * (entry2.coordinate - sign * size / 2 - start);
+          result[i] = entry2 = _objectSpread3(_objectSpread3({}, entry2), {}, {
+            tickCoord: gap < 0 ? entry2.coordinate - gap * sign : entry2.coordinate
+          });
+        } else
+          result[i] = entry2 = _objectSpread3(_objectSpread3({}, entry2), {}, {
+            tickCoord: entry2.coordinate
+          });
+        var isShow = sign * (entry2.tickCoord - sign * size / 2 - start) >= 0 && sign * (entry2.tickCoord + sign * size / 2 - end) <= 0;
+        isShow && (start = entry2.tickCoord + sign * (size / 2 + minTickGap), result[i] = _objectSpread3(_objectSpread3({}, entry2), {}, {
+          isShow: !0
+        }));
+      }
+      return result;
+    }
+    function getTicks(props, fontSize, letterSpacing) {
+      var tick = props.tick, ticks = props.ticks, viewBox = props.viewBox, minTickGap = props.minTickGap, orientation = props.orientation, interval = props.interval, tickFormatter = props.tickFormatter, unit = props.unit;
+      if (!ticks || !ticks.length || !tick)
+        return [];
+      if ((0, _DataUtils.isNumber)(interval) || _Global.Global.isSsr)
+        return getNumberIntervalTicks(ticks, typeof interval == "number" && (0, _DataUtils.isNumber)(interval) ? interval : 0);
+      var candidates = [];
+      return interval === "equidistantPreserveStart" ? (candidates = getTicksStart({
+        ticks,
+        tickFormatter,
+        viewBox,
+        orientation,
+        minTickGap,
+        unit,
+        fontSize,
+        letterSpacing
+      }), getEveryNThTick(candidates)) : (interval === "preserveStart" || interval === "preserveStartEnd" ? candidates = getTicksStart({
+        ticks,
+        tickFormatter,
+        viewBox,
+        orientation,
+        minTickGap,
+        unit,
+        fontSize,
+        letterSpacing
+      }, interval === "preserveStartEnd") : candidates = getTicksEnd({
+        ticks,
+        tickFormatter,
+        viewBox,
+        orientation,
+        minTickGap,
+        unit,
+        fontSize,
+        letterSpacing
+      }), candidates.filter(function(entry2) {
+        return entry2.isShow;
+      }));
+    }
+  }
+});
+
 // node_modules/recharts/lib/cartesian/CartesianAxis.js
 var require_CartesianAxis = __commonJS({
   "node_modules/recharts/lib/cartesian/CartesianAxis.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.CartesianAxis = void 0;
-    var _get2 = _interopRequireDefault(require("lodash/get")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _ShallowEqual = require_ShallowEqual(), _DOMUtils = require_DOMUtils(), _Layer = require_Layer(), _Text = require_Text(), _Label = require_Label(), _Global = require_Global(), _DataUtils = require_DataUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _get2 = _interopRequireDefault(require("lodash/get")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _ShallowEqual = require_ShallowEqual(), _Layer = require_Layer(), _Text = require_Text(), _Label = require_Label(), _DataUtils = require_DataUtils(), _types = require_types(), _ReactUtils = require_ReactUtils(), _getTicks = require_getTicks(), _excluded = ["viewBox"], _excluded2 = ["viewBox"], _excluded3 = ["ticks"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -10427,8 +10924,15 @@ var require_CartesianAxis = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -10458,9 +10962,6 @@ var require_CartesianAxis = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _objectWithoutProperties2(source, excluded) {
       if (source == null)
         return {};
@@ -10487,19 +10988,19 @@ var require_CartesianAxis = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -10516,7 +11017,11 @@ var require_CartesianAxis = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -10536,16 +11041,35 @@ var require_CartesianAxis = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var CartesianAxis = /* @__PURE__ */ function(_Component) {
       _inherits(CartesianAxis2, _Component);
       var _super = _createSuper(CartesianAxis2);
       function CartesianAxis2(props) {
         var _this;
-        return _classCallCheck(this, CartesianAxis2), _this = _super.call(this, props), _this.layerReference = void 0, _this.state = {
+        return _classCallCheck(this, CartesianAxis2), _this = _super.call(this, props), _this.state = {
           fontSize: "",
           letterSpacing: ""
         }, _this;
@@ -10553,7 +11077,7 @@ var require_CartesianAxis = __commonJS({
       return _createClass(CartesianAxis2, [{
         key: "shouldComponentUpdate",
         value: function(_ref, nextState) {
-          var viewBox = _ref.viewBox, restProps = _objectWithoutProperties2(_ref, ["viewBox"]), _this$props = this.props, viewBoxOld = _this$props.viewBox, restPropsOld = _objectWithoutProperties2(_this$props, ["viewBox"]);
+          var viewBox = _ref.viewBox, restProps = _objectWithoutProperties2(_ref, _excluded), _this$props = this.props, viewBoxOld = _this$props.viewBox, restPropsOld = _objectWithoutProperties2(_this$props, _excluded2);
           return !(0, _ShallowEqual.shallowEqual)(viewBox, viewBoxOld) || !(0, _ShallowEqual.shallowEqual)(restProps, restPropsOld) || !(0, _ShallowEqual.shallowEqual)(nextState, this.state);
         }
       }, {
@@ -10637,7 +11161,7 @@ var require_CartesianAxis = __commonJS({
       }, {
         key: "renderAxisLine",
         value: function() {
-          var _this$props5 = this.props, x = _this$props5.x, y = _this$props5.y, width = _this$props5.width, height = _this$props5.height, orientation = _this$props5.orientation, mirror = _this$props5.mirror, axisLine = _this$props5.axisLine, props = _objectSpread3(_objectSpread3(_objectSpread3({}, (0, _types.filterProps)(this.props)), (0, _types.filterProps)(axisLine)), {}, {
+          var _this$props5 = this.props, x = _this$props5.x, y = _this$props5.y, width = _this$props5.width, height = _this$props5.height, orientation = _this$props5.orientation, mirror = _this$props5.mirror, axisLine = _this$props5.axisLine, props = _objectSpread3(_objectSpread3(_objectSpread3({}, (0, _ReactUtils.filterProps)(this.props)), (0, _ReactUtils.filterProps)(axisLine)), {}, {
             fill: "none"
           });
           if (orientation === "top" || orientation === "bottom") {
@@ -10664,11 +11188,11 @@ var require_CartesianAxis = __commonJS({
       }, {
         key: "renderTicks",
         value: function(ticks, fontSize, letterSpacing) {
-          var _this2 = this, _this$props6 = this.props, tickLine = _this$props6.tickLine, stroke = _this$props6.stroke, tick = _this$props6.tick, tickFormatter = _this$props6.tickFormatter, unit = _this$props6.unit, finalTicks = CartesianAxis2.getTicks(_objectSpread3(_objectSpread3({}, this.props), {}, {
+          var _this2 = this, _this$props6 = this.props, tickLine = _this$props6.tickLine, stroke = _this$props6.stroke, tick = _this$props6.tick, tickFormatter = _this$props6.tickFormatter, unit = _this$props6.unit, finalTicks = (0, _getTicks.getTicks)(_objectSpread3(_objectSpread3({}, this.props), {}, {
             ticks
-          }), fontSize, letterSpacing), textAnchor = this.getTickTextAnchor(), verticalAnchor = this.getTickVerticalAnchor(), axisProps = (0, _types.filterProps)(this.props), customTickProps = (0, _types.filterProps)(tick), tickLineProps = _objectSpread3(_objectSpread3({}, axisProps), {}, {
+          }), fontSize, letterSpacing), textAnchor = this.getTickTextAnchor(), verticalAnchor = this.getTickVerticalAnchor(), axisProps = (0, _ReactUtils.filterProps)(this.props), customTickProps = (0, _ReactUtils.filterProps)(tick), tickLineProps = _objectSpread3(_objectSpread3({}, axisProps), {}, {
             fill: "none"
-          }, (0, _types.filterProps)(tickLine)), items = finalTicks.map(function(entry2, i) {
+          }, (0, _ReactUtils.filterProps)(tickLine)), items = finalTicks.map(function(entry2, i) {
             var _this2$getTickLineCoo = _this2.getTickLineCoord(entry2), lineCoord = _this2$getTickLineCoo.line, tickCoord = _this2$getTickLineCoo.tick, tickProps = _objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3({
               textAnchor,
               verticalAnchor
@@ -10698,7 +11222,7 @@ var require_CartesianAxis = __commonJS({
           var _this3 = this, _this$props7 = this.props, axisLine = _this$props7.axisLine, width = _this$props7.width, height = _this$props7.height, ticksGenerator = _this$props7.ticksGenerator, className = _this$props7.className, hide = _this$props7.hide;
           if (hide)
             return null;
-          var _this$props8 = this.props, ticks = _this$props8.ticks, noTicksProps = _objectWithoutProperties2(_this$props8, ["ticks"]), finalTicks = ticks;
+          var _this$props8 = this.props, ticks = _this$props8.ticks, noTicksProps = _objectWithoutProperties2(_this$props8, _excluded3), finalTicks = ticks;
           return (0, _isFunction2.default)(ticksGenerator) && (finalTicks = ticks && ticks.length > 0 ? ticksGenerator(this.props) : ticksGenerator(noTicksProps)), width <= 0 || height <= 0 || !finalTicks || !finalTicks.length ? null : /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
             className: (0, _classnames.default)("recharts-cartesian-axis", className),
             ref: function(_ref2) {
@@ -10707,120 +11231,6 @@ var require_CartesianAxis = __commonJS({
           }, axisLine && this.renderAxisLine(), this.renderTicks(finalTicks, this.state.fontSize, this.state.letterSpacing), _Label.Label.renderCallByParent(this.props));
         }
       }], [{
-        key: "getTicks",
-        value: function(props, fontSize, letterSpacing) {
-          var tick = props.tick, ticks = props.ticks, viewBox = props.viewBox, minTickGap = props.minTickGap, orientation = props.orientation, interval = props.interval, tickFormatter = props.tickFormatter, unit = props.unit;
-          return !ticks || !ticks.length || !tick ? [] : (0, _DataUtils.isNumber)(interval) || _Global.Global.isSsr ? CartesianAxis2.getNumberIntervalTicks(ticks, typeof interval == "number" && (0, _DataUtils.isNumber)(interval) ? interval : 0) : interval === "preserveStartEnd" ? CartesianAxis2.getTicksStart({
-            ticks,
-            tickFormatter,
-            viewBox,
-            orientation,
-            minTickGap,
-            unit,
-            fontSize,
-            letterSpacing
-          }, !0) : interval === "preserveStart" ? CartesianAxis2.getTicksStart({
-            ticks,
-            tickFormatter,
-            viewBox,
-            orientation,
-            minTickGap,
-            unit,
-            fontSize,
-            letterSpacing
-          }) : CartesianAxis2.getTicksEnd({
-            ticks,
-            tickFormatter,
-            viewBox,
-            orientation,
-            minTickGap,
-            unit,
-            fontSize,
-            letterSpacing
-          });
-        }
-      }, {
-        key: "getNumberIntervalTicks",
-        value: function(ticks, interval) {
-          return ticks.filter(function(entry2, i) {
-            return i % (interval + 1) === 0;
-          });
-        }
-      }, {
-        key: "getTicksStart",
-        value: function(_ref3, preserveEnd) {
-          var ticks = _ref3.ticks, tickFormatter = _ref3.tickFormatter, viewBox = _ref3.viewBox, orientation = _ref3.orientation, minTickGap = _ref3.minTickGap, unit = _ref3.unit, fontSize = _ref3.fontSize, letterSpacing = _ref3.letterSpacing, x = viewBox.x, y = viewBox.y, width = viewBox.width, height = viewBox.height, sizeKey = orientation === "top" || orientation === "bottom" ? "width" : "height", result = (ticks || []).slice(), unitSize = unit && sizeKey === "width" ? (0, _DOMUtils.getStringSize)(unit, {
-            fontSize,
-            letterSpacing
-          })[sizeKey] : 0, len = result.length, sign = len >= 2 ? (0, _DataUtils.mathSign)(result[1].coordinate - result[0].coordinate) : 1, start, end;
-          if (sign === 1 ? (start = sizeKey === "width" ? x : y, end = sizeKey === "width" ? x + width : y + height) : (start = sizeKey === "width" ? x + width : y + height, end = sizeKey === "width" ? x : y), preserveEnd) {
-            var tail = ticks[len - 1], tailContent = (0, _isFunction2.default)(tickFormatter) ? tickFormatter(tail.value, len - 1) : tail.value, tailSize = (0, _DOMUtils.getStringSize)(tailContent, {
-              fontSize,
-              letterSpacing
-            })[sizeKey] + unitSize, tailGap = sign * (tail.coordinate + sign * tailSize / 2 - end);
-            result[len - 1] = tail = _objectSpread3(_objectSpread3({}, tail), {}, {
-              tickCoord: tailGap > 0 ? tail.coordinate - tailGap * sign : tail.coordinate
-            });
-            var isTailShow = sign * (tail.tickCoord - sign * tailSize / 2 - start) >= 0 && sign * (tail.tickCoord + sign * tailSize / 2 - end) <= 0;
-            isTailShow && (end = tail.tickCoord - sign * (tailSize / 2 + minTickGap), result[len - 1] = _objectSpread3(_objectSpread3({}, tail), {}, {
-              isShow: !0
-            }));
-          }
-          for (var count = preserveEnd ? len - 1 : len, i = 0; i < count; i++) {
-            var entry2 = result[i], content = (0, _isFunction2.default)(tickFormatter) ? tickFormatter(entry2.value, i) : entry2.value, size = (0, _DOMUtils.getStringSize)(content, {
-              fontSize,
-              letterSpacing
-            })[sizeKey] + unitSize;
-            if (i === 0) {
-              var gap = sign * (entry2.coordinate - sign * size / 2 - start);
-              result[i] = entry2 = _objectSpread3(_objectSpread3({}, entry2), {}, {
-                tickCoord: gap < 0 ? entry2.coordinate - gap * sign : entry2.coordinate
-              });
-            } else
-              result[i] = entry2 = _objectSpread3(_objectSpread3({}, entry2), {}, {
-                tickCoord: entry2.coordinate
-              });
-            var isShow = sign * (entry2.tickCoord - sign * size / 2 - start) >= 0 && sign * (entry2.tickCoord + sign * size / 2 - end) <= 0;
-            isShow && (start = entry2.tickCoord + sign * (size / 2 + minTickGap), result[i] = _objectSpread3(_objectSpread3({}, entry2), {}, {
-              isShow: !0
-            }));
-          }
-          return result.filter(function(entry3) {
-            return entry3.isShow;
-          });
-        }
-      }, {
-        key: "getTicksEnd",
-        value: function(_ref4) {
-          var ticks = _ref4.ticks, tickFormatter = _ref4.tickFormatter, viewBox = _ref4.viewBox, orientation = _ref4.orientation, minTickGap = _ref4.minTickGap, unit = _ref4.unit, fontSize = _ref4.fontSize, letterSpacing = _ref4.letterSpacing, x = viewBox.x, y = viewBox.y, width = viewBox.width, height = viewBox.height, sizeKey = orientation === "top" || orientation === "bottom" ? "width" : "height", unitSize = unit && sizeKey === "width" ? (0, _DOMUtils.getStringSize)(unit, {
-            fontSize,
-            letterSpacing
-          })[sizeKey] : 0, result = (ticks || []).slice(), len = result.length, sign = len >= 2 ? (0, _DataUtils.mathSign)(result[1].coordinate - result[0].coordinate) : 1, start, end;
-          sign === 1 ? (start = sizeKey === "width" ? x : y, end = sizeKey === "width" ? x + width : y + height) : (start = sizeKey === "width" ? x + width : y + height, end = sizeKey === "width" ? x : y);
-          for (var i = len - 1; i >= 0; i--) {
-            var entry2 = result[i], content = (0, _isFunction2.default)(tickFormatter) ? tickFormatter(entry2.value, len - i - 1) : entry2.value, size = (0, _DOMUtils.getStringSize)(content, {
-              fontSize,
-              letterSpacing
-            })[sizeKey] + unitSize;
-            if (i === len - 1) {
-              var gap = sign * (entry2.coordinate + sign * size / 2 - end);
-              result[i] = entry2 = _objectSpread3(_objectSpread3({}, entry2), {}, {
-                tickCoord: gap > 0 ? entry2.coordinate - gap * sign : entry2.coordinate
-              });
-            } else
-              result[i] = entry2 = _objectSpread3(_objectSpread3({}, entry2), {}, {
-                tickCoord: entry2.coordinate
-              });
-            var isShow = sign * (entry2.tickCoord - sign * size / 2 - start) >= 0 && sign * (entry2.tickCoord + sign * size / 2 - end) <= 0;
-            isShow && (end = entry2.tickCoord - sign * (size / 2 + minTickGap), result[i] = _objectSpread3(_objectSpread3({}, entry2), {}, {
-              isShow: !0
-            }));
-          }
-          return result.filter(function(entry3) {
-            return entry3.isShow;
-          });
-        }
-      }, {
         key: "renderTickItem",
         value: function(option, props, value) {
           var tickItem;
@@ -10831,8 +11241,8 @@ var require_CartesianAxis = __commonJS({
       }]), CartesianAxis2;
     }(_react.Component);
     exports.CartesianAxis = CartesianAxis;
-    CartesianAxis.displayName = "CartesianAxis";
-    CartesianAxis.defaultProps = {
+    _defineProperty3(CartesianAxis, "displayName", "CartesianAxis");
+    _defineProperty3(CartesianAxis, "defaultProps", {
       x: 0,
       y: 0,
       width: 0,
@@ -10854,7 +11264,7 @@ var require_CartesianAxis = __commonJS({
       tickSize: 6,
       tickMargin: 2,
       interval: "preserveEnd"
-    };
+    });
   }
 });
 
@@ -10862,37 +11272,30 @@ var require_CartesianAxis = __commonJS({
 var require_CartesianGrid = __commonJS({
   "node_modules/recharts/lib/cartesian/CartesianGrid.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.CartesianGrid = void 0;
-    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireWildcard(require("react")), _DataUtils = require_DataUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _react = _interopRequireWildcard(require("react")), _DataUtils = require_DataUtils(), _ReactUtils = require_ReactUtils(), _excluded = ["x1", "y1", "x2", "y2", "key"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -10901,8 +11304,15 @@ var require_CartesianGrid = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -10951,9 +11361,6 @@ var require_CartesianGrid = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -10961,19 +11368,19 @@ var require_CartesianGrid = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -10990,7 +11397,11 @@ var require_CartesianGrid = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -11010,9 +11421,28 @@ var require_CartesianGrid = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var CartesianGrid = /* @__PURE__ */ function(_PureComponent) {
       _inherits(CartesianGrid2, _PureComponent);
@@ -11176,8 +11606,8 @@ var require_CartesianGrid = __commonJS({
           else if ((0, _isFunction2.default)(option))
             lineItem = option(props);
           else {
-            var x1 = props.x1, y1 = props.y1, x2 = props.x2, y2 = props.y2, key = props.key, others = _objectWithoutProperties2(props, ["x1", "y1", "x2", "y2", "key"]);
-            lineItem = /* @__PURE__ */ _react.default.createElement("line", _extends({}, (0, _types.filterProps)(others), {
+            var x1 = props.x1, y1 = props.y1, x2 = props.x2, y2 = props.y2, key = props.key, others = _objectWithoutProperties2(props, _excluded);
+            lineItem = /* @__PURE__ */ _react.default.createElement("line", _extends({}, (0, _ReactUtils.filterProps)(others), {
               x1,
               y1,
               x2,
@@ -11191,8 +11621,8 @@ var require_CartesianGrid = __commonJS({
       }]), CartesianGrid2;
     }(_react.PureComponent);
     exports.CartesianGrid = CartesianGrid;
-    CartesianGrid.displayName = "CartesianGrid";
-    CartesianGrid.defaultProps = {
+    _defineProperty3(CartesianGrid, "displayName", "CartesianGrid");
+    _defineProperty3(CartesianGrid, "defaultProps", {
       horizontal: !0,
       vertical: !0,
       horizontalPoints: [],
@@ -11201,167 +11631,7 @@ var require_CartesianGrid = __commonJS({
       fill: "none",
       verticalFill: [],
       horizontalFill: []
-    };
-  }
-});
-
-// node_modules/recharts/lib/cartesian/ErrorBar.js
-var require_ErrorBar = __commonJS({
-  "node_modules/recharts/lib/cartesian/ErrorBar.js"(exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", {
-      value: !0
     });
-    exports.ErrorBar = ErrorBar;
-    var _react = _interopRequireDefault(require("react")), _Layer = require_Layer(), _types = require_types();
-    function _interopRequireDefault(obj) {
-      return obj && obj.__esModule ? obj : { default: obj };
-    }
-    function _extends() {
-      return _extends = Object.assign || function(target) {
-        for (var i = 1; i < arguments.length; i++) {
-          var source = arguments[i];
-          for (var key in source)
-            Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
-        }
-        return target;
-      }, _extends.apply(this, arguments);
-    }
-    function _slicedToArray(arr, i) {
-      return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-    }
-    function _nonIterableRest() {
-      throw new TypeError(`Invalid attempt to destructure non-iterable instance.
-In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
-    }
-    function _unsupportedIterableToArray(o, minLen) {
-      if (!!o) {
-        if (typeof o == "string")
-          return _arrayLikeToArray(o, minLen);
-        var n = Object.prototype.toString.call(o).slice(8, -1);
-        if (n === "Object" && o.constructor && (n = o.constructor.name), n === "Map" || n === "Set")
-          return Array.from(o);
-        if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
-          return _arrayLikeToArray(o, minLen);
-      }
-    }
-    function _arrayLikeToArray(arr, len) {
-      (len == null || len > arr.length) && (len = arr.length);
-      for (var i = 0, arr2 = new Array(len); i < len; i++)
-        arr2[i] = arr[i];
-      return arr2;
-    }
-    function _iterableToArrayLimit(arr, i) {
-      if (!(typeof Symbol > "u" || !(Symbol.iterator in Object(arr)))) {
-        var _arr = [], _n = !0, _d = !1, _e = void 0;
-        try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-            ;
-        } catch (err) {
-          _d = !0, _e = err;
-        } finally {
-          try {
-            !_n && _i.return != null && _i.return();
-          } finally {
-            if (_d)
-              throw _e;
-          }
-        }
-        return _arr;
-      }
-    }
-    function _arrayWithHoles(arr) {
-      if (Array.isArray(arr))
-        return arr;
-    }
-    function _objectWithoutProperties2(source, excluded) {
-      if (source == null)
-        return {};
-      var target = _objectWithoutPropertiesLoose2(source, excluded), key, i;
-      if (Object.getOwnPropertySymbols) {
-        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-        for (i = 0; i < sourceSymbolKeys.length; i++)
-          key = sourceSymbolKeys[i], !(excluded.indexOf(key) >= 0) && (!Object.prototype.propertyIsEnumerable.call(source, key) || (target[key] = source[key]));
-      }
-      return target;
-    }
-    function _objectWithoutPropertiesLoose2(source, excluded) {
-      if (source == null)
-        return {};
-      var target = {}, sourceKeys = Object.keys(source), key, i;
-      for (i = 0; i < sourceKeys.length; i++)
-        key = sourceKeys[i], !(excluded.indexOf(key) >= 0) && (target[key] = source[key]);
-      return target;
-    }
-    function ErrorBar(props) {
-      var offset = props.offset, layout = props.layout, width = props.width, dataKey = props.dataKey, data = props.data, dataPointFormatter = props.dataPointFormatter, xAxis = props.xAxis, yAxis = props.yAxis, others = _objectWithoutProperties2(props, ["offset", "layout", "width", "dataKey", "data", "dataPointFormatter", "xAxis", "yAxis"]), svgProps = (0, _types.filterProps)(others), errorBars = data.map(function(entry2, i) {
-        var _dataPointFormatter = dataPointFormatter(entry2, dataKey), x = _dataPointFormatter.x, y = _dataPointFormatter.y, value = _dataPointFormatter.value, errorVal = _dataPointFormatter.errorVal;
-        if (!errorVal)
-          return null;
-        var lineCoordinates = [], lowBound, highBound;
-        if (Array.isArray(errorVal)) {
-          var _errorVal = _slicedToArray(errorVal, 2);
-          lowBound = _errorVal[0], highBound = _errorVal[1];
-        } else
-          lowBound = highBound = errorVal;
-        if (layout === "vertical") {
-          var scale = xAxis.scale, yMid = y + offset, yMin = yMid + width, yMax = yMid - width, xMin = scale(value - lowBound), xMax = scale(value + highBound);
-          lineCoordinates.push({
-            x1: xMax,
-            y1: yMin,
-            x2: xMax,
-            y2: yMax
-          }), lineCoordinates.push({
-            x1: xMin,
-            y1: yMid,
-            x2: xMax,
-            y2: yMid
-          }), lineCoordinates.push({
-            x1: xMin,
-            y1: yMin,
-            x2: xMin,
-            y2: yMax
-          });
-        } else if (layout === "horizontal") {
-          var _scale = yAxis.scale, xMid = x + offset, _xMin = xMid - width, _xMax = xMid + width, _yMin = _scale(value - lowBound), _yMax = _scale(value + highBound);
-          lineCoordinates.push({
-            x1: _xMin,
-            y1: _yMax,
-            x2: _xMax,
-            y2: _yMax
-          }), lineCoordinates.push({
-            x1: xMid,
-            y1: _yMin,
-            x2: xMid,
-            y2: _yMax
-          }), lineCoordinates.push({
-            x1: _xMin,
-            y1: _yMin,
-            x2: _xMax,
-            y2: _yMin
-          });
-        }
-        return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, _extends({
-          className: "recharts-errorBar",
-          key: "bar-".concat(i)
-        }, svgProps), lineCoordinates.map(function(coordinates, index) {
-          return /* @__PURE__ */ _react.default.createElement("line", _extends({}, coordinates, {
-            key: "line-".concat(index)
-          }));
-        }));
-      });
-      return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
-        className: "recharts-errorBars"
-      }, errorBars);
-    }
-    ErrorBar.defaultProps = {
-      stroke: "black",
-      strokeWidth: 1.5,
-      width: 5,
-      offset: 0,
-      layout: "horizontal"
-    };
-    ErrorBar.displayName = "ErrorBar";
   }
 });
 
@@ -11369,37 +11639,30 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 var require_Line = __commonJS({
   "node_modules/recharts/lib/cartesian/Line.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Line = void 0;
-    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _react = _interopRequireWildcard(require("react")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _classnames = _interopRequireDefault(require("classnames")), _Curve = require_Curve(), _Dot = require_Dot(), _Layer = require_Layer(), _LabelList = require_LabelList(), _ErrorBar = require_ErrorBar(), _DataUtils = require_DataUtils(), _ReactUtils = require_ReactUtils(), _Global = require_Global(), _ChartUtils = require_ChartUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _react = _interopRequireWildcard(require("react")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _classnames = _interopRequireDefault(require("classnames")), _Curve = require_Curve(), _Dot = require_Dot(), _Layer = require_Layer(), _LabelList = require_LabelList(), _ErrorBar = require_ErrorBar(), _DataUtils = require_DataUtils(), _ReactUtils = require_ReactUtils(), _Global = require_Global(), _ChartUtils = require_ChartUtils(), _excluded = ["type", "layout", "connectNulls", "ref"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -11408,6 +11671,13 @@ var require_Line = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _objectWithoutProperties2(source, excluded) {
       if (source == null)
         return {};
@@ -11428,7 +11698,7 @@ var require_Line = __commonJS({
       return target;
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -11458,9 +11728,6 @@ var require_Line = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _toConsumableArray(arr) {
       return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
     }
@@ -11480,7 +11747,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _iterableToArray(iter) {
-      if (typeof Symbol < "u" && Symbol.iterator in Object(iter))
+      if (typeof Symbol < "u" && iter[Symbol.iterator] != null || iter["@@iterator"] != null)
         return Array.from(iter);
     }
     function _arrayWithoutHoles(arr) {
@@ -11500,19 +11767,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -11529,7 +11796,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -11549,9 +11820,28 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var Line = /* @__PURE__ */ function(_PureComponent) {
       _inherits(Line2, _PureComponent);
@@ -11561,10 +11851,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         _classCallCheck(this, Line2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.mainCurve = void 0, _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           isAnimationFinished: !0,
           totalLength: 0
-        }, _this.getStrokeDasharray = function(length, totalLength, lines) {
+        }), _defineProperty3(_assertThisInitialized(_this), "getStrokeDasharray", function(length, totalLength, lines) {
           for (var lineLength = lines.reduce(function(pre, next) {
             return pre + next;
           }), count = Math.floor(length / lineLength), remainLength = length % lineLength, restLength = totalLength - length, remainLines = [], i = 0, sum = 0; ; sum += lines[i], ++i)
@@ -11576,17 +11866,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           return [].concat(_toConsumableArray(Line2.repeat(lines, count)), _toConsumableArray(remainLines), emptyLines).map(function(line) {
             return "".concat(line, "px");
           }).join(", ");
-        }, _this.id = (0, _DataUtils.uniqueId)("recharts-line-"), _this.pathRef = function(node) {
+        }), _defineProperty3(_assertThisInitialized(_this), "id", (0, _DataUtils.uniqueId)("recharts-line-")), _defineProperty3(_assertThisInitialized(_this), "pathRef", function(node) {
           _this.mainCurve = node;
-        }, _this.handleAnimationEnd = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationEnd", function() {
           _this.setState({
             isAnimationFinished: !0
           }), _this.props.onAnimationEnd && _this.props.onAnimationEnd();
-        }, _this.handleAnimationStart = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationStart", function() {
           _this.setState({
             isAnimationFinished: !1
           }), _this.props.onAnimationStart && _this.props.onAnimationStart();
-        }, _this;
+        }), _this;
       }
       return _createClass(Line2, [{
         key: "componentDidMount",
@@ -11610,10 +11900,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }
       }, {
         key: "renderErrorBar",
-        value: function() {
+        value: function(needClip, clipPathId) {
           if (this.props.isAnimationActive && !this.state.isAnimationFinished)
             return null;
-          var _this$props = this.props, points = _this$props.points, xAxis = _this$props.xAxis, yAxis = _this$props.yAxis, layout = _this$props.layout, children = _this$props.children, errorBarItems = (0, _ReactUtils.findAllByType)(children, _ErrorBar.ErrorBar.displayName);
+          var _this$props = this.props, points = _this$props.points, xAxis = _this$props.xAxis, yAxis = _this$props.yAxis, layout = _this$props.layout, children = _this$props.children, errorBarItems = (0, _ReactUtils.findAllByType)(children, _ErrorBar.ErrorBar);
           if (!errorBarItems)
             return null;
           function dataPointFormatter(dataPoint, dataKey) {
@@ -11624,7 +11914,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               errorVal: (0, _ChartUtils.getValueByDataKey)(dataPoint.payload, dataKey)
             };
           }
-          return errorBarItems.map(function(item, i) {
+          var errorBarProps = {
+            clipPath: needClip ? "url(#clipPath-".concat(clipPathId, ")") : null
+          };
+          return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, errorBarProps, errorBarItems.map(function(item, i) {
             return /* @__PURE__ */ _react.default.cloneElement(item, {
               key: "bar-".concat(i),
               data: points,
@@ -11633,7 +11926,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               layout,
               dataPointFormatter
             });
-          });
+          }));
         }
       }, {
         key: "renderDots",
@@ -11641,7 +11934,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           var isAnimationActive = this.props.isAnimationActive;
           if (isAnimationActive && !this.state.isAnimationFinished)
             return null;
-          var _this$props2 = this.props, dot = _this$props2.dot, points = _this$props2.points, dataKey = _this$props2.dataKey, lineProps = (0, _types.filterProps)(this.props), customDotProps = (0, _types.filterProps)(dot, !0), dots = points.map(function(entry2, i) {
+          var _this$props2 = this.props, dot = _this$props2.dot, points = _this$props2.points, dataKey = _this$props2.dataKey, lineProps = (0, _ReactUtils.filterProps)(this.props), customDotProps = (0, _ReactUtils.filterProps)(dot, !0), dots = points.map(function(entry2, i) {
             var dotProps = _objectSpread3(_objectSpread3(_objectSpread3({
               key: "dot-".concat(i),
               r: 3
@@ -11667,7 +11960,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }, {
         key: "renderCurveStatically",
         value: function(points, needClip, clipPathId, props) {
-          var _this$props3 = this.props, type = _this$props3.type, layout = _this$props3.layout, connectNulls = _this$props3.connectNulls, ref = _this$props3.ref, others = _objectWithoutProperties2(_this$props3, ["type", "layout", "connectNulls", "ref"]), curveProps = _objectSpread3(_objectSpread3(_objectSpread3({}, (0, _types.filterProps)(others, !0)), {}, {
+          var _this$props3 = this.props, type = _this$props3.type, layout = _this$props3.layout, connectNulls = _this$props3.connectNulls, ref = _this$props3.ref, others = _objectWithoutProperties2(_this$props3, _excluded), curveProps = _objectSpread3(_objectSpread3(_objectSpread3({}, (0, _ReactUtils.filterProps)(others, !0)), {}, {
             fill: "none",
             className: "recharts-line-curve",
             clipPath: needClip ? "url(#clipPath-".concat(clipPathId, ")") : null,
@@ -11760,7 +12053,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             y: top,
             width,
             height
-          }))) : null, !hasSinglePoint && this.renderCurve(needClip, clipPathId), this.renderErrorBar(), (hasSinglePoint || dot) && this.renderDots(needClip, clipPathId), (!isAnimationActive || isAnimationFinished) && _LabelList.LabelList.renderCallByParent(this.props, points));
+          }))) : null, !hasSinglePoint && this.renderCurve(needClip, clipPathId), this.renderErrorBar(needClip, clipPathId), (hasSinglePoint || dot) && this.renderDots(needClip, clipPathId), (!isAnimationActive || isAnimationFinished) && _LabelList.LabelList.renderCallByParent(this.props, points));
         }
       }], [{
         key: "getDerivedStateFromProps",
@@ -11799,8 +12092,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }]), Line2;
     }(_react.PureComponent);
     exports.Line = Line;
-    Line.displayName = "Line";
-    Line.defaultProps = {
+    _defineProperty3(Line, "displayName", "Line");
+    _defineProperty3(Line, "defaultProps", {
       xAxisId: 0,
       yAxisId: 0,
       connectNulls: !1,
@@ -11818,8 +12111,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       animationEasing: "ease",
       hide: !1,
       label: !1
-    };
-    Line.getComposedData = function(_ref2) {
+    });
+    _defineProperty3(Line, "getComposedData", function(_ref2) {
       var props = _ref2.props, xAxis = _ref2.xAxis, yAxis = _ref2.yAxis, xAxisTicks = _ref2.xAxisTicks, yAxisTicks = _ref2.yAxisTicks, dataKey = _ref2.dataKey, bandSize = _ref2.bandSize, displayedData = _ref2.displayedData, offset = _ref2.offset, layout = props.layout, points = displayedData.map(function(entry2, index) {
         var value = (0, _ChartUtils.getValueByDataKey)(entry2, dataKey);
         return layout === "horizontal" ? {
@@ -11850,7 +12143,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         points,
         layout
       }, offset);
-    };
+    });
   }
 });
 
@@ -11858,37 +12151,30 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 var require_Area = __commonJS({
   "node_modules/recharts/lib/cartesian/Area.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Area = void 0;
-    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isNaN2 = _interopRequireDefault(require("lodash/isNaN")), _max2 = _interopRequireDefault(require("lodash/max")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _get2 = _interopRequireDefault(require("lodash/get")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _Curve = require_Curve(), _Dot = require_Dot(), _Layer = require_Layer(), _LabelList = require_LabelList(), _Global = require_Global(), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isNaN2 = _interopRequireDefault(require("lodash/isNaN")), _max2 = _interopRequireDefault(require("lodash/max")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _get2 = _interopRequireDefault(require("lodash/get")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _Curve = require_Curve(), _Dot = require_Dot(), _Layer = require_Layer(), _LabelList = require_LabelList(), _Global = require_Global(), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils(), _ReactUtils = require_ReactUtils(), _excluded = ["layout", "type", "stroke", "connectNulls", "isRange", "ref"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -11896,6 +12182,13 @@ var require_Area = __commonJS({
     }
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
     }
     function _objectWithoutProperties2(source, excluded) {
       if (source == null)
@@ -11917,7 +12210,7 @@ var require_Area = __commonJS({
       return target;
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -11947,9 +12240,6 @@ var require_Area = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -11957,19 +12247,19 @@ var require_Area = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -11986,7 +12276,11 @@ var require_Area = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -12006,9 +12300,28 @@ var require_Area = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var Area = /* @__PURE__ */ function(_PureComponent) {
       _inherits(Area2, _PureComponent);
@@ -12018,19 +12331,19 @@ var require_Area = __commonJS({
         _classCallCheck(this, Area2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           isAnimationFinished: !0
-        }, _this.id = (0, _DataUtils.uniqueId)("recharts-area-"), _this.handleAnimationEnd = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "id", (0, _DataUtils.uniqueId)("recharts-area-")), _defineProperty3(_assertThisInitialized(_this), "handleAnimationEnd", function() {
           var onAnimationEnd = _this.props.onAnimationEnd;
           _this.setState({
             isAnimationFinished: !0
           }), (0, _isFunction2.default)(onAnimationEnd) && onAnimationEnd();
-        }, _this.handleAnimationStart = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationStart", function() {
           var onAnimationStart = _this.props.onAnimationStart;
           _this.setState({
             isAnimationFinished: !1
           }), (0, _isFunction2.default)(onAnimationStart) && onAnimationStart();
-        }, _this;
+        }), _this;
       }
       return _createClass(Area2, [{
         key: "renderDots",
@@ -12038,7 +12351,7 @@ var require_Area = __commonJS({
           var isAnimationActive = this.props.isAnimationActive, isAnimationFinished = this.state.isAnimationFinished;
           if (isAnimationActive && !isAnimationFinished)
             return null;
-          var _this$props = this.props, dot = _this$props.dot, points = _this$props.points, dataKey = _this$props.dataKey, areaProps = (0, _types.filterProps)(this.props), customDotProps = (0, _types.filterProps)(dot, !0), dots = points.map(function(entry2, i) {
+          var _this$props = this.props, dot = _this$props.dot, points = _this$props.points, dataKey = _this$props.dataKey, areaProps = (0, _ReactUtils.filterProps)(this.props), customDotProps = (0, _ReactUtils.filterProps)(dot, !0), dots = points.map(function(entry2, i) {
             var dotProps = _objectSpread3(_objectSpread3(_objectSpread3({
               key: "dot-".concat(i),
               r: 3
@@ -12097,10 +12410,10 @@ var require_Area = __commonJS({
       }, {
         key: "renderAreaStatically",
         value: function(points, baseLine, needClip, clipPathId) {
-          var _this$props4 = this.props, layout = _this$props4.layout, type = _this$props4.type, stroke = _this$props4.stroke, connectNulls = _this$props4.connectNulls, isRange = _this$props4.isRange, ref = _this$props4.ref, others = _objectWithoutProperties2(_this$props4, ["layout", "type", "stroke", "connectNulls", "isRange", "ref"]);
+          var _this$props4 = this.props, layout = _this$props4.layout, type = _this$props4.type, stroke = _this$props4.stroke, connectNulls = _this$props4.connectNulls, isRange = _this$props4.isRange, ref = _this$props4.ref, others = _objectWithoutProperties2(_this$props4, _excluded);
           return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
             clipPath: needClip ? "url(#clipPath-".concat(clipPathId, ")") : null
-          }, /* @__PURE__ */ _react.default.createElement(_Curve.Curve, _extends({}, (0, _types.filterProps)(others, !0), {
+          }, /* @__PURE__ */ _react.default.createElement(_Curve.Curve, _extends({}, (0, _ReactUtils.filterProps)(others, !0), {
             points,
             connectNulls,
             type,
@@ -12108,14 +12421,14 @@ var require_Area = __commonJS({
             layout,
             stroke: "none",
             className: "recharts-area-area"
-          })), stroke !== "none" && /* @__PURE__ */ _react.default.createElement(_Curve.Curve, _extends({}, (0, _types.filterProps)(this.props), {
+          })), stroke !== "none" && /* @__PURE__ */ _react.default.createElement(_Curve.Curve, _extends({}, (0, _ReactUtils.filterProps)(this.props), {
             className: "recharts-area-curve",
             layout,
             type,
             connectNulls,
             fill: "none",
             points
-          })), stroke !== "none" && isRange && /* @__PURE__ */ _react.default.createElement(_Curve.Curve, _extends({}, (0, _types.filterProps)(this.props), {
+          })), stroke !== "none" && isRange && /* @__PURE__ */ _react.default.createElement(_Curve.Curve, _extends({}, (0, _ReactUtils.filterProps)(this.props), {
             className: "recharts-area-curve",
             layout,
             type,
@@ -12224,8 +12537,8 @@ var require_Area = __commonJS({
       }]), Area2;
     }(_react.PureComponent);
     exports.Area = Area;
-    Area.displayName = "Area";
-    Area.defaultProps = {
+    _defineProperty3(Area, "displayName", "Area");
+    _defineProperty3(Area, "defaultProps", {
       stroke: "#3182bd",
       fill: "#3182bd",
       fillOpacity: 0.6,
@@ -12241,9 +12554,9 @@ var require_Area = __commonJS({
       animationBegin: 0,
       animationDuration: 1500,
       animationEasing: "ease"
-    };
-    Area.getBaseValue = function(props, item, xAxis, yAxis) {
-      var layout = props.layout, baseValue = item.props.baseValue;
+    });
+    _defineProperty3(Area, "getBaseValue", function(props, item, xAxis, yAxis) {
+      var layout = props.layout, chartBaseValue = props.baseValue, itemBaseValue = item.props.baseValue, baseValue = itemBaseValue ?? chartBaseValue;
       if ((0, _DataUtils.isNumber)(baseValue) && typeof baseValue == "number")
         return baseValue;
       var numericAxis = layout === "horizontal" ? yAxis : xAxis, domain = numericAxis.scale.domain();
@@ -12252,8 +12565,8 @@ var require_Area = __commonJS({
         return baseValue === "dataMin" ? min : baseValue === "dataMax" || max < 0 ? max : Math.max(Math.min(domain[0], domain[1]), 0);
       }
       return baseValue === "dataMin" ? domain[0] : baseValue === "dataMax" ? domain[1] : domain[0];
-    };
-    Area.getComposedData = function(_ref2) {
+    });
+    _defineProperty3(Area, "getComposedData", function(_ref2) {
       var props = _ref2.props, item = _ref2.item, xAxis = _ref2.xAxis, yAxis = _ref2.yAxis, xAxisTicks = _ref2.xAxisTicks, yAxisTicks = _ref2.yAxisTicks, bandSize = _ref2.bandSize, dataKey = _ref2.dataKey, stackedData = _ref2.stackedData, dataStartIndex = _ref2.dataStartIndex, displayedData = _ref2.displayedData, offset = _ref2.offset, layout = props.layout, hasStack = stackedData && stackedData.length, baseValue = Area.getBaseValue(props, item, xAxis, yAxis), isRange = !1, points = displayedData.map(function(entry2, index) {
         var originalValue = (0, _ChartUtils.getValueByDataKey)(entry2, dataKey), value;
         hasStack ? value = stackedData[dataStartIndex + index] : (value = originalValue, (0, _isArray2.default)(value) ? isRange = !0 : value = [baseValue, value]);
@@ -12296,425 +12609,13 @@ var require_Area = __commonJS({
         layout,
         isRange
       }, offset);
-    };
-    Area.renderDotItem = function(option, props) {
+    });
+    _defineProperty3(Area, "renderDotItem", function(option, props) {
       var dotItem;
       return /* @__PURE__ */ _react.default.isValidElement(option) ? dotItem = /* @__PURE__ */ _react.default.cloneElement(option, props) : (0, _isFunction2.default)(option) ? dotItem = option(props) : dotItem = /* @__PURE__ */ _react.default.createElement(_Dot.Dot, _extends({}, props, {
         className: "recharts-area-dot"
       })), dotItem;
-    };
-  }
-});
-
-// node_modules/recharts/lib/cartesian/Bar.js
-var require_Bar = __commonJS({
-  "node_modules/recharts/lib/cartesian/Bar.js"(exports) {
-    "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
-    Object.defineProperty(exports, "__esModule", {
-      value: !0
     });
-    exports.Bar = void 0;
-    var _isNil2 = _interopRequireDefault(require("lodash/isNil")), _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _Rectangle = require_Rectangle(), _Layer = require_Layer(), _ErrorBar = require_ErrorBar(), _Cell = require_Cell(), _LabelList = require_LabelList(), _DataUtils = require_DataUtils(), _ReactUtils = require_ReactUtils(), _Global = require_Global(), _ChartUtils = require_ChartUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
-      if (typeof WeakMap != "function")
-        return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
-    }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
-        return obj;
-      if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
-        return { default: obj };
-      var cache = _getRequireWildcardCache();
-      if (cache && cache.has(obj))
-        return cache.get(obj);
-      var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
-      for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
-          var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
-          desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
-        }
-      return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
-    }
-    function _interopRequireDefault(obj) {
-      return obj && obj.__esModule ? obj : { default: obj };
-    }
-    function _objectWithoutProperties2(source, excluded) {
-      if (source == null)
-        return {};
-      var target = _objectWithoutPropertiesLoose2(source, excluded), key, i;
-      if (Object.getOwnPropertySymbols) {
-        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-        for (i = 0; i < sourceSymbolKeys.length; i++)
-          key = sourceSymbolKeys[i], !(excluded.indexOf(key) >= 0) && (!Object.prototype.propertyIsEnumerable.call(source, key) || (target[key] = source[key]));
-      }
-      return target;
-    }
-    function _objectWithoutPropertiesLoose2(source, excluded) {
-      if (source == null)
-        return {};
-      var target = {}, sourceKeys = Object.keys(source), key, i;
-      for (i = 0; i < sourceKeys.length; i++)
-        key = sourceKeys[i], !(excluded.indexOf(key) >= 0) && (target[key] = source[key]);
-      return target;
-    }
-    function _extends() {
-      return _extends = Object.assign || function(target) {
-        for (var i = 1; i < arguments.length; i++) {
-          var source = arguments[i];
-          for (var key in source)
-            Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
-        }
-        return target;
-      }, _extends.apply(this, arguments);
-    }
-    function ownKeys3(object, enumerableOnly) {
-      var keys = Object.keys(object);
-      if (Object.getOwnPropertySymbols) {
-        var symbols = Object.getOwnPropertySymbols(object);
-        enumerableOnly && (symbols = symbols.filter(function(sym) {
-          return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-        })), keys.push.apply(keys, symbols);
-      }
-      return keys;
-    }
-    function _objectSpread3(target) {
-      for (var i = 1; i < arguments.length; i++) {
-        var source = arguments[i] != null ? arguments[i] : {};
-        i % 2 ? ownKeys3(Object(source), !0).forEach(function(key) {
-          _defineProperty3(target, key, source[key]);
-        }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys3(Object(source)).forEach(function(key) {
-          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-        });
-      }
-      return target;
-    }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
-    function _classCallCheck(instance, Constructor) {
-      if (!(instance instanceof Constructor))
-        throw new TypeError("Cannot call a class as a function");
-    }
-    function _defineProperties(target, props) {
-      for (var i = 0; i < props.length; i++) {
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
-      }
-    }
-    function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
-    }
-    function _inherits(subClass, superClass) {
-      if (typeof superClass != "function" && superClass !== null)
-        throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
-    }
-    function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
-        return o2.__proto__ = p2, o2;
-      }, _setPrototypeOf(o, p);
-    }
-    function _createSuper(Derived) {
-      var hasNativeReflectConstruct = _isNativeReflectConstruct();
-      return function() {
-        var Super = _getPrototypeOf(Derived), result;
-        if (hasNativeReflectConstruct) {
-          var NewTarget = _getPrototypeOf(this).constructor;
-          result = Reflect.construct(Super, arguments, NewTarget);
-        } else
-          result = Super.apply(this, arguments);
-        return _possibleConstructorReturn(this, result);
-      };
-    }
-    function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
-    }
-    function _assertThisInitialized(self2) {
-      if (self2 === void 0)
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-      return self2;
-    }
-    function _isNativeReflectConstruct() {
-      if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham)
-        return !1;
-      if (typeof Proxy == "function")
-        return !0;
-      try {
-        return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
-        })), !0;
-      } catch {
-        return !1;
-      }
-    }
-    function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
-        return o2.__proto__ || Object.getPrototypeOf(o2);
-      }, _getPrototypeOf(o);
-    }
-    var Bar = /* @__PURE__ */ function(_PureComponent) {
-      _inherits(Bar2, _PureComponent);
-      var _super = _createSuper(Bar2);
-      function Bar2() {
-        var _this;
-        _classCallCheck(this, Bar2);
-        for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
-          args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
-          isAnimationFinished: !1
-        }, _this.id = (0, _DataUtils.uniqueId)("recharts-bar-"), _this.handleAnimationEnd = function() {
-          var onAnimationEnd = _this.props.onAnimationEnd;
-          _this.setState({
-            isAnimationFinished: !0
-          }), onAnimationEnd && onAnimationEnd();
-        }, _this.handleAnimationStart = function() {
-          var onAnimationStart = _this.props.onAnimationStart;
-          _this.setState({
-            isAnimationFinished: !1
-          }), onAnimationStart && onAnimationStart();
-        }, _this;
-      }
-      return _createClass(Bar2, [{
-        key: "renderRectanglesStatically",
-        value: function(data) {
-          var _this2 = this, shape = this.props.shape, baseProps = (0, _types.filterProps)(this.props);
-          return data && data.map(function(entry2, i) {
-            var props = _objectSpread3(_objectSpread3(_objectSpread3({}, baseProps), entry2), {}, {
-              index: i
-            });
-            return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, _extends({
-              className: "recharts-bar-rectangle"
-            }, (0, _types.adaptEventsOfChild)(_this2.props, entry2, i), {
-              key: "rectangle-".concat(i),
-              role: "img"
-            }), Bar2.renderRectangle(shape, props));
-          });
-        }
-      }, {
-        key: "renderRectanglesWithAnimation",
-        value: function() {
-          var _this3 = this, _this$props = this.props, data = _this$props.data, layout = _this$props.layout, isAnimationActive = _this$props.isAnimationActive, animationBegin = _this$props.animationBegin, animationDuration = _this$props.animationDuration, animationEasing = _this$props.animationEasing, animationId = _this$props.animationId, prevData = this.state.prevData;
-          return /* @__PURE__ */ _react.default.createElement(_reactSmooth.default, {
-            begin: animationBegin,
-            duration: animationDuration,
-            isActive: isAnimationActive,
-            easing: animationEasing,
-            from: {
-              t: 0
-            },
-            to: {
-              t: 1
-            },
-            key: "bar-".concat(animationId),
-            onAnimationEnd: this.handleAnimationEnd,
-            onAnimationStart: this.handleAnimationStart
-          }, function(_ref) {
-            var t = _ref.t, stepData = data.map(function(entry2, index) {
-              var prev = prevData && prevData[index];
-              if (prev) {
-                var interpolatorX = (0, _DataUtils.interpolateNumber)(prev.x, entry2.x), interpolatorY = (0, _DataUtils.interpolateNumber)(prev.y, entry2.y), interpolatorWidth = (0, _DataUtils.interpolateNumber)(prev.width, entry2.width), interpolatorHeight = (0, _DataUtils.interpolateNumber)(prev.height, entry2.height);
-                return _objectSpread3(_objectSpread3({}, entry2), {}, {
-                  x: interpolatorX(t),
-                  y: interpolatorY(t),
-                  width: interpolatorWidth(t),
-                  height: interpolatorHeight(t)
-                });
-              }
-              if (layout === "horizontal") {
-                var _interpolatorHeight = (0, _DataUtils.interpolateNumber)(0, entry2.height), h = _interpolatorHeight(t);
-                return _objectSpread3(_objectSpread3({}, entry2), {}, {
-                  y: entry2.y + entry2.height - h,
-                  height: h
-                });
-              }
-              var interpolator = (0, _DataUtils.interpolateNumber)(0, entry2.width), w = interpolator(t);
-              return _objectSpread3(_objectSpread3({}, entry2), {}, {
-                width: w
-              });
-            });
-            return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, null, _this3.renderRectanglesStatically(stepData));
-          });
-        }
-      }, {
-        key: "renderRectangles",
-        value: function() {
-          var _this$props2 = this.props, data = _this$props2.data, isAnimationActive = _this$props2.isAnimationActive, prevData = this.state.prevData;
-          return isAnimationActive && data && data.length && (!prevData || !(0, _isEqual2.default)(prevData, data)) ? this.renderRectanglesWithAnimation() : this.renderRectanglesStatically(data);
-        }
-      }, {
-        key: "renderBackground",
-        value: function() {
-          var _this4 = this, data = this.props.data, backgroundProps = (0, _types.filterProps)(this.props.background);
-          return data.map(function(entry2, i) {
-            var value = entry2.value, background = entry2.background, rest = _objectWithoutProperties2(entry2, ["value", "background"]);
-            if (!background)
-              return null;
-            var props = _objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3({}, rest), {}, {
-              fill: "#eee"
-            }, background), backgroundProps), (0, _types.adaptEventsOfChild)(_this4.props, entry2, i)), {}, {
-              index: i,
-              key: "background-bar-".concat(i),
-              className: "recharts-bar-background-rectangle"
-            });
-            return Bar2.renderRectangle(_this4.props.background, props);
-          });
-        }
-      }, {
-        key: "renderErrorBar",
-        value: function() {
-          if (this.props.isAnimationActive && !this.state.isAnimationFinished)
-            return null;
-          var _this$props3 = this.props, data = _this$props3.data, xAxis = _this$props3.xAxis, yAxis = _this$props3.yAxis, layout = _this$props3.layout, children = _this$props3.children, errorBarItems = (0, _ReactUtils.findAllByType)(children, _ErrorBar.ErrorBar.displayName);
-          if (!errorBarItems)
-            return null;
-          var offset = layout === "vertical" ? data[0].height / 2 : data[0].width / 2;
-          function dataPointFormatter(dataPoint, dataKey) {
-            return {
-              x: dataPoint.x,
-              y: dataPoint.y,
-              value: dataPoint.value,
-              errorVal: (0, _ChartUtils.getValueByDataKey)(dataPoint, dataKey)
-            };
-          }
-          return errorBarItems.map(function(item, i) {
-            return /* @__PURE__ */ _react.default.cloneElement(item, {
-              key: "error-bar-".concat(i),
-              data,
-              xAxis,
-              yAxis,
-              layout,
-              offset,
-              dataPointFormatter
-            });
-          });
-        }
-      }, {
-        key: "render",
-        value: function() {
-          var _this$props4 = this.props, hide = _this$props4.hide, data = _this$props4.data, className = _this$props4.className, xAxis = _this$props4.xAxis, yAxis = _this$props4.yAxis, left = _this$props4.left, top = _this$props4.top, width = _this$props4.width, height = _this$props4.height, isAnimationActive = _this$props4.isAnimationActive, background = _this$props4.background, id = _this$props4.id;
-          if (hide || !data || !data.length)
-            return null;
-          var isAnimationFinished = this.state.isAnimationFinished, layerClass = (0, _classnames.default)("recharts-bar", className), needClip = xAxis && xAxis.allowDataOverflow || yAxis && yAxis.allowDataOverflow, clipPathId = (0, _isNil2.default)(id) ? this.id : id;
-          return /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
-            className: layerClass
-          }, needClip ? /* @__PURE__ */ _react.default.createElement("defs", null, /* @__PURE__ */ _react.default.createElement("clipPath", {
-            id: "clipPath-".concat(clipPathId)
-          }, /* @__PURE__ */ _react.default.createElement("rect", {
-            x: left,
-            y: top,
-            width,
-            height
-          }))) : null, /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
-            className: "recharts-bar-rectangles",
-            clipPath: needClip ? "url(#clipPath-".concat(clipPathId, ")") : null
-          }, background ? this.renderBackground() : null, this.renderRectangles()), this.renderErrorBar(), (!isAnimationActive || isAnimationFinished) && _LabelList.LabelList.renderCallByParent(this.props, data));
-        }
-      }], [{
-        key: "getDerivedStateFromProps",
-        value: function(nextProps, prevState) {
-          return nextProps.animationId !== prevState.prevAnimationId ? {
-            prevAnimationId: nextProps.animationId,
-            curData: nextProps.data,
-            prevData: prevState.curData
-          } : nextProps.data !== prevState.curData ? {
-            curData: nextProps.data
-          } : null;
-        }
-      }, {
-        key: "renderRectangle",
-        value: function(option, props) {
-          var rectangle;
-          return /* @__PURE__ */ _react.default.isValidElement(option) ? rectangle = /* @__PURE__ */ _react.default.cloneElement(option, props) : (0, _isFunction2.default)(option) ? rectangle = option(props) : rectangle = /* @__PURE__ */ _react.default.createElement(_Rectangle.Rectangle, props), rectangle;
-        }
-      }]), Bar2;
-    }(_react.PureComponent);
-    exports.Bar = Bar;
-    Bar.displayName = "Bar";
-    Bar.defaultProps = {
-      xAxisId: 0,
-      yAxisId: 0,
-      legendType: "rect",
-      minPointSize: 0,
-      hide: !1,
-      data: [],
-      layout: "vertical",
-      isAnimationActive: !_Global.Global.isSsr,
-      animationBegin: 0,
-      animationDuration: 400,
-      animationEasing: "ease"
-    };
-    Bar.getComposedData = function(_ref2) {
-      var props = _ref2.props, item = _ref2.item, barPosition = _ref2.barPosition, bandSize = _ref2.bandSize, xAxis = _ref2.xAxis, yAxis = _ref2.yAxis, xAxisTicks = _ref2.xAxisTicks, yAxisTicks = _ref2.yAxisTicks, stackedData = _ref2.stackedData, dataStartIndex = _ref2.dataStartIndex, displayedData = _ref2.displayedData, offset = _ref2.offset, pos = (0, _ChartUtils.findPositionOfBar)(barPosition, item);
-      if (!pos)
-        return null;
-      var layout = props.layout, _item$props = item.props, dataKey = _item$props.dataKey, children = _item$props.children, minPointSize = _item$props.minPointSize, numericAxis = layout === "horizontal" ? yAxis : xAxis, stackedDomain = stackedData ? numericAxis.scale.domain() : null, baseValue = (0, _ChartUtils.getBaseValueOfBar)({
-        numericAxis
-      }), cells = (0, _ReactUtils.findAllByType)(children, _Cell.Cell.displayName), rects = displayedData.map(function(entry2, index) {
-        var value, x, y, width, height, background;
-        if (stackedData ? value = (0, _ChartUtils.truncateByDomain)(stackedData[dataStartIndex + index], stackedDomain) : (value = (0, _ChartUtils.getValueByDataKey)(entry2, dataKey), (0, _isArray2.default)(value) || (value = [baseValue, value])), layout === "horizontal") {
-          if (x = (0, _ChartUtils.getCateCoordinateOfBar)({
-            axis: xAxis,
-            ticks: xAxisTicks,
-            bandSize,
-            offset: pos.offset,
-            entry: entry2,
-            index
-          }), y = yAxis.scale(value[1]), width = pos.size, height = yAxis.scale(value[0]) - yAxis.scale(value[1]), background = {
-            x,
-            y: yAxis.y,
-            width,
-            height: yAxis.height
-          }, Math.abs(minPointSize) > 0 && Math.abs(height) < Math.abs(minPointSize)) {
-            var delta = (0, _DataUtils.mathSign)(height || minPointSize) * (Math.abs(minPointSize) - Math.abs(height));
-            y -= delta, height += delta;
-          }
-        } else if (x = xAxis.scale(value[0]), y = (0, _ChartUtils.getCateCoordinateOfBar)({
-          axis: yAxis,
-          ticks: yAxisTicks,
-          bandSize,
-          offset: pos.offset,
-          entry: entry2,
-          index
-        }), width = xAxis.scale(value[1]) - xAxis.scale(value[0]), height = pos.size, background = {
-          x: xAxis.x,
-          y,
-          width: xAxis.width,
-          height
-        }, Math.abs(minPointSize) > 0 && Math.abs(width) < Math.abs(minPointSize)) {
-          var _delta = (0, _DataUtils.mathSign)(width || minPointSize) * (Math.abs(minPointSize) - Math.abs(width));
-          width += _delta;
-        }
-        return _objectSpread3(_objectSpread3(_objectSpread3({}, entry2), {}, {
-          x,
-          y,
-          width,
-          height,
-          value: stackedData ? value : value[1],
-          payload: entry2,
-          background
-        }, cells && cells[index] && cells[index].props), {}, {
-          tooltipPayload: [(0, _ChartUtils.getTooltipItem)(item, entry2)],
-          tooltipPosition: {
-            x: x + width / 2,
-            y: y + height / 2
-          }
-        });
-      });
-      return _objectSpread3({
-        data: rects,
-        layout
-      }, offset);
-    };
   }
 });
 
@@ -12744,37 +12645,30 @@ var require_ZAxis = __commonJS({
 var require_Scatter = __commonJS({
   "node_modules/recharts/lib/cartesian/Scatter.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Scatter = void 0;
     var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _react = _interopRequireWildcard(require("react")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _classnames = _interopRequireDefault(require("classnames")), _Layer = require_Layer(), _LabelList = require_LabelList(), _ReactUtils = require_ReactUtils(), _Global = require_Global(), _ZAxis = require_ZAxis(), _Curve = require_Curve(), _Symbols = require_Symbols(), _ErrorBar = require_ErrorBar(), _Cell = require_Cell(), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -12783,8 +12677,15 @@ var require_Scatter = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -12814,9 +12715,6 @@ var require_Scatter = __commonJS({
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -12824,19 +12722,19 @@ var require_Scatter = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -12853,7 +12751,11 @@ var require_Scatter = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -12873,9 +12775,28 @@ var require_Scatter = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var Scatter = /* @__PURE__ */ function(_PureComponent) {
       _inherits(Scatter2, _PureComponent);
@@ -12885,22 +12806,22 @@ var require_Scatter = __commonJS({
         _classCallCheck(this, Scatter2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           isAnimationFinished: !1
-        }, _this.handleAnimationEnd = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationEnd", function() {
           _this.setState({
             isAnimationFinished: !0
           });
-        }, _this.handleAnimationStart = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationStart", function() {
           _this.setState({
             isAnimationFinished: !1
           });
-        }, _this.id = (0, _DataUtils.uniqueId)("recharts-scatter-"), _this;
+        }), _defineProperty3(_assertThisInitialized(_this), "id", (0, _DataUtils.uniqueId)("recharts-scatter-")), _this;
       }
       return _createClass(Scatter2, [{
         key: "renderSymbolsStatically",
         value: function(points) {
-          var _this2 = this, _this$props = this.props, shape = _this$props.shape, activeShape = _this$props.activeShape, activeIndex = _this$props.activeIndex, baseProps = (0, _types.filterProps)(this.props);
+          var _this2 = this, _this$props = this.props, shape = _this$props.shape, activeShape = _this$props.activeShape, activeIndex = _this$props.activeIndex, baseProps = (0, _ReactUtils.filterProps)(this.props);
           return points.map(function(entry2, i) {
             var props = _objectSpread3(_objectSpread3({
               key: "symbol-".concat(i)
@@ -12962,7 +12883,7 @@ var require_Scatter = __commonJS({
           var isAnimationActive = this.props.isAnimationActive;
           if (isAnimationActive && !this.state.isAnimationFinished)
             return null;
-          var _this$props4 = this.props, points = _this$props4.points, xAxis = _this$props4.xAxis, yAxis = _this$props4.yAxis, children = _this$props4.children, errorBarItems = (0, _ReactUtils.findAllByType)(children, _ErrorBar.ErrorBar.displayName);
+          var _this$props4 = this.props, points = _this$props4.points, xAxis = _this$props4.xAxis, yAxis = _this$props4.yAxis, children = _this$props4.children, errorBarItems = (0, _ReactUtils.findAllByType)(children, _ErrorBar.ErrorBar);
           if (!errorBarItems)
             return null;
           function dataPointFormatterY(dataPoint, dataKey) {
@@ -12996,7 +12917,7 @@ var require_Scatter = __commonJS({
       }, {
         key: "renderLine",
         value: function() {
-          var _this$props5 = this.props, points = _this$props5.points, line = _this$props5.line, lineType = _this$props5.lineType, lineJointType = _this$props5.lineJointType, scatterProps = (0, _types.filterProps)(this.props), customLineProps = (0, _types.filterProps)(line), linePoints, lineItem;
+          var _this$props5 = this.props, points = _this$props5.points, line = _this$props5.line, lineType = _this$props5.lineType, lineJointType = _this$props5.lineJointType, scatterProps = (0, _ReactUtils.filterProps)(this.props), customLineProps = (0, _ReactUtils.filterProps)(line), linePoints, lineItem;
           if (lineType === "joint")
             linePoints = points.map(function(entry2) {
               return {
@@ -13072,8 +12993,8 @@ var require_Scatter = __commonJS({
       }]), Scatter2;
     }(_react.PureComponent);
     exports.Scatter = Scatter;
-    Scatter.displayName = "Scatter";
-    Scatter.defaultProps = {
+    _defineProperty3(Scatter, "displayName", "Scatter");
+    _defineProperty3(Scatter, "defaultProps", {
       xAxisId: 0,
       yAxisId: 0,
       zAxisId: 0,
@@ -13087,9 +13008,9 @@ var require_Scatter = __commonJS({
       animationBegin: 0,
       animationDuration: 400,
       animationEasing: "linear"
-    };
-    Scatter.getComposedData = function(_ref2) {
-      var xAxis = _ref2.xAxis, yAxis = _ref2.yAxis, zAxis = _ref2.zAxis, item = _ref2.item, displayedData = _ref2.displayedData, xAxisTicks = _ref2.xAxisTicks, yAxisTicks = _ref2.yAxisTicks, offset = _ref2.offset, tooltipType = item.props.tooltipType, cells = (0, _ReactUtils.findAllByType)(item.props.children, _Cell.Cell.displayName), xAxisDataKey = (0, _isNil2.default)(xAxis.dataKey) ? item.props.dataKey : xAxis.dataKey, yAxisDataKey = (0, _isNil2.default)(yAxis.dataKey) ? item.props.dataKey : yAxis.dataKey, zAxisDataKey = zAxis && zAxis.dataKey, defaultRangeZ = zAxis ? zAxis.range : _ZAxis.ZAxis.defaultProps.range, defaultZ = defaultRangeZ && defaultRangeZ[0], xBandSize = xAxis.scale.bandwidth ? xAxis.scale.bandwidth() : 0, yBandSize = yAxis.scale.bandwidth ? yAxis.scale.bandwidth() : 0, points = displayedData.map(function(entry2, index) {
+    });
+    _defineProperty3(Scatter, "getComposedData", function(_ref2) {
+      var xAxis = _ref2.xAxis, yAxis = _ref2.yAxis, zAxis = _ref2.zAxis, item = _ref2.item, displayedData = _ref2.displayedData, xAxisTicks = _ref2.xAxisTicks, yAxisTicks = _ref2.yAxisTicks, offset = _ref2.offset, tooltipType = item.props.tooltipType, cells = (0, _ReactUtils.findAllByType)(item.props.children, _Cell.Cell), xAxisDataKey = (0, _isNil2.default)(xAxis.dataKey) ? item.props.dataKey : xAxis.dataKey, yAxisDataKey = (0, _isNil2.default)(yAxis.dataKey) ? item.props.dataKey : yAxis.dataKey, zAxisDataKey = zAxis && zAxis.dataKey, defaultRangeZ = zAxis ? zAxis.range : _ZAxis.ZAxis.defaultProps.range, defaultZ = defaultRangeZ && defaultRangeZ[0], xBandSize = xAxis.scale.bandwidth ? xAxis.scale.bandwidth() : 0, yBandSize = yAxis.scale.bandwidth ? yAxis.scale.bandwidth() : 0, points = displayedData.map(function(entry2, index) {
         var x = (0, _ChartUtils.getValueByDataKey)(entry2, xAxisDataKey), y = (0, _ChartUtils.getValueByDataKey)(entry2, yAxisDataKey), z = !(0, _isNil2.default)(zAxisDataKey) && (0, _ChartUtils.getValueByDataKey)(entry2, zAxisDataKey) || "-", tooltipPayload = [{
           name: (0, _isNil2.default)(xAxis.dataKey) ? item.props.name : xAxis.name || xAxis.dataKey,
           unit: xAxis.unit || "",
@@ -13155,7 +13076,7 @@ var require_Scatter = __commonJS({
       return _objectSpread3({
         points
       }, offset);
-    };
+    });
   }
 });
 
@@ -13182,7 +13103,6 @@ var require_XAxis = __commonJS({
       xAxisId: 0,
       tickCount: 5,
       type: "category",
-      domain: [0, "auto"],
       padding: {
         left: 0,
         right: 0
@@ -13219,7 +13139,6 @@ var require_YAxis = __commonJS({
       yAxisId: 0,
       tickCount: 5,
       type: "number",
-      domain: [0, "auto"],
       padding: {
         top: 0,
         bottom: 0
@@ -13239,8 +13158,41 @@ var require_DetectReferenceElementsDomain = __commonJS({
       value: !0
     });
     exports.detectReferenceElementsDomain = void 0;
-    var _ReferenceDot = require_ReferenceDot(), _ReferenceLine = require_ReferenceLine(), _ReferenceArea = require_ReferenceArea(), _IfOverflowMatches = require_IfOverflowMatches(), _ReactUtils = require_ReactUtils(), _DataUtils = require_DataUtils(), detectReferenceElementsDomain = function(children, domain, axisId, axisType, specifiedTicks) {
-      var lines = (0, _ReactUtils.findAllByType)(children, _ReferenceLine.ReferenceLine.displayName), dots = (0, _ReactUtils.findAllByType)(children, _ReferenceDot.ReferenceDot.displayName), elements = lines.concat(dots), areas = (0, _ReactUtils.findAllByType)(children, _ReferenceArea.ReferenceArea.displayName), idKey = "".concat(axisType, "Id"), valueKey = axisType[0], finalDomain = domain;
+    var _ReferenceDot = require_ReferenceDot(), _ReferenceLine = require_ReferenceLine(), _ReferenceArea = require_ReferenceArea(), _IfOverflowMatches = require_IfOverflowMatches(), _ReactUtils = require_ReactUtils(), _DataUtils = require_DataUtils();
+    function _toConsumableArray(arr) {
+      return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+    }
+    function _nonIterableSpread() {
+      throw new TypeError(`Invalid attempt to spread non-iterable instance.
+In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
+    }
+    function _unsupportedIterableToArray(o, minLen) {
+      if (!!o) {
+        if (typeof o == "string")
+          return _arrayLikeToArray(o, minLen);
+        var n = Object.prototype.toString.call(o).slice(8, -1);
+        if (n === "Object" && o.constructor && (n = o.constructor.name), n === "Map" || n === "Set")
+          return Array.from(o);
+        if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n))
+          return _arrayLikeToArray(o, minLen);
+      }
+    }
+    function _iterableToArray(iter) {
+      if (typeof Symbol < "u" && iter[Symbol.iterator] != null || iter["@@iterator"] != null)
+        return Array.from(iter);
+    }
+    function _arrayWithoutHoles(arr) {
+      if (Array.isArray(arr))
+        return _arrayLikeToArray(arr);
+    }
+    function _arrayLikeToArray(arr, len) {
+      (len == null || len > arr.length) && (len = arr.length);
+      for (var i = 0, arr2 = new Array(len); i < len; i++)
+        arr2[i] = arr[i];
+      return arr2;
+    }
+    var detectReferenceElementsDomain = function(children, domain, axisId, axisType, specifiedTicks) {
+      var lines = (0, _ReactUtils.findAllByType)(children, _ReferenceLine.ReferenceLine), dots = (0, _ReactUtils.findAllByType)(children, _ReferenceDot.ReferenceDot), elements = [].concat(_toConsumableArray(lines), _toConsumableArray(dots)), areas = (0, _ReactUtils.findAllByType)(children, _ReferenceArea.ReferenceArea), idKey = "".concat(axisType, "Id"), valueKey = axisType[0], finalDomain = domain;
       if (elements.length && (finalDomain = elements.reduce(function(result, el) {
         if (el.props[idKey] === axisId && (0, _IfOverflowMatches.ifOverflowMatches)(el.props, "extendDomain") && (0, _DataUtils.isNumber)(el.props[valueKey])) {
           var value = el.props[valueKey];
@@ -13272,7 +13224,7 @@ var require_Events = __commonJS({
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.SYNC_EVENT = exports.eventCenter = void 0;
+    exports.eventCenter = exports.SYNC_EVENT = void 0;
     var _eventemitter = _interopRequireDefault(require("eventemitter3"));
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
@@ -13289,37 +13241,30 @@ var require_Events = __commonJS({
 var require_generateCategoricalChart = __commonJS({
   "node_modules/recharts/lib/chart/generateCategoricalChart.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    exports.generateCategoricalChart = void 0;
-    var _every2 = _interopRequireDefault(require("lodash/every")), _find2 = _interopRequireDefault(require("lodash/find")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _throttle2 = _interopRequireDefault(require("lodash/throttle")), _sortBy2 = _interopRequireDefault(require("lodash/sortBy")), _get2 = _interopRequireDefault(require("lodash/get")), _range2 = _interopRequireDefault(require("lodash/range")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _isBoolean2 = _interopRequireDefault(require("lodash/isBoolean")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Surface = require_Surface(), _Layer = require_Layer(), _Tooltip = require_Tooltip(), _Legend = require_Legend(), _Curve = require_Curve(), _Cross = require_Cross(), _Sector = require_Sector(), _Dot = require_Dot(), _Rectangle = require_Rectangle(), _ReactUtils = require_ReactUtils(), _CartesianAxis = require_CartesianAxis(), _Brush = require_Brush(), _DOMUtils = require_DOMUtils(), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils(), _DetectReferenceElementsDomain = require_DetectReferenceElementsDomain(), _PolarUtils = require_PolarUtils(), _ShallowEqual = require_ShallowEqual(), _Events = require_Events(), _types = require_types();
-    function _getRequireWildcardCache() {
+    exports.getAxisMapByAxes = exports.generateCategoricalChart = void 0;
+    var _every2 = _interopRequireDefault(require("lodash/every")), _find2 = _interopRequireDefault(require("lodash/find")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _throttle2 = _interopRequireDefault(require("lodash/throttle")), _sortBy2 = _interopRequireDefault(require("lodash/sortBy")), _get2 = _interopRequireDefault(require("lodash/get")), _range2 = _interopRequireDefault(require("lodash/range")), _isNil2 = _interopRequireDefault(require("lodash/isNil")), _isBoolean2 = _interopRequireDefault(require("lodash/isBoolean")), _isArray2 = _interopRequireDefault(require("lodash/isArray")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _getTicks = require_getTicks(), _Surface = require_Surface(), _Layer = require_Layer(), _Tooltip = require_Tooltip(), _Legend = require_Legend(), _Curve = require_Curve(), _Cross = require_Cross(), _Sector = require_Sector(), _Dot = require_Dot(), _Rectangle = require_Rectangle(), _ReactUtils = require_ReactUtils(), _CartesianAxis = require_CartesianAxis(), _Brush = require_Brush(), _DOMUtils = require_DOMUtils(), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils(), _DetectReferenceElementsDomain = require_DetectReferenceElementsDomain(), _PolarUtils = require_PolarUtils(), _ShallowEqual = require_ShallowEqual(), _Events = require_Events(), _types = require_types(), _excluded = ["item"], _excluded2 = ["children", "className", "width", "height", "style", "compact", "title", "desc"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -13327,6 +13272,13 @@ var require_generateCategoricalChart = __commonJS({
     }
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
     }
     function _slicedToArray(arr, i) {
       return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
@@ -13336,16 +13288,23 @@ var require_generateCategoricalChart = __commonJS({
 In order to be iterable, non-array objects must have a [Symbol.iterator]() method.`);
     }
     function _iterableToArrayLimit(arr, i) {
-      if (!(typeof Symbol > "u" || !(Symbol.iterator in Object(arr)))) {
-        var _arr = [], _n = !0, _d = !1, _e = void 0;
+      var _i = arr == null ? null : typeof Symbol < "u" && arr[Symbol.iterator] || arr["@@iterator"];
+      if (_i != null) {
+        var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
         try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-            ;
+          if (_x = (_i = _i.call(arr)).next, i === 0) {
+            if (Object(_i) !== _i)
+              return;
+            _n = !1;
+          } else
+            for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+              ;
         } catch (err) {
           _d = !0, _e = err;
         } finally {
           try {
-            !_n && _i.return != null && _i.return();
+            if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+              return;
           } finally {
             if (_d)
               throw _e;
@@ -13359,7 +13318,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return arr;
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -13394,19 +13353,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -13423,7 +13382,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -13443,7 +13406,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
     }
@@ -13466,7 +13429,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _iterableToArray(iter) {
-      if (typeof Symbol < "u" && Symbol.iterator in Object(iter))
+      if (typeof Symbol < "u" && iter[Symbol.iterator] != null || iter["@@iterator"] != null)
         return Array.from(iter);
     }
     function _arrayWithoutHoles(arr) {
@@ -13501,7 +13464,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var ORIENT_MAP = {
       xAxis: ["bottom", "top"],
@@ -13546,7 +13525,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         return itemData && itemData.length ? [].concat(_toConsumableArray(result), _toConsumableArray(itemData)) : result;
       }, []);
       return itemsData && itemsData.length > 0 ? itemsData : item && item.props && item.props.data && item.props.data.length > 0 ? item.props.data : data && data.length && (0, _DataUtils.isNumber)(dataStartIndex) && (0, _DataUtils.isNumber)(dataEndIndex) ? data.slice(dataStartIndex, dataEndIndex + 1) : [];
-    }, getTooltipContent = function(state, chartData, activeIndex, activeLabel) {
+    };
+    function isDomainSpecifiedByUser(domain, allowDataOverflow, axisType) {
+      if (axisType === "number" && allowDataOverflow === !0 && Array.isArray(domain)) {
+        var domainStart = domain == null ? void 0 : domain[0], domainEnd = domain == null ? void 0 : domain[1];
+        if (!!domainStart && !!domainEnd && (0, _DataUtils.isNumber)(domainStart) && (0, _DataUtils.isNumber)(domainEnd))
+          return !0;
+      }
+      return !1;
+    }
+    function getDefaultDomainByAxisType(axisType) {
+      return axisType === "number" ? [0, "auto"] : void 0;
+    }
+    var getTooltipContent = function(state, chartData, activeIndex, activeLabel) {
       var graphicalItems = state.graphicalItems, tooltipAxis = state.tooltipAxis, displayedData = getDisplayedData(chartData, state);
       return activeIndex < 0 || !graphicalItems || !graphicalItems.length || activeIndex >= displayedData.length ? null : graphicalItems.reduce(function(result, child) {
         var hide = child.props.hide;
@@ -13577,70 +13568,76 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return null;
     }, getAxisMapByAxes = function(props, _ref2) {
       var axes = _ref2.axes, graphicalItems = _ref2.graphicalItems, axisType = _ref2.axisType, axisIdKey = _ref2.axisIdKey, stackGroups = _ref2.stackGroups, dataStartIndex = _ref2.dataStartIndex, dataEndIndex = _ref2.dataEndIndex, layout = props.layout, children = props.children, stackOffset = props.stackOffset, isCategorical = (0, _ChartUtils.isCategoricalAxis)(layout, axisType), axisMap = axes.reduce(function(result, child) {
-        var _child$props = child.props, type = _child$props.type, dataKey = _child$props.dataKey, allowDataOverflow = _child$props.allowDataOverflow, allowDuplicatedCategory = _child$props.allowDuplicatedCategory, scale = _child$props.scale, ticks = _child$props.ticks, axisId = child.props[axisIdKey], displayedData = getDisplayedData(props.data, {
+        var _child$props$domain2, _child$props = child.props, type = _child$props.type, dataKey = _child$props.dataKey, allowDataOverflow = _child$props.allowDataOverflow, allowDuplicatedCategory = _child$props.allowDuplicatedCategory, scale = _child$props.scale, ticks = _child$props.ticks, includeHidden = _child$props.includeHidden, axisId = child.props[axisIdKey];
+        if (result[axisId])
+          return result;
+        var displayedData = getDisplayedData(props.data, {
           graphicalItems: graphicalItems.filter(function(item) {
             return item.props[axisIdKey] === axisId;
           }),
           dataStartIndex,
           dataEndIndex
-        }), len = displayedData.length;
-        if (!result[axisId]) {
-          var domain, duplicateDomain, categoricalDomain;
+        }), len = displayedData.length, domain, duplicateDomain, categoricalDomain;
+        isDomainSpecifiedByUser(child.props.domain, allowDataOverflow, type) && (domain = (0, _ChartUtils.parseSpecifiedDomain)(child.props.domain, null, allowDataOverflow), isCategorical && (type === "number" || scale !== "auto") && (categoricalDomain = (0, _ChartUtils.getDomainOfDataByKey)(displayedData, dataKey, "category")));
+        var defaultDomain = getDefaultDomainByAxisType(type);
+        if (!domain || domain.length === 0) {
+          var _child$props$domain, childDomain = (_child$props$domain = child.props.domain) !== null && _child$props$domain !== void 0 ? _child$props$domain : defaultDomain;
           if (dataKey) {
             if (domain = (0, _ChartUtils.getDomainOfDataByKey)(displayedData, dataKey, type), type === "category" && isCategorical) {
               var duplicate = (0, _DataUtils.hasDuplicate)(domain);
-              allowDuplicatedCategory && duplicate ? (duplicateDomain = domain, domain = (0, _range2.default)(0, len)) : allowDuplicatedCategory || (domain = (0, _ChartUtils.parseDomainOfCategoryAxis)(child.props.domain, domain, child).reduce(function(finalDomain, entry2) {
+              allowDuplicatedCategory && duplicate ? (duplicateDomain = domain, domain = (0, _range2.default)(0, len)) : allowDuplicatedCategory || (domain = (0, _ChartUtils.parseDomainOfCategoryAxis)(childDomain, domain, child).reduce(function(finalDomain, entry2) {
                 return finalDomain.indexOf(entry2) >= 0 ? finalDomain : [].concat(_toConsumableArray(finalDomain), [entry2]);
               }, []));
             } else if (type === "category")
               allowDuplicatedCategory ? domain = domain.filter(function(entry2) {
                 return entry2 !== "" && !(0, _isNil2.default)(entry2);
-              }) : domain = (0, _ChartUtils.parseDomainOfCategoryAxis)(child.props.domain, domain, child).reduce(function(finalDomain, entry2) {
+              }) : domain = (0, _ChartUtils.parseDomainOfCategoryAxis)(childDomain, domain, child).reduce(function(finalDomain, entry2) {
                 return finalDomain.indexOf(entry2) >= 0 || entry2 === "" || (0, _isNil2.default)(entry2) ? finalDomain : [].concat(_toConsumableArray(finalDomain), [entry2]);
               }, []);
             else if (type === "number") {
               var errorBarsDomain = (0, _ChartUtils.parseErrorBarsOfAxis)(displayedData, graphicalItems.filter(function(item) {
-                return item.props[axisIdKey] === axisId && !item.props.hide;
+                return item.props[axisIdKey] === axisId && (includeHidden || !item.props.hide);
               }), dataKey, axisType, layout);
               errorBarsDomain && (domain = errorBarsDomain);
             }
             isCategorical && (type === "number" || scale !== "auto") && (categoricalDomain = (0, _ChartUtils.getDomainOfDataByKey)(displayedData, dataKey, "category"));
           } else
             isCategorical ? domain = (0, _range2.default)(0, len) : stackGroups && stackGroups[axisId] && stackGroups[axisId].hasStack && type === "number" ? domain = stackOffset === "expand" ? [0, 1] : (0, _ChartUtils.getDomainOfStackGroups)(stackGroups[axisId].stackGroups, dataStartIndex, dataEndIndex) : domain = (0, _ChartUtils.getDomainOfItemsWithSameAxis)(displayedData, graphicalItems.filter(function(item) {
-              return item.props[axisIdKey] === axisId && !item.props.hide;
+              return item.props[axisIdKey] === axisId && (includeHidden || !item.props.hide);
             }), type, layout, !0);
           if (type === "number")
-            domain = (0, _DetectReferenceElementsDomain.detectReferenceElementsDomain)(children, domain, axisId, axisType, ticks), child.props.domain && (domain = (0, _ChartUtils.parseSpecifiedDomain)(child.props.domain, domain, allowDataOverflow));
-          else if (type === "category" && child.props.domain) {
-            var axisDomain = child.props.domain, isDomainValidate = domain.every(function(entry2) {
+            domain = (0, _DetectReferenceElementsDomain.detectReferenceElementsDomain)(children, domain, axisId, axisType, ticks), childDomain && (domain = (0, _ChartUtils.parseSpecifiedDomain)(childDomain, domain, allowDataOverflow));
+          else if (type === "category" && childDomain) {
+            var axisDomain = childDomain, isDomainValid = domain.every(function(entry2) {
               return axisDomain.indexOf(entry2) >= 0;
             });
-            isDomainValidate && (domain = axisDomain);
+            isDomainValid && (domain = axisDomain);
           }
-          return _objectSpread3(_objectSpread3({}, result), {}, _defineProperty3({}, axisId, _objectSpread3(_objectSpread3({}, child.props), {}, {
-            axisType,
-            domain,
-            categoricalDomain,
-            duplicateDomain,
-            originalDomain: child.props.domain,
-            isCategorical,
-            layout
-          })));
         }
-        return result;
+        return _objectSpread3(_objectSpread3({}, result), {}, _defineProperty3({}, axisId, _objectSpread3(_objectSpread3({}, child.props), {}, {
+          axisType,
+          domain,
+          categoricalDomain,
+          duplicateDomain,
+          originalDomain: (_child$props$domain2 = child.props.domain) !== null && _child$props$domain2 !== void 0 ? _child$props$domain2 : defaultDomain,
+          isCategorical,
+          layout
+        })));
       }, {});
       return axisMap;
-    }, getAxisMapByItems = function(props, _ref3) {
+    };
+    exports.getAxisMapByAxes = getAxisMapByAxes;
+    var getAxisMapByItems = function(props, _ref3) {
       var graphicalItems = _ref3.graphicalItems, Axis = _ref3.Axis, axisType = _ref3.axisType, axisIdKey = _ref3.axisIdKey, stackGroups = _ref3.stackGroups, dataStartIndex = _ref3.dataStartIndex, dataEndIndex = _ref3.dataEndIndex, layout = props.layout, children = props.children, displayedData = getDisplayedData(props.data, {
         graphicalItems,
         dataStartIndex,
         dataEndIndex
       }), len = displayedData.length, isCategorical = (0, _ChartUtils.isCategoricalAxis)(layout, axisType), index = -1, axisMap = graphicalItems.reduce(function(result, child) {
-        var axisId = child.props[axisIdKey];
+        var axisId = child.props[axisIdKey], originalDomain = getDefaultDomainByAxisType("number");
         if (!result[axisId]) {
           index++;
           var domain;
-          return isCategorical ? domain = (0, _range2.default)(0, len) : stackGroups && stackGroups[axisId] && stackGroups[axisId].hasStack ? (domain = (0, _ChartUtils.getDomainOfStackGroups)(stackGroups[axisId].stackGroups, dataStartIndex, dataEndIndex), domain = (0, _DetectReferenceElementsDomain.detectReferenceElementsDomain)(children, domain, axisId, axisType)) : (domain = (0, _ChartUtils.parseSpecifiedDomain)(Axis.defaultProps.domain, (0, _ChartUtils.getDomainOfItemsWithSameAxis)(displayedData, graphicalItems.filter(function(item) {
+          return isCategorical ? domain = (0, _range2.default)(0, len) : stackGroups && stackGroups[axisId] && stackGroups[axisId].hasStack ? (domain = (0, _ChartUtils.getDomainOfStackGroups)(stackGroups[axisId].stackGroups, dataStartIndex, dataEndIndex), domain = (0, _DetectReferenceElementsDomain.detectReferenceElementsDomain)(children, domain, axisId, axisType)) : (domain = (0, _ChartUtils.parseSpecifiedDomain)(originalDomain, (0, _ChartUtils.getDomainOfItemsWithSameAxis)(displayedData, graphicalItems.filter(function(item) {
             return item.props[axisIdKey] === axisId && !item.props.hide;
           }), "number", layout), Axis.defaultProps.allowDataOverflow), domain = (0, _DetectReferenceElementsDomain.detectReferenceElementsDomain)(children, domain, axisId, axisType)), _objectSpread3(_objectSpread3({}, result), {}, _defineProperty3({}, axisId, _objectSpread3(_objectSpread3({
             axisType
@@ -13648,7 +13645,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             hide: !0,
             orientation: (0, _get2.default)(ORIENT_MAP, "".concat(axisType, ".").concat(index % 2), null),
             domain,
-            originalDomain: Axis.defaultProps.domain,
+            originalDomain,
             isCategorical,
             layout
           })));
@@ -13686,7 +13683,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         tooltipAxisBandSize: (0, _ChartUtils.getBandSizeOfAxis)(axis, tooltipTicks)
       };
     }, createDefaultState = function(props) {
-      var _brushItem$props, _brushItem$props2, children = props.children, defaultShowTooltip = props.defaultShowTooltip, brushItem = (0, _ReactUtils.findChildByType)(children, _Brush.Brush.displayName), startIndex = brushItem && brushItem.props && brushItem.props.startIndex || 0, endIndex = (brushItem == null || (_brushItem$props = brushItem.props) === null || _brushItem$props === void 0 ? void 0 : _brushItem$props.endIndex) !== void 0 ? brushItem == null || (_brushItem$props2 = brushItem.props) === null || _brushItem$props2 === void 0 ? void 0 : _brushItem$props2.endIndex : props.data && props.data.length - 1 || 0;
+      var _brushItem$props, _brushItem$props2, children = props.children, defaultShowTooltip = props.defaultShowTooltip, brushItem = (0, _ReactUtils.findChildByType)(children, _Brush.Brush), startIndex = brushItem && brushItem.props && brushItem.props.startIndex || 0, endIndex = (brushItem == null || (_brushItem$props = brushItem.props) === null || _brushItem$props === void 0 ? void 0 : _brushItem$props.endIndex) !== void 0 ? brushItem == null || (_brushItem$props2 = brushItem.props) === null || _brushItem$props2 === void 0 ? void 0 : _brushItem$props2.endIndex : props.data && props.data.length - 1 || 0;
       return {
         chartX: 0,
         chartY: 0,
@@ -13715,7 +13712,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         cateAxisName: "radiusAxis"
       };
     }, calculateOffset = function(_ref5, prevLegendBBox) {
-      var props = _ref5.props, graphicalItems = _ref5.graphicalItems, _ref5$xAxisMap = _ref5.xAxisMap, xAxisMap = _ref5$xAxisMap === void 0 ? {} : _ref5$xAxisMap, _ref5$yAxisMap = _ref5.yAxisMap, yAxisMap = _ref5$yAxisMap === void 0 ? {} : _ref5$yAxisMap, width = props.width, height = props.height, children = props.children, margin = props.margin || {}, brushItem = (0, _ReactUtils.findChildByType)(children, _Brush.Brush.displayName), legendItem = (0, _ReactUtils.findChildByType)(children, _Legend.Legend.displayName), offsetH = Object.keys(yAxisMap).reduce(function(result, id) {
+      var props = _ref5.props, graphicalItems = _ref5.graphicalItems, _ref5$xAxisMap = _ref5.xAxisMap, xAxisMap = _ref5$xAxisMap === void 0 ? {} : _ref5$xAxisMap, _ref5$yAxisMap = _ref5.yAxisMap, yAxisMap = _ref5$yAxisMap === void 0 ? {} : _ref5$yAxisMap, width = props.width, height = props.height, children = props.children, margin = props.margin || {}, brushItem = (0, _ReactUtils.findChildByType)(children, _Brush.Brush), legendItem = (0, _ReactUtils.findChildByType)(children, _Legend.Legend), offsetH = Object.keys(yAxisMap).reduce(function(result, id) {
         var entry2 = yAxisMap[id], orientation = entry2.orientation;
         return !entry2.mirror && !entry2.hide ? _objectSpread3(_objectSpread3({}, result), {}, _defineProperty3({}, orientation, result[orientation] + entry2.width)) : result;
       }, {
@@ -13735,7 +13732,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         height: height - offset.top - offset.bottom
       });
     }, generateCategoricalChart = function(_ref6) {
-      var _class, _temp, chartName = _ref6.chartName, GraphicalChild = _ref6.GraphicalChild, _ref6$defaultTooltipE = _ref6.defaultTooltipEventType, defaultTooltipEventType = _ref6$defaultTooltipE === void 0 ? "axis" : _ref6$defaultTooltipE, _ref6$validateTooltip = _ref6.validateTooltipEventTypes, validateTooltipEventTypes = _ref6$validateTooltip === void 0 ? ["axis"] : _ref6$validateTooltip, axisComponents = _ref6.axisComponents, legendContent = _ref6.legendContent, formatAxisMap = _ref6.formatAxisMap, defaultProps = _ref6.defaultProps, getFormatItems = function(props, currentState) {
+      var _class, chartName = _ref6.chartName, GraphicalChild = _ref6.GraphicalChild, _ref6$defaultTooltipE = _ref6.defaultTooltipEventType, defaultTooltipEventType = _ref6$defaultTooltipE === void 0 ? "axis" : _ref6$defaultTooltipE, _ref6$validateTooltip = _ref6.validateTooltipEventTypes, validateTooltipEventTypes = _ref6$validateTooltip === void 0 ? ["axis"] : _ref6$validateTooltip, axisComponents = _ref6.axisComponents, legendContent = _ref6.legendContent, formatAxisMap = _ref6.formatAxisMap, defaultProps = _ref6.defaultProps, getFormatItems = function(props, currentState) {
         var graphicalItems = currentState.graphicalItems, stackGroups = currentState.stackGroups, offset = currentState.offset, updateId = currentState.updateId, dataStartIndex = currentState.dataStartIndex, dataEndIndex = currentState.dataEndIndex, barSize = props.barSize, layout = props.layout, barGap = props.barGap, barCategoryGap = props.barCategoryGap, globalMaxBarSize = props.maxBarSize, _getAxisNameByLayout = getAxisNameByLayout(layout), numericAxisName = _getAxisNameByLayout.numericAxisName, cateAxisName = _getAxisNameByLayout.cateAxisName, hasBar = hasGraphicalBarItem(graphicalItems), sizeList = hasBar && (0, _ChartUtils.getBarSizeList)({
           barSize,
           stackGroups
@@ -13824,14 +13821,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           stackGroups
         }, ticksObj), axisObj);
       };
-      return _temp = _class = /* @__PURE__ */ function(_Component) {
+      return _class = /* @__PURE__ */ function(_Component) {
         _inherits(CategoricalChartWrapper, _Component);
         var _super = _createSuper(CategoricalChartWrapper);
         function CategoricalChartWrapper(_props) {
           var _this;
-          return _classCallCheck(this, CategoricalChartWrapper), _this = _super.call(this, _props), _this.uniqueChartId = void 0, _this.clipPathId = void 0, _this.legendInstance = void 0, _this.deferId = void 0, _this.container = void 0, _this.clearDeferId = function() {
+          return _classCallCheck(this, CategoricalChartWrapper), _this = _super.call(this, _props), _defineProperty3(_assertThisInitialized(_this), "clearDeferId", function() {
             !(0, _isNil2.default)(_this.deferId) && deferClear && deferClear(_this.deferId), _this.deferId = null;
-          }, _this.handleLegendBBoxUpdate = function(box) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleLegendBBoxUpdate", function(box) {
             if (box) {
               var _this$state = _this.state, dataStartIndex = _this$state.dataStartIndex, dataEndIndex = _this$state.dataEndIndex, updateId = _this$state.updateId;
               _this.setState(_objectSpread3({
@@ -13845,10 +13842,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 legendBBox: box
               }))));
             }
-          }, _this.handleReceiveSyncEvent = function(cId, chartId, data) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleReceiveSyncEvent", function(cId, chartId, data) {
             var syncId = _this.props.syncId;
             syncId === cId && chartId !== _this.uniqueChartId && (_this.clearDeferId(), _this.deferId = defer && defer(_this.applySyncEvent.bind(_assertThisInitialized(_this), data)));
-          }, _this.handleBrushChange = function(_ref9) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleBrushChange", function(_ref9) {
             var startIndex = _ref9.startIndex, endIndex = _ref9.endIndex;
             if (startIndex !== _this.state.dataStartIndex || endIndex !== _this.state.dataEndIndex) {
               var updateId = _this.state.updateId;
@@ -13867,7 +13864,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 dataEndIndex: endIndex
               });
             }
-          }, _this.handleMouseEnter = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleMouseEnter", function(e) {
             var onMouseEnter = _this.props.onMouseEnter, mouse = _this.getMouseInfo(e);
             if (mouse) {
               var _nextState = _objectSpread3(_objectSpread3({}, mouse), {}, {
@@ -13875,14 +13872,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               });
               _this.setState(_nextState), _this.triggerSyncEvent(_nextState), (0, _isFunction2.default)(onMouseEnter) && onMouseEnter(_nextState, e);
             }
-          }, _this.triggeredAfterMouseMove = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "triggeredAfterMouseMove", function(e) {
             var onMouseMove = _this.props.onMouseMove, mouse = _this.getMouseInfo(e), nextState = mouse ? _objectSpread3(_objectSpread3({}, mouse), {}, {
               isTooltipActive: !0
             }) : {
               isTooltipActive: !1
             };
             _this.setState(nextState), _this.triggerSyncEvent(nextState), (0, _isFunction2.default)(onMouseMove) && onMouseMove(nextState, e);
-          }, _this.handleItemMouseEnter = function(el) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleItemMouseEnter", function(el) {
             _this.setState(function() {
               return {
                 isTooltipActive: !0,
@@ -13894,20 +13891,20 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 }
               };
             });
-          }, _this.handleItemMouseLeave = function() {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleItemMouseLeave", function() {
             _this.setState(function() {
               return {
                 isTooltipActive: !1
               };
             });
-          }, _this.handleMouseMove = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleMouseMove", function(e) {
             e && (0, _isFunction2.default)(e.persist) && e.persist(), _this.triggeredAfterMouseMove(e);
-          }, _this.handleMouseLeave = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleMouseLeave", function(e) {
             var onMouseLeave = _this.props.onMouseLeave, nextState = {
               isTooltipActive: !1
             };
             _this.setState(nextState), _this.triggerSyncEvent(nextState), (0, _isFunction2.default)(onMouseLeave) && onMouseLeave(nextState, e), _this.cancelThrottledTriggerAfterMouseMove();
-          }, _this.handleOuterEvent = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleOuterEvent", function(e) {
             var eventName = (0, _ReactUtils.getReactEventByType)(e), event = (0, _get2.default)(_this.props, "".concat(eventName));
             if (eventName && (0, _isFunction2.default)(event)) {
               var mouse;
@@ -13915,7 +13912,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               var handler = event;
               handler(mouse, e);
             }
-          }, _this.handleClick = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleClick", function(e) {
             var onClick = _this.props.onClick, mouse = _this.getMouseInfo(e);
             if (mouse) {
               var _nextState2 = _objectSpread3(_objectSpread3({}, mouse), {}, {
@@ -13923,27 +13920,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               });
               _this.setState(_nextState2), _this.triggerSyncEvent(_nextState2), (0, _isFunction2.default)(onClick) && onClick(_nextState2, e);
             }
-          }, _this.handleMouseDown = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleMouseDown", function(e) {
             var onMouseDown = _this.props.onMouseDown;
             if ((0, _isFunction2.default)(onMouseDown)) {
               var _nextState3 = _this.getMouseInfo(e);
               onMouseDown(_nextState3, e);
             }
-          }, _this.handleMouseUp = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleMouseUp", function(e) {
             var onMouseUp = _this.props.onMouseUp;
             if ((0, _isFunction2.default)(onMouseUp)) {
               var _nextState4 = _this.getMouseInfo(e);
               onMouseUp(_nextState4, e);
             }
-          }, _this.handleTouchMove = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleTouchMove", function(e) {
             e.changedTouches != null && e.changedTouches.length > 0 && _this.handleMouseMove(e.changedTouches[0]);
-          }, _this.handleTouchStart = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleTouchStart", function(e) {
             e.changedTouches != null && e.changedTouches.length > 0 && _this.handleMouseDown(e.changedTouches[0]);
-          }, _this.handleTouchEnd = function(e) {
+          }), _defineProperty3(_assertThisInitialized(_this), "handleTouchEnd", function(e) {
             e.changedTouches != null && e.changedTouches.length > 0 && _this.handleMouseUp(e.changedTouches[0]);
-          }, _this.verticalCoordinatesGenerator = function(_ref10) {
+          }), _defineProperty3(_assertThisInitialized(_this), "verticalCoordinatesGenerator", function(_ref10) {
             var xAxis = _ref10.xAxis, width = _ref10.width, height = _ref10.height, offset = _ref10.offset;
-            return (0, _ChartUtils.getCoordinatesOfGrid)(_CartesianAxis.CartesianAxis.getTicks(_objectSpread3(_objectSpread3(_objectSpread3({}, _CartesianAxis.CartesianAxis.defaultProps), xAxis), {}, {
+            return (0, _ChartUtils.getCoordinatesOfGrid)((0, _getTicks.getTicks)(_objectSpread3(_objectSpread3(_objectSpread3({}, _CartesianAxis.CartesianAxis.defaultProps), xAxis), {}, {
               ticks: (0, _ChartUtils.getTicksOfAxis)(xAxis, !0),
               viewBox: {
                 x: 0,
@@ -13952,9 +13949,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 height
               }
             })), offset.left, offset.left + offset.width);
-          }, _this.horizontalCoordinatesGenerator = function(_ref11) {
+          }), _defineProperty3(_assertThisInitialized(_this), "horizontalCoordinatesGenerator", function(_ref11) {
             var yAxis = _ref11.yAxis, width = _ref11.width, height = _ref11.height, offset = _ref11.offset;
-            return (0, _ChartUtils.getCoordinatesOfGrid)(_CartesianAxis.CartesianAxis.getTicks(_objectSpread3(_objectSpread3(_objectSpread3({}, _CartesianAxis.CartesianAxis.defaultProps), yAxis), {}, {
+            return (0, _ChartUtils.getCoordinatesOfGrid)((0, _getTicks.getTicks)(_objectSpread3(_objectSpread3(_objectSpread3({}, _CartesianAxis.CartesianAxis.defaultProps), yAxis), {}, {
               ticks: (0, _ChartUtils.getTicksOfAxis)(yAxis, !0),
               viewBox: {
                 x: 0,
@@ -13963,9 +13960,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 height
               }
             })), offset.top, offset.top + offset.height);
-          }, _this.axesTicksGenerator = function(axis) {
+          }), _defineProperty3(_assertThisInitialized(_this), "axesTicksGenerator", function(axis) {
             return (0, _ChartUtils.getTicksOfAxis)(axis, !0);
-          }, _this.renderCursor = function(element) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderCursor", function(element) {
             var _this$state2 = _this.state, isTooltipActive = _this$state2.isTooltipActive, activeCoordinate = _this$state2.activeCoordinate, activePayload = _this$state2.activePayload, offset = _this$state2.offset, activeTooltipIndex = _this$state2.activeTooltipIndex, tooltipEventType = _this.getTooltipEventType();
             if (!element || !element.props.cursor || !isTooltipActive || !activeCoordinate || chartName !== "ScatterChart" && tooltipEventType !== "axis")
               return null;
@@ -13991,27 +13988,27 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             var key = element.key || "_recharts-cursor", cursorProps = _objectSpread3(_objectSpread3(_objectSpread3(_objectSpread3({
               stroke: "#ccc",
               pointerEvents: "none"
-            }, offset), restProps), (0, _types.filterProps)(element.props.cursor)), {}, {
+            }, offset), restProps), (0, _ReactUtils.filterProps)(element.props.cursor)), {}, {
               payload: activePayload,
               payloadIndex: activeTooltipIndex,
               key,
               className: "recharts-tooltip-cursor"
             });
             return /* @__PURE__ */ (0, _react.isValidElement)(element.props.cursor) ? /* @__PURE__ */ (0, _react.cloneElement)(element.props.cursor, cursorProps) : /* @__PURE__ */ (0, _react.createElement)(cursorComp, cursorProps);
-          }, _this.renderPolarAxis = function(element, displayName, index) {
-            var axisType = (0, _get2.default)(element, "type.axisType"), axisMap = (0, _get2.default)(_this.state, "".concat(axisType, "Map")), axisOption = axisMap[element.props["".concat(axisType, "Id")]];
+          }), _defineProperty3(_assertThisInitialized(_this), "renderPolarAxis", function(element, displayName, index) {
+            var axisType = (0, _get2.default)(element, "type.axisType"), axisMap = (0, _get2.default)(_this.state, "".concat(axisType, "Map")), axisOption = axisMap && axisMap[element.props["".concat(axisType, "Id")]];
             return /* @__PURE__ */ (0, _react.cloneElement)(element, _objectSpread3(_objectSpread3({}, axisOption), {}, {
               className: axisType,
               key: element.key || "".concat(displayName, "-").concat(index),
               ticks: (0, _ChartUtils.getTicksOfAxis)(axisOption, !0)
             }));
-          }, _this.renderXAxis = function(element, displayName, index) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderXAxis", function(element, displayName, index) {
             var xAxisMap = _this.state.xAxisMap, axisObj = xAxisMap[element.props.xAxisId];
             return _this.renderAxis(axisObj, element, displayName, index);
-          }, _this.renderYAxis = function(element, displayName, index) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderYAxis", function(element, displayName, index) {
             var yAxisMap = _this.state.yAxisMap, axisObj = yAxisMap[element.props.yAxisId];
             return _this.renderAxis(axisObj, element, displayName, index);
-          }, _this.renderGrid = function(element) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderGrid", function(element) {
             var _this$state3 = _this.state, xAxisMap = _this$state3.xAxisMap, yAxisMap = _this$state3.yAxisMap, offset = _this$state3.offset, _this$props = _this.props, width = _this$props.width, height = _this$props.height, xAxis = (0, _DataUtils.getAnyElementOfObject)(xAxisMap), yAxisWithFiniteDomain = (0, _find2.default)(yAxisMap, function(axis) {
               return (0, _every2.default)(axis.domain, isFinit);
             }), yAxis = yAxisWithFiniteDomain || (0, _DataUtils.getAnyElementOfObject)(yAxisMap), props = element.props || {};
@@ -14029,7 +14026,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               verticalCoordinatesGenerator: props.verticalCoordinatesGenerator || _this.verticalCoordinatesGenerator,
               horizontalCoordinatesGenerator: props.horizontalCoordinatesGenerator || _this.horizontalCoordinatesGenerator
             });
-          }, _this.renderPolarGrid = function(element) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderPolarGrid", function(element) {
             var _element$props = element.props, radialLines = _element$props.radialLines, polarAngles = _element$props.polarAngles, polarRadius = _element$props.polarRadius, _this$state4 = _this.state, radiusAxisMap = _this$state4.radiusAxisMap, angleAxisMap = _this$state4.angleAxisMap, radiusAxis = (0, _DataUtils.getAnyElementOfObject)(radiusAxisMap), angleAxis = (0, _DataUtils.getAnyElementOfObject)(angleAxisMap), cx = angleAxis.cx, cy = angleAxis.cy, innerRadius = angleAxis.innerRadius, outerRadius = angleAxis.outerRadius;
             return /* @__PURE__ */ (0, _react.cloneElement)(element, {
               polarAngles: (0, _isArray2.default)(polarAngles) ? polarAngles : (0, _ChartUtils.getTicksOfAxis)(angleAxis, !0).map(function(entry2) {
@@ -14045,7 +14042,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               key: element.key || "polar-grid",
               radialLines
             });
-          }, _this.renderLegend = function() {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderLegend", function() {
             var formattedGraphicalItems = _this.state.formattedGraphicalItems, _this$props2 = _this.props, children = _this$props2.children, width = _this$props2.width, height = _this$props2.height, margin = _this.props.margin || {}, legendWidth = width - (margin.left || 0) - (margin.right || 0), props = (0, _ChartUtils.getLegendProps)({
               children,
               formattedGraphicalItems,
@@ -14054,7 +14051,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             });
             if (!props)
               return null;
-            var item = props.item, otherProps = _objectWithoutProperties2(props, ["item"]);
+            var item = props.item, otherProps = _objectWithoutProperties2(props, _excluded);
             return /* @__PURE__ */ (0, _react.cloneElement)(item, _objectSpread3(_objectSpread3({}, otherProps), {}, {
               chartWidth: width,
               chartHeight: height,
@@ -14064,8 +14061,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               },
               onBBoxUpdate: _this.handleLegendBBoxUpdate
             }));
-          }, _this.renderTooltip = function() {
-            var children = _this.props.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName);
+          }), _defineProperty3(_assertThisInitialized(_this), "renderTooltip", function() {
+            var children = _this.props.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip);
             if (!tooltipItem)
               return null;
             var _this$state5 = _this.state, isTooltipActive = _this$state5.isTooltipActive, activeCoordinate = _this$state5.activeCoordinate, activePayload = _this$state5.activePayload, activeLabel = _this$state5.activeLabel, offset = _this$state5.offset;
@@ -14079,7 +14076,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               payload: isTooltipActive ? activePayload : [],
               coordinate: activeCoordinate
             });
-          }, _this.renderBrush = function(element) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderBrush", function(element) {
             var _this$props3 = _this.props, margin = _this$props3.margin, data = _this$props3.data, _this$state6 = _this.state, offset = _this$state6.offset, dataStartIndex = _this$state6.dataStartIndex, dataEndIndex = _this$state6.dataEndIndex, updateId = _this$state6.updateId;
             return /* @__PURE__ */ (0, _react.cloneElement)(element, {
               key: element.key || "_recharts-brush",
@@ -14092,7 +14089,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               endIndex: dataEndIndex,
               updateId: "brush-".concat(updateId)
             });
-          }, _this.renderReferenceElement = function(element, displayName, index) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderReferenceElement", function(element, displayName, index) {
             if (!element)
               return null;
             var _assertThisInitialize = _assertThisInitialized(_this), clipPathId = _assertThisInitialize.clipPathId, _this$state7 = _this.state, xAxisMap = _this$state7.xAxisMap, yAxisMap = _this$state7.yAxisMap, offset = _this$state7.offset, _element$props2 = element.props, xAxisId = _element$props2.xAxisId, yAxisId = _element$props2.yAxisId;
@@ -14108,7 +14105,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               },
               clipPathId
             });
-          }, _this.renderActivePoints = function(_ref12) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderActivePoints", function(_ref12) {
             var item = _ref12.item, activePoint = _ref12.activePoint, basePoint = _ref12.basePoint, childIndex = _ref12.childIndex, isRange = _ref12.isRange, result = [], key = item.props.key, _item$item$props = item.item.props, activeDot = _item$item$props.activeDot, dataKey = _item$item$props.dataKey, dotProps = _objectSpread3(_objectSpread3({
               index: childIndex,
               dataKey,
@@ -14121,17 +14118,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               payload: activePoint.payload,
               value: activePoint.value,
               key: "".concat(key, "-activePoint-").concat(childIndex)
-            }, (0, _types.filterProps)(activeDot)), (0, _types.adaptEventHandlers)(activeDot));
+            }, (0, _ReactUtils.filterProps)(activeDot)), (0, _types.adaptEventHandlers)(activeDot));
             return result.push(CategoricalChartWrapper.renderActiveDot(activeDot, dotProps)), basePoint ? result.push(CategoricalChartWrapper.renderActiveDot(activeDot, _objectSpread3(_objectSpread3({}, dotProps), {}, {
               cx: basePoint.x,
               cy: basePoint.y,
               key: "".concat(key, "-basePoint-").concat(childIndex)
             }))) : isRange && result.push(null), result;
-          }, _this.renderGraphicChild = function(element, displayName, index) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderGraphicChild", function(element, displayName, index) {
             var item = _this.filterFormatItem(element, displayName, index);
             if (!item)
               return null;
-            var tooltipEventType = _this.getTooltipEventType(), _this$state8 = _this.state, isTooltipActive = _this$state8.isTooltipActive, tooltipAxis = _this$state8.tooltipAxis, activeTooltipIndex = _this$state8.activeTooltipIndex, activeLabel = _this$state8.activeLabel, children = _this.props.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName), _item$props2 = item.props, points = _item$props2.points, isRange = _item$props2.isRange, baseLine = _item$props2.baseLine, _item$item$props2 = item.item.props, activeDot = _item$item$props2.activeDot, hide = _item$item$props2.hide, hasActive = !hide && isTooltipActive && tooltipItem && activeDot && activeTooltipIndex >= 0, itemEvents = {};
+            var tooltipEventType = _this.getTooltipEventType(), _this$state8 = _this.state, isTooltipActive = _this$state8.isTooltipActive, tooltipAxis = _this$state8.tooltipAxis, activeTooltipIndex = _this$state8.activeTooltipIndex, activeLabel = _this$state8.activeLabel, children = _this.props.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip), _item$props2 = item.props, points = _item$props2.points, isRange = _item$props2.isRange, baseLine = _item$props2.baseLine, _item$item$props2 = item.item.props, activeDot = _item$item$props2.activeDot, hide = _item$item$props2.hide, hasActive = !hide && isTooltipActive && tooltipItem && activeDot && activeTooltipIndex >= 0, itemEvents = {};
             tooltipEventType !== "axis" && tooltipItem && tooltipItem.props.trigger === "click" ? itemEvents = {
               onClick: (0, _ChartUtils.combineEventHandlers)(_this.handleItemMouseEnter, null, element.props.onCLick)
             } : tooltipEventType !== "axis" && (itemEvents = {
@@ -14159,11 +14156,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
                 })));
             }
             return isRange ? [graphicalItem, null, null] : [graphicalItem, null];
-          }, _this.renderCustomized = function(element, displayName, index) {
+          }), _defineProperty3(_assertThisInitialized(_this), "renderCustomized", function(element, displayName, index) {
             return /* @__PURE__ */ (0, _react.cloneElement)(element, _objectSpread3(_objectSpread3({
               key: "recharts-customized-".concat(index)
             }, _this.props), _this.state));
-          }, _this.uniqueChartId = (0, _isNil2.default)(_props.id) ? (0, _DataUtils.uniqueId)("recharts") : _props.id, _this.clipPathId = "".concat(_this.uniqueChartId, "-clip"), _props.throttleDelay && (_this.triggeredAfterMouseMove = (0, _throttle2.default)(_this.triggeredAfterMouseMove, _props.throttleDelay)), _this.state = {}, _this;
+          }), _this.uniqueChartId = (0, _isNil2.default)(_props.id) ? (0, _DataUtils.uniqueId)("recharts") : _props.id, _this.clipPathId = "".concat(_this.uniqueChartId, "-clip"), _props.throttleDelay && (_this.triggeredAfterMouseMove = (0, _throttle2.default)(_this.triggeredAfterMouseMove, _props.throttleDelay)), _this.state = {}, _this;
         }
         return _createClass(CategoricalChartWrapper, [{
           key: "componentDidMount",
@@ -14188,7 +14185,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }, {
           key: "getTooltipEventType",
           value: function() {
-            var tooltipItem = (0, _ReactUtils.findChildByType)(this.props.children, _Tooltip.Tooltip.displayName);
+            var tooltipItem = (0, _ReactUtils.findChildByType)(this.props.children, _Tooltip.Tooltip);
             if (tooltipItem && (0, _isBoolean2.default)(tooltipItem.props.shared)) {
               var eventType = tooltipItem.props.shared ? "axis" : "item";
               return validateTooltipEventTypes.indexOf(eventType) >= 0 ? eventType : defaultTooltipEventType;
@@ -14282,7 +14279,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         }, {
           key: "parseEventsOfWrapper",
           value: function() {
-            var children = this.props.children, tooltipEventType = this.getTooltipEventType(), tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName), tooltipEvents = {};
+            var children = this.props.children, tooltipEventType = this.getTooltipEventType(), tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip), tooltipEvents = {};
             tooltipItem && tooltipEventType === "axis" && (tooltipItem.props.trigger === "click" ? tooltipEvents = {
               onClick: this.handleClick
             } : tooltipEvents = {
@@ -14461,7 +14458,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             var _this2 = this;
             if (!(0, _ReactUtils.validateWidthHeight)(this))
               return null;
-            var _this$props6 = this.props, children = _this$props6.children, className = _this$props6.className, width = _this$props6.width, height = _this$props6.height, style = _this$props6.style, compact = _this$props6.compact, title = _this$props6.title, desc = _this$props6.desc, others = _objectWithoutProperties2(_this$props6, ["children", "className", "width", "height", "style", "compact", "title", "desc"]), attrs = (0, _types.filterProps)(others), map = {
+            var _this$props6 = this.props, children = _this$props6.children, className = _this$props6.className, width = _this$props6.width, height = _this$props6.height, style = _this$props6.style, compact = _this$props6.compact, title = _this$props6.title, desc = _this$props6.desc, others = _objectWithoutProperties2(_this$props6, _excluded2), attrs = (0, _ReactUtils.filterProps)(others), map = {
               CartesianGrid: {
                 handler: this.renderGrid,
                 once: !0
@@ -14556,7 +14553,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             }), this.renderClipPath(), (0, _ReactUtils.renderByOrder)(children, map)), this.renderLegend(), this.renderTooltip());
           }
         }]), CategoricalChartWrapper;
-      }(_react.Component), _class.displayName = chartName, _class.defaultProps = _objectSpread3({
+      }(_react.Component), _defineProperty3(_class, "displayName", chartName), _defineProperty3(_class, "defaultProps", _objectSpread3({
         layout: "horizontal",
         stackOffset: "none",
         barCategoryGap: "10%",
@@ -14569,7 +14566,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         },
         reverseStackOrder: !1,
         syncMethod: "index"
-      }, defaultProps), _class.getDerivedStateFromProps = function(nextProps, prevState) {
+      }, defaultProps)), _defineProperty3(_class, "getDerivedStateFromProps", function(nextProps, prevState) {
         var data = nextProps.data, children = nextProps.children, width = nextProps.width, height = nextProps.height, layout = nextProps.layout, stackOffset = nextProps.stackOffset, margin = nextProps.margin;
         if ((0, _isNil2.default)(prevState.updateId)) {
           var defaultState = createDefaultState(nextProps);
@@ -14622,13 +14619,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           });
         }
         return null;
-      }, _class.renderActiveDot = function(option, props) {
+      }), _defineProperty3(_class, "renderActiveDot", function(option, props) {
         var dot;
         return /* @__PURE__ */ (0, _react.isValidElement)(option) ? dot = /* @__PURE__ */ (0, _react.cloneElement)(option, props) : (0, _isFunction2.default)(option) ? dot = option(props) : dot = /* @__PURE__ */ _react.default.createElement(_Dot.Dot, props), /* @__PURE__ */ _react.default.createElement(_Layer.Layer, {
           className: "recharts-active-dot",
           key: props.key
         }, dot);
-      }, _temp;
+      }), _class;
     };
     exports.generateCategoricalChart = generateCategoricalChart;
   }
@@ -14737,37 +14734,30 @@ var require_Constants = __commonJS({
 var require_Treemap = __commonJS({
   "node_modules/recharts/lib/chart/Treemap.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Treemap = void 0;
-    var _get2 = _interopRequireDefault(require("lodash/get")), _omit2 = _interopRequireDefault(require("lodash/omit")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNaN2 = _interopRequireDefault(require("lodash/isNaN")), _classnames = _interopRequireDefault(require("classnames")), _react = _interopRequireWildcard(require("react")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _Tooltip = require_Tooltip(), _Layer = require_Layer(), _Surface = require_Surface(), _Polygon = require_Polygon(), _Rectangle = require_Rectangle(), _ChartUtils = require_ChartUtils(), _Constants = require_Constants(), _DataUtils = require_DataUtils(), _DOMUtils = require_DOMUtils(), _Global = require_Global(), _ReactUtils = require_ReactUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _get2 = _interopRequireDefault(require("lodash/get")), _omit2 = _interopRequireDefault(require("lodash/omit")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _isNaN2 = _interopRequireDefault(require("lodash/isNaN")), _classnames = _interopRequireDefault(require("classnames")), _react = _interopRequireWildcard(require("react")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _Tooltip = require_Tooltip(), _Layer = require_Layer(), _Surface = require_Surface(), _Polygon = require_Polygon(), _Rectangle = require_Rectangle(), _ChartUtils = require_ChartUtils(), _Constants = require_Constants(), _DataUtils = require_DataUtils(), _DOMUtils = require_DOMUtils(), _Global = require_Global(), _ReactUtils = require_ReactUtils(), _excluded = ["width", "height", "className", "style", "children", "type"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -14776,8 +14766,15 @@ var require_Treemap = __commonJS({
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -14812,19 +14809,19 @@ var require_Treemap = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -14841,7 +14838,11 @@ var require_Treemap = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -14861,7 +14862,7 @@ var require_Treemap = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
     }
@@ -14887,7 +14888,23 @@ var require_Treemap = __commonJS({
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var NODE_VALUE_KEY = "value", computeNode = function computeNode2(_ref) {
       var _objectSpread22, depth = _ref.depth, node = _ref.node, index = _ref.index, valueKey = _ref.valueKey, children = node.children, childDepth = depth + 1, computedChildren = children && children.length ? children.map(function(child, i) {
@@ -14934,7 +14951,7 @@ var require_Treemap = __commonJS({
       (isFlush || rowHeight > parentRect.height) && (rowHeight = parentRect.height);
       for (var curX = parentRect.x, child, _i = 0, len = row.length; _i < len; _i++)
         child = row[_i], child.x = curX, child.y = parentRect.y, child.height = rowHeight, child.width = Math.min(rowHeight ? Math.round(child.area / rowHeight) : 0, parentRect.x + parentRect.width - curX), curX += child.width;
-      return child.z = !0, child.width += parentRect.x + parentRect.width - curX, _objectSpread3(_objectSpread3({}, parentRect), {}, {
+      return child.width += parentRect.x + parentRect.width - curX, _objectSpread3(_objectSpread3({}, parentRect), {}, {
         y: parentRect.y + rowHeight,
         height: parentRect.height - rowHeight
       });
@@ -14943,7 +14960,7 @@ var require_Treemap = __commonJS({
       (isFlush || rowWidth > parentRect.width) && (rowWidth = parentRect.width);
       for (var curY = parentRect.y, child, _i2 = 0, len = row.length; _i2 < len; _i2++)
         child = row[_i2], child.x = parentRect.x, child.y = curY, child.width = rowWidth, child.height = Math.min(rowWidth ? Math.round(child.area / rowWidth) : 0, parentRect.y + parentRect.height - curY), curY += child.height;
-      return child && (child.z = !1, child.height += parentRect.y + parentRect.height - curY), _objectSpread3(_objectSpread3({}, parentRect), {}, {
+      return child && (child.height += parentRect.y + parentRect.height - curY), _objectSpread3(_objectSpread3({}, parentRect), {}, {
         x: parentRect.x + rowWidth,
         width: parentRect.width - rowWidth
       });
@@ -14977,22 +14994,22 @@ var require_Treemap = __commonJS({
         _classCallCheck(this, Treemap2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = _objectSpread3({}, defaultState), _this.handleAnimationEnd = function() {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", _objectSpread3({}, defaultState)), _defineProperty3(_assertThisInitialized(_this), "handleAnimationEnd", function() {
           var onAnimationEnd = _this.props.onAnimationEnd;
           _this.setState({
             isAnimationFinished: !0
           }), (0, _isFunction2.default)(onAnimationEnd) && onAnimationEnd();
-        }, _this.handleAnimationStart = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationStart", function() {
           var onAnimationStart = _this.props.onAnimationStart;
           _this.setState({
             isAnimationFinished: !1
           }), (0, _isFunction2.default)(onAnimationStart) && onAnimationStart();
-        }, _this;
+        }), _this;
       }
       return _createClass(Treemap2, [{
         key: "handleMouseEnter",
         value: function(node, e) {
-          var _this$props = this.props, onMouseEnter = _this$props.onMouseEnter, children = _this$props.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName);
+          var _this$props = this.props, onMouseEnter = _this$props.onMouseEnter, children = _this$props.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip);
           tooltipItem ? this.setState({
             isTooltipActive: !0,
             activeNode: node
@@ -15003,7 +15020,7 @@ var require_Treemap = __commonJS({
       }, {
         key: "handleMouseLeave",
         value: function(node, e) {
-          var _this$props2 = this.props, onMouseLeave = _this$props2.onMouseLeave, children = _this$props2.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName);
+          var _this$props2 = this.props, onMouseLeave = _this$props2.onMouseLeave, children = _this$props2.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip);
           tooltipItem ? this.setState({
             isTooltipActive: !1,
             activeNode: null
@@ -15115,7 +15132,7 @@ var require_Treemap = __commonJS({
       }, {
         key: "renderNode",
         value: function(root, node, i) {
-          var _this3 = this, _this$props7 = this.props, content = _this$props7.content, type = _this$props7.type, nodeProps = _objectSpread3(_objectSpread3(_objectSpread3({}, (0, _types.filterProps)(this.props)), node), {}, {
+          var _this3 = this, _this$props7 = this.props, content = _this$props7.content, type = _this$props7.type, nodeProps = _objectSpread3(_objectSpread3(_objectSpread3({}, (0, _ReactUtils.filterProps)(this.props)), node), {}, {
             root
           }), isLeaf = !node.children || !node.children.length, currentRoot = this.state.currentRoot, isCurrentRootChild = (currentRoot.children || []).filter(function(item) {
             return item.depth === node.depth && item.name === node.name;
@@ -15136,7 +15153,7 @@ var require_Treemap = __commonJS({
       }, {
         key: "renderTooltip",
         value: function() {
-          var _this$props8 = this.props, children = _this$props8.children, nameKey = _this$props8.nameKey, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName);
+          var _this$props8 = this.props, children = _this$props8.children, nameKey = _this$props8.nameKey, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip);
           if (!tooltipItem)
             return null;
           var _this$props9 = this.props, width = _this$props9.width, height = _this$props9.height, _this$state = this.state, isTooltipActive = _this$state.isTooltipActive, activeNode = _this$state.activeNode, viewBox = {
@@ -15192,7 +15209,7 @@ var require_Treemap = __commonJS({
         value: function() {
           if (!(0, _ReactUtils.validateWidthHeight)(this))
             return null;
-          var _this$props11 = this.props, width = _this$props11.width, height = _this$props11.height, className = _this$props11.className, style = _this$props11.style, children = _this$props11.children, type = _this$props11.type, others = _objectWithoutProperties2(_this$props11, ["width", "height", "className", "style", "children", "type"]), attrs = (0, _types.filterProps)(others);
+          var _this$props11 = this.props, width = _this$props11.width, height = _this$props11.height, className = _this$props11.className, style = _this$props11.style, children = _this$props11.children, type = _this$props11.type, others = _objectWithoutProperties2(_this$props11, _excluded), attrs = (0, _ReactUtils.filterProps)(others);
           return /* @__PURE__ */ _react.default.createElement("div", {
             className: (0, _classnames.default)("recharts-wrapper", className),
             style: _objectSpread3(_objectSpread3({}, style), {}, {
@@ -15274,8 +15291,8 @@ var require_Treemap = __commonJS({
       }]), Treemap2;
     }(_react.PureComponent);
     exports.Treemap = Treemap;
-    Treemap.displayName = "Treemap";
-    Treemap.defaultProps = {
+    _defineProperty3(Treemap, "displayName", "Treemap");
+    _defineProperty3(Treemap, "defaultProps", {
       aspectRatio: 0.5 * (1 + Math.sqrt(5)),
       dataKey: "value",
       type: "flat",
@@ -15284,7 +15301,7 @@ var require_Treemap = __commonJS({
       animationBegin: 0,
       animationDuration: 1500,
       animationEasing: "linear"
-    };
+    });
   }
 });
 
@@ -15292,37 +15309,30 @@ var require_Treemap = __commonJS({
 var require_Sankey = __commonJS({
   "node_modules/recharts/lib/chart/Sankey.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Sankey = void 0;
-    var _get2 = _interopRequireDefault(require("lodash/get")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _sumBy2 = _interopRequireDefault(require("lodash/sumBy")), _min2 = _interopRequireDefault(require("lodash/min")), _maxBy2 = _interopRequireDefault(require("lodash/maxBy")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Surface = require_Surface(), _Layer = require_Layer(), _Tooltip = require_Tooltip(), _Rectangle = require_Rectangle(), _ShallowEqual = require_ShallowEqual(), _ReactUtils = require_ReactUtils(), _ChartUtils = require_ChartUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    var _get2 = _interopRequireDefault(require("lodash/get")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _sumBy2 = _interopRequireDefault(require("lodash/sumBy")), _min2 = _interopRequireDefault(require("lodash/min")), _maxBy2 = _interopRequireDefault(require("lodash/maxBy")), _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _Surface = require_Surface(), _Layer = require_Layer(), _Tooltip = require_Tooltip(), _Rectangle = require_Rectangle(), _ShallowEqual = require_ShallowEqual(), _ReactUtils = require_ReactUtils(), _ChartUtils = require_ChartUtils(), _excluded = ["width", "height", "className", "style", "children"], _excluded2 = ["sourceX", "sourceY", "sourceControlX", "targetX", "targetY", "targetControlX", "linkWidth"];
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -15330,6 +15340,13 @@ var require_Sankey = __commonJS({
     }
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
+    }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
     }
     function _objectWithoutProperties2(source, excluded) {
       if (source == null)
@@ -15351,7 +15368,7 @@ var require_Sankey = __commonJS({
       return target;
     }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -15367,19 +15384,19 @@ var require_Sankey = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -15396,7 +15413,11 @@ var require_Sankey = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -15416,7 +15437,7 @@ var require_Sankey = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
     }
@@ -15442,7 +15463,23 @@ var require_Sankey = __commonJS({
       return target;
     }
     function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var defaultCoordinateOfTooltip = {
       x: 0,
@@ -15624,18 +15661,18 @@ var require_Sankey = __commonJS({
         _classCallCheck(this, Sankey2);
         for (var _len2 = arguments.length, args = new Array(_len2), _key = 0; _key < _len2; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           activeElement: null,
           activeElementType: null,
           isTooltipActive: !1,
           nodes: [],
           links: []
-        }, _this;
+        }), _this;
       }
       return _createClass(Sankey2, [{
         key: "handleMouseEnter",
         value: function(el, type, e) {
-          var _this$props = this.props, onMouseEnter = _this$props.onMouseEnter, children = _this$props.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName);
+          var _this$props = this.props, onMouseEnter = _this$props.onMouseEnter, children = _this$props.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip);
           tooltipItem ? this.setState(function(prev) {
             return tooltipItem.props.trigger === "hover" ? _objectSpread3(_objectSpread3({}, prev), {}, {
               activeElement: el,
@@ -15649,7 +15686,7 @@ var require_Sankey = __commonJS({
       }, {
         key: "handleMouseLeave",
         value: function(el, type, e) {
-          var _this$props2 = this.props, onMouseLeave = _this$props2.onMouseLeave, children = _this$props2.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName);
+          var _this$props2 = this.props, onMouseLeave = _this$props2.onMouseLeave, children = _this$props2.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip);
           tooltipItem ? this.setState(function(prev) {
             return tooltipItem.props.trigger === "hover" ? _objectSpread3(_objectSpread3({}, prev), {}, {
               activeElement: void 0,
@@ -15663,7 +15700,7 @@ var require_Sankey = __commonJS({
       }, {
         key: "handleClick",
         value: function(el, type, e) {
-          var _this$props3 = this.props, onClick = _this$props3.onClick, children = _this$props3.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName);
+          var _this$props3 = this.props, onClick = _this$props3.onClick, children = _this$props3.children, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip);
           tooltipItem && tooltipItem.props.trigger === "click" && (this.state.isTooltipActive ? this.setState(function(prev) {
             return _objectSpread3(_objectSpread3({}, prev), {}, {
               activeElement: void 0,
@@ -15701,7 +15738,7 @@ var require_Sankey = __commonJS({
                 source,
                 target
               })
-            }, (0, _types.filterProps)(linkContent)), events = {
+            }, (0, _ReactUtils.filterProps)(linkContent)), events = {
               onMouseEnter: _this2.handleMouseEnter.bind(_this2, linkProps, "link"),
               onMouseLeave: _this2.handleMouseLeave.bind(_this2, linkProps, "link"),
               onClick: _this2.handleClick.bind(_this2, linkProps, "link")
@@ -15719,7 +15756,7 @@ var require_Sankey = __commonJS({
             className: "recharts-sankey-nodes",
             key: "recharts-sankey-nodes"
           }, nodes.map(function(node, i) {
-            var x = node.x, y = node.y, dx = node.dx, dy = node.dy, nodeProps = _objectSpread3(_objectSpread3({}, (0, _types.filterProps)(nodeContent)), {}, {
+            var x = node.x, y = node.y, dx = node.dx, dy = node.dy, nodeProps = _objectSpread3(_objectSpread3({}, (0, _ReactUtils.filterProps)(nodeContent)), {}, {
               x: x + left,
               y: y + top,
               width: dx,
@@ -15739,7 +15776,7 @@ var require_Sankey = __commonJS({
       }, {
         key: "renderTooltip",
         value: function() {
-          var _this$props6 = this.props, children = _this$props6.children, width = _this$props6.width, height = _this$props6.height, nameKey = _this$props6.nameKey, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip.displayName);
+          var _this$props6 = this.props, children = _this$props6.children, width = _this$props6.width, height = _this$props6.height, nameKey = _this$props6.nameKey, tooltipItem = (0, _ReactUtils.findChildByType)(children, _Tooltip.Tooltip);
           if (!tooltipItem)
             return null;
           var _this$state = this.state, isTooltipActive = _this$state.isTooltipActive, activeElement = _this$state.activeElement, activeElementType = _this$state.activeElementType, viewBox = {
@@ -15761,7 +15798,7 @@ var require_Sankey = __commonJS({
         value: function() {
           if (!(0, _ReactUtils.validateWidthHeight)(this))
             return null;
-          var _this$props7 = this.props, width = _this$props7.width, height = _this$props7.height, className = _this$props7.className, style = _this$props7.style, children = _this$props7.children, others = _objectWithoutProperties2(_this$props7, ["width", "height", "className", "style", "children"]), _this$state2 = this.state, links2 = _this$state2.links, nodes = _this$state2.nodes, attrs = (0, _types.filterProps)(others);
+          var _this$props7 = this.props, width = _this$props7.width, height = _this$props7.height, className = _this$props7.className, style = _this$props7.style, children = _this$props7.children, others = _objectWithoutProperties2(_this$props7, _excluded), _this$state2 = this.state, links2 = _this$state2.links, nodes = _this$state2.nodes, attrs = (0, _ReactUtils.filterProps)(others);
           return /* @__PURE__ */ _react.default.createElement("div", {
             className: (0, _classnames.default)("recharts-wrapper", className),
             style: _objectSpread3(_objectSpread3({}, style), {}, {
@@ -15810,7 +15847,7 @@ var require_Sankey = __commonJS({
             return /* @__PURE__ */ _react.default.cloneElement(option, props);
           if ((0, _isFunction2.default)(option))
             return option(props);
-          var sourceX = props.sourceX, sourceY = props.sourceY, sourceControlX = props.sourceControlX, targetX = props.targetX, targetY = props.targetY, targetControlX = props.targetControlX, linkWidth = props.linkWidth, others = _objectWithoutProperties2(props, ["sourceX", "sourceY", "sourceControlX", "targetX", "targetY", "targetControlX", "linkWidth"]);
+          var sourceX = props.sourceX, sourceY = props.sourceY, sourceControlX = props.sourceControlX, targetX = props.targetX, targetY = props.targetY, targetControlX = props.targetControlX, linkWidth = props.linkWidth, others = _objectWithoutProperties2(props, _excluded2);
           return /* @__PURE__ */ _react.default.createElement("path", _extends({
             className: "recharts-sankey-link",
             d: `
@@ -15821,7 +15858,7 @@ var require_Sankey = __commonJS({
             stroke: "#333",
             strokeWidth: linkWidth,
             strokeOpacity: "0.2"
-          }, (0, _types.filterProps)(others)));
+          }, (0, _ReactUtils.filterProps)(others)));
         }
       }, {
         key: "renderNodeItem",
@@ -15830,15 +15867,15 @@ var require_Sankey = __commonJS({
             className: "recharts-sankey-node",
             fill: "#0088fe",
             fillOpacity: "0.8"
-          }, (0, _types.filterProps)(props), {
+          }, (0, _ReactUtils.filterProps)(props), {
             role: "img"
           }));
         }
       }]), Sankey2;
     }(_react.PureComponent);
     exports.Sankey = Sankey;
-    Sankey.displayName = "Sankey";
-    Sankey.defaultProps = {
+    _defineProperty3(Sankey, "displayName", "Sankey");
+    _defineProperty3(Sankey, "defaultProps", {
       nameKey: "name",
       dataKey: "value",
       nodePadding: 10,
@@ -15851,7 +15888,7 @@ var require_Sankey = __commonJS({
         bottom: 5,
         left: 5
       }
-    };
+    });
   }
 });
 
@@ -16008,47 +16045,47 @@ var require_ComposedChart = __commonJS({
 var require_Trapezoid = __commonJS({
   "node_modules/recharts/lib/shape/Trapezoid.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Trapezoid = void 0;
-    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _types = require_types();
+    var _react = _interopRequireWildcard(require("react")), _classnames = _interopRequireDefault(require("classnames")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _ReactUtils = require_ReactUtils();
     function _interopRequireDefault(obj) {
       return obj && obj.__esModule ? obj : { default: obj };
     }
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
       return newObj.default = obj, cache && cache.set(obj, newObj), newObj;
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -16064,19 +16101,19 @@ var require_Trapezoid = __commonJS({
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -16093,7 +16130,11 @@ var require_Trapezoid = __commonJS({
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -16113,9 +16154,28 @@ var require_Trapezoid = __commonJS({
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var getTrapezoidPath = function(x, y, upperWidth, lowerWidth, height) {
       var widthGap = upperWidth - lowerWidth, path;
@@ -16128,9 +16188,9 @@ var require_Trapezoid = __commonJS({
         _classCallCheck(this, Trapezoid2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           totalLength: -1
-        }, _this.node = void 0, _this;
+        }), _this;
       }
       return _createClass(Trapezoid2, [{
         key: "componentDidMount",
@@ -16180,14 +16240,14 @@ var require_Trapezoid = __commonJS({
               begin: animationBegin,
               duration: animationDuration,
               easing: animationEasing
-            }, /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(_this2.props, !0), {
+            }, /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(_this2.props, !0), {
               className: layerClass,
               d: getTrapezoidPath(currX, currY, currUpperWidth, currLowerWidth, currHeight),
               ref: function(node) {
                 _this2.node = node;
               }
             })));
-          }) : /* @__PURE__ */ _react.default.createElement("g", null, /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _types.filterProps)(this.props, !0), {
+          }) : /* @__PURE__ */ _react.default.createElement("g", null, /* @__PURE__ */ _react.default.createElement("path", _extends({}, (0, _ReactUtils.filterProps)(this.props, !0), {
             className: layerClass,
             d: getTrapezoidPath(x, y, upperWidth, lowerWidth, height)
           })));
@@ -16195,7 +16255,7 @@ var require_Trapezoid = __commonJS({
       }]), Trapezoid2;
     }(_react.PureComponent);
     exports.Trapezoid = Trapezoid;
-    Trapezoid.defaultProps = {
+    _defineProperty3(Trapezoid, "defaultProps", {
       x: 0,
       y: 0,
       upperWidth: 0,
@@ -16205,7 +16265,7 @@ var require_Trapezoid = __commonJS({
       animationBegin: 0,
       animationDuration: 1500,
       animationEasing: "ease"
-    };
+    });
   }
 });
 
@@ -16213,37 +16273,30 @@ var require_Trapezoid = __commonJS({
 var require_Funnel = __commonJS({
   "node_modules/recharts/lib/numberAxis/Funnel.js"(exports) {
     "use strict";
-    function _typeof2(obj) {
-      return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof2 = function(obj2) {
-        return typeof obj2;
-      } : _typeof2 = function(obj2) {
-        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-      }, _typeof2(obj);
-    }
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
     exports.Funnel = void 0;
     var _isEqual2 = _interopRequireDefault(require("lodash/isEqual")), _isPlainObject2 = _interopRequireDefault(require("lodash/isPlainObject")), _isFunction2 = _interopRequireDefault(require("lodash/isFunction")), _omit2 = _interopRequireDefault(require("lodash/omit")), _isString2 = _interopRequireDefault(require("lodash/isString")), _isNumber2 = _interopRequireDefault(require("lodash/isNumber")), _react = _interopRequireWildcard(require("react")), _reactSmooth = _interopRequireDefault(require("react-smooth")), _classnames = _interopRequireDefault(require("classnames")), _Layer = require_Layer(), _Trapezoid = require_Trapezoid(), _LabelList = require_LabelList(), _Cell = require_Cell(), _ReactUtils = require_ReactUtils(), _Global = require_Global(), _DataUtils = require_DataUtils(), _ChartUtils = require_ChartUtils(), _types = require_types();
-    function _getRequireWildcardCache() {
+    function _getRequireWildcardCache(nodeInterop) {
       if (typeof WeakMap != "function")
         return null;
-      var cache = /* @__PURE__ */ new WeakMap();
-      return _getRequireWildcardCache = function() {
-        return cache;
-      }, cache;
+      var cacheBabelInterop = /* @__PURE__ */ new WeakMap(), cacheNodeInterop = /* @__PURE__ */ new WeakMap();
+      return (_getRequireWildcardCache = function(nodeInterop2) {
+        return nodeInterop2 ? cacheNodeInterop : cacheBabelInterop;
+      })(nodeInterop);
     }
-    function _interopRequireWildcard(obj) {
-      if (obj && obj.__esModule)
+    function _interopRequireWildcard(obj, nodeInterop) {
+      if (!nodeInterop && obj && obj.__esModule)
         return obj;
       if (obj === null || _typeof2(obj) !== "object" && typeof obj != "function")
         return { default: obj };
-      var cache = _getRequireWildcardCache();
+      var cache = _getRequireWildcardCache(nodeInterop);
       if (cache && cache.has(obj))
         return cache.get(obj);
       var newObj = {}, hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;
       for (var key in obj)
-        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) {
           var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;
           desc && (desc.get || desc.set) ? Object.defineProperty(newObj, key, desc) : newObj[key] = obj[key];
         }
@@ -16277,16 +16330,23 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       return arr2;
     }
     function _iterableToArrayLimit(arr, i) {
-      if (!(typeof Symbol > "u" || !(Symbol.iterator in Object(arr)))) {
-        var _arr = [], _n = !0, _d = !1, _e = void 0;
+      var _i = arr == null ? null : typeof Symbol < "u" && arr[Symbol.iterator] || arr["@@iterator"];
+      if (_i != null) {
+        var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1;
         try {
-          for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done) && (_arr.push(_s.value), !(i && _arr.length === i)); _n = !0)
-            ;
+          if (_x = (_i = _i.call(arr)).next, i === 0) {
+            if (Object(_i) !== _i)
+              return;
+            _n = !1;
+          } else
+            for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0)
+              ;
         } catch (err) {
           _d = !0, _e = err;
         } finally {
           try {
-            !_n && _i.return != null && _i.return();
+            if (!_n && _i.return != null && (_r = _i.return(), Object(_r) !== _r))
+              return;
           } finally {
             if (_d)
               throw _e;
@@ -16299,8 +16359,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       if (Array.isArray(arr))
         return arr;
     }
+    function _typeof2(obj) {
+      return _typeof2 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+        return typeof obj2;
+      } : function(obj2) {
+        return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+      }, _typeof2(obj);
+    }
     function _extends() {
-      return _extends = Object.assign || function(target) {
+      return _extends = Object.assign ? Object.assign.bind() : function(target) {
         for (var i = 1; i < arguments.length; i++) {
           var source = arguments[i];
           for (var key in source)
@@ -16330,9 +16397,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
       return target;
     }
-    function _defineProperty3(obj, key, value) {
-      return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-    }
     function _classCallCheck(instance, Constructor) {
       if (!(instance instanceof Constructor))
         throw new TypeError("Cannot call a class as a function");
@@ -16340,19 +16404,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     function _defineProperties(target, props) {
       for (var i = 0; i < props.length; i++) {
         var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, descriptor.key, descriptor);
+        descriptor.enumerable = descriptor.enumerable || !1, descriptor.configurable = !0, "value" in descriptor && (descriptor.writable = !0), Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor);
       }
     }
     function _createClass(Constructor, protoProps, staticProps) {
-      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Constructor;
+      return protoProps && _defineProperties(Constructor.prototype, protoProps), staticProps && _defineProperties(Constructor, staticProps), Object.defineProperty(Constructor, "prototype", { writable: !1 }), Constructor;
     }
     function _inherits(subClass, superClass) {
       if (typeof superClass != "function" && superClass !== null)
         throw new TypeError("Super expression must either be null or a function");
-      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), superClass && _setPrototypeOf(subClass, superClass);
+      subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: !0, configurable: !0 } }), Object.defineProperty(subClass, "prototype", { writable: !1 }), superClass && _setPrototypeOf(subClass, superClass);
     }
     function _setPrototypeOf(o, p) {
-      return _setPrototypeOf = Object.setPrototypeOf || function(o2, p2) {
+      return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o2, p2) {
         return o2.__proto__ = p2, o2;
       }, _setPrototypeOf(o, p);
     }
@@ -16369,7 +16433,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       };
     }
     function _possibleConstructorReturn(self2, call) {
-      return call && (_typeof2(call) === "object" || typeof call == "function") ? call : _assertThisInitialized(self2);
+      if (call && (_typeof2(call) === "object" || typeof call == "function"))
+        return call;
+      if (call !== void 0)
+        throw new TypeError("Derived constructors may only return object or undefined");
+      return _assertThisInitialized(self2);
     }
     function _assertThisInitialized(self2) {
       if (self2 === void 0)
@@ -16389,9 +16457,28 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
     }
     function _getPrototypeOf(o) {
-      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function(o2) {
+      return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o2) {
         return o2.__proto__ || Object.getPrototypeOf(o2);
       }, _getPrototypeOf(o);
+    }
+    function _defineProperty3(obj, key, value) {
+      return key = _toPropertyKey(key), key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+    }
+    function _toPropertyKey(arg) {
+      var key = _toPrimitive(arg, "string");
+      return _typeof2(key) === "symbol" ? key : String(key);
+    }
+    function _toPrimitive(input, hint) {
+      if (_typeof2(input) !== "object" || input === null)
+        return input;
+      var prim = input[Symbol.toPrimitive];
+      if (prim !== void 0) {
+        var res = prim.call(input, hint || "default");
+        if (_typeof2(res) !== "object")
+          return res;
+        throw new TypeError("@@toPrimitive must return a primitive value.");
+      }
+      return (hint === "string" ? String : Number)(input);
     }
     var Funnel = /* @__PURE__ */ function(_PureComponent) {
       _inherits(Funnel2, _PureComponent);
@@ -16401,19 +16488,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         _classCallCheck(this, Funnel2);
         for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)
           args[_key] = arguments[_key];
-        return _this = _super.call.apply(_super, [this].concat(args)), _this.state = {
+        return _this = _super.call.apply(_super, [this].concat(args)), _defineProperty3(_assertThisInitialized(_this), "state", {
           isAnimationFinished: !1
-        }, _this.handleAnimationEnd = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationEnd", function() {
           var onAnimationEnd = _this.props.onAnimationEnd;
           _this.setState({
             isAnimationFinished: !0
           }), (0, _isFunction2.default)(onAnimationEnd) && onAnimationEnd();
-        }, _this.handleAnimationStart = function() {
+        }), _defineProperty3(_assertThisInitialized(_this), "handleAnimationStart", function() {
           var onAnimationStart = _this.props.onAnimationStart;
           _this.setState({
             isAnimationFinished: !1
           }), (0, _isFunction2.default)(onAnimationStart) && onAnimationStart();
-        }, _this;
+        }), _this;
       }
       return _createClass(Funnel2, [{
         key: "isActiveIndex",
@@ -16516,8 +16603,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }]), Funnel2;
     }(_react.PureComponent);
     exports.Funnel = Funnel;
-    Funnel.displayName = "Funnel";
-    Funnel.defaultProps = {
+    _defineProperty3(Funnel, "displayName", "Funnel");
+    _defineProperty3(Funnel, "defaultProps", {
       stroke: "#fff",
       fill: "#808080",
       legendType: "rect",
@@ -16529,9 +16616,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       animationEasing: "ease",
       nameKey: "name",
       lastShapeType: "triangle"
-    };
-    Funnel.getRealFunnelData = function(item) {
-      var _item$props = item.props, data = _item$props.data, children = _item$props.children, presentationProps = (0, _types.filterProps)(item.props), cells = (0, _ReactUtils.findAllByType)(children, _Cell.Cell.displayName);
+    });
+    _defineProperty3(Funnel, "getRealFunnelData", function(item) {
+      var _item$props = item.props, data = _item$props.data, children = _item$props.children, presentationProps = (0, _ReactUtils.filterProps)(item.props), cells = (0, _ReactUtils.findAllByType)(children, _Cell.Cell);
       return data && data.length ? data.map(function(entry2, index) {
         return _objectSpread3(_objectSpread3(_objectSpread3({
           payload: entry2
@@ -16539,8 +16626,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }) : cells && cells.length ? cells.map(function(cell) {
         return _objectSpread3(_objectSpread3({}, presentationProps), cell.props);
       }) : [];
-    };
-    Funnel.getRealWidthHeight = function(item, offset) {
+    });
+    _defineProperty3(Funnel, "getRealWidthHeight", function(item, offset) {
       var customWidth = item.props.width, width = offset.width, height = offset.height, left = offset.left, right = offset.right, top = offset.top, bottom = offset.bottom, realHeight = height, realWidth = width;
       return (0, _isNumber2.default)(customWidth) ? realWidth = customWidth : (0, _isString2.default)(customWidth) && (realWidth = realWidth * parseFloat(customWidth) / 100), {
         realWidth: realWidth - left - right - 50,
@@ -16548,8 +16635,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         offsetX: (width - realWidth) / 2,
         offsetY: (height - realHeight) / 2
       };
-    };
-    Funnel.getComposedData = function(_ref2) {
+    });
+    _defineProperty3(Funnel, "getComposedData", function(_ref2) {
       var item = _ref2.item, offset = _ref2.offset, funnelData = Funnel.getRealFunnelData(item), _item$props2 = item.props, dataKey = _item$props2.dataKey, nameKey = _item$props2.nameKey, tooltipType = _item$props2.tooltipType, lastShapeType = _item$props2.lastShapeType, reversed = _item$props2.reversed, left = offset.left, top = offset.top, _Funnel$getRealWidthH = Funnel.getRealWidthHeight(item, offset), realHeight = _Funnel$getRealWidthH.realHeight, realWidth = _Funnel$getRealWidthH.realWidth, offsetX = _Funnel$getRealWidthH.offsetX, offsetY = _Funnel$getRealWidthH.offsetY, maxValue = Math.max.apply(null, funnelData.map(function(entry2) {
         return (0, _ChartUtils.getValueByDataKey)(entry2, dataKey, 0);
       })), len = funnelData.length, rowHeight = realHeight / len, parentViewBox = {
@@ -16619,7 +16706,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
         trapezoids,
         data: funnelData
       };
-    };
+    });
   }
 });
 
@@ -16652,166 +16739,34 @@ var require_lib2 = __commonJS({
     Object.defineProperty(exports, "__esModule", {
       value: !0
     });
-    Object.defineProperty(exports, "Surface", {
+    Object.defineProperty(exports, "Area", {
       enumerable: !0,
       get: function() {
-        return _Surface.Surface;
+        return _Area.Area;
       }
     });
-    Object.defineProperty(exports, "Layer", {
+    Object.defineProperty(exports, "AreaChart", {
       enumerable: !0,
       get: function() {
-        return _Layer.Layer;
+        return _AreaChart.AreaChart;
       }
     });
-    Object.defineProperty(exports, "Legend", {
+    Object.defineProperty(exports, "Bar", {
       enumerable: !0,
       get: function() {
-        return _Legend.Legend;
+        return _Bar.Bar;
       }
     });
-    Object.defineProperty(exports, "Tooltip", {
+    Object.defineProperty(exports, "BarChart", {
       enumerable: !0,
       get: function() {
-        return _Tooltip.Tooltip;
-      }
-    });
-    Object.defineProperty(exports, "ResponsiveContainer", {
-      enumerable: !0,
-      get: function() {
-        return _ResponsiveContainer.ResponsiveContainer;
-      }
-    });
-    Object.defineProperty(exports, "Cell", {
-      enumerable: !0,
-      get: function() {
-        return _Cell.Cell;
-      }
-    });
-    Object.defineProperty(exports, "Text", {
-      enumerable: !0,
-      get: function() {
-        return _Text.Text;
-      }
-    });
-    Object.defineProperty(exports, "Label", {
-      enumerable: !0,
-      get: function() {
-        return _Label.Label;
-      }
-    });
-    Object.defineProperty(exports, "LabelList", {
-      enumerable: !0,
-      get: function() {
-        return _LabelList.LabelList;
-      }
-    });
-    Object.defineProperty(exports, "Customized", {
-      enumerable: !0,
-      get: function() {
-        return _Customized.Customized;
-      }
-    });
-    Object.defineProperty(exports, "Sector", {
-      enumerable: !0,
-      get: function() {
-        return _Sector.Sector;
-      }
-    });
-    Object.defineProperty(exports, "Curve", {
-      enumerable: !0,
-      get: function() {
-        return _Curve.Curve;
-      }
-    });
-    Object.defineProperty(exports, "Rectangle", {
-      enumerable: !0,
-      get: function() {
-        return _Rectangle.Rectangle;
-      }
-    });
-    Object.defineProperty(exports, "Polygon", {
-      enumerable: !0,
-      get: function() {
-        return _Polygon.Polygon;
-      }
-    });
-    Object.defineProperty(exports, "Dot", {
-      enumerable: !0,
-      get: function() {
-        return _Dot.Dot;
-      }
-    });
-    Object.defineProperty(exports, "Cross", {
-      enumerable: !0,
-      get: function() {
-        return _Cross.Cross;
-      }
-    });
-    Object.defineProperty(exports, "Symbols", {
-      enumerable: !0,
-      get: function() {
-        return _Symbols.Symbols;
-      }
-    });
-    Object.defineProperty(exports, "PolarGrid", {
-      enumerable: !0,
-      get: function() {
-        return _PolarGrid.PolarGrid;
-      }
-    });
-    Object.defineProperty(exports, "PolarRadiusAxis", {
-      enumerable: !0,
-      get: function() {
-        return _PolarRadiusAxis.PolarRadiusAxis;
-      }
-    });
-    Object.defineProperty(exports, "PolarAngleAxis", {
-      enumerable: !0,
-      get: function() {
-        return _PolarAngleAxis.PolarAngleAxis;
-      }
-    });
-    Object.defineProperty(exports, "Pie", {
-      enumerable: !0,
-      get: function() {
-        return _Pie.Pie;
-      }
-    });
-    Object.defineProperty(exports, "Radar", {
-      enumerable: !0,
-      get: function() {
-        return _Radar.Radar;
-      }
-    });
-    Object.defineProperty(exports, "RadialBar", {
-      enumerable: !0,
-      get: function() {
-        return _RadialBar.RadialBar;
+        return _BarChart.BarChart;
       }
     });
     Object.defineProperty(exports, "Brush", {
       enumerable: !0,
       get: function() {
         return _Brush.Brush;
-      }
-    });
-    Object.defineProperty(exports, "ReferenceLine", {
-      enumerable: !0,
-      get: function() {
-        return _ReferenceLine.ReferenceLine;
-      }
-    });
-    Object.defineProperty(exports, "ReferenceDot", {
-      enumerable: !0,
-      get: function() {
-        return _ReferenceDot.ReferenceDot;
-      }
-    });
-    Object.defineProperty(exports, "ReferenceArea", {
-      enumerable: !0,
-      get: function() {
-        return _ReferenceArea.ReferenceArea;
       }
     });
     Object.defineProperty(exports, "CartesianAxis", {
@@ -16826,28 +16781,250 @@ var require_lib2 = __commonJS({
         return _CartesianGrid.CartesianGrid;
       }
     });
+    Object.defineProperty(exports, "Cell", {
+      enumerable: !0,
+      get: function() {
+        return _Cell.Cell;
+      }
+    });
+    Object.defineProperty(exports, "ComposedChart", {
+      enumerable: !0,
+      get: function() {
+        return _ComposedChart.ComposedChart;
+      }
+    });
+    Object.defineProperty(exports, "Cross", {
+      enumerable: !0,
+      get: function() {
+        return _Cross.Cross;
+      }
+    });
+    Object.defineProperty(exports, "Curve", {
+      enumerable: !0,
+      get: function() {
+        return _Curve.Curve;
+      }
+    });
+    Object.defineProperty(exports, "Customized", {
+      enumerable: !0,
+      get: function() {
+        return _Customized.Customized;
+      }
+    });
+    Object.defineProperty(exports, "Dot", {
+      enumerable: !0,
+      get: function() {
+        return _Dot.Dot;
+      }
+    });
+    Object.defineProperty(exports, "ErrorBar", {
+      enumerable: !0,
+      get: function() {
+        return _ErrorBar.ErrorBar;
+      }
+    });
+    Object.defineProperty(exports, "Funnel", {
+      enumerable: !0,
+      get: function() {
+        return _Funnel.Funnel;
+      }
+    });
+    Object.defineProperty(exports, "FunnelChart", {
+      enumerable: !0,
+      get: function() {
+        return _FunnelChart.FunnelChart;
+      }
+    });
+    Object.defineProperty(exports, "Global", {
+      enumerable: !0,
+      get: function() {
+        return _Global.Global;
+      }
+    });
+    Object.defineProperty(exports, "Label", {
+      enumerable: !0,
+      get: function() {
+        return _Label.Label;
+      }
+    });
+    Object.defineProperty(exports, "LabelList", {
+      enumerable: !0,
+      get: function() {
+        return _LabelList.LabelList;
+      }
+    });
+    Object.defineProperty(exports, "Layer", {
+      enumerable: !0,
+      get: function() {
+        return _Layer.Layer;
+      }
+    });
+    Object.defineProperty(exports, "Legend", {
+      enumerable: !0,
+      get: function() {
+        return _Legend.Legend;
+      }
+    });
     Object.defineProperty(exports, "Line", {
       enumerable: !0,
       get: function() {
         return _Line.Line;
       }
     });
-    Object.defineProperty(exports, "Area", {
+    Object.defineProperty(exports, "LineChart", {
       enumerable: !0,
       get: function() {
-        return _Area.Area;
+        return _LineChart.LineChart;
       }
     });
-    Object.defineProperty(exports, "Bar", {
+    Object.defineProperty(exports, "Pie", {
       enumerable: !0,
       get: function() {
-        return _Bar.Bar;
+        return _Pie.Pie;
+      }
+    });
+    Object.defineProperty(exports, "PieChart", {
+      enumerable: !0,
+      get: function() {
+        return _PieChart.PieChart;
+      }
+    });
+    Object.defineProperty(exports, "PolarAngleAxis", {
+      enumerable: !0,
+      get: function() {
+        return _PolarAngleAxis.PolarAngleAxis;
+      }
+    });
+    Object.defineProperty(exports, "PolarGrid", {
+      enumerable: !0,
+      get: function() {
+        return _PolarGrid.PolarGrid;
+      }
+    });
+    Object.defineProperty(exports, "PolarRadiusAxis", {
+      enumerable: !0,
+      get: function() {
+        return _PolarRadiusAxis.PolarRadiusAxis;
+      }
+    });
+    Object.defineProperty(exports, "Polygon", {
+      enumerable: !0,
+      get: function() {
+        return _Polygon.Polygon;
+      }
+    });
+    Object.defineProperty(exports, "Radar", {
+      enumerable: !0,
+      get: function() {
+        return _Radar.Radar;
+      }
+    });
+    Object.defineProperty(exports, "RadarChart", {
+      enumerable: !0,
+      get: function() {
+        return _RadarChart.RadarChart;
+      }
+    });
+    Object.defineProperty(exports, "RadialBar", {
+      enumerable: !0,
+      get: function() {
+        return _RadialBar.RadialBar;
+      }
+    });
+    Object.defineProperty(exports, "RadialBarChart", {
+      enumerable: !0,
+      get: function() {
+        return _RadialBarChart.RadialBarChart;
+      }
+    });
+    Object.defineProperty(exports, "Rectangle", {
+      enumerable: !0,
+      get: function() {
+        return _Rectangle.Rectangle;
+      }
+    });
+    Object.defineProperty(exports, "ReferenceArea", {
+      enumerable: !0,
+      get: function() {
+        return _ReferenceArea.ReferenceArea;
+      }
+    });
+    Object.defineProperty(exports, "ReferenceDot", {
+      enumerable: !0,
+      get: function() {
+        return _ReferenceDot.ReferenceDot;
+      }
+    });
+    Object.defineProperty(exports, "ReferenceLine", {
+      enumerable: !0,
+      get: function() {
+        return _ReferenceLine.ReferenceLine;
+      }
+    });
+    Object.defineProperty(exports, "ResponsiveContainer", {
+      enumerable: !0,
+      get: function() {
+        return _ResponsiveContainer.ResponsiveContainer;
+      }
+    });
+    Object.defineProperty(exports, "Sankey", {
+      enumerable: !0,
+      get: function() {
+        return _Sankey.Sankey;
       }
     });
     Object.defineProperty(exports, "Scatter", {
       enumerable: !0,
       get: function() {
         return _Scatter.Scatter;
+      }
+    });
+    Object.defineProperty(exports, "ScatterChart", {
+      enumerable: !0,
+      get: function() {
+        return _ScatterChart.ScatterChart;
+      }
+    });
+    Object.defineProperty(exports, "Sector", {
+      enumerable: !0,
+      get: function() {
+        return _Sector.Sector;
+      }
+    });
+    Object.defineProperty(exports, "Surface", {
+      enumerable: !0,
+      get: function() {
+        return _Surface.Surface;
+      }
+    });
+    Object.defineProperty(exports, "Symbols", {
+      enumerable: !0,
+      get: function() {
+        return _Symbols.Symbols;
+      }
+    });
+    Object.defineProperty(exports, "Text", {
+      enumerable: !0,
+      get: function() {
+        return _Text.Text;
+      }
+    });
+    Object.defineProperty(exports, "Tooltip", {
+      enumerable: !0,
+      get: function() {
+        return _Tooltip.Tooltip;
+      }
+    });
+    Object.defineProperty(exports, "Trapezoid", {
+      enumerable: !0,
+      get: function() {
+        return _Trapezoid.Trapezoid;
+      }
+    });
+    Object.defineProperty(exports, "Treemap", {
+      enumerable: !0,
+      get: function() {
+        return _Treemap.Treemap;
       }
     });
     Object.defineProperty(exports, "XAxis", {
@@ -16866,96 +17043,6 @@ var require_lib2 = __commonJS({
       enumerable: !0,
       get: function() {
         return _ZAxis.ZAxis;
-      }
-    });
-    Object.defineProperty(exports, "ErrorBar", {
-      enumerable: !0,
-      get: function() {
-        return _ErrorBar.ErrorBar;
-      }
-    });
-    Object.defineProperty(exports, "LineChart", {
-      enumerable: !0,
-      get: function() {
-        return _LineChart.LineChart;
-      }
-    });
-    Object.defineProperty(exports, "BarChart", {
-      enumerable: !0,
-      get: function() {
-        return _BarChart.BarChart;
-      }
-    });
-    Object.defineProperty(exports, "PieChart", {
-      enumerable: !0,
-      get: function() {
-        return _PieChart.PieChart;
-      }
-    });
-    Object.defineProperty(exports, "Treemap", {
-      enumerable: !0,
-      get: function() {
-        return _Treemap.Treemap;
-      }
-    });
-    Object.defineProperty(exports, "Sankey", {
-      enumerable: !0,
-      get: function() {
-        return _Sankey.Sankey;
-      }
-    });
-    Object.defineProperty(exports, "RadarChart", {
-      enumerable: !0,
-      get: function() {
-        return _RadarChart.RadarChart;
-      }
-    });
-    Object.defineProperty(exports, "ScatterChart", {
-      enumerable: !0,
-      get: function() {
-        return _ScatterChart.ScatterChart;
-      }
-    });
-    Object.defineProperty(exports, "AreaChart", {
-      enumerable: !0,
-      get: function() {
-        return _AreaChart.AreaChart;
-      }
-    });
-    Object.defineProperty(exports, "RadialBarChart", {
-      enumerable: !0,
-      get: function() {
-        return _RadialBarChart.RadialBarChart;
-      }
-    });
-    Object.defineProperty(exports, "ComposedChart", {
-      enumerable: !0,
-      get: function() {
-        return _ComposedChart.ComposedChart;
-      }
-    });
-    Object.defineProperty(exports, "Funnel", {
-      enumerable: !0,
-      get: function() {
-        return _Funnel.Funnel;
-      }
-    });
-    Object.defineProperty(exports, "FunnelChart", {
-      enumerable: !0,
-      get: function() {
-        return _FunnelChart.FunnelChart;
-      }
-    });
-    Object.defineProperty(exports, "Trapezoid", {
-      enumerable: !0,
-      get: function() {
-        return _Trapezoid.Trapezoid;
-      }
-    });
-    Object.defineProperty(exports, "Global", {
-      enumerable: !0,
-      get: function() {
-        return _Global.Global;
       }
     });
     var _Surface = require_Surface(), _Layer = require_Layer(), _Legend = require_Legend(), _Tooltip = require_Tooltip(), _ResponsiveContainer = require_ResponsiveContainer(), _Cell = require_Cell(), _Text = require_Text(), _Label = require_Label(), _LabelList = require_LabelList(), _Customized = require_Customized(), _Sector = require_Sector(), _Curve = require_Curve(), _Rectangle = require_Rectangle(), _Polygon = require_Polygon(), _Dot = require_Dot(), _Cross = require_Cross(), _Symbols = require_Symbols(), _PolarGrid = require_PolarGrid(), _PolarRadiusAxis = require_PolarRadiusAxis(), _PolarAngleAxis = require_PolarAngleAxis(), _Pie = require_Pie(), _Radar = require_Radar(), _RadialBar = require_RadialBar(), _Brush = require_Brush(), _ReferenceLine = require_ReferenceLine(), _ReferenceDot = require_ReferenceDot(), _ReferenceArea = require_ReferenceArea(), _CartesianAxis = require_CartesianAxis(), _CartesianGrid = require_CartesianGrid(), _Line = require_Line(), _Area = require_Area(), _Bar = require_Bar(), _Scatter = require_Scatter(), _XAxis = require_XAxis(), _YAxis = require_YAxis(), _ZAxis = require_ZAxis(), _ErrorBar = require_ErrorBar(), _LineChart = require_LineChart(), _BarChart = require_BarChart(), _PieChart = require_PieChart(), _Treemap = require_Treemap(), _Sankey = require_Sankey(), _RadarChart = require_RadarChart(), _ScatterChart = require_ScatterChart(), _AreaChart = require_AreaChart(), _RadialBarChart = require_RadialBarChart(), _ComposedChart = require_ComposedChart(), _Funnel = require_Funnel(), _FunnelChart = require_FunnelChart(), _Trapezoid = require_Trapezoid(), _Global = require_Global();
@@ -17026,8 +17113,472 @@ var import_node5 = require("@remix-run/node"), import_react14 = require("@remix-
 // app/styles/app.css
 var app_default = "/build/_assets/app-2PZCIP3C.css";
 
+// app/components/ui/layout/index.tsx
+var import_react11 = require("react"), import_use_resize_observer = __toESM(require("use-resize-observer"));
+
+// app/store/configure-store.ts
+var import_toolkit9 = require("@reduxjs/toolkit"), import_redux_persist = __toESM(require_lib());
+
+// node_modules/redux-persist/es/constants.js
+var KEY_PREFIX = "persist:", FLUSH = "persist/FLUSH", REHYDRATE = "persist/REHYDRATE", PAUSE = "persist/PAUSE", PERSIST = "persist/PERSIST", PURGE = "persist/PURGE";
+var DEFAULT_VERSION = -1;
+
+// node_modules/redux-persist/es/stateReconciler/autoMergeLevel1.js
+function _typeof(obj) {
+  return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof = function(obj2) {
+    return typeof obj2;
+  } : _typeof = function(obj2) {
+    return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+  }, _typeof(obj);
+}
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function(sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    i % 2 ? ownKeys(source, !0).forEach(function(key) {
+      _defineProperty(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(source).forEach(function(key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+  return target;
+}
+function _defineProperty(obj, key, value) {
+  return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function autoMergeLevel1(inboundState, originalState, reducedState, _ref) {
+  var debug = _ref.debug, newState = _objectSpread({}, reducedState);
+  return inboundState && _typeof(inboundState) === "object" && Object.keys(inboundState).forEach(function(key) {
+    if (key !== "_persist") {
+      if (originalState[key] !== reducedState[key]) {
+        debug && console.log("redux-persist/stateReconciler: sub state for key `%s` modified, skipping.", key);
+        return;
+      }
+      newState[key] = inboundState[key];
+    }
+  }), debug && inboundState && _typeof(inboundState) === "object" && console.log("redux-persist/stateReconciler: rehydrated keys '".concat(Object.keys(inboundState).join(", "), "'")), newState;
+}
+
+// node_modules/redux-persist/es/createPersistoid.js
+function createPersistoid(config) {
+  var blacklist = config.blacklist || null, whitelist = config.whitelist || null, transforms = config.transforms || [], throttle = config.throttle || 0, storageKey = "".concat(config.keyPrefix !== void 0 ? config.keyPrefix : KEY_PREFIX).concat(config.key), storage4 = config.storage, serialize;
+  config.serialize === !1 ? serialize = function(x) {
+    return x;
+  } : typeof config.serialize == "function" ? serialize = config.serialize : serialize = defaultSerialize;
+  var writeFailHandler = config.writeFailHandler || null, lastState = {}, stagedState = {}, keysToProcess = [], timeIterator = null, writePromise = null, update = function(state) {
+    Object.keys(state).forEach(function(key) {
+      !passWhitelistBlacklist(key) || lastState[key] !== state[key] && keysToProcess.indexOf(key) === -1 && keysToProcess.push(key);
+    }), Object.keys(lastState).forEach(function(key) {
+      state[key] === void 0 && passWhitelistBlacklist(key) && keysToProcess.indexOf(key) === -1 && lastState[key] !== void 0 && keysToProcess.push(key);
+    }), timeIterator === null && (timeIterator = setInterval(processNextKey, throttle)), lastState = state;
+  };
+  function processNextKey() {
+    if (keysToProcess.length === 0) {
+      timeIterator && clearInterval(timeIterator), timeIterator = null;
+      return;
+    }
+    var key = keysToProcess.shift(), endState = transforms.reduce(function(subState, transformer) {
+      return transformer.in(subState, key, lastState);
+    }, lastState[key]);
+    if (endState !== void 0)
+      try {
+        stagedState[key] = serialize(endState);
+      } catch (err) {
+        console.error("redux-persist/createPersistoid: error serializing state", err);
+      }
+    else
+      delete stagedState[key];
+    keysToProcess.length === 0 && writeStagedState();
+  }
+  function writeStagedState() {
+    Object.keys(stagedState).forEach(function(key) {
+      lastState[key] === void 0 && delete stagedState[key];
+    }), writePromise = storage4.setItem(storageKey, serialize(stagedState)).catch(onWriteFail);
+  }
+  function passWhitelistBlacklist(key) {
+    return !(whitelist && whitelist.indexOf(key) === -1 && key !== "_persist" || blacklist && blacklist.indexOf(key) !== -1);
+  }
+  function onWriteFail(err) {
+    writeFailHandler && writeFailHandler(err), err && console.error("Error storing data", err);
+  }
+  var flush = function() {
+    for (; keysToProcess.length !== 0; )
+      processNextKey();
+    return writePromise || Promise.resolve();
+  };
+  return {
+    update,
+    flush
+  };
+}
+function defaultSerialize(data) {
+  return JSON.stringify(data);
+}
+
+// node_modules/redux-persist/es/getStoredState.js
+function getStoredState(config) {
+  var transforms = config.transforms || [], storageKey = "".concat(config.keyPrefix !== void 0 ? config.keyPrefix : KEY_PREFIX).concat(config.key), storage4 = config.storage, debug = config.debug, deserialize;
+  return config.deserialize === !1 ? deserialize = function(x) {
+    return x;
+  } : typeof config.deserialize == "function" ? deserialize = config.deserialize : deserialize = defaultDeserialize, storage4.getItem(storageKey).then(function(serialized) {
+    if (serialized)
+      try {
+        var state = {}, rawState = deserialize(serialized);
+        return Object.keys(rawState).forEach(function(key) {
+          state[key] = transforms.reduceRight(function(subState, transformer) {
+            return transformer.out(subState, key, rawState);
+          }, deserialize(rawState[key]));
+        }), state;
+      } catch (err) {
+        throw debug && console.log("redux-persist/getStoredState: Error restoring data ".concat(serialized), err), err;
+      }
+    else
+      return;
+  });
+}
+function defaultDeserialize(serial) {
+  return JSON.parse(serial);
+}
+
+// node_modules/redux-persist/es/purgeStoredState.js
+function purgeStoredState(config) {
+  var storage4 = config.storage, storageKey = "".concat(config.keyPrefix !== void 0 ? config.keyPrefix : KEY_PREFIX).concat(config.key);
+  return storage4.removeItem(storageKey, warnIfRemoveError);
+}
+function warnIfRemoveError(err) {
+  err && console.error("redux-persist/purgeStoredState: Error purging data stored state", err);
+}
+
+// node_modules/redux-persist/es/persistReducer.js
+function ownKeys2(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function(sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+    i % 2 ? ownKeys2(source, !0).forEach(function(key) {
+      _defineProperty2(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys2(source).forEach(function(key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+  return target;
+}
+function _defineProperty2(obj, key, value) {
+  return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
+}
+function _objectWithoutProperties(source, excluded) {
+  if (source == null)
+    return {};
+  var target = _objectWithoutPropertiesLoose(source, excluded), key, i;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    for (i = 0; i < sourceSymbolKeys.length; i++)
+      key = sourceSymbolKeys[i], !(excluded.indexOf(key) >= 0) && (!Object.prototype.propertyIsEnumerable.call(source, key) || (target[key] = source[key]));
+  }
+  return target;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {}, sourceKeys = Object.keys(source), key, i;
+  for (i = 0; i < sourceKeys.length; i++)
+    key = sourceKeys[i], !(excluded.indexOf(key) >= 0) && (target[key] = source[key]);
+  return target;
+}
+var DEFAULT_TIMEOUT = 5e3;
+function persistReducer(config, baseReducer) {
+  if (!config)
+    throw new Error("config is required for persistReducer");
+  if (!config.key)
+    throw new Error("key is required in persistor config");
+  if (!config.storage)
+    throw new Error("redux-persist: config.storage is required. Try using one of the provided storage engines `import storage from 'redux-persist/lib/storage'`");
+  var version = config.version !== void 0 ? config.version : DEFAULT_VERSION, debug = config.debug || !1, stateReconciler = config.stateReconciler === void 0 ? autoMergeLevel1 : config.stateReconciler, getStoredState2 = config.getStoredState || getStoredState, timeout = config.timeout !== void 0 ? config.timeout : DEFAULT_TIMEOUT, _persistoid = null, _purge = !1, _paused = !0, conditionalUpdate = function(state) {
+    return state._persist.rehydrated && _persistoid && !_paused && _persistoid.update(state), state;
+  };
+  return function(state, action11) {
+    var _ref = state || {}, _persist = _ref._persist, rest = _objectWithoutProperties(_ref, ["_persist"]), restState = rest;
+    if (action11.type === PERSIST) {
+      var _sealed = !1, _rehydrate = function(payload, err) {
+        _sealed && console.error('redux-persist: rehydrate for "'.concat(config.key, '" called after timeout.'), payload, err), _sealed || (action11.rehydrate(config.key, payload, err), _sealed = !0);
+      };
+      if (timeout && setTimeout(function() {
+        !_sealed && _rehydrate(void 0, new Error('redux-persist: persist timed out for persist key "'.concat(config.key, '"')));
+      }, timeout), _paused = !1, _persistoid || (_persistoid = createPersistoid(config)), _persist)
+        return _objectSpread2({}, baseReducer(restState, action11), {
+          _persist
+        });
+      if (typeof action11.rehydrate != "function" || typeof action11.register != "function")
+        throw new Error("redux-persist: either rehydrate or register is not a function on the PERSIST action. This can happen if the action is being replayed. This is an unexplored use case, please open an issue and we will figure out a resolution.");
+      return action11.register(config.key), getStoredState2(config).then(function(restoredState) {
+        var migrate = config.migrate || function(s, v) {
+          return Promise.resolve(s);
+        };
+        migrate(restoredState, version).then(function(migratedState) {
+          _rehydrate(migratedState);
+        }, function(migrateErr) {
+          migrateErr && console.error("redux-persist: migration error", migrateErr), _rehydrate(void 0, migrateErr);
+        });
+      }, function(err) {
+        _rehydrate(void 0, err);
+      }), _objectSpread2({}, baseReducer(restState, action11), {
+        _persist: {
+          version,
+          rehydrated: !1
+        }
+      });
+    } else {
+      if (action11.type === PURGE)
+        return _purge = !0, action11.result(purgeStoredState(config)), _objectSpread2({}, baseReducer(restState, action11), {
+          _persist
+        });
+      if (action11.type === FLUSH)
+        return action11.result(_persistoid && _persistoid.flush()), _objectSpread2({}, baseReducer(restState, action11), {
+          _persist
+        });
+      if (action11.type === PAUSE)
+        _paused = !0;
+      else if (action11.type === REHYDRATE) {
+        if (_purge)
+          return _objectSpread2({}, restState, {
+            _persist: _objectSpread2({}, _persist, {
+              rehydrated: !0
+            })
+          });
+        if (action11.key === config.key) {
+          var reducedState = baseReducer(restState, action11), inboundState = action11.payload, reconciledRest = stateReconciler !== !1 && inboundState !== void 0 ? stateReconciler(inboundState, state, reducedState, config) : reducedState, _newState = _objectSpread2({}, reconciledRest, {
+            _persist: _objectSpread2({}, _persist, {
+              rehydrated: !0
+            })
+          });
+          return conditionalUpdate(_newState);
+        }
+      }
+    }
+    if (!_persist)
+      return baseReducer(state, action11);
+    var newState = baseReducer(restState, action11);
+    return newState === restState ? state : conditionalUpdate(_objectSpread2({}, newState, {
+      _persist
+    }));
+  };
+}
+
+// app/store/reducer.ts
+var import_toolkit8 = require("@reduxjs/toolkit");
+
+// app/store/ingredients-slice.ts
+var import_toolkit = require("@reduxjs/toolkit"), initialState = [], basketSlice = (0, import_toolkit.createSlice)({
+  name: "ingredients",
+  initialState,
+  reducers: {
+    addIngredient: (state, action11) => {
+      state.find(
+        (item) => item.name === action11.payload.name
+      ) || state.push(action11.payload);
+    },
+    deleteIngredient: (state, action11) => state.filter((item) => item.name !== action11.payload),
+    updateHadQuan: (state, action11) => {
+      let index = state.findIndex((item) => item.name === action11.payload.name);
+      index !== -1 && (state[index].hadQant = action11.payload.hadQant);
+    },
+    addRecipeId: (state, action11) => {
+      let ingredientIdx = state.findIndex(
+        (item) => item.name === action11.payload.name
+      );
+      state[ingredientIdx].recipeIds.findIndex(
+        (id) => id === action11.payload.recipeId
+      ) === -1 && state[ingredientIdx].recipeIds.push(action11.payload.recipeId);
+    },
+    deleteRecipeId: (state, action11) => {
+      let ingredientIdx = state.findIndex(
+        (item) => item.name === action11.payload.name
+      );
+      if (state[ingredientIdx].recipeIds.findIndex(
+        (id) => id === action11.payload.recipeId
+      ) !== -1) {
+        let filterState = [...state][ingredientIdx].recipeIds.filter(
+          (id) => id !== action11.payload.recipeId
+        );
+        if (filterState.length === 0)
+          return state.filter((item) => item.name !== action11.payload.name);
+        state[ingredientIdx].recipeIds = filterState;
+      }
+    }
+  }
+}), ingredients_slice_default = basketSlice.reducer, {
+  addIngredient,
+  deleteIngredient,
+  updateHadQuan,
+  addRecipeId,
+  deleteRecipeId
+} = basketSlice.actions;
+
+// app/store/recipe-servings-slice.ts
+var import_toolkit2 = require("@reduxjs/toolkit"), initialState2 = [], recipeServingsSlice = (0, import_toolkit2.createSlice)({
+  name: "recipe-servings",
+  initialState: initialState2,
+  reducers: {
+    addRecipeServings: (state, action11) => {
+      state.push({ ...action11.payload });
+    },
+    deleteRecipeServings: (state, action11) => state.filter((item) => item.recipeId !== action11.payload.recipeId),
+    updateRecipeServings: (state, action11) => {
+      let recipeIdx = state.findIndex(
+        (item) => item.recipeId === action11.payload.recipeId
+      );
+      recipeIdx !== -1 && (state[recipeIdx].servings = action11.payload.servings);
+    }
+  }
+}), recipe_servings_slice_default = recipeServingsSlice.reducer, { addRecipeServings, deleteRecipeServings, updateRecipeServings } = recipeServingsSlice.actions;
+
+// app/store/upload-temp/step-form-slice.ts
+var import_toolkit3 = require("@reduxjs/toolkit"), import_uuid = require("uuid"), initialState3 = [
+  {
+    id: (0, import_uuid.v4)(),
+    title: "",
+    methods: [{ content: "" }],
+    photo: { name: "", src: "", type: "" }
+  }
+], stepFormSlice = (0, import_toolkit3.createSlice)({
+  name: "step-form",
+  initialState: initialState3,
+  reducers: {
+    addStep: (state, action11) => {
+      let newPayload = structuredClone(action11.payload);
+      state.push(newPayload);
+    },
+    updateStep: (state, action11) => {
+      let idx = state.findIndex((step) => step.id === action11.payload.id), newPayload = structuredClone(action11.payload);
+      idx > -1 && (state[idx] = newPayload);
+    },
+    deleteStep: (state, action11) => state.filter((step) => step.id !== action11.payload.id),
+    resetStep: () => initialState3
+  }
+}), step_form_slice_default = stepFormSlice.reducer, { addStep, updateStep, deleteStep, resetStep } = stepFormSlice.actions;
+
+// app/store/upload-temp/details-form-slice.ts
+var import_toolkit4 = require("@reduxjs/toolkit"), initialState4 = {
+  tags: null,
+  title: "",
+  difficulty: "EASY1",
+  thumbnail: { name: "", src: "", type: "" }
+}, detailsFormSlice = (0, import_toolkit4.createSlice)({
+  name: "details-form",
+  initialState: initialState4,
+  reducers: {
+    updateDetails: (state, action11) => {
+      let newState = structuredClone(action11.payload);
+      return { ...state, ...newState };
+    },
+    resetDetails: () => initialState4
+  }
+}), details_form_slice_default = detailsFormSlice.reducer, { updateDetails, resetDetails } = detailsFormSlice.actions;
+
+// app/store/upload-temp/ingredients-form-slice.ts
+var import_toolkit5 = require("@reduxjs/toolkit"), initialState5 = {
+  servings: 1,
+  ingredients: [{ name: null, qty: 0, unit: null }]
+}, ingredientsFormSlice = (0, import_toolkit5.createSlice)({
+  name: "ingredients-form",
+  initialState: initialState5,
+  reducers: {
+    updateIngredients: (state, action11) => {
+      let copiedPayload = structuredClone(action11.payload);
+      return { ...state, ...copiedPayload };
+    },
+    resetIngredients: () => initialState5
+  }
+}), ingredients_form_slice_default = ingredientsFormSlice.reducer, { updateIngredients, resetIngredients } = ingredientsFormSlice.actions;
+
+// app/store/upload-temp/publish-slice.ts
+var import_toolkit6 = require("@reduxjs/toolkit"), initialState6 = {
+  details: !1,
+  ingredients: !1,
+  steps: !1
+}, PublishSlice = (0, import_toolkit6.createSlice)({
+  name: "details-form",
+  initialState: initialState6,
+  reducers: {
+    updatePublish: (state, action11) => ({ ...state, ...action11.payload }),
+    resetPublish: () => initialState6
+  }
+}), publish_slice_default = PublishSlice.reducer, { updatePublish, resetPublish } = PublishSlice.actions;
+
+// app/store/sider-slice.ts
+var import_toolkit7 = require("@reduxjs/toolkit"), initialState7 = { open: !0, hidden: !1 }, SiderSlice = (0, import_toolkit7.createSlice)({
+  name: "sider",
+  initialState: initialState7,
+  reducers: {
+    setSiderOpen: (state, action11) => ({ ...state, open: action11.payload }),
+    setSiderHidden: (state, action11) => ({ ...state, hidden: action11.payload })
+  }
+}), sider_slice_default = SiderSlice.reducer, { setSiderOpen, setSiderHidden } = SiderSlice.actions;
+
+// app/store/reducer.ts
+var rootReducer = (0, import_toolkit8.combineReducers)({
+  ingredients: ingredients_slice_default,
+  recipeServings: recipe_servings_slice_default,
+  stepForm: step_form_slice_default,
+  detailsForm: details_form_slice_default,
+  ingredientsForm: ingredients_form_slice_default,
+  publishState: publish_slice_default,
+  sider: sider_slice_default
+}), reducer_default = rootReducer;
+
+// app/store/configure-store.ts
+var import_react_redux = require("react-redux"), import_autoMergeLevel2 = __toESM(require_autoMergeLevel2());
+
+// app/store/storage.ts
+var import_createWebStorage = __toESM(require_createWebStorage()), createNoopStorage = () => ({
+  getItem(_key) {
+    return Promise.resolve(null);
+  },
+  setItem(_key, value) {
+    return Promise.resolve(value);
+  },
+  removeItem(_key) {
+    return Promise.resolve();
+  }
+}), storage = typeof window < "u" ? (0, import_createWebStorage.default)("session") : createNoopStorage(), storage_default = storage;
+
+// app/store/configure-store.ts
+var persistConfig = {
+  key: "root",
+  storage: storage_default,
+  stateReconciler: import_autoMergeLevel2.default
+}, persistedReducer = persistReducer(
+  persistConfig,
+  reducer_default
+), store = (0, import_toolkit9.configureStore)({
+  reducer: persistedReducer,
+  devTools: !0,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [import_redux_persist.FLUSH, import_redux_persist.REHYDRATE, import_redux_persist.PAUSE, import_redux_persist.PERSIST, import_redux_persist.PURGE, import_redux_persist.REGISTER]
+    }
+  })
+}), persistor = (0, import_redux_persist.persistStore)(store), useAppDispatch = import_react_redux.useDispatch, useAppSelector = import_react_redux.useSelector;
+
 // app/components/ui/sider/sider.tsx
-var import_react10 = require("@remix-run/react"), import_react11 = __toESM(require("react"));
+var import_react9 = require("@remix-run/react"), import_react10 = __toESM(require("react"));
 
 // app/components/icons/recipe.tsx
 var import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), SvgFluentFood24Filled = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -17318,44 +17869,8 @@ function LogoutForm({
   );
 }
 
-// app/components/ui/sider/sider-context.tsx
-var import_react8 = require("react"), import_react9 = require("react");
-
-// app/hooks/use-resize-observer.ts
-var import_resize_observer = __toESM(require("@react-hook/resize-observer")), import_react7 = require("react"), useSize = (target) => {
-  let [size, setSize] = (0, import_react7.useState)();
-  return (0, import_react7.useLayoutEffect)(() => {
-    target && setSize(target.getBoundingClientRect());
-  }, [target]), (0, import_resize_observer.default)(target, (entry2) => setSize(entry2.contentRect)), size;
-};
-
-// app/components/ui/sider/sider-context.tsx
-var import_jsx_dev_runtime7 = require("react/jsx-dev-runtime");
-var SiderContext = (0, import_react9.createContext)({
-  hidden: !1,
-  setHidden: () => {
-  },
-  close: !1,
-  setClose: () => {
-  }
-}), { Provider } = SiderContext;
-function SiderProvider({
-  children
-}) {
-  let [hidden, setHidden] = (0, import_react8.useState)(!1), size = useSize(document.body), [close, setClose] = (0, import_react8.useState)(
-    document ? document.body.clientWidth <= 768 : !0
-  );
-  return (0, import_react8.useEffect)(() => {
-    setClose(!!(size != null && size.width) && size.width <= 768);
-  }, [size == null ? void 0 : size.width]), /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(Provider, { value: { hidden, setHidden, close, setClose }, children }, void 0, !1, {
-    fileName: "app/components/ui/sider/sider-context.tsx",
-    lineNumber: 48,
-    columnNumber: 5
-  }, this);
-}
-
 // app/components/icons/LoginFill0Wght400Grad25Opsz48.tsx
-var import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), SvgLoginFill0Wght400Grad25Opsz48 = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+var import_jsx_dev_runtime7 = require("react/jsx-dev-runtime"), SvgLoginFill0Wght400Grad25Opsz48 = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -17363,7 +17878,7 @@ var import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), SvgLoginFill0Wgh
     viewBox: "0 96 960 960",
     width: 48,
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("path", { d: "M488.5 933.5V876h289V278.5h-289V221h289q22.969 0 40.234 17.266Q835 255.531 835 278.5V876q0 22.969-17.266 40.234Q800.469 933.5 777.5 933.5h-289Zm-74.5-186L372.5 707l101-101H125v-57.5h346.5l-101-101 41.5-41L583.5 578 414 747.5Z" }, void 0, !1, {
+    children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("path", { d: "M488.5 933.5V876h289V278.5h-289V221h289q22.969 0 40.234 17.266Q835 255.531 835 278.5V876q0 22.969-17.266 40.234Q800.469 933.5 777.5 933.5h-289Zm-74.5-186L372.5 707l101-101H125v-57.5h346.5l-101-101 41.5-41L583.5 578 414 747.5Z" }, void 0, !1, {
       fileName: "app/components/icons/LoginFill0Wght400Grad25Opsz48.tsx",
       lineNumber: 11,
       columnNumber: 5
@@ -17380,7 +17895,7 @@ var import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), SvgLoginFill0Wgh
 ), LoginFill0Wght400Grad25Opsz48_default = SvgLoginFill0Wght400Grad25Opsz48;
 
 // app/components/icons/LogoutFill0Wght400Grad25Opsz48.tsx
-var import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), SvgLogoutFill0Wght400Grad25Opsz48 = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
+var import_jsx_dev_runtime8 = require("react/jsx-dev-runtime"), SvgLogoutFill0Wght400Grad25Opsz48 = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -17388,7 +17903,7 @@ var import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), SvgLogoutFill0Wg
     viewBox: "0 96 960 960",
     width: 48,
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("path", { d: "M182.5 933.5q-22.969 0-40.234-17.266Q125 898.969 125 876V278.5q0-22.969 17.266-40.234Q159.531 221 182.5 221h289v57.5h-289V876h289v57.5h-289Zm483-186L624 707l101-101H376.5v-57.5H723l-101-101 41.5-41L835 578 665.5 747.5Z" }, void 0, !1, {
+    children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("path", { d: "M182.5 933.5q-22.969 0-40.234-17.266Q125 898.969 125 876V278.5q0-22.969 17.266-40.234Q159.531 221 182.5 221h289v57.5h-289V876h289v57.5h-289Zm483-186L624 707l101-101H376.5v-57.5H723l-101-101 41.5-41L835 578 665.5 747.5Z" }, void 0, !1, {
       fileName: "app/components/icons/LogoutFill0Wght400Grad25Opsz48.tsx",
       lineNumber: 11,
       columnNumber: 5
@@ -17405,7 +17920,7 @@ var import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), SvgLogoutFill0Wg
 ), LogoutFill0Wght400Grad25Opsz48_default = SvgLogoutFill0Wght400Grad25Opsz48;
 
 // app/components/icons/FavoriteFill0Wght400Grad25Opsz48.tsx
-var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), SvgFavoriteFill0Wght400Grad25Opsz48 = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
+var import_jsx_dev_runtime9 = require("react/jsx-dev-runtime"), SvgFavoriteFill0Wght400Grad25Opsz48 = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -17413,7 +17928,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), SvgFavoriteFill
     viewBox: "0 96 960 960",
     width: 48,
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("path", { d: "M480 929.5 441 894q-104.534-96.193-173.303-166.153-68.768-69.961-109.517-124.806-40.749-54.844-56.964-99.416Q85 459.053 85 413.5q0-88.659 59.498-148.08Q203.995 206 291.5 206q56.288 0 104.644 27Q444.5 260 480 311.5q42-54 88.185-79.75Q614.371 206 668.629 206q87.38 0 146.876 59.366Q875 324.731 875 413.308q0 45.73-16.216 90.309-16.215 44.58-56.964 99.424-40.749 54.845-109.517 124.806Q623.534 797.807 519 894l-39 35.5Zm0-75.5q100.327-92.612 165.414-158.556Q710.5 629.5 748.75 579.75t53.5-88.732q15.25-38.982 15.25-77.416 0-65.602-41.858-107.852-41.859-42.25-106.671-42.25-51.77 0-95.121 31.5-43.35 31.5-71.35 89h-46q-27-56.5-70.707-88.5-43.707-32-94.603-32-64.973 0-106.832 42.093Q142.5 347.686 142.5 413.974q0 38.668 15.5 77.847 15.5 39.179 53.684 89.498 38.183 50.319 103.5 115.75Q380.5 762.5 480 854Zm0-295.5Z" }, void 0, !1, {
+    children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("path", { d: "M480 929.5 441 894q-104.534-96.193-173.303-166.153-68.768-69.961-109.517-124.806-40.749-54.844-56.964-99.416Q85 459.053 85 413.5q0-88.659 59.498-148.08Q203.995 206 291.5 206q56.288 0 104.644 27Q444.5 260 480 311.5q42-54 88.185-79.75Q614.371 206 668.629 206q87.38 0 146.876 59.366Q875 324.731 875 413.308q0 45.73-16.216 90.309-16.215 44.58-56.964 99.424-40.749 54.845-109.517 124.806Q623.534 797.807 519 894l-39 35.5Zm0-75.5q100.327-92.612 165.414-158.556Q710.5 629.5 748.75 579.75t53.5-88.732q15.25-38.982 15.25-77.416 0-65.602-41.858-107.852-41.859-42.25-106.671-42.25-51.77 0-95.121 31.5-43.35 31.5-71.35 89h-46q-27-56.5-70.707-88.5-43.707-32-94.603-32-64.973 0-106.832 42.093Q142.5 347.686 142.5 413.974q0 38.668 15.5 77.847 15.5 39.179 53.684 89.498 38.183 50.319 103.5 115.75Q380.5 762.5 480 854Zm0-295.5Z" }, void 0, !1, {
       fileName: "app/components/icons/FavoriteFill0Wght400Grad25Opsz48.tsx",
       lineNumber: 13,
       columnNumber: 5
@@ -17430,7 +17945,7 @@ var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), SvgFavoriteFill
 ), FavoriteFill0Wght400Grad25Opsz48_default = SvgFavoriteFill0Wght400Grad25Opsz48;
 
 // app/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48.tsx
-var import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), SvgShoppingBasketFill0Wght400Grad25Opsz48 = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+var import_jsx_dev_runtime10 = require("react/jsx-dev-runtime"), SvgShoppingBasketFill0Wght400Grad25Opsz48 = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -17438,7 +17953,7 @@ var import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), SvgShoppingBask
     viewBox: "0 96 960 960",
     width: 48,
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("path", { d: "M199 931.5q-15.5 0-28-9.25t-15.877-24.242L43.441 497.283Q39.5 482.5 49.081 470.75 58.66 459 73.794 459H272.5l182.431-266.911q4.842-5.645 10.754-9.117 5.912-3.472 13.815-3.472 7.107 0 13.054 3.25 5.946 3.25 10.308 9.072L684.5 459h203.707q14.134 0 23.714 11.868 9.579 11.869 5.515 26.333L805 898q-3.385 15.053-16.314 24.276-12.929 9.224-28.038 9.224H199Zm9.151-57.5H752l100.5-357.5h-744L208.151 874Zm271.871-121.5q23.978 0 40.728-16.772t16.75-40.75q0-23.978-16.772-40.728t-40.75-16.75q-23.978 0-40.728 16.772t-16.75 40.75q0 23.978 16.772 40.728t40.75 16.75ZM343 459h271.5l-135-199.5L343 459ZM208 874h544-544Z" }, void 0, !1, {
+    children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("path", { d: "M199 931.5q-15.5 0-28-9.25t-15.877-24.242L43.441 497.283Q39.5 482.5 49.081 470.75 58.66 459 73.794 459H272.5l182.431-266.911q4.842-5.645 10.754-9.117 5.912-3.472 13.815-3.472 7.107 0 13.054 3.25 5.946 3.25 10.308 9.072L684.5 459h203.707q14.134 0 23.714 11.868 9.579 11.869 5.515 26.333L805 898q-3.385 15.053-16.314 24.276-12.929 9.224-28.038 9.224H199Zm9.151-57.5H752l100.5-357.5h-744L208.151 874Zm271.871-121.5q23.978 0 40.728-16.772t16.75-40.75q0-23.978-16.772-40.728t-40.75-16.75q-23.978 0-40.728 16.772t-16.75 40.75q0 23.978 16.772 40.728t40.75 16.75ZM343 459h271.5l-135-199.5L343 459ZM208 874h544-544Z" }, void 0, !1, {
       fileName: "app/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48.tsx",
       lineNumber: 13,
       columnNumber: 5
@@ -17455,7 +17970,7 @@ var import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), SvgShoppingBask
 ), ShoppingBasketFill0Wght400Grad25Opsz48_default = SvgShoppingBasketFill0Wght400Grad25Opsz48;
 
 // app/components/icons/Github.tsx
-var import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), SvgGithub = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+var import_jsx_dev_runtime11 = require("react/jsx-dev-runtime"), SvgGithub = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
   "svg",
   {
     xmlns: "http://www.w3.org/2000/svg",
@@ -17465,7 +17980,7 @@ var import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), SvgGithub = (pr
     className: "bi bi-github",
     viewBox: "0 0 16 16",
     ...props,
-    children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("path", { d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" }, void 0, !1, {
+    children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("path", { d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" }, void 0, !1, {
       fileName: "app/components/icons/Github.tsx",
       lineNumber: 13,
       columnNumber: 5
@@ -17481,16 +17996,17 @@ var import_jsx_dev_runtime12 = require("react/jsx-dev-runtime"), SvgGithub = (pr
   this
 ), Github_default = SvgGithub;
 
-// app/components/ui/sider/sider.tsx
-var import_jsx_dev_runtime13 = require("react/jsx-dev-runtime");
+// app/components/ui/sider/sider-item.tsx
+var import_react7 = require("@remix-run/react"), import_react8 = __toESM(require("react"));
+var import_jsx_dev_runtime12 = require("react/jsx-dev-runtime");
 function SiderItem({ icon, value, route }) {
-  let { setClose } = (0, import_react11.useContext)(SiderContext);
-  return route ? /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
-    import_react10.NavLink,
+  let dispatch = useAppDispatch();
+  return route ? /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+    import_react7.NavLink,
     {
       to: route,
       onClick: () => {
-        window.innerWidth <= 768 && setClose(!0);
+        window.innerWidth <= 768 && dispatch(setSiderOpen(!1));
       },
       className: ({ isActive }) => `
           sider-item sider-item-svg relative 
@@ -17511,12 +18027,12 @@ function SiderItem({ icon, value, route }) {
     void 0,
     !0,
     {
-      fileName: "app/components/ui/sider/sider.tsx",
-      lineNumber: 21,
+      fileName: "app/components/ui/sider/sider-item.tsx",
+      lineNumber: 11,
       columnNumber: 7
     },
     this
-  ) : typeof value != "string" && import_react11.default.isValidElement(value) ? value : /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
+  ) : typeof value != "string" && import_react8.default.isValidElement(value) ? value : /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
     "span",
     {
       className: `
@@ -17532,61 +18048,66 @@ function SiderItem({ icon, value, route }) {
     void 0,
     !1,
     {
-      fileName: "app/components/ui/sider/sider.tsx",
-      lineNumber: 50,
+      fileName: "app/components/ui/sider/sider-item.tsx",
+      lineNumber: 40,
       columnNumber: 5
     },
     this
   );
 }
+
+// app/components/ui/sider/sider.tsx
+var import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), defaultSiderValue = [
+  { value: "Pages" },
+  {
+    icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(recipe_default, { className: "svg-md svg-neutral" }, void 0, !1, {
+      fileName: "app/components/ui/sider/sider.tsx",
+      lineNumber: 28,
+      columnNumber: 11
+    }, this),
+    value: "My Recipes",
+    route: "my-recipes"
+  },
+  {
+    icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(FavoriteFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
+      fileName: "app/components/ui/sider/sider.tsx",
+      lineNumber: 33,
+      columnNumber: 11
+    }, this),
+    value: "Favorite",
+    route: "favorite"
+  },
+  {
+    icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(ShoppingBasketFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
+      fileName: "app/components/ui/sider/sider.tsx",
+      lineNumber: 38,
+      columnNumber: 11
+    }, this),
+    value: "Basket",
+    route: "basket"
+  },
+  { value: "Authentication" }
+];
 function Sider() {
-  let defaultSiderValue = [
-    { value: "Pages" },
-    {
-      icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(recipe_default, { className: "svg-md svg-neutral" }, void 0, !1, {
-        fileName: "app/components/ui/sider/sider.tsx",
-        lineNumber: 69,
-        columnNumber: 13
-      }, this),
-      value: "My Recipes",
-      route: "my-recipes"
-    },
-    {
-      icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(FavoriteFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
-        fileName: "app/components/ui/sider/sider.tsx",
-        lineNumber: 74,
-        columnNumber: 13
-      }, this),
-      value: "Favorite",
-      route: "favorite"
-    },
-    {
-      icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(ShoppingBasketFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
-        fileName: "app/components/ui/sider/sider.tsx",
-        lineNumber: 79,
-        columnNumber: 13
-      }, this),
-      value: "Basket",
-      route: "basket"
-    },
-    { value: "Authentication" }
-  ], { hidden, close, setClose } = (0, import_react11.useContext)(SiderContext);
+  let dispatch = useAppDispatch(), { open, hidden } = useAppSelector((s) => s.sider);
   return hidden ? null : /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_jsx_dev_runtime13.Fragment, { children: [
-    close ? null : /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
+    open ? /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
       "div",
       {
         className: "fixed z-20 h-screen w-screen bg-black/70 backdrop-brightness-75 lg:hidden",
-        onClick: () => setClose(!0)
+        onClick: () => {
+          dispatch(setSiderOpen(!1));
+        }
       },
       void 0,
       !1,
       {
         fileName: "app/components/ui/sider/sider.tsx",
-        lineNumber: 93,
+        lineNumber: 55,
         columnNumber: 9
       },
       this
-    ),
+    ) : null,
     /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
       "nav",
       {
@@ -17603,23 +18124,23 @@ function Sider() {
       text-inherit
       shadow-xl
       transition-transform
-      ${close ? "-translate-x-full" : ""}
+      ${open ? "" : "-translate-x-full"}
       
       dark:bg-dark-gray
       dark:shadow-gray-900
       `,
         children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
-            import_react10.Link,
+            import_react9.Link,
             {
               to: "/",
               className: "sider-item flex h-7 p-0",
               onClick: () => {
-                window.innerWidth <= 768 && setClose(!0);
+                window.innerWidth <= 768 && dispatch(setSiderOpen(!1));
               },
               children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(Logo_default, {}, void 0, !1, {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 127,
+                lineNumber: 91,
                 columnNumber: 11
               }, this)
             },
@@ -17627,18 +18148,18 @@ function Sider() {
             !1,
             {
               fileName: "app/components/ui/sider/sider.tsx",
-              lineNumber: 118,
+              lineNumber: 82,
               columnNumber: 9
             },
             this
           ),
           /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
-            import_react10.Link,
+            import_react9.Link,
             {
               to: "/upload/details",
               className: "sider-item btn-sm btn-secondary mt-8",
               onClick: () => {
-                window.innerWidth <= 768 && setClose(!0);
+                window.innerWidth <= 768 && dispatch(setSiderOpen(!1));
               },
               children: "Uplode Recipe"
             },
@@ -17646,22 +18167,22 @@ function Sider() {
             !1,
             {
               fileName: "app/components/ui/sider/sider.tsx",
-              lineNumber: 129,
+              lineNumber: 93,
               columnNumber: 9
             },
             this
           ),
           /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "flex flex-1 flex-col ", children: [
             defaultSiderValue.map(
-              ({ icon, value, children, route, isBtn }, idx) => isBtn ? /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "sider-item px-0 pb-8", children: route ? /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react10.Link, { to: route, className: "btn-md btn-primary", children: value }, void 0, !1, {
+              ({ icon, value, children, route, isBtn }, idx) => isBtn ? /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "sider-item px-0 pb-8", children: route ? /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react9.Link, { to: route, className: "btn-md btn-primary", children: value }, void 0, !1, {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 148,
+                lineNumber: 112,
                 columnNumber: 23
               }, this) : value }, idx, !1, {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 146,
+                lineNumber: 110,
                 columnNumber: 19
-              }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react11.default.Fragment, { children: [
+              }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react10.default.Fragment, { children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
                   SiderItem,
                   {
@@ -17675,7 +18196,7 @@ function Sider() {
                   !1,
                   {
                     fileName: "app/components/ui/sider/sider.tsx",
-                    lineNumber: 159,
+                    lineNumber: 123,
                     columnNumber: 19
                   },
                   this
@@ -17691,18 +18212,18 @@ function Sider() {
                   !1,
                   {
                     fileName: "app/components/ui/sider/sider.tsx",
-                    lineNumber: 171,
+                    lineNumber: 135,
                     columnNumber: 25
                   },
                   this
                 )) }, void 0, !1, {
                   fileName: "app/components/ui/sider/sider.tsx",
-                  lineNumber: 169,
+                  lineNumber: 133,
                   columnNumber: 21
                 }, this)
               ] }, idx, !0, {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 158,
+                lineNumber: 122,
                 columnNumber: 17
               }, this)
             ),
@@ -17711,7 +18232,7 @@ function Sider() {
               {
                 icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(LogoutFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
                   fileName: "app/components/ui/sider/sider.tsx",
-                  lineNumber: 189,
+                  lineNumber: 153,
                   columnNumber: 27
                 }, this),
                 formClassName: "flex items-center",
@@ -17725,7 +18246,7 @@ function Sider() {
               !1,
               {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 188,
+                lineNumber: 152,
                 columnNumber: 19
               },
               this
@@ -17734,7 +18255,7 @@ function Sider() {
               {
                 icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(LoginFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
                   fileName: "app/components/ui/sider/sider.tsx",
-                  lineNumber: 201,
+                  lineNumber: 165,
                   columnNumber: 25
                 }, this),
                 value: "Login",
@@ -17744,18 +18265,18 @@ function Sider() {
               !1,
               {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 200,
+                lineNumber: 164,
                 columnNumber: 17
               },
               this
             ) }, void 0, !1, {
               fileName: "app/components/ui/sider/sider.tsx",
-              lineNumber: 184,
+              lineNumber: 148,
               columnNumber: 11
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/ui/sider/sider.tsx",
-            lineNumber: 141,
+            lineNumber: 105,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: " my-2 border-t border-gray-200 py-4 dark:border-gray-600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
@@ -17767,7 +18288,7 @@ function Sider() {
               children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(Github_default, {}, void 0, !1, {
                   fileName: "app/components/ui/sider/sider.tsx",
-                  lineNumber: 217,
+                  lineNumber: 181,
                   columnNumber: 13
                 }, this),
                 " Github page"
@@ -17777,13 +18298,13 @@ function Sider() {
             !0,
             {
               fileName: "app/components/ui/sider/sider.tsx",
-              lineNumber: 212,
+              lineNumber: 176,
               columnNumber: 11
             },
             this
           ) }, void 0, !1, {
             fileName: "app/components/ui/sider/sider.tsx",
-            lineNumber: 211,
+            lineNumber: 175,
             columnNumber: 9
           }, this)
         ]
@@ -17792,14 +18313,14 @@ function Sider() {
       !0,
       {
         fileName: "app/components/ui/sider/sider.tsx",
-        lineNumber: 98,
+        lineNumber: 62,
         columnNumber: 7
       },
       this
     )
   ] }, void 0, !0, {
     fileName: "app/components/ui/sider/sider.tsx",
-    lineNumber: 91,
+    lineNumber: 53,
     columnNumber: 5
   }, this);
 }
@@ -17809,20 +18330,21 @@ var import_jsx_dev_runtime14 = require("react/jsx-dev-runtime");
 function Layout({
   children
 }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(SiderProvider, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex  bg-gray-100 dark:bg-gray-800", children: [
+  let { width } = (0, import_use_resize_observer.default)({ ref: document.body }), dispatch = useAppDispatch();
+  return (0, import_react11.useEffect)(() => {
+    width !== void 0 && (width && width <= 768 ? dispatch(setSiderOpen(!1)) : dispatch(setSiderOpen(!0)));
+  }, []), (0, import_react11.useEffect)(() => {
+    width !== void 0 && width <= 768 && dispatch(setSiderOpen(!1));
+  }, [width]), /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex  bg-gray-100 dark:bg-gray-800", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Sider, {}, void 0, !1, {
       fileName: "app/components/ui/layout/index.tsx",
-      lineNumber: 13,
-      columnNumber: 9
+      lineNumber: 36,
+      columnNumber: 7
     }, this),
     children
   ] }, void 0, !0, {
     fileName: "app/components/ui/layout/index.tsx",
-    lineNumber: 12,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/ui/layout/index.tsx",
-    lineNumber: 11,
+    lineNumber: 35,
     columnNumber: 5
   }, this);
 }
@@ -17833,456 +18355,6 @@ global.__db || (global.__db = new import_client.PrismaClient()), db = global.__d
 
 // app/root.tsx
 var import_react_redux2 = require("react-redux"), import_react15 = __toESM(require_react());
-
-// app/store/configure-store.ts
-var import_toolkit8 = require("@reduxjs/toolkit"), import_redux_persist = __toESM(require_lib());
-
-// node_modules/redux-persist/es/constants.js
-var KEY_PREFIX = "persist:", FLUSH = "persist/FLUSH", REHYDRATE = "persist/REHYDRATE", PAUSE = "persist/PAUSE", PERSIST = "persist/PERSIST", PURGE = "persist/PURGE";
-var DEFAULT_VERSION = -1;
-
-// node_modules/redux-persist/es/stateReconciler/autoMergeLevel1.js
-function _typeof(obj) {
-  return typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? _typeof = function(obj2) {
-    return typeof obj2;
-  } : _typeof = function(obj2) {
-    return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
-  }, _typeof(obj);
-}
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function(sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    i % 2 ? ownKeys(source, !0).forEach(function(key) {
-      _defineProperty(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(source).forEach(function(key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-    });
-  }
-  return target;
-}
-function _defineProperty(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-}
-function autoMergeLevel1(inboundState, originalState, reducedState, _ref) {
-  var debug = _ref.debug, newState = _objectSpread({}, reducedState);
-  return inboundState && _typeof(inboundState) === "object" && Object.keys(inboundState).forEach(function(key) {
-    if (key !== "_persist") {
-      if (originalState[key] !== reducedState[key]) {
-        debug && console.log("redux-persist/stateReconciler: sub state for key `%s` modified, skipping.", key);
-        return;
-      }
-      newState[key] = inboundState[key];
-    }
-  }), debug && inboundState && _typeof(inboundState) === "object" && console.log("redux-persist/stateReconciler: rehydrated keys '".concat(Object.keys(inboundState).join(", "), "'")), newState;
-}
-
-// node_modules/redux-persist/es/createPersistoid.js
-function createPersistoid(config) {
-  var blacklist = config.blacklist || null, whitelist = config.whitelist || null, transforms = config.transforms || [], throttle = config.throttle || 0, storageKey = "".concat(config.keyPrefix !== void 0 ? config.keyPrefix : KEY_PREFIX).concat(config.key), storage4 = config.storage, serialize;
-  config.serialize === !1 ? serialize = function(x) {
-    return x;
-  } : typeof config.serialize == "function" ? serialize = config.serialize : serialize = defaultSerialize;
-  var writeFailHandler = config.writeFailHandler || null, lastState = {}, stagedState = {}, keysToProcess = [], timeIterator = null, writePromise = null, update = function(state) {
-    Object.keys(state).forEach(function(key) {
-      !passWhitelistBlacklist(key) || lastState[key] !== state[key] && keysToProcess.indexOf(key) === -1 && keysToProcess.push(key);
-    }), Object.keys(lastState).forEach(function(key) {
-      state[key] === void 0 && passWhitelistBlacklist(key) && keysToProcess.indexOf(key) === -1 && lastState[key] !== void 0 && keysToProcess.push(key);
-    }), timeIterator === null && (timeIterator = setInterval(processNextKey, throttle)), lastState = state;
-  };
-  function processNextKey() {
-    if (keysToProcess.length === 0) {
-      timeIterator && clearInterval(timeIterator), timeIterator = null;
-      return;
-    }
-    var key = keysToProcess.shift(), endState = transforms.reduce(function(subState, transformer) {
-      return transformer.in(subState, key, lastState);
-    }, lastState[key]);
-    if (endState !== void 0)
-      try {
-        stagedState[key] = serialize(endState);
-      } catch (err) {
-        console.error("redux-persist/createPersistoid: error serializing state", err);
-      }
-    else
-      delete stagedState[key];
-    keysToProcess.length === 0 && writeStagedState();
-  }
-  function writeStagedState() {
-    Object.keys(stagedState).forEach(function(key) {
-      lastState[key] === void 0 && delete stagedState[key];
-    }), writePromise = storage4.setItem(storageKey, serialize(stagedState)).catch(onWriteFail);
-  }
-  function passWhitelistBlacklist(key) {
-    return !(whitelist && whitelist.indexOf(key) === -1 && key !== "_persist" || blacklist && blacklist.indexOf(key) !== -1);
-  }
-  function onWriteFail(err) {
-    writeFailHandler && writeFailHandler(err), err && console.error("Error storing data", err);
-  }
-  var flush = function() {
-    for (; keysToProcess.length !== 0; )
-      processNextKey();
-    return writePromise || Promise.resolve();
-  };
-  return {
-    update,
-    flush
-  };
-}
-function defaultSerialize(data) {
-  return JSON.stringify(data);
-}
-
-// node_modules/redux-persist/es/getStoredState.js
-function getStoredState(config) {
-  var transforms = config.transforms || [], storageKey = "".concat(config.keyPrefix !== void 0 ? config.keyPrefix : KEY_PREFIX).concat(config.key), storage4 = config.storage, debug = config.debug, deserialize;
-  return config.deserialize === !1 ? deserialize = function(x) {
-    return x;
-  } : typeof config.deserialize == "function" ? deserialize = config.deserialize : deserialize = defaultDeserialize, storage4.getItem(storageKey).then(function(serialized) {
-    if (serialized)
-      try {
-        var state = {}, rawState = deserialize(serialized);
-        return Object.keys(rawState).forEach(function(key) {
-          state[key] = transforms.reduceRight(function(subState, transformer) {
-            return transformer.out(subState, key, rawState);
-          }, deserialize(rawState[key]));
-        }), state;
-      } catch (err) {
-        throw debug && console.log("redux-persist/getStoredState: Error restoring data ".concat(serialized), err), err;
-      }
-    else
-      return;
-  });
-}
-function defaultDeserialize(serial) {
-  return JSON.parse(serial);
-}
-
-// node_modules/redux-persist/es/purgeStoredState.js
-function purgeStoredState(config) {
-  var storage4 = config.storage, storageKey = "".concat(config.keyPrefix !== void 0 ? config.keyPrefix : KEY_PREFIX).concat(config.key);
-  return storage4.removeItem(storageKey, warnIfRemoveError);
-}
-function warnIfRemoveError(err) {
-  err && console.error("redux-persist/purgeStoredState: Error purging data stored state", err);
-}
-
-// node_modules/redux-persist/es/persistReducer.js
-function ownKeys2(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function(sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-    i % 2 ? ownKeys2(source, !0).forEach(function(key) {
-      _defineProperty2(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys2(source).forEach(function(key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-    });
-  }
-  return target;
-}
-function _defineProperty2(obj, key, value) {
-  return key in obj ? Object.defineProperty(obj, key, { value, enumerable: !0, configurable: !0, writable: !0 }) : obj[key] = value, obj;
-}
-function _objectWithoutProperties(source, excluded) {
-  if (source == null)
-    return {};
-  var target = _objectWithoutPropertiesLoose(source, excluded), key, i;
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-    for (i = 0; i < sourceSymbolKeys.length; i++)
-      key = sourceSymbolKeys[i], !(excluded.indexOf(key) >= 0) && (!Object.prototype.propertyIsEnumerable.call(source, key) || (target[key] = source[key]));
-  }
-  return target;
-}
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null)
-    return {};
-  var target = {}, sourceKeys = Object.keys(source), key, i;
-  for (i = 0; i < sourceKeys.length; i++)
-    key = sourceKeys[i], !(excluded.indexOf(key) >= 0) && (target[key] = source[key]);
-  return target;
-}
-var DEFAULT_TIMEOUT = 5e3;
-function persistReducer(config, baseReducer) {
-  if (!config)
-    throw new Error("config is required for persistReducer");
-  if (!config.key)
-    throw new Error("key is required in persistor config");
-  if (!config.storage)
-    throw new Error("redux-persist: config.storage is required. Try using one of the provided storage engines `import storage from 'redux-persist/lib/storage'`");
-  var version = config.version !== void 0 ? config.version : DEFAULT_VERSION, debug = config.debug || !1, stateReconciler = config.stateReconciler === void 0 ? autoMergeLevel1 : config.stateReconciler, getStoredState2 = config.getStoredState || getStoredState, timeout = config.timeout !== void 0 ? config.timeout : DEFAULT_TIMEOUT, _persistoid = null, _purge = !1, _paused = !0, conditionalUpdate = function(state) {
-    return state._persist.rehydrated && _persistoid && !_paused && _persistoid.update(state), state;
-  };
-  return function(state, action11) {
-    var _ref = state || {}, _persist = _ref._persist, rest = _objectWithoutProperties(_ref, ["_persist"]), restState = rest;
-    if (action11.type === PERSIST) {
-      var _sealed = !1, _rehydrate = function(payload, err) {
-        _sealed && console.error('redux-persist: rehydrate for "'.concat(config.key, '" called after timeout.'), payload, err), _sealed || (action11.rehydrate(config.key, payload, err), _sealed = !0);
-      };
-      if (timeout && setTimeout(function() {
-        !_sealed && _rehydrate(void 0, new Error('redux-persist: persist timed out for persist key "'.concat(config.key, '"')));
-      }, timeout), _paused = !1, _persistoid || (_persistoid = createPersistoid(config)), _persist)
-        return _objectSpread2({}, baseReducer(restState, action11), {
-          _persist
-        });
-      if (typeof action11.rehydrate != "function" || typeof action11.register != "function")
-        throw new Error("redux-persist: either rehydrate or register is not a function on the PERSIST action. This can happen if the action is being replayed. This is an unexplored use case, please open an issue and we will figure out a resolution.");
-      return action11.register(config.key), getStoredState2(config).then(function(restoredState) {
-        var migrate = config.migrate || function(s, v) {
-          return Promise.resolve(s);
-        };
-        migrate(restoredState, version).then(function(migratedState) {
-          _rehydrate(migratedState);
-        }, function(migrateErr) {
-          migrateErr && console.error("redux-persist: migration error", migrateErr), _rehydrate(void 0, migrateErr);
-        });
-      }, function(err) {
-        _rehydrate(void 0, err);
-      }), _objectSpread2({}, baseReducer(restState, action11), {
-        _persist: {
-          version,
-          rehydrated: !1
-        }
-      });
-    } else {
-      if (action11.type === PURGE)
-        return _purge = !0, action11.result(purgeStoredState(config)), _objectSpread2({}, baseReducer(restState, action11), {
-          _persist
-        });
-      if (action11.type === FLUSH)
-        return action11.result(_persistoid && _persistoid.flush()), _objectSpread2({}, baseReducer(restState, action11), {
-          _persist
-        });
-      if (action11.type === PAUSE)
-        _paused = !0;
-      else if (action11.type === REHYDRATE) {
-        if (_purge)
-          return _objectSpread2({}, restState, {
-            _persist: _objectSpread2({}, _persist, {
-              rehydrated: !0
-            })
-          });
-        if (action11.key === config.key) {
-          var reducedState = baseReducer(restState, action11), inboundState = action11.payload, reconciledRest = stateReconciler !== !1 && inboundState !== void 0 ? stateReconciler(inboundState, state, reducedState, config) : reducedState, _newState = _objectSpread2({}, reconciledRest, {
-            _persist: _objectSpread2({}, _persist, {
-              rehydrated: !0
-            })
-          });
-          return conditionalUpdate(_newState);
-        }
-      }
-    }
-    if (!_persist)
-      return baseReducer(state, action11);
-    var newState = baseReducer(restState, action11);
-    return newState === restState ? state : conditionalUpdate(_objectSpread2({}, newState, {
-      _persist
-    }));
-  };
-}
-
-// app/store/reducer.ts
-var import_toolkit7 = require("@reduxjs/toolkit");
-
-// app/store/ingredients-slice.ts
-var import_toolkit = require("@reduxjs/toolkit"), initialState = [], basketSlice = (0, import_toolkit.createSlice)({
-  name: "ingredients",
-  initialState,
-  reducers: {
-    addIngredient: (state, action11) => {
-      state.find(
-        (item) => item.name === action11.payload.name
-      ) || state.push(action11.payload);
-    },
-    deleteIngredient: (state, action11) => state.filter((item) => item.name !== action11.payload),
-    updateHadQuan: (state, action11) => {
-      let index = state.findIndex((item) => item.name === action11.payload.name);
-      index !== -1 && (state[index].hadQant = action11.payload.hadQant);
-    },
-    addRecipeId: (state, action11) => {
-      let ingredientIdx = state.findIndex(
-        (item) => item.name === action11.payload.name
-      );
-      state[ingredientIdx].recipeIds.findIndex(
-        (id) => id === action11.payload.recipeId
-      ) === -1 && state[ingredientIdx].recipeIds.push(action11.payload.recipeId);
-    },
-    deleteRecipeId: (state, action11) => {
-      let ingredientIdx = state.findIndex(
-        (item) => item.name === action11.payload.name
-      );
-      if (state[ingredientIdx].recipeIds.findIndex(
-        (id) => id === action11.payload.recipeId
-      ) !== -1) {
-        let filterState = [...state][ingredientIdx].recipeIds.filter(
-          (id) => id !== action11.payload.recipeId
-        );
-        if (filterState.length === 0)
-          return state.filter((item) => item.name !== action11.payload.name);
-        state[ingredientIdx].recipeIds = filterState;
-      }
-    }
-  }
-}), ingredients_slice_default = basketSlice.reducer, {
-  addIngredient,
-  deleteIngredient,
-  updateHadQuan,
-  addRecipeId,
-  deleteRecipeId
-} = basketSlice.actions;
-
-// app/store/recipe-servings-slice.ts
-var import_toolkit2 = require("@reduxjs/toolkit"), initialState2 = [], recipeServingsSlice = (0, import_toolkit2.createSlice)({
-  name: "recipe-servings",
-  initialState: initialState2,
-  reducers: {
-    addRecipeServings: (state, action11) => {
-      state.push({ ...action11.payload });
-    },
-    deleteRecipeServings: (state, action11) => state.filter((item) => item.recipeId !== action11.payload.recipeId),
-    updateRecipeServings: (state, action11) => {
-      let recipeIdx = state.findIndex(
-        (item) => item.recipeId === action11.payload.recipeId
-      );
-      recipeIdx !== -1 && (state[recipeIdx].servings = action11.payload.servings);
-    }
-  }
-}), recipe_servings_slice_default = recipeServingsSlice.reducer, { addRecipeServings, deleteRecipeServings, updateRecipeServings } = recipeServingsSlice.actions;
-
-// app/store/upload-temp/step-form-slice.ts
-var import_toolkit3 = require("@reduxjs/toolkit"), import_uuid = require("uuid"), initialState3 = [
-  {
-    id: (0, import_uuid.v4)(),
-    title: "",
-    methods: [{ content: "" }],
-    photo: { name: "", src: "", type: "" }
-  }
-], stepFormSlice = (0, import_toolkit3.createSlice)({
-  name: "step-form",
-  initialState: initialState3,
-  reducers: {
-    addStep: (state, action11) => {
-      let newPayload = structuredClone(action11.payload);
-      state.push(newPayload);
-    },
-    updateStep: (state, action11) => {
-      let idx = state.findIndex((step) => step.id === action11.payload.id), newPayload = structuredClone(action11.payload);
-      idx > -1 && (state[idx] = newPayload);
-    },
-    deleteStep: (state, action11) => state.filter((step) => step.id !== action11.payload.id),
-    resetStep: () => initialState3
-  }
-}), step_form_slice_default = stepFormSlice.reducer, { addStep, updateStep, deleteStep, resetStep } = stepFormSlice.actions;
-
-// app/store/upload-temp/details-form-slice.ts
-var import_toolkit4 = require("@reduxjs/toolkit"), initialState4 = {
-  tags: null,
-  title: "",
-  difficulty: "EASY1",
-  thumbnail: { name: "", src: "", type: "" }
-}, detailsFormSlice = (0, import_toolkit4.createSlice)({
-  name: "details-form",
-  initialState: initialState4,
-  reducers: {
-    updateDetails: (state, action11) => {
-      let newState = structuredClone(action11.payload);
-      return { ...state, ...newState };
-    },
-    resetDetails: () => initialState4
-  }
-}), details_form_slice_default = detailsFormSlice.reducer, { updateDetails, resetDetails } = detailsFormSlice.actions;
-
-// app/store/upload-temp/ingredients-form-slice.ts
-var import_toolkit5 = require("@reduxjs/toolkit"), initialState5 = {
-  servings: 1,
-  ingredients: [{ name: null, qty: 0, unit: null }]
-}, ingredientsFormSlice = (0, import_toolkit5.createSlice)({
-  name: "ingredients-form",
-  initialState: initialState5,
-  reducers: {
-    updateIngredients: (state, action11) => {
-      let copiedPayload = structuredClone(action11.payload);
-      return { ...state, ...copiedPayload };
-    },
-    resetIngredients: () => initialState5
-  }
-}), ingredients_form_slice_default = ingredientsFormSlice.reducer, { updateIngredients, resetIngredients } = ingredientsFormSlice.actions;
-
-// app/store/upload-temp/publish-slice.ts
-var import_toolkit6 = require("@reduxjs/toolkit"), initialState6 = {
-  details: !1,
-  ingredients: !1,
-  steps: !1
-}, PublishSlice = (0, import_toolkit6.createSlice)({
-  name: "details-form",
-  initialState: initialState6,
-  reducers: {
-    updatePublish: (state, action11) => ({ ...state, ...action11.payload }),
-    resetPublish: () => initialState6
-  }
-}), publish_slice_default = PublishSlice.reducer, { updatePublish, resetPublish } = PublishSlice.actions;
-
-// app/store/reducer.ts
-var rootReducer = (0, import_toolkit7.combineReducers)({
-  ingredients: ingredients_slice_default,
-  recipeServings: recipe_servings_slice_default,
-  stepForm: step_form_slice_default,
-  detailsForm: details_form_slice_default,
-  ingredientsForm: ingredients_form_slice_default,
-  publishState: publish_slice_default
-}), reducer_default = rootReducer;
-
-// app/store/configure-store.ts
-var import_react_redux = require("react-redux"), import_autoMergeLevel2 = __toESM(require_autoMergeLevel2());
-
-// app/store/storage.ts
-var import_createWebStorage = __toESM(require_createWebStorage()), createNoopStorage = () => ({
-  getItem(_key) {
-    return Promise.resolve(null);
-  },
-  setItem(_key, value) {
-    return Promise.resolve(value);
-  },
-  removeItem(_key) {
-    return Promise.resolve();
-  }
-}), storage = typeof window < "u" ? (0, import_createWebStorage.default)("session") : createNoopStorage(), storage_default = storage;
-
-// app/store/configure-store.ts
-var persistConfig = {
-  key: "root",
-  storage: storage_default,
-  stateReconciler: import_autoMergeLevel2.default
-}, persistedReducer = persistReducer(
-  persistConfig,
-  reducer_default
-), store = (0, import_toolkit8.configureStore)({
-  reducer: persistedReducer,
-  devTools: !0,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [import_redux_persist.FLUSH, import_redux_persist.REHYDRATE, import_redux_persist.PAUSE, import_redux_persist.PERSIST, import_redux_persist.PURGE, import_redux_persist.REGISTER]
-    }
-  })
-}), persistor = (0, import_redux_persist.persistStore)(store), useAppDispatch = import_react_redux.useDispatch, useAppSelector = import_react_redux.useSelector;
 
 // app/routes/action/delete-recipe.ts
 var delete_recipe_exports = {};
@@ -18303,8 +18375,8 @@ var import_jsx_dev_runtime15 = require("react/jsx-dev-runtime"), UserProvider = 
   user,
   children
 }) => {
-  let { Provider: Provider3 } = UserContext;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Provider3, { value: user, children }, void 0, !1, {
+  let { Provider: Provider2 } = UserContext;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Provider2, { value: user, children }, void 0, !1, {
     fileName: "app/context/user/user-provider.tsx",
     lineNumber: 13,
     columnNumber: 10
@@ -18757,7 +18829,7 @@ __export(with_toolbar_exports, {
   default: () => ToolbarRoute,
   loader: () => loader4
 });
-var import_react24 = require("@remix-run/react"), import_server_runtime2 = require("@remix-run/server-runtime"), import_react25 = require("react");
+var import_react24 = require("@remix-run/react"), import_server_runtime2 = require("@remix-run/server-runtime");
 
 // app/service/loaders/query-card-list.ts
 var import_client2 = require("@prisma/client");
@@ -19538,23 +19610,23 @@ var import_jsx_dev_runtime31 = require("react/jsx-dev-runtime"), SvgMenuFill1Wgh
 var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
   basketData
 }) => {
-  let location = (0, import_react22.useLocation)(), { setClose, close, hidden } = (0, import_react23.useContext)(SiderContext), [theme, setTheme] = useTheme(), [openBasket, setOpenBasket] = (0, import_react23.useState)(!1);
-  return hidden ? null : /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(
+  let location = (0, import_react22.useLocation)(), [theme, setTheme] = useTheme(), [openBasket, setOpenBasket] = (0, import_react23.useState)(!1), dispatch = useAppDispatch(), siderState = useAppSelector((s) => s.sider);
+  return siderState.hidden ? null : /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(
     "header",
     {
-      className: `fixed z-10 flex min-h-[64px] w-screen items-center bg-inherit ${close ? "" : "lg:pl-[255px] "}`,
+      className: `fixed z-10 flex min-h-[64px] w-screen items-center bg-inherit ${siderState.open ? "lg:pl-[255px] " : ""}`,
       children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)("div", { className: "layout-px flex w-full items-center", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(
             "button",
             {
-              className: `icon-btn-sm icon-btn-ui -ml-2 ${close ? "" : "hidden lg:block"}`,
+              className: `icon-btn-sm icon-btn-ui -ml-2 ${siderState.open ? "hidden lg:block" : ""}`,
               onClick: () => {
-                setClose((prev) => !prev);
+                dispatch(setSiderOpen(!siderState.open));
               },
               children: /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(MenuFill1Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
                 fileName: "app/components/ui/toolbar.tsx",
-                lineNumber: 44,
+                lineNumber: 46,
                 columnNumber: 11
               }, this)
             },
@@ -19562,14 +19634,14 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
             !1,
             {
               fileName: "app/components/ui/toolbar.tsx",
-              lineNumber: 36,
+              lineNumber: 38,
               columnNumber: 9
             },
             this
           ),
           /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)("div", { className: "flex-1" }, void 0, !1, {
             fileName: "app/components/ui/toolbar.tsx",
-            lineNumber: 46,
+            lineNumber: 48,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(AuthCheck, { children: (user) => /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(
@@ -19581,7 +19653,7 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
               },
               children: /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(ShoppingBasketFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
                 fileName: "app/components/ui/toolbar.tsx",
-                lineNumber: 58,
+                lineNumber: 60,
                 columnNumber: 15
               }, this)
             },
@@ -19589,18 +19661,18 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
             !1,
             {
               fileName: "app/components/ui/toolbar.tsx",
-              lineNumber: 50,
+              lineNumber: 52,
               columnNumber: 13
             },
             this
           ) }, void 0, !1, {
             fileName: "app/components/ui/toolbar.tsx",
-            lineNumber: 48,
+            lineNumber: 50,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)("div", { className: "mx-2 h-[25px] w-[1px] bg-gray-300 dark:bg-gray-600" }, void 0, !1, {
             fileName: "app/components/ui/toolbar.tsx",
-            lineNumber: 62,
+            lineNumber: 64,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(
@@ -19608,15 +19680,15 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
             {
               summary: /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)("button", { className: "icon-btn-sm icon-btn-ui", children: theme === "light" /* LIGHT */ ? /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(LightModeFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
                 fileName: "app/components/ui/toolbar.tsx",
-                lineNumber: 67,
+                lineNumber: 69,
                 columnNumber: 17
               }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(DarkModeFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
                 fileName: "app/components/ui/toolbar.tsx",
-                lineNumber: 69,
+                lineNumber: 71,
                 columnNumber: 17
               }, this) }, void 0, !1, {
                 fileName: "app/components/ui/toolbar.tsx",
-                lineNumber: 65,
+                lineNumber: 67,
                 columnNumber: 13
               }, this),
               details: /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)("ul", { children: [
@@ -19628,7 +19700,7 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
                     children: [
                       /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(LightModeFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
                         fileName: "app/components/ui/toolbar.tsx",
-                        lineNumber: 80,
+                        lineNumber: 82,
                         columnNumber: 19
                       }, this),
                       "Light"
@@ -19638,13 +19710,13 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
                   !0,
                   {
                     fileName: "app/components/ui/toolbar.tsx",
-                    lineNumber: 76,
+                    lineNumber: 78,
                     columnNumber: 17
                   },
                   this
                 ) }, void 0, !1, {
                   fileName: "app/components/ui/toolbar.tsx",
-                  lineNumber: 75,
+                  lineNumber: 77,
                   columnNumber: 15
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(
@@ -19655,7 +19727,7 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
                     children: [
                       /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(DarkModeFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
                         fileName: "app/components/ui/toolbar.tsx",
-                        lineNumber: 89,
+                        lineNumber: 91,
                         columnNumber: 19
                       }, this),
                       "Dark"
@@ -19665,18 +19737,18 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
                   !0,
                   {
                     fileName: "app/components/ui/toolbar.tsx",
-                    lineNumber: 85,
+                    lineNumber: 87,
                     columnNumber: 17
                   },
                   this
                 ) }, void 0, !1, {
                   fileName: "app/components/ui/toolbar.tsx",
-                  lineNumber: 84,
+                  lineNumber: 86,
                   columnNumber: 15
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/components/ui/toolbar.tsx",
-                lineNumber: 74,
+                lineNumber: 76,
                 columnNumber: 13
               }, this)
             },
@@ -19684,7 +19756,7 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
             !1,
             {
               fileName: "app/components/ui/toolbar.tsx",
-              lineNumber: 63,
+              lineNumber: 65,
               columnNumber: 9
             },
             this
@@ -19695,22 +19767,22 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
               summary: /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)("button", { className: "icon-btn-sm icon-btn-ui", type: "button", children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(PersonFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
                   fileName: "app/components/ui/toolbar.tsx",
-                  lineNumber: 103,
+                  lineNumber: 105,
                   columnNumber: 23
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)("span", { children: user.email.split("@")[0] }, void 0, !1, {
                   fileName: "app/components/ui/toolbar.tsx",
-                  lineNumber: 105,
+                  lineNumber: 107,
                   columnNumber: 23
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/components/ui/toolbar.tsx",
-                lineNumber: 102,
+                lineNumber: 104,
                 columnNumber: 21
               }, this),
               details: /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(LogoutForm, { btnClassName: "drop-down-item" }, void 0, !1, {
                 fileName: "app/components/ui/toolbar.tsx",
-                lineNumber: 108,
+                lineNumber: 110,
                 columnNumber: 28
               }, this),
               "data-cy": "avatar"
@@ -19719,13 +19791,13 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
             !1,
             {
               fileName: "app/components/ui/toolbar.tsx",
-              lineNumber: 100,
+              lineNumber: 102,
               columnNumber: 17
             },
             this
           ) }, void 0, !1, {
             fileName: "app/components/ui/toolbar.tsx",
-            lineNumber: 99,
+            lineNumber: 101,
             columnNumber: 15
           }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(
             import_react22.Link,
@@ -19736,12 +19808,12 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
               children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(PersonFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
                   fileName: "app/components/ui/toolbar.tsx",
-                  lineNumber: 118,
+                  lineNumber: 120,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)("span", { children: "Login" }, void 0, !1, {
                   fileName: "app/components/ui/toolbar.tsx",
-                  lineNumber: 120,
+                  lineNumber: 122,
                   columnNumber: 17
                 }, this)
               ]
@@ -19750,18 +19822,18 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
             !0,
             {
               fileName: "app/components/ui/toolbar.tsx",
-              lineNumber: 113,
+              lineNumber: 115,
               columnNumber: 15
             },
             this
           ) }, void 0, !1, {
             fileName: "app/components/ui/toolbar.tsx",
-            lineNumber: 96,
+            lineNumber: 98,
             columnNumber: 9
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/ui/toolbar.tsx",
-          lineNumber: 35,
+          lineNumber: 37,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime32.jsxDEV)(
@@ -19777,7 +19849,7 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
           !1,
           {
             fileName: "app/components/ui/toolbar.tsx",
-            lineNumber: 126,
+            lineNumber: 128,
             columnNumber: 7
           },
           this
@@ -19788,7 +19860,7 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
     !0,
     {
       fileName: "app/components/ui/toolbar.tsx",
-      lineNumber: 30,
+      lineNumber: 32,
       columnNumber: 5
     },
     this
@@ -19797,11 +19869,11 @@ var import_jsx_dev_runtime32 = require("react/jsx-dev-runtime"), Toolbar = ({
 
 // app/routes/__with-toolbar.tsx
 var import_jsx_dev_runtime33 = require("react/jsx-dev-runtime"), LayoutChildren = ({ children }) => {
-  let { close, hidden } = (0, import_react25.useContext)(SiderContext);
+  let siderState = useAppSelector((s) => s.sider);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime33.jsxDEV)(
     "div",
     {
-      className: `min-h-screen w-screen flex-1 ${close || hidden ? "" : "lg:pl-[255px] "} ${hidden ? "" : "pt-16"} `,
+      className: `min-h-screen w-screen flex-1 ${!siderState.open || siderState.hidden ? "" : "lg:pl-[255px] "} ${siderState.hidden ? "" : "pt-16"} `,
       children
     },
     void 0,
@@ -19884,7 +19956,7 @@ __export(recipe_recipeId_modal_exports, {
   default: () => RecipeModal,
   loader: () => loader5
 });
-var import_node8 = require("@remix-run/node"), import_react26 = require("@remix-run/react"), import_react27 = require("react"), import_react28 = require("react");
+var import_node8 = require("@remix-run/node"), import_react25 = require("@remix-run/react"), import_react26 = require("react"), import_react27 = require("react");
 var import_client_s32 = require("@aws-sdk/client-s3"), import_s3_request_presigner2 = require("@aws-sdk/s3-request-presigner");
 
 // app/components/icons/ArrowDownwardFill0Wght400Grad25Opsz48.tsx
@@ -20216,7 +20288,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
   showNext,
   showPrevious
 }) => {
-  let { recipeId } = (0, import_react26.useParams)(), [showButton, setShowButton] = (0, import_react28.useState)(!1), mouseEnter = (0, import_react27.useRef)(!1), onHideBtn = (0, import_react27.useCallback)(
+  let { recipeId } = (0, import_react25.useParams)(), [showButton, setShowButton] = (0, import_react27.useState)(!1), mouseEnter = (0, import_react26.useRef)(!1), onHideBtn = (0, import_react26.useCallback)(
     import_lodash.default.debounce(() => {
       mouseEnter.current || setShowButton(!1);
     }, 2e3),
@@ -20259,7 +20331,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
               onMouseLeave,
               children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(ArrowUpwardFill0Wght400Grad25Opsz48_default, { className: "svg-sm" }, void 0, !1, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 131,
+                lineNumber: 124,
                 columnNumber: 13
               }, this)
             },
@@ -20267,7 +20339,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
             !1,
             {
               fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-              lineNumber: 113,
+              lineNumber: 106,
               columnNumber: 11
             },
             this
@@ -20293,7 +20365,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
               onMouseLeave,
               children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(ArrowDownwardFill0Wght400Grad25Opsz48_default, { className: "svg-sm" }, void 0, !1, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 153,
+                lineNumber: 146,
                 columnNumber: 13
               }, this)
             },
@@ -20301,24 +20373,24 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
             !1,
             {
               fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-              lineNumber: 134,
+              lineNumber: 127,
               columnNumber: 11
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-          lineNumber: 112,
+          lineNumber: 105,
           columnNumber: 9
         }, this) : null,
         /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
-          import_react26.Link,
+          import_react25.Link,
           {
             to: `/recipe/${recipeId}`,
             className: "btn-ghost btn-md fixed top-0 right-[10px] w-fit justify-end text-gray-500 ",
             children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(CloseFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-gray" }, void 0, !1, {
               fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-              lineNumber: 161,
+              lineNumber: 154,
               columnNumber: 9
             }, this)
           },
@@ -20326,7 +20398,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
           !1,
           {
             fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-            lineNumber: 157,
+            lineNumber: 150,
             columnNumber: 7
           },
           this
@@ -20337,18 +20409,18 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
     !0,
     {
       fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-      lineNumber: 102,
+      lineNumber: 95,
       columnNumber: 5
     },
     this
   );
 };
 function RecipeModal() {
-  let { setHidden } = (0, import_react27.useContext)(SiderContext), data = (0, import_react26.useLoaderData)(), { recipeId } = (0, import_react26.useParams)(), [stepData, setStepData] = (0, import_react28.useState)(data), [stepInView, setStepInView] = (0, import_react28.useState)(1), [maxStep, setMaxStep] = (0, import_react28.useState)(1 / 0), fetcher = (0, import_react26.useFetcher)(), [shouldFetch, setShouldFetch] = (0, import_react28.useState)(!0), [hasData, setHasData] = (0, import_react28.useState)(!0), [targets, setTergets] = (0, import_react28.useState)([]), [nextStep, setNextStep] = (0, import_react28.useState)(3);
-  (0, import_react27.useEffect)(() => (setHidden(!0), () => {
-    setHidden(!1);
-  }), [setHidden]);
-  let targetRef = (0, import_react27.useCallback)((node) => {
+  let data = (0, import_react25.useLoaderData)(), { recipeId } = (0, import_react25.useParams)(), [stepData, setStepData] = (0, import_react27.useState)(data), [stepInView, setStepInView] = (0, import_react27.useState)(1), [maxStep, setMaxStep] = (0, import_react27.useState)(1 / 0), fetcher = (0, import_react25.useFetcher)(), [shouldFetch, setShouldFetch] = (0, import_react27.useState)(!0), [hasData, setHasData] = (0, import_react27.useState)(!0), [targets, setTergets] = (0, import_react27.useState)([]), [nextStep, setNextStep] = (0, import_react27.useState)(3), dispatch = useAppDispatch();
+  (0, import_react26.useEffect)(() => (dispatch(setSiderHidden(!0)), () => {
+    dispatch(setSiderHidden(!1));
+  }), []);
+  let targetRef = (0, import_react26.useCallback)((node) => {
     if (node !== null) {
       let idx = node.getAttribute("data-key");
       idx && setTergets((prev) => {
@@ -20357,7 +20429,7 @@ function RecipeModal() {
       });
     }
   }, []);
-  return (0, import_react27.useEffect)(() => {
+  return (0, import_react26.useEffect)(() => {
     let options = {
       threshold: 0.5
     }, onIntersect = (entries, observer2) => {
@@ -20373,9 +20445,9 @@ function RecipeModal() {
     }), () => {
       observer.disconnect();
     };
-  }, [maxStep, targets, targets.length]), (0, import_react27.useEffect)(() => {
+  }, [maxStep, targets, targets.length]), (0, import_react26.useEffect)(() => {
     !shouldFetch || !hasData || (fetcher.load(`/recipe/${recipeId}/modal?step=${nextStep}`), setShouldFetch(!1));
-  }, [fetcher, hasData, nextStep, shouldFetch]), (0, import_react27.useEffect)(() => {
+  }, [fetcher, hasData, nextStep, shouldFetch]), (0, import_react26.useEffect)(() => {
     let fetcherData = fetcher.data;
     if (fetcherData !== void 0 && Array.isArray(fetcherData) && fetcherData[0] === null) {
       setHasData(!1), setShouldFetch(!1);
@@ -20386,7 +20458,7 @@ function RecipeModal() {
       return;
     }
     fetcherData !== void 0 && Array.isArray(fetcherData) && setStepData((prev) => [...prev, ...fetcherData]);
-  }, [fetcher.data]), (0, import_react27.useEffect)(() => {
+  }, [fetcher.data]), (0, import_react26.useEffect)(() => {
     hasData || setMaxStep(targets.length);
   }, [hasData, targets.length]), /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
     ModalContainer,
@@ -20442,7 +20514,7 @@ function RecipeModal() {
                     !1,
                     {
                       fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                      lineNumber: 325,
+                      lineNumber: 318,
                       columnNumber: 17
                     },
                     this
@@ -20452,13 +20524,13 @@ function RecipeModal() {
                 !1,
                 {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 322,
+                  lineNumber: 315,
                   columnNumber: 15
                 },
                 this
               ) }, void 0, !1, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 321,
+                lineNumber: 314,
                 columnNumber: 13
               }, this),
               /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("div", { className: " flex w-full lg:mt-[10%]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("div", { className: "flex-1 overflow-y-auto", children: [
@@ -20468,39 +20540,39 @@ function RecipeModal() {
                     step.step
                   ] }, void 0, !0, {
                     fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                    lineNumber: 335,
+                    lineNumber: 328,
                     columnNumber: 19
                   }, this),
                   step.title ? /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("h2", { className: "text-inherit", children: step.title }, void 0, !1, {
                     fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                    lineNumber: 337,
+                    lineNumber: 330,
                     columnNumber: 21
                   }, this) : null
                 ] }, void 0, !0, {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 334,
+                  lineNumber: 327,
                   columnNumber: 17
                 }, this),
                 /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("ol", { className: "list-decimal pl-8 pr-3 text-inherit marker:text-xl marker:leading-none marker:text-gray-300 dark:marker:text-gray-500 lg:pl-14 lg:pr-14", children: (_a = step.methods) == null ? void 0 : _a.map((method, index) => /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("li", { className: "mb-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("span", { className: "relative left-1 ", children: method }, void 0, !1, {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 343,
+                  lineNumber: 336,
                   columnNumber: 23
                 }, this) }, index, !1, {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 342,
+                  lineNumber: 335,
                   columnNumber: 21
                 }, this)) }, void 0, !1, {
                   fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                  lineNumber: 340,
+                  lineNumber: 333,
                   columnNumber: 17
                 }, this)
               ] }, void 0, !0, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 333,
+                lineNumber: 326,
                 columnNumber: 15
               }, this) }, void 0, !1, {
                 fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-                lineNumber: 332,
+                lineNumber: 325,
                 columnNumber: 13
               }, this)
             ]
@@ -20509,7 +20581,7 @@ function RecipeModal() {
           !0,
           {
             fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-            lineNumber: 302,
+            lineNumber: 295,
             columnNumber: 11
           },
           this
@@ -20520,7 +20592,7 @@ function RecipeModal() {
     !1,
     {
       fileName: "app/routes/__with-toolbar/recipe.$recipeId.modal.tsx",
-      lineNumber: 281,
+      lineNumber: 274,
       columnNumber: 5
     },
     this
@@ -20535,10 +20607,10 @@ __export(recipe_recipeId_exports, {
 });
 
 // app/pages/recipe/recipe-header.tsx
-var import_react32 = require("@remix-run/react"), import_moment = __toESM(require("moment")), import_react33 = require("react");
+var import_react31 = require("@remix-run/react"), import_moment = __toESM(require("moment")), import_react32 = require("react");
 
 // app/components/form/difficulty.tsx
-var import_react29 = require("react");
+var import_react28 = require("react");
 var import_jsx_dev_runtime47 = require("react/jsx-dev-runtime");
 function getDifficulty(difficulty) {
   let difficulties = {
@@ -20560,10 +20632,10 @@ function DifficultyBtn({
   isInput,
   onChange
 }) {
-  let [starValue, setStarValue] = (0, import_react29.useState)(
+  let [starValue, setStarValue] = (0, import_react28.useState)(
     getDifficulty(difficulty)
-  ), [clicked, setClicked] = (0, import_react29.useState)(getDifficulty(difficulty));
-  return (0, import_react29.useEffect)(() => {
+  ), [clicked, setClicked] = (0, import_react28.useState)(getDifficulty(difficulty));
+  return (0, import_react28.useEffect)(() => {
     onChange && onChange(clicked);
   }, [clicked]), /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "flex", children: [
     Array(5).fill("").map((_6, idx) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
@@ -20638,10 +20710,10 @@ function DifficultyBtn({
 }
 
 // app/components/ui/tag.tsx
-var import_react30 = require("@remix-run/react"), import_jsx_dev_runtime48 = require("react/jsx-dev-runtime");
+var import_react29 = require("@remix-run/react"), import_jsx_dev_runtime48 = require("react/jsx-dev-runtime");
 function Tag({ text }) {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
-    import_react30.Link,
+    import_react29.Link,
     {
       className: "rounded-full bg-gray-200 py-1.5 px-3 text-xs font-bold text-black dark:bg-gray-600 dark:text-gray-200 lg:text-sm",
       to: "#",
@@ -20677,7 +20749,7 @@ function HeaderImg({ src }) {
 }
 
 // app/components/ui/card/card.tsx
-var import_react31 = require("@remix-run/react"), import_react_lazy_load_image_component = require("react-lazy-load-image-component");
+var import_react30 = require("@remix-run/react"), import_react_lazy_load_image_component = require("react-lazy-load-image-component");
 var import_jsx_dev_runtime50 = require("react/jsx-dev-runtime");
 function IconForm({
   action: action11,
@@ -20686,7 +20758,7 @@ function IconForm({
   onClickHandler,
   ...props
 }) {
-  let fetcher = (0, import_react31.useFetcher)();
+  let fetcher = (0, import_react30.useFetcher)();
   return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(AuthCheck, { loginConfirmModal: !0, children: (user) => /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(fetcher.Form, { ...props, method: "post", action: action11, children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
     "button",
     {
@@ -20833,7 +20905,7 @@ function Card({
   thumbnail
 }) {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
-    import_react31.Link,
+    import_react30.Link,
     {
       to: `/recipe/${id}`,
       className: "group flex flex-col rounded-lg bg-white p-0.5 shadow-xl shadow-gray-200/50 transition-all ease-in dark:bg-dark-gray dark:shadow-black",
@@ -20946,7 +21018,7 @@ function RecipeHeader({
   isLiked,
   tags
 }) {
-  let [like, setLike] = (0, import_react33.useState)(isLiked), [likeCounts, setLikeCounts] = (0, import_react33.useState)(favCounts), [basket, setBasket] = (0, import_react33.useState)(isInBasket), [inBasketCounts, setInBasketCounts] = (0, import_react33.useState)(basketCounts);
+  let [like, setLike] = (0, import_react32.useState)(isLiked), [likeCounts, setLikeCounts] = (0, import_react32.useState)(favCounts), [basket, setBasket] = (0, import_react32.useState)(isInBasket), [inBasketCounts, setInBasketCounts] = (0, import_react32.useState)(basketCounts);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex flex-col space-y-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(ContentCard, { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex flex-col gap-4 md:flex-row md:gap-10", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(HeaderImg, { src: thumbnailSrc }, void 0, !1, {
@@ -21002,7 +21074,7 @@ function RecipeHeader({
           columnNumber: 13
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-4 flex flex-1 items-end", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-          import_react32.Link,
+          import_react31.Link,
           {
             className: "btn-primary btn-sm lg:!btn-md h-fit w-full cursor-pointer text-base lg:text-lg",
             to: `/recipe/${recipeId}/modal`,
@@ -21198,13 +21270,13 @@ function RecipeIngredientsTable({
 }
 
 // app/pages/recipe/recipe-ingredients/serving-form.tsx
-var import_react34 = require("@remix-run/react"), import_react35 = require("react"), import_react_hook_form3 = require("react-hook-form");
+var import_react33 = require("@remix-run/react"), import_react34 = require("react"), import_react_hook_form3 = require("react-hook-form");
 var import_jsx_dev_runtime53 = require("react/jsx-dev-runtime");
 function ServingForm({
   onSubmit,
   defaultServings
 }) {
-  let { recipeId } = (0, import_react34.useParams)(), recipe = useAppSelector((state) => state.recipeServings).find((recipe2) => recipe2.recipeId === recipeId), {
+  let { recipeId } = (0, import_react33.useParams)(), recipe = useAppSelector((state) => state.recipeServings).find((recipe2) => recipe2.recipeId === recipeId), {
     register: register2,
     handleSubmit,
     setValue,
@@ -21213,7 +21285,7 @@ function ServingForm({
     formState: { isSubmitSuccessful, isDirty }
   } = (0, import_react_hook_form3.useForm)({
     defaultValues: recipe ? { input: recipe.servings } : { input: defaultServings }
-  }), watchValue = watch("input"), servingInputRef = (0, import_react35.useRef)(null), inputRef = (0, import_react35.useCallback)(
+  }), watchValue = watch("input"), servingInputRef = (0, import_react34.useRef)(null), inputRef = (0, import_react34.useCallback)(
     (node) => {
       node !== null && (servingInputRef.current = node, register2("input").ref(node));
     },
@@ -21457,38 +21529,23 @@ function Index({
 }
 
 // app/pages/recipe/recipe-nutrition/nutrition-chart/radial-chart.tsx
-var import_react36 = require("react"), import_recharts = __toESM(require_lib2());
+var import_react35 = require("react"), import_recharts = __toESM(require_lib2());
 var import_jsx_dev_runtime55 = require("react/jsx-dev-runtime");
 function RadialChart({
   fillColorClass,
   data
 }) {
-  let [theme] = useTheme(), [rpcWidth, setRpcWidth] = (0, import_react36.useState)(0), [hasRpc, setHasRpc] = (0, import_react36.useState)(!1), rpcElementRef = (0, import_react36.useRef)(null), rpcRef = (0, import_react36.useCallback)((node) => {
-    node !== null && (setRpcWidth(
-      node.current.getBoundingClientRect().width
-    ), setHasRpc(!0), rpcElementRef.current = node.current);
-  }, []);
-  return (0, import_react36.useEffect)(() => {
-    let resizeObserver = new ResizeObserver((entries) => {
-      for (let entry2 of entries)
-        if (entry2.contentBoxSize) {
-          let contentBoxSize = Array.isArray(
-            entry2.contentBoxSize
-          ) ? entry2.contentBoxSize[0] : entry2.contentBoxSize;
-          setRpcWidth(contentBoxSize.blockSize);
-        }
-    });
-    return hasRpc && rpcElementRef.current && resizeObserver.observe(rpcElementRef.current), () => {
-      resizeObserver.disconnect();
-    };
-  }, [hasRpc, rpcWidth]), /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+  let [theme] = useTheme(), [width, setWidth] = (0, import_react35.useState)(0);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
     import_recharts.ResponsiveContainer,
     {
       width: "100%",
       aspect: 1,
       height: "auto",
       debounce: 2,
-      ref: rpcRef,
+      onResize: (width2) => {
+        setWidth(width2);
+      },
       children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
         import_recharts.RadialBarChart,
         {
@@ -21496,7 +21553,7 @@ function RadialChart({
           data,
           startAngle: 90,
           endAngle: -180,
-          barSize: rpcWidth / 30,
+          barSize: width / 30,
           children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
               import_recharts.PolarAngleAxis,
@@ -21511,7 +21568,7 @@ function RadialChart({
               !1,
               {
                 fileName: "app/pages/recipe/recipe-nutrition/nutrition-chart/radial-chart.tsx",
-                lineNumber: 77,
+                lineNumber: 39,
                 columnNumber: 9
               },
               this
@@ -21523,7 +21580,7 @@ function RadialChart({
                 className: fillColorClass,
                 background: theme === "dark" /* DARK */ ? { style: { fill: "#555" } } : !0,
                 dataKey: "pct",
-                cornerRadius: rpcWidth / 15,
+                cornerRadius: width / 15,
                 children: [
                   /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
                     import_recharts.LabelList,
@@ -21532,15 +21589,15 @@ function RadialChart({
                       formatter: (v) => v + "%",
                       position: "center",
                       style: {
-                        fontSize: rpcWidth ? rpcWidth / 100 + "rem" : "1.875rem",
-                        transform: rpcWidth ? `translateY(-${rpcWidth * 0.08}px)` : "translateY(-16px)"
+                        fontSize: width ? width / 100 + "rem" : "1.875rem",
+                        transform: width ? `translateY(-${width * 0.08}px)` : "translateY(-16px)"
                       }
                     },
                     void 0,
                     !1,
                     {
                       fileName: "app/pages/recipe/recipe-nutrition/nutrition-chart/radial-chart.tsx",
-                      lineNumber: 93,
+                      lineNumber: 53,
                       columnNumber: 11
                     },
                     this
@@ -21552,15 +21609,15 @@ function RadialChart({
                       dataKey: "name",
                       position: "centerTop",
                       style: {
-                        fontSize: rpcWidth ? rpcWidth / 210 + "rem" : "1.875rem",
-                        transform: rpcWidth ? `translateY(${rpcWidth * 0.05}px)` : "translateY(8px)"
+                        fontSize: width ? width / 210 + "rem" : "1.875rem",
+                        transform: width ? `translateY(${width * 0.05}px)` : "translateY(8px)"
                       }
                     },
                     void 0,
                     !1,
                     {
                       fileName: "app/pages/recipe/recipe-nutrition/nutrition-chart/radial-chart.tsx",
-                      lineNumber: 106,
+                      lineNumber: 66,
                       columnNumber: 11
                     },
                     this
@@ -21573,15 +21630,15 @@ function RadialChart({
                       formatter: (v) => v + data[0].qat.mes,
                       position: "centerTop",
                       style: {
-                        fontSize: rpcWidth ? rpcWidth / 210 + "rem" : "1.875rem",
-                        transform: rpcWidth ? `translateY(${rpcWidth * 0.15}px)` : "translateY(8px)"
+                        fontSize: width ? width / 210 + "rem" : "1.875rem",
+                        transform: width ? `translateY(${width * 0.15}px)` : "translateY(8px)"
                       }
                     },
                     void 0,
                     !1,
                     {
                       fileName: "app/pages/recipe/recipe-nutrition/nutrition-chart/radial-chart.tsx",
-                      lineNumber: 117,
+                      lineNumber: 77,
                       columnNumber: 11
                     },
                     this
@@ -21592,7 +21649,7 @@ function RadialChart({
               !0,
               {
                 fileName: "app/pages/recipe/recipe-nutrition/nutrition-chart/radial-chart.tsx",
-                lineNumber: 85,
+                lineNumber: 46,
                 columnNumber: 9
               },
               this
@@ -21603,7 +21660,7 @@ function RadialChart({
         !0,
         {
           fileName: "app/pages/recipe/recipe-nutrition/nutrition-chart/radial-chart.tsx",
-          lineNumber: 67,
+          lineNumber: 32,
           columnNumber: 7
         },
         this
@@ -21613,7 +21670,7 @@ function RadialChart({
     !1,
     {
       fileName: "app/pages/recipe/recipe-nutrition/nutrition-chart/radial-chart.tsx",
-      lineNumber: 60,
+      lineNumber: 23,
       columnNumber: 5
     },
     this
@@ -21723,7 +21780,7 @@ function IngredientsIndex({
 
 // app/routes/__with-toolbar/recipe.$recipeId.tsx
 var import_node9 = require("@remix-run/node"), import_client3 = require("@prisma/client");
-var import_react37 = require("@remix-run/react");
+var import_react36 = require("@remix-run/react");
 var import_jsx_dev_runtime58 = require("react/jsx-dev-runtime"), nutritionData = [
   [
     {
@@ -21778,7 +21835,7 @@ var import_jsx_dev_runtime58 = require("react/jsx-dev-runtime"), nutritionData =
   return (0, import_node9.json)(withThumbnail, { headers: { "Cache-Control": "max-age=3600" } });
 };
 function RecipeIndex() {
-  let data = (0, import_react37.useLoaderData)();
+  let data = (0, import_react36.useLoaderData)();
   if (!data || typeof data == "string")
     return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)("div", { children: "Not found the recipe!" }, void 0, !1, {
       fileName: "app/routes/__with-toolbar/recipe.$recipeId.tsx",
@@ -21862,7 +21919,7 @@ __export(my_recipes_exports, {
   default: () => MyRecipes,
   loader: () => loader7
 });
-var import_react41 = require("react"), import_node10 = require("@remix-run/node");
+var import_react40 = require("react"), import_node10 = require("@remix-run/node");
 
 // app/components/ui/card/card-grid.tsx
 var import_jsx_dev_runtime59 = require("react/jsx-dev-runtime");
@@ -21908,7 +21965,7 @@ function CardGrid({
 }
 
 // app/components/form/inputs/search-bar.tsx
-var import_react38 = require("@remix-run/react");
+var import_react37 = require("@remix-run/react");
 var import_jsx_dev_runtime60 = require("react/jsx-dev-runtime");
 function SearchBar({
   placeholder = "Search",
@@ -22000,7 +22057,7 @@ function SearchBar({
           lineNumber: 75,
           columnNumber: 11
         }, this) : list.map((v, idx) => /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)(
-          import_react38.Link,
+          import_react37.Link,
           {
             to: v.link,
             className: "block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700",
@@ -22033,7 +22090,7 @@ function SearchBar({
 }
 
 // app/routes/__with-toolbar/my-recipes.tsx
-var import_react42 = require("@remix-run/react");
+var import_react41 = require("@remix-run/react");
 
 // app/service/loaders/search-recipes.server.ts
 function getSearchParams(requestUrl) {
@@ -22070,11 +22127,11 @@ async function searchFavoriteRecipes(request, userId) {
 }
 
 // app/components/ui/sorting-dropdown.tsx
-var import_react39 = require("@remix-run/react"), import_react40 = require("react");
+var import_react38 = require("@remix-run/react"), import_react39 = require("react");
 var import_jsx_dev_runtime61 = require("react/jsx-dev-runtime"), SortingDropdown = ({
   fetcher
 }) => {
-  let location = (0, import_react39.useLocation)(), [listOrder, setListOrder] = (0, import_react40.useState)("New");
+  let location = (0, import_react38.useLocation)(), [listOrder, setListOrder] = (0, import_react39.useState)("New");
   return /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(
     DropdownMenu,
     {
@@ -22161,11 +22218,11 @@ var import_jsx_dev_runtime62 = require("react/jsx-dev-runtime"), loader7 = async
 };
 function MyRecipes() {
   var _a, _b;
-  let data = (0, import_react42.useLoaderData)(), fetcher = (0, import_react42.useFetcher)(), [searchList, setSearchList] = (0, import_react41.useState)([]), [recipeList, setRecipeList] = (0, import_react41.useState)(data.myRecipes);
-  return (0, import_react41.useEffect)(() => {
+  let data = (0, import_react41.useLoaderData)(), fetcher = (0, import_react41.useFetcher)(), [searchList, setSearchList] = (0, import_react40.useState)([]), [recipeList, setRecipeList] = (0, import_react40.useState)(data.myRecipes);
+  return (0, import_react40.useEffect)(() => {
     var _a2;
     (_a2 = fetcher.data) != null && _a2.searchRes && setSearchList(fetcher.data.searchRes);
-  }, [(_a = fetcher.data) == null ? void 0 : _a.searchRes]), (0, import_react41.useEffect)(() => {
+  }, [(_a = fetcher.data) == null ? void 0 : _a.searchRes]), (0, import_react40.useEffect)(() => {
     var _a2;
     (_a2 = fetcher.data) != null && _a2.myRecipes ? setRecipeList(fetcher.data.myRecipes) : setRecipeList(data.myRecipes);
   }, [(_b = fetcher.data) == null ? void 0 : _b.myRecipes, data.myRecipes]), /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("div", { className: "layout-pt layout-px flex flex-col gap-9", children: [
@@ -22241,7 +22298,7 @@ __export(favorite_exports, {
   loader: () => loader8,
   meta: () => meta2
 });
-var import_node11 = require("@remix-run/node"), import_react43 = require("@remix-run/react"), import_react44 = require("react");
+var import_node11 = require("@remix-run/node"), import_react42 = require("@remix-run/react"), import_react43 = require("react");
 var import_jsx_dev_runtime63 = require("react/jsx-dev-runtime"), meta2 = () => ({
   charset: "utf-8",
   title: "Favorite" + metaTitlePostfix
@@ -22270,8 +22327,8 @@ var import_jsx_dev_runtime63 = require("react/jsx-dev-runtime"), meta2 = () => (
 };
 function Favorite() {
   var _a;
-  let data = (0, import_react43.useLoaderData)(), fetcher = (0, import_react43.useFetcher)(), [recipeList, setRecipeList] = (0, import_react44.useState)(data.favRecipes);
-  return (0, import_react44.useEffect)(() => {
+  let data = (0, import_react42.useLoaderData)(), fetcher = (0, import_react42.useFetcher)(), [recipeList, setRecipeList] = (0, import_react43.useState)(data.favRecipes);
+  return (0, import_react43.useEffect)(() => {
     var _a2;
     (_a2 = fetcher.data) != null && _a2.favRecipes ? setRecipeList(fetcher.data.favRecipes) : setRecipeList(data.favRecipes);
   }, [(_a = fetcher.data) == null ? void 0 : _a.favRecipes, data.favRecipes]), /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "layout-py layout-px flex flex-col gap-9", children: [
@@ -22347,16 +22404,16 @@ __export(basket_exports, {
   loader: () => loader9,
   meta: () => meta3
 });
-var import_node12 = require("@remix-run/node"), import_react48 = require("@remix-run/react"), import_react49 = require("react");
+var import_node12 = require("@remix-run/node"), import_react47 = require("@remix-run/react"), import_react48 = require("react");
 
 // app/pages/basket/basket-table/index.tsx
-var import_react47 = require("react");
-
-// app/pages/basket/basket-table/table-row.tsx
 var import_react46 = require("react");
 
+// app/pages/basket/basket-table/table-row.tsx
+var import_react45 = require("react");
+
 // app/pages/basket/basket-table/table-row-form.tsx
-var import_react45 = require("react"), import_react_hook_form4 = require("react-hook-form");
+var import_react44 = require("react"), import_react_hook_form4 = require("react-hook-form");
 var import_jsx_dev_runtime64 = require("react/jsx-dev-runtime");
 function TableRowForm({
   value,
@@ -22373,11 +22430,11 @@ function TableRowForm({
     getValues,
     formState: { errors }
   } = methods;
-  return (0, import_react45.useEffect)(() => {
+  return (0, import_react44.useEffect)(() => {
     defaultValue && reset({ input: defaultValue });
-  }, [defaultValue, reset]), (0, import_react45.useEffect)(() => {
+  }, [defaultValue, reset]), (0, import_react44.useEffect)(() => {
     trigger("input");
-  }, [getValues("input")]), (0, import_react45.useEffect)(() => {
+  }, [getValues("input")]), (0, import_react44.useEffect)(() => {
     let subscription = watch((v) => {
       v.input && setInputValue(v.input);
     });
@@ -22419,7 +22476,7 @@ function TableRow({
   unit,
   localBasket
 }) {
-  let [isDeleted, setIsDeleted] = (0, import_react46.useState)(!1), dispatch = useAppDispatch();
+  let [isDeleted, setIsDeleted] = (0, import_react45.useState)(!1), dispatch = useAppDispatch();
   return /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
     "div",
     {
@@ -22548,7 +22605,7 @@ function TableRow({
 }
 
 // app/store/selectBasket.ts
-var import_toolkit9 = require("@reduxjs/toolkit"), ingredientsSelector = (state) => state.ingredients, recipeServingsSelector = (state) => state.recipeServings, selectBasket = () => (0, import_toolkit9.createSelector)(
+var import_toolkit10 = require("@reduxjs/toolkit"), ingredientsSelector = (state) => state.ingredients, recipeServingsSelector = (state) => state.recipeServings, selectBasket = () => (0, import_toolkit10.createSelector)(
   ingredientsSelector,
   recipeServingsSelector,
   (ingredients, recipes) => ingredients.map((ingredient) => {
@@ -22571,7 +22628,7 @@ var import_jsx_dev_runtime66 = require("react/jsx-dev-runtime");
 function BasketTable({
   data
 }) {
-  let selectBasketMemo = (0, import_react47.useMemo)(selectBasket, []), basket = useAppSelector(selectBasketMemo);
+  let selectBasketMemo = (0, import_react46.useMemo)(selectBasket, []), basket = useAppSelector(selectBasketMemo);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: " w-full  text-black dark:text-gray-200 ", children: data == null ? void 0 : data.map(({ ingredient: { name }, value, unit }, idx) => /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
     TableRow,
     {
@@ -22598,7 +22655,7 @@ function BasketTable({
 }
 
 // app/routes/__with-toolbar/basket.tsx
-var import_jsx_dev_runtime67 = require("react/jsx-dev-runtime"), meta3 = () => ({
+var import_use_resize_observer2 = __toESM(require("use-resize-observer")), import_jsx_dev_runtime67 = require("react/jsx-dev-runtime"), meta3 = () => ({
   charset: "utf-8",
   title: "Basket" + metaTitlePostfix
 }), loader9 = async ({ request }) => {
@@ -22622,16 +22679,12 @@ var import_jsx_dev_runtime67 = require("react/jsx-dev-runtime"), meta3 = () => (
   }), (0, import_node12.json)({ ingredients }, { headers: { "Cache-Control": "max-age=3600" } });
 };
 function BasketIndex() {
-  let data = (0, import_react48.useLoaderData)(), containerRef = (0, import_react49.useRef)(null), [hideSider, setHideSider] = (0, import_react49.useState)(!1), [openModal, setOpenModal] = (0, import_react49.useState)(!1);
-  return (0, import_react49.useEffect)(() => {
-    let onResize = (e) => {
-      for (let entry2 of e)
-        entry2.borderBoxSize[0].inlineSize <= 850 ? setHideSider(!0) : setHideSider(!1);
-    }, observer = new ResizeObserver(onResize);
-    return containerRef.current && observer.observe(containerRef.current), () => {
-      observer.disconnect();
-    };
-  }, []), /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "layout-py layout-px", ref: containerRef, children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
+  let data = (0, import_react47.useLoaderData)(), [hideSider, setHideSider] = (0, import_react48.useState)(!1), [openModal, setOpenModal] = (0, import_react48.useState)(!1), { ref } = (0, import_use_resize_observer2.default)({
+    onResize: ({ width }) => {
+      width && width <= 850 ? setHideSider(!0) : setHideSider(!1);
+    }
+  });
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "layout-py layout-px", ref, children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
     "div",
     {
       className: `mx-auto grid max-w-6xl grid-cols-[1fr_auto] grid-rows-[auto,1fr]  [grid-template-areas:'header_header''ingredients_sideList'] ${hideSider ? "gap-y-6" : "gap-6"}`,
@@ -22639,7 +22692,7 @@ function BasketIndex() {
         /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("h2", { className: "flex-1 text-black dark:text-gray-200", children: "Basket" }, void 0, !1, {
             fileName: "app/routes/__with-toolbar/basket.tsx",
-            lineNumber: 86,
+            lineNumber: 77,
             columnNumber: 11
           }, this),
           hideSider ? /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
@@ -22655,27 +22708,27 @@ function BasketIndex() {
             !1,
             {
               fileName: "app/routes/__with-toolbar/basket.tsx",
-              lineNumber: 88,
+              lineNumber: 79,
               columnNumber: 13
             },
             this
           ) : null
         ] }, void 0, !0, {
           fileName: "app/routes/__with-toolbar/basket.tsx",
-          lineNumber: 85,
+          lineNumber: 76,
           columnNumber: 9
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "[grid-area:ingredients] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(ContentCard, { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(BasketTable, { data: data == null ? void 0 : data.ingredients }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/basket.tsx",
-          lineNumber: 102,
+          lineNumber: 93,
           columnNumber: 13
         }, this) }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/basket.tsx",
-          lineNumber: 101,
+          lineNumber: 92,
           columnNumber: 11
         }, this) }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/basket.tsx",
-          lineNumber: 99,
+          lineNumber: 90,
           columnNumber: 9
         }, this),
         hideSider ? /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
@@ -22685,13 +22738,13 @@ function BasketIndex() {
             className: "w-[90vw] max-w-3xl md:w-[60vw]",
             open: openModal,
             onClose: () => setOpenModal(!1),
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(ContentCard, { className: "flex h-full  flex-col gap-8  ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_react48.Outlet, {}, void 0, !1, {
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(ContentCard, { className: "flex h-full  flex-col gap-8  ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_react47.Outlet, {}, void 0, !1, {
               fileName: "app/routes/__with-toolbar/basket.tsx",
-              lineNumber: 114,
+              lineNumber: 105,
               columnNumber: 15
             }, this) }, void 0, !1, {
               fileName: "app/routes/__with-toolbar/basket.tsx",
-              lineNumber: 113,
+              lineNumber: 104,
               columnNumber: 13
             }, this)
           },
@@ -22699,17 +22752,17 @@ function BasketIndex() {
           !1,
           {
             fileName: "app/routes/__with-toolbar/basket.tsx",
-            lineNumber: 107,
+            lineNumber: 98,
             columnNumber: 11
           },
           this
-        ) : /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(ContentCard, { className: "flex h-full min-w-[384px] flex-col gap-8 [grid-area:sideList] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_react48.Outlet, {}, void 0, !1, {
+        ) : /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(ContentCard, { className: "flex h-full min-w-[384px] flex-col gap-8 [grid-area:sideList] ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(import_react47.Outlet, {}, void 0, !1, {
           fileName: "app/routes/__with-toolbar/basket.tsx",
-          lineNumber: 119,
+          lineNumber: 110,
           columnNumber: 13
         }, this) }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/basket.tsx",
-          lineNumber: 118,
+          lineNumber: 109,
           columnNumber: 11
         }, this)
       ]
@@ -22718,13 +22771,13 @@ function BasketIndex() {
     !0,
     {
       fileName: "app/routes/__with-toolbar/basket.tsx",
-      lineNumber: 80,
+      lineNumber: 71,
       columnNumber: 7
     },
     this
   ) }, void 0, !1, {
     fileName: "app/routes/__with-toolbar/basket.tsx",
-    lineNumber: 79,
+    lineNumber: 70,
     columnNumber: 5
   }, this);
 }
@@ -22736,7 +22789,7 @@ __export(basket_exports2, {
   default: () => BasketSidePanel,
   loader: () => loader10
 });
-var import_node13 = require("@remix-run/node"), import_react50 = require("@remix-run/react"), import_react51 = require("react");
+var import_node13 = require("@remix-run/node"), import_react49 = require("@remix-run/react"), import_react50 = require("react");
 var import_jsx_dev_runtime68 = require("react/jsx-dev-runtime"), loader10 = async ({ request }) => {
   let basket = await db.basket.findFirst({
     where: { userId: "testuser0" },
@@ -22784,8 +22837,8 @@ var import_jsx_dev_runtime68 = require("react/jsx-dev-runtime"), loader10 = asyn
 };
 function BasketSidePanel() {
   var _a;
-  let data = (0, import_react50.useLoaderData)(), fetcher = (0, import_react50.useFetcher)(), servings = useAppSelector((state) => state.recipeServings), dispatch = useAppDispatch();
-  return (0, import_react51.useEffect)(() => {
+  let data = (0, import_react49.useLoaderData)(), fetcher = (0, import_react49.useFetcher)(), servings = useAppSelector((state) => state.recipeServings), dispatch = useAppDispatch();
+  return (0, import_react50.useEffect)(() => {
     var _a2;
     (_a2 = data == null ? void 0 : data.basket.recipes) == null || _a2.forEach(({ id, ingredientsNum }) => {
       dispatch(addRecipeServings({ recipeId: id, servings: 1 })), ingredientsNum.forEach(({ ingredient }) => {
@@ -22876,8 +22929,8 @@ __export(upload_exports, {
   default: () => Upload,
   loader: () => loader12
 });
-var import_client_s33 = require("@aws-sdk/client-s3"), import_node15 = require("@remix-run/node"), import_react52 = require("@remix-run/react"), import_cuid = __toESM(require("cuid")), import_react53 = require("react"), import_uuid2 = require("uuid");
-var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList = [
+var import_client_s33 = require("@aws-sdk/client-s3"), import_node15 = require("@remix-run/node"), import_react51 = require("@remix-run/react"), import_cuid = __toESM(require("cuid")), import_react52 = require("react"), import_uuid2 = require("uuid");
+var import_use_resize_observer3 = __toESM(require("use-resize-observer")), import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList = [
   { value: "Details", route: "./details" },
   { value: "Ingredients", route: "./ingredients" }
 ], defaultStepList = [{ stepId: "1", value: "title", route: "./1" }], SideListItem = ({
@@ -22890,7 +22943,7 @@ var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList
   onClickLink
 }) => route ? /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("li", { className: "relative flex", children: [
   /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
-    import_react52.NavLink,
+    import_react51.NavLink,
     {
       to: route,
       className: ({ isActive }) => `
@@ -22910,7 +22963,7 @@ var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList
     !0,
     {
       fileName: "app/routes/__with-toolbar/upload.tsx",
-      lineNumber: 82,
+      lineNumber: 83,
       columnNumber: 7
     },
     this
@@ -22927,7 +22980,7 @@ var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList
       disabled: disabledDelete,
       children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(DeleteFill0Wght400Grad25Opsz48_default, { className: "svg-md" }, void 0, !1, {
         fileName: "app/routes/__with-toolbar/upload.tsx",
-        lineNumber: 110,
+        lineNumber: 111,
         columnNumber: 11
       }, this)
     },
@@ -22935,14 +22988,14 @@ var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList
     !1,
     {
       fileName: "app/routes/__with-toolbar/upload.tsx",
-      lineNumber: 101,
+      lineNumber: 102,
       columnNumber: 9
     },
     this
   ) : null
 ] }, `${value}_${idx}`, !0, {
   fileName: "app/routes/__with-toolbar/upload.tsx",
-  lineNumber: 81,
+  lineNumber: 82,
   columnNumber: 5
 }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
   "li",
@@ -22954,7 +23007,7 @@ var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList
   !1,
   {
     fileName: "app/routes/__with-toolbar/upload.tsx",
-    lineNumber: 72,
+    lineNumber: 73,
     columnNumber: 7
   },
   this
@@ -23051,7 +23104,7 @@ var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList
   stepIdx,
   onClickLink
 }) => {
-  let stepForms = useAppSelector((state) => state.stepForm), navigate = (0, import_react52.useNavigate)(), dispatch = useAppDispatch();
+  let stepForms = useAppSelector((state) => state.stepForm), navigate = (0, import_react51.useNavigate)(), dispatch = useAppDispatch();
   return /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: " w-60  py-6  ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("nav", { className: "flex h-full flex-col", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("ul", { className: "flex-1  overflow-auto", children: [
       defaultSideList.map(({ value, route }, idx) => /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
@@ -23066,14 +23119,14 @@ var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList
         !1,
         {
           fileName: "app/routes/__with-toolbar/upload.tsx",
-          lineNumber: 253,
+          lineNumber: 254,
           columnNumber: 15
         },
         this
       )),
       /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(SideListItem, { value: "Steps", idx: 999 }, void 0, !1, {
         fileName: "app/routes/__with-toolbar/upload.tsx",
-        lineNumber: 262,
+        lineNumber: 263,
         columnNumber: 11
       }, this),
       stepForms.map(({ title, id }, idx) => /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
@@ -23093,18 +23146,18 @@ var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList
         !1,
         {
           fileName: "app/routes/__with-toolbar/upload.tsx",
-          lineNumber: 265,
+          lineNumber: 266,
           columnNumber: 15
         },
         this
       ))
     ] }, void 0, !0, {
       fileName: "app/routes/__with-toolbar/upload.tsx",
-      lineNumber: 250,
+      lineNumber: 251,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex pt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
-      import_react52.Link,
+      import_react51.Link,
       {
         to: `/upload/${stepForms.length > 0 ? stepForms.length + 1 : defaultStepList.length + 1}`,
         className: "btn-sm btn-secondary sider-item flex-1  ",
@@ -23124,46 +23177,42 @@ var import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList
       !1,
       {
         fileName: "app/routes/__with-toolbar/upload.tsx",
-        lineNumber: 288,
+        lineNumber: 289,
         columnNumber: 11
       },
       this
     ) }, void 0, !1, {
       fileName: "app/routes/__with-toolbar/upload.tsx",
-      lineNumber: 287,
+      lineNumber: 288,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/__with-toolbar/upload.tsx",
-    lineNumber: 249,
+    lineNumber: 250,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/routes/__with-toolbar/upload.tsx",
-    lineNumber: 248,
+    lineNumber: 249,
     columnNumber: 5
   }, this);
 };
 function Upload() {
-  let { stepIdx } = (0, import_react52.useParams)(), detailFormData = useAppSelector((state) => state.detailsForm), ingredientsFormData = useAppSelector((state) => state.ingredientsForm), stepsFormData = useAppSelector((state) => state.stepForm), publishState = useAppSelector((state) => state.publishState), dispatch = useAppDispatch(), fetcher = (0, import_react52.useFetcher)(), containerRef = (0, import_react53.useRef)(null), sideListRef = (0, import_react53.useRef)(null), [openSiddList, setOpenSideList] = (0, import_react53.useState)(!1), [switchToModal, setSwitchToModal] = (0, import_react53.useState)(!1);
-  return (0, import_react53.useEffect)(() => {
-    let onResize = (e) => {
-      for (let entry2 of e)
-        entry2.contentBoxSize[0].inlineSize <= 768 ? setSwitchToModal(!0) : setSwitchToModal(!1);
-    }, observer = new ResizeObserver(onResize);
-    return containerRef.current && observer.observe(containerRef.current), () => {
-      observer.disconnect();
-    };
-  }, []), /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
+  let { stepIdx } = (0, import_react51.useParams)(), detailFormData = useAppSelector((state) => state.detailsForm), ingredientsFormData = useAppSelector((state) => state.ingredientsForm), stepsFormData = useAppSelector((state) => state.stepForm), publishState = useAppSelector((state) => state.publishState), dispatch = useAppDispatch(), fetcher = (0, import_react51.useFetcher)(), sideListRef = (0, import_react52.useRef)(null), [openSiddList, setOpenSideList] = (0, import_react52.useState)(!1), [switchToModal, setSwitchToModal] = (0, import_react52.useState)(!1), { ref } = (0, import_use_resize_observer3.default)({
+    onResize: ({ width }) => {
+      width && width <= 768 ? setSwitchToModal(!0) : setSwitchToModal(!1);
+    }
+  });
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
     "div",
     {
       className: " layout-px relative mx-auto flex flex-1 flex-col gap-y-6 pt-8 pb-16",
-      ref: containerRef,
+      ref,
       children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("header", { className: "flex items-center justify-between", children: [
           /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex gap-2", children: [
             /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("h2", { children: "Upload Recipe" }, void 0, !1, {
               fileName: "app/routes/__with-toolbar/upload.tsx",
-              lineNumber: 355,
+              lineNumber: 344,
               columnNumber: 11
             }, this),
             switchToModal ? /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
@@ -23173,7 +23222,7 @@ function Upload() {
                 onClick: () => setOpenSideList((prev) => !prev),
                 children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(MenuFill1Wght400Grad25Opsz48_default, { className: " svg-md svg-gray" }, void 0, !1, {
                   fileName: "app/routes/__with-toolbar/upload.tsx",
-                  lineNumber: 361,
+                  lineNumber: 350,
                   columnNumber: 15
                 }, this)
               },
@@ -23181,14 +23230,14 @@ function Upload() {
               !1,
               {
                 fileName: "app/routes/__with-toolbar/upload.tsx",
-                lineNumber: 357,
+                lineNumber: 346,
                 columnNumber: 13
               },
               this
             ) : null
           ] }, void 0, !0, {
             fileName: "app/routes/__with-toolbar/upload.tsx",
-            lineNumber: 354,
+            lineNumber: 343,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
@@ -23213,14 +23262,14 @@ function Upload() {
             !1,
             {
               fileName: "app/routes/__with-toolbar/upload.tsx",
-              lineNumber: 365,
+              lineNumber: 354,
               columnNumber: 9
             },
             this
           )
         ] }, void 0, !0, {
           fileName: "app/routes/__with-toolbar/upload.tsx",
-          lineNumber: 353,
+          lineNumber: 342,
           columnNumber: 7
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(ContentCard, { className: "flex  !p-0 !py-0 !px-0", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex w-full flex-1 gap-8", children: [
@@ -23241,7 +23290,7 @@ function Upload() {
                   !1,
                   {
                     fileName: "app/routes/__with-toolbar/upload.tsx",
-                    lineNumber: 402,
+                    lineNumber: 391,
                     columnNumber: 17
                   },
                   this
@@ -23256,13 +23305,13 @@ function Upload() {
                   !1,
                   {
                     fileName: "app/routes/__with-toolbar/upload.tsx",
-                    lineNumber: 408,
+                    lineNumber: 397,
                     columnNumber: 17
                   },
                   this
                 ) }, void 0, !1, {
                   fileName: "app/routes/__with-toolbar/upload.tsx",
-                  lineNumber: 407,
+                  lineNumber: 396,
                   columnNumber: 15
                 }, this)
               ]
@@ -23271,39 +23320,39 @@ function Upload() {
             !0,
             {
               fileName: "app/routes/__with-toolbar/upload.tsx",
-              lineNumber: 394,
+              lineNumber: 383,
               columnNumber: 13
             },
             this
           ) : /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "border-r border-gray-200 dark:border-gray-600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(SiderListComponent, { stepIdx: stepIdx ? +stepIdx : void 0 }, void 0, !1, {
             fileName: "app/routes/__with-toolbar/upload.tsx",
-            lineNumber: 416,
+            lineNumber: 405,
             columnNumber: 15
           }, this) }, void 0, !1, {
             fileName: "app/routes/__with-toolbar/upload.tsx",
-            lineNumber: 415,
+            lineNumber: 404,
             columnNumber: 13
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex flex-1 py-6 px-9", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(import_react52.Outlet, {}, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex flex-1 py-6 px-9", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(import_react51.Outlet, {}, void 0, !1, {
             fileName: "app/routes/__with-toolbar/upload.tsx",
-            lineNumber: 421,
+            lineNumber: 410,
             columnNumber: 15
           }, this) }, void 0, !1, {
             fileName: "app/routes/__with-toolbar/upload.tsx",
-            lineNumber: 420,
+            lineNumber: 409,
             columnNumber: 13
           }, this) }, void 0, !1, {
             fileName: "app/routes/__with-toolbar/upload.tsx",
-            lineNumber: 419,
+            lineNumber: 408,
             columnNumber: 11
           }, this)
         ] }, void 0, !0, {
           fileName: "app/routes/__with-toolbar/upload.tsx",
-          lineNumber: 392,
+          lineNumber: 381,
           columnNumber: 9
         }, this) }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/upload.tsx",
-          lineNumber: 391,
+          lineNumber: 380,
           columnNumber: 7
         }, this)
       ]
@@ -23312,18 +23361,18 @@ function Upload() {
     !0,
     {
       fileName: "app/routes/__with-toolbar/upload.tsx",
-      lineNumber: 349,
+      lineNumber: 338,
       columnNumber: 5
     },
     this
   );
 }
 var ErrorBoundary2 = ({ error }) => {
-  let navigate = (0, import_react52.useNavigate)();
+  let navigate = (0, import_react51.useNavigate)();
   return console.error(error), /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("h1", { children: "Oops! Something went wrong!" }, void 0, !1, {
       fileName: "app/routes/__with-toolbar/upload.tsx",
-      lineNumber: 435,
+      lineNumber: 424,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
@@ -23338,19 +23387,19 @@ var ErrorBoundary2 = ({ error }) => {
       !1,
       {
         fileName: "app/routes/__with-toolbar/upload.tsx",
-        lineNumber: 436,
+        lineNumber: 425,
         columnNumber: 7
       },
       this
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(import_react52.Link, { to: "/", children: "Home page" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(import_react51.Link, { to: "/", children: "Home page" }, void 0, !1, {
       fileName: "app/routes/__with-toolbar/upload.tsx",
-      lineNumber: 443,
+      lineNumber: 432,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/__with-toolbar/upload.tsx",
-    lineNumber: 434,
+    lineNumber: 423,
     columnNumber: 5
   }, this);
 };
@@ -23362,7 +23411,7 @@ __export(ingredients_exports, {
   default: () => IngredientsPage,
   loader: () => loader14
 });
-var import_react59 = require("@remix-run/react"), import_server_runtime4 = require("@remix-run/server-runtime"), import_lodash4 = __toESM(require("lodash")), import_react60 = require("react"), import_react_hook_form9 = require("react-hook-form"), import_react_select2 = require("react-select"), import_creatable2 = __toESM(require("react-select/creatable")), import_react_select3 = __toESM(require("react-select"));
+var import_react58 = require("@remix-run/react"), import_server_runtime4 = require("@remix-run/server-runtime"), import_lodash4 = __toESM(require("lodash")), import_react59 = require("react"), import_react_hook_form9 = require("react-hook-form"), import_react_select2 = require("react-select"), import_creatable2 = __toESM(require("react-select/creatable")), import_react_select3 = __toESM(require("react-select"));
 
 // app/service/loaders/search-ingredients.server.ts
 async function searchIngredients(request) {
@@ -23398,7 +23447,7 @@ __export(details_exports, {
   default: () => Details,
   loader: () => loader13
 });
-var import_react57 = require("@remix-run/react"), import_server_runtime3 = require("@remix-run/server-runtime"), import_cuid3 = __toESM(require("cuid")), import_lodash3 = __toESM(require("lodash")), import_react58 = require("react"), import_react_hook_form8 = require("react-hook-form"), import_react_select = require("react-select"), import_creatable = __toESM(require("react-select/creatable"));
+var import_react56 = require("@remix-run/react"), import_server_runtime3 = require("@remix-run/server-runtime"), import_cuid3 = __toESM(require("cuid")), import_lodash3 = __toESM(require("lodash")), import_react57 = require("react"), import_react_hook_form8 = require("react-hook-form"), import_react_select = require("react-select"), import_creatable = __toESM(require("react-select/creatable"));
 
 // app/components/ui/error-message.tsx
 var import_error_message2 = require("@hookform/error-message"), import_jsx_dev_runtime70 = require("react/jsx-dev-runtime");
@@ -23430,22 +23479,22 @@ function ErrorMessageComponent({
 }
 
 // app/components/form/image-input-form/img-upload-input.tsx
-var import_react55 = require("react"), import_react_hook_form6 = require("react-hook-form");
+var import_react54 = require("react"), import_react_hook_form6 = require("react-hook-form");
 
 // app/components/form/image-input-form/img-upload.tsx
-var import_react54 = require("react"), import_lodash2 = __toESM(require("lodash")), import_react_hook_form5 = require("react-hook-form"), import_react_avatar_editor = __toESM(require("react-avatar-editor")), import_react_dropzone = __toESM(require("react-dropzone")), import_cuid2 = __toESM(require("cuid")), import_jsx_dev_runtime71 = require("react/jsx-dev-runtime");
+var import_react53 = require("react"), import_lodash2 = __toESM(require("lodash")), import_react_hook_form5 = require("react-hook-form"), import_react_avatar_editor = __toESM(require("react-avatar-editor")), import_react_dropzone = __toESM(require("react-dropzone")), import_cuid2 = __toESM(require("cuid")), import_jsx_dev_runtime71 = require("react/jsx-dev-runtime");
 function ImgUpload({
   name,
   defaultImgSrc,
   onClose
 }) {
-  let { setValue, watch } = (0, import_react_hook_form5.useFormContext)(), containerRef = (0, import_react54.useRef)(null), editorRef = (0, import_react54.useRef)(null), imgDraftKey = (0, import_react54.useRef)((0, import_cuid2.default)()), [scale, setScale] = (0, import_react54.useState)(1), onWheel = (e) => {
+  let { setValue, watch } = (0, import_react_hook_form5.useFormContext)(), containerRef = (0, import_react53.useRef)(null), editorRef = (0, import_react53.useRef)(null), imgDraftKey = (0, import_react53.useRef)((0, import_cuid2.default)()), [scale, setScale] = (0, import_react53.useState)(1), onWheel = (e) => {
     setScale((prev) => Math.max(prev + e.deltaY / 80, 1));
-  }, throttledOnWheel = (0, import_react54.useCallback)(
+  }, throttledOnWheel = (0, import_react53.useCallback)(
     import_lodash2.default.throttle(onWheel, 40, { trailing: !1 }),
     []
   );
-  (0, import_react54.useEffect)(() => {
+  (0, import_react53.useEffect)(() => {
     let container = containerRef.current;
     return container && container.addEventListener("wheel", throttledOnWheel), () => {
       container && container.removeEventListener("wheel", throttledOnWheel);
@@ -23588,7 +23637,7 @@ function ImgUploadInput({
   text,
   src
 }) {
-  let { watch, register: register2 } = (0, import_react_hook_form6.useFormContext)(), watchValue = watch(name), [open, setOpen] = (0, import_react55.useState)(!1), [defaultImgSrc, setDefaultImgSrc] = (0, import_react55.useState)(""), canvasContainerRef = (0, import_react55.useRef)(null), onSubmitFile = async (e) => {
+  let { watch, register: register2 } = (0, import_react_hook_form6.useFormContext)(), watchValue = watch(name), [open, setOpen] = (0, import_react54.useState)(!1), [defaultImgSrc, setDefaultImgSrc] = (0, import_react54.useState)(""), canvasContainerRef = (0, import_react54.useRef)(null), onSubmitFile = async (e) => {
     let files = e.target.files;
     if (files) {
       let file = files[0], reader = new FileReader();
@@ -23709,7 +23758,7 @@ function ImgUploadInput({
 }
 
 // app/components/form/inputs/textarea.tsx
-var import_react56 = require("react"), import_react_hook_form7 = require("react-hook-form");
+var import_react55 = require("react"), import_react_hook_form7 = require("react-hook-form");
 var import_jsx_dev_runtime73 = require("react/jsx-dev-runtime");
 function Textarea({
   maxLength,
@@ -23728,7 +23777,7 @@ function Textarea({
     trigger,
     formState: { errors }
   } = (0, import_react_hook_form7.useFormContext)(), watchValue = (0, import_react_hook_form7.useWatch)({ control, defaultValue: { name } }), textareaMyRef = null;
-  return (0, import_react56.useEffect)(() => {
+  return (0, import_react55.useEffect)(() => {
     if (textareaMyRef && window) {
       let computedStyle = window.getComputedStyle(textareaMyRef), borderTop = +computedStyle.getPropertyValue("border-top-width").replace("px", ""), borderBottom = +computedStyle.getPropertyValue("border-bottom-width").replace("px", "");
       textareaMyRef.style.height = textareaMyRef.scrollHeight + borderBottom + borderTop + "px";
@@ -23957,7 +24006,7 @@ var ControlComponent = ({ children, ...props }) => {
 };
 function Details() {
   var _a;
-  let data = (0, import_react57.useLoaderData)(), fetcher = (0, import_react57.useFetcher)(), dispatch = useAppDispatch(), localDetails = useAppSelector((state) => state.detailsForm), localImgSrc = useAppSelector((state) => state.detailsForm).thumbnail, [tagsOption, setTagsOption] = (0, import_react58.useState)(
+  let data = (0, import_react56.useLoaderData)(), fetcher = (0, import_react56.useFetcher)(), dispatch = useAppDispatch(), localDetails = useAppSelector((state) => state.detailsForm), localImgSrc = useAppSelector((state) => state.detailsForm).thumbnail, [tagsOption, setTagsOption] = (0, import_react57.useState)(
     data.searchTags.map((e) => ({
       label: e.name[0].toUpperCase() + e.name.slice(1),
       value: e.id
@@ -23975,7 +24024,7 @@ function Details() {
     watch,
     formState: { errors }
   } = methods;
-  return (0, import_react58.useEffect)(() => {
+  return (0, import_react57.useEffect)(() => {
     let subscription = watch(
       import_lodash3.default.debounce((v) => {
         var _a2, _b, _c;
@@ -23995,7 +24044,7 @@ function Details() {
     return () => {
       subscription.unsubscribe();
     };
-  }, [errors]), (0, import_react58.useEffect)(() => {
+  }, [errors]), (0, import_react57.useEffect)(() => {
     var _a2, _b;
     (_a2 = fetcher.data) != null && _a2.searchTags && setTagsOption(
       (_b = fetcher.data) == null ? void 0 : _b.searchTags.map((e) => ({
@@ -24199,7 +24248,7 @@ function Details() {
       lineNumber: 306,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react57.Link, { to: "../ingredients", className: "btn-sm btn-primary w-fit", children: "Next" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react56.Link, { to: "../ingredients", className: "btn-sm btn-primary w-fit", children: "Next" }, void 0, !1, {
       fileName: "app/routes/__with-toolbar/upload/details.tsx",
       lineNumber: 409,
       columnNumber: 7
@@ -24245,7 +24294,7 @@ var import_jsx_dev_runtime75 = require("react/jsx-dev-runtime"), Volume = /* @__
   }), null);
 };
 function IngredientsPage() {
-  let data = (0, import_react59.useLoaderData)(), fetcher = (0, import_react59.useFetcher)(), [ingOptions, setIngOptions] = (0, import_react60.useState)(
+  let data = (0, import_react58.useLoaderData)(), fetcher = (0, import_react58.useFetcher)(), [ingOptions, setIngOptions] = (0, import_react59.useState)(
     data.searchRes.map((e) => ({
       value: e.id,
       label: e.name[0].toUpperCase() + e.name.substring(1)
@@ -24271,7 +24320,7 @@ function IngredientsPage() {
     ...field,
     ...watchFieldArray[index]
   }));
-  return (0, import_react60.useEffect)(() => {
+  return (0, import_react59.useEffect)(() => {
     let filteredIngredients = (input) => input ? input.some((e) => e == null ? void 0 : e.name) ? input.filter((e, i) => e.name !== null) : input.slice(void 0, 1) : void 0, ingredietnFullfill = (input) => input.every(
       (e) => e.name !== null && e.qty > 0 && e.unit !== null || e.name === null
     ), subscription = watch(
@@ -24590,12 +24639,12 @@ function IngredientsPage() {
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("div", { className: "flex gap-4", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_react59.Link, { to: "./details", className: "btn-sm btn-gray", children: "Previous" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_react58.Link, { to: "./details", className: "btn-sm btn-gray", children: "Previous" }, void 0, !1, {
         fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
         lineNumber: 399,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_react59.Link, { to: "../1", className: "btn-sm btn-primary", children: "Next" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_react58.Link, { to: "../1", className: "btn-sm btn-primary", children: "Next" }, void 0, !1, {
         fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
         lineNumber: 402,
         columnNumber: 9
@@ -24617,10 +24666,10 @@ var stepIdx_exports = {};
 __export(stepIdx_exports, {
   default: () => StepsPage
 });
-var import_react63 = require("@remix-run/react"), import_uuid3 = require("uuid");
+var import_react62 = require("@remix-run/react"), import_uuid3 = require("uuid");
 
 // app/pages/upload/step/step-form.tsx
-var import_react61 = require("@remix-run/react"), import_lodash5 = __toESM(require("lodash")), import_react62 = require("react"), import_react_hook_form11 = require("react-hook-form");
+var import_react60 = require("@remix-run/react"), import_lodash5 = __toESM(require("lodash")), import_react61 = require("react"), import_react_hook_form11 = require("react-hook-form");
 
 // app/pages/upload/step/methods-field-array.tsx
 var import_react_hook_form10 = require("react-hook-form");
@@ -24726,7 +24775,7 @@ var import_jsx_dev_runtime77 = require("react/jsx-dev-runtime"), defaultValues =
 };
 function StepForm() {
   var _a;
-  let { stepIdx } = (0, import_react61.useParams)(), dispatch = useAppDispatch(), localStepForms = useAppSelector((state) => state.stepForm), localStepForm = stepIdx ? localStepForms[+stepIdx - 1] : void 0, localImgSrcs = useAppSelector((state) => state.stepForm), localImgSrc = stepIdx ? (_a = localImgSrcs[+stepIdx - 1].photo) == null ? void 0 : _a.src : void 0, methods = (0, import_react_hook_form11.useForm)({
+  let { stepIdx } = (0, import_react60.useParams)(), dispatch = useAppDispatch(), localStepForms = useAppSelector((state) => state.stepForm), localStepForm = stepIdx ? localStepForms[+stepIdx - 1] : void 0, localImgSrcs = useAppSelector((state) => state.stepForm), localImgSrc = stepIdx ? (_a = localImgSrcs[+stepIdx - 1].photo) == null ? void 0 : _a.src : void 0, methods = (0, import_react_hook_form11.useForm)({
     defaultValues: localStepForm || defaultValues,
     mode: "onChange"
   }), {
@@ -24734,7 +24783,7 @@ function StepForm() {
     watch,
     formState: { errors }
   } = methods;
-  return (0, import_react62.useEffect)(() => {
+  return (0, import_react61.useEffect)(() => {
     let filteredMethods = (input) => input ? (input == null ? void 0 : input.some((e) => {
       var _a2;
       return (e == null ? void 0 : e.content) && ((_a2 = e == null ? void 0 : e.content) == null ? void 0 : _a2.length) > 0;
@@ -24762,7 +24811,7 @@ function StepForm() {
     return () => {
       subscription.unsubscribe();
     };
-  }, [errors, stepIdx]), (0, import_react62.useEffect)(() => {
+  }, [errors, stepIdx]), (0, import_react61.useEffect)(() => {
     localStepForm && reset(localStepForm);
   }, [stepIdx]), /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(import_react_hook_form11.FormProvider, { ...methods, children: /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("form", { className: "flex flex-col space-y-12", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { className: "w-2/5 justify-self-stretch", children: [
@@ -24844,7 +24893,7 @@ function StepForm() {
 // app/routes/__with-toolbar/upload/$stepIdx.tsx
 var import_jsx_dev_runtime78 = require("react/jsx-dev-runtime");
 function StepsPage() {
-  let { stepIdx } = (0, import_react63.useParams)(), navigate = (0, import_react63.useNavigate)(), dispatch = useAppDispatch(), localStepForms = useAppSelector((state) => state.stepForm), onAdd = () => {
+  let { stepIdx } = (0, import_react62.useParams)(), navigate = (0, import_react62.useNavigate)(), dispatch = useAppDispatch(), localStepForms = useAppSelector((state) => state.stepForm), onAdd = () => {
     stepIdx && !localStepForms[+stepIdx] && dispatch(
       addStep({
         title: "",
@@ -24926,7 +24975,7 @@ __export(with_toolbar_exports2, {
   headers: () => headers,
   loader: () => loader15
 });
-var import_node16 = require("@remix-run/node"), import_react64 = require("@remix-run/react"), import_react65 = require("react");
+var import_node16 = require("@remix-run/node"), import_react63 = require("@remix-run/react"), import_react64 = require("react");
 var import_jsx_dev_runtime79 = require("react/jsx-dev-runtime"), headers = () => ({ "Cache-Control": "max-age=3600" }), loader15 = async ({ request }) => {
   let cacheKey = request.url, searchRes = await searchAllRecipes(request), userId = await getUserId(request), recipeOrder = new URL(request.url).searchParams.get("orderby"), allRecipes = await getAllRecipes({ orderBy: recipeOrder }), withThumbnail = await getThumbnails(
     allRecipes.map((e) => {
@@ -24952,11 +25001,11 @@ var import_jsx_dev_runtime79 = require("react/jsx-dev-runtime"), headers = () =>
 };
 function Index2() {
   var _a, _b;
-  let data = (0, import_react64.useLoaderData)(), fetcher = (0, import_react64.useFetcher)(), [resList, setResList] = (0, import_react65.useState)([]), [recipeList, setRecipeList] = (0, import_react65.useState)(data.allRecipes);
-  return (0, import_react65.useEffect)(() => {
+  let data = (0, import_react63.useLoaderData)(), fetcher = (0, import_react63.useFetcher)(), [resList, setResList] = (0, import_react64.useState)([]), [recipeList, setRecipeList] = (0, import_react64.useState)(data.allRecipes);
+  return (0, import_react64.useEffect)(() => {
     var _a2;
     (_a2 = fetcher.data) != null && _a2.searchRes && setResList(fetcher.data.searchRes);
-  }, [(_a = fetcher.data) == null ? void 0 : _a.searchRes]), (0, import_react65.useEffect)(() => {
+  }, [(_a = fetcher.data) == null ? void 0 : _a.searchRes]), (0, import_react64.useEffect)(() => {
     var _a2;
     (_a2 = fetcher.data) != null && _a2.allRecipes ? setRecipeList(fetcher.data.allRecipes) : setRecipeList(data.allRecipes);
   }, [(_b = fetcher.data) == null ? void 0 : _b.allRecipes, data.allRecipes]), /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("div", { className: "layout-py layout-px flex flex-col gap-9", children: [
@@ -25031,7 +25080,7 @@ __export(login_exports, {
   default: () => Login,
   meta: () => meta4
 });
-var import_node17 = require("@remix-run/node"), import_react66 = require("@remix-run/react"), import_react67 = require("react"), import_react_hook_form12 = require("react-hook-form");
+var import_node17 = require("@remix-run/node"), import_react65 = require("@remix-run/react"), import_react66 = require("react"), import_react_hook_form12 = require("react-hook-form");
 var import_jsx_dev_runtime80 = require("react/jsx-dev-runtime"), meta4 = () => ({
   title: "Login" + metaTitlePostfix
 });
@@ -25070,7 +25119,7 @@ var badRequest2 = (data) => (0, import_node17.json)(data, { status: 400 }), acti
   }
 };
 function Login() {
-  let [formType, setFormType] = (0, import_react67.useState)("login"), [searchParams] = (0, import_react66.useSearchParams)(), submit = (0, import_react66.useSubmit)(), {
+  let [formType, setFormType] = (0, import_react66.useState)("login"), [searchParams] = (0, import_react65.useSearchParams)(), submit = (0, import_react65.useSubmit)(), {
     register: register2,
     watch,
     handleSubmit,
@@ -25360,7 +25409,7 @@ async function loader16({ request }) {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "973a1779", entry: { module: "/build/entry.client-WACBTB4V.js", imports: ["/build/_shared/chunk-SGQGV2BV.js", "/build/_shared/chunk-UAIS7CJ2.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-RZ3IFZ5N.js", imports: ["/build/_shared/chunk-MDRQS7YA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar": { id: "routes/__with-toolbar", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar-EOVKSYES.js", imports: ["/build/_shared/chunk-ZHGYVEIN.js", "/build/_shared/chunk-246UR5KV.js", "/build/_shared/chunk-VXQD2M25.js", "/build/_shared/chunk-AT22WG6D.js", "/build/_shared/chunk-PPJTJZKU.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-IIQWZOBQ.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-4YSSWV3V.js", "/build/_shared/chunk-WH5BV7J3.js", "/build/_shared/chunk-EVTSCZ7B.js", "/build/_shared/chunk-MYHG3B7D.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket": { id: "routes/__with-toolbar/basket", parentId: "routes/__with-toolbar", path: "basket", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket-J4BNQDQY.js", imports: ["/build/_shared/chunk-RYUMXWFI.js", "/build/_shared/chunk-MDRQS7YA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket/index": { id: "routes/__with-toolbar/basket/index", parentId: "routes/__with-toolbar/basket", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket/index-E4545YU7.js", imports: ["/build/_shared/chunk-AT22WG6D.js", "/build/_shared/chunk-PPJTJZKU.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-IIQWZOBQ.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-MYHG3B7D.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/favorite": { id: "routes/__with-toolbar/favorite", parentId: "routes/__with-toolbar", path: "favorite", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/favorite-JQBJIFIW.js", imports: ["/build/_shared/chunk-PO5XMXY2.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-MDRQS7YA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/index": { id: "routes/__with-toolbar/index", parentId: "routes/__with-toolbar", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/index-2HOQQGWO.js", imports: ["/build/_shared/chunk-PO5XMXY2.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/login": { id: "routes/__with-toolbar/login", parentId: "routes/__with-toolbar", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/login-L2QZLV4C.js", imports: ["/build/_shared/chunk-FCMA5ZVB.js", "/build/_shared/chunk-MDRQS7YA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TYY4M6Y.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/logout": { id: "routes/__with-toolbar/logout", parentId: "routes/__with-toolbar", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/logout-USWDJXU4.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/my-recipes": { id: "routes/__with-toolbar/my-recipes", parentId: "routes/__with-toolbar", path: "my-recipes", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/my-recipes-USF64UIZ.js", imports: ["/build/_shared/chunk-PO5XMXY2.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId": { id: "routes/__with-toolbar/recipe.$recipeId", parentId: "routes/__with-toolbar", path: "recipe/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId-3QGYB52I.js", imports: ["/build/_shared/chunk-CSCJFWGN.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-EKPOTMCO.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-TLYCO2N6.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-FU4B7POJ.js", "/build/_shared/chunk-CB2YUZND.js", "/build/_shared/chunk-CDCMVHQ2.js", "/build/_shared/chunk-O3ICDGYK.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId.modal": { id: "routes/__with-toolbar/recipe.$recipeId.modal", parentId: "routes/__with-toolbar", path: "recipe/:recipeId/modal", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId.modal-3A3M7WYV.js", imports: ["/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-FCMA5ZVB.js", "/build/_shared/chunk-EKPOTMCO.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-JU3ZC5C2.js", "/build/_shared/chunk-3L5XSVO5.js", "/build/_shared/chunk-RYUMXWFI.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-625AQ5N7.js", "/build/_shared/chunk-NFLJH5DS.js", "/build/_shared/chunk-3TSAQ3DS.js", "/build/_shared/chunk-O3ICDGYK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload": { id: "routes/__with-toolbar/upload", parentId: "routes/__with-toolbar", path: "upload", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload-2MPU5J2V.js", imports: ["/build/_shared/chunk-53PTV3VH.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-3ARGVPJQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar/upload/$stepIdx": { id: "routes/__with-toolbar/upload/$stepIdx", parentId: "routes/__with-toolbar/upload", path: ":stepIdx", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/$stepIdx-MRONFCKJ.js", imports: ["/build/_shared/chunk-GIM6WBJR.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-CDCMVHQ2.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/details": { id: "routes/__with-toolbar/upload/details", parentId: "routes/__with-toolbar/upload", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/details-WNFV7SHI.js", imports: ["/build/_shared/chunk-SQ24ZYA5.js", "/build/_shared/chunk-GIM6WBJR.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-CSCJFWGN.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-CDCMVHQ2.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/ingredients": { id: "routes/__with-toolbar/upload/ingredients", parentId: "routes/__with-toolbar/upload", path: "ingredients", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/ingredients-NHOGH4GK.js", imports: ["/build/_shared/chunk-SQ24ZYA5.js", "/build/_shared/chunk-GIM6WBJR.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-CSCJFWGN.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-Z4LTMWOB.js", "/build/_shared/chunk-NP6CXAJH.js", "/build/_shared/chunk-5HZTIHY3.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-CDCMVHQ2.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/add-basket.$recipeId": { id: "routes/action/add-basket.$recipeId", parentId: "root", path: "action/add-basket/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/add-basket.$recipeId-4377X2QB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/delete-recipe": { id: "routes/action/delete-recipe", parentId: "root", path: "action/delete-recipe", index: void 0, caseSensitive: void 0, module: "/build/routes/action/delete-recipe-7XG3NHIJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/recipe.like.$recipeId": { id: "routes/action/recipe.like.$recipeId", parentId: "root", path: "action/recipe/like/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/recipe.like.$recipeId-O2LGOEND.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/set-theme": { id: "routes/action/set-theme", parentId: "root", path: "action/set-theme", index: void 0, caseSensitive: void 0, module: "/build/routes/action/set-theme-3FQOE7YO.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/basket-panel/basket-panel": { id: "routes/basket-panel/basket-panel", parentId: "root", path: "basket-panel/basket-panel", index: void 0, caseSensitive: void 0, module: "/build/routes/basket-panel/basket-panel-B6JBNWWT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/healthcheck": { id: "routes/healthcheck", parentId: "root", path: "healthcheck", index: void 0, caseSensitive: void 0, module: "/build/routes/healthcheck-J7D3QFOD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-973A1779.js" };
+var assets_manifest_default = { version: "28e3226a", entry: { module: "/build/entry.client-QZLVB52K.js", imports: ["/build/_shared/chunk-ZSCEUI7A.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HVI5MF3P.js", imports: ["/build/_shared/chunk-2BDDOD5F.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar": { id: "routes/__with-toolbar", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar-463JMLRY.js", imports: ["/build/_shared/chunk-NN2G7BTY.js", "/build/_shared/chunk-KCZISULB.js", "/build/_shared/chunk-PUR7TUSP.js", "/build/_shared/chunk-5QZ25QOL.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-KK2PNCNM.js", "/build/_shared/chunk-AQH6FRLB.js", "/build/_shared/chunk-EVTSCZ7B.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket": { id: "routes/__with-toolbar/basket", parentId: "routes/__with-toolbar", path: "basket", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket-2H24MTFT.js", imports: ["/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-2BDDOD5F.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket/index": { id: "routes/__with-toolbar/basket/index", parentId: "routes/__with-toolbar/basket", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket/index-BGM5XDNH.js", imports: ["/build/_shared/chunk-5QZ25QOL.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/favorite": { id: "routes/__with-toolbar/favorite", parentId: "routes/__with-toolbar", path: "favorite", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/favorite-FA5347FH.js", imports: ["/build/_shared/chunk-QRY5Y5TM.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-OD5RVXBE.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-2BDDOD5F.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/index": { id: "routes/__with-toolbar/index", parentId: "routes/__with-toolbar", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/index-Y2IVHKYG.js", imports: ["/build/_shared/chunk-QRY5Y5TM.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-OD5RVXBE.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/login": { id: "routes/__with-toolbar/login", parentId: "routes/__with-toolbar", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/login-QBNYMOEI.js", imports: ["/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-2BDDOD5F.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/logout": { id: "routes/__with-toolbar/logout", parentId: "routes/__with-toolbar", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/logout-USWDJXU4.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/my-recipes": { id: "routes/__with-toolbar/my-recipes", parentId: "routes/__with-toolbar", path: "my-recipes", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/my-recipes-ZS3COMZI.js", imports: ["/build/_shared/chunk-QRY5Y5TM.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-OD5RVXBE.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId": { id: "routes/__with-toolbar/recipe.$recipeId", parentId: "routes/__with-toolbar", path: "recipe/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId-MH56RYOY.js", imports: ["/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-OD5RVXBE.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId.modal": { id: "routes/__with-toolbar/recipe.$recipeId.modal", parentId: "routes/__with-toolbar", path: "recipe/:recipeId/modal", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId.modal-ND64RVM4.js", imports: ["/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload": { id: "routes/__with-toolbar/upload", parentId: "routes/__with-toolbar", path: "upload", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload-JTB7HHN5.js", imports: ["/build/_shared/chunk-53PTV3VH.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar/upload/$stepIdx": { id: "routes/__with-toolbar/upload/$stepIdx", parentId: "routes/__with-toolbar/upload", path: ":stepIdx", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/$stepIdx-MTYZGFJS.js", imports: ["/build/_shared/chunk-RR4AYRTB.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-N3VHYYM6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/details": { id: "routes/__with-toolbar/upload/details", parentId: "routes/__with-toolbar/upload", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/details-BVAOHSUU.js", imports: ["/build/_shared/chunk-NL6PYYZM.js", "/build/_shared/chunk-RR4AYRTB.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-N3VHYYM6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/ingredients": { id: "routes/__with-toolbar/upload/ingredients", parentId: "routes/__with-toolbar/upload", path: "ingredients", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/ingredients-YLILULUT.js", imports: ["/build/_shared/chunk-NL6PYYZM.js", "/build/_shared/chunk-RR4AYRTB.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-N3VHYYM6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/add-basket.$recipeId": { id: "routes/action/add-basket.$recipeId", parentId: "root", path: "action/add-basket/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/add-basket.$recipeId-4377X2QB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/delete-recipe": { id: "routes/action/delete-recipe", parentId: "root", path: "action/delete-recipe", index: void 0, caseSensitive: void 0, module: "/build/routes/action/delete-recipe-7XG3NHIJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/recipe.like.$recipeId": { id: "routes/action/recipe.like.$recipeId", parentId: "root", path: "action/recipe/like/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/recipe.like.$recipeId-O2LGOEND.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/set-theme": { id: "routes/action/set-theme", parentId: "root", path: "action/set-theme", index: void 0, caseSensitive: void 0, module: "/build/routes/action/set-theme-3FQOE7YO.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/basket-panel/basket-panel": { id: "routes/basket-panel/basket-panel", parentId: "root", path: "basket-panel/basket-panel", index: void 0, caseSensitive: void 0, module: "/build/routes/basket-panel/basket-panel-B6JBNWWT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/healthcheck": { id: "routes/healthcheck", parentId: "root", path: "healthcheck", index: void 0, caseSensitive: void 0, module: "/build/routes/healthcheck-J7D3QFOD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-28E3226A.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

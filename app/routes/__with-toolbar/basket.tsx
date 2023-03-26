@@ -1,13 +1,14 @@
-import type { Basket, Ingredient, NumIngredientOnRecipe } from '@prisma/client'
+import type { Ingredient, NumIngredientOnRecipe } from '@prisma/client'
 import { json, LoaderFunction, MetaFunction } from '@remix-run/node'
-import { Outlet, useFetcher, useLoaderData, useSubmit } from '@remix-run/react'
-import { useEffect, useRef, useState } from 'react'
+import { Outlet, useLoaderData } from '@remix-run/react'
+import { useState } from 'react'
 import BasketTable from '~/pages/basket/basket-table'
 import ContentCard from '~/components/ui/card/content-card'
 import Modal from '~/components/ui/modal'
 import { metaTitlePostfix } from '~/root'
 import { db } from '~/service/db.server'
 import { requireUserId } from '~/service/session.server'
+import useResizeObserver from 'use-resize-observer'
 
 type LoaderData = {
   ingredients: (NumIngredientOnRecipe & {
@@ -53,30 +54,20 @@ export const loader: LoaderFunction = async ({ request }) => {
 
 export default function BasketIndex(): JSX.Element {
   const data = useLoaderData<LoaderData>()
-  const containerRef = useRef<HTMLDivElement>(null)
   const [hideSider, setHideSider] = useState(false)
   const [openModal, setOpenModal] = useState(false)
-  useEffect(() => {
-    const onResize = (e: ResizeObserverEntry[]) => {
-      for (const entry of e) {
-        if (entry.borderBoxSize[0].inlineSize <= 850) {
-          setHideSider(true)
-        } else {
-          setHideSider(false)
-        }
+  const { ref } = useResizeObserver({
+    onResize: ({ width }) => {
+      if (width && width <= 850) {
+        setHideSider(true)
+      } else {
+        setHideSider(false)
       }
-    }
-    const observer = new ResizeObserver(onResize)
-    if (containerRef.current) {
-      observer.observe(containerRef.current)
-    }
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
+    },
+  })
 
   return (
-    <div className="layout-py layout-px" ref={containerRef}>
+    <div className="layout-py layout-px" ref={ref}>
       <div
         className={`mx-auto grid max-w-6xl grid-cols-[1fr_auto] grid-rows-[auto,1fr]  [grid-template-areas:'header_header''ingredients_sideList'] ${
           hideSider ? 'gap-y-6' : 'gap-6'

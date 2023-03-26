@@ -1,98 +1,62 @@
-import { Link, NavLink } from '@remix-run/react'
-import React, { useContext } from 'react'
+import { Link } from '@remix-run/react'
+import React, { ReactNode } from 'react'
 
 import Recipe from '~/components/icons/recipe'
 import Logo from '~/components/icons/Logo'
 import AuthCheck from '../../../feature/auth/auth-check'
 import LogoutForm from '../../form/logout-form'
-import { SiderItemType } from './sider-context'
-import { SiderContext } from './sider-context'
 import LoginIcon from '~/components/icons/LoginFill0Wght400Grad25Opsz48'
 import LogoutIcon from '~/components/icons/LogoutFill0Wght400Grad25Opsz48'
 import LikeIcon from '~/components/icons/FavoriteFill0Wght400Grad25Opsz48'
 import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
 import GithubIcon from '~/components/icons/Github'
+import { useAppDispatch, useAppSelector } from '~/store/configure-store'
+import { setSiderOpen } from '~/store/sider-slice'
+import { SiderItem } from './sider-item'
 
-function SiderItem({ icon, value, route }: SiderItemType) {
-  const { setClose } = useContext(SiderContext)
-
-  if (route) {
-    return (
-      <NavLink
-        to={route}
-        onClick={() => {
-          if (window.innerWidth <= 768) {
-            setClose(true)
-          }
-        }}
-        className={({ isActive }) =>
-          `
-          sider-item sider-item-svg relative 
-          flex
-          items-center gap-4 
-         
-          transition-colors
-          hover:bg-primary
-          dark:hover:bg-primary-dark
-          
-          ${isActive ? '  bg-primary dark:bg-primary-dark' : 'text-inherit'}
-          `
-        }
-      >
-        {icon}
-        {value}
-      </NavLink>
-    )
-  } else if (typeof value !== 'string' && React.isValidElement(value)) {
-    return value
-  }
-  return (
-    <span
-      className={`
-          ml-5 mt-8 mb-2 flex 
-          select-none items-center
-          gap-4 text-sm
-          uppercase
-          tracking-wider
-          text-gray-400
-  `}
-    >
-      {value}
-    </span>
-  )
+export interface SiderItemType {
+  icon?: JSX.Element
+  value: string | ReactNode
+  route?: string
+  children?: Omit<SiderItemType, 'children'>[]
+  isBtn?: boolean
 }
 
+const defaultSiderValue: SiderItemType[] = [
+  { value: 'Pages' },
+  {
+    icon: <Recipe className="svg-md svg-neutral" />,
+    value: 'My Recipes',
+    route: 'my-recipes',
+  },
+  {
+    icon: <LikeIcon className="svg-md svg-neutral" />,
+    value: 'Favorite',
+    route: 'favorite',
+  },
+  {
+    icon: <BasketIcon className="svg-md svg-neutral" />,
+    value: 'Basket',
+    route: 'basket',
+  },
+  { value: 'Authentication' },
+]
 export default function Sider(): JSX.Element | null {
-  const defaultSiderValue: SiderItemType[] = [
-    { value: 'Pages' },
-    {
-      icon: <Recipe className="svg-md svg-neutral" />,
-      value: 'My Recipes',
-      route: 'my-recipes',
-    },
-    {
-      icon: <LikeIcon className="svg-md svg-neutral" />,
-      value: 'Favorite',
-      route: 'favorite',
-    },
-    {
-      icon: <BasketIcon className="svg-md svg-neutral" />,
-      value: 'Basket',
-      route: 'basket',
-    },
-    { value: 'Authentication' },
-  ]
-  const { hidden, close, setClose } = useContext(SiderContext)
+  // const { hidden, close, setClose } = useContext(SiderContext)
+  const dispatch = useAppDispatch()
+  const { open, hidden } = useAppSelector(s => s.sider)
 
   if (hidden) {
     return null
   }
   return (
     <>
-      {!close ? (
+      {open ? (
         <div
           className="fixed z-20 h-screen w-screen bg-black/70 backdrop-brightness-75 lg:hidden"
-          onClick={() => setClose(true)}
+          onClick={() => {
+            dispatch(setSiderOpen(false))
+          }}
         ></div>
       ) : null}
       <nav
@@ -109,7 +73,7 @@ export default function Sider(): JSX.Element | null {
       text-inherit
       shadow-xl
       transition-transform
-      ${close ? '-translate-x-full' : ''}
+      ${!open ? '-translate-x-full' : ''}
       
       dark:bg-dark-gray
       dark:shadow-gray-900
@@ -120,7 +84,7 @@ export default function Sider(): JSX.Element | null {
           className="sider-item flex h-7 p-0"
           onClick={() => {
             if (window.innerWidth <= 768) {
-              setClose(true)
+              dispatch(setSiderOpen(false))
             }
           }}
         >
@@ -131,7 +95,7 @@ export default function Sider(): JSX.Element | null {
           className="sider-item btn-sm btn-secondary mt-8"
           onClick={() => {
             if (window.innerWidth <= 768) {
-              setClose(true)
+              dispatch(setSiderOpen(false))
             }
           }}
         >

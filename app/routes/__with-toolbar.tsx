@@ -1,19 +1,19 @@
 import { Outlet, useLoaderData } from '@remix-run/react'
 import { json, LoaderArgs } from '@remix-run/server-runtime'
-import { ReactNode, useContext } from 'react'
-import { SiderContext } from '~/components/ui/sider/sider-context'
+import { ReactNode } from 'react'
 import { getThumbnails } from '~/service/loaders/query-card-list'
 import { db } from '~/service/db.server'
 import { getUserId } from '~/service/session.server'
 import Toolbar from '~/components/ui/toolbar'
+import { useAppSelector } from '~/store/configure-store'
 
 const LayoutChildren = ({ children }: { children: ReactNode }) => {
-  const { close, hidden } = useContext(SiderContext)
+  const siderState = useAppSelector(s => s.sider)
   return (
     <div
       className={`min-h-screen w-screen flex-1 ${
-        close || hidden ? '' : 'lg:pl-[255px] '
-      } ${hidden ? '' : 'pt-16'} `}
+        !siderState.open || siderState.hidden ? '' : 'lg:pl-[255px] '
+      } ${siderState.hidden ? '' : 'pt-16'} `}
     >
       {children}
     </div>
