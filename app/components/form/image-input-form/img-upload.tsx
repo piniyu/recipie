@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import _ from 'lodash'
 import { useFormContext } from 'react-hook-form'
-import { useAppDispatch } from '~/store/configure-store'
 import AvatarEditor from 'react-avatar-editor'
 import Dropzone from 'react-dropzone'
 import cuid from 'cuid'
+import useResizeObserver from 'use-resize-observer'
 
 export default function ImgUpload({
   name,
@@ -15,11 +15,12 @@ export default function ImgUpload({
   defaultImgSrc: string
   onClose: () => void
 }): JSX.Element {
-  const { setValue, watch } = useFormContext()
+  const { setValue } = useFormContext()
 
   const containerRef = useRef<HTMLDivElement>(null)
   const editorRef = useRef<AvatarEditor>(null)
   const imgDraftKey = useRef(cuid())
+  const { width, ref } = useResizeObserver<HTMLDivElement>()
 
   const [scale, setScale] = useState(1)
 
@@ -60,29 +61,27 @@ export default function ImgUpload({
   }
 
   return (
-    <>
+    <div ref={ref}>
       {defaultImgSrc?.length > 0 ? (
         <div
-          className="flex max-h-[60vh]  w-full items-center justify-center overflow-hidden rounded-t-xl bg-gray-500"
+          className="flex min-w-0 items-center justify-center overflow-hidden rounded-t-xl bg-gray-500"
           ref={containerRef}
         >
-          <Dropzone onDrop={dropped => {}} noClick noKeyboard>
-            {/** TODO: on scroll to scale and mobile scale gestrue*/}
-            {({ getRootProps, getInputProps }) => (
-              <div {...getRootProps()}>
-                <AvatarEditor
-                  image={defaultImgSrc}
-                  width={720}
-                  height={540}
-                  border={50}
-                  color={[0, 0, 0, 0.6]}
-                  scale={scale}
-                  disableCanvasRotation
-                  ref={editorRef}
-                />
-              </div>
-            )}
-          </Dropzone>
+          {/* <Dropzone onDrop={dropped => {}} noClick noKeyboard> */}
+          {/** TODO: on scroll to scale and mobile scale gestrue*/}
+          {/* {({ getRootProps, getInputProps }) => ( */}
+          <AvatarEditor
+            image={defaultImgSrc}
+            width={width ? (width > 720 ? 720 : width) : 0}
+            height={width ? (width > 720 ? (720 / 4) * 3 : (width / 4) * 3) : 0}
+            border={0}
+            color={[0, 0, 0, 0.6]}
+            scale={scale}
+            disableCanvasRotation
+            ref={editorRef}
+          />
+          {/* )} */}
+          {/* </Dropzone> */}
         </div>
       ) : (
         <div
@@ -96,7 +95,7 @@ export default function ImgUpload({
           </div>
         </div>
       )}
-      <div className="mx-6 flex justify-end gap-4 py-4">
+      <div className="flex justify-end gap-4 px-6 py-4">
         <button
           className="btn-ghost btn-md"
           onClick={e => {
@@ -116,6 +115,6 @@ export default function ImgUpload({
           Comfirm
         </button>
       </div>
-    </>
+    </div>
   )
 }

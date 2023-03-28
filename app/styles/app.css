@@ -1459,6 +1459,14 @@ input[type='number'] {
   width: 10rem !important;
 }
 
+.w-\[70vw\] {
+  width: 70vw !important;
+}
+
+.w-\[80vw\] {
+  width: 80vw !important;
+}
+
 .min-w-\[384px\] {
   min-width: 384px !important;
 }
@@ -2061,6 +2069,11 @@ input[type='number'] {
   padding-bottom: 0px !important;
 }
 
+.px-6 {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
 .pt-16 {
   padding-top: 4rem !important;
 }
@@ -2399,6 +2412,14 @@ input[type='number'] {
 
 .marker\:text-gray-300::marker {
   color: rgb(212 212 212 ) !important;
+}
+
+.backdrop\:bg-black\/50::backdrop {
+  background-color: rgb(23 23 23 / 0.5) !important;
+}
+
+.backdrop\:bg-black\/70::backdrop {
+  background-color: rgb(23 23 23 / 0.7) !important;
 }
 
 .backdrop\:backdrop-brightness-50::backdrop {
@@ -2858,6 +2879,10 @@ input[type='number'] {
     width: 40% !important;
   }
 
+  .md\:w-\[70vw\] {
+    width: 70vw !important;
+  }
+
   .md\:max-w-\[60vw\] {
     max-width: 60vw !important;
   }
@@ -2929,6 +2954,10 @@ input[type='number'] {
 
   .lg\:w-full {
     width: 100% !important;
+  }
+
+  .lg\:w-\[50vw\] {
+    width: 50vw !important;
   }
 
   .lg\:flex-row {

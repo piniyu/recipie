@@ -17111,7 +17111,7 @@ __export(root_exports, {
 var import_node5 = require("@remix-run/node"), import_react14 = require("@remix-run/react");
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-2PZCIP3C.css";
+var app_default = "/build/_assets/app-7Y7MLE3P.css";
 
 // app/components/ui/layout/index.tsx
 var import_react11 = require("react"), import_use_resize_observer = __toESM(require("use-resize-observer"));
@@ -17707,7 +17707,7 @@ function Modal({
     /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
       "dialog",
       {
-        className: ` bg-transparent p-0 backdrop:backdrop-brightness-50 ${dialogClassName ?? ""} `,
+        className: ` bg-transparent p-0 backdrop:bg-black/70 ${dialogClassName ?? ""} `,
         ref: dialogRef,
         children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: `${className ?? ""}`, children }, void 0, !1, {
           fileName: "app/components/ui/modal.tsx",
@@ -23482,13 +23482,13 @@ function ErrorMessageComponent({
 var import_react54 = require("react"), import_react_hook_form6 = require("react-hook-form");
 
 // app/components/form/image-input-form/img-upload.tsx
-var import_react53 = require("react"), import_lodash2 = __toESM(require("lodash")), import_react_hook_form5 = require("react-hook-form"), import_react_avatar_editor = __toESM(require("react-avatar-editor")), import_react_dropzone = __toESM(require("react-dropzone")), import_cuid2 = __toESM(require("cuid")), import_jsx_dev_runtime71 = require("react/jsx-dev-runtime");
+var import_react53 = require("react"), import_lodash2 = __toESM(require("lodash")), import_react_hook_form5 = require("react-hook-form"), import_react_avatar_editor = __toESM(require("react-avatar-editor")), import_cuid2 = __toESM(require("cuid")), import_use_resize_observer4 = __toESM(require("use-resize-observer")), import_jsx_dev_runtime71 = require("react/jsx-dev-runtime");
 function ImgUpload({
   name,
   defaultImgSrc,
   onClose
 }) {
-  let { setValue, watch } = (0, import_react_hook_form5.useFormContext)(), containerRef = (0, import_react53.useRef)(null), editorRef = (0, import_react53.useRef)(null), imgDraftKey = (0, import_react53.useRef)((0, import_cuid2.default)()), [scale, setScale] = (0, import_react53.useState)(1), onWheel = (e) => {
+  let { setValue } = (0, import_react_hook_form5.useFormContext)(), containerRef = (0, import_react53.useRef)(null), editorRef = (0, import_react53.useRef)(null), imgDraftKey = (0, import_react53.useRef)((0, import_cuid2.default)()), { width, ref } = (0, import_use_resize_observer4.default)(), [scale, setScale] = (0, import_react53.useState)(1), onWheel = (e) => {
     setScale((prev) => Math.max(prev + e.deltaY / 80, 1));
   }, throttledOnWheel = (0, import_react53.useCallback)(
     import_lodash2.default.throttle(onWheel, 40, { trailing: !1 }),
@@ -23512,20 +23512,19 @@ function ImgUpload({
     }
     onClose();
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(import_jsx_dev_runtime71.Fragment, { children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { ref, children: [
     (defaultImgSrc == null ? void 0 : defaultImgSrc.length) > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
       "div",
       {
-        className: "flex max-h-[60vh]  w-full items-center justify-center overflow-hidden rounded-t-xl bg-gray-500",
+        className: "flex min-w-0 items-center justify-center overflow-hidden rounded-t-xl bg-gray-500",
         ref: containerRef,
-        children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(import_react_dropzone.default, { onDrop: (dropped) => {
-        }, noClick: !0, noKeyboard: !0, children: ({ getRootProps, getInputProps }) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { ...getRootProps(), children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
+        children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
           import_react_avatar_editor.default,
           {
             image: defaultImgSrc,
-            width: 720,
-            height: 540,
-            border: 50,
+            width: width ? width > 720 ? 720 : width : 0,
+            height: width ? width > 720 ? 720 / 4 * 3 : width / 4 * 3 : 0,
+            border: 0,
             color: [0, 0, 0, 0.6],
             scale,
             disableCanvasRotation: !0,
@@ -23536,24 +23535,16 @@ function ImgUpload({
           {
             fileName: "app/components/form/image-input-form/img-upload.tsx",
             lineNumber: 73,
-            columnNumber: 17
+            columnNumber: 11
           },
           this
-        ) }, void 0, !1, {
-          fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 72,
-          columnNumber: 15
-        }, this) }, void 0, !1, {
-          fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 69,
-          columnNumber: 11
-        }, this)
+        )
       },
       void 0,
       !1,
       {
         fileName: "app/components/form/image-input-form/img-upload.tsx",
-        lineNumber: 65,
+        lineNumber: 66,
         columnNumber: 9
       },
       this
@@ -23564,11 +23555,11 @@ function ImgUpload({
         ref: containerRef,
         children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { className: "flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("p", { className: " p-4 text-center font-medium text-gray-500", children: "No file yet!" }, void 0, !1, {
           fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 93,
+          lineNumber: 92,
           columnNumber: 13
         }, this) }, void 0, !1, {
           fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 92,
+          lineNumber: 91,
           columnNumber: 11
         }, this)
       },
@@ -23576,12 +23567,12 @@ function ImgUpload({
       !1,
       {
         fileName: "app/components/form/image-input-form/img-upload.tsx",
-        lineNumber: 88,
+        lineNumber: 87,
         columnNumber: 9
       },
       this
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { className: "mx-6 flex justify-end gap-4 py-4", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { className: "flex justify-end gap-4 px-6 py-4", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
         "button",
         {
@@ -23595,7 +23586,7 @@ function ImgUpload({
         !1,
         {
           fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 100,
+          lineNumber: 99,
           columnNumber: 9
         },
         this
@@ -23613,19 +23604,19 @@ function ImgUpload({
         !1,
         {
           fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 109,
+          lineNumber: 108,
           columnNumber: 9
         },
         this
       )
     ] }, void 0, !0, {
       fileName: "app/components/form/image-input-form/img-upload.tsx",
-      lineNumber: 99,
+      lineNumber: 98,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/components/form/image-input-form/img-upload.tsx",
-    lineNumber: 63,
+    lineNumber: 64,
     columnNumber: 5
   }, this);
 }
@@ -23637,7 +23628,7 @@ function ImgUploadInput({
   text,
   src
 }) {
-  let { watch, register: register2 } = (0, import_react_hook_form6.useFormContext)(), watchValue = watch(name), [open, setOpen] = (0, import_react54.useState)(!1), [defaultImgSrc, setDefaultImgSrc] = (0, import_react54.useState)(""), canvasContainerRef = (0, import_react54.useRef)(null), onSubmitFile = async (e) => {
+  let { watch, register: register2 } = (0, import_react_hook_form6.useFormContext)(), [open, setOpen] = (0, import_react54.useState)(!1), [defaultImgSrc, setDefaultImgSrc] = (0, import_react54.useState)(""), canvasContainerRef = (0, import_react54.useRef)(null), onSubmitFile = async (e) => {
     let files = e.target.files;
     if (files) {
       let file = files[0], reader = new FileReader();
@@ -23666,18 +23657,18 @@ function ImgUploadInput({
       children: [
         src && src.length > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("img", { src }, void 0, !1, {
           fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-          lineNumber: 81,
+          lineNumber: 80,
           columnNumber: 11
         }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("div", { className: "flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("p", { className: " p-4 text-center font-medium text-gray-500", children: [
           "Click here to upload ",
           text
         ] }, void 0, !0, {
           fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-          lineNumber: 84,
+          lineNumber: 83,
           columnNumber: 13
         }, this) }, void 0, !1, {
           fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-          lineNumber: 83,
+          lineNumber: 82,
           columnNumber: 11
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("label", { className: "h-full w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
@@ -23698,13 +23689,13 @@ function ImgUploadInput({
           !1,
           {
             fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-            lineNumber: 91,
+            lineNumber: 90,
             columnNumber: 11
           },
           this
         ) }, void 0, !1, {
           fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-          lineNumber: 90,
+          lineNumber: 89,
           columnNumber: 9
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
@@ -23712,7 +23703,7 @@ function ImgUploadInput({
           {
             open,
             onClose: () => setOpen(!1),
-            className: " h-fit max-h-[70vh] w-[50vw] flex-col rounded-xl bg-white dark:bg-dark-gray",
+            className: " h-fit w-[80vw] rounded-xl bg-white dark:bg-dark-gray md:w-[70vw] lg:w-[50vw]",
             disableClickOutsideClose: !0,
             children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
               ImgUpload,
@@ -23725,7 +23716,7 @@ function ImgUploadInput({
               !1,
               {
                 fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-                lineNumber: 115,
+                lineNumber: 114,
                 columnNumber: 11
               },
               this
@@ -23735,7 +23726,7 @@ function ImgUploadInput({
           !1,
           {
             fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-            lineNumber: 109,
+            lineNumber: 108,
             columnNumber: 9
           },
           this
@@ -23746,13 +23737,13 @@ function ImgUploadInput({
     !0,
     {
       fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-      lineNumber: 70,
+      lineNumber: 69,
       columnNumber: 7
     },
     this
   ) }, void 0, !1, {
     fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-    lineNumber: 69,
+    lineNumber: 68,
     columnNumber: 5
   }, this);
 }
@@ -25409,7 +25400,7 @@ async function loader16({ request }) {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "28e3226a", entry: { module: "/build/entry.client-QZLVB52K.js", imports: ["/build/_shared/chunk-ZSCEUI7A.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HVI5MF3P.js", imports: ["/build/_shared/chunk-2BDDOD5F.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar": { id: "routes/__with-toolbar", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar-463JMLRY.js", imports: ["/build/_shared/chunk-NN2G7BTY.js", "/build/_shared/chunk-KCZISULB.js", "/build/_shared/chunk-PUR7TUSP.js", "/build/_shared/chunk-5QZ25QOL.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-KK2PNCNM.js", "/build/_shared/chunk-AQH6FRLB.js", "/build/_shared/chunk-EVTSCZ7B.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket": { id: "routes/__with-toolbar/basket", parentId: "routes/__with-toolbar", path: "basket", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket-2H24MTFT.js", imports: ["/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-2BDDOD5F.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket/index": { id: "routes/__with-toolbar/basket/index", parentId: "routes/__with-toolbar/basket", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket/index-BGM5XDNH.js", imports: ["/build/_shared/chunk-5QZ25QOL.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/favorite": { id: "routes/__with-toolbar/favorite", parentId: "routes/__with-toolbar", path: "favorite", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/favorite-FA5347FH.js", imports: ["/build/_shared/chunk-QRY5Y5TM.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-OD5RVXBE.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-2BDDOD5F.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/index": { id: "routes/__with-toolbar/index", parentId: "routes/__with-toolbar", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/index-Y2IVHKYG.js", imports: ["/build/_shared/chunk-QRY5Y5TM.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-OD5RVXBE.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/login": { id: "routes/__with-toolbar/login", parentId: "routes/__with-toolbar", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/login-QBNYMOEI.js", imports: ["/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-2BDDOD5F.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/logout": { id: "routes/__with-toolbar/logout", parentId: "routes/__with-toolbar", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/logout-USWDJXU4.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/my-recipes": { id: "routes/__with-toolbar/my-recipes", parentId: "routes/__with-toolbar", path: "my-recipes", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/my-recipes-ZS3COMZI.js", imports: ["/build/_shared/chunk-QRY5Y5TM.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-OD5RVXBE.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId": { id: "routes/__with-toolbar/recipe.$recipeId", parentId: "routes/__with-toolbar", path: "recipe/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId-MH56RYOY.js", imports: ["/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-OD5RVXBE.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-FSRG2XNS.js", "/build/_shared/chunk-N3VHYYM6.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId.modal": { id: "routes/__with-toolbar/recipe.$recipeId.modal", parentId: "routes/__with-toolbar", path: "recipe/:recipeId/modal", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId.modal-ND64RVM4.js", imports: ["/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload": { id: "routes/__with-toolbar/upload", parentId: "routes/__with-toolbar", path: "upload", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload-JTB7HHN5.js", imports: ["/build/_shared/chunk-53PTV3VH.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar/upload/$stepIdx": { id: "routes/__with-toolbar/upload/$stepIdx", parentId: "routes/__with-toolbar/upload", path: ":stepIdx", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/$stepIdx-MTYZGFJS.js", imports: ["/build/_shared/chunk-RR4AYRTB.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-N3VHYYM6.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/details": { id: "routes/__with-toolbar/upload/details", parentId: "routes/__with-toolbar/upload", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/details-BVAOHSUU.js", imports: ["/build/_shared/chunk-NL6PYYZM.js", "/build/_shared/chunk-RR4AYRTB.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-N3VHYYM6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/ingredients": { id: "routes/__with-toolbar/upload/ingredients", parentId: "routes/__with-toolbar/upload", path: "ingredients", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/ingredients-YLILULUT.js", imports: ["/build/_shared/chunk-NL6PYYZM.js", "/build/_shared/chunk-RR4AYRTB.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-N3VHYYM6.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/add-basket.$recipeId": { id: "routes/action/add-basket.$recipeId", parentId: "root", path: "action/add-basket/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/add-basket.$recipeId-4377X2QB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/delete-recipe": { id: "routes/action/delete-recipe", parentId: "root", path: "action/delete-recipe", index: void 0, caseSensitive: void 0, module: "/build/routes/action/delete-recipe-7XG3NHIJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/recipe.like.$recipeId": { id: "routes/action/recipe.like.$recipeId", parentId: "root", path: "action/recipe/like/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/recipe.like.$recipeId-O2LGOEND.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/set-theme": { id: "routes/action/set-theme", parentId: "root", path: "action/set-theme", index: void 0, caseSensitive: void 0, module: "/build/routes/action/set-theme-3FQOE7YO.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/basket-panel/basket-panel": { id: "routes/basket-panel/basket-panel", parentId: "root", path: "basket-panel/basket-panel", index: void 0, caseSensitive: void 0, module: "/build/routes/basket-panel/basket-panel-B6JBNWWT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/healthcheck": { id: "routes/healthcheck", parentId: "root", path: "healthcheck", index: void 0, caseSensitive: void 0, module: "/build/routes/healthcheck-J7D3QFOD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-28E3226A.js" };
+var assets_manifest_default = { version: "fe1881d6", entry: { module: "/build/entry.client-QZLVB52K.js", imports: ["/build/_shared/chunk-ZSCEUI7A.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HAXY2U22.js", imports: ["/build/_shared/chunk-BH2UAYVP.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar": { id: "routes/__with-toolbar", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar-PNDMOKEM.js", imports: ["/build/_shared/chunk-NN2G7BTY.js", "/build/_shared/chunk-KCZISULB.js", "/build/_shared/chunk-PUR7TUSP.js", "/build/_shared/chunk-5QZ25QOL.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-KK2PNCNM.js", "/build/_shared/chunk-AQH6FRLB.js", "/build/_shared/chunk-EVTSCZ7B.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket": { id: "routes/__with-toolbar/basket", parentId: "routes/__with-toolbar", path: "basket", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket-MYHCSBGR.js", imports: ["/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-BH2UAYVP.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket/index": { id: "routes/__with-toolbar/basket/index", parentId: "routes/__with-toolbar/basket", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket/index-BGM5XDNH.js", imports: ["/build/_shared/chunk-5QZ25QOL.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/favorite": { id: "routes/__with-toolbar/favorite", parentId: "routes/__with-toolbar", path: "favorite", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/favorite-5N3THHLS.js", imports: ["/build/_shared/chunk-MJRMAHAH.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-WMTCELF3.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-BH2UAYVP.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/index": { id: "routes/__with-toolbar/index", parentId: "routes/__with-toolbar", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/index-NIJMN4LT.js", imports: ["/build/_shared/chunk-MJRMAHAH.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-WMTCELF3.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/login": { id: "routes/__with-toolbar/login", parentId: "routes/__with-toolbar", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/login-OPZH2ESK.js", imports: ["/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-BH2UAYVP.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/logout": { id: "routes/__with-toolbar/logout", parentId: "routes/__with-toolbar", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/logout-USWDJXU4.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/my-recipes": { id: "routes/__with-toolbar/my-recipes", parentId: "routes/__with-toolbar", path: "my-recipes", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/my-recipes-GPAYJCBU.js", imports: ["/build/_shared/chunk-MJRMAHAH.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-WMTCELF3.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId": { id: "routes/__with-toolbar/recipe.$recipeId", parentId: "routes/__with-toolbar", path: "recipe/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId-NRORYK7Z.js", imports: ["/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-WMTCELF3.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId.modal": { id: "routes/__with-toolbar/recipe.$recipeId.modal", parentId: "routes/__with-toolbar", path: "recipe/:recipeId/modal", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId.modal-ND64RVM4.js", imports: ["/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload": { id: "routes/__with-toolbar/upload", parentId: "routes/__with-toolbar", path: "upload", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload-JTB7HHN5.js", imports: ["/build/_shared/chunk-53PTV3VH.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar/upload/$stepIdx": { id: "routes/__with-toolbar/upload/$stepIdx", parentId: "routes/__with-toolbar/upload", path: ":stepIdx", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/$stepIdx-CBH7J66V.js", imports: ["/build/_shared/chunk-M373I7LT.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-TVI2FNRY.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/details": { id: "routes/__with-toolbar/upload/details", parentId: "routes/__with-toolbar/upload", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/details-7U3UVHD2.js", imports: ["/build/_shared/chunk-MBBHAI75.js", "/build/_shared/chunk-M373I7LT.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-TVI2FNRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/ingredients": { id: "routes/__with-toolbar/upload/ingredients", parentId: "routes/__with-toolbar/upload", path: "ingredients", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/ingredients-37537GCN.js", imports: ["/build/_shared/chunk-MBBHAI75.js", "/build/_shared/chunk-M373I7LT.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-TVI2FNRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/add-basket.$recipeId": { id: "routes/action/add-basket.$recipeId", parentId: "root", path: "action/add-basket/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/add-basket.$recipeId-4377X2QB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/delete-recipe": { id: "routes/action/delete-recipe", parentId: "root", path: "action/delete-recipe", index: void 0, caseSensitive: void 0, module: "/build/routes/action/delete-recipe-7XG3NHIJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/recipe.like.$recipeId": { id: "routes/action/recipe.like.$recipeId", parentId: "root", path: "action/recipe/like/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/recipe.like.$recipeId-O2LGOEND.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/set-theme": { id: "routes/action/set-theme", parentId: "root", path: "action/set-theme", index: void 0, caseSensitive: void 0, module: "/build/routes/action/set-theme-3FQOE7YO.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/basket-panel/basket-panel": { id: "routes/basket-panel/basket-panel", parentId: "root", path: "basket-panel/basket-panel", index: void 0, caseSensitive: void 0, module: "/build/routes/basket-panel/basket-panel-B6JBNWWT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/healthcheck": { id: "routes/healthcheck", parentId: "root", path: "healthcheck", index: void 0, caseSensitive: void 0, module: "/build/routes/healthcheck-J7D3QFOD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-FE1881D6.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

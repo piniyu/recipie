@@ -1,7 +1,7 @@
-import { installGlobals } from "@remix-run/node";
-import "@testing-library/jest-dom/extend-expect";
+import { installGlobals } from '@remix-run/node'
+import '@testing-library/jest-dom/extend-expect'
 
-installGlobals();
-// afterEach(() => {
-//   vi.clearAllMocks();
-// });
+installGlobals()
+afterEach(() => {
+  vi.clearAllMocks()
+})

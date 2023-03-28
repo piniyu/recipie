@@ -39,7 +39,6 @@ export default function ImgUploadInput({
   src: string | undefined
 }): JSX.Element {
   const { watch, register } = useFormContext<any>()
-  const watchValue = watch(name) as ImgFormProp
 
   const [open, setOpen] = useState(false)
   const [defaultImgSrc, setDefaultImgSrc] = useState('')
@@ -109,7 +108,7 @@ export default function ImgUploadInput({
         <Modal
           open={open}
           onClose={() => setOpen(false)}
-          className={` h-fit max-h-[70vh] w-[50vw] flex-col rounded-xl bg-white dark:bg-dark-gray`}
+          className={` h-fit w-[80vw] rounded-xl bg-white dark:bg-dark-gray md:w-[70vw] lg:w-[50vw]`}
           disableClickOutsideClose
         >
           <ImgUpload

@@ -67,7 +67,7 @@ export default function Modal({
 
   return ReactDOM.createPortal(
     <dialog
-      className={` bg-transparent p-0 backdrop:backdrop-brightness-50 ${
+      className={` bg-transparent p-0 backdrop:bg-black/70 ${
         dialogClassName ?? ''
       } `}
       ref={dialogRef}
