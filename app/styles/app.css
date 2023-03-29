@@ -1208,11 +1208,6 @@ input[type='number'] {
   margin-right: auto !important;
 }
 
-.mx-6 {
-  margin-left: 1.5rem !important;
-  margin-right: 1.5rem !important;
-}
-
 .mx-5 {
   margin-left: 1.25rem !important;
   margin-right: 1.25rem !important;
@@ -1390,10 +1385,6 @@ input[type='number'] {
   max-height: 70vh !important;
 }
 
-.max-h-\[60vh\] {
-  max-height: 60vh !important;
-}
-
 .min-h-screen {
   min-height: 100vh !important;
 }
@@ -1435,8 +1426,8 @@ input[type='number'] {
   width: 15rem !important;
 }
 
-.w-\[50vw\] {
-  width: 50vw !important;
+.w-\[80vw\] {
+  width: 80vw !important;
 }
 
 .w-24 {
@@ -1451,20 +1442,12 @@ input[type='number'] {
   width: 5rem !important;
 }
 
-.w-2\/5 {
-  width: 40% !important;
-}
-
 .w-40 {
   width: 10rem !important;
 }
 
-.w-\[70vw\] {
-  width: 70vw !important;
-}
-
-.w-\[80vw\] {
-  width: 80vw !important;
+.w-2\/5 {
+  width: 40% !important;
 }
 
 .min-w-\[384px\] {
@@ -1805,6 +1788,10 @@ input[type='number'] {
   border-style: none !important;
 }
 
+.\!border-focus-outline {
+  border-color: var(--focus-outline-color) !important;
+}
+
 .border-gray-200 {
   --tw-border-opacity: 1 !important;
   border-color: rgb(229 229 229 / var(--tw-border-opacity)) !important;
@@ -1820,10 +1807,6 @@ input[type='number'] {
   border-color: rgb(212 212 212 / var(--tw-border-opacity)) !important;
 }
 
-.\!border-focus-outline {
-  border-color: var(--focus-outline-color) !important;
-}
-
 .bg-white {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
@@ -1836,6 +1819,11 @@ input[type='number'] {
 .bg-primary {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(251 191 36 / var(--tw-bg-opacity)) !important;
+}
+
+.bg-gray-100 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity)) !important;
 }
 
 .bg-gray-200 {
@@ -1868,11 +1856,6 @@ input[type='number'] {
 .bg-gray-600 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(82 82 82 / var(--tw-bg-opacity)) !important;
-}
-
-.bg-gray-100 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(245 245 245 / var(--tw-bg-opacity)) !important;
 }
 
 .bg-black\/70 {
@@ -1960,12 +1943,12 @@ input[type='number'] {
   padding: 0px !important;
 }
 
-.p-4 {
-  padding: 1rem !important;
-}
-
 .p-2 {
   padding: 0.5rem !important;
+}
+
+.p-4 {
+  padding: 1rem !important;
 }
 
 .p-1 {
@@ -1992,6 +1975,16 @@ input[type='number'] {
 .py-2 {
   padding-top: 0.5rem !important;
   padding-bottom: 0.5rem !important;
+}
+
+.py-0\.5 {
+  padding-top: 0.125rem !important;
+  padding-bottom: 0.125rem !important;
+}
+
+.py-0 {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
 }
 
 .py-1\.5 {
@@ -2039,6 +2032,11 @@ input[type='number'] {
   padding-right: 2.25rem !important;
 }
 
+.px-6 {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+}
+
 .py-4 {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
@@ -2057,21 +2055,6 @@ input[type='number'] {
 .py-9 {
   padding-top: 2.25rem !important;
   padding-bottom: 2.25rem !important;
-}
-
-.py-0\.5 {
-  padding-top: 0.125rem !important;
-  padding-bottom: 0.125rem !important;
-}
-
-.py-0 {
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
-
-.px-6 {
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
 }
 
 .pt-16 {
@@ -2267,9 +2250,9 @@ input[type='number'] {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
 
-.shadow-2xl {
-  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25) !important;
-  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color) !important;
+.\!shadow-\[0_0_0_1px_black\] {
+  --tw-shadow: 0 0 0 1px black !important;
+  --tw-shadow-colored: 0 0 0 1px var(--tw-shadow-color) !important;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
 
@@ -2279,10 +2262,15 @@ input[type='number'] {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
 
-.\!shadow-\[0_0_0_1px_black\] {
-  --tw-shadow: 0 0 0 1px black !important;
-  --tw-shadow-colored: 0 0 0 1px var(--tw-shadow-color) !important;
+.shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25) !important;
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color) !important;
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+
+.\!shadow-focus-outline {
+  --tw-shadow-color: var(--focus-outline-color) !important;
+  --tw-shadow: var(--tw-shadow-colored) !important;
 }
 
 .shadow-gray-300 {
@@ -2292,11 +2280,6 @@ input[type='number'] {
 
 .shadow-gray-200\/50 {
   --tw-shadow-color: rgb(229 229 229 / 0.5) !important;
-  --tw-shadow: var(--tw-shadow-colored) !important;
-}
-
-.\!shadow-focus-outline {
-  --tw-shadow-color: var(--focus-outline-color) !important;
   --tw-shadow: var(--tw-shadow-colored) !important;
 }
 
@@ -2414,18 +2397,8 @@ input[type='number'] {
   color: rgb(212 212 212 ) !important;
 }
 
-.backdrop\:bg-black\/50::backdrop {
-  background-color: rgb(23 23 23 / 0.5) !important;
-}
-
 .backdrop\:bg-black\/70::backdrop {
   background-color: rgb(23 23 23 / 0.7) !important;
-}
-
-.backdrop\:backdrop-brightness-50::backdrop {
-  --tw-backdrop-brightness: brightness(.5) !important;
-  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) !important;
-          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia) !important;
 }
 
 .before\:absolute::before {
@@ -2684,6 +2657,11 @@ input[type='number'] {
   background-color: rgb(145 110 18 / var(--tw-bg-opacity)) !important;
 }
 
+.dark .dark\:bg-gray-700 {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity)) !important;
+}
+
 .dark .dark\:bg-gray-600 {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(82 82 82 / var(--tw-bg-opacity)) !important;
@@ -2714,11 +2692,6 @@ input[type='number'] {
 
 .dark .dark\:bg-dark-gray\/50 {
   background-color: rgb(51 51 51 / 0.5) !important;
-}
-
-.dark .dark\:bg-gray-700 {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(64 64 64 / var(--tw-bg-opacity)) !important;
 }
 
 .dark .dark\:from-black {
@@ -2811,6 +2784,10 @@ input[type='number'] {
   border-color: rgb(115 115 115 / var(--tw-border-opacity)) !important;
 }
 
+.dark .dark\:hover\:bg-red-600\/80:hover {
+  background-color: rgb(220 38 38 / 0.8) !important;
+}
+
 .dark .dark\:hover\:bg-gray-300:hover {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(212 212 212 / var(--tw-bg-opacity)) !important;
@@ -2834,10 +2811,6 @@ input[type='number'] {
 .dark .hover\:dark\:bg-primary-dark:hover {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(145 110 18 / var(--tw-bg-opacity)) !important;
-}
-
-.dark .dark\:hover\:bg-red-600\/80:hover {
-  background-color: rgb(220 38 38 / 0.8) !important;
 }
 
 .dark .dark\:hover\:fill-gray-200:hover {
@@ -2875,12 +2848,12 @@ input[type='number'] {
     width: 60vw !important;
   }
 
-  .md\:w-2\/5 {
-    width: 40% !important;
-  }
-
   .md\:w-\[70vw\] {
     width: 70vw !important;
+  }
+
+  .md\:w-2\/5 {
+    width: 40% !important;
   }
 
   .md\:max-w-\[60vw\] {

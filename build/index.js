@@ -17111,7 +17111,7 @@ __export(root_exports, {
 var import_node5 = require("@remix-run/node"), import_react14 = require("@remix-run/react");
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-7Y7MLE3P.css";
+var app_default = "/build/_assets/app-BZUEQTUK.css";
 
 // app/components/ui/layout/index.tsx
 var import_react11 = require("react"), import_use_resize_observer = __toESM(require("use-resize-observer"));
@@ -18062,7 +18062,7 @@ var import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), defaultSiderVal
   {
     icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(recipe_default, { className: "svg-md svg-neutral" }, void 0, !1, {
       fileName: "app/components/ui/sider/sider.tsx",
-      lineNumber: 28,
+      lineNumber: 27,
       columnNumber: 11
     }, this),
     value: "My Recipes",
@@ -18071,7 +18071,7 @@ var import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), defaultSiderVal
   {
     icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(FavoriteFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
       fileName: "app/components/ui/sider/sider.tsx",
-      lineNumber: 33,
+      lineNumber: 32,
       columnNumber: 11
     }, this),
     value: "Favorite",
@@ -18080,7 +18080,7 @@ var import_jsx_dev_runtime13 = require("react/jsx-dev-runtime"), defaultSiderVal
   {
     icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(ShoppingBasketFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
       fileName: "app/components/ui/sider/sider.tsx",
-      lineNumber: 38,
+      lineNumber: 37,
       columnNumber: 11
     }, this),
     value: "Basket",
@@ -18103,7 +18103,7 @@ function Sider() {
       !1,
       {
         fileName: "app/components/ui/sider/sider.tsx",
-        lineNumber: 55,
+        lineNumber: 53,
         columnNumber: 9
       },
       this
@@ -18140,7 +18140,7 @@ function Sider() {
               },
               children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(Logo_default, {}, void 0, !1, {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 91,
+                lineNumber: 89,
                 columnNumber: 11
               }, this)
             },
@@ -18148,7 +18148,7 @@ function Sider() {
             !1,
             {
               fileName: "app/components/ui/sider/sider.tsx",
-              lineNumber: 82,
+              lineNumber: 80,
               columnNumber: 9
             },
             this
@@ -18167,7 +18167,7 @@ function Sider() {
             !1,
             {
               fileName: "app/components/ui/sider/sider.tsx",
-              lineNumber: 93,
+              lineNumber: 91,
               columnNumber: 9
             },
             this
@@ -18176,11 +18176,11 @@ function Sider() {
             defaultSiderValue.map(
               ({ icon, value, children, route, isBtn }, idx) => isBtn ? /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "sider-item px-0 pb-8", children: route ? /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react9.Link, { to: route, className: "btn-md btn-primary", children: value }, void 0, !1, {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 112,
+                lineNumber: 110,
                 columnNumber: 23
               }, this) : value }, idx, !1, {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 110,
+                lineNumber: 108,
                 columnNumber: 19
               }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_react10.default.Fragment, { children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
@@ -18196,7 +18196,7 @@ function Sider() {
                   !1,
                   {
                     fileName: "app/components/ui/sider/sider.tsx",
-                    lineNumber: 123,
+                    lineNumber: 121,
                     columnNumber: 19
                   },
                   this
@@ -18212,18 +18212,18 @@ function Sider() {
                   !1,
                   {
                     fileName: "app/components/ui/sider/sider.tsx",
-                    lineNumber: 135,
+                    lineNumber: 133,
                     columnNumber: 25
                   },
                   this
                 )) }, void 0, !1, {
                   fileName: "app/components/ui/sider/sider.tsx",
-                  lineNumber: 133,
+                  lineNumber: 131,
                   columnNumber: 21
                 }, this)
               ] }, idx, !0, {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 122,
+                lineNumber: 120,
                 columnNumber: 17
               }, this)
             ),
@@ -18232,7 +18232,7 @@ function Sider() {
               {
                 icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(LogoutFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
                   fileName: "app/components/ui/sider/sider.tsx",
-                  lineNumber: 153,
+                  lineNumber: 151,
                   columnNumber: 27
                 }, this),
                 formClassName: "flex items-center",
@@ -18246,7 +18246,7 @@ function Sider() {
               !1,
               {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 152,
+                lineNumber: 150,
                 columnNumber: 19
               },
               this
@@ -18255,7 +18255,7 @@ function Sider() {
               {
                 icon: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(LoginFill0Wght400Grad25Opsz48_default, { className: "svg-md svg-neutral" }, void 0, !1, {
                   fileName: "app/components/ui/sider/sider.tsx",
-                  lineNumber: 165,
+                  lineNumber: 163,
                   columnNumber: 25
                 }, this),
                 value: "Login",
@@ -18265,18 +18265,18 @@ function Sider() {
               !1,
               {
                 fileName: "app/components/ui/sider/sider.tsx",
-                lineNumber: 164,
+                lineNumber: 162,
                 columnNumber: 17
               },
               this
             ) }, void 0, !1, {
               fileName: "app/components/ui/sider/sider.tsx",
-              lineNumber: 148,
+              lineNumber: 146,
               columnNumber: 11
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/ui/sider/sider.tsx",
-            lineNumber: 105,
+            lineNumber: 103,
             columnNumber: 9
           }, this),
           /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: " my-2 border-t border-gray-200 py-4 dark:border-gray-600", children: /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
@@ -18288,7 +18288,7 @@ function Sider() {
               children: [
                 /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(Github_default, {}, void 0, !1, {
                   fileName: "app/components/ui/sider/sider.tsx",
-                  lineNumber: 181,
+                  lineNumber: 179,
                   columnNumber: 13
                 }, this),
                 " Github page"
@@ -18298,13 +18298,13 @@ function Sider() {
             !0,
             {
               fileName: "app/components/ui/sider/sider.tsx",
-              lineNumber: 176,
+              lineNumber: 174,
               columnNumber: 11
             },
             this
           ) }, void 0, !1, {
             fileName: "app/components/ui/sider/sider.tsx",
-            lineNumber: 175,
+            lineNumber: 173,
             columnNumber: 9
           }, this)
         ]
@@ -18313,14 +18313,14 @@ function Sider() {
       !0,
       {
         fileName: "app/components/ui/sider/sider.tsx",
-        lineNumber: 62,
+        lineNumber: 60,
         columnNumber: 7
       },
       this
     )
   ] }, void 0, !0, {
     fileName: "app/components/ui/sider/sider.tsx",
-    lineNumber: 53,
+    lineNumber: 51,
     columnNumber: 5
   }, this);
 }
@@ -18791,25 +18791,55 @@ var action3 = async ({ request, params }) => {
   }), null;
 };
 
-// app/routes/basket-panel/basket-panel.tsx
-var basket_panel_exports = {};
-__export(basket_panel_exports, {
+// app/routes/loader/search-ingredients.ts
+var search_ingredients_exports = {};
+__export(search_ingredients_exports, {
   loader: () => loader2
 });
 var import_node7 = require("@remix-run/node");
-var loader2 = async () => {
-  let recipes = await db.basket.findFirst({
-    where: { userId: "testuser0" },
-    select: { recipes: { select: { id: !0, title: !0 } } }
+
+// app/service/loaders/search-ingredients.server.ts
+async function searchIngredients(request) {
+  let param = new URL(request.url).searchParams.get("search-ingredients") ?? "";
+  return await db.ingredient.findMany({
+    where: { name: { contains: param } },
+    take: 20,
+    orderBy: { name: "asc" }
   });
-  return (0, import_node7.json)(recipes);
+}
+async function searchTags(request) {
+  let param = new URL(request.url).searchParams.get("search-tags") ?? "";
+  return await db.tag.findMany({
+    where: {
+      name: { contains: param }
+    },
+    take: 20,
+    orderBy: { name: "asc" }
+  });
+}
+
+// app/routes/loader/search-ingredients.ts
+var loader2 = async ({ request }) => {
+  let searchRes = await searchIngredients(request);
+  return (0, import_node7.json)({ searchRes });
 };
 
-// app/routes/action/set-theme.tsx
+// app/routes/loader/search-tag-options.ts
+var search_tag_options_exports = {};
+__export(search_tag_options_exports, {
+  loader: () => loader3
+});
+var import_node8 = require("@remix-run/node");
+var loader3 = async ({ request }) => {
+  let searchRes = await searchTags(request);
+  return (0, import_node8.json)({ searchTags: searchRes });
+};
+
+// app/routes/action/set-theme.ts
 var set_theme_exports = {};
 __export(set_theme_exports, {
   action: () => action4,
-  loader: () => loader3
+  loader: () => loader4
 });
 var import_server_runtime = require("@remix-run/server-runtime");
 var action4 = async ({ request }) => {
@@ -18821,13 +18851,13 @@ var action4 = async ({ request }) => {
     success: !1,
     message: `theme value of ${theme} is not a valid theme`
   });
-}, loader3 = async () => (0, import_server_runtime.redirect)("/", { status: 404 });
+}, loader4 = async () => (0, import_server_runtime.redirect)("/", { status: 404 });
 
 // app/routes/__with-toolbar.tsx
 var with_toolbar_exports = {};
 __export(with_toolbar_exports, {
   default: () => ToolbarRoute,
-  loader: () => loader4
+  loader: () => loader5
 });
 var import_react24 = require("@remix-run/react"), import_server_runtime2 = require("@remix-run/server-runtime");
 
@@ -19271,21 +19301,11 @@ var import_jsx_dev_runtime23 = require("react/jsx-dev-runtime"), ServingsForm = 
   );
   return (0, import_react19.useEffect)(() => {
     methods.reset({ input: defaultValue });
-  }, [defaultValue, methods]), /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(import_react_hook_form2.FormProvider, { ...methods, children: /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(import_react18.Form, { onSubmit: (e) => void e.preventDefault(), children: /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(
-    number_input_default,
-    {
-      registerName: "input",
-      hasSetBtn: !0
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/pages/basket/recipe-servings-form.tsx",
-      lineNumber: 40,
-      columnNumber: 9
-    },
-    this
-  ) }, void 0, !1, {
+  }, [defaultValue, methods]), /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(import_react_hook_form2.FormProvider, { ...methods, children: /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(import_react18.Form, { onSubmit: (e) => void e.preventDefault(), children: /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(number_input_default, { registerName: "input", hasSetBtn: !0 }, void 0, !1, {
+    fileName: "app/pages/basket/recipe-servings-form.tsx",
+    lineNumber: 40,
+    columnNumber: 9
+  }, this) }, void 0, !1, {
     fileName: "app/pages/basket/recipe-servings-form.tsx",
     lineNumber: 39,
     columnNumber: 7
@@ -19885,7 +19905,7 @@ var import_jsx_dev_runtime33 = require("react/jsx-dev-runtime"), LayoutChildren 
     },
     this
   );
-}, loader4 = async ({ request }) => {
+}, loader5 = async ({ request }) => {
   let userId = await getUserId(request);
   if (!userId)
     return (0, import_server_runtime2.json)({ basket: null });
@@ -19954,9 +19974,9 @@ function ToolbarRoute() {
 var recipe_recipeId_modal_exports = {};
 __export(recipe_recipeId_modal_exports, {
   default: () => RecipeModal,
-  loader: () => loader5
+  loader: () => loader6
 });
-var import_node8 = require("@remix-run/node"), import_react25 = require("@remix-run/react"), import_react26 = require("react"), import_react27 = require("react");
+var import_node9 = require("@remix-run/node"), import_react25 = require("@remix-run/react"), import_react26 = require("react"), import_react27 = require("react");
 var import_client_s32 = require("@aws-sdk/client-s3"), import_s3_request_presigner2 = require("@aws-sdk/s3-request-presigner");
 
 // app/components/icons/ArrowDownwardFill0Wght400Grad25Opsz48.tsx
@@ -20261,7 +20281,7 @@ var import_jsx_dev_runtime45 = require("react/jsx-dev-runtime"), SvgUndoFill0Wgh
 
 // app/routes/__with-toolbar/recipe.$recipeId.modal.tsx
 var import_lodash = __toESM(require("lodash"));
-var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async ({ request, params, context }) => {
+var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader6 = async ({ request, params, context }) => {
   let recipeId = params.recipeId;
   if (!recipeId)
     throw badRequest({ message: "recipeId is undefined" });
@@ -20280,7 +20300,7 @@ var import_jsx_dev_runtime46 = require("react/jsx-dev-runtime"), loader5 = async
     }
     throw new Error(e.reason);
   }), response = (await Promise.allSettled(getPhotos)).map((e) => e.status === "fulfilled" ? e.value : null);
-  return (0, import_node8.json)(response, { headers: { "Cache-Control": "max-age=3600" } });
+  return (0, import_node9.json)(response, { headers: { "Cache-Control": "max-age=3600" } });
 }, ModalContainer = ({
   children,
   onPrevious,
@@ -20603,7 +20623,7 @@ function RecipeModal() {
 var recipe_recipeId_exports = {};
 __export(recipe_recipeId_exports, {
   default: () => RecipeIndex,
-  loader: () => loader6
+  loader: () => loader7
 });
 
 // app/pages/recipe/recipe-header.tsx
@@ -20638,7 +20658,7 @@ function DifficultyBtn({
   return (0, import_react28.useEffect)(() => {
     onChange && onChange(clicked);
   }, [clicked]), /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "flex", children: [
-    Array(5).fill("").map((_6, idx) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+    Array(5).fill("").map((_8, idx) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
       "span",
       {
         onMouseEnter: () => {
@@ -20835,7 +20855,7 @@ function Overlay({
                 fileName: "app/components/ui/card/card.tsx",
                 lineNumber: 95,
                 columnNumber: 17
-              }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(FavoriteFill0Wght400Grad25Opsz48_default, { className: "svg-md" }, void 0, !1, {
+              }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(FavoriteFill0Wght400Grad25Opsz48_default, { className: "svg-md fill-black" }, void 0, !1, {
                 fileName: "app/components/ui/card/card.tsx",
                 lineNumber: 97,
                 columnNumber: 17
@@ -20858,7 +20878,7 @@ function Overlay({
                 fileName: "app/components/ui/card/card.tsx",
                 lineNumber: 105,
                 columnNumber: 17
-              }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(ShoppingBasketFill0Wght400Grad25Opsz48_default, { className: "svg-md" }, void 0, !1, {
+              }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(ShoppingBasketFill0Wght400Grad25Opsz48_default, { className: "svg-md fill-black" }, void 0, !1, {
                 fileName: "app/components/ui/card/card.tsx",
                 lineNumber: 107,
                 columnNumber: 17
@@ -21066,11 +21086,11 @@ function RecipeHeader({
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex gap-3", children: tags == null ? void 0 : tags.map((e, i) => /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Tag, { text: e }, i, !1, {
           fileName: "app/pages/recipe/recipe-header.tsx",
-          lineNumber: 65,
+          lineNumber: 64,
           columnNumber: 17
         }, this)) }, void 0, !1, {
           fileName: "app/pages/recipe/recipe-header.tsx",
-          lineNumber: 63,
+          lineNumber: 62,
           columnNumber: 13
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-4 flex flex-1 items-end", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
@@ -21084,13 +21104,13 @@ function RecipeHeader({
           !1,
           {
             fileName: "app/pages/recipe/recipe-header.tsx",
-            lineNumber: 70,
+            lineNumber: 68,
             columnNumber: 15
           },
           this
         ) }, void 0, !1, {
           fileName: "app/pages/recipe/recipe-header.tsx",
-          lineNumber: 69,
+          lineNumber: 67,
           columnNumber: 13
         }, this)
       ] }, void 0, !0, {
@@ -21107,22 +21127,22 @@ function RecipeHeader({
       /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex  flex-col items-center md:flex-row ", children: [
         /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("span", { children: "Difficulty:" }, void 0, !1, {
           fileName: "app/pages/recipe/recipe-header.tsx",
-          lineNumber: 81,
+          lineNumber: 79,
           columnNumber: 13
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(DifficultyBtn, { difficulty }, void 0, !1, {
           fileName: "app/pages/recipe/recipe-header.tsx",
-          lineNumber: 82,
+          lineNumber: 80,
           columnNumber: 13
         }, this)
       ] }, void 0, !0, {
         fileName: "app/pages/recipe/recipe-header.tsx",
-        lineNumber: 80,
+        lineNumber: 78,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "h-[35px] w-[1px] bg-gray-200 dark:bg-gray-500" }, void 0, !1, {
         fileName: "app/pages/recipe/recipe-header.tsx",
-        lineNumber: 84,
+        lineNumber: 82,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex  items-center gap-2", children: [
@@ -21133,11 +21153,11 @@ function RecipeHeader({
               `,
             icon: like ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(FavoriteFill1Wght400Grad25Opsz48_default, { className: "svg-sm lg:svg-md fill-red-500" }, void 0, !1, {
               fileName: "app/pages/recipe/recipe-header.tsx",
-              lineNumber: 91,
+              lineNumber: 89,
               columnNumber: 19
             }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(FavoriteFill0Wght400Grad25Opsz48_default, { className: "svg-sm lg:svg-md fill-black" }, void 0, !1, {
               fileName: "app/pages/recipe/recipe-header.tsx",
-              lineNumber: 93,
+              lineNumber: 91,
               columnNumber: 19
             }, this),
             action: `/action/recipe/like/${recipeId}`,
@@ -21149,24 +21169,24 @@ function RecipeHeader({
           !1,
           {
             fileName: "app/pages/recipe/recipe-header.tsx",
-            lineNumber: 86,
+            lineNumber: 84,
             columnNumber: 13
           },
           this
         ),
         /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("span", { children: likeCounts }, void 0, !1, {
           fileName: "app/pages/recipe/recipe-header.tsx",
-          lineNumber: 108,
+          lineNumber: 106,
           columnNumber: 13
         }, this)
       ] }, void 0, !0, {
         fileName: "app/pages/recipe/recipe-header.tsx",
-        lineNumber: 85,
+        lineNumber: 83,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "h-[35px] w-[1px] bg-gray-200 dark:bg-gray-500" }, void 0, !1, {
         fileName: "app/pages/recipe/recipe-header.tsx",
-        lineNumber: 110,
+        lineNumber: 108,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex  items-center gap-2", children: [
@@ -21178,11 +21198,11 @@ function RecipeHeader({
             action: `/action/add-basket/${recipeId}`,
             icon: basket ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(ShoppingBasketFill1Wght400Grad25Opsz48_default, { className: "svg-sm lg:svg-md fill-blue-500" }, void 0, !1, {
               fileName: "app/pages/recipe/recipe-header.tsx",
-              lineNumber: 118,
+              lineNumber: 116,
               columnNumber: 19
             }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(ShoppingBasketFill0Wght400Grad25Opsz48_default, { className: "svg-sm lg:svg-md fill-black" }, void 0, !1, {
               fileName: "app/pages/recipe/recipe-header.tsx",
-              lineNumber: 120,
+              lineNumber: 118,
               columnNumber: 19
             }, this),
             onClickHandler: () => {
@@ -21193,24 +21213,24 @@ function RecipeHeader({
           !1,
           {
             fileName: "app/pages/recipe/recipe-header.tsx",
-            lineNumber: 112,
+            lineNumber: 110,
             columnNumber: 13
           },
           this
         ),
         /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("span", { children: inBasketCounts }, void 0, !1, {
           fileName: "app/pages/recipe/recipe-header.tsx",
-          lineNumber: 134,
+          lineNumber: 132,
           columnNumber: 13
         }, this)
       ] }, void 0, !0, {
         fileName: "app/pages/recipe/recipe-header.tsx",
-        lineNumber: 111,
+        lineNumber: 109,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/pages/recipe/recipe-header.tsx",
-      lineNumber: 79,
+      lineNumber: 77,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
@@ -21779,7 +21799,7 @@ function IngredientsIndex({
 }
 
 // app/routes/__with-toolbar/recipe.$recipeId.tsx
-var import_node9 = require("@remix-run/node"), import_client3 = require("@prisma/client");
+var import_node10 = require("@remix-run/node"), import_client3 = require("@prisma/client");
 var import_react36 = require("@remix-run/react");
 var import_jsx_dev_runtime58 = require("react/jsx-dev-runtime"), nutritionData = [
   [
@@ -21817,7 +21837,7 @@ var import_jsx_dev_runtime58 = require("react/jsx-dev-runtime"), nutritionData =
   baskets: { select: { userId: !0 } },
   author: !0,
   tags: { include: { tag: { select: { name: !0 } } } }
-}), loader6 = async ({ request, params }) => {
+}), loader7 = async ({ request, params }) => {
   let id = params.recipeId, userId = await getUserId(request);
   if (!id)
     return badRequest("recipeId not exist");
@@ -21832,7 +21852,7 @@ var import_jsx_dev_runtime58 = require("react/jsx-dev-runtime"), nutritionData =
     isLiked: !!recipe.favorite.find((e) => e.userId === userId),
     isInBasket: !!recipe.baskets.find((e) => e.userId === userId)
   }, withThumbnail = await getBigThumbnails([mappedRecipe]);
-  return (0, import_node9.json)(withThumbnail, { headers: { "Cache-Control": "max-age=3600" } });
+  return (0, import_node10.json)(withThumbnail, { headers: { "Cache-Control": "max-age=3600" } });
 };
 function RecipeIndex() {
   let data = (0, import_react36.useLoaderData)();
@@ -21917,9 +21937,9 @@ function RecipeIndex() {
 var my_recipes_exports = {};
 __export(my_recipes_exports, {
   default: () => MyRecipes,
-  loader: () => loader7
+  loader: () => loader8
 });
-var import_react40 = require("react"), import_node10 = require("@remix-run/node");
+var import_react40 = require("react"), import_node11 = require("@remix-run/node");
 
 // app/components/ui/card/card-grid.tsx
 var import_jsx_dev_runtime59 = require("react/jsx-dev-runtime");
@@ -22193,7 +22213,7 @@ var import_jsx_dev_runtime61 = require("react/jsx-dev-runtime"), SortingDropdown
 };
 
 // app/routes/__with-toolbar/my-recipes.tsx
-var import_jsx_dev_runtime62 = require("react/jsx-dev-runtime"), loader7 = async ({ request }) => {
+var import_jsx_dev_runtime62 = require("react/jsx-dev-runtime"), loader8 = async ({ request }) => {
   let userId = await requireUserId(request), searchRes = await searchUserRecipes(request, userId), recipeOrder = new URL(request.url).searchParams.get("orderby"), myRecipes = await getMyRecipes({ userId, orderBy: recipeOrder }), withThumbnail = await getThumbnails(
     myRecipes.map((e) => {
       var _a;
@@ -22211,7 +22231,7 @@ var import_jsx_dev_runtime62 = require("react/jsx-dev-runtime"), loader7 = async
       isInBasket: !!recipe.baskets.find((e) => e.userId === userId)
     };
   });
-  return (0, import_node10.json)(
+  return (0, import_node11.json)(
     { myRecipes: mappedRecipes, searchRes },
     { headers: { "Cache-Control": "max-age=3600" } }
   );
@@ -22295,14 +22315,14 @@ function MyRecipes() {
 var favorite_exports = {};
 __export(favorite_exports, {
   default: () => Favorite,
-  loader: () => loader8,
+  loader: () => loader9,
   meta: () => meta2
 });
-var import_node11 = require("@remix-run/node"), import_react42 = require("@remix-run/react"), import_react43 = require("react");
+var import_node12 = require("@remix-run/node"), import_react42 = require("@remix-run/react"), import_react43 = require("react");
 var import_jsx_dev_runtime63 = require("react/jsx-dev-runtime"), meta2 = () => ({
   charset: "utf-8",
   title: "Favorite" + metaTitlePostfix
-}), loader8 = async ({ request }) => {
+}), loader9 = async ({ request }) => {
   let userId = await requireUserId(request), searchRes = await searchFavoriteRecipes(request, userId), recipeOrder = new URL(request.url).searchParams.get("orderby"), favRecipes = await getFavRecipes({ userId, orderBy: recipeOrder }), withThumbnail = await getThumbnails(
     favRecipes.map((e) => {
       var _a;
@@ -22320,7 +22340,7 @@ var import_jsx_dev_runtime63 = require("react/jsx-dev-runtime"), meta2 = () => (
       isInBasket: !!recipe.baskets.find((e) => e.userId === userId)
     };
   });
-  return (0, import_node11.json)(
+  return (0, import_node12.json)(
     { searchRes, favRecipes: mappedRecipes },
     { headers: { "Cache-Control": "max-age=3600" } }
   );
@@ -22401,10 +22421,10 @@ function Favorite() {
 var basket_exports = {};
 __export(basket_exports, {
   default: () => BasketIndex,
-  loader: () => loader9,
+  loader: () => loader10,
   meta: () => meta3
 });
-var import_node12 = require("@remix-run/node"), import_react47 = require("@remix-run/react"), import_react48 = require("react");
+var import_node13 = require("@remix-run/node"), import_react47 = require("@remix-run/react"), import_react48 = require("react");
 
 // app/pages/basket/basket-table/index.tsx
 var import_react46 = require("react");
@@ -22658,7 +22678,7 @@ function BasketTable({
 var import_use_resize_observer2 = __toESM(require("use-resize-observer")), import_jsx_dev_runtime67 = require("react/jsx-dev-runtime"), meta3 = () => ({
   charset: "utf-8",
   title: "Basket" + metaTitlePostfix
-}), loader9 = async ({ request }) => {
+}), loader10 = async ({ request }) => {
   let userId = await requireUserId(request), basket = await db.basket.findUnique({
     where: { userId },
     include: {
@@ -22676,7 +22696,7 @@ var import_use_resize_observer2 = __toESM(require("use-resize-observer")), impor
       ({ ingredientId }) => ingredientId === ingredientsNum[0].ingredientId
     );
     foundIng ? foundIng.value += ingredientsNum[0].value : ingredients = ingredients.concat(ingredientsNum);
-  }), (0, import_node12.json)({ ingredients }, { headers: { "Cache-Control": "max-age=3600" } });
+  }), (0, import_node13.json)({ ingredients }, { headers: { "Cache-Control": "max-age=3600" } });
 };
 function BasketIndex() {
   let data = (0, import_react47.useLoaderData)(), [hideSider, setHideSider] = (0, import_react48.useState)(!1), [openModal, setOpenModal] = (0, import_react48.useState)(!1), { ref } = (0, import_use_resize_observer2.default)({
@@ -22787,10 +22807,10 @@ var basket_exports2 = {};
 __export(basket_exports2, {
   action: () => action5,
   default: () => BasketSidePanel,
-  loader: () => loader10
+  loader: () => loader11
 });
-var import_node13 = require("@remix-run/node"), import_react49 = require("@remix-run/react"), import_react50 = require("react");
-var import_jsx_dev_runtime68 = require("react/jsx-dev-runtime"), loader10 = async ({ request }) => {
+var import_node14 = require("@remix-run/node"), import_react49 = require("@remix-run/react"), import_react50 = require("react");
+var import_jsx_dev_runtime68 = require("react/jsx-dev-runtime"), loader11 = async ({ request }) => {
   let basket = await db.basket.findFirst({
     where: { userId: "testuser0" },
     include: {
@@ -22824,7 +22844,7 @@ var import_jsx_dev_runtime68 = require("react/jsx-dev-runtime"), loader10 = asyn
       };
     })
   };
-  return (0, import_node13.json)(
+  return (0, import_node14.json)(
     { basket: mappedBasket },
     { headers: { "Cache-Control": "max-age=3600" } }
   );
@@ -22833,11 +22853,22 @@ var import_jsx_dev_runtime68 = require("react/jsx-dev-runtime"), loader10 = asyn
   return id && await db.basket.update({
     where: { id: "testbasket0" },
     data: { recipes: { disconnect: { id: id.toString() } } }
-  }), (0, import_node13.json)({});
+  }), (0, import_node14.json)({});
 };
 function BasketSidePanel() {
   var _a;
-  let data = (0, import_react49.useLoaderData)(), fetcher = (0, import_react49.useFetcher)(), servings = useAppSelector((state) => state.recipeServings), dispatch = useAppDispatch();
+  let data = (0, import_react49.useLoaderData)(), fetcher = (0, import_react49.useFetcher)(), servings = useAppSelector((state) => state.recipeServings), dispatch = useAppDispatch(), onDelete = (e, id, ingredientsNum) => {
+    ingredientsNum.forEach((item) => {
+      dispatch(
+        deleteRecipeId({
+          name: item.ingredient.name,
+          recipeId: id
+        })
+      );
+    }), dispatch(deleteRecipeServings({ recipeId: id })), fetcher.submit(e.currentTarget, {
+      action: "/basket?index"
+    });
+  };
   return (0, import_react50.useEffect)(() => {
     var _a2;
     (_a2 = data == null ? void 0 : data.basket.recipes) == null || _a2.forEach(({ id, ingredientsNum }) => {
@@ -22850,7 +22881,7 @@ function BasketSidePanel() {
   }, [data == null ? void 0 : data.basket.recipes, dispatch]), /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_jsx_dev_runtime68.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("h4", { className: "mb-4 text-lg font-bold text-inherit", children: "Recipes in basket" }, void 0, !1, {
       fileName: "app/routes/__with-toolbar/basket/index.tsx",
-      lineNumber: 108,
+      lineNumber: 129,
       columnNumber: 9
     }, this),
     ((_a = data == null ? void 0 : data.basket) == null ? void 0 : _a.recipes) && (data == null ? void 0 : data.basket.recipes.map(
@@ -22862,18 +22893,7 @@ function BasketSidePanel() {
             title,
             recipeId: id,
             imgSrc: thumbnail.url ?? "",
-            onDelete: (e) => {
-              ingredientsNum.forEach((item) => {
-                dispatch(
-                  deleteRecipeId({
-                    name: item.ingredient.name,
-                    recipeId: id
-                  })
-                );
-              }), dispatch(deleteRecipeServings({ recipeId: id })), fetcher.submit(e.currentTarget, {
-                action: "/basket?index"
-              });
-            },
+            onDelete: (e) => onDelete(e, id, ingredientsNum),
             subTitle: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(
               recipe_servings_form_default,
               {
@@ -22884,7 +22904,7 @@ function BasketSidePanel() {
               !1,
               {
                 fileName: "app/routes/__with-toolbar/basket/index.tsx",
-                lineNumber: 136,
+                lineNumber: 144,
                 columnNumber: 21
               },
               this
@@ -22894,7 +22914,7 @@ function BasketSidePanel() {
           !1,
           {
             fileName: "app/routes/__with-toolbar/basket/index.tsx",
-            lineNumber: 116,
+            lineNumber: 137,
             columnNumber: 17
           },
           this
@@ -22903,11 +22923,11 @@ function BasketSidePanel() {
     ))
   ] }, void 0, !0, {
     fileName: "app/routes/__with-toolbar/basket/index.tsx",
-    lineNumber: 107,
+    lineNumber: 128,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/routes/__with-toolbar/basket/index.tsx",
-    lineNumber: 106,
+    lineNumber: 127,
     columnNumber: 5
   }, this);
 }
@@ -22916,10 +22936,10 @@ function BasketSidePanel() {
 var logout_exports = {};
 __export(logout_exports, {
   action: () => action6,
-  loader: () => loader11
+  loader: () => loader12
 });
-var import_node14 = require("@remix-run/node");
-var action6 = async ({ request }) => logout(request), loader11 = async () => (0, import_node14.redirect)("/");
+var import_node15 = require("@remix-run/node");
+var action6 = async ({ request }) => logout(request), loader12 = async () => (0, import_node15.redirect)("/");
 
 // app/routes/__with-toolbar/upload.tsx
 var upload_exports = {};
@@ -22927,9 +22947,9 @@ __export(upload_exports, {
   ErrorBoundary: () => ErrorBoundary2,
   action: () => action7,
   default: () => Upload,
-  loader: () => loader12
+  loader: () => loader13
 });
-var import_client_s33 = require("@aws-sdk/client-s3"), import_node15 = require("@remix-run/node"), import_react51 = require("@remix-run/react"), import_cuid = __toESM(require("cuid")), import_react52 = require("react"), import_uuid2 = require("uuid");
+var import_client_s33 = require("@aws-sdk/client-s3"), import_node16 = require("@remix-run/node"), import_react51 = require("@remix-run/react"), import_cuid = __toESM(require("cuid")), import_react52 = require("react"), import_uuid2 = require("uuid");
 var import_use_resize_observer3 = __toESM(require("use-resize-observer")), import_jsx_dev_runtime69 = require("react/jsx-dev-runtime"), defaultSideList = [
   { value: "Details", route: "./details" },
   { value: "Ingredients", route: "./ingredients" }
@@ -23011,9 +23031,9 @@ var import_use_resize_observer3 = __toESM(require("use-resize-observer")), impor
     columnNumber: 7
   },
   this
-), loader12 = async ({ request }) => {
+), loader13 = async ({ request }) => {
   let userId = await requireUserId(request);
-  return (0, import_node15.json)({ userId });
+  return (0, import_node16.json)({ userId });
 }, action7 = async ({ request }) => {
   let userId = await requireUserId(request), formdata = await request.formData(), detailsData = JSON.parse(
     formdata.get("detailData") ?? ""
@@ -23096,7 +23116,7 @@ var import_use_resize_observer3 = __toESM(require("use-resize-observer")), impor
         methods: stepsData[i].methods.map((item) => item.content),
         title: stepsData[i].title
       }))
-    }), (0, import_node15.redirect)(`/recipe/${recipeData.id}`);
+    }), (0, import_node16.redirect)(`/recipe/${recipeData.id}`);
   } catch (err) {
     throw console.error(err), err;
   }
@@ -23407,47 +23427,13 @@ var ErrorBoundary2 = ({ error }) => {
 // app/routes/__with-toolbar/upload/ingredients.tsx
 var ingredients_exports = {};
 __export(ingredients_exports, {
-  action: () => action9,
-  default: () => IngredientsPage,
-  loader: () => loader14
-});
-var import_react58 = require("@remix-run/react"), import_server_runtime4 = require("@remix-run/server-runtime"), import_lodash4 = __toESM(require("lodash")), import_react59 = require("react"), import_react_hook_form9 = require("react-hook-form"), import_react_select2 = require("react-select"), import_creatable2 = __toESM(require("react-select/creatable")), import_react_select3 = __toESM(require("react-select"));
-
-// app/service/loaders/search-ingredients.server.ts
-async function searchIngredients(request) {
-  let param = new URL(request.url).searchParams.get("search-ingredients") ?? "";
-  return await db.ingredient.findMany({
-    where: { name: { contains: param } },
-    take: 20,
-    orderBy: { name: "asc" }
-  });
-}
-async function searchTags(request) {
-  let param = new URL(request.url).searchParams.get("search-tags") ?? "";
-  return await db.tag.findMany({
-    where: {
-      name: { contains: param }
-    },
-    take: 20,
-    orderBy: { name: "asc" }
-  });
-}
-
-// app/routes/__with-toolbar/upload/details.tsx
-var details_exports = {};
-__export(details_exports, {
-  ClearIndicatorComponent: () => ClearIndicatorComponent,
-  ControlComponent: () => ControlComponent,
-  DropdownIndicatorComponent: () => DropdownIndicatorComponent,
-  InputComponent: () => InputComponent,
-  MenuComponent: () => MenuComponent,
-  MenuListComponent: () => MenuListComponent,
-  OptionComponent: () => OptionComponent,
   action: () => action8,
-  default: () => Details,
-  loader: () => loader13
+  default: () => IngredientsPage
 });
-var import_react56 = require("@remix-run/react"), import_server_runtime3 = require("@remix-run/server-runtime"), import_cuid3 = __toESM(require("cuid")), import_lodash3 = __toESM(require("lodash")), import_react57 = require("react"), import_react_hook_form8 = require("react-hook-form"), import_react_select = require("react-select"), import_creatable = __toESM(require("react-select/creatable"));
+var import_react56 = require("@remix-run/react");
+
+// app/pages/upload/ingredents/ingredients-form.tsx
+var import_lodash3 = __toESM(require("lodash")), import_react55 = require("react"), import_react_hook_form6 = require("react-hook-form");
 
 // app/components/ui/error-message.tsx
 var import_error_message2 = require("@hookform/error-message"), import_jsx_dev_runtime70 = require("react/jsx-dev-runtime");
@@ -23478,246 +23464,280 @@ function ErrorMessageComponent({
   );
 }
 
-// app/components/form/image-input-form/img-upload-input.tsx
-var import_react54 = require("react"), import_react_hook_form6 = require("react-hook-form");
+// app/pages/upload/ingredents/ingredients-name-input.tsx
+var import_react53 = require("@remix-run/react"), import_cuid2 = __toESM(require("cuid")), import_lodash2 = __toESM(require("lodash")), import_react54 = require("react"), import_react_hook_form5 = require("react-hook-form"), import_react_select2 = require("react-select"), import_creatable = __toESM(require("react-select/creatable")), import_react_select3 = __toESM(require("react-select"));
 
-// app/components/form/image-input-form/img-upload.tsx
-var import_react53 = require("react"), import_lodash2 = __toESM(require("lodash")), import_react_hook_form5 = require("react-hook-form"), import_react_avatar_editor = __toESM(require("react-avatar-editor")), import_cuid2 = __toESM(require("cuid")), import_use_resize_observer4 = __toESM(require("use-resize-observer")), import_jsx_dev_runtime71 = require("react/jsx-dev-runtime");
-function ImgUpload({
-  name,
-  defaultImgSrc,
-  onClose
-}) {
-  let { setValue } = (0, import_react_hook_form5.useFormContext)(), containerRef = (0, import_react53.useRef)(null), editorRef = (0, import_react53.useRef)(null), imgDraftKey = (0, import_react53.useRef)((0, import_cuid2.default)()), { width, ref } = (0, import_use_resize_observer4.default)(), [scale, setScale] = (0, import_react53.useState)(1), onWheel = (e) => {
-    setScale((prev) => Math.max(prev + e.deltaY / 80, 1));
-  }, throttledOnWheel = (0, import_react53.useCallback)(
-    import_lodash2.default.throttle(onWheel, 40, { trailing: !1 }),
-    []
-  );
-  (0, import_react53.useEffect)(() => {
-    let container = containerRef.current;
-    return container && container.addEventListener("wheel", throttledOnWheel), () => {
-      container && container.removeEventListener("wheel", throttledOnWheel);
-    };
-  }, []);
-  let onConfirm = async () => {
-    let editor = editorRef.current;
-    if (editor) {
-      let url = editor.getImageScaledToCanvas().toDataURL("image/jpeg"), obj = {
-        name: imgDraftKey.current,
-        src: url,
-        type: "image/jpeg"
-      };
-      setValue(name, obj);
-    }
-    onClose();
-  };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { ref, children: [
-    (defaultImgSrc == null ? void 0 : defaultImgSrc.length) > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
-      "div",
-      {
-        className: "flex min-w-0 items-center justify-center overflow-hidden rounded-t-xl bg-gray-500",
-        ref: containerRef,
-        children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
-          import_react_avatar_editor.default,
-          {
-            image: defaultImgSrc,
-            width: width ? width > 720 ? 720 : width : 0,
-            height: width ? width > 720 ? 720 / 4 * 3 : width / 4 * 3 : 0,
-            border: 0,
-            color: [0, 0, 0, 0.6],
-            scale,
-            disableCanvasRotation: !0,
-            ref: editorRef
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/form/image-input-form/img-upload.tsx",
-            lineNumber: 73,
-            columnNumber: 11
-          },
-          this
-        )
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/form/image-input-form/img-upload.tsx",
-        lineNumber: 66,
-        columnNumber: 9
-      },
-      this
-    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
-      "div",
-      {
-        className: "flex h-full w-full justify-center overflow-hidden rounded-t-xl bg-gray-600",
-        ref: containerRef,
-        children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { className: "flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("p", { className: " p-4 text-center font-medium text-gray-500", children: "No file yet!" }, void 0, !1, {
-          fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 92,
-          columnNumber: 13
-        }, this) }, void 0, !1, {
-          fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 91,
-          columnNumber: 11
-        }, this)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/form/image-input-form/img-upload.tsx",
-        lineNumber: 87,
-        columnNumber: 9
-      },
-      this
-    ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { className: "flex justify-end gap-4 px-6 py-4", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
-        "button",
-        {
-          className: "btn-ghost btn-md",
-          onClick: (e) => {
-            e.stopPropagation(), onClose();
-          },
-          children: "Cancel"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 99,
-          columnNumber: 9
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
-        "button",
-        {
-          className: "btn-primary btn-md",
-          onClick: (e) => {
-            e.stopPropagation(), onConfirm();
-          },
-          children: "Comfirm"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/components/form/image-input-form/img-upload.tsx",
-          lineNumber: 108,
-          columnNumber: 9
-        },
-        this
-      )
-    ] }, void 0, !0, {
-      fileName: "app/components/form/image-input-form/img-upload.tsx",
-      lineNumber: 98,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/form/image-input-form/img-upload.tsx",
-    lineNumber: 64,
-    columnNumber: 5
-  }, this);
-}
-
-// app/components/form/image-input-form/img-upload-input.tsx
-var import_jsx_dev_runtime72 = require("react/jsx-dev-runtime");
-function ImgUploadInput({
-  name,
-  text,
-  src
-}) {
-  let { watch, register: register2 } = (0, import_react_hook_form6.useFormContext)(), [open, setOpen] = (0, import_react54.useState)(!1), [defaultImgSrc, setDefaultImgSrc] = (0, import_react54.useState)(""), canvasContainerRef = (0, import_react54.useRef)(null), onSubmitFile = async (e) => {
-    let files = e.target.files;
-    if (files) {
-      let file = files[0], reader = new FileReader();
-      reader.addEventListener(
-        "load",
-        () => {
-          setDefaultImgSrc(
-            typeof reader.result == "string" ? reader.result : ""
-          );
-        },
-        !1
-      ), reader.readAsDataURL(file);
-    }
-  };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("div", { className: "h-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
-    "div",
+// app/components/ui/react-select-custom.tsx
+var import_react_select = require("react-select"), import_jsx_dev_runtime71 = require("react/jsx-dev-runtime"), ControlComponent = ({ children, ...props }) => {
+  let { isFocused } = props;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
+    import_react_select.components.Control,
     {
-      className: ` 
-        aspect-w-4 aspect-h-3 
-        items-center justify-center 
-        overflow-hidden rounded-lg 
-        border hover:border-gray-300 hover:bg-gray-50 dark:border-gray-500
-        dark:hover:bg-gray-700
-        `,
-      ref: canvasContainerRef,
-      children: [
-        src && src.length > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("img", { src }, void 0, !1, {
-          fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-          lineNumber: 80,
-          columnNumber: 11
-        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("div", { className: "flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("p", { className: " p-4 text-center font-medium text-gray-500", children: [
-          "Click here to upload ",
-          text
-        ] }, void 0, !0, {
-          fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-          lineNumber: 83,
-          columnNumber: 13
-        }, this) }, void 0, !1, {
-          fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-          lineNumber: 82,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("label", { className: "h-full w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
-          "input",
+      ...props,
+      className: ` py-0.5 dark:bg-dark-gray ${isFocused ? "!border-focus-outline !shadow-[0_0_0_1px_black] !shadow-focus-outline" : "border-gray-200 dark:border-gray-500"}
+      rounded-lg
+      `,
+      children
+    },
+    void 0,
+    !1,
+    {
+      fileName: "app/components/ui/react-select-custom.tsx",
+      lineNumber: 19,
+      columnNumber: 5
+    },
+    this
+  );
+}, OptionComponent = ({ children, ...props }) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
+  import_react_select.components.Option,
+  {
+    ...props,
+    className: ` cursor-pointer rounded-lg ${props.isSelected ? "bg-primary text-inherit dark:bg-primary-dark" : props.isFocused ? "bg-gray-100 dark:bg-gray-700" : "bg-transparent"}`,
+    children
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/components/ui/react-select-custom.tsx",
+    lineNumber: 36,
+    columnNumber: 5
+  },
+  this
+), MenuComponent = ({ children, ...props }) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
+  import_react_select.components.Menu,
+  {
+    ...props,
+    className: `${props.className} z-10 rounded-lg shadow-lg dark:border dark:border-gray-600 dark:bg-dark-gray`,
+    children
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/components/ui/react-select-custom.tsx",
+    lineNumber: 53,
+    columnNumber: 5
+  },
+  this
+), MenuListComponent = ({ children, ...props }) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(import_react_select.components.MenuList, { ...props, className: "p-2", children }, void 0, !1, {
+  fileName: "app/components/ui/react-select-custom.tsx",
+  lineNumber: 63,
+  columnNumber: 5
+}, this), DropdownIndicatorComponent = ({
+  children,
+  ...props
+}) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
+  import_react_select.components.DropdownIndicator,
+  {
+    ...props,
+    className: `${props.className} ${props.isFocused ? "dark:text-gray-400" : ""}`,
+    children
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/components/ui/react-select-custom.tsx",
+    lineNumber: 74,
+    columnNumber: 5
+  },
+  this
+), ClearIndicatorComponent = ({
+  children,
+  ...props
+}) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
+  import_react_select.components.ClearIndicator,
+  {
+    ...props,
+    className: `${props.className} ${props.isFocused ? "dark:text-gray-400" : ""}`,
+    children
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/components/ui/react-select-custom.tsx",
+    lineNumber: 92,
+    columnNumber: 5
+  },
+  this
+), MultiValueLabel = (props) => {
+  let { innerProps } = props;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
+    import_react_select.components.MultiValueLabel,
+    {
+      ...props,
+      innerProps: {
+        ...innerProps,
+        className: `${innerProps.className} dark:bg-gray-600 text-inherit`
+      }
+    },
+    void 0,
+    !1,
+    {
+      fileName: "app/components/ui/react-select-custom.tsx",
+      lineNumber: 108,
+      columnNumber: 5
+    },
+    this
+  );
+}, MultiValueRemove = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
+  import_react_select.components.MultiValueRemove,
+  {
+    ...props,
+    innerProps: {
+      ...props.innerProps,
+      className: `${props.innerProps.className} dark:bg-gray-600 dark:hover:bg-red-600/80 dark:hover:text-red-200`
+    },
+    children: props.children
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/components/ui/react-select-custom.tsx",
+    lineNumber: 120,
+    columnNumber: 5
+  },
+  this
+), MultiValueContainer = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(
+  import_react_select.components.MultiValueContainer,
+  {
+    ...props,
+    innerProps: {
+      ...props.innerProps,
+      className: `${props.innerProps.className} dark:bg-gray-600`
+    }
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/components/ui/react-select-custom.tsx",
+    lineNumber: 134,
+    columnNumber: 5
+  },
+  this
+), InputComponent = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(import_react_select.components.Input, { ...props, className: `${props.className} text-inherit`, children: props.children }, void 0, !1, {
+  fileName: "app/components/ui/react-select-custom.tsx",
+  lineNumber: 145,
+  columnNumber: 5
+}, this);
+
+// app/pages/upload/ingredents/ingredients-name-input.tsx
+var import_jsx_dev_runtime72 = require("react/jsx-dev-runtime"), Volume = /* @__PURE__ */ ((Volume2) => (Volume2.mL = "mL", Volume2.L = "L", Volume2.tsp = "tsp", Volume2.oz = "oz", Volume2.cup = "cup", Volume2.qt = "qt", Volume2.pt = "pt", Volume2.gal = "gal", Volume2))(Volume || {}), Weight = /* @__PURE__ */ ((Weight2) => (Weight2.mg = "mg", Weight2.g = "g", Weight2.kg = "kg", Weight2.lb = "lb", Weight2.oz = "oz", Weight2))(Weight || {}), Length = /* @__PURE__ */ ((Length2) => (Length2.mm = "mm", Length2.cm = "cm", Length2.m = "m", Length2.inch = "inch", Length2.yard = "yard", Length2))(Length || {}), Temperature = /* @__PURE__ */ ((Temperature2) => (Temperature2.celsius = "\xB0C", Temperature2.farenheit = "\xB0F", Temperature2))(Temperature || {}), SingleValueComponent = ({
+  children,
+  ...props
+}) => /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
+  import_react_select2.components.SingleValue,
+  {
+    ...props,
+    className: `${props.className} text-inherit`,
+    children
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+    lineNumber: 57,
+    columnNumber: 5
+  },
+  this
+), IngredientsListInputs = ({
+  methods
+}) => {
+  var _a;
+  let fetcher = (0, import_react53.useFetcher)(), [ingOptions, setIngOptions] = (0, import_react54.useState)(
+    (_a = fetcher.data) == null ? void 0 : _a.searchRes.map((e) => ({
+      value: e.id,
+      label: e.name[0].toUpperCase() + e.name.substring(1)
+    }))
+  ), {
+    control,
+    formState: { errors },
+    setValue,
+    setError,
+    clearErrors,
+    watch,
+    register: register2
+  } = methods, { fields, append, remove } = (0, import_react_hook_form5.useFieldArray)({
+    control,
+    name: "ingredients"
+  }), watchFieldArray = watch("ingredients"), controlledFields = fields.map((field, index) => ({
+    ...field,
+    ...watchFieldArray[index]
+  }));
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("p", { className: "label-required", children: "Ingredients list" }, void 0, !1, {
+      fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+      lineNumber: 100,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(ErrorMessageComponent, { name: "ingredients", errors }, void 0, !1, {
+      fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+      lineNumber: 101,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("ul", { className: "space-y-4", children: [
+      controlledFields.map((field, idx) => /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("div", { className: "flex flex-wrap gap-4 ", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("label", { className: "w-full ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
+          import_react_hook_form5.Controller,
           {
-            ...register2(name, {
-              onChange: (e) => {
-                e.target.files.length > 0 ? (setOpen(!0), onSubmitFile(e)) : setOpen(!1);
-              },
-              required: "require a thumbnail"
-            }),
-            className: "h-full w-full opacity-0",
-            type: "file",
-            accept: "image/*",
-            multiple: !1
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-            lineNumber: 90,
-            columnNumber: 11
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-          lineNumber: 89,
-          columnNumber: 9
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
-          Modal,
-          {
-            open,
-            onClose: () => setOpen(!1),
-            className: " h-fit w-[80vw] rounded-xl bg-white dark:bg-dark-gray md:w-[70vw] lg:w-[50vw]",
-            disableClickOutsideClose: !0,
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
-              ImgUpload,
+            name: `ingredients.${idx}.name`,
+            control,
+            render: ({ field: controllerField }) => /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
+              import_creatable.default,
               {
-                name,
-                defaultImgSrc,
-                onClose: () => setOpen(!1)
+                ...controllerField,
+                id: `ingredients_${controllerField.name}`,
+                menuShouldScrollIntoView: !0,
+                isMulti: !1,
+                isClearable: !0,
+                placeholder: "Ingredient name",
+                onCreateOption: (e) => {
+                  let newValue = {
+                    label: e[0].toUpperCase() + e.substring(1),
+                    value: (0, import_cuid2.default)()
+                  };
+                  setValue(`ingredients.${idx}.name`, newValue), setIngOptions((prev) => {
+                    if (prev)
+                      return [...prev, newValue];
+                  }), fetcher.submit(newValue, { method: "post" });
+                },
+                onInputChange: (e) => {
+                  e.length > 0 && import_lodash2.default.debounce(
+                    () => fetcher.load(`./?search-ingredient=${e}`),
+                    300,
+                    { trailing: !0 }
+                  );
+                },
+                onChange: (e) => {
+                  controllerField.onChange(e), clearErrors("ingredients");
+                },
+                onBlur: () => {
+                  watchFieldArray.every(
+                    (e) => {
+                      var _a2, _b;
+                      return !e.name || ((_a2 = e.name) == null ? void 0 : _a2.value.length) === 0 || ((_b = e.name) == null ? void 0 : _b.value) === null;
+                    }
+                  ) && setError("ingredients", {
+                    type: "required",
+                    message: "Please add an ingredient at least!"
+                  });
+                },
+                options: ingOptions,
+                components: {
+                  ClearIndicator: ClearIndicatorComponent,
+                  Control: ControlComponent,
+                  Option: OptionComponent,
+                  Menu: MenuComponent,
+                  MenuList: MenuListComponent,
+                  SingleValue: SingleValueComponent,
+                  DropdownIndicator: DropdownIndicatorComponent,
+                  Input: InputComponent
+                }
               },
               void 0,
               !1,
               {
-                fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-                lineNumber: 114,
-                columnNumber: 11
+                fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+                lineNumber: 111,
+                columnNumber: 21
               },
               this
             )
@@ -23725,32 +23745,326 @@ function ImgUploadInput({
           void 0,
           !1,
           {
-            fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-            lineNumber: 108,
-            columnNumber: 9
+            fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+            lineNumber: 107,
+            columnNumber: 17
+          },
+          this
+        ) }, void 0, !1, {
+          fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+          lineNumber: 106,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
+          "input",
+          {
+            ...register2(`ingredients.${idx}.qty`, {
+              required: !0
+            }),
+            type: "number",
+            name: `ingredients.${idx}.qty`,
+            className: "input w-20",
+            placeholder: "QTY"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+            lineNumber: 174,
+            columnNumber: 15
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("label", { className: "w-40 ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
+          import_react_hook_form5.Controller,
+          {
+            name: `ingredients.${idx}.unit`,
+            control,
+            rules: { required: !0 },
+            render: ({ field: controllerField }) => /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
+              import_react_select3.default,
+              {
+                ...controllerField,
+                id: `ingredients_${idx}_${field.id}`,
+                placeholder: "Unit",
+                isSearchable: !0,
+                options: [
+                  { label: "No unit", value: "" },
+                  {
+                    label: "Volume",
+                    options: Object.values(Volume).map((e) => ({
+                      label: e,
+                      value: e
+                    }))
+                  },
+                  {
+                    label: "Weight",
+                    options: Object.values(Weight).map((e) => ({
+                      label: e,
+                      value: e
+                    }))
+                  },
+                  {
+                    label: "Length",
+                    options: Object.values(Length).map((e) => ({
+                      label: e,
+                      value: e
+                    }))
+                  },
+                  {
+                    label: "Temperature",
+                    options: Object.values(Temperature).map((e) => ({
+                      label: e,
+                      value: e
+                    }))
+                  }
+                ],
+                components: {
+                  ClearIndicator: void 0,
+                  IndicatorSeparator: void 0,
+                  Control: ControlComponent,
+                  Option: OptionComponent,
+                  Menu: MenuComponent,
+                  MenuList: MenuListComponent,
+                  SingleValue: SingleValueComponent,
+                  DropdownIndicator: DropdownIndicatorComponent,
+                  Input: InputComponent
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+                lineNumber: 189,
+                columnNumber: 21
+              },
+              this
+            )
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+            lineNumber: 184,
+            columnNumber: 17
+          },
+          this
+        ) }, void 0, !1, {
+          fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+          lineNumber: 183,
+          columnNumber: 15
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
+          "button",
+          {
+            className: ` btn-sm btn-ghost ${fields.length === 1 ? "text-red-600 disabled:text-gray-400" : ""}`,
+            type: "button",
+            onClick: () => {
+              remove(idx);
+            },
+            disabled: fields.length === 1,
+            children: "Delet"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+            lineNumber: 241,
+            columnNumber: 15
           },
           this
         )
-      ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-      lineNumber: 69,
+      ] }, field.id, !0, {
+        fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+        lineNumber: 105,
+        columnNumber: 13
+      }, this)),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
+        "button",
+        {
+          className: "btn-sm btn-border",
+          type: "button",
+          onClick: () => {
+            append({ name: null, qty: 0, unit: null });
+          },
+          children: "Add a ingredient"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+          lineNumber: 258,
+          columnNumber: 9
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+      lineNumber: 102,
       columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/pages/upload/ingredents/ingredients-name-input.tsx",
+    lineNumber: 99,
+    columnNumber: 5
+  }, this);
+};
+
+// app/pages/upload/ingredents/ingredients-form.tsx
+var import_jsx_dev_runtime73 = require("react/jsx-dev-runtime"), IngredientsForm = () => {
+  let local = useAppSelector((state) => state.ingredientsForm), dispatch = useAppDispatch(), methods = (0, import_react_hook_form6.useForm)({
+    defaultValues: {
+      serving: local.servings,
+      ingredients: local.ingredients ?? [{ name: null, qty: 0, unit: null }]
     },
-    this
-  ) }, void 0, !1, {
-    fileName: "app/components/form/image-input-form/img-upload-input.tsx",
-    lineNumber: 68,
+    mode: "onChange"
+  }), {
+    register: register2,
+    watch,
+    formState: { errors }
+  } = methods;
+  return (0, import_react55.useEffect)(() => {
+    let filteredIngredients = (input) => input ? input.some((e) => e == null ? void 0 : e.name) ? input.filter((e, i) => e.name !== null) : input.slice(void 0, 1) : void 0, ingredietnFullfill = (input) => input.every(
+      (e) => e.name !== null && e.qty > 0 && e.unit !== null || e.name === null
+    ), subscription = watch(
+      import_lodash3.default.debounce(
+        (value) => {
+          dispatch(
+            updateIngredients({
+              servings: value.serving ?? 1,
+              ingredients: filteredIngredients(value.ingredients)
+            })
+          ), value.ingredients && value.serving && value.serving > 0 && ingredietnFullfill(value.ingredients) ? dispatch(updatePublish({ ingredients: !0 })) : dispatch(updatePublish({ ingredients: !1 }));
+        },
+        300,
+        { trailing: !0 }
+      )
+    );
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []), /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)(import_react_hook_form6.FormProvider, { ...methods, children: /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)("form", { className: "flex flex-col space-y-12", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)("label", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)("p", { className: "label-required", children: "Default serving" }, void 0, !1, {
+        fileName: "app/pages/upload/ingredents/ingredients-form.tsx",
+        lineNumber: 98,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)(
+        "input",
+        {
+          type: "number",
+          ...register2("serving", {
+            valueAsNumber: !0,
+            min: { value: 1, message: "servings can't be 0" },
+            required: !0
+          }),
+          placeholder: "1",
+          className: "input w-12 text-right",
+          min: 1
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/pages/upload/ingredents/ingredients-form.tsx",
+          lineNumber: 99,
+          columnNumber: 11
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)("span", { className: "ml-2", children: "servings" }, void 0, !1, {
+        fileName: "app/pages/upload/ingredents/ingredients-form.tsx",
+        lineNumber: 110,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)(ErrorMessageComponent, { name: "serving", errors }, void 0, !1, {
+        fileName: "app/pages/upload/ingredents/ingredients-form.tsx",
+        lineNumber: 111,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/pages/upload/ingredents/ingredients-form.tsx",
+      lineNumber: 97,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)(IngredientsListInputs, { methods }, void 0, !1, {
+      fileName: "app/pages/upload/ingredents/ingredients-form.tsx",
+      lineNumber: 113,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/pages/upload/ingredents/ingredients-form.tsx",
+    lineNumber: 96,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/pages/upload/ingredents/ingredients-form.tsx",
+    lineNumber: 95,
+    columnNumber: 5
+  }, this);
+};
+
+// app/routes/__with-toolbar/upload/ingredients.tsx
+var import_jsx_dev_runtime74 = require("react/jsx-dev-runtime"), action8 = async ({ request }) => {
+  let data = await request.formData(), name = data.get("label"), ingredientId = data.get("value");
+  return !name || !ingredientId || typeof name != "string" || typeof ingredientId != "string" ? badRequest({ message: "lack of ingredientId or Name" }) : (await db.ingredient.upsert({
+    where: {
+      name
+    },
+    update: {},
+    create: { id: ingredientId, name }
+  }), null);
+};
+function IngredientsPage() {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("div", { className: "space-y-12", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("h3", { className: "font-medium text-inherit", children: "Ingredients" }, void 0, !1, {
+      fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
+      lineNumber: 34,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(IngredientsForm, {}, void 0, !1, {
+      fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
+      lineNumber: 35,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("div", { className: "flex gap-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react56.Link, { to: "./details", className: "btn-sm btn-gray", children: "Previous" }, void 0, !1, {
+        fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
+        lineNumber: 37,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react56.Link, { to: "../1", className: "btn-sm btn-primary", children: "Next" }, void 0, !1, {
+        fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
+        lineNumber: 40,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
+      lineNumber: 36,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
+    lineNumber: 33,
     columnNumber: 5
   }, this);
 }
 
+// app/routes/__with-toolbar/upload/$stepIdx.tsx
+var stepIdx_exports = {};
+__export(stepIdx_exports, {
+  default: () => StepsPage
+});
+var import_react62 = require("@remix-run/react"), import_uuid3 = require("uuid");
+
+// app/pages/upload/step/step-form.tsx
+var import_react60 = require("@remix-run/react"), import_lodash5 = __toESM(require("lodash")), import_react61 = require("react"), import_react_hook_form11 = require("react-hook-form");
+
+// app/pages/upload/step/methods-field-array.tsx
+var import_react_hook_form8 = require("react-hook-form");
+
 // app/components/form/inputs/textarea.tsx
-var import_react55 = require("react"), import_react_hook_form7 = require("react-hook-form");
-var import_jsx_dev_runtime73 = require("react/jsx-dev-runtime");
+var import_react57 = require("react"), import_react_hook_form7 = require("react-hook-form");
+var import_jsx_dev_runtime75 = require("react/jsx-dev-runtime");
 function Textarea({
   maxLength,
   name,
@@ -23768,14 +24082,14 @@ function Textarea({
     trigger,
     formState: { errors }
   } = (0, import_react_hook_form7.useFormContext)(), watchValue = (0, import_react_hook_form7.useWatch)({ control, defaultValue: { name } }), textareaMyRef = null;
-  return (0, import_react55.useEffect)(() => {
+  return (0, import_react57.useEffect)(() => {
     if (textareaMyRef && window) {
       let computedStyle = window.getComputedStyle(textareaMyRef), borderTop = +computedStyle.getPropertyValue("border-top-width").replace("px", ""), borderBottom = +computedStyle.getPropertyValue("border-bottom-width").replace("px", "");
       textareaMyRef.style.height = textareaMyRef.scrollHeight + borderBottom + borderTop + "px";
     }
-  }, [watchValue, textareaMyRef]), /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)(import_jsx_dev_runtime73.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)("div", { className: "relative w-full", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)(
+  }, [watchValue, textareaMyRef]), /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_jsx_dev_runtime75.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("div", { className: "relative w-full", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
         "textarea",
         {
           ...register2(name, {
@@ -23802,7 +24116,7 @@ function Textarea({
         },
         this
       ),
-      maxLength !== void 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)("span", { className: "absolute right-0 bottom-0 mr-2 mb-2 inline-block text-xs text-gray-400", children: [
+      maxLength !== void 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("span", { className: "absolute right-0 bottom-0 mr-2 mb-2 inline-block text-xs text-gray-400", children: [
         watch(name) ? watch(name).length : 0,
         "/",
         maxLength
@@ -23816,7 +24130,7 @@ function Textarea({
       lineNumber: 49,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)(ErrorMessageComponent, { errors, name }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(ErrorMessageComponent, { errors, name }, void 0, !1, {
       fileName: "app/components/form/inputs/textarea.tsx",
       lineNumber: 79,
       columnNumber: 7
@@ -23828,845 +24142,10 @@ function Textarea({
   }, this);
 }
 
-// app/routes/__with-toolbar/upload/details.tsx
-var import_jsx_dev_runtime74 = require("react/jsx-dev-runtime");
-var ControlComponent = ({ children, ...props }) => {
-  let { isFocused } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-    import_react_select.components.Control,
-    {
-      ...props,
-      className: ` py-0.5 dark:bg-dark-gray ${isFocused ? "!border-focus-outline !shadow-[0_0_0_1px_black] !shadow-focus-outline" : "border-gray-200 dark:border-gray-500"}
-      rounded-lg
-      `,
-      children
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/routes/__with-toolbar/upload/details.tsx",
-      lineNumber: 58,
-      columnNumber: 5
-    },
-    this
-  );
-}, OptionComponent = ({ children, ...props }) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-  import_react_select.components.Option,
-  {
-    ...props,
-    className: ` cursor-pointer rounded-lg ${props.isSelected ? "bg-primary text-inherit dark:bg-primary-dark" : props.isFocused ? "bg-gray-100 dark:bg-gray-700" : "bg-transparent"}`,
-    children
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/routes/__with-toolbar/upload/details.tsx",
-    lineNumber: 75,
-    columnNumber: 5
-  },
-  this
-), MenuComponent = ({ children, ...props }) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-  import_react_select.components.Menu,
-  {
-    ...props,
-    className: `${props.className} z-10 rounded-lg shadow-lg dark:border dark:border-gray-600 dark:bg-dark-gray`,
-    children
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/routes/__with-toolbar/upload/details.tsx",
-    lineNumber: 92,
-    columnNumber: 5
-  },
-  this
-), MenuListComponent = ({
-  children,
-  ...props
-}) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react_select.components.MenuList, { ...props, className: "p-2", children }, void 0, !1, {
-  fileName: "app/routes/__with-toolbar/upload/details.tsx",
-  lineNumber: 106,
-  columnNumber: 5
-}, this), DropdownIndicatorComponent = ({
-  children,
-  ...props
-}) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-  import_react_select.components.DropdownIndicator,
-  {
-    ...props,
-    className: `${props.className} ${props.isFocused ? "dark:text-gray-400" : ""}`,
-    children
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/routes/__with-toolbar/upload/details.tsx",
-    lineNumber: 117,
-    columnNumber: 5
-  },
-  this
-), ClearIndicatorComponent = ({
-  children,
-  ...props
-}) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-  import_react_select.components.ClearIndicator,
-  {
-    ...props,
-    className: `${props.className} ${props.isFocused ? "dark:text-gray-400" : ""}`,
-    children
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/routes/__with-toolbar/upload/details.tsx",
-    lineNumber: 135,
-    columnNumber: 5
-  },
-  this
-), MultiValueLabel = (props) => {
-  let { innerProps } = props;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-    import_react_select.components.MultiValueLabel,
-    {
-      ...props,
-      innerProps: {
-        ...innerProps,
-        className: `${innerProps.className} dark:bg-gray-600 text-inherit`
-      }
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/routes/__with-toolbar/upload/details.tsx",
-      lineNumber: 151,
-      columnNumber: 5
-    },
-    this
-  );
-}, MultiValueRemove = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-  import_react_select.components.MultiValueRemove,
-  {
-    ...props,
-    innerProps: {
-      ...props.innerProps,
-      className: `${props.innerProps.className} dark:bg-gray-600 dark:hover:bg-red-600/80 dark:hover:text-red-200`
-    },
-    children: props.children
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/routes/__with-toolbar/upload/details.tsx",
-    lineNumber: 163,
-    columnNumber: 5
-  },
-  this
-), MultiValueContainer = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-  import_react_select.components.MultiValueContainer,
-  {
-    ...props,
-    innerProps: {
-      ...props.innerProps,
-      className: `${props.innerProps.className} dark:bg-gray-600`
-    }
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/routes/__with-toolbar/upload/details.tsx",
-    lineNumber: 177,
-    columnNumber: 5
-  },
-  this
-), InputComponent = (props) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react_select.components.Input, { ...props, className: `${props.className} text-inherit`, children: props.children }, void 0, !1, {
-  fileName: "app/routes/__with-toolbar/upload/details.tsx",
-  lineNumber: 188,
-  columnNumber: 5
-}, this), loader13 = async ({ request }) => {
-  let searchRes = await searchTags(request);
-  return (0, import_server_runtime3.json)({ searchTags: searchRes });
-}, action8 = async ({ request }) => {
-  let formdata = await request.formData(), tagId = formdata.get("id"), tagName = formdata.get("name");
-  if (typeof tagId != "string" || typeof tagName != "string")
-    throw new Error("type of tagId or tagName is not string");
-  return await db.tag.upsert({
-    where: { name: tagName },
-    create: { id: tagId, name: tagName },
-    update: {}
-  }), null;
-};
-function Details() {
-  var _a;
-  let data = (0, import_react56.useLoaderData)(), fetcher = (0, import_react56.useFetcher)(), dispatch = useAppDispatch(), localDetails = useAppSelector((state) => state.detailsForm), localImgSrc = useAppSelector((state) => state.detailsForm).thumbnail, [tagsOption, setTagsOption] = (0, import_react57.useState)(
-    data.searchTags.map((e) => ({
-      label: e.name[0].toUpperCase() + e.name.slice(1),
-      value: e.id
-    }))
-  ), methods = (0, import_react_hook_form8.useForm)({
-    defaultValues: {
-      ...localDetails,
-      tags: localDetails.tags
-    },
-    mode: "onChange"
-  }), {
-    setValue,
-    setError,
-    clearErrors,
-    watch,
-    formState: { errors }
-  } = methods;
-  return (0, import_react57.useEffect)(() => {
-    let subscription = watch(
-      import_lodash3.default.debounce((v) => {
-        var _a2, _b, _c;
-        dispatch(
-          updateDetails({
-            title: v.title ?? "",
-            tags: v.tags ? v.tags.map((e) => !!e && !!e.label && !!e.value ? e : { label: "", value: "" }) : null,
-            thumbnail: {
-              name: ((_a2 = v.thumbnail) == null ? void 0 : _a2.name) ?? "",
-              type: ((_b = v.thumbnail) == null ? void 0 : _b.type) ?? "",
-              src: ((_c = v.thumbnail) == null ? void 0 : _c.src) ?? ""
-            }
-          })
-        ), Object.keys(errors).length === 0 && v.difficulty && v.tags && v.tags.length > 0 && v.thumbnail && v.thumbnail.src && v.thumbnail.src.length > 0 && v.title ? dispatch(updatePublish({ details: !0 })) : dispatch(updatePublish({ details: !1 }));
-      })
-    );
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, [errors]), (0, import_react57.useEffect)(() => {
-    var _a2, _b;
-    (_a2 = fetcher.data) != null && _a2.searchTags && setTagsOption(
-      (_b = fetcher.data) == null ? void 0 : _b.searchTags.map((e) => ({
-        label: e.name[0].toUpperCase() + e.name.slice(1),
-        value: e.id
-      }))
-    );
-  }, [(_a = fetcher.data) == null ? void 0 : _a.searchTags]), /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("div", { className: "space-y-12 ", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("h3", { className: "font-medium ", children: "Details" }, void 0, !1, {
-      fileName: "app/routes/__with-toolbar/upload/details.tsx",
-      lineNumber: 305,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react_hook_form8.FormProvider, { ...methods, children: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("form", { className: "flex flex-col gap-6  md:flex-row", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("div", { className: "flex flex-1 flex-col space-y-12", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("label", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("p", { className: "label-required", children: "Tilte" }, void 0, !1, {
-            fileName: "app/routes/__with-toolbar/upload/details.tsx",
-            lineNumber: 310,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-            Textarea,
-            {
-              name: "title",
-              maxLength: 100,
-              rows: 2,
-              registerOptions: { required: "Require title!" }
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/__with-toolbar/upload/details.tsx",
-              lineNumber: 311,
-              columnNumber: 15
-            },
-            this
-          )
-        ] }, void 0, !0, {
-          fileName: "app/routes/__with-toolbar/upload/details.tsx",
-          lineNumber: 309,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("label", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("p", { className: "label-required", children: "Tags" }, void 0, !1, {
-            fileName: "app/routes/__with-toolbar/upload/details.tsx",
-            lineNumber: 319,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-            import_react_hook_form8.Controller,
-            {
-              name: "tags",
-              control: methods.control,
-              render: ({ field }) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-                import_creatable.default,
-                {
-                  ...field,
-                  id: field.name,
-                  menuShouldScrollIntoView: !0,
-                  isMulti: !0,
-                  value: field.value,
-                  onChange: (e) => {
-                    field.onChange(e), e.length === 0 ? setError("tags", {
-                      type: "required",
-                      message: "Please pick one tag at least!"
-                    }) : clearErrors("tags");
-                  },
-                  onInputChange: (e) => {
-                    e.length > 0 && import_lodash3.default.debounce(
-                      () => fetcher.load(`./?search-tags=${e}`),
-                      300,
-                      { trailing: !0 }
-                    );
-                  },
-                  onCreateOption: (e) => {
-                    let newId = (0, import_cuid3.default)(), newValue = {
-                      id: newId,
-                      name: e
-                    }, newFormValue = {
-                      label: e[0].toUpperCase() + e.slice(1),
-                      value: newId
-                    };
-                    field.value === null ? setValue("tags", [newFormValue]) : setValue("tags", [...field.value, newFormValue]), fetcher.submit(newValue, { method: "post" });
-                  },
-                  options: tagsOption,
-                  components: {
-                    ClearIndicator: void 0,
-                    IndicatorSeparator: void 0,
-                    Control: ControlComponent,
-                    Option: OptionComponent,
-                    Menu: MenuComponent,
-                    MenuList: MenuListComponent,
-                    MultiValueLabel,
-                    MultiValueRemove,
-                    MultiValueContainer,
-                    DropdownIndicator: DropdownIndicatorComponent,
-                    Input: InputComponent
-                  }
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/__with-toolbar/upload/details.tsx",
-                  lineNumber: 324,
-                  columnNumber: 19
-                },
-                this
-              )
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/__with-toolbar/upload/details.tsx",
-              lineNumber: 320,
-              columnNumber: 15
-            },
-            this
-          ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(ErrorMessageComponent, { errors, name: "tags" }, void 0, !1, {
-            fileName: "app/routes/__with-toolbar/upload/details.tsx",
-            lineNumber: 384,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/routes/__with-toolbar/upload/details.tsx",
-          lineNumber: 318,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("label", { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("p", { className: "label-required", children: "Difficulty" }, void 0, !1, {
-            fileName: "app/routes/__with-toolbar/upload/details.tsx",
-            lineNumber: 387,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("div", { className: "flex items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-            DifficultyBtn,
-            {
-              isInput: !0,
-              difficulty: localDetails.difficulty,
-              onChange: (value) => {
-                setValue("difficulty", getDifficulty(value));
-              }
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/__with-toolbar/upload/details.tsx",
-              lineNumber: 389,
-              columnNumber: 17
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/routes/__with-toolbar/upload/details.tsx",
-            lineNumber: 388,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/routes/__with-toolbar/upload/details.tsx",
-          lineNumber: 386,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/__with-toolbar/upload/details.tsx",
-        lineNumber: 308,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("div", { className: "w-full justify-self-stretch md:w-2/5", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("label", { className: "label-required", children: "Thumbnail" }, void 0, !1, {
-          fileName: "app/routes/__with-toolbar/upload/details.tsx",
-          lineNumber: 400,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
-          ImgUploadInput,
-          {
-            name: "thumbnail",
-            text: "Thumbnail",
-            src: localImgSrc == null ? void 0 : localImgSrc.src
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/__with-toolbar/upload/details.tsx",
-            lineNumber: 401,
-            columnNumber: 13
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/routes/__with-toolbar/upload/details.tsx",
-        lineNumber: 399,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/__with-toolbar/upload/details.tsx",
-      lineNumber: 307,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/__with-toolbar/upload/details.tsx",
-      lineNumber: 306,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react56.Link, { to: "../ingredients", className: "btn-sm btn-primary w-fit", children: "Next" }, void 0, !1, {
-      fileName: "app/routes/__with-toolbar/upload/details.tsx",
-      lineNumber: 409,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/__with-toolbar/upload/details.tsx",
-    lineNumber: 304,
-    columnNumber: 5
-  }, this);
-}
-
-// app/routes/__with-toolbar/upload/ingredients.tsx
-var import_cuid4 = __toESM(require("cuid"));
-var import_jsx_dev_runtime75 = require("react/jsx-dev-runtime"), Volume = /* @__PURE__ */ ((Volume2) => (Volume2.mL = "mL", Volume2.L = "L", Volume2.tsp = "tsp", Volume2.oz = "oz", Volume2.cup = "cup", Volume2.qt = "qt", Volume2.pt = "pt", Volume2.gal = "gal", Volume2))(Volume || {}), Weight = /* @__PURE__ */ ((Weight2) => (Weight2.mg = "mg", Weight2.g = "g", Weight2.kg = "kg", Weight2.lb = "lb", Weight2.oz = "oz", Weight2))(Weight || {}), Length = /* @__PURE__ */ ((Length2) => (Length2.mm = "mm", Length2.cm = "cm", Length2.m = "m", Length2.inch = "inch", Length2.yard = "yard", Length2))(Length || {}), Temperature = /* @__PURE__ */ ((Temperature2) => (Temperature2.celsius = "\xB0C", Temperature2.farenheit = "\xB0F", Temperature2))(Temperature || {}), SingleValueComponent = ({
-  children,
-  ...props
-}) => /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
-  import_react_select2.components.SingleValue,
-  {
-    ...props,
-    className: `${props.className} text-inherit`,
-    children
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-    lineNumber: 78,
-    columnNumber: 5
-  },
-  this
-), loader14 = async ({ request }) => {
-  let searchRes = await searchIngredients(request);
-  return (0, import_server_runtime4.json)({ searchRes });
-}, action9 = async ({ request }) => {
-  let data = await request.formData(), name = data.get("label"), ingredientId = data.get("value");
-  return !name || !ingredientId || typeof name != "string" || typeof ingredientId != "string" ? badRequest({ message: "lack of ingredientId or Name" }) : (await db.ingredient.upsert({
-    where: {
-      name
-    },
-    update: {},
-    create: { id: ingredientId, name }
-  }), null);
-};
-function IngredientsPage() {
-  let data = (0, import_react58.useLoaderData)(), fetcher = (0, import_react58.useFetcher)(), [ingOptions, setIngOptions] = (0, import_react59.useState)(
-    data.searchRes.map((e) => ({
-      value: e.id,
-      label: e.name[0].toUpperCase() + e.name.substring(1)
-    }))
-  ), local = useAppSelector((state) => state.ingredientsForm), dispatch = useAppDispatch(), {
-    register: register2,
-    control,
-    watch,
-    setValue,
-    setError,
-    clearErrors,
-    formState: { errors }
-  } = (0, import_react_hook_form9.useForm)({
-    defaultValues: {
-      serving: local.servings,
-      ingredients: local.ingredients ?? [{ name: null, qty: 0, unit: null }]
-    },
-    mode: "onChange"
-  }), { fields, append, remove } = (0, import_react_hook_form9.useFieldArray)({
-    control,
-    name: "ingredients"
-  }), watchFieldArray = watch("ingredients"), controlledFields = fields.map((field, index) => ({
-    ...field,
-    ...watchFieldArray[index]
-  }));
-  return (0, import_react59.useEffect)(() => {
-    let filteredIngredients = (input) => input ? input.some((e) => e == null ? void 0 : e.name) ? input.filter((e, i) => e.name !== null) : input.slice(void 0, 1) : void 0, ingredietnFullfill = (input) => input.every(
-      (e) => e.name !== null && e.qty > 0 && e.unit !== null || e.name === null
-    ), subscription = watch(
-      import_lodash4.default.debounce(
-        (value) => {
-          dispatch(
-            updateIngredients({
-              servings: value.serving ?? 1,
-              ingredients: filteredIngredients(value.ingredients)
-            })
-          ), value.ingredients && value.serving && value.serving > 0 && ingredietnFullfill(value.ingredients) ? dispatch(updatePublish({ ingredients: !0 })) : dispatch(updatePublish({ ingredients: !1 }));
-        },
-        300,
-        { trailing: !0 }
-      )
-    );
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, []), /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("div", { className: "space-y-12", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("h3", { className: "font-medium text-inherit", children: "Ingredients" }, void 0, !1, {
-      fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-      lineNumber: 213,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("form", { className: "flex flex-col space-y-12", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("label", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("p", { className: "label-required", children: "Default serving" }, void 0, !1, {
-          fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-          lineNumber: 216,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
-          "input",
-          {
-            type: "number",
-            ...register2("serving", {
-              valueAsNumber: !0,
-              min: { value: 1, message: "servings can't be 0" },
-              required: !0
-            }),
-            placeholder: "1",
-            className: "input w-12 text-right",
-            min: 1
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-            lineNumber: 217,
-            columnNumber: 11
-          },
-          this
-        ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("span", { className: "ml-2", children: "servings" }, void 0, !1, {
-          fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-          lineNumber: 228,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(ErrorMessageComponent, { name: "serving", errors }, void 0, !1, {
-          fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-          lineNumber: 229,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-        lineNumber: 215,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("p", { className: "label-required", children: "Ingredients list" }, void 0, !1, {
-          fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-          lineNumber: 232,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(ErrorMessageComponent, { name: "ingredients", errors }, void 0, !1, {
-          fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-          lineNumber: 233,
-          columnNumber: 11
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("ul", { className: "space-y-4", children: [
-          controlledFields.map((field, idx) => /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("div", { className: "flex flex-wrap gap-4 ", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("label", { className: "w-full ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
-              import_react_hook_form9.Controller,
-              {
-                name: `ingredients.${idx}.name`,
-                control,
-                render: ({ field: controllerField }) => /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
-                  import_creatable2.default,
-                  {
-                    ...controllerField,
-                    id: `ingredients_${controllerField.name}`,
-                    menuShouldScrollIntoView: !0,
-                    isMulti: !1,
-                    isClearable: !0,
-                    placeholder: "Ingredient name",
-                    onCreateOption: (e) => {
-                      let newValue = {
-                        label: e[0].toUpperCase() + e.substring(1),
-                        value: (0, import_cuid4.default)()
-                      };
-                      setValue(`ingredients.${idx}.name`, newValue), setIngOptions((prev) => [...prev, newValue]), fetcher.submit(newValue, { method: "post" });
-                    },
-                    onInputChange: (e) => {
-                      e.length > 0 && import_lodash4.default.debounce(
-                        () => fetcher.load(`./?search-ingredient=${e}`),
-                        300,
-                        { trailing: !0 }
-                      );
-                    },
-                    onChange: (e) => {
-                      controllerField.onChange(e), clearErrors("ingredients");
-                    },
-                    onBlur: () => {
-                      watchFieldArray.every(
-                        (e) => {
-                          var _a, _b;
-                          return !e.name || ((_a = e.name) == null ? void 0 : _a.value.length) === 0 || ((_b = e.name) == null ? void 0 : _b.value) === null;
-                        }
-                      ) && setError("ingredients", {
-                        type: "required",
-                        message: "Please add an ingredient at least!"
-                      });
-                    },
-                    options: ingOptions,
-                    components: {
-                      ClearIndicator: ClearIndicatorComponent,
-                      Control: ControlComponent,
-                      Option: OptionComponent,
-                      Menu: MenuComponent,
-                      MenuList: MenuListComponent,
-                      SingleValue: SingleValueComponent,
-                      DropdownIndicator: DropdownIndicatorComponent,
-                      Input: InputComponent
-                    }
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-                    lineNumber: 243,
-                    columnNumber: 25
-                  },
-                  this
-                )
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-                lineNumber: 239,
-                columnNumber: 21
-              },
-              this
-            ) }, void 0, !1, {
-              fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-              lineNumber: 238,
-              columnNumber: 19
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
-              "input",
-              {
-                ...register2(`ingredients.${idx}.qty`, {
-                  required: !0
-                }),
-                type: "number",
-                name: `ingredients.${idx}.qty`,
-                className: "input w-20",
-                placeholder: "QTY"
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-                lineNumber: 302,
-                columnNumber: 19
-              },
-              this
-            ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("label", { className: "w-40 ", children: /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
-              import_react_hook_form9.Controller,
-              {
-                name: `ingredients.${idx}.unit`,
-                control,
-                rules: { required: !0 },
-                render: ({ field: controllerField }) => /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
-                  import_react_select3.default,
-                  {
-                    ...controllerField,
-                    id: `ingredients_${idx}_${field.id}`,
-                    placeholder: "Unit",
-                    isSearchable: !0,
-                    options: [
-                      { label: "No unit", value: "" },
-                      {
-                        label: "Volume",
-                        options: Object.values(Volume).map((e) => ({
-                          label: e,
-                          value: e
-                        }))
-                      },
-                      {
-                        label: "Weight",
-                        options: Object.values(Weight).map((e) => ({
-                          label: e,
-                          value: e
-                        }))
-                      },
-                      {
-                        label: "Length",
-                        options: Object.values(Length).map((e) => ({
-                          label: e,
-                          value: e
-                        }))
-                      },
-                      {
-                        label: "Temperature",
-                        options: Object.values(Temperature).map((e) => ({
-                          label: e,
-                          value: e
-                        }))
-                      }
-                    ],
-                    components: {
-                      ClearIndicator: void 0,
-                      IndicatorSeparator: void 0,
-                      Control: ControlComponent,
-                      Option: OptionComponent,
-                      Menu: MenuComponent,
-                      MenuList: MenuListComponent,
-                      SingleValue: SingleValueComponent,
-                      DropdownIndicator: DropdownIndicatorComponent,
-                      Input: InputComponent
-                    }
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-                    lineNumber: 317,
-                    columnNumber: 25
-                  },
-                  this
-                )
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-                lineNumber: 312,
-                columnNumber: 21
-              },
-              this
-            ) }, void 0, !1, {
-              fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-              lineNumber: 311,
-              columnNumber: 19
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
-              "button",
-              {
-                className: ` btn-sm btn-ghost ${fields.length === 1 ? "text-red-600 disabled:text-gray-400" : ""}`,
-                type: "button",
-                onClick: () => {
-                  remove(idx);
-                },
-                disabled: fields.length === 1,
-                children: "Delet"
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-                lineNumber: 369,
-                columnNumber: 19
-              },
-              this
-            )
-          ] }, field.id, !0, {
-            fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-            lineNumber: 237,
-            columnNumber: 17
-          }, this)),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
-            "button",
-            {
-              className: "btn-sm btn-border",
-              type: "button",
-              onClick: () => {
-                append({ name: null, qty: 0, unit: null });
-              },
-              children: "Add a ingredient"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-              lineNumber: 386,
-              columnNumber: 13
-            },
-            this
-          )
-        ] }, void 0, !0, {
-          fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-          lineNumber: 234,
-          columnNumber: 11
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-        lineNumber: 231,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-      lineNumber: 214,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("div", { className: "flex gap-4", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_react58.Link, { to: "./details", className: "btn-sm btn-gray", children: "Previous" }, void 0, !1, {
-        fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-        lineNumber: 399,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_react58.Link, { to: "../1", className: "btn-sm btn-primary", children: "Next" }, void 0, !1, {
-        fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-        lineNumber: 402,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-      lineNumber: 398,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/__with-toolbar/upload/ingredients.tsx",
-    lineNumber: 212,
-    columnNumber: 5
-  }, this);
-}
-
-// app/routes/__with-toolbar/upload/$stepIdx.tsx
-var stepIdx_exports = {};
-__export(stepIdx_exports, {
-  default: () => StepsPage
-});
-var import_react62 = require("@remix-run/react"), import_uuid3 = require("uuid");
-
-// app/pages/upload/step/step-form.tsx
-var import_react60 = require("@remix-run/react"), import_lodash5 = __toESM(require("lodash")), import_react61 = require("react"), import_react_hook_form11 = require("react-hook-form");
-
 // app/pages/upload/step/methods-field-array.tsx
-var import_react_hook_form10 = require("react-hook-form");
 var import_jsx_dev_runtime76 = require("react/jsx-dev-runtime"), regexNum = new RegExp("^[0-9]$"), regexChar = new RegExp("^[a-zA-Z]$");
 function MethodsFieldArray() {
-  let name = "methods", methods = (0, import_react_hook_form10.useFormContext)(), { control, watch, setError, clearErrors } = methods, { fields, append, remove } = (0, import_react_hook_form10.useFieldArray)({
+  let name = "methods", methods = (0, import_react_hook_form8.useFormContext)(), { control, watch, setError, clearErrors } = methods, { fields, append, remove } = (0, import_react_hook_form8.useFieldArray)({
     control,
     name
   }), watchFieldArray = watch(name), controlledFields = fields.map((field, index) => ({
@@ -24758,8 +24237,278 @@ function MethodsFieldArray() {
   }, this);
 }
 
+// app/components/form/image-input-form/img-upload-input.tsx
+var import_react59 = require("react"), import_react_hook_form10 = require("react-hook-form");
+
+// app/components/form/image-input-form/img-upload.tsx
+var import_react58 = require("react"), import_lodash4 = __toESM(require("lodash")), import_react_hook_form9 = require("react-hook-form"), import_react_avatar_editor = __toESM(require("react-avatar-editor")), import_cuid3 = __toESM(require("cuid")), import_use_resize_observer4 = __toESM(require("use-resize-observer")), import_jsx_dev_runtime77 = require("react/jsx-dev-runtime");
+function ImgUpload({
+  name,
+  defaultImgSrc,
+  onClose
+}) {
+  let { setValue } = (0, import_react_hook_form9.useFormContext)(), containerRef = (0, import_react58.useRef)(null), editorRef = (0, import_react58.useRef)(null), imgDraftKey = (0, import_react58.useRef)((0, import_cuid3.default)()), { width, ref } = (0, import_use_resize_observer4.default)(), [scale, setScale] = (0, import_react58.useState)(1), onWheel = (e) => {
+    setScale((prev) => Math.max(prev + e.deltaY / 80, 1));
+  }, throttledOnWheel = (0, import_react58.useCallback)(
+    import_lodash4.default.throttle(onWheel, 40, { trailing: !1 }),
+    []
+  );
+  (0, import_react58.useEffect)(() => {
+    let container = containerRef.current;
+    return container && container.addEventListener("wheel", throttledOnWheel), () => {
+      container && container.removeEventListener("wheel", throttledOnWheel);
+    };
+  }, []);
+  let onConfirm = async () => {
+    let editor = editorRef.current;
+    if (editor) {
+      let url = editor.getImageScaledToCanvas().toDataURL("image/jpeg"), obj = {
+        name: imgDraftKey.current,
+        src: url,
+        type: "image/jpeg"
+      };
+      setValue(name, obj);
+    }
+    onClose();
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { ref, children: [
+    (defaultImgSrc == null ? void 0 : defaultImgSrc.length) > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(
+      "div",
+      {
+        className: "flex min-w-0 items-center justify-center overflow-hidden rounded-t-xl bg-gray-500",
+        ref: containerRef,
+        children: /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(
+          import_react_avatar_editor.default,
+          {
+            image: defaultImgSrc,
+            width: width ? width > 720 ? 720 : width : 0,
+            height: width ? width > 720 ? 720 / 4 * 3 : width / 4 * 3 : 0,
+            border: 0,
+            color: [0, 0, 0, 0.6],
+            scale,
+            disableCanvasRotation: !0,
+            ref: editorRef
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/form/image-input-form/img-upload.tsx",
+            lineNumber: 73,
+            columnNumber: 11
+          },
+          this
+        )
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/components/form/image-input-form/img-upload.tsx",
+        lineNumber: 66,
+        columnNumber: 9
+      },
+      this
+    ) : /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(
+      "div",
+      {
+        className: "flex h-full w-full justify-center overflow-hidden rounded-t-xl bg-gray-600",
+        ref: containerRef,
+        children: /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { className: "flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("p", { className: " p-4 text-center font-medium text-gray-500", children: "No file yet!" }, void 0, !1, {
+          fileName: "app/components/form/image-input-form/img-upload.tsx",
+          lineNumber: 92,
+          columnNumber: 13
+        }, this) }, void 0, !1, {
+          fileName: "app/components/form/image-input-form/img-upload.tsx",
+          lineNumber: 91,
+          columnNumber: 11
+        }, this)
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/components/form/image-input-form/img-upload.tsx",
+        lineNumber: 87,
+        columnNumber: 9
+      },
+      this
+    ),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { className: "flex justify-end gap-4 px-6 py-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(
+        "button",
+        {
+          className: "btn-ghost btn-md",
+          onClick: (e) => {
+            e.stopPropagation(), onClose();
+          },
+          children: "Cancel"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/form/image-input-form/img-upload.tsx",
+          lineNumber: 99,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(
+        "button",
+        {
+          className: "btn-primary btn-md",
+          onClick: (e) => {
+            e.stopPropagation(), onConfirm();
+          },
+          children: "Comfirm"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/form/image-input-form/img-upload.tsx",
+          lineNumber: 108,
+          columnNumber: 9
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/components/form/image-input-form/img-upload.tsx",
+      lineNumber: 98,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/form/image-input-form/img-upload.tsx",
+    lineNumber: 64,
+    columnNumber: 5
+  }, this);
+}
+
+// app/components/form/image-input-form/img-upload-input.tsx
+var import_jsx_dev_runtime78 = require("react/jsx-dev-runtime");
+function ImgUploadInput({
+  name,
+  text,
+  src
+}) {
+  let { watch, register: register2 } = (0, import_react_hook_form10.useFormContext)(), [open, setOpen] = (0, import_react59.useState)(!1), [defaultImgSrc, setDefaultImgSrc] = (0, import_react59.useState)(""), canvasContainerRef = (0, import_react59.useRef)(null), onSubmitFile = async (e) => {
+    let files = e.target.files;
+    if (files) {
+      let file = files[0], reader = new FileReader();
+      reader.addEventListener(
+        "load",
+        () => {
+          setDefaultImgSrc(
+            typeof reader.result == "string" ? reader.result : ""
+          );
+        },
+        !1
+      ), reader.readAsDataURL(file);
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("div", { className: "h-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(
+    "div",
+    {
+      className: ` 
+        aspect-w-4 aspect-h-3 
+        items-center justify-center 
+        overflow-hidden rounded-lg 
+        border hover:border-gray-300 hover:bg-gray-50 dark:border-gray-500
+        dark:hover:bg-gray-700
+        `,
+      ref: canvasContainerRef,
+      children: [
+        src && src.length > 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("img", { src }, void 0, !1, {
+          fileName: "app/components/form/image-input-form/img-upload-input.tsx",
+          lineNumber: 80,
+          columnNumber: 11
+        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("div", { className: "flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("p", { className: " p-4 text-center font-medium text-gray-500", children: [
+          "Click here to upload ",
+          text
+        ] }, void 0, !0, {
+          fileName: "app/components/form/image-input-form/img-upload-input.tsx",
+          lineNumber: 83,
+          columnNumber: 13
+        }, this) }, void 0, !1, {
+          fileName: "app/components/form/image-input-form/img-upload-input.tsx",
+          lineNumber: 82,
+          columnNumber: 11
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("label", { className: "h-full w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(
+          "input",
+          {
+            ...register2(name, {
+              onChange: (e) => {
+                e.target.files.length > 0 ? (setOpen(!0), onSubmitFile(e)) : setOpen(!1);
+              },
+              required: "require a thumbnail"
+            }),
+            className: "h-full w-full opacity-0",
+            type: "file",
+            accept: "image/*",
+            multiple: !1
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/form/image-input-form/img-upload-input.tsx",
+            lineNumber: 90,
+            columnNumber: 11
+          },
+          this
+        ) }, void 0, !1, {
+          fileName: "app/components/form/image-input-form/img-upload-input.tsx",
+          lineNumber: 89,
+          columnNumber: 9
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(
+          Modal,
+          {
+            open,
+            onClose: () => setOpen(!1),
+            className: " h-fit w-[80vw] rounded-xl bg-white dark:bg-dark-gray md:w-[70vw] lg:w-[50vw]",
+            disableClickOutsideClose: !0,
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(
+              ImgUpload,
+              {
+                name,
+                defaultImgSrc,
+                onClose: () => setOpen(!1)
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/components/form/image-input-form/img-upload-input.tsx",
+                lineNumber: 114,
+                columnNumber: 11
+              },
+              this
+            )
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/form/image-input-form/img-upload-input.tsx",
+            lineNumber: 108,
+            columnNumber: 9
+          },
+          this
+        )
+      ]
+    },
+    void 0,
+    !0,
+    {
+      fileName: "app/components/form/image-input-form/img-upload-input.tsx",
+      lineNumber: 69,
+      columnNumber: 7
+    },
+    this
+  ) }, void 0, !1, {
+    fileName: "app/components/form/image-input-form/img-upload-input.tsx",
+    lineNumber: 68,
+    columnNumber: 5
+  }, this);
+}
+
 // app/pages/upload/step/step-form.tsx
-var import_jsx_dev_runtime77 = require("react/jsx-dev-runtime"), defaultValues = {
+var import_jsx_dev_runtime79 = require("react/jsx-dev-runtime"), defaultValues = {
   title: "",
   methods: [{ content: "" }],
   photo: { name: "", type: "", src: "" }
@@ -24804,14 +24553,14 @@ function StepForm() {
     };
   }, [errors, stepIdx]), (0, import_react61.useEffect)(() => {
     localStepForm && reset(localStepForm);
-  }, [stepIdx]), /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(import_react_hook_form11.FormProvider, { ...methods, children: /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("form", { className: "flex flex-col space-y-12", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { className: "w-2/5 justify-self-stretch", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("label", { className: "label-required", children: "Photo" }, void 0, !1, {
+  }, [stepIdx]), /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(import_react_hook_form11.FormProvider, { ...methods, children: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("form", { className: "flex flex-col space-y-12", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("div", { className: "w-2/5 justify-self-stretch", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("label", { className: "label-required", children: "Photo" }, void 0, !1, {
         fileName: "app/pages/upload/step/step-form.tsx",
         lineNumber: 109,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(ImgUploadInput, { name: "photo", text: "Photo", src: localImgSrc }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(ImgUploadInput, { name: "photo", text: "Photo", src: localImgSrc }, void 0, !1, {
         fileName: "app/pages/upload/step/step-form.tsx",
         lineNumber: 110,
         columnNumber: 11
@@ -24821,13 +24570,13 @@ function StepForm() {
       lineNumber: 108,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("label", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("p", { className: "label", children: "Step Title" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("label", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("p", { className: "label", children: "Step Title" }, void 0, !1, {
         fileName: "app/pages/upload/step/step-form.tsx",
         lineNumber: 113,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(
         Textarea,
         {
           name: "title",
@@ -24849,18 +24598,18 @@ function StepForm() {
       lineNumber: 112,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("p", { className: "label-required", children: "Methods" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("p", { className: "label-required", children: "Methods" }, void 0, !1, {
         fileName: "app/pages/upload/step/step-form.tsx",
         lineNumber: 122,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(ErrorMessageComponent, { name: "methods", errors }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(ErrorMessageComponent, { name: "methods", errors }, void 0, !1, {
         fileName: "app/pages/upload/step/step-form.tsx",
         lineNumber: 123,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(MethodsFieldArray, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(MethodsFieldArray, {}, void 0, !1, {
         fileName: "app/pages/upload/step/step-form.tsx",
         lineNumber: 124,
         columnNumber: 11
@@ -24882,7 +24631,7 @@ function StepForm() {
 }
 
 // app/routes/__with-toolbar/upload/$stepIdx.tsx
-var import_jsx_dev_runtime78 = require("react/jsx-dev-runtime");
+var import_jsx_dev_runtime80 = require("react/jsx-dev-runtime");
 function StepsPage() {
   let { stepIdx } = (0, import_react62.useParams)(), navigate = (0, import_react62.useNavigate)(), dispatch = useAppDispatch(), localStepForms = useAppSelector((state) => state.stepForm), onAdd = () => {
     stepIdx && !localStepForms[+stepIdx] && dispatch(
@@ -24894,8 +24643,8 @@ function StepsPage() {
       })
     );
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("div", { className: "space-y-12", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("h3", { className: "text-primary-600 font-medium", children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { className: "space-y-12", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("h3", { className: "text-primary-600 font-medium", children: [
       "Step ",
       stepIdx
     ] }, void 0, !0, {
@@ -24903,13 +24652,13 @@ function StepsPage() {
       lineNumber: 27,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(StepForm, {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(StepForm, {}, void 0, !1, {
       fileName: "app/routes/__with-toolbar/upload/$stepIdx.tsx",
       lineNumber: 28,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("div", { className: "flex gap-4", children: [
-      stepIdx && stepIdx !== "1" ? /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { className: "flex gap-4", children: [
+      stepIdx && stepIdx !== "1" ? /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
         "button",
         {
           className: "btn-sm btn-gray",
@@ -24928,7 +24677,7 @@ function StepsPage() {
         },
         this
       ) : null,
-      stepIdx ? /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(
+      stepIdx ? /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
         "button",
         {
           className: "btn-sm btn-primary",
@@ -24959,15 +24708,319 @@ function StepsPage() {
   }, this);
 }
 
+// app/routes/__with-toolbar/upload/details.tsx
+var details_exports = {};
+__export(details_exports, {
+  action: () => action9,
+  default: () => Details
+});
+var import_react66 = require("@remix-run/react");
+
+// app/pages/upload/details/details-form.tsx
+var import_lodash7 = __toESM(require("lodash")), import_react65 = require("react"), import_react_hook_form13 = require("react-hook-form");
+
+// app/pages/upload/details/tags.tsx
+var import_react63 = require("@remix-run/react"), import_cuid4 = __toESM(require("cuid")), import_lodash6 = __toESM(require("lodash")), import_react64 = require("react"), import_react_hook_form12 = require("react-hook-form"), import_creatable2 = __toESM(require("react-select/creatable"));
+var import_jsx_dev_runtime81 = require("react/jsx-dev-runtime"), Tags = ({
+  methods
+}) => {
+  var _a, _b;
+  let {
+    control,
+    setValue,
+    setError,
+    clearErrors,
+    formState: { errors }
+  } = methods, fetcher = (0, import_react63.useFetcher)(), [tagsOption, setTagsOption] = (0, import_react64.useState)(
+    (_a = fetcher.data) == null ? void 0 : _a.searchTags.map((e) => ({
+      label: e.name[0].toUpperCase() + e.name.slice(1),
+      value: e.id
+    }))
+  );
+  return (0, import_react64.useEffect)(() => {
+    var _a2, _b2;
+    (_a2 = fetcher.data) != null && _a2.searchTags && setTagsOption(
+      (_b2 = fetcher.data) == null ? void 0 : _b2.searchTags.map((e) => ({
+        label: e.name[0].toUpperCase() + e.name.slice(1),
+        value: e.id
+      }))
+    );
+  }, [(_b = fetcher.data) == null ? void 0 : _b.searchTags]), /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("label", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("p", { className: "label-required", children: "Tags" }, void 0, !1, {
+      fileName: "app/pages/upload/details/tags.tsx",
+      lineNumber: 54,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(
+      import_react_hook_form12.Controller,
+      {
+        name: "tags",
+        control,
+        render: ({ field }) => /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(
+          import_creatable2.default,
+          {
+            ...field,
+            id: field.name,
+            menuShouldScrollIntoView: !0,
+            isMulti: !0,
+            value: field.value,
+            onChange: (e) => {
+              field.onChange(e), e.length === 0 ? setError("tags", {
+                type: "required",
+                message: "Please pick one tag at least!"
+              }) : clearErrors("tags");
+            },
+            onInputChange: (e) => {
+              e.length > 0 && import_lodash6.default.debounce(
+                () => fetcher.load(`/loader/search-tag-options?search-tags=${e}`),
+                300,
+                { trailing: !0 }
+              );
+            },
+            onCreateOption: (e) => {
+              let newId = (0, import_cuid4.default)(), newValue = {
+                id: newId,
+                name: e
+              }, newFormValue = {
+                label: e[0].toUpperCase() + e.slice(1),
+                value: newId
+              };
+              field.value === null ? setValue("tags", [newFormValue]) : setValue("tags", [...field.value, newFormValue]), fetcher.submit(newValue, { method: "post" });
+            },
+            options: tagsOption,
+            components: {
+              ClearIndicator: void 0,
+              IndicatorSeparator: void 0,
+              Control: ControlComponent,
+              Option: OptionComponent,
+              Menu: MenuComponent,
+              MenuList: MenuListComponent,
+              MultiValueLabel,
+              MultiValueRemove,
+              MultiValueContainer,
+              DropdownIndicator: DropdownIndicatorComponent,
+              Input: InputComponent
+            }
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/pages/upload/details/tags.tsx",
+            lineNumber: 59,
+            columnNumber: 11
+          },
+          this
+        )
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/pages/upload/details/tags.tsx",
+        lineNumber: 55,
+        columnNumber: 7
+      },
+      this
+    ),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(ErrorMessageComponent, { errors, name: "tags" }, void 0, !1, {
+      fileName: "app/pages/upload/details/tags.tsx",
+      lineNumber: 120,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/pages/upload/details/tags.tsx",
+    lineNumber: 53,
+    columnNumber: 5
+  }, this);
+};
+
+// app/pages/upload/details/details-form.tsx
+var import_jsx_dev_runtime82 = require("react/jsx-dev-runtime"), DetailsForm = () => {
+  let dispatch = useAppDispatch(), localDetails = useAppSelector((state) => state.detailsForm), localImgSrc = useAppSelector((state) => state.detailsForm).thumbnail, methods = (0, import_react_hook_form13.useForm)({
+    defaultValues: {
+      ...localDetails,
+      tags: localDetails.tags
+    },
+    mode: "onChange"
+  }), {
+    setValue,
+    watch,
+    formState: { errors }
+  } = methods;
+  return (0, import_react65.useEffect)(() => {
+    let subscription = watch(
+      import_lodash7.default.debounce((v) => {
+        var _a, _b, _c;
+        dispatch(
+          updateDetails({
+            title: v.title ?? "",
+            tags: v.tags ? v.tags.map((e) => !!e && !!e.label && !!e.value ? e : { label: "", value: "" }) : null,
+            thumbnail: {
+              name: ((_a = v.thumbnail) == null ? void 0 : _a.name) ?? "",
+              type: ((_b = v.thumbnail) == null ? void 0 : _b.type) ?? "",
+              src: ((_c = v.thumbnail) == null ? void 0 : _c.src) ?? ""
+            }
+          })
+        ), Object.keys(errors).length === 0 && v.difficulty && v.tags && v.tags.length > 0 && v.thumbnail && v.thumbnail.src && v.thumbnail.src.length > 0 && v.title ? dispatch(updatePublish({ details: !0 })) : dispatch(updatePublish({ details: !1 }));
+      })
+    );
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [errors]), /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(import_react_hook_form13.FormProvider, { ...methods, children: /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("form", { className: "flex flex-col gap-6  md:flex-row", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "flex flex-1 flex-col space-y-12", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("label", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("p", { className: "label-required", children: "Tilte" }, void 0, !1, {
+          fileName: "app/pages/upload/details/details-form.tsx",
+          lineNumber: 95,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(
+          Textarea,
+          {
+            name: "title",
+            maxLength: 100,
+            rows: 2,
+            registerOptions: { required: "Require title!" }
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/pages/upload/details/details-form.tsx",
+            lineNumber: 96,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/pages/upload/details/details-form.tsx",
+        lineNumber: 94,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Tags, { methods }, void 0, !1, {
+        fileName: "app/pages/upload/details/details-form.tsx",
+        lineNumber: 103,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("label", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("p", { className: "label-required", children: "Difficulty" }, void 0, !1, {
+          fileName: "app/pages/upload/details/details-form.tsx",
+          lineNumber: 105,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "flex items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(
+          DifficultyBtn,
+          {
+            isInput: !0,
+            difficulty: localDetails.difficulty,
+            onChange: (value) => {
+              setValue("difficulty", getDifficulty(value));
+            }
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/pages/upload/details/details-form.tsx",
+            lineNumber: 107,
+            columnNumber: 15
+          },
+          this
+        ) }, void 0, !1, {
+          fileName: "app/pages/upload/details/details-form.tsx",
+          lineNumber: 106,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/pages/upload/details/details-form.tsx",
+        lineNumber: 104,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/pages/upload/details/details-form.tsx",
+      lineNumber: 93,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "w-full justify-self-stretch md:w-2/5", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("label", { className: "label-required", children: "Thumbnail" }, void 0, !1, {
+        fileName: "app/pages/upload/details/details-form.tsx",
+        lineNumber: 118,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(
+        ImgUploadInput,
+        {
+          name: "thumbnail",
+          text: "Thumbnail",
+          src: localImgSrc == null ? void 0 : localImgSrc.src
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/pages/upload/details/details-form.tsx",
+          lineNumber: 119,
+          columnNumber: 11
+        },
+        this
+      )
+    ] }, void 0, !0, {
+      fileName: "app/pages/upload/details/details-form.tsx",
+      lineNumber: 117,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/pages/upload/details/details-form.tsx",
+    lineNumber: 92,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/pages/upload/details/details-form.tsx",
+    lineNumber: 91,
+    columnNumber: 5
+  }, this);
+};
+
+// app/routes/__with-toolbar/upload/details.tsx
+var import_jsx_dev_runtime83 = require("react/jsx-dev-runtime"), action9 = async ({ request }) => {
+  let formdata = await request.formData(), tagId = formdata.get("id"), tagName = formdata.get("name");
+  if (typeof tagId != "string" || typeof tagName != "string")
+    throw new Error("type of tagId or tagName is not string");
+  return await db.tag.upsert({
+    where: { name: tagName },
+    create: { id: tagId, name: tagName },
+    update: {}
+  }), null;
+};
+function Details() {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)("div", { className: "space-y-12 ", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)("h3", { className: "font-medium ", children: "Details" }, void 0, !1, {
+      fileName: "app/routes/__with-toolbar/upload/details.tsx",
+      lineNumber: 34,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)(DetailsForm, {}, void 0, !1, {
+      fileName: "app/routes/__with-toolbar/upload/details.tsx",
+      lineNumber: 35,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)(import_react66.Link, { to: "../ingredients", className: "btn-sm btn-primary w-fit", children: "Next" }, void 0, !1, {
+      fileName: "app/routes/__with-toolbar/upload/details.tsx",
+      lineNumber: 36,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/__with-toolbar/upload/details.tsx",
+    lineNumber: 33,
+    columnNumber: 5
+  }, this);
+}
+
 // app/routes/__with-toolbar/index.tsx
 var with_toolbar_exports2 = {};
 __export(with_toolbar_exports2, {
   default: () => Index2,
   headers: () => headers,
-  loader: () => loader15
+  loader: () => loader14
 });
-var import_node16 = require("@remix-run/node"), import_react63 = require("@remix-run/react"), import_react64 = require("react");
-var import_jsx_dev_runtime79 = require("react/jsx-dev-runtime"), headers = () => ({ "Cache-Control": "max-age=3600" }), loader15 = async ({ request }) => {
+var import_node17 = require("@remix-run/node"), import_react67 = require("@remix-run/react"), import_react68 = require("react");
+var import_jsx_dev_runtime84 = require("react/jsx-dev-runtime"), headers = () => ({ "Cache-Control": "max-age=3600" }), loader14 = async ({ request }) => {
   let cacheKey = request.url, searchRes = await searchAllRecipes(request), userId = await getUserId(request), recipeOrder = new URL(request.url).searchParams.get("orderby"), allRecipes = await getAllRecipes({ orderBy: recipeOrder }), withThumbnail = await getThumbnails(
     allRecipes.map((e) => {
       var _a;
@@ -24985,23 +25038,23 @@ var import_jsx_dev_runtime79 = require("react/jsx-dev-runtime"), headers = () =>
       isInBasket: !!recipe.baskets.find((e) => e.userId === userId)
     };
   });
-  return (0, import_node16.json)(
+  return (0, import_node17.json)(
     { searchRes, allRecipes: mappedRecipes },
     { headers: { "Cache-Control": "max-age=3600" } }
   );
 };
 function Index2() {
   var _a, _b;
-  let data = (0, import_react63.useLoaderData)(), fetcher = (0, import_react63.useFetcher)(), [resList, setResList] = (0, import_react64.useState)([]), [recipeList, setRecipeList] = (0, import_react64.useState)(data.allRecipes);
-  return (0, import_react64.useEffect)(() => {
+  let data = (0, import_react67.useLoaderData)(), fetcher = (0, import_react67.useFetcher)(), [resList, setResList] = (0, import_react68.useState)([]), [recipeList, setRecipeList] = (0, import_react68.useState)(data.allRecipes);
+  return (0, import_react68.useEffect)(() => {
     var _a2;
     (_a2 = fetcher.data) != null && _a2.searchRes && setResList(fetcher.data.searchRes);
-  }, [(_a = fetcher.data) == null ? void 0 : _a.searchRes]), (0, import_react64.useEffect)(() => {
+  }, [(_a = fetcher.data) == null ? void 0 : _a.searchRes]), (0, import_react68.useEffect)(() => {
     var _a2;
     (_a2 = fetcher.data) != null && _a2.allRecipes ? setRecipeList(fetcher.data.allRecipes) : setRecipeList(data.allRecipes);
-  }, [(_b = fetcher.data) == null ? void 0 : _b.allRecipes, data.allRecipes]), /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("div", { className: "layout-py layout-px flex flex-col gap-9", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("div", { className: "mx-auto flex flex-wrap gap-6 md:flex-nowrap", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(
+  }, [(_b = fetcher.data) == null ? void 0 : _b.allRecipes, data.allRecipes]), /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)("div", { className: "layout-py layout-px flex flex-col gap-9", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)("div", { className: "mx-auto flex flex-wrap gap-6 md:flex-nowrap", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)(
         SearchBar,
         {
           list: resList == null ? void 0 : resList.map((item) => ({
@@ -25021,7 +25074,7 @@ function Index2() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(SortingDropdown, { fetcher }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)(SortingDropdown, { fetcher }, void 0, !1, {
         fileName: "app/routes/__with-toolbar/index.tsx",
         lineNumber: 77,
         columnNumber: 9
@@ -25031,7 +25084,7 @@ function Index2() {
       lineNumber: 67,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)(
       CardGrid,
       {
         data: recipeList.map((recipe) => {
@@ -25071,8 +25124,8 @@ __export(login_exports, {
   default: () => Login,
   meta: () => meta4
 });
-var import_node17 = require("@remix-run/node"), import_react65 = require("@remix-run/react"), import_react66 = require("react"), import_react_hook_form12 = require("react-hook-form");
-var import_jsx_dev_runtime80 = require("react/jsx-dev-runtime"), meta4 = () => ({
+var import_node18 = require("@remix-run/node"), import_react69 = require("@remix-run/react"), import_react70 = require("react"), import_react_hook_form14 = require("react-hook-form");
+var import_jsx_dev_runtime85 = require("react/jsx-dev-runtime"), meta4 = () => ({
   title: "Login" + metaTitlePostfix
 });
 function validateUrl(url, host) {
@@ -25081,7 +25134,7 @@ function validateUrl(url, host) {
 function validateFormType(formType) {
   return typeof formType == "string" && ["login", "register"].includes(formType);
 }
-var badRequest2 = (data) => (0, import_node17.json)(data, { status: 400 }), action10 = async ({ request }) => {
+var badRequest2 = (data) => (0, import_node18.json)(data, { status: 400 }), action10 = async ({ request }) => {
   let url = new URL(request.url), form = await request.formData(), email = form.get("email"), password = form.get("password"), redirectTo = validateUrl(form.get("redirectTo") || "/", url.host), formType = form.get("formType");
   if (typeof email != "string" || typeof password != "string" || typeof redirectTo != "string" || !validateFormType(formType))
     return badRequest2({ formError: "Form not submitted correctly" });
@@ -25110,12 +25163,12 @@ var badRequest2 = (data) => (0, import_node17.json)(data, { status: 400 }), acti
   }
 };
 function Login() {
-  let [formType, setFormType] = (0, import_react66.useState)("login"), [searchParams] = (0, import_react65.useSearchParams)(), submit = (0, import_react65.useSubmit)(), {
+  let [formType, setFormType] = (0, import_react70.useState)("login"), [searchParams] = (0, import_react69.useSearchParams)(), submit = (0, import_react69.useSubmit)(), {
     register: register2,
     watch,
     handleSubmit,
     formState: { isValid }
-  } = (0, import_react_hook_form12.useForm)({
+  } = (0, import_react_hook_form14.useForm)({
     defaultValues: {
       email: "test@test.com",
       password: "1234",
@@ -25123,54 +25176,54 @@ function Login() {
       formType: "login"
     }
   }), [watchEmail, watchPsw] = watch(["email", "password"]);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { className: "layout-px layout-py mx-auto flex h-full max-w-6xl items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(ContentCard, { className: "h-fit max-w-md", children: /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { className: "flex flex-col gap-8", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("h1", { className: "", children: formType === "login" ? "Login" : "Create account" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("div", { className: "layout-px layout-py mx-auto flex h-full max-w-6xl items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)(ContentCard, { className: "h-fit max-w-md", children: /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("div", { className: "flex flex-col gap-8", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("h1", { className: "", children: formType === "login" ? "Login" : "Create account" }, void 0, !1, {
       fileName: "app/routes/__with-toolbar/login.tsx",
       lineNumber: 121,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { className: "flex space-x-2 rounded-lg bg-primary/10 p-4", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(PriorityHighFill0Wght400Grad25Opsz48_default, { className: "svg-md flex-shrink-0 fill-primary" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("div", { className: "flex space-x-2 rounded-lg bg-primary/10 p-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)(PriorityHighFill0Wght400Grad25Opsz48_default, { className: "svg-md flex-shrink-0 fill-primary" }, void 0, !1, {
         fileName: "app/routes/__with-toolbar/login.tsx",
         lineNumber: 125,
         columnNumber: 13
       }, this),
-      formType === "register" ? /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("p", { children: "Please do not input any sensitive personal informations. This website would not protect your informations." }, void 0, !1, {
+      formType === "register" ? /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("p", { children: "Please do not input any sensitive personal informations. This website would not protect your informations." }, void 0, !1, {
         fileName: "app/routes/__with-toolbar/login.tsx",
         lineNumber: 127,
         columnNumber: 15
-      }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("p", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("i", { className: "text-sm", children: "Default account:" }, void 0, !1, {
+      }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("p", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("i", { className: "text-sm", children: "Default account:" }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/login.tsx",
           lineNumber: 133,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("br", {}, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("br", {}, void 0, !1, {
           fileName: "app/routes/__with-toolbar/login.tsx",
           lineNumber: 134,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("i", { className: "text-sm", children: "Email:" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("i", { className: "text-sm", children: "Email:" }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/login.tsx",
           lineNumber: 135,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("b", { className: "pl-2", children: "test@test.com" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("b", { className: "pl-2", children: "test@test.com" }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/login.tsx",
           lineNumber: 136,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("br", {}, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("br", {}, void 0, !1, {
           fileName: "app/routes/__with-toolbar/login.tsx",
           lineNumber: 137,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("i", { className: "text-sm", children: "Password:" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("i", { className: "text-sm", children: "Password:" }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/login.tsx",
           lineNumber: 138,
           columnNumber: 17
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("b", { className: "pl-2", children: "1234" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("b", { className: "pl-2", children: "1234" }, void 0, !1, {
           fileName: "app/routes/__with-toolbar/login.tsx",
           lineNumber: 139,
           columnNumber: 17
@@ -25185,7 +25238,7 @@ function Login() {
       lineNumber: 124,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)(
       "form",
       {
         method: "post",
@@ -25194,12 +25247,12 @@ function Login() {
           submit(e.target);
         }),
         children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("input", { ...register2("formType"), type: "hidden", value: formType }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("input", { ...register2("formType"), type: "hidden", value: formType }, void 0, !1, {
             fileName: "app/routes/__with-toolbar/login.tsx",
             lineNumber: 148,
             columnNumber: 13
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)(
             "input",
             {
               ...register2("redirectTo"),
@@ -25215,7 +25268,7 @@ function Login() {
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)(
             "label",
             {
               className: `
@@ -25237,7 +25290,7 @@ function Login() {
             focus-within:before:scale-75
             focus-within:before:text-inherit
             `,
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)(
                 "input",
                 {
                   ...register2("email", {
@@ -25267,7 +25320,7 @@ function Login() {
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)(
             "label",
             {
               className: `
@@ -25291,7 +25344,7 @@ function Login() {
             focus-within:before:scale-75
             focus-within:before:text-inherit
             `,
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)(
                 "input",
                 {
                   ...register2("password", {
@@ -25321,7 +25374,7 @@ function Login() {
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)(
             "button",
             {
               type: "submit",
@@ -25354,11 +25407,11 @@ function Login() {
       },
       this
     ),
-    formType === "login" ? /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("button", { className: "link", onClick: () => setFormType("register"), children: "Create new account" }, void 0, !1, {
+    formType === "login" ? /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("button", { className: "link", onClick: () => setFormType("register"), children: "Create new account" }, void 0, !1, {
       fileName: "app/routes/__with-toolbar/login.tsx",
       lineNumber: 251,
       columnNumber: 13
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("button", { className: "link", onClick: () => setFormType("login"), children: "Login" }, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime85.jsxDEV)("button", { className: "link", onClick: () => setFormType("login"), children: "Login" }, void 0, !1, {
       fileName: "app/routes/__with-toolbar/login.tsx",
       lineNumber: 255,
       columnNumber: 13
@@ -25381,9 +25434,9 @@ function Login() {
 // app/routes/healthcheck.ts
 var healthcheck_exports = {};
 __export(healthcheck_exports, {
-  loader: () => loader16
+  loader: () => loader15
 });
-async function loader16({ request }) {
+async function loader15({ request }) {
   let host = request.headers.get("X-Forwarded-Host") ?? request.headers.get("host");
   try {
     let url = new URL("/", `http://${host}`);
@@ -25400,7 +25453,7 @@ async function loader16({ request }) {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "fe1881d6", entry: { module: "/build/entry.client-QZLVB52K.js", imports: ["/build/_shared/chunk-ZSCEUI7A.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HAXY2U22.js", imports: ["/build/_shared/chunk-BH2UAYVP.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar": { id: "routes/__with-toolbar", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar-PNDMOKEM.js", imports: ["/build/_shared/chunk-NN2G7BTY.js", "/build/_shared/chunk-KCZISULB.js", "/build/_shared/chunk-PUR7TUSP.js", "/build/_shared/chunk-5QZ25QOL.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-KK2PNCNM.js", "/build/_shared/chunk-AQH6FRLB.js", "/build/_shared/chunk-EVTSCZ7B.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket": { id: "routes/__with-toolbar/basket", parentId: "routes/__with-toolbar", path: "basket", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket-MYHCSBGR.js", imports: ["/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-BH2UAYVP.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket/index": { id: "routes/__with-toolbar/basket/index", parentId: "routes/__with-toolbar/basket", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket/index-BGM5XDNH.js", imports: ["/build/_shared/chunk-5QZ25QOL.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/favorite": { id: "routes/__with-toolbar/favorite", parentId: "routes/__with-toolbar", path: "favorite", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/favorite-5N3THHLS.js", imports: ["/build/_shared/chunk-MJRMAHAH.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-WMTCELF3.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-BH2UAYVP.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/index": { id: "routes/__with-toolbar/index", parentId: "routes/__with-toolbar", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/index-NIJMN4LT.js", imports: ["/build/_shared/chunk-MJRMAHAH.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-WMTCELF3.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/login": { id: "routes/__with-toolbar/login", parentId: "routes/__with-toolbar", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/login-OPZH2ESK.js", imports: ["/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-BH2UAYVP.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/logout": { id: "routes/__with-toolbar/logout", parentId: "routes/__with-toolbar", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/logout-USWDJXU4.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/my-recipes": { id: "routes/__with-toolbar/my-recipes", parentId: "routes/__with-toolbar", path: "my-recipes", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/my-recipes-GPAYJCBU.js", imports: ["/build/_shared/chunk-MJRMAHAH.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-WMTCELF3.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId": { id: "routes/__with-toolbar/recipe.$recipeId", parentId: "routes/__with-toolbar", path: "recipe/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId-NRORYK7Z.js", imports: ["/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-WMTCELF3.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId.modal": { id: "routes/__with-toolbar/recipe.$recipeId.modal", parentId: "routes/__with-toolbar", path: "recipe/:recipeId/modal", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId.modal-ND64RVM4.js", imports: ["/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload": { id: "routes/__with-toolbar/upload", parentId: "routes/__with-toolbar", path: "upload", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload-JTB7HHN5.js", imports: ["/build/_shared/chunk-53PTV3VH.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar/upload/$stepIdx": { id: "routes/__with-toolbar/upload/$stepIdx", parentId: "routes/__with-toolbar/upload", path: ":stepIdx", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/$stepIdx-CBH7J66V.js", imports: ["/build/_shared/chunk-M373I7LT.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-TVI2FNRY.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/details": { id: "routes/__with-toolbar/upload/details", parentId: "routes/__with-toolbar/upload", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/details-7U3UVHD2.js", imports: ["/build/_shared/chunk-MBBHAI75.js", "/build/_shared/chunk-M373I7LT.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-TVI2FNRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/ingredients": { id: "routes/__with-toolbar/upload/ingredients", parentId: "routes/__with-toolbar/upload", path: "ingredients", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/ingredients-37537GCN.js", imports: ["/build/_shared/chunk-MBBHAI75.js", "/build/_shared/chunk-M373I7LT.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-TVI2FNRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/add-basket.$recipeId": { id: "routes/action/add-basket.$recipeId", parentId: "root", path: "action/add-basket/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/add-basket.$recipeId-4377X2QB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/delete-recipe": { id: "routes/action/delete-recipe", parentId: "root", path: "action/delete-recipe", index: void 0, caseSensitive: void 0, module: "/build/routes/action/delete-recipe-7XG3NHIJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/recipe.like.$recipeId": { id: "routes/action/recipe.like.$recipeId", parentId: "root", path: "action/recipe/like/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/recipe.like.$recipeId-O2LGOEND.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/set-theme": { id: "routes/action/set-theme", parentId: "root", path: "action/set-theme", index: void 0, caseSensitive: void 0, module: "/build/routes/action/set-theme-3FQOE7YO.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/basket-panel/basket-panel": { id: "routes/basket-panel/basket-panel", parentId: "root", path: "basket-panel/basket-panel", index: void 0, caseSensitive: void 0, module: "/build/routes/basket-panel/basket-panel-B6JBNWWT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/healthcheck": { id: "routes/healthcheck", parentId: "root", path: "healthcheck", index: void 0, caseSensitive: void 0, module: "/build/routes/healthcheck-J7D3QFOD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-FE1881D6.js" };
+var assets_manifest_default = { version: "3bc5718e", entry: { module: "/build/entry.client-QZLVB52K.js", imports: ["/build/_shared/chunk-ZSCEUI7A.js", "/build/_shared/chunk-CUPSZOF3.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-CBJUJAOF.js", imports: ["/build/_shared/chunk-CGBQRLHJ.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar": { id: "routes/__with-toolbar", parentId: "root", path: void 0, index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar-GFB27WVO.js", imports: ["/build/_shared/chunk-NN2G7BTY.js", "/build/_shared/chunk-KK2PNCNM.js", "/build/_shared/chunk-KCZISULB.js", "/build/_shared/chunk-PUR7TUSP.js", "/build/_shared/chunk-AQH6FRLB.js", "/build/_shared/chunk-EVTSCZ7B.js", "/build/_shared/chunk-W6ZHCQ6Y.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket": { id: "routes/__with-toolbar/basket", parentId: "routes/__with-toolbar", path: "basket", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket-L5WH4EZ2.js", imports: ["/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-CGBQRLHJ.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/basket/index": { id: "routes/__with-toolbar/basket/index", parentId: "routes/__with-toolbar/basket", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/basket/index-3AKLTFGP.js", imports: ["/build/_shared/chunk-W6ZHCQ6Y.js", "/build/_shared/chunk-AF27EYY5.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-VWNCIZ26.js", "/build/_shared/chunk-TDTPBKIH.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/favorite": { id: "routes/__with-toolbar/favorite", parentId: "routes/__with-toolbar", path: "favorite", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/favorite-TIJNILCH.js", imports: ["/build/_shared/chunk-NGRJI2R4.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-CFG5GAKW.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-CGBQRLHJ.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/index": { id: "routes/__with-toolbar/index", parentId: "routes/__with-toolbar", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/index-C74NIXPP.js", imports: ["/build/_shared/chunk-NGRJI2R4.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-CFG5GAKW.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/login": { id: "routes/__with-toolbar/login", parentId: "routes/__with-toolbar", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/login-JATQ25JQ.js", imports: ["/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-CGBQRLHJ.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-YZTQUUWV.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/logout": { id: "routes/__with-toolbar/logout", parentId: "routes/__with-toolbar", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/logout-USWDJXU4.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/my-recipes": { id: "routes/__with-toolbar/my-recipes", parentId: "routes/__with-toolbar", path: "my-recipes", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/my-recipes-FVCHSGUX.js", imports: ["/build/_shared/chunk-NGRJI2R4.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-CFG5GAKW.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId": { id: "routes/__with-toolbar/recipe.$recipeId", parentId: "routes/__with-toolbar", path: "recipe/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId-MCX5MZAZ.js", imports: ["/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-CFG5GAKW.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-FR2EUEXC.js", "/build/_shared/chunk-O3HB3GHI.js", "/build/_shared/chunk-TVI2FNRY.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/recipe.$recipeId.modal": { id: "routes/__with-toolbar/recipe.$recipeId.modal", parentId: "routes/__with-toolbar", path: "recipe/:recipeId/modal", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/recipe.$recipeId.modal-K7DATEHZ.js", imports: ["/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-G6CRM7JV.js", "/build/_shared/chunk-4RTIRA64.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-PKDOOMBD.js", "/build/_shared/chunk-SKD3BOFX.js", "/build/_shared/chunk-P4OZEKBZ.js", "/build/_shared/chunk-SESL3XH6.js", "/build/_shared/chunk-HSWOLNSH.js", "/build/_shared/chunk-GQ5MUPLA.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload": { id: "routes/__with-toolbar/upload", parentId: "routes/__with-toolbar", path: "upload", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload-IPFMMRN6.js", imports: ["/build/_shared/chunk-53PTV3VH.js", "/build/_shared/chunk-DVL4OLTA.js", "/build/_shared/chunk-N26NLLGG.js", "/build/_shared/chunk-4DNDSJ6W.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !0 }, "routes/__with-toolbar/upload/$stepIdx": { id: "routes/__with-toolbar/upload/$stepIdx", parentId: "routes/__with-toolbar/upload", path: ":stepIdx", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/$stepIdx-DRZM4JZH.js", imports: ["/build/_shared/chunk-J5ZO5IUJ.js", "/build/_shared/chunk-LGSIW6MY.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-TVI2FNRY.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/details": { id: "routes/__with-toolbar/upload/details", parentId: "routes/__with-toolbar/upload", path: "details", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/details-QHB5CF34.js", imports: ["/build/_shared/chunk-QUWPG5ZO.js", "/build/_shared/chunk-J5ZO5IUJ.js", "/build/_shared/chunk-LGSIW6MY.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-JQMOPRII.js", "/build/_shared/chunk-ZTPTPPC2.js", "/build/_shared/chunk-NX57MG44.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js", "/build/_shared/chunk-TVI2FNRY.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/__with-toolbar/upload/ingredients": { id: "routes/__with-toolbar/upload/ingredients", parentId: "routes/__with-toolbar/upload", path: "ingredients", index: void 0, caseSensitive: void 0, module: "/build/routes/__with-toolbar/upload/ingredients-IMYNHFMH.js", imports: ["/build/_shared/chunk-QUWPG5ZO.js", "/build/_shared/chunk-LGSIW6MY.js", "/build/_shared/chunk-CQ4Q5TOB.js", "/build/_shared/chunk-KT3E3E53.js", "/build/_shared/chunk-IVJGB7R2.js", "/build/_shared/chunk-5VXMCHZY.js", "/build/_shared/chunk-5VB5CFJV.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/add-basket.$recipeId": { id: "routes/action/add-basket.$recipeId", parentId: "root", path: "action/add-basket/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/add-basket.$recipeId-4377X2QB.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/delete-recipe": { id: "routes/action/delete-recipe", parentId: "root", path: "action/delete-recipe", index: void 0, caseSensitive: void 0, module: "/build/routes/action/delete-recipe-7XG3NHIJ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/recipe.like.$recipeId": { id: "routes/action/recipe.like.$recipeId", parentId: "root", path: "action/recipe/like/:recipeId", index: void 0, caseSensitive: void 0, module: "/build/routes/action/recipe.like.$recipeId-O2LGOEND.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/action/set-theme": { id: "routes/action/set-theme", parentId: "root", path: "action/set-theme", index: void 0, caseSensitive: void 0, module: "/build/routes/action/set-theme-7M6AV2DB.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/healthcheck": { id: "routes/healthcheck", parentId: "root", path: "healthcheck", index: void 0, caseSensitive: void 0, module: "/build/routes/healthcheck-J7D3QFOD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/loader/search-ingredients": { id: "routes/loader/search-ingredients", parentId: "root", path: "loader/search-ingredients", index: void 0, caseSensitive: void 0, module: "/build/routes/loader/search-ingredients-QGNEBFMD.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/loader/search-tag-options": { id: "routes/loader/search-tag-options", parentId: "root", path: "loader/search-tag-options", index: void 0, caseSensitive: void 0, module: "/build/routes/loader/search-tag-options-XVCJCGYT.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, url: "/build/manifest-3BC5718E.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -25428,13 +25481,21 @@ var assetsBuildDirectory = "public/build", future = { v2_meta: !1 }, publicPath 
     caseSensitive: void 0,
     module: add_basket_recipeId_exports
   },
-  "routes/basket-panel/basket-panel": {
-    id: "routes/basket-panel/basket-panel",
+  "routes/loader/search-ingredients": {
+    id: "routes/loader/search-ingredients",
     parentId: "root",
-    path: "basket-panel/basket-panel",
+    path: "loader/search-ingredients",
     index: void 0,
     caseSensitive: void 0,
-    module: basket_panel_exports
+    module: search_ingredients_exports
+  },
+  "routes/loader/search-tag-options": {
+    id: "routes/loader/search-tag-options",
+    parentId: "root",
+    path: "loader/search-tag-options",
+    index: void 0,
+    caseSensitive: void 0,
+    module: search_tag_options_exports
   },
   "routes/action/delete-recipe": {
     id: "routes/action/delete-recipe",

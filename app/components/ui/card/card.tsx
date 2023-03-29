@@ -94,7 +94,7 @@ function Overlay({
               isLiked ? (
                 <LikeIconFill className="svg-md fill-red-500" />
               ) : (
-                <LikeIcon className="svg-md" />
+                <LikeIcon className="svg-md fill-black" />
               )
             }
           />
@@ -104,7 +104,7 @@ function Overlay({
               isInBasket ? (
                 <BasketIconFill className="svg-md fill-blue-500" />
               ) : (
-                <BasketIcon className="svg-md" />
+                <BasketIcon className="svg-md fill-black" />
               )
             }
           />
