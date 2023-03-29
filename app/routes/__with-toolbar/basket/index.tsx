@@ -90,6 +90,27 @@ export default function BasketSidePanel() {
   const servings = useAppSelector(state => state.recipeServings)
   const dispatch = useAppDispatch()
 
+  const onDelete = (
+    e: React.FormEvent,
+    id: string,
+    ingredientsNum: (NumIngredientOnRecipe & {
+      ingredient: Ingredient
+    })[],
+  ) => {
+    ingredientsNum.forEach(item => {
+      dispatch(
+        deleteRecipeId({
+          name: item.ingredient.name,
+          recipeId: id,
+        }),
+      )
+    })
+    dispatch(deleteRecipeServings({ recipeId: id }))
+    fetcher.submit(e.currentTarget as HTMLFormElement, {
+      action: '/basket?index',
+    })
+  }
+
   useEffect(() => {
     data?.basket.recipes?.forEach(({ id, ingredientsNum }) => {
       dispatch(addRecipeServings({ recipeId: id, servings: 1 }))
@@ -118,20 +139,7 @@ export default function BasketSidePanel() {
                   title={title}
                   recipeId={id}
                   imgSrc={thumbnail.url ?? ''}
-                  onDelete={(e: React.FormEvent) => {
-                    ingredientsNum.forEach(item => {
-                      dispatch(
-                        deleteRecipeId({
-                          name: item.ingredient.name,
-                          recipeId: id,
-                        }),
-                      )
-                    })
-                    dispatch(deleteRecipeServings({ recipeId: id }))
-                    fetcher.submit(e.currentTarget as HTMLFormElement, {
-                      action: '/basket?index',
-                    })
-                  }}
+                  onDelete={e => onDelete(e, id, ingredientsNum)}
                   subTitle={
                     <RecipeServingsForm
                       recipeId={id}

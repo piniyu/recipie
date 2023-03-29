@@ -1,4 +1,4 @@
-import { Link, NavLink } from '@remix-run/react'
+import { NavLink } from '@remix-run/react'
 import React, { useContext } from 'react'
 import { useAppDispatch } from '~/store/configure-store'
 import { setSiderOpen } from '~/store/sider-slice'

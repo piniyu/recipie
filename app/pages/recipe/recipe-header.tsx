@@ -59,13 +59,11 @@ export default function RecipeHeader({
                 <span>{moment(createdAt).format('LL')}</span>
               </div>
             </div>
-            {/* <div className="flex-1"> */}
             <div className="flex gap-3">
               {tags?.map((e, i) => (
                 <Tag key={i} text={e} />
               ))}
             </div>
-            {/* </div> */}
             <div className="mt-4 flex flex-1 items-end">
               <Link
                 className="btn-primary btn-sm lg:!btn-md h-fit w-full cursor-pointer text-base lg:text-lg"

@@ -37,13 +37,7 @@ const ServingsForm = ({
   return (
     <FormProvider {...methods}>
       <Form onSubmit={e => void e.preventDefault()}>
-        <NumberInput
-          registerName="input"
-          hasSetBtn
-          // onSubmit={(v: FormProps) => {
-          //   onChangeSubmit(v)
-          // }}
-        />
+        <NumberInput registerName="input" hasSetBtn />
       </Form>
     </FormProvider>
   )

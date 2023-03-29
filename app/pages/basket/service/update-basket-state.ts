@@ -1,5 +1,4 @@
 import { useAppDispatch, useAppSelector } from '../../../store/configure-store'
-import { IngredientsState } from '../../../store/ingredients-slice'
 import {
   addRecipeServings,
   updateRecipeServings,

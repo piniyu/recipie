@@ -1,6 +1,5 @@
 import { Link } from '@remix-run/react'
 import React, { ReactNode } from 'react'
-
 import Recipe from '~/components/icons/recipe'
 import Logo from '~/components/icons/Logo'
 import AuthCheck from '../../../feature/auth/auth-check'
@@ -42,7 +41,6 @@ const defaultSiderValue: SiderItemType[] = [
   { value: 'Authentication' },
 ]
 export default function Sider(): JSX.Element | null {
-  // const { hidden, close, setClose } = useContext(SiderContext)
   const dispatch = useAppDispatch()
   const { open, hidden } = useAppSelector(s => s.sider)
 

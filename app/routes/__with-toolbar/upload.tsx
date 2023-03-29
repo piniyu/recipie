@@ -32,12 +32,12 @@ import {
   StepFormState,
 } from '~/store/upload-temp/step-form-slice'
 import { db } from '~/service/db.server'
-import { DetailsFormProps } from './upload/details'
 import DeleteIcon from '~/components/icons/DeleteFill0Wght400Grad25Opsz48'
 import MenuIcon from '~/components/icons/MenuFill1Wght400Grad25Opsz48'
 import { requireUserId } from '~/service/session.server'
 import { s3 } from '~/service/s3/s3.server'
 import useResizeObserver from 'use-resize-observer'
+import { DetailsFormProps } from '~/pages/upload/details/details-form'
 
 type RecursiveNonNullable<T> = {
   [K in keyof T]: T[K] extends Object
