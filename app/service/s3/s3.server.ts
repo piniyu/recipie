@@ -37,18 +37,6 @@ const getRecipePresignedUrls = async (recipeId: string) => {
   }
 }
 
-// round the time to the last 10-minute mark
-const getTruncatedTime = () => {
-  const currentTime = new Date()
-  const d = new Date(currentTime)
-
-  d.setMinutes(Math.floor(d.getMinutes() / 10) * 10)
-  d.setSeconds(0)
-  d.setMilliseconds(0)
-
-  return d
-}
-
 const getThumbnailPresignedUrl = async (
   s3Key: string,
   recipeId: string,
@@ -59,7 +47,6 @@ const getThumbnailPresignedUrl = async (
   error?: undefined | unknown
   type?: 'webp' | 'jpg'
   etag: string | null
-  // headers?:Headers
 }> => {
   try {
     const command = new GetObjectCommand({
@@ -76,10 +63,6 @@ const getThumbnailPresignedUrl = async (
       recipeId,
       type,
       etag,
-      // headers: {
-      //   'cache-control': 'max-age=604800',
-      //   'etag':etag
-      // }
     }
   } catch (error) {
     return Promise.reject(error)

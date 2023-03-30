@@ -39,7 +39,7 @@ Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --
 
 Click this button to create a [Gitpod](https://gitpod.io) workspace with the project set up, Postgres started, and Fly pre-installed
 
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/remix-run/blues-stack/tree/main)
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/remix-run/blues-stack/tree/main) -->
 
 ## Development
 
@@ -84,13 +84,27 @@ The database seed script creates a new user with some data you can use to get st
 
 If you'd prefer not to use Docker, you can also use Fly's Wireguard VPN to connect to a development database (or even your production database). You can find the instructions to set up Wireguard [here](https://fly.io/docs/reference/private-networking/#install-your-wireguard-app), and the instructions for creating a development database [here](https://fly.io/docs/reference/postgres/).
 
-### Relevant code:
+### AWS S3
+
+- Create a S3 bucket by following tutorial:[Getting started with Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/GetStartedWithS3.html)
+
+- Install AWS CLI:[Installing or updating the latest version of the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+> **Note** You need to configure your AWS CLI by following the doc. You must set up your credential settings to use this project.
+
+- Seed S3 bucket:
+
+  ```
+  npx ts-node test/reset-s3-bucket.ts
+  ```
+
+<!-- ### Relevant code:
 
 This is a pretty simple note-taking app, but it's a good example of how you can build a full stack app with Prisma and Remix. The main functionality is creating users, logging in and out, and creating and deleting notes.
 
 - creating users, and logging in and out [./app/models/user.server.ts](./app/models/user.server.ts)
 - user sessions, and verifying them [./app/session.server.ts](./app/session.server.ts)
-- creating, and deleting notes [./app/models/note.server.ts](./app/models/note.server.ts)
+- creating, and deleting notes [./app/models/note.server.ts](./app/models/note.server.ts) -->
 
 ## Deployment
 
@@ -195,7 +209,7 @@ To run these tests in development, run `npm run test:e2e:dev` which will start t
 We have a utility for testing authenticated features without having to go through the login flow:
 
 ```ts
-cy.login();
+cy.login()
 // you are now logged in as a new user
 ```
 
@@ -203,8 +217,8 @@ We also have a utility to auto-delete the user at the end of your test. Just mak
 
 ```ts
 afterEach(() => {
-  cy.cleanupUser();
-});
+  cy.cleanupUser()
+})
 ```
 
 That way, we can keep your local db clean and keep your tests isolated from one another.
@@ -223,4 +237,4 @@ This project uses ESLint for linting. That is configured in `.eslintrc.js`.
 
 ### Formatting
 
-We use [Prettier](https://prettier.io/) for auto-formatting in this project. It's recommended to install an editor plugin (like the [VSCode Prettier plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)) to get auto-formatting on save. There's also a `npm run format` script you can run to format all files in the project. -->
+We use [Prettier](https://prettier.io/) for auto-formatting in this project. It's recommended to install an editor plugin (like the [VSCode Prettier plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)) to get auto-formatting on save. There's also a `npm run format` script you can run to format all files in the project.
