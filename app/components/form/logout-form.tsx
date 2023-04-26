@@ -15,9 +15,6 @@ export default function LogoutForm({
       action="/logout"
       method="post"
       className={formClassName ? formClassName : ''}
-      onSubmit={() => {
-        console.log('onSubmit')
-      }}
     >
       <button
         type="submit"

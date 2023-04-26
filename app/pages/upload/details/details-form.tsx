@@ -63,6 +63,7 @@ export const DetailsForm = () => {
               type: v.thumbnail?.type ?? '',
               src: v.thumbnail?.src ?? '',
             },
+            difficulty: v.difficulty,
           }),
         )
 

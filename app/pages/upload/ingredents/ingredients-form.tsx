@@ -90,7 +90,7 @@ export const IngredientsForm = () => {
     return () => {
       subscription.unsubscribe()
     }
-  }, [])
+  }, [dispatch, watch])
   return (
     <FormProvider {...methods}>
       <form className="flex flex-col space-y-12">

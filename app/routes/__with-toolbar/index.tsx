@@ -38,7 +38,7 @@ export const loader = async ({ request }: LoaderArgs) => {
 
   return json(
     { searchRes, allRecipes: mappedRecipes },
-    { headers: { 'Cache-Control': 'max-age=3600' } },
+    // { headers: { 'Cache-Control': 'max-age=3600' } },
   )
 }
 

@@ -29,7 +29,9 @@ const recipeServingsSlice = createSlice({
         item => item.recipeId === action.payload.recipeId,
       )
       if (recipeIdx !== -1) {
-        state[recipeIdx].servings = action.payload.servings
+        state[recipeIdx] = action.payload
+      } else {
+        state.push(action.payload)
       }
     },
   },

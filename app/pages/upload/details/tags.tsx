@@ -76,11 +76,12 @@ export const Tags = ({
             onInputChange={e => {
               if (e.length > 0) {
                 _.debounce(
-                  () =>
-                    fetcher.load(`/loader/search-tag-options?search-tags=${e}`),
+                  () => {
+                    fetcher.load(`/loader/search-tag-options?search-tags=${e}`)
+                  },
                   300,
                   { trailing: true },
-                )
+                )()
               }
             }}
             onCreateOption={e => {

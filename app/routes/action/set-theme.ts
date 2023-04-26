@@ -1,4 +1,5 @@
-import { ActionFunction, json, redirect } from '@remix-run/server-runtime'
+import type { ActionFunction } from '@remix-run/server-runtime'
+import { json, redirect } from '@remix-run/server-runtime'
 import { isTheme } from '~/context/theme-provider'
 import { getThemeSession } from '~/service/theme-session.server'
 

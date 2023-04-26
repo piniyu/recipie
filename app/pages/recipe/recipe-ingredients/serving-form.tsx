@@ -50,6 +50,7 @@ export default function ServingForm({
     <form
       onSubmit={handleSubmit(e => {
         onSubmit(e)
+
         reset(
           {
             input: e.input,

@@ -131,3 +131,6 @@ dist
 
 #build
 public/build
+
+#cypress
+cypress/postgres-data

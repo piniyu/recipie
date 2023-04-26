@@ -45,7 +45,7 @@ export default function DifficultyBtn({
     if (onChange) {
       onChange(clicked)
     }
-  }, [clicked])
+  }, [clicked, onChange])
 
   return (
     <div className="flex">

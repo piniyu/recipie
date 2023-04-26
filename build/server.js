@@ -43166,7 +43166,7 @@ app.use(
   "/build",
   import_express.default.static("public/build", { immutable: true, maxAge: "1y" })
 );
-app.use(import_express.default.static("public", { maxAge: "1h" }));
+app.use(import_express.default.static("public", { maxAge: "1y" }));
 app.use((0, import_morgan.default)("tiny"));
 var MODE = process.env.NODE_ENV;
 var BUILD_DIR = import_path.default.join(process.cwd(), "build");

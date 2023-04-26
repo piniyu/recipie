@@ -1,7 +1,7 @@
 import { useFetcher } from '@remix-run/react'
 import cuid from 'cuid'
 import _ from 'lodash'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Controller, useFieldArray, UseFormReturn } from 'react-hook-form'
 import { components, SingleValueProps } from 'react-select'
 import CreatableSelect from 'react-select/creatable'
@@ -95,6 +95,16 @@ export const IngredientsListInputs = ({
       ...watchFieldArray[index],
     }
   })
+  useEffect(() => {
+    if (fetcher.data?.searchRes) {
+      setIngOptions(
+        fetcher.data?.searchRes.map(e => ({
+          label: e.name[0].toUpperCase() + e.name.slice(1),
+          value: e.id,
+        })),
+      )
+    }
+  }, [fetcher.data?.searchRes])
   return (
     <div>
       <p className="label-required">Ingredients list</p>
@@ -131,10 +141,14 @@ export const IngredientsListInputs = ({
                       onInputChange={e => {
                         if (e.length > 0) {
                           _.debounce(
-                            () => fetcher.load(`./?search-ingredient=${e}`),
+                            () => {
+                              fetcher.load(
+                                `/loader/search-ingredients?search-ingredient=${e}`,
+                              )
+                            },
                             300,
                             { trailing: true },
-                          )
+                          )()
                         }
                       }}
                       onChange={e => {

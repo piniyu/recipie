@@ -20,7 +20,7 @@ export default function Layout({
     } else {
       dispatch(setSiderOpen(true))
     }
-  }, [])
+  }, [dispatch, width])
 
   useEffect(() => {
     if (width === undefined) {
@@ -29,7 +29,7 @@ export default function Layout({
     if (width <= 768) {
       dispatch(setSiderOpen(false))
     }
-  }, [width])
+  }, [dispatch, width])
 
   return (
     <div className="flex  bg-gray-100 dark:bg-gray-800">

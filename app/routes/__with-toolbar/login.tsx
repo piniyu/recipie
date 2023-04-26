@@ -7,6 +7,7 @@ import { metaTitlePostfix } from '~/root'
 import { db } from '~/service/db.server'
 import PriorityHighIcon from '~/components/icons/PriorityHighFill0Wght400Grad25Opsz48'
 import { createUserSession, login, register } from '~/service/session.server'
+import { badRequest } from 'remix-utils'
 
 type FormProps = {
   email: string
@@ -36,8 +37,6 @@ function validateFormType(formType: any): formType is FormProps['formType'] {
     typeof formType === 'string' && ['login', 'register'].includes(formType)
   )
 }
-
-const badRequest = (data: ActionData) => json(data, { status: 400 })
 
 export const action: ActionFunction = async ({ request }) => {
   const url = new URL(request.url)
