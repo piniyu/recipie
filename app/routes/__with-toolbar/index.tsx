@@ -14,7 +14,6 @@ export const headers: HeadersFunction = () => {
 }
 
 export const loader = async ({ request }: LoaderArgs) => {
-  const cacheKey = request.url
   const searchRes = await searchAllRecipes(request)
   const userId = await getUserId(request)
   const recipeOrder = new URL(request.url).searchParams.get('orderby') as

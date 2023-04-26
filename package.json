@@ -27,7 +27,8 @@
     "validate": "run-p \"test -- --run\" lint typecheck test:e2e:run",
     "icons": "npx @svgr/cli --out-dir app/components/icons -- public/assets",
     "icons:watch": "npm-watch icons",
-    "dev:svg": "run-s icons icons:watch"
+    "dev:svg": "run-s icons icons:watch",
+    "seed:s3:rds": "npx prisma db seed && ts-node ./test/reset-s3-bucket.ts"
   },
   "watch": {
     "icons": {

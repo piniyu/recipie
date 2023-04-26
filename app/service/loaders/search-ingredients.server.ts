@@ -4,7 +4,7 @@ export async function searchIngredients(request: Request) {
   const url = new URL(request.url)
   const param = url.searchParams.get('search-ingredient') ?? ''
   const res = await db.ingredient.findMany({
-    where: { name: { contains: param } },
+    where: { name: { contains: param, mode: 'insensitive' } },
     take: 20,
     orderBy: { name: 'asc' },
   })
@@ -17,7 +17,7 @@ export async function searchTags(request: Request) {
   const param = url.searchParams.get('search-tags') ?? ''
   const res = await db.tag.findMany({
     where: {
-      name: { contains: param },
+      name: { contains: param, mode: 'insensitive' },
     },
     take: 20,
     orderBy: { name: 'asc' },
