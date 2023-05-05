@@ -1,22 +1,22 @@
-import { FormProps, Link, useFetcher } from '@remix-run/react'
-import { FormHTMLAttributes, ReactNode } from 'react'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
-import AuthCheck from '../../../feature/auth/auth-check'
-import BasketIcon from '~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48'
-import BasketIconFill from '~/components/icons/ShoppingBasketFill1Wght400Grad25Opsz48'
-import LikeIcon from '~/components/icons/FavoriteFill0Wght400Grad25Opsz48'
-import LikeIconFill from '~/components/icons/FavoriteFill1Wght400Grad25Opsz48'
-import PersonIcon from '~/components/icons/PersonFill0Wght400Grad25Opsz48'
+import { FormProps, Link, useActionData, useFetcher } from "@remix-run/react";
+import { FormHTMLAttributes, ReactNode } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import AuthCheck from "../../../feature/auth/auth-check";
+import BasketIcon from "~/components/icons/ShoppingBasketFill0Wght400Grad25Opsz48";
+import BasketIconFill from "~/components/icons/ShoppingBasketFill1Wght400Grad25Opsz48";
+import LikeIcon from "~/components/icons/FavoriteFill0Wght400Grad25Opsz48";
+import LikeIconFill from "~/components/icons/FavoriteFill1Wght400Grad25Opsz48";
+import PersonIcon from "~/components/icons/PersonFill0Wght400Grad25Opsz48";
 
 export interface CardProps {
-  title: string
-  favCounts: number
-  basketCounts: number
-  author: string
-  id: string
-  isLiked: boolean
-  isInBasket: boolean
-  thumbnail: string | null
+  title: string;
+  favCounts: number;
+  basketCounts: number;
+  author: string;
+  id: string;
+  isLiked: boolean;
+  isInBasket: boolean;
+  thumbnail: string | null;
 }
 
 export function IconForm({
@@ -26,27 +26,27 @@ export function IconForm({
   onClickHandler,
   ...props
 }: {
-  action: string
-  icon: ReactNode
-  className?: string
-  onClickHandler?: () => void
+  action: string;
+  icon: ReactNode;
+  className?: string;
+  onClickHandler?: () => void;
 } & FormHTMLAttributes<HTMLFormElement> &
   FormProps) {
-  const fetcher = useFetcher()
+  const fetcher = useFetcher();
 
   return (
     <AuthCheck loginConfirmModal>
-      {user => (
+      {(user) => (
         <fetcher.Form {...props} method="post" action={action}>
           <button
             type="submit"
-            className={`icon-btn-sm icon-btn-square flex ${className ?? ''} `}
-            onClick={e => {
+            className={`icon-btn-sm icon-btn-square flex ${className ?? ""} `}
+            onClick={(e) => {
               if (!user?.id) {
-                e.preventDefault()
+                e.preventDefault();
               } else {
-                e.stopPropagation()
-                onClickHandler && onClickHandler()
+                e.stopPropagation();
+                onClickHandler && onClickHandler();
               }
             }}
           >
@@ -55,7 +55,7 @@ export function IconForm({
         </fetcher.Form>
       )}
     </AuthCheck>
-  )
+  );
 }
 
 function Overlay({
@@ -63,7 +63,11 @@ function Overlay({
   id,
   isLiked,
   isInBasket,
-}: Pick<CardProps, 'author' | 'id' | 'isLiked' | 'isInBasket'>): JSX.Element {
+}: Pick<CardProps, "author" | "id" | "isLiked" | "isInBasket">): JSX.Element {
+  //BUG:after ordering the card list and pressing icon button,
+  //  icon doesn't change its color but the database has been changed.
+  // Should find a way to refetch the whole page after submit iconForm
+
   return (
     <div
       className={`
@@ -111,7 +115,7 @@ function Overlay({
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default function Card({
@@ -132,7 +136,7 @@ export default function Card({
       <div className="aspect-w-4 aspect-h-3 relative flex items-center justify-center overflow-hidden rounded-t-lg">
         <LazyLoadImage
           className="h-full w-full object-cover object-center "
-          src={thumbnail ? thumbnail : ''}
+          src={thumbnail ? thumbnail : ""}
           effect="opacity"
         />
 
@@ -159,5 +163,5 @@ export default function Card({
         </div>
       </div>
     </Link>
-  )
+  );
 }
